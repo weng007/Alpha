@@ -1,0 +1,98 @@
+﻿@model AlphaMvc.Models.EmployeeModels
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<table>
+    <tr>
+        <td>
+            @Html.ActionLink("Teachnician List", "Index")
+        </td>
+    </tr>
+</table>
+<br />
+@* -------------------------------------- modal dialog-------------------------------- *@
+
+@* -------------------------------------- modal dialog ------------------------------- *@
+<div id="myModal">
+    @using (Html.BeginForm())
+            {
+        <fieldset>
+            <legend>Log On Form</legend>
+            <ol>
+                @*<li>
+                    @Html.LabelFor(a => a.MobileName)
+                    @Html.TextBoxFor(a => a.MobileName, new { id = "MobileName" })
+                    @Html.ValidationMessageFor(a => a.MobileName)
+                </li>
+                <li>
+                    @Html.LabelFor(a => a.MobileIMEno)
+                    @Html.TextBoxFor(a => a.MobileIMEno, new { id = "MobileIMEno" })
+                    @Html.ValidationMessageFor(a => a.MobileIMEno)
+                </li>
+                <li>
+                    @Html.LabelFor(a => a.mobileManufacured)
+                    @Html.TextBoxFor(a => a.mobileManufacured, new { id = "mobileManufacured" })
+                    @Html.ValidationMessageFor(a => a.mobileManufacured)
+                </li>
+                <li>
+                    @Html.LabelFor(a => a.mobileprice)
+                    @Html.TextBoxFor(a => a.mobileprice, new { id = "mobileprice" })
+                    @Html.ValidationMessageFor(a => a.mobileprice)
+                </li>*@
+
+            </ol>
+            @*<a class="btn btn-primary btn-primary pull-left btnMargin" id="Create">Save</a>*@
+            <input id="Create" type="submit" />
+        </fieldset>
+    }
+</div>
+<script type="text/javascript">
+    $("#Create").click(function () {
+        //alert('jsonp')
+        //var headers = {
+        //    'Access-Control-Allow-Origin': '*',
+        //    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+        //    'Content-Type': 'application/json',
+        //    'Accept': 'application/json'
+        //};
+        var dataObject = { MobileName: $("#MobileName").val(), MobileIMEno: $("#MobileIMEno").val(), mobileManufacured: $("#mobileManufacured").val(), mobileprice: $("#mobileprice").val() };
+        console.log(dataObject);
+        $.ajax(
+        {
+            @*url: '@Url.Action("Create","UserIns")',*@
+            //url: "http://localhost:49493/api/Values",
+            //headers: headers,
+            url: 'http://localhost:13131/api/Employee/InsertData',
+            //jsonp: 'callback',
+            type: 'POST',
+            data: dataObject,
+            datatype: 'jsonp',
+
+            success: function (result) {
+                if (result.toString() == "Success") {
+                    alert(result)
+                }
+                else {
+                    alert(result)
+                }
+            },
+            error: function (result) {
+                alert("Error")
+            }
+        });
+    });
+</script>
+
+@{
+
+            if (ViewData["result"] != "" && ViewData["result"] != null)
+            {
+                ViewData["result"] = null;
+        <script type="text/javascript" language="javascript">
+                    alert("Data saved Successfully");
+        </script>
+    }
+}

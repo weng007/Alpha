@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/hidegrid.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/menu.css")" rel="stylesheet" type="text/css" />
+
+        <link href="@Url.Content("~/Content/table/jquery-ui.css")" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.js"></script>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.6/jquery-ui.js"></script>
+
+        <script src="@Url.Content("~/Scripts/jquery-1.6.2.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/modernizr-2.0.6-development-only.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/AjaxLogin.js")" type="text/javascript"></script>
+
+        @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>*@
+
+        @* ---------------------------- menu -------------------------- *@
+        <script language="javascript" type="text/javascript">
+        $(function () {
+            $("#products").accordion();
+            $('#nav li:has(ul)').doubleTapToGo();
+        });
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+        $(document).ready(function () {
+            $("#myModal").modal(
+                {
+                    backdrop:'static',
+                });
+        });
+        </script>
+        @* ---------------------------- menu -------------------------- *@
+        <meta name="viewport" content="width=device-width">
+
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <a href="@Url.Action("Index", "Home")" class="imagelogo"></a>
+                    <img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" /><p class="logonname">Administrator</p>
+                    <img src="@Url.Content("~/Images/log-in.png")" alt="IMAGES" class="imgicon" />
+                    <div class="loginname">@Html.ActionLink("Log Out", "Index", "Login")</div>
+                </div>
+                @*<div class="float-right">*@
+                    @*<section id="login">
+                        @Html.Partial("_LogOnPartial")
+                    </section>*@
+                    @*<nav>*@
+                    <label for="show-menu" class="show-menu">Menu ☰</label>
+                    <input type="checkbox" id="show-menu" role="button">
+                    <ul id="menu" class="menuul">
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Home", "Index", "Home")</div></div></li>
+                        <li class="menuli">
+                            <div class="menua">
+                                <div class="menutext">
+                                    @Html.ActionLink("Master", "", "Home")
+                                    <ul class="hidden">
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Income", "Index", "MasterIncome")</div></li>
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Expense", "Index", "MasterExpense")</div></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Warning", "Expired", "Employee")</div></div></li>
+                        <li class="menuli">
+                            <div class="menua">
+                                <div class="menutext">
+                                    @Html.ActionLink("Calendar", "", "Home")
+                                    <ul class="hidden">
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Job", "Index", "CalendarJob")</div></li>
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Man Power", "Index", "CalendarManPower")</div></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "Index", "Employee")</div></div></li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Products", "Index", "Products")</div></div></li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Break Down Cost", "Index", "BreakDownCost")</div></div></li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Job Order", "Index", "JobOrder")</div></div></li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Test", "View1", "MasterExpense")</div></div></li>
+                        <li class="menuli">
+                            <div class="menua">
+                                <div class="menutext">
+                                    @Html.ActionLink("Payment", "", "Home")
+                                    <ul class="hidden">
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Technician", "Index", "WageTeachnician")</div></li>
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Vendor", "Index", "WageVendor")</div></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            
+        </header>
+        
+        <div id="body">
+            <section class="content-wrapper main-content clear-fix">     
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="footertext">&copy; @DateTime.Now.Year Alpha Group Co., Ltd. All Rights Reserved.</p>
+                </div>
+                <div class="float-right">
+                    <ul id="social">
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

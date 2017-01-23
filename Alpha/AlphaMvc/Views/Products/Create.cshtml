@@ -1,0 +1,230 @@
+﻿@model AlphaMvc.Models.Product
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>
+    Product Create
+</h2>
+@* -------------------------------------- table -------------------------------- *@
+<link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
+@* -------------------------------------- table -------------------------------- *@
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+  $(document).ready(function() {
+      $("#ReceiveDate").datepicker();
+  });
+</script>
+<style>
+    table {
+        background: #fbfbf1;
+        width: 335px;
+    }
+</style>
+<table>
+    <tr>
+        <td>
+            @Html.ActionLink("Products List", "Index")
+        </td>
+    </tr>
+</table>
+<div id="myModal">
+    @using (Html.BeginForm())
+    {
+        <form>
+            <ul class="form-style-1">
+                <li>
+                    <label>Products <span class="required">*</span></label>
+                    <input type="text" id ="SerialNo" name="field1" class="field-divided" placeholder="Serial" />&nbsp;<input type="text" id="MachineNo" name="field1" class="field-divided" placeholder="หมายเลขเครื่อง" />
+                </li>
+                <li>
+                    <label>ประเภทสินค้า</label>
+                    <select name="field4" class="field-select" id="ProductType">
+                        <option value="Advertise">Alphair</option>
+                        <option value="Partnership">Air Vent</option>
+                        <option value="General Question">Ball Valve </option>
+                    </select>
+                </li>
+                <li>
+                    <input type="text" id="Brand" name="field1" class="field-divided" placeholder="ยี่ห้อ" />&nbsp;<input type="text" id="Size" name="field2" class="field-select-small" placeholder="ขนาด" />
+                </li>
+                <li>
+                    <input type="text" id="Model" name="field2" class="field-divided" placeholder="รุ่น" />&nbsp;<input type="text" id="Lifetime" name="field2" class="field-select-small" placeholder="อายุการใช้งาน" />&nbsp;<input type="text" name="field2" class="field-select-small" value="ปี" />
+                </li>
+                <li>
+                    <label class="label-big">รับเข้า</label>&nbsp;<label class="label-small">หน่วยนับ</label>
+                </li>
+                <li>
+                    <input type="text" id="ReceiveDate" class="field-divided" placeholder="วันที่รับเข้า" />&nbsp;<select name="field4" id="Unit" class="field-select-small-2">
+                    <option value="Advertise">ชิ้น</option>
+                    <option value="Partnership">แท่ง</option>
+                    <option value="General Question">pack</option>
+                </select>
+                </li>
+                <li>
+                    <label class="label-small">ยกมา</label>&nbsp;<label class="label-small-3">คงเหลือ</label>
+                </li>
+                <li>
+                    <input type="text" id="Balance" name="field1" class="field-select-small" placeholder="ยกมา" />&nbsp;<input type="text" id="Remain" name="field2" class="field-select-small" placeholder="คงเหลือ"  />
+                </li>
+                <li>
+                    <label class="label-small-2">หาย</label>&nbsp;<label class="label-small-2">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>
+                </li>
+                <li>
+                    <input type="text" id="Lost" name="field6" class="field-select-small" placeholder="หาย" />&nbsp;<input type="text" id="Repair" name="field7" class="field-select-small" placeholder="ซ่อม" />&nbsp;<input type="text" id="Break" name="field8" class="field-select-small" placeholder="ชำรุด" />
+                </li>
+            </ul>
+            <ul class="form-style-1">
+                <li>
+                    <button class="imgbutton" id="img"></button>
+                </li>
+                <li>
+                    <label>หมายเหตุ<span class="required">*</span></label>
+                    <textarea name="field5" id="Remark" class="field-long field-textarea"></textarea>
+                </li>
+                <li>
+                    <input type="submit" value="Save" id="Create" />
+                </li>
+            </ul>
+            <ul class="attachgrid">
+                <li>
+                    <table class="barattach">
+                        <tr>
+                            <td>
+                                
+                                <div class="topicattach"><a href="#"><img src="@Url.Content("~/Images/attachments2.png")" /></a></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="example-2" cellspacing="0">
+                        <thead class="theader">
+                            <tr>
+                                <th>No.</th>
+                                <th>File Name</th>
+                                <th>Doc Type</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>File1</td>
+                                <td>
+                                    <select name="D1">
+                                        <option value="volvo">ประเภท1</option>
+                                        <option value="saab">ประเภท2</option>
+                                        <option value="mercedes">ประเภท3</option>
+                                        <option value="mercedes">ประเภท4</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Trachnician")">
+                                        <img src="@Url.Content("~/Images/delete.png")" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>File2</td>
+                                <td>
+                                    <select name="D1">
+                                        <option value="volvo">ประเภท1</option>
+                                        <option value="saab">ประเภท2</option>
+                                        <option value="mercedes">ประเภท3</option>
+                                        <option value="mercedes">ประเภท4</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Trachnician")">
+                                        <img src="@Url.Content("~/Images/delete.png")" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>File3</td>
+                                <td>
+                                    <select name="D1">
+                                        <option value="volvo">ประเภท1</option>
+                                        <option value="saab">ประเภท2</option>
+                                        <option value="mercedes">ประเภท3</option>
+                                        <option value="mercedes">ประเภท4</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Trachnician")">
+                                        <img src="@Url.Content("~/Images/delete.png")" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>File4</td>
+                                <td>
+                                    <select name="D1">
+                                        <option value="volvo">ประเภท1</option>
+                                        <option value="saab">ประเภท2</option>
+                                        <option value="mercedes">ประเภท3</option>
+                                        <option value="mercedes">ประเภท4</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Trachnician")">
+                                        <img src="@Url.Content("~/Images/delete.png")" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <br />
+            </ul>
+</form>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#Create").click(function () {
+            var dataObject = {
+                SerialNo: $("#SerialNo").val(), MachineNo: $("#MachineNo").val(), ProductType: 1, Brand: $("#Brand").val(),
+                Size: $("#Size").val(), Model: $("#Model").val(), Lifetime: $("#Lifetime").val(), ReceiveDate: $("#ReceiveDate").val(),
+                Unit: 1, Balance: $("#Balance").val(), Remain: $("#Remain").val(), Lost: $("#Lost").val(), Repair: $("#Repair").val(),
+                Break: $("#Break").val(), img: "test", Remark: $("#Remark").val()};
+            console.log(dataObject);
+            $.ajax(
+            {
+                url: 'http://localhost:13131/api/Product/Post',
+                type: 'POST',
+                data: dataObject,
+                datatype: 'json',
+
+                success: function (result) {
+                    if (result.toString() == "Success") {
+                        alert(result)
+                    }
+                    else {
+                        alert(result)
+                    }
+                },
+                error: function (result) {
+                    alert("Error")
+                }
+            });
+        });
+    });
+
+</script>
+@{
+
+            if (ViewData["result"] != "" && ViewData["result"] != null)
+            {
+                ViewData["result"] = null;
+        <script type="text/javascript" language="javascript">
+                    alert("Data saved Successfully");
+        </script>
+    }
+}

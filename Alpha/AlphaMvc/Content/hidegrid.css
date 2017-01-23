@@ -1,0 +1,10 @@
+﻿ .hideANDseek
+{
+    display: grid;
+}
+ @media screen and (max-width:680px) {
+      .hideANDseek
+    {
+        display: none;
+    }
+}

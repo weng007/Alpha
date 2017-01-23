@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@* -------------------------------------- modal dialog-------------------------------- *@
+@* -------------------------------------- table -------------------------------- *@
+<link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
+@* -------------------------------------- table -------------------------------- *@
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#datepicker").datepicker();
+  });
+</script>
+<style>
+    table {
+        /*background: #D0E5F5;
+        border: 1px solid #c0c0c0;
+        width: 520px;*/
+        background: #fbfbf1;
+        width: 335px;
+    }
+</style>
+
+<div id="myModal">
+    @using (Html.BeginForm())
+    {
+        <form>
+            <ul class="form-style-1">
+                <li>
+                    <label>Serial <span class="required">*</span></label>
+                    <input type="text" name="field1" class="field-divided" placeholder="Serial" />
+                </li>
+                <li>
+                    <label class="label-small">ยี่ห้อ</label>&nbsp;<label class="label-small-3">รุ่น</label>
+                </li>
+                <li>
+                    <input type="text" name="field1" class="field-select-small" placeholder="ห้อ" />&nbsp;<input type="text" name="field2" class="field-select-small" placeholder="รุ่น" />
+                </li>
+                <li>
+                    <label class="label-small">ขนาด</label>&nbsp;<label class="label-small-3">จำนวนที่ยืม</label>
+                </li>
+                <li>
+                    <input type="text" name="field1" class="field-select-small" placeholder="ขนาด" />&nbsp;<input type="text" name="field2" class="field-select-small" placeholder="จำนวน" />
+                </li>
+
+                <li>
+                    <label>หมายเหตุ<span class="required">*</span></label>
+                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                </li>
+
+            </ul>
+            <ul class="form-style-3">
+                <li>
+                    <label>คืน:</label>
+                </li>
+                <li>
+                    <label class="label-small-2">ดี</label>&nbsp;<label class="label-small-2">หาย</label>&nbsp;<label class="label-small">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>
+                </li>
+                <li>
+                    <input type="text" name="field6" class="field-select-small" placeholder="ดี" />&nbsp;<input type="text" name="field6" class="field-select-small" placeholder="หาย" />&nbsp;<input type="text" name="field7" class="field-select-small" placeholder="ซ่อม" />&nbsp;<input type="text" name="field8" class="field-select-small" placeholder="ชำรุด" />
+                </li>
+                <li>
+                    <input type="submit" value="Save" class="btnposition" />
+                </li>
+            </ul>
+        </form>
+    }
+</div>
+
+@{
+
+            if (ViewData["result"] != "" && ViewData["result"] != null)
+            {
+                ViewData["result"] = null;
+        <script type="text/javascript" language="javascript">
+                    alert("Data saved Successfully");
+        </script>
+    }
+}

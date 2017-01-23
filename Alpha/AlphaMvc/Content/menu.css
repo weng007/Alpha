@@ -1,0 +1,210 @@
+﻿/*Strip the ul of padding and list styling*/
+.menuholder
+{
+    position:center !important;
+}
+.menuul {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	position: absolute;
+    /*margin-left: 40%;*/
+    margin-left: 10%;
+    margin-top: 70px;
+    z-index: 1;
+}
+
+/*Create a horizontal list with spacing*/
+.menuli {
+	display:inline-block;
+	float: left;
+	margin-right: 1px;
+}
+.menua a{
+    color: #ffffff !important;
+    outline: none;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    text-decoration: none !important;
+}
+.submenua a{
+    color: #000000 !important;
+    outline: none;
+    text-align: left;
+    /*height: 40px !Important;*/
+    /*padding-left: 10px !important;
+    padding-right: 35px !important;*/
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    text-decoration: none !important;
+}
+/*.submenua{
+    height:30px;
+}*/
+/*Style for menu links*/
+.menuli a {
+    /*background: #2f3036;*/
+	display:block;
+	/*min-width:140px;*/
+    /*background: #d10b0b;*/
+    /*min-width:140px;*/
+    min-width: 120px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #fff;
+	background: rgba(209, 11, 11, 0);
+	text-decoration: none;
+}
+
+/*Hover state for top level links*/
+.menuli:hover a {
+	/*background: #19c589;*/
+    background: #c20a0a;
+}
+
+/*Style for dropdown links*/
+.menuli:hover ul a {
+	background: #e0ddc4;
+	color: #2f3036;
+	height: 35px;
+	line-height: 35px;
+}
+
+/*Hover state for dropdown links*/
+.menuli:hover ul a:hover {
+	/*background: #19c589;*/
+    /*background: #ffbfbf;*/
+    background: #eb7979;
+	color: #fff;
+}
+
+/*Hide dropdown links until they are needed*/
+.menuli ul {
+	display: none;
+}
+
+/*Make dropdown links vertical*/
+.menuli ul li {
+	display: block;
+	float: none;
+}
+
+/*Prevent text wrapping*/
+.menuli ul li a {
+    display: inline-block;
+	/*width: auto;*/
+	min-width: 120px;
+	padding: 0 7px;
+}
+
+/*Display the dropdown on hover*/
+.menuul .menuli a:hover + .hidden, .hidden:hover {
+	display: block;
+    margin-left:0px;
+    margin-top:0px
+}
+
+/*Style 'show menu' label button and hide it by default*/
+.show-menu {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	color: #fff;
+	/*background: #19c589;*/
+    background: #bc0d0d;
+	text-align: center;
+	padding: 10px 0;
+	display: none;
+}
+
+/*Hide checkbox*/
+input[type=checkbox]{
+    display: none;
+    -webkit-appearance: none;
+}
+
+/*Show menu when invisible checkbox is checked*/
+input[type=checkbox]:checked ~ #menu{
+    display: block;
+}
+
+
+/*Responsive Styles*/
+
+@media screen and (max-width : 760px){
+	/*Make dropdown links appear inline*/
+	.menuul {
+		position: static;
+		display: none;
+	}
+	/*Create vertical spacing*/
+	.menuli {
+		margin-bottom: 1px;
+	}
+
+	/*Make all menu links full width*/
+	.menuul .menuli, .menuli a {
+		/*width: 100%;*/
+        width: 99.4%;
+        /*height: 45px;*/
+	}
+	/*Display 'show menu' link*/
+	.show-menu {
+		/*display:block;*/
+        display: table;
+        text-align: center;
+        width: 100%;
+	}
+    .menuli a {
+	display:block;
+    min-width: 100px;
+	height: 40px;
+	text-align: left;
+	line-height: 40px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #fff;
+	/*background: rgba(209, 11, 11, 0);*/
+    background: #e3557f;
+    
+	text-decoration: none;
+}
+    .menua a{
+    color: #ffffff !important;
+    outline: none;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    text-decoration: none !important;
+}
+    .menutext a {
+        padding-left: 5px !important;
+    }
+    .menuli:hover a {
+	/*background: #19c589;*/
+    background: #c20a0a;
+}
+
+/*Style for dropdown links*/
+.menuli:hover ul a {
+	background: #e0ddc4;
+	color: #2f3036 !important;
+	height: 35px;
+	line-height: 35px;
+    width:100%
+}
+
+/*Hover state for dropdown links*/
+.menuli:hover ul a:hover {
+	/*background: #19c589;*/
+    /*background: #ffbfbf;*/
+    background: #eb7979;
+	/*color: #fff;*/
+}
+.menuli ul li a {
+    display: inline-block;
+	/*width: auto;*/
+	min-width: 120px;
+	padding: 0 7px;
+}
+
+}

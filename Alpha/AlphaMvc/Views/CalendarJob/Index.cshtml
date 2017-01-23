@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Calendar Job</h2>
+
+<link href="@Url.Content("~/Content/calendar/fullcalendar.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/calendar/fullcalendar.print.min.css")" rel="stylesheet" media="print" type="text/css" />
+<script src="@Url.Content("~/Scripts/lib/moment.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/lib/jquery.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/calendar/fullcalendar.min.js")" type="text/javascript"></script>
+
+<script>
+
+	$(document).ready(function() {
+
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay,listWeek'
+			},
+			defaultDate: '2017-01-18',
+			navLinks: true, // can click day/week names to navigate views
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: [
+				{
+					title: 'All Day Event',
+					start: '2016-12-01'
+				},
+				{
+					title: 'Long Event',
+					start: '2016-12-07',
+					end: '2016-12-10'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2016-12-09T16:00:00'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2016-12-16T16:00:00'
+				},
+				{
+				    title: 'J00006 (H)',
+					start: '2017-01-05'
+				},
+				{
+				    title: 'J00006 (H)',
+				    start: '2017-01-05'
+				},
+				{
+				    title: 'J00005 (S)',
+				    start: '2017-01-19'
+				},
+				{
+				    title: 'J00001 (O)',
+				    start: '2017-01-19'
+				},
+				{
+				    title: 'J00001 (O)',
+				    start: '2017-01-19'
+				},
+				{
+				    title: 'J00002 (S)',
+				    url: 'http://localhost:1038/JobOrder/Edit',
+				    start: '2017-01-19'
+				},
+				{
+					title: 'Click for Google',
+					url: 'http://google.com/',
+					start: '2016-12-28'
+				}
+			]
+		});
+
+	});
+
+</script>
+<style>
+    body {
+        /*margin: 40px 10px;*/
+        padding: 0;
+        font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+        font-size: 14px;
+    }
+
+    #calendar {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+</style>
+
+<div id="calendar"></div>
+
