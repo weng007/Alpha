@@ -10,10 +10,8 @@ namespace AlphaApi.DataAccessLayer
     public class DBData
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
-        public string InsertData(MasterExpenseModels ME)
+        public void InsertData(MasterExpenseModels ME)
         {
-            SqlConnection con = null;
-            string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -22,14 +20,10 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Detail", ME.Detail);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
-
-                    return result;
-
                 }
                 catch
                 {
-                    return result = "";
+                   
                 }
                 finally
                 {
@@ -40,7 +34,6 @@ namespace AlphaApi.DataAccessLayer
 
         public string UpdateData(MasterExpenseModels ME)
         {
-            SqlConnection con = null;
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -67,7 +60,6 @@ namespace AlphaApi.DataAccessLayer
 
         public string DeleteData(MasterExpenseModels ME)
         {
-            SqlConnection con = null;
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -93,8 +85,6 @@ namespace AlphaApi.DataAccessLayer
 
         public DataSet SelectDataByID(MasterExpenseModels ME)
         {
-            SqlConnection con = null;
-            string result = "";
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -123,8 +113,6 @@ namespace AlphaApi.DataAccessLayer
         }
         public DataSet SelectAllData()
         {
-            SqlConnection con = null;
-            string result = "";
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {

@@ -16,72 +16,34 @@ namespace AlphaApi.Controllers
     [EnableCorsAttribute("*", "*", "*")]
     public class MasterExpenseController : ApiController
     {
-        static DBData EmpData = new DBData();
-
-        private List<EmployeeModels> EmpList = new List<EmployeeModels>();
-
+        static DBData dbAction = new DBData();
         
         [HttpPost]
-        public string Post(MasterExpenseModels ME)
+        public void Post(MasterExpenseModels expenseModel)
         {
-            //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.InsertData(ME);
-            return response;
-
+            dbAction.InsertData(expenseModel);
         }
 
         [HttpGet]
         public string Get()
         {
-            var response = EmpData.SelectAllData();
+            var response = dbAction.SelectAllData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
         [HttpPut]
-        //public string GetByID(MasterExpenseModels ME)
-        //{
-        //    var response = EmpData.SelectAllDatabyID(ME);
-        //    //var response = "GetID";
-        //    return JsonConvert.SerializeObject(response, Formatting.Indented);
-        //}
         public string Put(MasterExpenseModels ME)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.UpdateData(ME);
+            var response = dbAction.UpdateData(ME);
             return response;
 
         }
         [HttpDelete]
-        public string Delete(MasterExpenseModels ME)
-        {
-            //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.DeleteData(ME);
+        public string Delete(MasterExpenseModels expenseModel)
+        {  
+            var response = dbAction.DeleteData(expenseModel);
             return response;
-
         }
-        //[HttpGet]
-        //public string Get()
-        //{
-        //    //calling DBData Class Method and storing Repsonse   
-        //    var response = "Test";
-        //    return response;
-
-        //}
-
-        //public string Get(int id)
-        //{
-        //    string result = string.Empty;
-        //    switch (id)
-        //    {
-        //        case 1:
-        //            result = "Orange";
-        //            break;
-        //        case 2:
-        //            result = "Mangko";
-        //            break;
-        //    }
-
-        //    return result;
-        //}
     }
 }

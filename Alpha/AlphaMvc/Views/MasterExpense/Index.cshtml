@@ -47,9 +47,8 @@
         </td>
     </tr>
 </table>
-@* ------------------------------- grid  -------------------------------*@
 
-@*<table id="example" class="display" cellspacing="0">*@
+@* ------------------------------- grid  -------------------------------*@
 <table class="barattach-2">
     <tr>
         <td>
@@ -65,14 +64,12 @@
             <tr>
                 <th>No.</th>
                 <th>รายละเอียด</th>
+                <th></th>
             </tr>
         </thead>
         <tbody id="result"></tbody>
     </table>
-
-    @*<table id="result"></table>*@
 </div>
-
 
 <ul class="form-style">
     <li>
@@ -80,19 +77,12 @@
     </li>
 </ul>
 <a href="#" id="Del"><img src="@Url.Content("~/Images/delete.png")" alt="IMAGES" /></a>
-
-@* ------------------------------- grid  -------------------------------*@
+      @* ------------------------------- grid  -------------------------------*@
 
 <script>
-        $(document).ready(function () {
-
-
-            $('#tableData').paging({ limit: 5 });
-
-
-            //------------------------- Paging -------------------------
-
+    $(document).ready(function () {
             //------------------------- Sorting ------------------------
+            $('#tableData').paging({ limit: 5 });
             $('th').click(function () {
                 var table = $(this).parents('table').eq(0)
                 var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
@@ -107,24 +97,16 @@
                 }
             }
             function getCellValue(row, index) { return $(row).children('td').eq(index).html() }
-            //------------------------- Sorting ------------------------
+            
             //-------------------------filter------------------------
             $("#searchInput").keyup(function () {
-                //hide all the rows
                 $("#result").find("tr").hide();
-
-                //split the current value of searchInput
                 var data = this.value.split(" ");
-                //create a jquery object of the rows
                 var jo = $("#result").find("tr");
-
-                //Recusively filter the jquery object to get results.
                 $.each(data, function (i, v) {
                     jo = jo.filter("*:contains('" + v + "')");
                 });
-                //show the rows that match.
                 jo.show();
-                //Removes the placeholder text
 
             }).focus(function () {
                 this.value = "";
@@ -140,34 +122,28 @@
                 datatype: 'json',
                 success: function (data) {
                     data = JSON.parse(data);
-                    console.log(data);
-                    //var html = '<table id="tableData">';
-                    //html += '<thead>';
-                    //html += '<tr>';
-                    //html += '<th>No.</th>';
-                    //html += '<th>รายละเอียด</th>';
                     var html = '<tbody>';
                     for (var i = 0; i < data.Table.length; i++) {
                         html += '<tr>';
                         html += '<td>' + data.Table[i].ID + '</td>';
                         html += '<td>' + data.Table[i].Detail + '</td>';
+                        html += '<td>';
+                        html += '<a href="#" id="edit'+data.Table[i].ID+ '">'+ '<img src="@Url.Content("~/Images/edit.png")"/></a>';
+                        html += '<a href="#" id="del' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/delete.png")" /></a>';
                         html += '</tr>';
                     }
+
                     html += '</tbody>';
-                    //html += '</tr>';
-                    //html += '</thead>';
-                    //html += '</table>';
-                    //$("#tableData").html(html);
+                    alert(html);
                     document.getElementById("result").innerHTML = html;
                 },
-                error: function (result) {
-                    alert(result)
+                error: function (msg) {
+                    alert(msg)
                 }
             });
 
             $("#Del").click(function () {
                 var dataObject = { ID: 1 };
-                console.log(dataObject);
                 $.ajax(
                 {
                     url: 'http://localhost:13131/api/MasterExpense/Delete',
@@ -184,8 +160,8 @@
                             alert(result)
                         }
                     },
-                    error: function (result) {
-                        alert("ErrorDelete")
+                    error: function (msg) {
+                        alert(msg)
                     }
                 });
             });

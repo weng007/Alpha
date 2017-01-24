@@ -106,8 +106,6 @@
 
     @using (Html.BeginForm())
     {
-
-
         <form>
             <ul class="form-style-1">
                 <li>
@@ -372,14 +370,3 @@
     });
 
 </script>
-
-@{
-
-            if (ViewData["result"] != "" && ViewData["result"] != null)
-            {
-                ViewData["result"] = null;
-        <script type="text/javascript" language="javascript">
-                    alert("Data saved Successfully");
-        </script>
-    }
-}
