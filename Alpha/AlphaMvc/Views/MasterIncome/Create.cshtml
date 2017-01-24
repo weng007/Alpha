@@ -44,18 +44,16 @@
             var dataObject = { Detail: $("#Detail").val() };
             $.ajax(
             {
-                url: 'http://localhost:13131/api/IncomeMaster/Post',
+                url: 'http://localhost:13131/api/MasterExpense/Post',
                 type: 'POST',
                 data: dataObject,
                 datatype: 'json',
 
                 success: function (data) {
                     alert('Created Successfully');
-                    window.location.href = "../Index";
+                    window.location.href = "../MasterExpense/Index";
                 },
-                error: function (msg) {
-                    alert(msg)
-                }
+                error: function (msg) { alert(msg); }
             });
         });
     });
