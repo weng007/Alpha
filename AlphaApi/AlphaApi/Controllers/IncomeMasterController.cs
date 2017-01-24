@@ -39,18 +39,18 @@ namespace AlphaApi.Controllers
         //    //var response = "GetID";
         //    return JsonConvert.SerializeObject(response, Formatting.Indented);
         //}
-        public string Put(IncomeMasterModels MN)
+        public string Put(IncomeMasterModels incomeModel)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = incomeMaster.UpdateData(MN);
+            var response = incomeMaster.UpdateData(incomeModel);
             return response;
 
         }
         [HttpDelete]
-        public string Delete(IncomeMasterModels MN)
+        public string Delete(IncomeMasterModels incomeModel)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = incomeMaster.DeleteData(MN);
+            var response = incomeMaster.DeleteData(incomeModel);
             return response;
 
         }
