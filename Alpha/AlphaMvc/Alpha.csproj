@@ -128,7 +128,7 @@
     <Compile Include="Models\BDC.cs" />
     <Compile Include="Models\EmployeeModels.cs" />
     <Compile Include="Models\MasterExpense.cs" />
-    <Compile Include="Models\MasterIncome.cs" />
+    <Compile Include="Models\IncomeMaster.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -309,9 +309,9 @@
     <Content Include="Views\MasterExpense\Index.cshtml" />
     <Content Include="Views\MasterExpense\Create.cshtml" />
     <Content Include="Views\MasterExpense\Edit.cshtml" />
-    <Content Include="Views\MasterIncome\Index.cshtml" />
-    <Content Include="Views\MasterIncome\Edit.cshtml" />
-    <Content Include="Views\MasterIncome\Create.cshtml" />
+    <Content Include="Views\IncomeMaster\Index.cshtml" />
+    <Content Include="Views\IncomeMaster\Edit.cshtml" />
+    <Content Include="Views\IncomeMaster\Create.cshtml" />
     <Content Include="Views\WarningSupport\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
   </ItemGroup>
