@@ -9,7 +9,7 @@ namespace AlphaMvc.Controllers
     public class IncomeMasterController : Controller
     {
         //
-        // GET: /MasterIncome/
+        // GET: /IncomeMaster/
 
         public ActionResult Index()
         {

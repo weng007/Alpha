@@ -1,4 +1,4 @@
-﻿@model AlphaMvc.Models.MasterExpense
+﻿@model AlphaMvc.Models.ExpenseMaster
 @{
     ViewBag.Title = "Edit";
 }
@@ -42,6 +42,7 @@
        {
            url: 'http://localhost:13131/api/ExpenseMaster/Get/'+ id,
            type: 'GET',
+           data: id,
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);

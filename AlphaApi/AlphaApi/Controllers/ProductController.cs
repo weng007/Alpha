@@ -38,7 +38,7 @@ namespace AlphaApi.Controllers
         }
 
         [HttpPut]
-        //public string GetByID(MasterExpenseModels ME)
+        //public string GetByID(ExpenseMasterModels ME)
         //{
         //    var response = EmpData.SelectAllDatabyID(ME);
         //    //var response = "GetID";
