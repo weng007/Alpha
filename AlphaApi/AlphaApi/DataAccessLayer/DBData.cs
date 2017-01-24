@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using AlphaApi.Models;
+using System;
 
 namespace AlphaApi.DataAccessLayer
 {
@@ -128,9 +129,9 @@ namespace AlphaApi.DataAccessLayer
                     da.Fill(ds);
                     return ds;
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return ds;
+                    throw ex;
                 }
                 finally
                 {
