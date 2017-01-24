@@ -8,6 +8,5 @@ namespace AlphaDAL
 {
     public class Class1
     {
-
     }
 }
