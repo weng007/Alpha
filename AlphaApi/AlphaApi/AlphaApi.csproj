@@ -232,7 +232,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataAccessLayer\BDC.cs" />
     <Compile Include="DataAccessLayer\DBData.cs" />
-    <Compile Include="DataAccessLayer\MasterIncome.cs" />
+    <Compile Include="DataAccessLayer\IncomeMaster.cs" />
     <Compile Include="DataAccessLayer\Product.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

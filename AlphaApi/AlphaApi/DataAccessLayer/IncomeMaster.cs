@@ -7,7 +7,7 @@ using AlphaApi.Models;
 
 namespace AlphaApi.DataAccessLayer
 {
-    public class MasterIncome
+    public class IncomeMaster
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         public string InsertData(IncomeMasterModels MD)

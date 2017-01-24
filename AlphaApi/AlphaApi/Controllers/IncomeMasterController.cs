@@ -16,21 +16,20 @@ namespace AlphaApi.Controllers
     [EnableCorsAttribute("*", "*", "*")]
     public class IncomeMasterController : ApiController
     {
-        public MasterIncome EmpData = new MasterIncome();
+        public IncomeMaster incomeMaster  = new IncomeMaster();
 
         [HttpPost]
         public string Post(IncomeMasterModels MN)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.InsertData(MN);
+            var response = incomeMaster.InsertData(MN);
             return response;
-
         }
 
         [HttpGet]
         public string Get()
         {
-            var response = EmpData.SelectAllData();
+            var response = incomeMaster.SelectAllData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
@@ -44,7 +43,7 @@ namespace AlphaApi.Controllers
         public string Put(IncomeMasterModels MN)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.UpdateData(MN);
+            var response = incomeMaster.UpdateData(MN);
             return response;
 
         }
@@ -52,7 +51,7 @@ namespace AlphaApi.Controllers
         public string Delete(IncomeMasterModels MN)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.DeleteData(MN);
+            var response = incomeMaster.DeleteData(MN);
             return response;
 
         }
