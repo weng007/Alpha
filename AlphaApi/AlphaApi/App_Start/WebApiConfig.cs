@@ -28,11 +28,7 @@ namespace AlphaApi
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            //EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors();
-
-            //var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
-            //config.Formatters.Insert(0, jsonpFormatter);
         }
     }
 }

@@ -37,20 +37,18 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        var dataObject = { ID: @Request.Params["id"] };
-            console.log(dataObject);
+        var id= @Request.Params["id"];
         $.ajax(
        {
-           url: 'http://localhost:13131/api/ExpenseMaster/GetByID',
+           url: 'http://localhost:13131/api/ExpenseMaster/Get/'+ id,
            type: 'GET',
-           data: dataObject,
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
-               $("#Detail").val(data[0].Detail);
+               $("#Detail").text = data[0].Detail;
            },
            error: function (msg) {
-               alert(msg)
+               alert(msg);
            }
        });
         

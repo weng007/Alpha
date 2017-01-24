@@ -31,10 +31,11 @@ namespace AlphaApi.Controllers
             var response = dbAction.SelectAllData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+        
         [HttpGet]
-        public string Get(int id)
+        public string Get(int expenseID)
         {
-            var response = dbAction.SelectDataByID(id);
+            var response = dbAction.SelectDataByID(expenseID);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
