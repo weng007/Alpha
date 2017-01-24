@@ -37,10 +37,11 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        var dataObject = { ID: 2 };
+        var dataObject = { ID: @Request.Params["id"] };
+            console.log(dataObject);
         $.ajax(
        {
-           url: 'http://localhost:13131/api/MasterExpense/Get',
+           url: 'http://localhost:13131/api/ExpenseMaster/GetByID',
            type: 'GET',
            data: dataObject,
            datatype: 'json',
@@ -56,11 +57,11 @@
     });
 
     $("#Update").click(function () {
-        var dataObject = { ID: 2, Detail: $("#Detail").val() };
+        var dataObject = { ID: @Request.Params["id"], Detail: $("#Detail").val() };
         console.log(dataObject);
         $.ajax(
         {
-            url: 'http://localhost:13131/api/MasterExpense/Put',
+            url: 'http://localhost:13131/api/ExpenseMaster/Put',
             type: 'PUT',
             data: dataObject,
             datatype: 'json',

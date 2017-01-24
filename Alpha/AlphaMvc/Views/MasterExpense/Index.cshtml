@@ -69,12 +69,6 @@
     </table>
 </div>
 
-<ul class="form-style">
-    <li>
-        <input id="Del" type="Button" value="Del" />
-    </li>
-</ul>
-<a href="#" id="Del"><img src="@Url.Content("~/Images/delete.png")" alt="IMAGES" /></a>
       @* ------------------------------- grid  -------------------------------*@
 
 <script>
@@ -126,11 +120,10 @@
                         html += '<td>' + data.Table[i].ID + '</td>';
                         html += '<td>' + data.Table[i].Detail + '</td>';
                         html += '<td>';
-                        html += '<a href="#" id="edit'+data.Table[i].ID+ '">'+ '<img src="@Url.Content("~/Images/edit.png")"/></a>';
-                        html += '<a href="#" id="del' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/delete.png")" /></a>';
+                        html += '<a href="/MasterExpense/Edit?id='+ data.Table[i].ID +'" id="edit' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';
+                        html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="@Url.Content("~/Images/delete.png")" /></a>';
                         html += '</tr>';
                     }
-
                     html += '</tbody>';
                     document.getElementById("result").innerHTML = html;
                 },
@@ -138,32 +131,29 @@
                     alert(msg)
                 }
             });
+    });
 
-            $("#Del").click(function () {
-                var dataObject = { ID: 1 };
-                $.ajax(
+    function RowDelete(id) {
+        var dataObject = { ID: id };
+            $.ajax(
                 {
-                    url: 'http://localhost:13131/api/MasterExpense/Delete',
+                    url: 'http://localhost:13131/api/ExpenseMaster/Delete',
                     type: 'DELETE',
                     data: dataObject,
                     datatype: 'json',
 
                     success: function (result) {
-                        console.log(url);
-                        if (result.toString() == "Success") {
-                            alert(result)
-                        }
-                        else {
-                            alert(result)
-                        }
-                    },
+                        alert('Delete is completed')
+                        window.location.href = "../MasterExpense/Index";
+                    }
+                    ,
                     error: function (msg) {
                         alert(msg)
                     }
-                });
-            });
 
-        });
+                   
+                }); alert(id);
+        }
 </script>
 
 
