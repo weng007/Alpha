@@ -314,7 +314,6 @@
     <Content Include="Views\MasterIncome\Create.cshtml" />
     <Content Include="Views\WarningSupport\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
-    <Content Include="Views\MasterExpense\View1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
