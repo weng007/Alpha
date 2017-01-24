@@ -18,7 +18,6 @@ namespace AlphaApi.Controllers
     {
         static BDC EmpData = new BDC();
 
-        private List<EmployeeModels> EmpList = new List<EmployeeModels>();
 
 
         [HttpPost]

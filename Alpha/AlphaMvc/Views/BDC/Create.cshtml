@@ -1,8 +1,7 @@
-﻿@{
+﻿@model AlphaMvc.Models.BDCModels
+@{
     ViewBag.Title = "Create";
 }
-
-
 <h2>BreakDown Cost Create</h2>
 <table>
     <tr>
@@ -109,31 +108,40 @@
         <form>
             <ul class="form-style-1">
                 <li>
-                    <label class="btnnew">Doc Version</label>&nbsp;<img src="@Url.Content("~/images/btnNewVersion.jpg")" alt="IMAGES" class="btnimage-3" />
+                    <img src="@Url.Content("~/images/btnNewVersion.jpg")" alt="IMAGES" class="btnimage-3" />
                 </li>
                 <li>
-                    <input type="text" id="Docver" name="field1" class="field-select-small-2" placeholder="1" disabled />
+                    @Html.LabelFor(a => a.Docver)
+                    @Html.TextBoxFor(a => a.Docver, new { id = "Docver", @class= "field-select-small-2", placeholder = "1", disabled = "disabled" })
+                    @Html.ValidationMessageFor(a => a.Docver)
                 </li>
                 <li>
-                    <label>ใบเสนอราคา<span class="required">*</span></label>
-                    <input type="text" id="QuotationNo" name="field1" class="field-select-big" placeholder="ใบเสนอราคา" disabled />&nbsp;<a href="#" id="opener">
-    <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" /></a>
-                </li>
-            </ul>
-            <ul class="form-style-1">
-                <li>
-                    <label class="label-big">ราคาขาย<span class="required">*</span></label>&nbsp;<label class="label-small">ราคาทุน<span class="required">*</span></label>
-                    <input type="text" id="Price" name="field1" class="field-divided" placeholder="ราคาขาย" />&nbsp;<input type="text" id="Cost" name="field2" class="field-divided" placeholder="ราคาทุน" />
-                </li>
-                <li>
-                    <label>กำไร<span class="required">*</span></label>
-                    <input type="text" id="Profit" name="field1" class="field-divided" placeholder="กำไร" />
+                    @Html.LabelFor(a => a.QuotationNo)
+                    @Html.TextBoxFor(a => a.QuotationNo, new { id = "QuotationNo", @class = "field-select-big", placeholder = "ใบเสนอราคา", disabled = "disabled" })
+                    @Html.ValidationMessageFor(a => a.QuotationNo)
+                    &nbsp;<a href="#" id="opener"><img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" /></a>
                 </li>
             </ul>
             <ul class="form-style-1">
                 <li>
-                    <label>หมายเหตุ<span class="required">*</span></label>
-                    <textarea name="field5" id="Remark" class="field-long field-textarea"></textarea>
+                    @Html.LabelFor(a => a.Price)
+                    @Html.TextBoxFor(a => a.Price, new { id = "Price", @class = "field-select-big", placeholder = "ราคาขาย"})
+                    @Html.ValidationMessageFor(a => a.Price)&nbsp;
+                    @Html.LabelFor(a => a.Cost)
+                    @Html.TextBoxFor(a => a.Cost, new { id = "Cost", @class = "field-select-big", placeholder = "ราคาทุน" })
+                    @Html.ValidationMessageFor(a => a.Cost)
+                </li>
+                <li>
+                    @Html.LabelFor(a => a.Profit)
+                    @Html.TextBoxFor(a => a.Profit, new { id = "Profit", @class = "field-divided", placeholder = "กำไร" })
+                    @Html.ValidationMessageFor(a => a.Profit)
+                </li>
+            </ul>
+            <ul class="form-style-1">
+                <li>
+                    @Html.LabelFor(a => a.Remark)
+                    @Html.TextAreaFor(a => a.Remark, new { id = "Remark", @class = "field-long field-textarea", placeholder = "กำไร" })
+                    @Html.ValidationMessageFor(a => a.Remark)
                 </li>
                 <br />
             </ul>
@@ -316,7 +324,7 @@
     $(document).ready(function () {
         $("#Create").click(function () {
             var dataObject = {
-                Docver: $("#Docver").val(), QuotationNo: $("#QuotationNo").val(), Price: $("#Price").val(), Cost: $("#Cost").val(),
+                Docver: 1, QuotationNo: 1, Price: $("#Price").val(), Cost: $("#Cost").val(),
                 Profit: $("#Profit").val(), Remark: $("#Remark").val()
             };
             console.log(dataObject);
@@ -328,15 +336,12 @@
                 datatype: 'json',
 
                 success: function (result) {
-                    if (result.toString() == "Success") {
-                        alert(result)
-                    }
-                    else {
-                        alert(result)
-                    }
-                },
-                error: function (result) {
-                    alert("Error")
+                    alert('Create is completed')
+                    window.location.href = "../BDC/Index";
+                }
+                ,
+                error: function (msg) {
+                    alert(msg)
                 }
             });
         });
