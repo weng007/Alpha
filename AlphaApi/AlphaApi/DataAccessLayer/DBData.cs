@@ -10,7 +10,7 @@ namespace AlphaApi.DataAccessLayer
     public class DBData
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
-        public void InsertData(MasterExpenseModels ME)
+        public void InsertData(ExpenseMasterModels ME)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -32,7 +32,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string UpdateData(MasterExpenseModels ME)
+        public string UpdateData(ExpenseMasterModels ME)
         {
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -58,7 +58,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string DeleteData(MasterExpenseModels ME)
+        public string DeleteData(ExpenseMasterModels ME)
         {
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -83,7 +83,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public DataSet SelectDataByID(MasterExpenseModels ME)
+        public DataSet SelectDataByID(ExpenseMasterModels ME)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))

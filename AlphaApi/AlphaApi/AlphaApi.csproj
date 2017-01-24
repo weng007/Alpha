@@ -226,8 +226,8 @@
     <Compile Include="Controllers\BDCController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MasterExpenseController.cs" />
-    <Compile Include="Controllers\MasterIncomeController.cs" />
+    <Compile Include="Controllers\ExpenseMasterController.cs" />
+    <Compile Include="Controllers\IncomeMasterController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataAccessLayer\BDC.cs" />
@@ -242,8 +242,8 @@
     <Compile Include="Models\BDCModels.cs" />
     <Compile Include="Models\EmployeeModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\MasterExpenseModels.cs" />
-    <Compile Include="Models\MasterIncomeModels.cs" />
+    <Compile Include="Models\ExpenseMasterModels.cs" />
+    <Compile Include="Models\IncomeMasterModels.cs" />
     <Compile Include="Models\ProductModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />

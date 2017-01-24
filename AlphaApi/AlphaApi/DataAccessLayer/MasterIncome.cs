@@ -10,7 +10,7 @@ namespace AlphaApi.DataAccessLayer
     public class MasterIncome
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
-        public string InsertData(MasterIncomeModels MD)
+        public string InsertData(IncomeMasterModels MD)
         {
             SqlConnection con = null;
             string result = "";
@@ -38,7 +38,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string UpdateData(MasterIncomeModels ME)
+        public string UpdateData(IncomeMasterModels ME)
         {
             SqlConnection con = null;
             string result = "";
@@ -65,7 +65,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string DeleteData(MasterIncomeModels ME)
+        public string DeleteData(IncomeMasterModels ME)
         {
             SqlConnection con = null;
             string result = "";
@@ -91,7 +91,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public DataSet SelectDataByID(MasterIncomeModels ME)
+        public DataSet SelectDataByID(IncomeMasterModels ME)
         {
             SqlConnection con = null;
             string result = "";

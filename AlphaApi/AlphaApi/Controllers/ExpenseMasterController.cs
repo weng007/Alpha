@@ -14,12 +14,12 @@ using System.Web.Http.Cors;
 namespace AlphaApi.Controllers
 {
     [EnableCorsAttribute("*", "*", "*")]
-    public class MasterExpenseController : ApiController
+    public class ExpenseMasterController : ApiController
     {
         static DBData dbAction = new DBData();
         
         [HttpPost]
-        public void Post(MasterExpenseModels expenseModel)
+        public void Post(ExpenseMasterModels expenseModel)
         {
             dbAction.InsertData(expenseModel);
         }
@@ -32,7 +32,7 @@ namespace AlphaApi.Controllers
         }
 
         [HttpPut]
-        public string Put(MasterExpenseModels ME)
+        public string Put(ExpenseMasterModels ME)
         {
             //calling DBData Class Method and storing Repsonse   
             var response = dbAction.UpdateData(ME);
@@ -40,7 +40,7 @@ namespace AlphaApi.Controllers
 
         }
         [HttpDelete]
-        public string Delete(MasterExpenseModels expenseModel)
+        public string Delete(ExpenseMasterModels expenseModel)
         {  
             var response = dbAction.DeleteData(expenseModel);
             return response;
