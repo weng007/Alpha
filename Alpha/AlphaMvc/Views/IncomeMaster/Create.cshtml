@@ -49,10 +49,11 @@
                 data: dataObject,
                 datatype: 'json',
 
-                success: function (data) {
-                    alert('Created Successfully');
-                    window.location.href = "../Index";
-                },
+                success: function (result) {
+                    alert('Create is completed')
+                    window.location.href = "../IncomeMaster/Index";
+                }
+                ,
                 error: function (msg) {
                     alert(msg)
                 }
