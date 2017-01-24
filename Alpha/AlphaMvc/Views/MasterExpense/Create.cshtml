@@ -24,54 +24,21 @@
                     @Html.LabelFor(a => a.Detail)
                     @Html.TextBoxFor(a => a.Detail, new { id = "Detail" })
                     @Html.ValidationMessageFor(a => a.Detail)
-                </li>
-                @*<li>
-                    <label>รายละเอียด<span class="required">*</span></label>
-                    <input type="text" name="field1" class="field-divided"  />
-                </li>*@
-
-                <br />
+                </li> 
             </ul>
+            <br />
             <ul class="form-style">
                 <li>
-                    <input id="btn" type="Button" value="GetName" />
+                    <input type="submit" value="Save" id="Save" />
                 </li>
             </ul>
-            @* ------------------------------------------- tabbar ------------------------------------- *@
-            @* ---------------------------------------------------------------------------------------------------------- *@
-           
-            <ul class="form-style">
-                <li>
-                    <input type="submit" value="Save" id="Create" />
-                </li>
-            </ul>
-
-            @* ------------------------------------------- tabbar ------------------------------------- *@
         </form>
-
     }
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#btn").click(function () {
-            $.ajax(
-                {
-                    type: 'GET',
-                    url: 'http://localhost:13131/api/MasterExpense',
-                    datatype: 'json',
-
-                    success: function (result) {
-                        alert(result)
-                    },
-                    error: function (result) {
-                        alert("Error")
-                    }
-                });
-        });
-
-        $("#Create").click(function () {
+        $("#Save").click(function () {
             var dataObject = { Detail: $("#Detail").val() };
-            console.log(dataObject);
             $.ajax(
             {
                 url: 'http://localhost:13131/api/MasterExpense/Post',
@@ -79,29 +46,12 @@
                 data: dataObject,
                 datatype: 'json',
 
-                success: function (result) {
-                    if (result.toString() == "Success") {
-                        alert(result)
-                    }
-                    else {
-                        alert(result)
-                    }
+                success: function (data) {
+                    alert('Created Successfully');
+                    window.location.href = "../Index";
                 },
-                error: function (result) {
-                    alert("Error")
-                }
+                error: function (msg) { alert(msg); }
             });
         });
-    });
-    
+    }); 
 </script>
-@{
-
-            if (ViewData["result"] != "" && ViewData["result"] != null)
-            {
-                ViewData["result"] = null;
-        <script type="text/javascript" language="javascript">
-                    alert("Data saved Successfully");
-        </script>
-    }
-}

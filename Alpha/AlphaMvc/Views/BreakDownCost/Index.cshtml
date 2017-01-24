@@ -147,12 +147,6 @@
                 datatype: 'json',
                 success: function (data) {
                     data = JSON.parse(data);
-                    console.log(data);
-                    //var html = '<table id="tableData">';
-                    //html += '<thead>';
-                    //html += '<tr>';
-                    //html += '<th>No.</th>';
-                    //html += '<th>รายละเอียด</th>';
                     var html = '<tbody>';
                     for (var i = 0; i < data.Table.length; i++) {
                         html += '<tr>';
@@ -165,18 +159,11 @@
                         html += '</tr>';
                     }
                     html += '</tbody>';
-                    //html += '</tr>';
-                    //html += '</thead>';
-                    //html += '</table>';
-                    //$("#tableData").html(html);
                     document.getElementById("result").innerHTML = html;
                 },
-                error: function (result) {
-                    alert(result)
+                error: function (msg) {
+                    alert(msg)
                 }
             });
-
-
-
-        });
+         });
 </script>

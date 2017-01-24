@@ -25,28 +25,12 @@
                     @Html.TextBoxFor(a => a.Detail, new { id = "Detail" })
                     @Html.ValidationMessageFor(a => a.Detail)
                 </li>
-                @*<li>
-                        <label>รายละเอียด<span class="required">*</span></label>
-                        <input type="text" name="field1" class="field-divided"  />
-                    </li>*@
-
-                <br />
             </ul>
-            @*<ul class="form-style">
-                <li>
-                    <input id="btn" type="Button" value="GetName" />
-                </li>
-            </ul>*@
-            @* ------------------------------------------- tabbar ------------------------------------- *@
-            @* ---------------------------------------------------------------------------------------------------------- *@
-
             <ul class="form-style">
                 <li>
                     <input type="submit" value="Save" id="Update" />
                 </li>
             </ul>
-
-            @* ------------------------------------------- tabbar ------------------------------------- *@
         </form>
 
     }
@@ -62,14 +46,10 @@
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
-               console.log(url);
-               console.log(data);
-               console.log(data[0].Detail);
-
                $("#Detail").val(data[0].Detail);
            },
-           error: function (result) {
-               alert(result)
+           error: function (msg) {
+               alert(msg)
            }
        });
         
