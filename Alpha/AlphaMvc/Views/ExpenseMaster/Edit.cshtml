@@ -40,13 +40,12 @@
         var id= @Request.Params["id"];
         $.ajax(
        {
-           url: 'http://localhost:13131/api/ExpenseMaster/Get/'+ id,
+           url: 'http://localhost:13132/api/ExpenseMaster/'+id,
            type: 'GET',
-           data: id,
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
-               $("#Detail").text = data[0].Detail;
+               $("#Detail").val(data.Table[0].Detail);
            },
            error: function (msg) {
                alert(msg);
@@ -60,7 +59,7 @@
         console.log(dataObject);
         $.ajax(
         {
-            url: 'http://localhost:13131/api/ExpenseMaster/Put',
+            url: 'http://localhost:13132/api/ExpenseMaster/Put',
             type: 'PUT',
             data: dataObject,
             datatype: 'json',

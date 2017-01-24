@@ -127,8 +127,8 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BDC.cs" />
     <Compile Include="Models\EmployeeModels.cs" />
-    <Compile Include="Models\MasterExpense.cs" />
-    <Compile Include="Models\MasterIncome.cs" />
+    <Compile Include="Models\IncomeMaster.cs" />
+    <Compile Include="Models\ExpenseMaster.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
