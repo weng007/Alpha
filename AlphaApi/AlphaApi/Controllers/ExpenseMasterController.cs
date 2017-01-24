@@ -17,7 +17,8 @@ namespace AlphaApi.Controllers
     public class ExpenseMasterController : ApiController
     {
         static DBData dbAction = new DBData();
-        
+
+
         [HttpPost]
         public void Post(ExpenseMasterModels expenseModel)
         {
@@ -30,6 +31,12 @@ namespace AlphaApi.Controllers
             var response = dbAction.SelectAllData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+        //[HttpGet]
+        //public string GetByID(ExpenseMasterModels expenseModel)
+        //{
+        //    var response = dbAction.SelectDataByID(expenseModel);
+        //    return JsonConvert.SerializeObject(response, Formatting.Indented);
+        //}
 
         [HttpPut]
         public string Put(ExpenseMasterModels ME)

@@ -69,12 +69,6 @@
     </table>
 </div>
 
-<ul class="form-style">
-    <li>
-        <input id="Del" type="Button" value="Del" />
-    </li>
-</ul>
-<a href="#" id="Del"><img src="@Url.Content("~/Images/delete.png")" alt="IMAGES" /></a>
       @* ------------------------------- grid  -------------------------------*@
 
 <script>
@@ -126,43 +120,22 @@
                         html += '<td>' + data.Table[i].ID + '</td>';
                         html += '<td>' + data.Table[i].Detail + '</td>';
                         html += '<td>';
-                        html += '<a href="/MasterExpense/Edit" id="edit' + data.Table[i].ID + '" onclick="EditRow('+data.Table[i].ID+'')">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';
-                        html += '<a href="#" id="del' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/delete.png")" /></a>';
+                        html += '<a href="/MasterExpense/Edit?id='+ data.Table[i].ID +'" id="edit' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';
+                        html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="@Url.Content("~/Images/delete.png")" /></a>';
                         html += '</tr>';
                     }
-
                     html += '</tbody>';
-                    alert(html);
                     document.getElementById("result").innerHTML = html;
                 },
                 error: function (msg) {
                     alert(msg)
                 }
             });
+    });
 
-        function Dele() {
-            var param = $("#<%= TextBox1.ClientID %>").val();
-            $("#tbDetails").append("<img src='Images/loading.gif'/>");
-            $.ajax({
-                type: "POST",/*method type*/
-                contentType: "application/json; charset=utf-8",
-                url: "Default.aspx/BindDatatable",/*Target function that will be return result*/
-                data: '{"data":"' + param + '"}',/*parameter pass data is parameter name param is value */
-                dataType: "json",
-                success: function(data) {
-                    alert("Success");
-                }
-            },
-                error: function(result) {
-                    alert("Error");
-                }
-        });   
-    }
-
-
-            $("#Del").click(function () {
-                var dataObject = { ID: 1 };
-                $.ajax(
+    function RowDelete(id) {
+        var dataObject = { ID: id };
+            $.ajax(
                 {
                     url: 'http://localhost:13131/api/ExpenseMaster/Delete',
                     type: 'DELETE',
@@ -170,21 +143,17 @@
                     datatype: 'json',
 
                     success: function (result) {
-                        console.log(url);
-                        if (result.toString() == "Success") {
-                            alert(result)
-                        }
-                        else {
-                            alert(result)
-                        }
-                    },
+                        alert('Delete is completed')
+                        window.location.href = "../MasterExpense/Index";
+                    }
+                    ,
                     error: function (msg) {
                         alert(msg)
                     }
-                });
-            });
 
-        });
+                   
+                }); alert(id);
+        }
 </script>
 
 
