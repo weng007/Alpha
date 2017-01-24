@@ -12,7 +12,6 @@ namespace AlphaApi.DataAccessLayer
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         public string InsertData(IncomeMasterModels MD)
         {
-            SqlConnection con = null;
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -25,7 +24,6 @@ namespace AlphaApi.DataAccessLayer
                     result = cmd.ExecuteScalar().ToString();
 
                     return result;
-
                 }
                 catch
                 {
@@ -40,7 +38,6 @@ namespace AlphaApi.DataAccessLayer
 
         public string UpdateData(IncomeMasterModels ME)
         {
-            SqlConnection con = null;
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -67,7 +64,6 @@ namespace AlphaApi.DataAccessLayer
 
         public string DeleteData(IncomeMasterModels ME)
         {
-            SqlConnection con = null;
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -93,7 +89,6 @@ namespace AlphaApi.DataAccessLayer
 
         public DataSet SelectDataByID(IncomeMasterModels ME)
         {
-            SqlConnection con = null;
             string result = "";
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -123,7 +118,6 @@ namespace AlphaApi.DataAccessLayer
         }
         public DataSet SelectAllData()
         {
-            SqlConnection con = null;
             string result = "";
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
