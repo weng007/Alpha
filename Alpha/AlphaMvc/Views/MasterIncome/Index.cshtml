@@ -84,13 +84,6 @@
 
 <script>
         $(document).ready(function () {
-
-
-            $('#tableData').paging({ limit: 5 });
-
-
-            //------------------------- Paging -------------------------
-
             //------------------------- Sorting ------------------------
             $('th').click(function () {
                 var table = $(this).parents('table').eq(0)
@@ -106,27 +99,18 @@
                 }
             }
             function getCellValue(row, index) { return $(row).children('td').eq(index).html() }
-            //------------------------- Sorting ------------------------
+
             //-------------------------filter------------------------
             $("#searchInput").keyup(function () {
-                //hide all the rows
                 $("#result").find("tr").hide();
-
-                //split the current value of searchInput
                 var data = this.value.split(" ");
-                //create a jquery object of the rows
                 var jo = $("#result").find("tr");
-
-                //Recusively filter the jquery object to get results.
                 $.each(data, function (i, v) {
                     jo = jo.filter("*:contains('" + v + "')");
                 });
-                //show the rows that match.
                 jo.show();
-                //Removes the placeholder text
 
             }).focus(function () {
-                this.value = "";
                 $(this).css({ "color": "black" });
                 $(this).unbind('focus');
             }).css({ "color": "#C0C0C0" });
@@ -139,28 +123,22 @@
                 datatype: 'json',
                 success: function (data) {
                     data = JSON.parse(data);
-                    console.log(data);
-                    //var html = '<table id="tableData">';
-                    //html += '<thead>';
-                    //html += '<tr>';
-                    //html += '<th>No.</th>';
-                    //html += '<th>รายละเอียด</th>';
                     var html = '<tbody>';
                     for (var i = 0; i < data.Table.length; i++) {
                         html += '<tr>';
                         html += '<td>' + data.Table[i].ID + '</td>';
                         html += '<td>' + data.Table[i].Detail + '</td>';
+                        html += '<td>';
+                        html += '<a href="#" id="edit' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';
+                        html += '<a href="#" id="del' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/delete.png")" /></a>';
                         html += '</tr>';
                     }
                     html += '</tbody>';
-                    //html += '</tr>';
-                    //html += '</thead>';
-                    //html += '</table>';
-                    //$("#tableData").html(html);
+
                     document.getElementById("result").innerHTML = html;
                 },
-                error: function (result) {
-                    alert(result)
+                error: function (msg) {
+                    alert(msg)
                 }
             });
 
