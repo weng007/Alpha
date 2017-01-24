@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,7 +11,7 @@ namespace AlphaApi.DataAccessLayer
     public class IncomeMaster
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
-        public string InsertData(IncomeMasterModels MD)
+        public string InsertData(IncomeMasterModels incomeMaster)
         {
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -19,15 +20,15 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_IncomeMaster_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Detail", MD.Detail);
+                    cmd.Parameters.AddWithValue("@Detail", incomeMaster.Detail);
                     conObj.Open();
                     result = cmd.ExecuteScalar().ToString();
 
                     return result;
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
                 finally
                 {
@@ -124,7 +125,6 @@ namespace AlphaApi.DataAccessLayer
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand("SP_IncomeMaster_Search", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     conObj.Open();
@@ -134,9 +134,9 @@ namespace AlphaApi.DataAccessLayer
                     da.Fill(ds);
                     return ds;
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return ds;
+                    throw ex;
                 }
                 finally
                 {

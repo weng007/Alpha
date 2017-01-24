@@ -19,10 +19,9 @@ namespace AlphaApi.Controllers
         public IncomeMaster incomeMaster  = new IncomeMaster();
 
         [HttpPost]
-        public string Post(IncomeMasterModels MN)
+        public string Post(IncomeMasterModels incomeModel)
         {
-            //calling DBData Class Method and storing Repsonse   
-            var response = incomeMaster.InsertData(MN);
+            var response = incomeMaster.InsertData(incomeModel);
             return response;
         }
 
