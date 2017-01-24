@@ -33,7 +33,7 @@ namespace AlphaApi.Controllers
         }
         
         [HttpGet]
-        public string Get(int expenseID)
+        public string GetByID(int expenseID)
         {
             var response = dbAction.SelectDataByID(expenseID);
             return JsonConvert.SerializeObject(response, Formatting.Indented);

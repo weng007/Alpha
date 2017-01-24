@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace AlphaMvc.Controllers
 {
-    public class MasterExpenseController : Controller
+    public class ExpenseMasterController : Controller
     {
         //
-        // GET: /MasterExpense/
+        // GET: /ExpenseMaster/
 
         public ActionResult Index()
         {

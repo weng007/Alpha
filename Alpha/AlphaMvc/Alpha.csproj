@@ -306,12 +306,12 @@
     <Content Include="Views\CalendarManPower\Index.cshtml" />
     <Content Include="Views\Employee\Expired.cshtml" />
     <Content Include="Views\Manpower\Index.cshtml" />
-    <Content Include="Views\MasterExpense\Index.cshtml" />
-    <Content Include="Views\MasterExpense\Create.cshtml" />
-    <Content Include="Views\MasterExpense\Edit.cshtml" />
-    <Content Include="Views\MasterIncome\Index.cshtml" />
-    <Content Include="Views\MasterIncome\Edit.cshtml" />
-    <Content Include="Views\MasterIncome\Create.cshtml" />
+    <Content Include="Views\ExpenseMaster\Index.cshtml" />
+    <Content Include="Views\ExpenseMaster\Create.cshtml" />
+    <Content Include="Views\ExpenseMaster\Edit.cshtml" />
+    <Content Include="Views\IncomeMaster\Index.cshtml" />
+    <Content Include="Views\IncomeMaster\Edit.cshtml" />
+    <Content Include="Views\IncomeMaster\Create.cshtml" />
     <Content Include="Views\WarningSupport\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
   </ItemGroup>

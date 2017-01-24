@@ -1,4 +1,4 @@
-﻿@model AlphaMvc.Models.MasterExpense
+﻿@model AlphaMvc.Models.ExpenseMaster
 @{
     ViewBag.Title = "Create";
 }
@@ -41,14 +41,14 @@
             var dataObject = { Detail: $("#Detail").val() };
             $.ajax(
             {
-                url: 'http://localhost:13131/api/MasterExpense/Post',
+                url: 'http://localhost:13131/api/ExpenseMaster/Post',
                 type: 'POST',
                 data: dataObject,
                 datatype: 'json',
 
                 success: function (data) {
                     alert('Created Successfully');
-                    window.location.href = "../MasterExpense/Index";
+                    window.location.href = "../ExpenseMaster/Index";
                 },
                 error: function (msg) { alert(msg); }
             });

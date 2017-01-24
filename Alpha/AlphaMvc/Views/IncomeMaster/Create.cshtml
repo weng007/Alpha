@@ -1,9 +1,9 @@
-﻿@model AlphaMvc.Models.MasterExpense
+﻿@model AlphaMvc.Models.IncomeMaster
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
 }
 
-<h2>Master Expense Edit</h2>
+<h2>Master Income Create</h2>
 <link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
 @* -------------------------------------- dynotable ------------------------------- *@
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -15,7 +15,8 @@
 
 <link href="@Url.Content("~/Content/Tab/easy-responsive-tabs.css")" rel="stylesheet" type="text/css" />
 <script src="@Url.Content("~/Scripts/Tab/easyResponsiveTabs.js")" type="text/javascript"></script>
-<div id="myModal">
+
+<div id="container">
     @using (Html.BeginForm())
     {
         <form>
@@ -24,58 +25,38 @@
                     @Html.LabelFor(a => a.Detail)
                     @Html.TextBoxFor(a => a.Detail, new { id = "Detail" })
                     @Html.ValidationMessageFor(a => a.Detail)
-                </li>
+                </li>              
             </ul>
+            <br />
+
             <ul class="form-style">
                 <li>
-                    <input type="submit" value="Save" id="Update" />
+                    <input type="submit" value="Save" id="Create" />
                 </li>
             </ul>
         </form>
-
     }
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        var id= @Request.Params["id"];
-        $.ajax(
-       {
-           url: 'http://localhost:13131/api/ExpenseMaster/Get/'+ id,
-           type: 'GET',
-           datatype: 'json',
-           success: function (data) {
-               data = JSON.parse(data);
-               $("#Detail").text = data[0].Detail;
-           },
-           error: function (msg) {
-               alert(msg);
-           }
-       });
-        
-    });
 
-    $("#Update").click(function () {
-        var dataObject = { ID: @Request.Params["id"], Detail: $("#Detail").val() };
-        console.log(dataObject);
-        $.ajax(
-        {
-            url: 'http://localhost:13131/api/ExpenseMaster/Put',
-            type: 'PUT',
-            data: dataObject,
-            datatype: 'json',
+        $("#Create").click(function () {
+            var dataObject = { Detail: $("#Detail").val() };
+            $.ajax(
+            {
+                url: 'http://localhost:13131/api/IncomeMaster/Post',
+                type: 'POST',
+                data: dataObject,
+                datatype: 'json',
 
-            success: function (result) {
-                if (result.toString() == "Success") {
-                    alert(result)
+                success: function (data) {
+                    alert('Created Successfully');
+                    window.location.href = "../Index";
+                },
+                error: function (msg) {
+                    alert(msg)
                 }
-                else {
-                    alert(result)
-                }
-            },
-            error: function (result) {
-                alert(result)
-            }
+            });
         });
     });
-
 </script>
