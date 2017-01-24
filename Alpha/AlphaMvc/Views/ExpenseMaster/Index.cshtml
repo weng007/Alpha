@@ -120,8 +120,9 @@
                         html += '<td>' + data.Table[i].ID + '</td>';
                         html += '<td>' + data.Table[i].Detail + '</td>';
                         html += '<td>';
-                        html += '<a href="/ExpenseMaster/Edit?id='+ data.Table[i].ID +'" id="edit' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';
+                        html += '<td> <a href="/ExpenseMaster/Edit?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';
                         html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="@Url.Content("~/Images/delete.png")" /></a>';
+                        html += '</td>';
                         html += '</tr>';
                     }
                     html += '</tbody>';

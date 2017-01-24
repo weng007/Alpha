@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace AlphaMvc.Controllers
 {
-    public class BreakDownCostController : Controller
+    public class BDCController : Controller
     {
         //
         // GET: /BreakDownCost/

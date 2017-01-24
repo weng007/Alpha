@@ -16,16 +16,13 @@ namespace AlphaApi.Controllers
     [EnableCorsAttribute("*", "*", "*")]
     public class BDCController : ApiController
     {
-        static BDC EmpData = new BDC();
-
-        private List<EmployeeModels> EmpList = new List<EmployeeModels>();
-
+        static BDC bDC = new BDC();
 
         [HttpPost]
-        public string Post(BDCModels BDC)
+        public string Post(BDCModels bDCModel)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.InsertData(BDC);
+            var response = bDC.InsertData(bDCModel);
             return response;
 
         }
@@ -33,7 +30,7 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get()
         {
-            var response = EmpData.SelectAllData();
+            var response = bDC.SelectAllData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
@@ -47,7 +44,7 @@ namespace AlphaApi.Controllers
         public string Put(BDCModels BDC)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.UpdateData(BDC);
+            var response = bDC.UpdateData(BDC);
             return response;
 
         }
@@ -55,7 +52,7 @@ namespace AlphaApi.Controllers
         public string Delete(BDCModels BDC)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.DeleteData(BDC);
+            var response = bDC.DeleteData(BDC);
             return response;
 
         }
