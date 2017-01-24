@@ -114,8 +114,8 @@
     <Compile Include="Controllers\JobOrderController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManpowerController.cs" />
-    <Compile Include="Controllers\MasterExpenseController.cs" />
-    <Compile Include="Controllers\MasterIncomeController.cs" />
+    <Compile Include="Controllers\ExpenseMasterController.cs" />
+    <Compile Include="Controllers\IncomeMasterController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\WageTeachnicianController.cs" />
     <Compile Include="Controllers\WageVendorController.cs" />
@@ -314,7 +314,6 @@
     <Content Include="Views\MasterIncome\Create.cshtml" />
     <Content Include="Views\WarningSupport\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
-    <Content Include="Views\MasterExpense\View1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

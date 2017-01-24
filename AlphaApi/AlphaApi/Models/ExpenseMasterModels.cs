@@ -7,7 +7,7 @@ using System.Data;
 
 namespace AlphaApi.Models
 {
-    public class MasterIncomeModels
+    public class ExpenseMasterModels
     {
         public int ID { get; set; }
 

@@ -14,15 +14,12 @@ using System.Web.Http.Cors;
 namespace AlphaApi.Controllers
 {
     [EnableCorsAttribute("*", "*", "*")]
-    public class MasterIncomeController : ApiController
+    public class IncomeMasterController : ApiController
     {
         public MasterIncome EmpData = new MasterIncome();
 
-        private List<EmployeeModels> EmpList = new List<EmployeeModels>();
-
-
         [HttpPost]
-        public string Post(MasterIncomeModels MN)
+        public string Post(IncomeMasterModels MN)
         {
             //calling DBData Class Method and storing Repsonse   
             var response = EmpData.InsertData(MN);
@@ -44,7 +41,7 @@ namespace AlphaApi.Controllers
         //    //var response = "GetID";
         //    return JsonConvert.SerializeObject(response, Formatting.Indented);
         //}
-        public string Put(MasterIncomeModels MN)
+        public string Put(IncomeMasterModels MN)
         {
             //calling DBData Class Method and storing Repsonse   
             var response = EmpData.UpdateData(MN);
@@ -52,7 +49,7 @@ namespace AlphaApi.Controllers
 
         }
         [HttpDelete]
-        public string Delete(MasterIncomeModels MN)
+        public string Delete(IncomeMasterModels MN)
         {
             //calling DBData Class Method and storing Repsonse   
             var response = EmpData.DeleteData(MN);
