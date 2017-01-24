@@ -84,7 +84,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public DataSet SelectDataByID(ExpenseMasterModels ME)
+        public DataSet SelectDataByID(int id)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -93,7 +93,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_ExpenseMaster_Sel", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", ME.ID); // i will pass zero to MobileID beacause its Primary .
+                    cmd.Parameters.AddWithValue("@ID", id); // 
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;
@@ -102,9 +102,9 @@ namespace AlphaApi.DataAccessLayer
 
                     return ds;
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return ds;
+                    throw ex;
                 }
                 finally
                 {

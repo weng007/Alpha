@@ -31,12 +31,12 @@ namespace AlphaApi.Controllers
             var response = dbAction.SelectAllData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
-        //[HttpGet]
-        //public string GetByID(ExpenseMasterModels expenseModel)
-        //{
-        //    var response = dbAction.SelectDataByID(expenseModel);
-        //    return JsonConvert.SerializeObject(response, Formatting.Indented);
-        //}
+        [HttpGet]
+        public string Get(int id)
+        {
+            var response = dbAction.SelectDataByID(id);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
 
         [HttpPut]
         public string Put(ExpenseMasterModels ME)
