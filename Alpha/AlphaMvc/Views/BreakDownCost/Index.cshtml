@@ -10,7 +10,7 @@
         <tr>
             <td>
                 <div class="topictd">List</div>
-                <a href="/BDC/Create"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" /></a>
+                <a href="/BreakDownCost/Create"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" /></a>
             </td>
         </tr>
     </table>
@@ -51,6 +51,7 @@
     }
 </style>
 
+@*<table id="example" class="display" cellspacing="0">*@
 <table class="barattach-2">
     <tr>
         <td>
@@ -79,6 +80,13 @@
     @*<table id="result"></table>*@
 </div>
 
+
+<ul class="form-style">
+    <li>
+        <input id="Del" type="Button" value="Del" />
+    </li>
+</ul>
+<a href="#" id="Del"><img src="@Url.Content("~/Images/delete.png")" alt="IMAGES" /></a>
 
 @* ------------------------------- grid  -------------------------------*@
 
@@ -148,9 +156,6 @@
                         html += '<td>' + data.Table[i].Price + '</td>';
                         html += '<td>' + data.Table[i].Cost + '</td>';
                         html += '<td>' + data.Table[i].Profit + '</td>';
-                        html += '<td> <a href="/BDC/Edit?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';
-                        html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="@Url.Content("~/Images/delete.png")" /></a>';
-                        html += '</td>';
                         html += '</tr>';
                     }
                     html += '</tbody>';
@@ -160,26 +165,5 @@
                     alert(msg)
                 }
             });
-        });
-
-        function RowDelete(id) {
-        var dataObject = { ID: id };
-        $.ajax(
-            {
-                url: 'http://localhost:13131/api/BDC/Delete',
-                type: 'DELETE',
-                data: dataObject,
-                datatype: 'json',
-
-                success: function (result) {
-                    alert('Delete is completed')
-                    window.location.href = "../BDC/Index";
-                }
-                ,
-                error: function (msg) {
-                    alert(msg)
-                }
-
-            });
-    }
+         });
 </script>

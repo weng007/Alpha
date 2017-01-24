@@ -2,17 +2,9 @@
 {
     display: grid;
 }
- .hidecolumn
- {
-     display: none;
- }
  @media screen and (max-width:680px) {
       .hideANDseek
-     {
-         display : none;
-     }
-      .hidecolumn
-     {
-         display: none;
-     }
+    {
+        display: none;
+    }
 }

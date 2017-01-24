@@ -12,6 +12,7 @@ namespace AlphaApi.DataAccessLayer
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         public string InsertData(BDCModels BDC)
         {
+            SqlConnection con = null;
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
