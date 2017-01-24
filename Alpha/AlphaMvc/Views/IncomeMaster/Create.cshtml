@@ -1,4 +1,4 @@
-﻿@model AlphaMvc.Models.MasterIncome
+﻿@model AlphaMvc.Models.IncomeMaster
 @{
     ViewBag.Title = "Create";
 }
@@ -44,16 +44,19 @@
             var dataObject = { Detail: $("#Detail").val() };
             $.ajax(
             {
-                url: 'http://localhost:13131/api/MasterExpense/Post',
+                url: 'http://localhost:13131/api/IncomeMaster/Post',
                 type: 'POST',
                 data: dataObject,
                 datatype: 'json',
 
-                success: function (data) {
-                    alert('Created Successfully');
-                    window.location.href = "../MasterExpense/Index";
-                },
-                error: function (msg) { alert(msg); }
+                success: function (result) {
+                    alert('Create is completed')
+                    window.location.href = "../IncomeMaster/Index";
+                }
+                ,
+                error: function (msg) {
+                    alert(msg)
+                }
             });
         });
     });

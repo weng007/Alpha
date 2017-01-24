@@ -7,7 +7,7 @@ using System.Data;
 
 namespace AlphaMvc.Models
 {
-    public class MasterIncome
+    public class IncomeMaster
     {
         public int ID { get; set; }
 
