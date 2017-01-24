@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using WebApiContrib.Formatting.Jsonp;
 using System.Web.Http.Cors;
+using System.Web.Routing;
 
 namespace AlphaApi
 {
@@ -25,6 +26,12 @@ namespace AlphaApi
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "ServiceApi",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 

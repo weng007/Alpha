@@ -18,7 +18,6 @@ namespace AlphaApi.Controllers
     {
         static DBData dbAction = new DBData();
 
-
         [HttpPost]
         public void Post(ExpenseMasterModels expenseModel)
         {
@@ -31,11 +30,12 @@ namespace AlphaApi.Controllers
             var response = dbAction.SelectAllData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
-        
+
+        [EnableCorsAttribute("*", "*", "*")]
         [HttpGet]
-        public string GetByID(int expenseID)
+        public string Get(int id)
         {
-            var response = dbAction.SelectDataByID(expenseID);
+            var response = dbAction.SelectDataByID(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
