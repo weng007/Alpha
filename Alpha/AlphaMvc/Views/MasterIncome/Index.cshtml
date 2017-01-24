@@ -52,7 +52,6 @@
 <table class="barattach-2">
     <tr>
         <td>
-
             <div class="topicattach-2">Search : <input id="searchInput" placeholder="Type To Filter"><br /></div>
         </td>
     </tr>
@@ -64,21 +63,12 @@
             <tr>
                 <th>No.</th>
                 <th>รายละเอียด</th>
+                <th></th>
             </tr>
         </thead>
         <tbody id="result"></tbody>
     </table>
-
-    @*<table id="result"></table>*@
 </div>
-
-
-<ul class="form-style">
-    <li>
-        <input id="Del" type="Button" value="Del" />
-    </li>
-</ul>
-<a href="#" id="Del"><img src="@Url.Content("~/Images/delete.png")" alt="IMAGES" /></a>
 
 @* ------------------------------- grid  -------------------------------*@
 
@@ -99,6 +89,7 @@
                 }
             }
             function getCellValue(row, index) { return $(row).children('td').eq(index).html() }
+            //------------------------- Sorting ------------------------
 
             //-------------------------filter------------------------
             $("#searchInput").keyup(function () {
@@ -118,7 +109,7 @@
 
             $.ajax(
             {
-                url: 'http://localhost:13131/api/MasterIncome/Get',
+                url: 'http://localhost:13131/api/IncomeMaster/Get',
                 type: 'GET',
                 datatype: 'json',
                 success: function (data) {
@@ -134,8 +125,8 @@
                         html += '</tr>';
                     }
                     html += '</tbody>';
-
                     document.getElementById("result").innerHTML = html;
+
                 },
                 error: function (msg) {
                     alert(msg)

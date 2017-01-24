@@ -31,7 +31,7 @@
 
             <ul class="form-style">
                 <li>
-                    <input type="submit" value="Save" id="Save" />
+                    <input type="submit" value="Save" id="Create" />
                 </li>
             </ul>
         </form>
@@ -40,26 +40,21 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        $("#Save").click(function () {
+        $("#Create").click(function () {
             var dataObject = { Detail: $("#Detail").val() };
-            console.log(dataObject);
             $.ajax(
             {
-                url: 'http://localhost:13131/api/MasterIncome/Post',
+                url: 'http://localhost:13131/api/IncomeMaster/Post',
                 type: 'POST',
                 data: dataObject,
                 datatype: 'json',
 
-                success: function (result) {
-                    if (result.toString() == "Success") {
-                        alert(result)
-                    }
-                    else {
-                        alert(result)
-                    }
+                success: function (data) {
+                    alert('Created Successfully');
+                    window.location.href = "../Index";
                 },
-                error: function (result) {
-                    alert("Error")
+                error: function (msg) {
+                    alert(msg)
                 }
             });
         });
