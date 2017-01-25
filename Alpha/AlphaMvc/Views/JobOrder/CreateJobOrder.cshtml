@@ -151,9 +151,9 @@
                     <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
                 </li>
                 <li>
-                    <select id="cmbTypeWorking" class="field-divided" />
-                    &nbsp;<select id="cmbJobStatus" class="field-divided" />
+                    <select id="cmbTypeWorking" class="field-divided"></select> &nbsp;<select id="cmbJobStatus" class="field-divided" ></select>
                 </li>
+                
                 <li>
                     <label>รายละเอียดงาน</label>
                     <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
@@ -963,7 +963,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        alert('test');
         var dataObject = { typeID: '001' };
         $.ajax({
             url: 'http://localhost:13131/api/MasterService/',
@@ -974,6 +973,24 @@
                 data = JSON.parse(data);
                 $.each(data.Table, function (i) {
                     $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+
+        var dataObject = { typeID: '002' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService/',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                alert('test');
+                $.each(data.Table, function (i) {
+                    $('#cmbJobStatus').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
             },
             failure: function () {
