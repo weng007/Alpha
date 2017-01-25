@@ -16,18 +16,18 @@ namespace AlphaApi.Controllers
     [EnableCorsAttribute("*", "*", "*")]
     public class ExpenseMasterController : ApiController
     {
-        static ExpenseMasterDAL dbAction = new ExpenseMasterDAL();
+        static ExpenseMasterDAL expenseMasterdb = new ExpenseMasterDAL();
 
         [HttpPost]
         public void Post(ExpenseMasterModels expenseModel)
         {
-            dbAction.InsertData(expenseModel);
+            expenseMasterdb.InsertData(expenseModel);
         }
 
         [HttpGet]
         public string Get()
         {
-            var response = dbAction.SelectAllData();
+            var response = expenseMasterdb.SelectAllData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
@@ -35,7 +35,7 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get(int id)
         {
-            var response = dbAction.SelectDataByID(id);
+            var response = expenseMasterdb.SelectDataByID(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
@@ -43,13 +43,13 @@ namespace AlphaApi.Controllers
         [HttpPut]
         public int Put(ExpenseMasterModels expenseModel)
         { 
-            var response = dbAction.UpdateData(expenseModel);
+            var response = expenseMasterdb.UpdateData(expenseModel);
             return response;
         }
         [HttpDelete]
         public string Delete(ExpenseMasterModels expenseModel)
         {  
-            var response = dbAction.DeleteData(expenseModel);
+            var response = expenseMasterdb.DeleteData(expenseModel);
             return response;
         }
     }
