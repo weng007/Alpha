@@ -151,17 +151,8 @@
                     <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
                 </li>
                 <li>
-                    <select name="field4" class="field-divided">
-                        <option value="volvo">Leak Sealing Online</option>
-                        <option value="saab">On-Site Maching</option>
-                        <option value="mercedes">Supply Man Power</option>
-                        <option value="mercedes">Hydraulic Torque</option>
-                    </select>&nbsp;<select name="field4" class="field-divided">
-                        <option value="volvo">InProgress</option>
-                        <option value="saab">Pending</option>
-                        <option value="mercedes">Completed</option>
-                        <option value="mercedes">Cancel</option>
-                    </select>
+                    <select id="cmbTypeWorking" class="field-divided" />
+                    &nbsp;<select id="cmbJobStatus" class="field-divided" />
                 </li>
                 <li>
                     <label>รายละเอียดงาน</label>
@@ -970,8 +961,25 @@
 
 
 
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
+        alert('test');
+        var dataObject = { typeID: '001' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService/',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $.each(data.Table, function (i) {
+                    $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
 
         $('#parentHorizontalTab').easyResponsiveTabs({
             type: 'default', //Types: default, vertical, accordion
@@ -1004,14 +1012,3 @@
     var dates = new Date();
     $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 </script>
-
-@{
-
-            if (ViewData["result"] != "" && ViewData["result"] != null)
-            {
-                ViewData["result"] = null;
-        <script type="text/javascript" language="javascript">
-                    alert("Data saved Successfully");
-        </script>
-    }
-}

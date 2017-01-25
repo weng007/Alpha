@@ -15,7 +15,6 @@ namespace AlphaApi.Controllers
     {
         static MasterServiceDAL masterServicedb = new MasterServiceDAL();
 
-        [EnableCorsAttribute("*", "*", "*")]
         [HttpGet]
         public string Get(string typeID)
         {
