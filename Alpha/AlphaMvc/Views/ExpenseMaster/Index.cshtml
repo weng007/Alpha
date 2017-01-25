@@ -61,6 +61,7 @@
         <thead>
             <tr>
                 <th>No.</th>
+                <th class="hidecolumn">ID</th>
                 <th>รายละเอียด</th>
                 <th></th>
             </tr>
@@ -109,7 +110,7 @@
 
             $.ajax(
             {
-                url: 'http://localhost:13132/api/ExpenseMaster/',
+                url: 'http://localhost:8090/api/ExpenseMaster/',
                 type: 'GET',
                 datatype: 'json',
                 success: function (data) {
@@ -117,7 +118,8 @@
                     var html = '<tbody>';
                     for (var i = 0; i < data.Table.length; i++) {
                         html += '<tr>';
-                        html += '<td>' + data.Table[i].ID + '</td>';
+                        html += '<td>' + data.Table[i].RowNum + '</td>';
+                        html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                         html += '<td>' + data.Table[i].Detail + '</td>';
                         html += '<td>';
                         html += '<a href="/ExpenseMaster/Edit?id='+ data.Table[i].ID +'" id="edit' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';

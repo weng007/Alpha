@@ -6,16 +6,12 @@
 <h2>Master Expense Edit</h2>
 <link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
 @* -------------------------------------- dynotable ------------------------------- *@
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
-<script src="@Url.Content("~/Scripts/EditableGrid/jquery.dynotable.js")" type="text/javascript"></script>
+
 @* ------------------------------------- tab bar ---------------------------------------- *@
 
-<link href="@Url.Content("~/Content/Tab/easy-responsive-tabs.css")" rel="stylesheet" type="text/css" />
-<script src="@Url.Content("~/Scripts/Tab/easyResponsiveTabs.js")" type="text/javascript"></script>
-<div id="myModal">
+
     @using (Html.BeginForm())
     {
         <form>
@@ -34,13 +30,15 @@
         </form>
 
     }
-</div>
+
 <script type="text/javascript">
+
     $(document).ready(function () {
         var id= @Request.Params["id"];
+        //alert('Round2');
         $.ajax(
        {
-           url: 'http://localhost:13132/api/ExpenseMaster/'+id,
+           url: 'http://localhost:13131/api/ExpenseMaster/'+id,
            type: 'GET',
            datatype: 'json',
            success: function (data) {
@@ -50,32 +48,29 @@
            error: function (msg) {
                alert(msg);
            }
+
        });
-        
-    });
 
-    $("#Update").click(function () {
-        var dataObject = { ID: @Request.Params["id"], Detail: $("#Detail").val() };
-        console.log(dataObject);
-        $.ajax(
-        {
-            url: 'http://localhost:13132/api/ExpenseMaster/Put',
-            type: 'PUT',
-            data: dataObject,
-            datatype: 'json',
+        $("#Update").click(function () {
+            var dataObject = { ID: @Request.Params["id"], Detail: $("#Detail").val() };
+            alert($("#Detail").val());
+            $.ajax(
+            {
+                url: 'http://localhost:13131/api/ExpenseMaster/PUT',
+                type: 'PUT',
+                data: dataObject,
+                datatype: 'json',
 
-            success: function (result) {
-                if (result.toString() == "Success") {
-                    alert(result)
+                success: function (result) {
+                    alert('Update is completed');
+                    top.location.href = "/ExpenseMaster/Index";
                 }
-                else {
-                    alert(result)
+                ,
+                error: function (msg) {
+                    alert(msg);
+                    //top.location.href = "/ExpenseMaster/Index";
                 }
-            },
-            error: function (result) {
-                alert(result)
-            }
+            });
         });
     });
-
 </script>

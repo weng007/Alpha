@@ -39,13 +39,12 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
-        public string Put(ExpenseMasterModels ME)
-        {
-            //calling DBData Class Method and storing Repsonse   
-            var response = dbAction.UpdateData(ME);
+        public int Put(ExpenseMasterModels expenseModel)
+        { 
+            var response = dbAction.UpdateData(expenseModel);
             return response;
-
         }
         [HttpDelete]
         public string Delete(ExpenseMasterModels expenseModel)

@@ -62,6 +62,7 @@
         <thead>
             <tr>
                 <th>No.</th>
+                <th class="hidecolumn">ID</th>
                 <th>รายละเอียด</th>
                 <th></th>
             </tr>
@@ -117,7 +118,8 @@
                     var html = '<tbody>';
                     for (var i = 0; i < data.Table.length; i++) {
                         html += '<tr>';
-                        html += '<td>' + data.Table[i].ID + '</td>';
+                        html += '<td>' + data.Table[i].RowNum + '</td>';
+                        html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                         html += '<td>' + data.Table[i].Detail + '</td>';
                         html += '<td>';
                         html += '<a href="/IncomeMaster/Edit?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';

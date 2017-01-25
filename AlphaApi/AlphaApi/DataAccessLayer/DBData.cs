@@ -11,6 +11,8 @@ namespace AlphaApi.DataAccessLayer
     public class DBData
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
+        int result = 0;
+
         public void InsertData(ExpenseMasterModels ME)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -33,9 +35,8 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string UpdateData(ExpenseMasterModels ME)
+        public int UpdateData(ExpenseMasterModels ME)
         {
-            string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -45,12 +46,12 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@ID", ME.ID);
                     cmd.Parameters.AddWithValue("@Detail", ME.Detail);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
                 finally
                 {
