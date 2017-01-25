@@ -11,11 +11,11 @@ namespace AlphaMvc.Controllers
         //
         // GET: /WageTeachnician/
 
-        public ActionResult Index()
+        public ActionResult IndexWageTeachnician()
         {
             return View();
         }
-        public ActionResult Edit()
+        public ActionResult EditWageTeachnician()
         {
             return View();
         }

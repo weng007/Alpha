@@ -1,12 +1,12 @@
 ﻿@model AlphaMvc.Models.BDCModels
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "CreateBDC";
 }
 <h2>BreakDown Cost Create</h2>
 <table>
     <tr>
         <td>
-            @Html.ActionLink("Break Down Cost List", "Index")
+            @Html.ActionLink("Break Down Cost List", "IndexBDC")
         </td>
     </tr>
 </table>
@@ -156,7 +156,7 @@
                                 </ul>
                                 <div class="resp-tabs-container hor_1">
                                     <div>
-                                        <a href="@Url.Action("Create", "JobOrder")" class="alink"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" /></a>
+                                        <a href="@Url.Action("CreateJobOrder", "JobOrder")" class="alink"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" /></a>
                                         <div class="grigbar">
                                             <table id="example" class="display" cellspacing="0">
                                                 <thead>
@@ -337,7 +337,7 @@
 
                 success: function (result) {
                     alert('Create is completed')
-                    window.location.href = "../BDC/Index";
+                    window.location.href = "../BDC/IndexBDC";
                 }
                 ,
                 error: function (msg) {

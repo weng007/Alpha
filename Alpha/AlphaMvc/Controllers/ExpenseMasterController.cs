@@ -11,15 +11,15 @@ namespace AlphaMvc.Controllers
         //
         // GET: /ExpenseMaster/
 
-        public ActionResult Index()
+        public ActionResult IndexExpenseMaster()
         {
             return View();
         }
-        public ActionResult Create()
+        public ActionResult CreateExpenseMaster()
         {
             return View();
         }
-        public ActionResult Edit()
+        public ActionResult EditExpenseMaster()
         {
             return View();
         }

@@ -11,15 +11,15 @@ namespace AlphaMvc.Controllers
         //
         // GET: /Products/
 
-        public ActionResult Index()
+        public ActionResult IndexProducts()
         {
             return View();
         }
-        public ActionResult Create()
+        public ActionResult CreateProducts()
         {
             return View();
         }
-        public ActionResult Edit()
+        public ActionResult EditProducts()
         {
             return View();
         }

@@ -11,15 +11,15 @@ namespace AlphaMvc.Controllers
         //
         // GET: /JobOrder/
 
-        public ActionResult Index()
+        public ActionResult IndexJobOrder()
         {
             return View();
         }
-        public ActionResult Create()
+        public ActionResult CreateJobOrder()
         {
             return View();
         }
-        public ActionResult Edit()
+        public ActionResult EditJobOrder()
         {
             return View();
         }

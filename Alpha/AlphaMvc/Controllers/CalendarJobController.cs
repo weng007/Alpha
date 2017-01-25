@@ -11,7 +11,7 @@ namespace AlphaMvc.Controllers
         //
         // GET: /CalendarJob/
 
-        public ActionResult Index()
+        public ActionResult IndexCalendarJob()
         {
             return View();
         }

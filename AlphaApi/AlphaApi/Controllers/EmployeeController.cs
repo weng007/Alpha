@@ -11,7 +11,7 @@ namespace AlphaApi.Controllers
 {
     public class EmployeeController : ApiController
     {
-        static DBData EmpData = new DBData();
+        static ExpenseMasterDAL EmpData = new ExpenseMasterDAL();
         private List<EmployeeModels> EmpList = new List<EmployeeModels>();
 
 

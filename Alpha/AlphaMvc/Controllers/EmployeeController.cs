@@ -11,20 +11,20 @@ namespace AlphaMvc.Controllers
         //
         // GET: /Employee/
 
-        public ActionResult Index()
+        public ActionResult IndexEmployee()
         {
             return View();
         }
-        public ActionResult Edit()
+        public ActionResult EditEmployee()
         {
             return View();
         }
-        public ActionResult Create()
+        public ActionResult CreateEmployee()
         {
             return View();
         }
 
-        public ActionResult Expired()
+        public ActionResult ExpiredEmployee()
         {
             return View();
         }

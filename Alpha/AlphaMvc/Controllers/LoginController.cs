@@ -11,7 +11,7 @@ namespace AlphaMvc.Controllers
         //
         // GET: /Login/
 
-        public ActionResult Index()
+        public ActionResult IndexLogin()
         {
             return View();
         }

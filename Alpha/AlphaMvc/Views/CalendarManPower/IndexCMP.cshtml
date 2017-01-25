@@ -1,8 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "IndexCMP";
 }
 
-<h2>Calendar Job</h2>
+<h2>Calendar Manpower</h2>
 
 <link href="@Url.Content("~/Content/calendar/fullcalendar.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/calendar/fullcalendar.print.min.css")" rel="stylesheet" media="print" type="text/css" />
@@ -45,29 +45,33 @@
 					start: '2016-12-16T16:00:00'
 				},
 				{
-				    title: 'J00006 (H)',
-					start: '2017-01-05'
-				},
-				{
-				    title: 'J00006 (H)',
+				    title: 'Leader1 (J00002)',
+				    url: 'http://localhost:1038/Manpower/Index',
 				    start: '2017-01-05'
 				},
 				{
-				    title: 'J00005 (S)',
+				    title: 'Leader2 (J00005)',
+				    start: '2017-01-05'
+				},
+				{
+				    title: 'Leader4 (J00006)',
 				    start: '2017-01-19'
 				},
 				{
-				    title: 'J00001 (O)',
+				    title: 'Leader5 (J00005)',
 				    start: '2017-01-19'
 				},
 				{
-				    title: 'J00001 (O)',
+				    title: 'Leader7 (J00001)',
 				    start: '2017-01-19'
 				},
 				{
-				    title: 'J00002 (S)',
-				    url: 'http://localhost:1038/JobOrder/Edit',
-				    start: '2017-01-19'
+					title: 'Dinner',
+					start: '2016-12-12T20:00:00'
+				},
+				{
+					title: 'Birthday Party',
+					start: '2016-12-13T07:00:00'
 				},
 				{
 					title: 'Click for Google',
@@ -95,4 +99,5 @@
 </style>
 
 <div id="calendar"></div>
+
 

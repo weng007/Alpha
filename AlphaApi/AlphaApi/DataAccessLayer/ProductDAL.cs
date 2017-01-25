@@ -7,7 +7,7 @@ using AlphaApi.Models;
 
 namespace AlphaApi.DataAccessLayer
 {
-    public class Product
+    public class ProductDAL
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         public string InsertData(ProductModels PD)
@@ -121,7 +121,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public DataSet SelectDataByID(ProductModels PD)
+        public DataSet SelectDataByID(int id)
         {
             SqlConnection con = null;
             string result = "";
@@ -132,7 +132,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_Product_Sel", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", PD.ID); // i will pass zero to MobileID beacause its Primary .
+                    cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

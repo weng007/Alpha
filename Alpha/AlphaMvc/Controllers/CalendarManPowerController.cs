@@ -11,7 +11,7 @@ namespace AlphaMvc.Controllers
         //
         // GET: /CalendarManPower/
 
-        public ActionResult Index()
+        public ActionResult IndexCMP()
         {
             return View();
         }

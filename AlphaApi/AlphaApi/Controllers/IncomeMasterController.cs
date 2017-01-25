@@ -16,7 +16,7 @@ namespace AlphaApi.Controllers
     [EnableCorsAttribute("*", "*", "*")]
     public class IncomeMasterController : ApiController
     {
-        public IncomeMaster incomeMaster  = new IncomeMaster();
+        public IncomeMasterDAL incomeMaster  = new IncomeMasterDAL();
 
         [HttpPost]
         public string Post(IncomeMasterModels incomeModel)
@@ -32,14 +32,18 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [EnableCorsAttribute("*", "*", "*")]
+        [HttpGet]
+        public string Get(int id)
+        {
+            var response = incomeMaster.SelectDataByID(id);
+            //var response = "GetID";
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
-        //public string GetByID(ExpenseMasterModels ME)
-        //{
-        //    var response = EmpData.SelectAllDatabyID(ME);
-        //    //var response = "GetID";
-        //    return JsonConvert.SerializeObject(response, Formatting.Indented);
-        //}
-        public string Put(IncomeMasterModels incomeModel)
+        public int Put(IncomeMasterModels incomeModel)
         {
             //calling DBData Class Method and storing Repsonse   
             var response = incomeMaster.UpdateData(incomeModel);

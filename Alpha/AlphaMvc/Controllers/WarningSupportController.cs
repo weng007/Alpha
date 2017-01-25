@@ -11,7 +11,7 @@ namespace AlphaMvc.Controllers
         //
         // GET: /WarningSupport/
 
-        public ActionResult Index()
+        public ActionResult IndexWarningSupport()
         {
             return View();
         }

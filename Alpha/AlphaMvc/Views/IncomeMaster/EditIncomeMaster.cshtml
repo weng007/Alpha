@@ -1,0 +1,80 @@
+﻿@model AlphaMvc.Models.IncomeMaster
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Master Income Edit</h2>
+<link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
+@* -------------------------------------- dynotable ------------------------------- *@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+
+    @using (Html.BeginForm())
+    {
+        <form>
+            <ul class="form-style">
+                <li>
+                    @Html.LabelFor(a => a.Detail)
+                    @Html.TextBoxFor(a => a.Detail, new { id = "Detail" })
+                    @Html.ValidationMessageFor(a => a.Detail)
+                </li>
+                <br />
+            </ul>
+            @* ------------------------------------------- tabbar ------------------------------------- *@
+            @* ---------------------------------------------------------------------------------------------------------- *@
+
+            <ul class="form-style">
+                <li>
+                    <input type="submit" value="Save" />
+                </li>
+            </ul>
+
+            @* ------------------------------------------- tabbar ------------------------------------- *@
+        </form>
+
+    }
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var id= @Request.Params["id"];
+        //alert('Round2');
+        $.ajax(
+       {
+           url: 'http://localhost:13131/api/IncomeMaster/'+id,
+           type: 'GET',
+           datatype: 'json',
+           success: function (data) {
+               data = JSON.parse(data);
+               $("#Detail").val(data.Table[0].Detail);
+           },
+           error: function (msg) {
+               alert(msg);
+           }
+
+       });
+
+        $("#Update").click(function () {
+            var dataObject = { ID: @Request.Params["id"], Detail: $("#Detail").val() };
+            $.ajax(
+            {
+                url: 'http://localhost:13131/api/IncomeMaster',
+                type: 'PUT',
+                data: dataObject,
+                datatype: 'json',
+
+                success: function (result) {
+                    alert('Update is completed');
+                    top.location.href = "/IncomeMaster/IndexIncomeMaster";
+                }
+                ,
+                error: function (msg) {
+                    alert(msg);
+                    //top.location.href = "/ExpenseMaster/Index";
+                }
+            });
+        });
+    });
+</script>

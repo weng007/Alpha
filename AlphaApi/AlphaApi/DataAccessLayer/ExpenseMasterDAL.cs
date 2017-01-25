@@ -8,7 +8,7 @@ using System;
 
 namespace AlphaApi.DataAccessLayer
 {
-    public class DBData
+    public class ExpenseMasterDAL
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         int result = 0;
@@ -23,10 +23,11 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Detail", ME.Detail);
                     conObj.Open();
+                    cmd.ExecuteNonQuery();
                 }
-                catch
+                catch (Exception ex)
                 {
-                   
+                    throw ex;
                 }
                 finally
                 {

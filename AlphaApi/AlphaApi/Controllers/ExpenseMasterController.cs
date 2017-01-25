@@ -16,7 +16,7 @@ namespace AlphaApi.Controllers
     [EnableCorsAttribute("*", "*", "*")]
     public class ExpenseMasterController : ApiController
     {
-        static DBData dbAction = new DBData();
+        static ExpenseMasterDAL dbAction = new ExpenseMasterDAL();
 
         [HttpPost]
         public void Post(ExpenseMasterModels expenseModel)

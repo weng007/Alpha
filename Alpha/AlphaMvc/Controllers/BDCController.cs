@@ -11,15 +11,15 @@ namespace AlphaMvc.Controllers
         //
         // GET: /BreakDownCost/
 
-        public ActionResult Index()
+        public ActionResult IndexBDC()
         {
             return View();
         }
-        public ActionResult Create()
+        public ActionResult CreateBDC()
         {
             return View();
         }
-        public ActionResult Edit()
+        public ActionResult EditBDC()
         {
             return View();
         }

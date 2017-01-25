@@ -8,9 +8,10 @@ using AlphaApi.Models;
 
 namespace AlphaApi.DataAccessLayer
 {
-    public class IncomeMaster
+    public class IncomeMasterDAL
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
+        int result = 0;
         public string InsertData(IncomeMasterModels incomeMaster)
         {
             string result = "";
@@ -22,7 +23,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Detail", incomeMaster.Detail);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
+                    result = cmd.ExecuteNonQuery().ToString();
 
                     return result;
                 }
@@ -37,24 +38,23 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string UpdateData(IncomeMasterModels ME)
+        public int UpdateData(IncomeMasterModels incomeMaster)
         {
-            string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
                     SqlCommand cmd = new SqlCommand("SP_IncomeMaster_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", ME.ID);
-                    cmd.Parameters.AddWithValue("@Detail", ME.Detail);
+                    cmd.Parameters.AddWithValue("@ID", incomeMaster.ID);
+                    cmd.Parameters.AddWithValue("@Detail", incomeMaster.Detail);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
                 finally
                 {
@@ -63,7 +63,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string DeleteData(IncomeMasterModels ME)
+        public string DeleteData(IncomeMasterModels incomeMaster)
         {
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -72,7 +72,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_IncomeMaster_Del", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", ME.ID);
+                    cmd.Parameters.AddWithValue("@ID", incomeMaster.ID);
                     conObj.Open();
                     result = cmd.ExecuteScalar().ToString();
                     return result;
@@ -88,9 +88,8 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public DataSet SelectDataByID(IncomeMasterModels ME)
+        public DataSet SelectDataByID(int id)
         {
-            string result = "";
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -98,7 +97,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_IncomeMaster_Sel", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", ME.ID); // i will pass zero to MobileID beacause its Primary .
+                    cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

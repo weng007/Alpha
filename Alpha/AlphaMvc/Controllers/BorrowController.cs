@@ -11,11 +11,11 @@ namespace AlphaMvc.Controllers
         //
         // GET: /Borrow/
 
-        public ActionResult Create()
+        public ActionResult CreateBorrow()
         {
             return View();
         }
-        public ActionResult Edit()
+        public ActionResult EditBorrow()
         {
             return View();
         }

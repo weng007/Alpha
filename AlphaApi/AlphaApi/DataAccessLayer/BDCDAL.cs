@@ -7,7 +7,7 @@ using AlphaApi.Models;
 
 namespace AlphaApi.DataAccessLayer
 {
-    public class BDC
+    public class BDCDAL
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         public string InsertData(BDCModels BDC)
@@ -26,7 +26,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Profit", BDC.Profit);
                     cmd.Parameters.AddWithValue("@Remark", BDC.Remark);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
+                    result = cmd.ExecuteNonQuery().ToString();
 
                     return result;
 
@@ -60,7 +60,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Profit", BDC.Profit);
                     cmd.Parameters.AddWithValue("@Remark", BDC.Remark);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
+                    result = cmd.ExecuteNonQuery().ToString();
                     return result;
                 }
                 catch
@@ -100,10 +100,8 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public DataSet SelectDataByID(BDCModels BDC)
+        public DataSet SelectDataByID(int id)
         {
-            SqlConnection con = null;
-            string result = "";
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -111,7 +109,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_BDC_Sel", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", BDC.ID); // i will pass zero to MobileID beacause its Primary .
+                    cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

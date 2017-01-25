@@ -11,15 +11,15 @@ namespace AlphaMvc.Controllers
         //
         // GET: /IncomeMaster/
 
-        public ActionResult Index()
+        public ActionResult IndexIncomeMaster()
         {
             return View();
         }
-        public ActionResult Create()
+        public ActionResult CreateIncomeMaster()
         {
             return View();
         }
-        public ActionResult Edit()
+        public ActionResult EditIncomeMaster()
         {
             return View();
         }

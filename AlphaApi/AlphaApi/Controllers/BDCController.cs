@@ -16,7 +16,7 @@ namespace AlphaApi.Controllers
     [EnableCorsAttribute("*", "*", "*")]
     public class BDCController : ApiController
     {
-        static BDC EmpData = new BDC();
+        static BDCDAL EmpData = new BDCDAL();
 
 
 
@@ -36,13 +36,16 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [EnableCorsAttribute("*", "*", "*")]
+        [HttpGet]
+        public string Get(int id)
+        {
+            var response = EmpData.SelectDataByID(id);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
-        //public string GetByID(ExpenseMasterModels ME)
-        //{
-        //    var response = EmpData.SelectAllDatabyID(ME);
-        //    //var response = "GetID";
-        //    return JsonConvert.SerializeObject(response, Formatting.Indented);
-        //}
         public string Put(BDCModels BDC)
         {
             //calling DBData Class Method and storing Repsonse   

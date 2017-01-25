@@ -1,6 +1,6 @@
 ﻿@model AlphaMvc.Models.ExpenseMaster
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "EditExpenseMaster";
 }
 
 <h2>Master Expense Edit</h2>
@@ -63,7 +63,7 @@
 
                 success: function (result) {
                     alert('Update is completed');
-                    top.location.href = "/ExpenseMaster/Index";
+                    top.location.href = "/ExpenseMaster/IndexExpenseMaster";
                 }
                 ,
                 error: function (msg) {

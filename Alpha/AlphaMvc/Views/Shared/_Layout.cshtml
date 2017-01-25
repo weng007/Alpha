@@ -72,36 +72,36 @@
                                 <div class="menutext">
                                     @Html.ActionLink("Master", "", "Home")
                                     <ul class="hidden">
-                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Income", "Index", "IncomeMaster")</div></li>
-                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Expense", "Index", "ExpenseMaster")</div></li>
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Income", "IndexIncomeMaster", "IncomeMaster")</div></li>
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Expense", "IndexExpenseMaster", "ExpenseMaster")</div></li>
                                     </ul>
                                 </div>
                             </div>
                         </li>
-                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Warning", "Expired", "Employee")</div></div></li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Warning", "ExpiredEmployee", "Employee")</div></div></li>
                         <li class="menuli">
                             <div class="menua">
                                 <div class="menutext">
-                                    @Html.ActionLink("Calendar", "", "Home")
+                                    @Html.ActionLink("Calendar", "", "#")
                                     <ul class="hidden">
-                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Job", "Index", "CalendarJob")</div></li>
-                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Man Power", "Index", "CalendarManPower")</div></li>
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Job", "IndexCalendarJob", "CalendarJob")</div></li>
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Man Power", "IndexCMP", "CalendarManPower")</div></li>
                                     </ul>
                                 </div>
                             </div>
                         </li>
-                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "Index", "Employee")</div></div></li>
-                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Products", "Index", "Products")</div></div></li>
-                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Break Down Cost", "Index", "BDC")</div></div></li>
-                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Job Order", "Index", "JobOrder")</div></div></li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "IndexEmployee", "Employee")</div></div></li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Products", "IndexProducts", "Products")</div></div></li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Break Down Cost", "IndexBDC", "BDC")</div></div></li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Job Order", "IndexJobOrder", "JobOrder")</div></div></li>
                         @*<li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Test", "View1", "ExpenseMaster")</div></div></li>*@
                         <li class="menuli">
                             <div class="menua">
                                 <div class="menutext">
-                                    @Html.ActionLink("Payment", "", "Home")
+                                    @Html.ActionLink("Payment", "", "#")
                                     <ul class="hidden">
-                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Technician", "Index", "WageTeachnician")</div></li>
-                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Vendor", "Index", "WageVendor")</div></li>
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Technician", "IndexWageTeachnician", "WageTeachnician")</div></li>
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Vendor", "IndexWageVendor", "WageVendor")</div></li>
                                     </ul>
                                 </div>
                             </div>

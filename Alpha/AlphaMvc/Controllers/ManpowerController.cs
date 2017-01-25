@@ -11,7 +11,7 @@ namespace AlphaMvc.Controllers
         //
         // GET: /Manpower/
 
-        public ActionResult Index()
+        public ActionResult IndexManpower()
         {
             return View();
         }

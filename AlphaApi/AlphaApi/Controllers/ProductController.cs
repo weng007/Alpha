@@ -16,7 +16,7 @@ namespace AlphaApi.Controllers
     [EnableCorsAttribute("*", "*", "*")]
     public class ProductController : ApiController
     {
-        public Product EmpData = new Product();
+        public ProductDAL EmpData = new ProductDAL();
 
         private List<EmployeeModels> EmpList = new List<EmployeeModels>();
 
@@ -37,13 +37,16 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [EnableCorsAttribute("*", "*", "*")]
+        [HttpGet]
+        public string Get(int id)
+        {
+            var response = EmpData.SelectDataByID(id);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
-        //public string GetByID(ExpenseMasterModels ME)
-        //{
-        //    var response = EmpData.SelectAllDatabyID(ME);
-        //    //var response = "GetID";
-        //    return JsonConvert.SerializeObject(response, Formatting.Indented);
-        //}
         public string Put(ProductModels PD)
         {
             //calling DBData Class Method and storing Repsonse   

@@ -11,9 +11,7 @@ namespace AlphaMvc.Models
     {
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Detail")]
         public string Detail { get; set; }
 
         public DataSet StoreAllData { get; set; }
