@@ -16,16 +16,12 @@ namespace AlphaApi.Controllers
     [EnableCorsAttribute("*", "*", "*")]
     public class ProductController : ApiController
     {
-        public ProductDAL EmpData = new ProductDAL();
-
-        private List<EmployeeModels> EmpList = new List<EmployeeModels>();
-
+        public ProductDAL Productdb = new ProductDAL();
 
         [HttpPost]
         public string Post(ProductModels PD)
         {
-            //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.InsertData(PD);
+            var response = Productdb.InsertData(PD);
             return response;
 
         }
@@ -33,7 +29,7 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get()
         {
-            var response = EmpData.SelectAllData();
+            var response = Productdb.SelectAllData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
@@ -41,24 +37,22 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get(int id)
         {
-            var response = EmpData.SelectDataByID(id);
+            var response = Productdb.SelectDataByID(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(ProductModels PD)
-        {
-            //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.UpdateData(PD);
+        { 
+            var response = Productdb.UpdateData(PD);
             return response;
 
         }
         [HttpDelete]
         public string Delete(ProductModels PD)
         {
-            //calling DBData Class Method and storing Repsonse   
-            var response = EmpData.DeleteData(PD);
+            var response = Productdb.DeleteData(PD);
             return response;
 
         }

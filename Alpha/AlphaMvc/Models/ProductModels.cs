@@ -11,84 +11,52 @@ namespace AlphaMvc.Models
     {
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "SerialNo")]
         public string SerialNo { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "MachineNo")]
         public string MachineNo { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "ProductType")]
         public int ProductType { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Brand")]
         public int Brand { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Size")]
         public string Size { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Model")]
         public string Model { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Lifetime")]
         public int Lifetime { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "ReceiveDate")]
         public DateTime ReceiveDate { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Unit")]
         public int Unit { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Balance")]
         public double Balance { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Remain")]
         public double Remain { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Lost")]
         public double Lost { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Repair")]
         public double Repair { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Break")]
         public double Break { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
-        public byte img { get; set; }
+        //[Display(Name = "img")]
+        //public byte img { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Detail")]
-        [Display(Name = "Enter Detail")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Detail must be between 3 and 50 characters!")]
+        [Display(Name = "Remark")]
         public string Remark { get; set; }
 
         public DataSet StoreAllData { get; set; }

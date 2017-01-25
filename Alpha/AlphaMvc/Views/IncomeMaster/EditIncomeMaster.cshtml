@@ -34,11 +34,12 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        var id= @Request.Params["id"];
+        var dataObject = { ID : @Request.Params["id"]};
         $.ajax(
        {
-           url: 'http://localhost:13131/api/IncomeMaster/'+id,
+           url: 'http://localhost:13131/api/IncomeMaster/',
            type: 'GET',
+           data : dataObject,
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
@@ -52,14 +53,12 @@
 
         $("#Update").click(function () {
             var dataObject = { ID: @Request.Params["id"], Detail: $("#Detail").val() };
-            alert('test');
             $.ajax(
             {
-                url: 'http://localhost:13131/api/IncomeMaster/PUT',
+                url: 'http://localhost:13131/api/IncomeMaster/Put',
                 type: 'PUT',
                 data: dataObject,
                 datatype: 'json',
-
                 success: function (result) {
                     alert('Update is completed');
                     window.location.href = "/IncomeMaster/IndexIncomeMaster";
