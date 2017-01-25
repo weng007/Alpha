@@ -33,7 +33,7 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
-        [EnableCorsAttribute("*", "*", "*")]
+
         [HttpGet]
         public string Get(int id)
         {

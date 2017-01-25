@@ -83,13 +83,6 @@
     </div>
 
 
-    <ul class="form-style">
-        <li>
-            <input id="Del" type="Button" value="Del" />
-        </li>
-    </ul>
-    <a href="#" id="Del"><img src="@Url.Content("~/Images/delete.png")" alt="IMAGES" /></a>
-
     @* ------------------------------- grid  -------------------------------*@
 
     <script>
@@ -144,7 +137,7 @@
 
             $.ajax(
             {
-                url: 'http://localhost:13131/api/Product/Get',
+                url: 'http://localhost:13131/api/Product',
                 type: 'GET',
                 datatype: 'json',
                 success: function (data) {
@@ -180,7 +173,7 @@
             var dataObject = { ID: id };
             $.ajax(
                 {
-                    url: 'http://localhost:13131/api/Product/Delete',
+                    url: 'http://localhost:13131/api/Product',
                     type: 'DELETE',
                     data: dataObject,
                     datatype: 'json',

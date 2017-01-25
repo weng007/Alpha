@@ -110,7 +110,7 @@
                     @Html.ValidationMessageFor(a => a.Remark)
                 </li>
                 <li>
-                    <input type="submit" value="Save" id="Create" />
+                    <input type="submit" value="Save" id="Update" />
                 </li>
             </ul>
             <ul class="attachgrid">
@@ -212,44 +212,41 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        @*var id= @Request.Params["id"];
+        var dataObject= @Request.Params["id"];
         $.ajax(
        {
-           url: 'http://localhost:13131/api/Product/'+id,
+           url: 'http://localhost:13131/api/Product/',
            type: 'GET',
+           data: dataObject,
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
-               SerialNo: $("#SerialNo").val(), MachineNo: $("#MachineNo").val(), ProductType: 1, Brand: $("#Brand").val(),
-               Size: $("#Size").val(), Model: $("#Model").val(), Lifetime: $("#Lifetime").val(), ReceiveDate: $("#ReceiveDate").val(),
-               Unit: 1, Balance: $("#Balance").val(), Remain: $("#Remain").val(), Lost: $("#Lost").val(), Repair: $("#Repair").val(),
-               Break: $("#Break").val(), Remark: $("#Remark").val()};
-
-        $("#SerialNo").val(data.Table[0].SerialNo),$("#MachineNo").val(data.Table[0].MachineNo), $("#ProductType").val(data.Table[0].ProductType),
-        $("#Brand").val(data.Table[0].Brand),$("#Size").val(data.Table[0].Size),$("#Model").val(data.Table[0].Model),$("#ReceiveDate").val(data.Table[0].ReceiveDate);
+               $("#SerialNo").val(data.Table[0].SerialNo),$("#MachineNo").val(data.Table[0].MachineNo), $("#ProductType").val(data.Table[0].ProductType),
+               $("#Brand").val(data.Table[0].Brand),$("#Size").val(data.Table[0].Size),$("#Model").val(data.Table[0].Model),$("#Lifetime").val(data.Table[0].Lifetime),
+               $("#ReceiveDate").val(data.Table[0].ReceiveDate),$("#Unit").val(data.Table[0].Unit),$("#Balance").val(data.Table[0].Balance),$("#Remain").val(data.Table[0].Remain),$("#Lost").val(data.Table[0].Lost),$("#Repair").val(data.Table[0].Repair),$("#Break").val(data.Table[0].Break),$("#Remark").val(data.Table[0].Remark)
            },
            error: function (msg) {
                alert(msg);
            }
 
-       });*@
+       });
 
         $("#Update").click(function () {
-            var dataObject = { SerialNo: $("#SerialNo").val(), MachineNo: $("#MachineNo").val(), ProductType: 1, Brand: $("#Brand").val(),
+            var dataObject = { ID: @Request.Params["id"], SerialNo: $("#SerialNo").val(), MachineNo: $("#MachineNo").val(), ProductType: 1, Brand: $("#Brand").val(),
                 Size: $("#Size").val(), Model: $("#Model").val(), Lifetime: $("#Lifetime").val(), ReceiveDate: $("#ReceiveDate").val(),
                 Unit: 1, Balance: $("#Balance").val(), Remain: $("#Remain").val(), Lost: $("#Lost").val(), Repair: $("#Repair").val(),
                 Break: $("#Break").val(), Remark: $("#Remark").val()};
             console.log(dataObject);
             $.ajax(
             {
-                url: 'http://localhost:13131/api/Product/PUT',
+                url: 'http://localhost:13131/api/Product/Put',
                 type: 'PUT',
                 data: dataObject,
                 datatype: 'json',
 
                 success: function (result) {
                     alert('Update is completed');
-                    top.location.href = "/BDC/IndexBDC";
+                    top.location.href = "/Products/IndexProducts";
                 }
                 ,
                 error: function (msg) {
