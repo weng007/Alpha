@@ -101,7 +101,7 @@ namespace AlphaApi.DataAccessLayer
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_IncomeMaster_Del", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_Product_Del", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", Product.ID);
                     conObj.Open();
