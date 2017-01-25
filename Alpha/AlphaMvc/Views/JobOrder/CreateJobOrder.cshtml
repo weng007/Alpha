@@ -988,7 +988,6 @@
             data: dataObject,
             success: function (data) {
                 data = JSON.parse(data);
-                alert('test');
                 $.each(data.Table, function (i) {
                     $('#cmbJobStatus').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
