@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
@@ -42,9 +43,9 @@ namespace AlphaApi.DataAccessLayer
                     return result;
 
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
                 finally
                 {
@@ -53,10 +54,9 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string UpdateData(ProductModels PD)
+        public int UpdateData(ProductModels PD)
         {
-            SqlConnection con = null;
-            string result = "";
+            int result = 0;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -81,12 +81,12 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@img", PD.img);
                     cmd.Parameters.AddWithValue("@Remark", PD.Remark);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
                 finally
                 {
@@ -97,7 +97,6 @@ namespace AlphaApi.DataAccessLayer
 
         public string DeleteData(ProductModels PD)
         {
-            SqlConnection con = null;
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -123,8 +122,6 @@ namespace AlphaApi.DataAccessLayer
 
         public DataSet SelectDataByID(int id)
         {
-            SqlConnection con = null;
-            string result = "";
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -132,7 +129,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_Product_Sel", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
+                    cmd.Parameters.AddWithValue("@ID", id);
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;
@@ -141,9 +138,9 @@ namespace AlphaApi.DataAccessLayer
 
                     return ds;
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return ds;
+                    throw ex;
                 }
                 finally
                 {
@@ -153,8 +150,6 @@ namespace AlphaApi.DataAccessLayer
         }
         public DataSet SelectAllData()
         {
-            SqlConnection con = null;
-            string result = "";
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -170,9 +165,9 @@ namespace AlphaApi.DataAccessLayer
                     da.Fill(ds);
                     return ds;
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return ds;
+                    throw ex;
                 }
                 finally
                 {

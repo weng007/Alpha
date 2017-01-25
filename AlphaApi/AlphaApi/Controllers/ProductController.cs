@@ -47,7 +47,7 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
-        public string Put(ProductModels PD)
+        public int Put(ProductModels PD)
         {
             //calling DBData Class Method and storing Repsonse   
             var response = EmpData.UpdateData(PD);
