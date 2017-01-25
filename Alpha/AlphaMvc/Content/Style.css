@@ -639,7 +639,11 @@ select{
 .form-style-1 .field-divided{
     width: 49%;
 }
-
+.form-style-1 .field-divided-2{
+    width: 49%;
+    float: left;
+    margin-right: 2px;
+}
 .form-style-1 .field-long{
     width: 100%;
 }
