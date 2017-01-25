@@ -12,9 +12,8 @@ namespace AlphaApi.DataAccessLayer
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         int result = 0;
-        public string InsertData(IncomeMasterModels incomeMaster)
+        public void InsertData(IncomeMasterModels incomeMaster)
         {
-            string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -23,11 +22,9 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Detail", incomeMaster.Detail);
                     conObj.Open();
-                    result = cmd.ExecuteNonQuery().ToString();
-
-                    return result;
+                    cmd.ExecuteNonQuery();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw ex;
                 }

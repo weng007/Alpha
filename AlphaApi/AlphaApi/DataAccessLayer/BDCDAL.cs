@@ -4,15 +4,16 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using AlphaApi.Models;
+using System;
 
 namespace AlphaApi.DataAccessLayer
 {
     public class BDCDAL
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
-        public string InsertData(BDCModels BDC)
+        int result = 0;
+        public void InsertData(BDCModels BDC)
         {
-            string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -26,14 +27,11 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Profit", BDC.Profit);
                     cmd.Parameters.AddWithValue("@Remark", BDC.Remark);
                     conObj.Open();
-                    result = cmd.ExecuteNonQuery().ToString();
-
-                    return result;
-
+                    cmd.ExecuteNonQuery();
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
                 finally
                 {
@@ -42,10 +40,8 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string UpdateData(BDCModels BDC)
+        public int UpdateData(BDCModels BDC)
         {
-            SqlConnection con = null;
-            string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -60,12 +56,12 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Profit", BDC.Profit);
                     cmd.Parameters.AddWithValue("@Remark", BDC.Remark);
                     conObj.Open();
-                    result = cmd.ExecuteNonQuery().ToString();
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
                 finally
                 {

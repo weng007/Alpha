@@ -19,10 +19,9 @@ namespace AlphaApi.Controllers
         public IncomeMasterDAL incomeMaster  = new IncomeMasterDAL();
 
         [HttpPost]
-        public string Post(IncomeMasterModels incomeModel)
+        public void Post(IncomeMasterModels incomeModel)
         {
-            var response = incomeMaster.InsertData(incomeModel);
-            return response;
+            incomeMaster.InsertData(incomeModel);
         }
 
         [HttpGet]
