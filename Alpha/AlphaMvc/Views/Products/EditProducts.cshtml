@@ -1,4 +1,5 @@
-﻿@{
+﻿@model AlphaMvc.Models.Product
+@{
     ViewBag.Title = "EditProducts";
 }
 
@@ -39,56 +40,77 @@
         <form>
             <ul class="form-style-1">
                 <li>
-                    <label>Products <span class="required">*</span></label>
-                    <input type="text" name="field1" class="field-divided" placeholder="Serial" />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="หมายเลขเครื่อง" />
+                    @Html.LabelFor(a => a.SerialNo)
+                    @Html.TextBoxFor(a => a.SerialNo, new { id = "SerialNo", @class = "field-divided", placeholder = "Serial" })
+                    @Html.ValidationMessageFor(a => a.SerialNo)&nbsp;
+                    @Html.LabelFor(a => a.MachineNo)
+                    @Html.TextBoxFor(a => a.MachineNo, new { id = "MachineNo", @class = "field-divided", placeholder = "หมายเลขเครื่อง" })
+                    @Html.ValidationMessageFor(a => a.MachineNo)
                 </li>
                 <li>
-                    <label>ประเภทสินค้า</label>
-                    <select name="field4" class="field-select">
-                        <option value="Advertise">Alphair</option>
-                        <option value="Partnership">Air Vent</option>
-                        <option value="General Question">Ball Valve </option>
-                    </select>
+                    @Html.LabelFor(a => a.ProductType)
+                    @Html.DropDownListFor(a => a.ProductType, new SelectListItem[]{
+                    new SelectListItem() {Text = "Alphair", Value="1"},
+                    new SelectListItem() {Text = "Air Vent", Value="2"},
+                    new SelectListItem() {Text = "Ball Valve", Value="3"}}, new { @class = "field-divided" })
                 </li>
                 <li>
-                    <input type="text" name="field1" class="field-divided" placeholder="ยี่ห้อ" />&nbsp;<input type="text" name="field2" class="field-select-small" placeholder="ขนาด" />
+                    @Html.LabelFor(a => a.Brand)
+                    @Html.TextBoxFor(a => a.Brand, new { id = "Brand", @class = "field-divided", placeholder = "ยี่ห้อ" })
+                    @Html.ValidationMessageFor(a => a.Brand)&nbsp;
+                    @Html.LabelFor(a => a.Size)
+                    @Html.TextBoxFor(a => a.Size, new { id = "Size", @class = "field-select-small", placeholder = "ขนาด" })
+                    @Html.ValidationMessageFor(a => a.Size)
                 </li>
                 <li>
-                    <input type="text" name="field2" class="field-divided" placeholder="รุ่น" />&nbsp;<input type="text" name="field2" class="field-select-small" placeholder="อายุการใช้งาน" />&nbsp;<input type="text" name="field2" class="field-select-small" value="ปี" />
+                    @Html.LabelFor(a => a.Model)
+                    @Html.TextBoxFor(a => a.Model, new { id = "Model", @class = "field-divided", placeholder = "รุ่น" })
+                    @Html.ValidationMessageFor(a => a.Model)&nbsp;
+                    @Html.LabelFor(a => a.Lifetime)
+                    @Html.TextBoxFor(a => a.Lifetime, new { id = "Lifetime", @class = "field-select-small", placeholder = "อายุการใช้งาน" })
+                    @Html.ValidationMessageFor(a => a.Lifetime)&nbsp;<label>ปี</label>
+
                 </li>
                 <li>
-                    <label class="label-big">รับเข้า</label>&nbsp;<label class="label-small">หน่วยนับ</label>
+                    @Html.LabelFor(a => a.ReceiveDate)
+                    @Html.TextBoxFor(a => a.ReceiveDate, new { id = "ReceiveDate", @class = "field-divided", placeholder = "วันที่รับเข้า" })
+                    @Html.ValidationMessageFor(a => a.ReceiveDate)&nbsp;
+                    @Html.LabelFor(a => a.Unit)
+                    @Html.DropDownListFor(a => a.Unit, new SelectListItem[]{
+                    new SelectListItem() {Text = "ชิ้น", Value="1"},
+                    new SelectListItem() {Text = "แท่ง", Value="2"}}, new { @class = "field-select-small-2" })
                 </li>
                 <li>
-                    <input type="text" id="datepicker" class="field-divided" placeholder="วันที่รับเข้า" />&nbsp;<select name="field4" class="field-select-small-2">
-                        <option value="Advertise">ชิ้น</option>
-                        <option value="Partnership">แท่ง</option>
-                        <option value="General Question">pack</option>
-                    </select>
+                    @Html.LabelFor(a => a.Balance)
+                    @Html.TextBoxFor(a => a.Balance, new { id = "Balance", @class = "field-select-small", placeholder = "ยกมา" })
+                    @Html.ValidationMessageFor(a => a.Balance)&nbsp;
+                    @Html.LabelFor(a => a.Remain)
+                    @Html.TextBoxFor(a => a.Remain, new { id = "Remain", @class = "field-select-small", placeholder = "คงเหลือ" })
+                    @Html.ValidationMessageFor(a => a.Remain)
                 </li>
                 <li>
-                    <label class="label-small">ยกมา</label>&nbsp;<label class="label-small-3">คงเหลือ</label>
-                </li>
-                <li>
-                    <input type="text" name="field1" class="field-select-small" placeholder="ยกมา" />&nbsp;<input type="text" name="field2" class="field-select-small" placeholder="คงเหลือ" />
-                </li>
-                <li>
-                    <label class="label-small-2">หาย</label>&nbsp;<label class="label-small-2">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>
-                </li>
-                <li>
-                    <input type="text" name="field6" class="field-select-small" placeholder="หาย" />&nbsp;<input type="text" name="field7" class="field-select-small" placeholder="ซ่อม" />&nbsp;<input type="text" name="field8" class="field-select-small" placeholder="ชำรุด" />
+                    @Html.LabelFor(a => a.Lost)
+                    @Html.TextBoxFor(a => a.Lost, new { id = "Lost", @class = "field-select-small", placeholder = "หาย" })
+                    @Html.ValidationMessageFor(a => a.Lost)&nbsp;
+                    @Html.LabelFor(a => a.Repair)
+                    @Html.TextBoxFor(a => a.Repair, new { id = "Repair", @class = "field-select-small", placeholder = "ซ่อม" })
+                    @Html.ValidationMessageFor(a => a.Repair)&nbsp;
+                    @Html.LabelFor(a => a.Break)
+                    @Html.TextBoxFor(a => a.Break, new { id = "Break", @class = "field-select-small", placeholder = "ชำรุด" })
+                    @Html.ValidationMessageFor(a => a.Break)
                 </li>
             </ul>
             <ul class="form-style-1">
                 <li>
-                    <button class="imgbutton"></button>
+                    <button class="imgbutton" id="img"></button>
                 </li>
                 <li>
-                    <label>หมายเหตุ<span class="required">*</span></label>
-                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                    @Html.LabelFor(a => a.Remark)
+                    @Html.TextAreaFor(a => a.Remark, new { id = "Remark", @class = "field-long field-textarea", placeholder = "หมายเหตุ" })
+                    @Html.ValidationMessageFor(a => a.Remark)
                 </li>
                 <li>
-                    <input type="submit" value="Save" />
+                    <input type="submit" value="Save" id="Create" />
                 </li>
             </ul>
             <ul class="attachgrid">
@@ -187,14 +209,55 @@
         </form>
     }
 </div>
+<script type="text/javascript">
 
-@{
+    $(document).ready(function () {
+        @*var id= @Request.Params["id"];
+        $.ajax(
+       {
+           url: 'http://localhost:13131/api/Product/'+id,
+           type: 'GET',
+           datatype: 'json',
+           success: function (data) {
+               data = JSON.parse(data);
+               SerialNo: $("#SerialNo").val(), MachineNo: $("#MachineNo").val(), ProductType: 1, Brand: $("#Brand").val(),
+               Size: $("#Size").val(), Model: $("#Model").val(), Lifetime: $("#Lifetime").val(), ReceiveDate: $("#ReceiveDate").val(),
+               Unit: 1, Balance: $("#Balance").val(), Remain: $("#Remain").val(), Lost: $("#Lost").val(), Repair: $("#Repair").val(),
+               Break: $("#Break").val(), Remark: $("#Remark").val()};
 
-            if (ViewData["result"] != "" && ViewData["result"] != null)
+        $("#SerialNo").val(data.Table[0].SerialNo),$("#MachineNo").val(data.Table[0].MachineNo), $("#ProductType").val(data.Table[0].ProductType),
+        $("#Brand").val(data.Table[0].Brand),$("#Size").val(data.Table[0].Size),$("#Model").val(data.Table[0].Model),$("#ReceiveDate").val(data.Table[0].ReceiveDate);
+           },
+           error: function (msg) {
+               alert(msg);
+           }
+
+       });*@
+
+        $("#Update").click(function () {
+            var dataObject = { SerialNo: $("#SerialNo").val(), MachineNo: $("#MachineNo").val(), ProductType: 1, Brand: $("#Brand").val(),
+                Size: $("#Size").val(), Model: $("#Model").val(), Lifetime: $("#Lifetime").val(), ReceiveDate: $("#ReceiveDate").val(),
+                Unit: 1, Balance: $("#Balance").val(), Remain: $("#Remain").val(), Lost: $("#Lost").val(), Repair: $("#Repair").val(),
+                Break: $("#Break").val(), Remark: $("#Remark").val()};
+            console.log(dataObject);
+            $.ajax(
             {
-                ViewData["result"] = null;
-        <script type="text/javascript" language="javascript">
-                    alert("Data saved Successfully");
-        </script>
-    }
-}
+                url: 'http://localhost:13131/api/Product/PUT',
+                type: 'PUT',
+                data: dataObject,
+                datatype: 'json',
+
+                success: function (result) {
+                    alert('Update is completed');
+                    top.location.href = "/BDC/IndexBDC";
+                }
+                ,
+                error: function (msg) {
+                    alert(msg);
+                    //top.location.href = "/ExpenseMaster/Index";
+                }
+            });
+        });
+    });
+</script>
+

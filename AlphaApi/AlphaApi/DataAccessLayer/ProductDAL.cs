@@ -11,9 +11,8 @@ namespace AlphaApi.DataAccessLayer
     public class ProductDAL
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
-        public string InsertData(ProductModels PD)
+        public string InsertData(ProductModels Product)
         {
-            SqlConnection con = null;
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -21,22 +20,22 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_Product_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@SerialNo", PD.SerialNo);
-                    cmd.Parameters.AddWithValue("@MachineNo", PD.MachineNo);
-                    cmd.Parameters.AddWithValue("@ProductType", PD.ProductType);
-                    cmd.Parameters.AddWithValue("@Brand", PD.Brand);
-                    cmd.Parameters.AddWithValue("@Size", PD.Size);
-                    cmd.Parameters.AddWithValue("@Model", PD.Model);
-                    cmd.Parameters.AddWithValue("@Lifetime", PD.Lifetime);
-                    cmd.Parameters.AddWithValue("@ReceiveDate", PD.ReceiveDate);
-                    cmd.Parameters.AddWithValue("@Unit", PD.Unit);
-                    cmd.Parameters.AddWithValue("@Balance", PD.Balance);
-                    cmd.Parameters.AddWithValue("@Remain", PD.Remain);
-                    cmd.Parameters.AddWithValue("@Lost", PD.Lost);
-                    cmd.Parameters.AddWithValue("@Repair", PD.Repair);
-                    cmd.Parameters.AddWithValue("@Break", PD.Break);
-                    cmd.Parameters.AddWithValue("@img", PD.img);
-                    cmd.Parameters.AddWithValue("@Remark", PD.Remark);
+                    cmd.Parameters.AddWithValue("@SerialNo", Product.SerialNo);
+                    cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo);
+                    cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
+                    cmd.Parameters.AddWithValue("@Brand", Product.Brand);
+                    cmd.Parameters.AddWithValue("@Size", Product.Size);
+                    cmd.Parameters.AddWithValue("@Model", Product.Model);
+                    cmd.Parameters.AddWithValue("@Lifetime", Product.Lifetime);
+                    cmd.Parameters.AddWithValue("@ReceiveDate", Product.ReceiveDate);
+                    cmd.Parameters.AddWithValue("@Unit", Product.Unit);
+                    cmd.Parameters.AddWithValue("@Balance", Product.Balance);
+                    cmd.Parameters.AddWithValue("@Remain", Product.Remain);
+                    cmd.Parameters.AddWithValue("@Lost", Product.Lost);
+                    cmd.Parameters.AddWithValue("@Repair", Product.Repair);
+                    cmd.Parameters.AddWithValue("@Break", Product.Break);
+                    //cmd.Parameters.AddWithValue("@img", Product.img);
+                    cmd.Parameters.AddWithValue("@Remark", Product.Remark);
                     conObj.Open();
                     result = cmd.ExecuteScalar().ToString();
 
@@ -54,7 +53,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public int UpdateData(ProductModels PD)
+        public int UpdateData(ProductModels Product)
         {
             int result = 0;
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -63,23 +62,23 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_Product_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", PD.ID);
-                    cmd.Parameters.AddWithValue("@SerialNo", PD.SerialNo);
-                    cmd.Parameters.AddWithValue("@MachineNo", PD.MachineNo);
-                    cmd.Parameters.AddWithValue("@ProductType", PD.ProductType);
-                    cmd.Parameters.AddWithValue("@Brand", PD.Brand);
-                    cmd.Parameters.AddWithValue("@Size", PD.Size);
-                    cmd.Parameters.AddWithValue("@Model", PD.Model);
-                    cmd.Parameters.AddWithValue("@Lifetime", PD.Lifetime);
-                    cmd.Parameters.AddWithValue("@ReceiveDate", PD.ReceiveDate);
-                    cmd.Parameters.AddWithValue("@Unit", PD.Unit);
-                    cmd.Parameters.AddWithValue("@Balance", PD.Balance);
-                    cmd.Parameters.AddWithValue("@Remain", PD.Remain);
-                    cmd.Parameters.AddWithValue("@Lost", PD.Lost);
-                    cmd.Parameters.AddWithValue("@Repair", PD.Repair);
-                    cmd.Parameters.AddWithValue("@Break", PD.Break);
-                    cmd.Parameters.AddWithValue("@img", PD.img);
-                    cmd.Parameters.AddWithValue("@Remark", PD.Remark);
+                    cmd.Parameters.AddWithValue("@ID", Product.ID);
+                    cmd.Parameters.AddWithValue("@SerialNo", Product.SerialNo);
+                    cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo);
+                    cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
+                    cmd.Parameters.AddWithValue("@Brand", Product.Brand);
+                    cmd.Parameters.AddWithValue("@Size", Product.Size);
+                    cmd.Parameters.AddWithValue("@Model", Product.Model);
+                    cmd.Parameters.AddWithValue("@Lifetime", Product.Lifetime);
+                    cmd.Parameters.AddWithValue("@ReceiveDate", Product.ReceiveDate);
+                    cmd.Parameters.AddWithValue("@Unit", Product.Unit);
+                    cmd.Parameters.AddWithValue("@Balance", Product.Balance);
+                    cmd.Parameters.AddWithValue("@Remain", Product.Remain);
+                    cmd.Parameters.AddWithValue("@Lost", Product.Lost);
+                    cmd.Parameters.AddWithValue("@Repair", Product.Repair);
+                    cmd.Parameters.AddWithValue("@Break", Product.Break);
+                    //cmd.Parameters.AddWithValue("@img", Product.img);
+                    cmd.Parameters.AddWithValue("@Remark", Product.Remark);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
                     return result;
@@ -95,7 +94,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string DeleteData(ProductModels PD)
+        public string DeleteData(ProductModels Product)
         {
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -104,7 +103,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_IncomeMaster_Del", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", PD.ID);
+                    cmd.Parameters.AddWithValue("@ID", Product.ID);
                     conObj.Open();
                     result = cmd.ExecuteScalar().ToString();
                     return result;
