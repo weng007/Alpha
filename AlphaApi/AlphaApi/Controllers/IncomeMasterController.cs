@@ -37,7 +37,6 @@ namespace AlphaApi.Controllers
         public string Get(int id)
         {
             var response = incomeMaster.SelectDataByID(id);
-            //var response = "GetID";
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
