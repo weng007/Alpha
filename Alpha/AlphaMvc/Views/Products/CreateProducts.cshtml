@@ -27,7 +27,7 @@
 <table>
     <tr>
         <td>
-            @Html.ActionLink("Products List", "IndexProducts")
+            <div class="linkstyle">@Html.ActionLink("Products List", "IndexProducts")</div>
         </td>
     </tr>
 </table>
@@ -40,9 +40,6 @@
                     @Html.LabelFor(a => a.SerialNo, new { @class = "label-2" }) &nbsp;@Html.LabelFor(a => a.MachineNo, new { @class = "label-3" })
                     @Html.TextBoxFor(a => a.SerialNo, new { id = "SerialNo", @class = "field-divided-2", placeholder = "Serial" })&nbsp;@Html.TextBoxFor(a => a.MachineNo, new { id = "MachineNo", @class = "field-divided", placeholder = "หมายเลขเครื่อง" })
                     @Html.ValidationMessageFor(a => a.SerialNo)&nbsp;@Html.ValidationMessageFor(a => a.MachineNo)
-                    
-                    
-                    
                 </li>
                 <li>
                     @Html.LabelFor(a => a.ProductType)
@@ -52,12 +49,9 @@
                     new SelectListItem() {Text = "Ball Valve", Value="3"}}, new { @class = "field-divided" })
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Brand)
-                    @Html.TextBoxFor(a => a.Brand, new { id = "Brand", @class = "field-divided", placeholder = "ยี่ห้อ" })
-                    @Html.ValidationMessageFor(a => a.Brand)&nbsp;
-                    @Html.LabelFor(a => a.Size)
-                    @Html.TextBoxFor(a => a.Size, new { id = "Size", @class = "field-select-small", placeholder = "ขนาด" })
-                    @Html.ValidationMessageFor(a => a.Size)
+                    @Html.LabelFor(a => a.Brand, new { @class = "label-2" })&nbsp;@Html.LabelFor(a => a.Size, new { @class = "label-3" })
+                    @Html.TextBoxFor(a => a.Brand, new { id = "Brand", @class = "field-divided", placeholder = "ยี่ห้อ" })&nbsp;@Html.TextBoxFor(a => a.Size, new { id = "Size", @class = "field-select-small", placeholder = "ขนาด" })
+                    @Html.ValidationMessageFor(a => a.Brand)&nbsp;@Html.ValidationMessageFor(a => a.Size)
                 </li>
                 <li>
                     @Html.LabelFor(a => a.Model)
