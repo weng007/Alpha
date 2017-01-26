@@ -8,6 +8,7 @@
 </h2>
 <link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/Style2.css")" rel="stylesheet" type="text/css" />
+
 <style>
     table {
         background: #fbfbf1;
@@ -17,26 +18,19 @@
 <table>
     <tr>
         <td>
-            @Html.ActionLink("Products List", "IndexProducts")
+            <div class="linkstyle">@Html.ActionLink("Products List", "IndexProducts")</div>
         </td>
     </tr>
 </table>
-@*<br />*@
-@* -------------------------------------- modal dialog-------------------------------- *@
-
-@* -------------------------------------- modal dialog ------------------------------- *@
 <div id="myModal">
     @using (Html.BeginForm())
     {
         <form>
             <ul class="form-style-1">
                 <li>
-                    @Html.LabelFor(a => a.SerialNo)
-                    @Html.TextBoxFor(a => a.SerialNo, new { id = "SerialNo", @class = "field-divided", placeholder = "Serial" })
-                    @Html.ValidationMessageFor(a => a.SerialNo)&nbsp;
-                    @Html.LabelFor(a => a.MachineNo)
-                    @Html.TextBoxFor(a => a.MachineNo, new { id = "MachineNo", @class = "field-divided", placeholder = "หมายเลขเครื่อง" })
-                    @Html.ValidationMessageFor(a => a.MachineNo)
+                    @Html.LabelFor(a => a.SerialNo, new { @class = "label-2" }) &nbsp;@Html.LabelFor(a => a.MachineNo, new { @class = "label-3" })
+                    @Html.TextBoxFor(a => a.SerialNo, new { id = "SerialNo", @class = "field-divided-2", placeholder = "Serial" })&nbsp;@Html.TextBoxFor(a => a.MachineNo, new { id = "MachineNo", @class = "field-divided", placeholder = "หมายเลขเครื่อง" })
+                    @Html.ValidationMessageFor(a => a.SerialNo)&nbsp;@Html.ValidationMessageFor(a => a.MachineNo)
                 </li>
                 <li>
                     @Html.LabelFor(a => a.ProductType)
@@ -46,49 +40,31 @@
                     new SelectListItem() {Text = "Ball Valve", Value="3"}}, new { @class = "field-divided" })
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Brand)
-                    @Html.TextBoxFor(a => a.Brand, new { id = "Brand", @class = "field-divided", placeholder = "ยี่ห้อ" })
-                    @Html.ValidationMessageFor(a => a.Brand)&nbsp;
-                    @Html.LabelFor(a => a.Size)
-                    @Html.TextBoxFor(a => a.Size, new { id = "Size", @class = "field-select-small", placeholder = "ขนาด" })
-                    @Html.ValidationMessageFor(a => a.Size)
+                    @Html.LabelFor(a => a.Brand, new { @class = "label-7" })&nbsp;@Html.LabelFor(a => a.Size, new { @class = "label-3" })
+                    @Html.TextBoxFor(a => a.Brand, new { id = "Brand", @class = "field-divided", placeholder = "ยี่ห้อ" })&nbsp;@Html.TextBoxFor(a => a.Size, new { id = "Size", @class = "field-select-small", placeholder = "ขนาด" })
+                    @Html.ValidationMessageFor(a => a.Brand)&nbsp;@Html.ValidationMessageFor(a => a.Size)
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Model)
-                    @Html.TextBoxFor(a => a.Model, new { id = "Model", @class = "field-divided", placeholder = "รุ่น" })
-                    @Html.ValidationMessageFor(a => a.Model)&nbsp;
-                    @Html.LabelFor(a => a.Lifetime)
-                    @Html.TextBoxFor(a => a.Lifetime, new { id = "Lifetime", @class = "field-select-small", placeholder = "อายุการใช้งาน" })
-                    @Html.ValidationMessageFor(a => a.Lifetime)&nbsp;<label>ปี</label>
-
+                    @Html.LabelFor(a => a.Model, new { @class = "label-7" })&nbsp;@Html.LabelFor(a => a.Lifetime, new { @class = "label-3" })
+                    @Html.TextBoxFor(a => a.Model, new { id = "Model", @class = "field-divided", placeholder = "รุ่น" })&nbsp;@Html.TextBoxFor(a => a.Lifetime, new { id = "Lifetime", @class = "field-select-small-4", placeholder = "อายุการใช้งาน" })&nbsp;<label class="label-8">ปี</label>
+                    @Html.ValidationMessageFor(a => a.Model)&nbsp;@Html.ValidationMessageFor(a => a.Lifetime)
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.ReceiveDate)
-                    @Html.TextBoxFor(a => a.ReceiveDate, new { id = "ReceiveDate", @class = "field-divided", placeholder = "วันที่รับเข้า" })
-                    @Html.ValidationMessageFor(a => a.ReceiveDate)&nbsp;
-                    @Html.LabelFor(a => a.Unit)
-                    @Html.DropDownListFor(a => a.Unit, new SelectListItem[]{
+                    @Html.LabelFor(a => a.ReceiveDate, new { @class = "label-4" })&nbsp;@Html.LabelFor(a => a.Unit, new { @class = "label-3" })
+                    @Html.TextBoxFor(a => a.ReceiveDate, new { id = "ReceiveDate", @class = "field-divided", placeholder = "วันที่รับเข้า" })&nbsp;@Html.DropDownListFor(a => a.Unit, new SelectListItem[]{
                     new SelectListItem() {Text = "ชิ้น", Value="1"},
                     new SelectListItem() {Text = "แท่ง", Value="2"}}, new { @class = "field-select-small-2" })
+                    @Html.ValidationMessageFor(a => a.ReceiveDate)
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Balance)
-                    @Html.TextBoxFor(a => a.Balance, new { id = "Balance", @class = "field-select-small", placeholder = "ยกมา" })
-                    @Html.ValidationMessageFor(a => a.Balance)&nbsp;
-                    @Html.LabelFor(a => a.Remain)
-                    @Html.TextBoxFor(a => a.Remain, new { id = "Remain", @class = "field-select-small", placeholder = "คงเหลือ" })
-                    @Html.ValidationMessageFor(a => a.Remain)
+                    @Html.LabelFor(a => a.Balance, new { @class = "label-small-3" })&nbsp;@Html.LabelFor(a => a.Remain, new { @class = "label-9" })
+                    @Html.TextBoxFor(a => a.Balance, new { id = "Balance", @class = "field-select-small", placeholder = "ยกมา" })&nbsp;@Html.TextBoxFor(a => a.Remain, new { id = "Remain", @class = "field-select-small", placeholder = "คงเหลือ" })
+                    @Html.ValidationMessageFor(a => a.Balance)&nbsp;@Html.ValidationMessageFor(a => a.Remain)
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Lost)
-                    @Html.TextBoxFor(a => a.Lost, new { id = "Lost", @class = "field-select-small", placeholder = "หาย" })
-                    @Html.ValidationMessageFor(a => a.Lost)&nbsp;
-                    @Html.LabelFor(a => a.Repair)
-                    @Html.TextBoxFor(a => a.Repair, new { id = "Repair", @class = "field-select-small", placeholder = "ซ่อม" })
-                    @Html.ValidationMessageFor(a => a.Repair)&nbsp;
-                    @Html.LabelFor(a => a.Break)
-                    @Html.TextBoxFor(a => a.Break, new { id = "Break", @class = "field-select-small", placeholder = "ชำรุด" })
-                    @Html.ValidationMessageFor(a => a.Break)
+                    @Html.LabelFor(a => a.Lost, new { @class = "label-small-4" })&nbsp;@Html.LabelFor(a => a.Repair, new { @class = "label-small-3" })&nbsp;@Html.LabelFor(a => a.Break, new { @class = "label-10" })
+                    @Html.TextBoxFor(a => a.Lost, new { id = "Lost", @class = "field-select-small", placeholder = "หาย" })&nbsp;@Html.TextBoxFor(a => a.Repair, new { id = "Repair", @class = "field-select-small", placeholder = "ซ่อม" })&nbsp;@Html.TextBoxFor(a => a.Break, new { id = "Break", @class = "field-select-small", placeholder = "ชำรุด" })
+                    @Html.ValidationMessageFor(a => a.Lost)&nbsp;@Html.ValidationMessageFor(a => a.Repair)&nbsp;@Html.ValidationMessageFor(a => a.Break)
                 </li>
             </ul>
             <ul class="form-style-1">
@@ -96,12 +72,12 @@
                     <button class="imgbutton" id="img"></button>
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Remark)
+                    @Html.LabelFor(a => a.Remark, new { @class = "label-10" })
                     @Html.TextAreaFor(a => a.Remark, new { id = "Remark", @class = "field-long field-textarea", placeholder = "หมายเหตุ" })
                     @Html.ValidationMessageFor(a => a.Remark)
                 </li>
                 <li>
-                    <input type="submit" value="Save" id="Update" />
+                    <input type="submit" value="Save" id="Create" />
                 </li>
             </ul>
             <ul class="attachgrid">

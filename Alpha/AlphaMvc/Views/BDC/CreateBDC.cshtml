@@ -15,6 +15,7 @@
 <link href="@Url.Content("~/Content/Dialog/dialogstyle.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/Tab/easy-responsive-tabs.css")" rel="stylesheet" type="text/css" />
 <script src="@Url.Content("~/Scripts/Tab/easyResponsiveTabs.js")" type="text/javascript"></script>
+<link href="@Url.Content("~/Content/Style2.css")" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <div id="dialog" title="Quotation" class="dialogstyle">
@@ -67,41 +68,26 @@
     @using (Html.BeginForm())
     {
         <form>
-            <ul class="form-style-1">
+            <ul class="form-style-2">
                 <li>
                     <img src="@Url.Content("~/images/btnNewVersion.jpg")" alt="IMAGES" class="btnimage-3" />
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Docver)
-                    @Html.TextBoxFor(a => a.Docver, new { id = "Docver", @class= "field-select-small-2", placeholder = "1", disabled = "disabled" })
-                    @Html.ValidationMessageFor(a => a.Docver)
+                    @Html.LabelFor(a => a.Docver, new { @class = "label-7" })&nbsp;@Html.LabelFor(a => a.Price, new { @class = "label-4" })&nbsp;@Html.LabelFor(a => a.Cost, new { @class = "label-3" })
+                    @Html.TextBoxFor(a => a.Docver, new { id = "Docver", @class = "field-divided-3", placeholder = "1", disabled = "disabled" })&nbsp;@Html.TextBoxFor(a => a.Price, new { id = "Price", @class = "field-divided-4", placeholder = "ราคาขาย" })&nbsp;@Html.TextBoxFor(a => a.Cost, new { id = "Cost", @class = "field-divided-5", placeholder = "ราคาทุน" })
+                    @Html.ValidationMessageFor(a => a.Docver)&nbsp;@Html.ValidationMessageFor(a => a.Price)&nbsp;@Html.ValidationMessageFor(a => a.Cost)
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.QuotationNo)
-                    @Html.TextBoxFor(a => a.QuotationNo, new { id = "QuotationNo", @class = "field-select-big", placeholder = "ใบเสนอราคา", disabled = "disabled" })
+                    @Html.LabelFor(a => a.QuotationNo, new { @class = "label-11" })&nbsp;@Html.LabelFor(a => a.Profit, new { @class = "label-12" })
+                    @Html.TextBoxFor(a => a.QuotationNo, new { id = "QuotationNo", @class = "field-divided", placeholder = "ใบเสนอราคา", disabled = "disabled" })
                     @Html.ValidationMessageFor(a => a.QuotationNo)
-                    &nbsp;<a href="#" id="opener"><img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" /></a>
+                    &nbsp;<a href="#" id="opener"><img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" /></a>&nbsp;@Html.TextBoxFor(a => a.Profit, new { id = "Profit", @class = "field-divided-5", placeholder = "กำไร" })&nbsp;@Html.ValidationMessageFor(a => a.Profit)
                 </li>
             </ul>
-            <ul class="form-style-1">
+            <ul class="form-style-2">
                 <li>
-                    @Html.LabelFor(a => a.Price)
-                    @Html.TextBoxFor(a => a.Price, new { id = "Price", @class = "field-select-big", placeholder = "ราคาขาย"})
-                    @Html.ValidationMessageFor(a => a.Price)&nbsp;
-                    @Html.LabelFor(a => a.Cost)
-                    @Html.TextBoxFor(a => a.Cost, new { id = "Cost", @class = "field-select-big", placeholder = "ราคาทุน" })
-                    @Html.ValidationMessageFor(a => a.Cost)
-                </li>
-                <li>
-                    @Html.LabelFor(a => a.Profit)
-                    @Html.TextBoxFor(a => a.Profit, new { id = "Profit", @class = "field-divided", placeholder = "กำไร" })
-                    @Html.ValidationMessageFor(a => a.Profit)
-                </li>
-            </ul>
-            <ul class="form-style-1">
-                <li>
-                    @Html.LabelFor(a => a.Remark)
-                    @Html.TextAreaFor(a => a.Remark, new { id = "Remark", @class = "field-long field-textarea", placeholder = "หมายเหตุ" })
+                    @Html.LabelFor(a => a.Remark, new { @class = "label-13" })
+                    @Html.TextAreaFor(a => a.Remark, new { id = "Remark", @class = "field-long field-textarea", placeholder = "หมายเหตุ" })&nbsp;<input type="submit" value="Save" id="Create" />
                     @Html.ValidationMessageFor(a => a.Remark)
                 </li>
                 <br />
@@ -273,11 +259,7 @@
                     </td>
                 </tr>
             </table>
-            <ul class="form-style-1">
-                <li>
-                    <input type="submit" value="Save" id="Create"/>
-                </li>
-            </ul>
+            
         </form>
     }
 </div>

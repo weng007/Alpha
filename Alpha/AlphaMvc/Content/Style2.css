@@ -172,10 +172,6 @@ select{
     box-shadow: 0 0 8px #88D5E9;
     border: 1px solid #88D5E9;
 }
-/*.form-style-2 .field-divided{
-    width: 49%;
-}*/
-
 .form-style-3 .field-long{
     width: 100%;
 }
@@ -237,14 +233,14 @@ select{
 }
 /*-------------------------------------------------- form-style-2 ---------------------------------------------------*/
 .form-style-2 {
-    max-width: 400px;
+    width:100%;
     font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     float: left;
     margin-right: 30px;
 }
 .form-style-2 .field-divided{
-    /*width: 49%;*/
-    width: 75%;
+    width: 49% !important;
+    /*width: 75%;*/
 }
 .form-style-2 li {
     padding: 0;
@@ -265,6 +261,115 @@ select{
     font-weight: bold;
     float: left;
     margin-right: 30%;
+}
+.form-style-2 .label-3 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+}
+.form-style-2 .label-4 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 52.5%;
+}
+.form-style-2 .label-5 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 37%;
+}
+.form-style-2 .label-6 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 10px;
+}
+.form-style-2 .label-7 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 9%;
+}
+.form-style-2 .label-8{
+    margin:0 0 3px 0;
+    padding:0px;
+    display:block;
+    font-weight: 100;
+    float: right;
+    margin-right: 85px;
+    margin-top: 5px;
+}
+.form-style-2 .label-9 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 50%;
+}
+.form-style-2 .label-10 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 40%;
+}
+.form-style-2 .label-11 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 61%;
+}
+.form-style-2 .label-12 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 5%;
+}
+.form-style-2 .label-13 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 61%;
+    margin-left: 35%;
+}
+.form-style-2 .field-divided-2{
+    width: 49% !important;
+    float: left;
+    margin-right: 3px !Important;
+}
+.form-style-2 .field-divided-3{
+    width: 10% !important;
+    margin-right: 10% !Important;
+}
+.form-style-2 .field-divided-4{
+    width: 49% !important;
+    margin-right: 3px !Important;
+}
+.form-style-2 .field-divided-5{
+    width: 49% !important;
+    float: right;
+    margin-top: -7.8% !important;
+    position: relative;
+    left: 123px;
 }
 .form-style-2 input[type=text], 
 .form-style-2 input[type=date],
@@ -323,12 +428,17 @@ select{
 .form-style-2 .field-textarea{
     height: 100px;
     width: 250px;
+    margin-left: 35%;
 }
 .form-style-2 input[type=submit], .form-style-2 input[type=button]{
     background: #4B99AD;
     padding: 8px 15px 8px 15px;
     border: none;
     color: #fff;
+    float: right;
+    margin-top: -9.3%;
+    position: relative;
+    left: 90px;
 }
 .form-style-2 input[type=submit]:hover, .form-style-2 input[type=button]:hover{
     background: #4691A4;
@@ -446,6 +556,7 @@ select{
     float: left;
     margin-right: 40%;
 }
+
 .form-style-1 .label-small {
     margin: 0 0 3px 0;
     padding: 0px;
@@ -577,10 +688,14 @@ select{
 .form-style-1 .field-divided{
     width: 49%;
 }
+
 .form-style-1 .field-divided-2{
     width: 49%;
     float: left;
     margin-right: 3px !Important;
+}
+.form-style-1 .field-divided-3{
+    width: 10%;
 }
 .form-style-1 .field-long{
     width: 100%;
