@@ -27,14 +27,14 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get()
         {
-            var response = incomeMaster.SelectAllData();
+            var response = incomeMaster.SelectData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
         [HttpGet]
         public string Get(int id)
         {
-            var response = incomeMaster.SelectDataByID(id);
+            var response = incomeMaster.SelectByID(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 

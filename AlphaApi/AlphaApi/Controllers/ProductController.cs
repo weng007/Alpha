@@ -29,7 +29,7 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get()
         {
-            var response = Productdb.SelectAllData();
+            var response = Productdb.SelectData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
@@ -37,7 +37,7 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get(int id)
         {
-            var response = Productdb.SelectDataByID(id);
+            var response = Productdb.SelectByID(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 

@@ -86,14 +86,14 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public DataSet SelectDataByID(int id)
+        public DataSet SelectByID(int id)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_ExpenseMaster_Sel", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_ExpenseMaster_SelByID", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", id); // 
                     conObj.Open();
@@ -114,7 +114,7 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-        public DataSet SelectAllData()
+        public DataSet SelectData()
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -122,7 +122,7 @@ namespace AlphaApi.DataAccessLayer
                 try
                 {
 
-                    SqlCommand cmd = new SqlCommand("SP_ExpenseMaster_Search", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_ExpenseMaster_Sel", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
