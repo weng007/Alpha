@@ -5,73 +5,20 @@
 <h2>
     JobOrder Edit
 </h2>
+@* =============== dialog *@
 <link href="@Url.Content("~/Content/Dialog/dialogstyle.css")" rel="stylesheet" type="text/css" />
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link href="@Url.Content("~/Content/jquery.dataTables.css")" rel="stylesheet" type="text/css" />
-<link href="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/css/buttons.jqueryui.min.css")" rel="stylesheet" type="text/css" />
-<script src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/js/buttons.html5.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/js/buttons.print.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/js/buttons.colVis.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.dataTables.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/1.10.13/js/dataTables.jqueryui.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/js/dataTables.buttons.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/js/buttons.jqueryui.min.js")" type="text/javascript"></script>
-
+@* =============== Tab *@
 <link href="@Url.Content("~/Content/Tab/easy-responsive-tabs.css")" rel="stylesheet" type="text/css" />
 <script src="@Url.Content("~/Scripts/Tab/easyResponsiveTabs.js")" type="text/javascript"></script>
-@* ----------------------------------------- dynotable ---------------------------------------- *@
+@* =============== Dynamictable *@
 <link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
 <script src="@Url.Content("~/Scripts/EditableGrid/jquery.dynotable.js")" type="text/javascript"></script>
-@* ----------------------------------------- dynotable ---------------------------------------- *@
+@* =============== timepicker *@
 <link href="@Url.Content("~/Content/timepicker/wickedpicker.css")" rel="stylesheet" type="text/css" />
 <script src="@Url.Content("~/Scripts/timepicker/wickedpicker.js")" type="text/javascript"></script>
-@* ----------------------------------------- timepicker ---------------------------------------- *@
-<script>
-    hljs.tabReplace = '    '; // 4 spaces
-    hljs.initHighlightingOnLoad();
 
-  $( function() {
-      $("#dialog").dialog({
-      scoll: true,
-      height: "auto",
-      width: 550,
-      paging: false,
-      modal: true,
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "explode",
-        duration: 1000
-      }
-    });
-
-    $( "#opener" ).on( "click", function() {
-      $( "#dialog" ).dialog( "open" );
-    });
-
-    $("#datepicker").datepicker();
-    $("#datepicker2").datepicker();
-    $("#datepicker3").datepicker();
-    $("#datepicker4").datepicker();
-    $("#datepicker5").datepicker();
-
-    $('#t1').dynoTable();
-    $('#t2').dynoTable2();
-    $('#t3').dynoTable3();
-    $('#t4').dynoTable4();
-    $('#t5').dynoTable5();
-    $('#t6').dynoTable6();
-    $('#t7').dynoTable7();
-  } );
-</script>
 <div id="dialog" title="ลูกค้า" class="dialogstyle">
     <div class="DialogDiv">
         <table id="example2" class="display" cellspacing="0">
@@ -968,6 +915,48 @@
 
 
 <script>
+    hljs.tabReplace = '    '; // 4 spaces
+    hljs.initHighlightingOnLoad();
+
+    $(function () {
+        $("#dialog").dialog({
+            scoll: true,
+            height: "auto",
+            width: 550,
+            paging: false,
+            modal: true,
+            autoOpen: false,
+            show: {
+                effect: "blind",
+                duration: 1000
+            },
+            hide: {
+                effect: "explode",
+                duration: 1000
+            }
+        });
+
+        $("#opener").on("click", function () {
+            $("#dialog").dialog("open");
+        });
+
+        $("#datepicker").datepicker();
+        $("#datepicker2").datepicker();
+        $("#datepicker3").datepicker();
+        $("#datepicker4").datepicker();
+        $("#datepicker5").datepicker();
+
+        $('#t1').dynoTable();
+        $('#t2').dynoTable2();
+        $('#t3').dynoTable3();
+        $('#t4').dynoTable4();
+        $('#t5').dynoTable5();
+        $('#t6').dynoTable6();
+        $('#t7').dynoTable7();
+
+        var dates = new Date();
+        $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
+    });
     $(document).ready(function () {
 
         $('#parentHorizontalTab').easyResponsiveTabs({
@@ -983,29 +972,6 @@
                 $info.show();
             }
         });
-
-        var table = $('#example').DataTable({
-            lengthChange: false
-        });
-
-        var table2 = $('#example2').DataTable({
-            lengthChange: false
-
-        });
-        table.buttons().container()
-            .insertBefore('#example_filter');
     });
-    var dates = new Date();
-    $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
+    
 </script>
-
-@{
-
-            if (ViewData["result"] != "" && ViewData["result"] != null)
-            {
-                ViewData["result"] = null;
-        <script type="text/javascript" language="javascript">
-                    alert("Data saved Successfully");
-        </script>
-    }
-}

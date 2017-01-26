@@ -6,17 +6,8 @@
 <h2>
     Product Edit
 </h2>
-@* -------------------------------------- table -------------------------------- *@
 <link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
-@* -------------------------------------- table -------------------------------- *@
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
-</script>
+<link href="@Url.Content("~/Content/Style2.css")" rel="stylesheet" type="text/css" />
 <style>
     table {
         background: #fbfbf1;
@@ -212,6 +203,8 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+        $("#ReceiveDate").datepicker();
+
         var dataObject= @Request.Params["id"];
         $.ajax(
        {

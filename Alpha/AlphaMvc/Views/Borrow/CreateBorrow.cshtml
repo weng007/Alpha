@@ -8,14 +8,6 @@
 @* -------------------------------------- table -------------------------------- *@
 <link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
 @* -------------------------------------- table -------------------------------- *@
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
-</script>
 <style>
     table {
         background: #fbfbf1;
@@ -68,14 +60,3 @@
 </form>
     }
 </div>
-
-@{
-
-            if (ViewData["result"] != "" && ViewData["result"] != null)
-            {
-                ViewData["result"] = null;
-        <script type="text/javascript" language="javascript">
-                    alert("Data saved Successfully");
-        </script>
-    }
-}

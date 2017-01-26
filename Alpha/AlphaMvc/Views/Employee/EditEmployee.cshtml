@@ -10,40 +10,12 @@
         </td>
     </tr>
 </table>
-@*<br />*@
-@* -------------------------------------- modal dialog-------------------------------- *@
+@* -------------------------------------- Tab, FormStyle-------------------------------- *@
 <link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
-@* -------------------------------------- modal dialog ------------------------------- *@
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
-<script src="@Url.Content("~/Scripts/EditableGrid/jquery.dynotable.js")" type="text/javascript"></script>
-@* ------------------------------------- tab bar ---------------------------------------- *@
-
 <link href="@Url.Content("~/Content/Tab/easy-responsive-tabs.css")" rel="stylesheet" type="text/css" />
 <script src="@Url.Content("~/Scripts/Tab/easyResponsiveTabs.js")" type="text/javascript"></script>
-
 @* -------------------------------------------------------------------------------------- *@
 
-<script type="text/javascript">
-
-            hljs.tabReplace = '    '; // 4 spaces
-            hljs.initHighlightingOnLoad();
-
-
-            $(document).ready(function () {
-                $("#datepicker").datepicker();
-                $('#t1').dynoTable();
-                $('#t2').dynoTable2();
-            });
-
-</script>
-
-@*<br />*@
-@* -------------------------------------- modal dialog-------------------------------- *@
-
-@* -------------------------------------- modal dialog ------------------------------- *@
 <div id="myModal">
     @using (Html.BeginForm())
     {
@@ -75,15 +47,8 @@
                         <option value="Partnership">D</option>
                     </select>
                 </li>
-                @*<li>
-                        <lable>Enter Employee Id:</lable>
-                        <input type="text" id="txtEmpid" class="field-divided" placeholder="EmployeeID" />
-                        <button onclick="GetAllEmployees();return false;">Get All Employees</button>
-                    </li>*@
                 <br />
             </ul>
-            @* ------------------------------------------- tabbar ------------------------------------- *@
-            @* ---------------------------------------------------------------------------------------------------------- *@
             <table class="tabbar">
                 <tr>
                     <td>
@@ -97,7 +62,6 @@
                                 <div class="resp-tabs-container hor_1">
                                     <div>
                                         <div class="grigbar">
-                                            @*<a href="/JobOrder/Create"><img src="@Url.Content("~/images/btnNew.jpg")" alt="IMAGES" /></a>*@
                                             <table id="example" class="display" cellspacing="0">
                                                 <thead>
                                                     <tr>
@@ -148,7 +112,6 @@
                                     </div>
                                     <div>
                                         <div class="grigbar">
-                                            @*<a href="/JobOrder/Create"><img src="@Url.Content("~/images/btnNew.jpg")" alt="IMAGES" /></a>*@
                                             <table id="example2" class="display" cellspacing="0">
                                                 <thead>
                                                     <tr>
@@ -225,32 +188,10 @@
                     </td>
                 </tr>
             </table>
-
-            @*<ul class="form-style">
-                <li>
-                    <input type="submit" value="Save" />
-                </li>
-            </ul>*@
-
-            @* ------------------------------------------- tabbar ------------------------------------- *@
         </form>
-
     }
 </div>
-<link href="@Url.Content("~/Content/table/jquery-ui.css")" rel="stylesheet" type="text/css" />
-<link href="@Url.Content("~/Content/jquery.dataTables.css")" rel="stylesheet" type="text/css" />
-<link href="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/css/buttons.jqueryui.min.css")" rel="stylesheet" type="text/css" />
-@*<script src="@Url.Content("https://code.jquery.com/jquery-1.12.4.js")" type="text/javascript"></script>*@
-<script src="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/js/buttons.html5.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/js/buttons.print.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/js/buttons.colVis.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.dataTables.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/1.10.13/js/dataTables.jqueryui.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/js/dataTables.buttons.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("https://cdn.datatables.net/buttons/1.2.3/js/buttons.jqueryui.min.js")" type="text/javascript"></script>
+
 
 <script>
     $(document).ready(function () {
@@ -269,143 +210,5 @@
             }
         });
 
-            var table = $('#example').DataTable({
-                lengthChange: false
-            });
-
-            var table2 = $('#example2').DataTable({
-                lengthChange: false
-            });
-
-            var table3 = $('#example3').DataTable({
-                lengthChange: false
-            });
-
-            table.buttons().container()
-                .insertBefore('#example_filter');
     });
-
-    var date = new Date();
-
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-
-    if (month < 10) month = "0" + month;
-    if (day < 10) day = "0" + day;
-
-    var today = year + "-" + month + "-" + day;
-
-
-    document.getElementById('theDate').value = today;
-    document.getElementById('theDate1').value = today;
-    document.getElementById('theDate2').value = today;
-    document.getElementById('theDate3').value = today;
-
-
-
-    //--------------------------------------------------------
-    function GetAllEmployees() {
-        jQuery.support.cors = true;
-        $.ajax({
-            url: 'http://localhost:24655/api/Product/',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                WriteResponse(data);
-                console.log(data);
-            },
-            error: function (x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
-            }
-        });
-    }
-
-    function AddEmployee() {
-        jQuery.support.cors = true;
-        var employee = {
-            ID: $('#txtaddEmpid').val(),
-            EmpName: $('#txtaddEmpName').val(),
-            EmpDepartment: $('#txtaddEmpDep').val(),
-            EmpMobile: $('#txtaddEmpMob').val()
-        };
-
-        $.ajax({
-            url: 'http://localhost:8080/API_SVC/api/EmployeeAPI',
-            type: 'POST',
-            data: JSON.stringify(employee),
-            contentType: "application/json;charset=utf-8",
-            success: function (data) {
-                WriteResponse(data);
-            },
-            error: function (x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
-            }
-        });
-    }
-
-    function DeleteEmployee() {
-        jQuery.support.cors = true;
-        var id = $('#txtdelEmpId').val()
-
-        $.ajax({
-            url: 'http://localhost:8080/API_SVC/api/EmployeeAPI/' + id,
-            type: 'DELETE',
-            contentType: "application/json;charset=utf-8",
-            success: function (data) {
-                WriteResponse(data);
-            },
-            error: function (x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
-            }
-        });
-    }
-
-    function WriteResponse(employees) {
-        var strResult = "<table><th>EmpID</th><th>Emp Name</th><th>Emp Department</th><th>Mobile No</th>";
-        $.each(employees, function (index, employee) {
-            strResult += "<tr><td>" + employee.ID + "</td><td> " + employee.EmpName + "</td><td>" + employee.EmpDepartment + "</td><td>" + employee.EmpMobile + "</td></tr>";
-        });
-        strResult += "</table>";
-        $("#divResult").html(strResult);
-    }
-
-    function ShowEmployee(employee) {
-        if (employee != null) {
-            var strResult = "<table><th>EmpID</th><th>Emp Name</th><th>Emp Department</th><th>Mobile No</th>";
-            strResult += "<tr><td>" + employee.ID + "</td><td> " + employee.EmpName + "</td><td>" + employee.EmpDepartment + "</td><td>" + employee.EmpMobile + "</td></tr>";
-            strResult += "</table>";
-            $("#divResult").html(strResult);
-        }
-        else {
-            $("#divResult").html("No Results To Display");
-        }
-    }
-
-    function GetEmployee() {
-        jQuery.support.cors = true;
-        var id = $('#txtEmpid').val();
-        $.ajax({
-            url: 'http://localhost:8080/API_SVC/api/EmployeeAPI/' + id,
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                ShowEmployee(data);
-            },
-            error: function (x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
-            }
-        });
-    }
-    //--------------------------------------------------------
 </script>
-@{
-
-            if (ViewData["result"] != "" && ViewData["result"] != null)
-            {
-                ViewData["result"] = null;
-        <script type="text/javascript" language="javascript">
-                    alert("Data saved Successfully");
-        </script>
-    }
-}
