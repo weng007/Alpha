@@ -371,13 +371,14 @@ select{
     margin:0 0 3px 0;
     padding:0px;
     display:block;
-    font-weight: bold;
+    font-weight: 100;
+    /*font-weight: bold;*/
 }
 .form-style-1 .label-2 {
     margin: 0 0 3px 0;
     padding: 0px;
     display: block;
-    font-weight: bold;
+    font-weight: 100;
     float: left;
     margin-right: 36%;
 }
@@ -385,22 +386,22 @@ select{
     margin: 0 0 3px 0;
     padding: 0px;
     display: block;
-    font-weight: bold;
+    font-weight: 100;
     float: left;
 }
 .form-style-1 .label-4 {
     margin: 0 0 3px 0;
     padding: 0px;
     display: block;
-    font-weight: bold;
+    font-weight: 100;
     float: left;
-    margin-right: 33%;
+    margin-right: 31%;
 }
 .form-style-1 .label-5 {
     margin: 0 0 3px 0;
     padding: 0px;
     display: block;
-    font-weight: bold;
+    font-weight: 100;
     float: left;
     margin-right: 37%;
 }
@@ -408,9 +409,42 @@ select{
     margin: 0 0 3px 0;
     padding: 0px;
     display: block;
-    font-weight: bold;
+    font-weight: 100;
     float: left;
     margin-right: 10px;
+}
+.form-style-1 .label-7 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 41%;
+}
+.form-style-1 .label-8{
+    margin:0 0 3px 0;
+    padding:0px;
+    display:block;
+    font-weight: 100;
+    float: right;
+    margin-right: 85px;
+    margin-top: 5px;
+}
+.form-style-1 .label-9 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 50%;
+}
+.form-style-1 .label-10 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: 100;
+    float: left;
+    margin-right: 40%;
 }
 .form-style-1 .label-small {
     margin: 0 0 3px 0;
@@ -424,7 +458,7 @@ select{
     margin: 0 0 3px 0;
     padding: 0px;
     display: block;
-    font-weight: bold;
+    font-weight: 100;
     float: left;
     margin-right: 14.5%;
 }
@@ -432,7 +466,7 @@ select{
     margin: 0 0 3px 0;
     padding: 0px;
     display: block;
-    font-weight: bold;
+    font-weight: 100;
     float: left;
     margin-right: 10%;
 }
@@ -440,9 +474,9 @@ select{
     margin: 0 0 3px 0;
     padding: 0px;
     display: block;
-    font-weight: bold;
+    font-weight: 100;
     float: left;
-    margin-right: 1%;
+    margin-right: 15%;
 }
 .form-style-1 .label-small-5 {
     margin: 0 0 3px 0;
@@ -567,6 +601,9 @@ select{
     /*background-color: #d3cba9;
     border: none !important;*/
     width: 35%;
+}
+.form-style-1 .field-select-small-4{
+    width: 25%;
 }
 .form-style-1 .field-select-big {
     width: 80%;
@@ -972,6 +1009,7 @@ select{
     background-position-x: 49%;
     background-position-y: 45%;
     margin-top: 22px;
+    margin-bottom:10px;
     position: relative;
     /* background-color: #d5d7b7; */
     background-color: #f6f4e3;

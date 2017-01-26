@@ -6716,6 +6716,10 @@
             computed = computed || getStyles(elem);
 
             // getPropertyValue is only needed for .css('filter') in IE9, see #12537
+            // getPropertyValue is only needed for .css('filter') (#12537)
+            //if (computed) {
+            //    ret = computed.getPropertyValue(name) || computed[name];
+            //}
             ret = computed ? computed.getPropertyValue(name) || computed[name] : undefined;
 
             // Support: Opera 12.1x only
