@@ -70,40 +70,30 @@
         <form>
             <ul class="form-style-1">
                 <li>
-                    <img src="@Url.Content("~/images/btnNewVersion.jpg")" alt="IMAGES" class="btnimage-3" />
+                    <label class="btnnew">Doc Version</label>&nbsp;<img src="@Url.Content("~/images/btnNewVersion.jpg")" alt="IMAGES" class="btnimage-3" />
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Docver)
-                    @Html.TextBoxFor(a => a.Docver, new { id = "Docver", @class = "field-select-small-2", placeholder = "1", disabled = "disabled" })
-                    @Html.ValidationMessageFor(a => a.Docver)
+                    <input type="text" id="Docver" name="field1" class="field-select-small-2" placeholder="V1" disabled />
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.QuotationNo)
-                    @Html.TextBoxFor(a => a.QuotationNo, new { id = "QuotationNo", @class = "field-select-big", placeholder = "ใบเสนอราคา", disabled = "disabled" })
-                    @Html.ValidationMessageFor(a => a.QuotationNo)
-                    &nbsp;<a href="#" id="opener"><img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" /></a>
+                    <label>ใบเสนอราคา<span class="required">*</span></label>
+                    <input type="text" id="QuotationNo" name="field1" class="field-select-big" placeholder="ใบเสนอราคา" disabled />&nbsp;<img src="@Url.Content("~/Images/search-engine.png")" alt="IMAGES" class="btnimage" />
                 </li>
             </ul>
             <ul class="form-style-1">
                 <li>
-                    @Html.LabelFor(a => a.Price)
-                    @Html.TextBoxFor(a => a.Price, new { id = "Price", @class = "field-select-big", placeholder = "ราคาขาย" })
-                    @Html.ValidationMessageFor(a => a.Price)&nbsp;
-                    @Html.LabelFor(a => a.Cost)
-                    @Html.TextBoxFor(a => a.Cost, new { id = "Cost", @class = "field-select-big", placeholder = "ราคาทุน" })
-                    @Html.ValidationMessageFor(a => a.Cost)
+                    <label class="label-big">ราคาขาย<span class="required">*</span></label>&nbsp;<label class="label-small">ราคาทุน<span class="required">*</span></label>
+                    <input type="text" id="Price" name="field1" class="field-divided" placeholder="ราคาขาย" />&nbsp;<input type="text" id="Cost" name="field2" class="field-divided" placeholder="ราคาทุน" />
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Profit)
-                    @Html.TextBoxFor(a => a.Profit, new { id = "Profit", @class = "field-divided", placeholder = "กำไร" })
-                    @Html.ValidationMessageFor(a => a.Profit)
+                    <label>กำไร<span class="required">*</span></label>
+                    <input type="text" id="Profit" name="field1" class="field-divided" placeholder="กำไร" />
                 </li>
             </ul>
             <ul class="form-style-1">
                 <li>
-                    @Html.LabelFor(a => a.Remark)
-                    @Html.TextAreaFor(a => a.Remark, new { id = "Remark", @class = "field-long field-textarea", placeholder = "กำไร" })
-                    @Html.ValidationMessageFor(a => a.Remark)
+                    <label>หมายเหตุ<span class="required">*</span></label>
+                    <textarea name="field5" id="Remark" class="field-long field-textarea"></textarea>
                 </li>
                 <br />
             </ul>

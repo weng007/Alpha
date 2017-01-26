@@ -7,7 +7,7 @@
     Product Create
 </h2>
 <link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
-<link href="@Url.Content("~/Content/Style2.css")" rel="stylesheet" type="text/css" />
+@*<link href="@Url.Content("~/Content/Style2.css")" rel="stylesheet" type="text/css" />*@
 
 <style>
     table {
@@ -28,43 +28,44 @@
         <form>
             <ul class="form-style-1">
                 <li>
-                    @Html.LabelFor(a => a.SerialNo, new { @class = "label-2" }) &nbsp;@Html.LabelFor(a => a.MachineNo, new { @class = "label-3" })
-                    @Html.TextBoxFor(a => a.SerialNo, new { id = "SerialNo", @class = "field-divided-2", placeholder = "Serial" })&nbsp;@Html.TextBoxFor(a => a.MachineNo, new { id = "MachineNo", @class = "field-divided", placeholder = "หมายเลขเครื่อง" })
-                    @Html.ValidationMessageFor(a => a.SerialNo)&nbsp;@Html.ValidationMessageFor(a => a.MachineNo)
+                    <label>Products <span class="required">*</span></label>
+                    <input type="text" id = "SerialNo" name="field1" class="field-divided" placeholder="Serial" />&nbsp;<input type="text" id = "MachineNo" name="field1" class="field-divided" placeholder="หมายเลขเครื่อง" />
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.ProductType)
-                    @Html.DropDownListFor(a => a.ProductType, new SelectListItem[]{
-                    new SelectListItem() {Text = "Alphair", Value="1"},
-                    new SelectListItem() {Text = "Air Vent", Value="2"},
-                    new SelectListItem() {Text = "Ball Valve", Value="3"}}, new { @class = "field-divided" })
+                    <label>ประเภทสินค้า</label>
+                    <select name="field4" class="field-select">
+                        <option value="Advertise">Alphair</option>
+                        <option value="Partnership">Air Vent</option>
+                        <option value="General Question">Ball Valve </option>
+                    </select>
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Brand, new { @class = "label-7" })&nbsp;@Html.LabelFor(a => a.Size, new { @class = "label-3" })
-                    @Html.TextBoxFor(a => a.Brand, new { id = "Brand", @class = "field-divided", placeholder = "ยี่ห้อ" })&nbsp;@Html.TextBoxFor(a => a.Size, new { id = "Size", @class = "field-select-small", placeholder = "ขนาด" })
-                    @Html.ValidationMessageFor(a => a.Brand)&nbsp;@Html.ValidationMessageFor(a => a.Size)
+                    <input type="text" id = "Brand" name="field1" class="field-divided" placeholder="ยี่ห้อ" />&nbsp;<input type="text" id = "Size" name="field2" class="field-select-small" placeholder="ขนาด" />
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Model, new { @class = "label-7" })&nbsp;@Html.LabelFor(a => a.Lifetime, new { @class = "label-3" })
-                    @Html.TextBoxFor(a => a.Model, new { id = "Model", @class = "field-divided", placeholder = "รุ่น" })&nbsp;@Html.TextBoxFor(a => a.Lifetime, new { id = "Lifetime", @class = "field-select-small-4", placeholder = "อายุการใช้งาน" })&nbsp;<label class="label-8">ปี</label>
-                    @Html.ValidationMessageFor(a => a.Model)&nbsp;@Html.ValidationMessageFor(a => a.Lifetime)
+                    <input type="text" id = "Model" name="field2" class="field-divided" placeholder="รุ่น" />&nbsp;<input type="text" id = "Lifetime" name="field2" class="field-select-small-3" placeholder="อายุการใช้งาน" />&nbsp;<label>ปี</label>
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.ReceiveDate, new { @class = "label-4" })&nbsp;@Html.LabelFor(a => a.Unit, new { @class = "label-3" })
-                    @Html.TextBoxFor(a => a.ReceiveDate, new { id = "ReceiveDate", @class = "field-divided", placeholder = "วันที่รับเข้า" })&nbsp;@Html.DropDownListFor(a => a.Unit, new SelectListItem[]{
-                    new SelectListItem() {Text = "ชิ้น", Value="1"},
-                    new SelectListItem() {Text = "แท่ง", Value="2"}}, new { @class = "field-select-small-2" })
-                    @Html.ValidationMessageFor(a => a.ReceiveDate)
+                    <label class="label-big">รับเข้า</label>&nbsp;<label class="label-small">หน่วยนับ</label>
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Balance, new { @class = "label-small-3" })&nbsp;@Html.LabelFor(a => a.Remain, new { @class = "label-9" })
-                    @Html.TextBoxFor(a => a.Balance, new { id = "Balance", @class = "field-select-small", placeholder = "ยกมา" })&nbsp;@Html.TextBoxFor(a => a.Remain, new { id = "Remain", @class = "field-select-small", placeholder = "คงเหลือ" })
-                    @Html.ValidationMessageFor(a => a.Balance)&nbsp;@Html.ValidationMessageFor(a => a.Remain)
+                    <input type="text" id = "ReceiveDate" class="field-divided" placeholder="วันที่รับเข้า" />&nbsp;<select name="field4" class="field-select-small-2">
+                        <option value="Advertise">ชิ้น</option>
+                        <option value="Partnership">แท่ง</option>
+                        <option value="General Question">pack</option>
+                    </select>
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Lost, new { @class = "label-small-4" })&nbsp;@Html.LabelFor(a => a.Repair, new { @class = "label-small-3" })&nbsp;@Html.LabelFor(a => a.Break, new { @class = "label-10" })
-                    @Html.TextBoxFor(a => a.Lost, new { id = "Lost", @class = "field-select-small", placeholder = "หาย" })&nbsp;@Html.TextBoxFor(a => a.Repair, new { id = "Repair", @class = "field-select-small", placeholder = "ซ่อม" })&nbsp;@Html.TextBoxFor(a => a.Break, new { id = "Break", @class = "field-select-small", placeholder = "ชำรุด" })
-                    @Html.ValidationMessageFor(a => a.Lost)&nbsp;@Html.ValidationMessageFor(a => a.Repair)&nbsp;@Html.ValidationMessageFor(a => a.Break)
+                    <label class="label-small">ยกมา</label>&nbsp;<label class="label-small-3">คงเหลือ</label>
+                </li>
+                <li>
+                    <input type="text" id = "Balance" name="field1" class="field-select-small" placeholder="ยกมา" />&nbsp;<input type="text" id = "Remain" name="field2" class="field-select-small" placeholder="คงเหลือ" />
+                </li>
+                <li>
+                    <label class="label-small-2">หาย</label>&nbsp;<label class="label-small-2">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>
+                </li>
+                <li>
+                    <input type="text" id = "Lost" name="field6" class="field-select-small" placeholder="หาย" />&nbsp;<input type="text" id = "Repair" name="field7" class="field-select-small" placeholder="ซ่อม" />&nbsp;<input type="text" id = "Break" name="field8" class="field-select-small" placeholder="ชำรุด" />
                 </li>
             </ul>
             <ul class="form-style-1">
@@ -72,12 +73,11 @@
                     <button class="imgbutton" id="img"></button>
                 </li>
                 <li>
-                    @Html.LabelFor(a => a.Remark, new { @class = "label-10" })
-                    @Html.TextAreaFor(a => a.Remark, new { id = "Remark", @class = "field-long field-textarea", placeholder = "หมายเหตุ" })
-                    @Html.ValidationMessageFor(a => a.Remark)
+                    <label>หมายเหตุ<span class="required">*</span></label>
+                    <textarea name="field5" id = "Remark" id="field5" class="field-long field-textarea"></textarea>
                 </li>
                 <li>
-                    <input type="submit" value="Save" id="Create" />
+                    <input type="submit" value="Save" id="Create"  />
                 </li>
             </ul>
             <ul class="attachgrid">
