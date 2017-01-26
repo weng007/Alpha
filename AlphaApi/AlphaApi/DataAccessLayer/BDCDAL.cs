@@ -96,14 +96,14 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public DataSet SelectDataByID(int id)
+        public DataSet SelectByID(int id)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_BDC_Sel", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_BDC_SelByID", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
                     conObj.Open();
@@ -124,7 +124,7 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-        public DataSet SelectAllData()
+        public DataSet SelectData()
         {
             SqlConnection con = null;
             string result = "";
@@ -134,7 +134,7 @@ namespace AlphaApi.DataAccessLayer
                 try
                 {
 
-                    SqlCommand cmd = new SqlCommand("SP_BDC_Search", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_BDC_Sel", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
