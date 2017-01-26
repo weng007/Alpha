@@ -37,11 +37,11 @@
     hljs.initHighlightingOnLoad();
 
   $( function() {
-      $("#dialog").dialog({
-      scoll: true,
+      $("#customerDialog").dialog({
+      scroll: true,
       height: "auto",
-          //width: 550,
-      paging: false,
+      width: 550,
+      paging: true,
       modal: true,
       autoOpen: false,
       show: {
@@ -55,7 +55,7 @@
     });
 
     $( "#opener" ).on( "click", function() {
-      $( "#dialog" ).dialog( "open" );
+      $( "#customerDialog" ).dialog( "open" );
     });
 
     $("#datepicker").datepicker();
@@ -63,8 +63,6 @@
     $("#datepicker3").datepicker();
     $("#datepicker4").datepicker();
     $("#datepicker5").datepicker();
-      //$("#datepicker4").datepicker().datepicker("setDate", new Date());
-      //$("#datepicker5").datepicker().datepicker("setDate", new Date());
     $('#t1').dynoTable();
     $('#t2').dynoTable2();
     $('#t3').dynoTable3();
@@ -74,7 +72,7 @@
     $('#t7').dynoTable7();
   } );
 </script>
-<div id="dialog" title="ลูกค้า" class="dialogstyle">
+<div id="customerDialog" title="ลูกค้า" class="dialogstyle">
     <div class="DialogDiv">
         <table id="example2" class="display" cellspacing="0">
             <thead>
@@ -86,36 +84,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>ลูกค้า1</td>
-                    <td>09x-xxx-xxxx</td>
-                    <td>บุคคลติดต่อ1</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>ลูกค้า2</td>
-                    <td>09x-xxx-xxxx</td>
-                    <td>บุคคลติดต่อ2</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>ลูกค้า3</td>
-                    <td>09x-xxx-xxxx</td>
-                    <td>บุคคลติดต่อ3</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>ลูกค้า4</td>
-                    <td>09x-xxx-xxxx</td>
-                    <td>บุคคลติดต่อ4</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>ลูกค้า5</td>
-                    <td>09x-xxx-xxxx</td>
-                    <td>บุคคลติดต่อ5</td>
-                </tr>
+                
             </tbody>
         </table>
     </div>
@@ -1019,8 +988,6 @@
             lengthChange: false
             
         });
-
-
 
         table.buttons().container()
             .insertBefore('#example_filter');
