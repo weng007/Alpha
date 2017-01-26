@@ -27,7 +27,7 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get()
         {
-            var response = BDCdb.SelectAllData();
+            var response = BDCdb.SelectData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
@@ -35,7 +35,7 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get(int id)
         {
-            var response = BDCdb.SelectDataByID(id);
+            var response = BDCdb.SelectByID(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
