@@ -74,7 +74,7 @@
 </script>
 <div id="customerDialog" title="ลูกค้า" class="dialogstyle">
     <div class="DialogDiv">
-        <table id="example2" class="display" cellspacing="0">
+        <table id="tblCustomer" class="display" cellspacing="0">
             <thead>
                 <tr>
                     <th>No.</th>
@@ -83,7 +83,7 @@
                     <th>บุคคลติดต่อ</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody data-link="row" class="rowlink">
                 
             </tbody>
         </table>
@@ -983,7 +983,7 @@
                         html += '<td>' + data.Table[i].Contact + '</td>';
                         html += '</tr>';
                     }
-                    document.getElementById("customerDialog").innerHTML = html;
+                    document.getElementById("tblCustomer").innerHTML = html;
 
                 },
                 error: function (msg) {
