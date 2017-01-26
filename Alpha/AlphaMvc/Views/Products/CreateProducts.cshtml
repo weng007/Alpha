@@ -8,6 +8,7 @@
 </h2>
 @* -------------------------------------- table -------------------------------- *@
 <link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/Style2.css")" rel="stylesheet" type="text/css" />
 @* -------------------------------------- table -------------------------------- *@
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -36,12 +37,12 @@
         <form>
             <ul class="form-style-1">
                 <li>
-                    @Html.LabelFor(a => a.SerialNo)
-                    @Html.TextBoxFor(a => a.SerialNo, new { id = "SerialNo", @class = "field-divided", placeholder = "Serial" })
-                    @Html.ValidationMessageFor(a => a.SerialNo)&nbsp;
-                    @Html.LabelFor(a => a.MachineNo)
-                    @Html.TextBoxFor(a => a.MachineNo, new { id = "MachineNo", @class = "field-divided", placeholder = "หมายเลขเครื่อง" })
-                    @Html.ValidationMessageFor(a => a.MachineNo)
+                    @Html.LabelFor(a => a.SerialNo, new { @class = "label-2" }) &nbsp;@Html.LabelFor(a => a.MachineNo, new { @class = "label-3" })
+                    @Html.TextBoxFor(a => a.SerialNo, new { id = "SerialNo", @class = "field-divided-2", placeholder = "Serial" })&nbsp;@Html.TextBoxFor(a => a.MachineNo, new { id = "MachineNo", @class = "field-divided", placeholder = "หมายเลขเครื่อง" })
+                    @Html.ValidationMessageFor(a => a.SerialNo)&nbsp;@Html.ValidationMessageFor(a => a.MachineNo)
+                    
+                    
+                    
                 </li>
                 <li>
                     @Html.LabelFor(a => a.ProductType)
