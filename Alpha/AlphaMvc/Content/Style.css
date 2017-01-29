@@ -182,7 +182,7 @@
         position: absolute;
         /* padding-top: 5px; */
         /* margin-left: 5px; */
-        top: 370%;
+        margin-top: 90%;
         left: 40px;
         z-index: 1;
     }
@@ -192,7 +192,7 @@
         padding-top: 5px;
         margin-left: 5px;
         left: 70%;
-        top: 180px;
+        margin-top: 0px;
     }
 }
 .alink{
@@ -795,6 +795,9 @@ select{
     left: 91%;
     position: absolute;
 }
+.bgthead{
+        background-color:#d6e9c6 !important;
+ }
  @media screen and (max-width:680px) {
      .imglogon {
         float: left;
@@ -902,6 +905,11 @@ select{
         width: 100%;
         background-color: #fbfbf1;
     }
+    .barattach-2{
+        margin-top: 0px;
+        width: 100%;
+        background-color: #5baa8c;
+    }
 }
 .topicdetail{
     color: #FFFFFF;
@@ -967,6 +975,19 @@ select{
         margin-left: 90%;
         margin-right: 0%;
 }
+        .topicattach-2{
+        color: #FFFFFF;
+        font-size: 14px;
+        font-weight: bold;
+        float: left;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right:5px;
+        /*margin-right: 87%;*/
+        /*margin-left: 8px;*/
+        margin-left: 15%;
+        margin-right: 0%;
+    }
 }
 .imgLink {
     background-image: url('../Images/edit.png');

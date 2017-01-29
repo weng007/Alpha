@@ -4,183 +4,184 @@
 <h2>
     Products
 </h2>
-    <table class="btnAdd">
-        <tr>
-            <td>
-                <div class="topictd">List</div>
-                <a href="/Products/CreateProducts"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" /></a>
-            </td>
-        </tr>
-    </table>
-    @* ------------------------------- grid  -------------------------------*@
+<table class="btnAdd">
+    <tr>
+        <td>
+            <div class="topictd">List</div>
+            <a href="/Products/CreateProducts"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" /></a>
+        </td>
+    </tr>
+</table>
+@* ------------------------------- grid  -------------------------------*@
 <script src="@Url.Content("~/Scripts/EditableGrid/paging.js")" type="text/javascript"></script>
-    <style>
-        .paging-nav {
-            text-align: right;
-            padding-top: 2px;
+<style>
+    .paging-nav {
+        text-align: right;
+        padding-top: 2px;
+    }
+
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #91b9e6;
+            color: white;
+            border-radius: 3px;
         }
 
-            .paging-nav a {
-                margin: auto 1px;
-                text-decoration: none;
-                display: inline-block;
-                padding: 1px 7px;
-                background: #91b9e6;
-                color: white;
-                border-radius: 3px;
-            }
-
-            .paging-nav .selected-page {
-                background: #187ed5;
-                font-weight: bold;
-            }
-
-        .paging-nav,
-        #tableData {
-            width: 400px;
-            margin: 0 auto;
-            font-family: Arial, sans-serif;
+        .paging-nav .selected-page {
+            background: #187ed5;
+            font-weight: bold;
         }
-    </style>
 
-    @*<table id="example" class="display" cellspacing="0">*@
-    <table class="barattach-2">
+    .paging-nav,
+    #tableData {
+        width: 400px;
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+    }
+</style>
+
+@*<table id="example" class="display" cellspacing="0">*@
+<table class="barattach-2">
+    <tr>
+        <td>
+
+            <div class="topicattach-2">Search : <input id="searchInput" placeholder="Type To Filter"><br /></div>
+        </td>
+    </tr>
+</table>
+
+<table class="table table-striped">
+    <thead class="bgthead">
         <tr>
-            <td>
-
-                <div class="topicattach-2">Search : <input id="searchInput" placeholder="Type To Filter"><br /></div>
-            </td>
+            <th>No.</th>
+            <th class="hidecolumn">ID</th>
+            <th>วันที่รับเข้า</th>
+            <th>Code</th>
+            <th class="hideANDseek">หมายเลขเครื่อง</th>
+            <th class="hideANDseek">รายละเอียด</th>
+            <th class="hideANDseek">ยี่ห้อ</th>
+            <th class="hideANDseek">รุ่น</th>
+            <th>ขนาด</th>
+            <th>คงเหลือ</th>
+            <th class="hideANDseek">หน่วยนับ</th>
+            <th ></th>
         </tr>
-    </table>
+    </thead>
+    <tbody id="result"></tbody>
+</table>
 
-    <div class="datagrid">
-        <table>
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>วันที่รับเข้า</th>
-                    <th>Code</th>
-                    <th class="hideANDseek">หมายเลขเครื่อง</th>
-                    <th class="hideANDseek">รายละเอียด</th>
-                    <th class="hideANDseek">ยี่ห้อ</th>
-                    <th class="hideANDseek">รุ่น</th>
-                    <th>ขนาด</th>
-                    <th>คงเหลือ</th>
-                    <th class="hideANDseek">หน่วยนับ</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="result"></tbody>
-        </table>
-
-        @*<table id="result"></table>*@
-    </div>
+@*<table id="result"></table>*@
 
 
-    @* ------------------------------- grid  -------------------------------*@
+@* ------------------------------- grid  -------------------------------*@
 
-    <script>
-        $(document).ready(function () {
-
-
-            $('#tableData').paging({ limit: 5 });
+<script>
+    $(document).ready(function () {
 
 
-            //------------------------- Paging -------------------------
+        $('#tableData').paging({ limit: 5 });
 
-            //------------------------- Sorting ------------------------
-            $('th').click(function () {
-                var table = $(this).parents('table').eq(0)
-                var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
-                this.asc = !this.asc
-                if (!this.asc) { rows = rows.reverse() }
-                for (var i = 0; i < rows.length; i++) { table.append(rows[i]) }
-            })
-            function comparer(index) {
-                return function (a, b) {
-                    var valA = getCellValue(a, index), valB = getCellValue(b, index)
-                    return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
-                }
+
+        //------------------------- Paging -------------------------
+
+        //------------------------- Sorting ------------------------
+        $('th').click(function () {
+            var table = $(this).parents('table').eq(0)
+            var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+            this.asc = !this.asc
+            if (!this.asc) { rows = rows.reverse() }
+            for (var i = 0; i < rows.length; i++) { table.append(rows[i]) }
+        })
+        function comparer(index) {
+            return function (a, b) {
+                var valA = getCellValue(a, index), valB = getCellValue(b, index)
+                return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
             }
-            function getCellValue(row, index) { return $(row).children('td').eq(index).html() }
-            //------------------------- Sorting ------------------------
-            //-------------------------filter------------------------
-            $("#searchInput").keyup(function () {
-                //hide all the rows
-                $("#result").find("tr").hide();
+        }
+        function getCellValue(row, index) { return $(row).children('td').eq(index).html() }
+        //------------------------- Sorting ------------------------
+        //-------------------------filter------------------------
+        $("#searchInput").keyup(function () {
+            //hide all the rows
+            $("#result").find("tr").hide();
 
-                //split the current value of searchInput
-                var data = this.value.split(" ");
-                //create a jquery object of the rows
-                var jo = $("#result").find("tr");
+            //split the current value of searchInput
+            var data = this.value.split(" ");
+            //create a jquery object of the rows
+            var jo = $("#result").find("tr");
 
-                //Recusively filter the jquery object to get results.
-                $.each(data, function (i, v) {
-                    jo = jo.filter("*:contains('" + v + "')");
-                });
-                //show the rows that match.
-                jo.show();
-                //Removes the placeholder text
+            //Recusively filter the jquery object to get results.
+            $.each(data, function (i, v) {
+                jo = jo.filter("*:contains('" + v + "')");
+            });
+            //show the rows that match.
+            jo.show();
+            //Removes the placeholder text
 
-            }).focus(function () {
-                this.value = "";
-                $(this).css({ "color": "black" });
-                $(this).unbind('focus');
-            }).css({ "color": "#C0C0C0" });
-            //-------------------------filter------------------------
+        }).focus(function () {
+            this.value = "";
+            $(this).css({ "color": "black" });
+            $(this).unbind('focus');
+        }).css({ "color": "#C0C0C0" });
+        //-------------------------filter------------------------
 
-            $.ajax(
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/Product',
+            type: 'GET',
+            datatype: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
+                console.log(data);
+                var html = '<tbody>';
+                for (var i = 0; i < data.Table.length; i++) {
+                    html += '<tr>';
+                    html += '<td>' + data.Table[i].RowNum + '</td>';
+                    html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
+                    html += '<td>' + data.Table[i].ReceiveDate + '</td>';
+                    html += '<td>' + data.Table[i].SerialNo + '</td>';
+                    html += '<td>' + data.Table[i].MachineNo + '</td>';
+                    html += '<td>' + data.Table[i].ProductType + '</td>';
+                    html += '<td>' + data.Table[i].Brand + '</td>';
+                    html += '<td>' + data.Table[i].Model + '</td>';
+                    html += '<td>' + data.Table[i].Size + '</td>';
+                    html += '<td>' + data.Table[i].Remain + '</td>';
+                    html += '<td>' + data.Table[i].Unit + '</td>';
+                    html += '<td>';
+                    html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';
+                    html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="@Url.Content("~/Images/delete.png")" /></a>';
+                    html += '</td>';
+                    html += '</tr>';
+                }
+                html += '</tbody>';
+                document.getElementById("result").innerHTML = html;
+            },
+            error: function (result) {
+                alert(result)
+            }
+        });
+    });
+    function RowDelete(id) {
+        var dataObject = { ID: id };
+        $.ajax(
             {
                 url: 'http://localhost:13131/api/Product',
-                type: 'GET',
+                type: 'DELETE',
+                data: dataObject,
                 datatype: 'json',
-                success: function (data) {
-                    data = JSON.parse(data);
-                    console.log(data);
-                    var html = '<tbody>';
-                    for (var i = 0; i < data.Table.length; i++) {
-                        html += '<tr>';
-                        html += '<td>' + data.Table[i].ID + '</td>';
-                        html += '<td>' + data.Table[i].ReceiveDate + '</td>';
-                        html += '<td>' + data.Table[i].SerialNo + '</td>';
-                        html += '<td>' + data.Table[i].MachineNo + '</td>';
-                        html += '<td>' + data.Table[i].Brand + '</td>';
-                        html += '<td>' + data.Table[i].Model + '</td>';
-                        html += '<td>' + data.Table[i].Size + '</td>';
-                        html += '<td>' + data.Table[i].Remain + '</td>';
-                        html += '<td>' + data.Table[i].Unit + '</td>';
-                        html += '<td>';
-                        html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';
-                        html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="@Url.Content("~/Images/delete.png")" /></a>';
-                        html += '</td>';
-                        html += '</tr>';
-                    }
-                    html += '</tbody>';
-                    document.getElementById("result").innerHTML = html;
-                },
-                error: function (result) {
-                    alert(result)
+
+                success: function (result) {
+                    alert('Delete is completed')
+                    window.location.href = "../Products/IndexProducts";
                 }
+                ,
+                error: function (msg) {
+                    alert(msg)
+                }
+
             });
-        });
-        function RowDelete(id) {
-            var dataObject = { ID: id };
-            $.ajax(
-                {
-                    url: 'http://localhost:13131/api/Product',
-                    type: 'DELETE',
-                    data: dataObject,
-                    datatype: 'json',
-
-                    success: function (result) {
-                        alert('Delete is completed')
-                        window.location.href = "../Products/IndexProducts";
-                    }
-                    ,
-                    error: function (msg) {
-                        alert(msg)
-                    }
-
-                });
-        }
-    </script>
+    }
+</script>

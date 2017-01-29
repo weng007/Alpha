@@ -5,9 +5,8 @@
 <h2>
     JobOrder Edit
 </h2>
-@* =============== dialog *@
-<link href="@Url.Content("~/Content/Dialog/dialogstyle.css")" rel="stylesheet" type="text/css" />
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+@*<link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />*@
+<link href="@Url.Content("~/Content/custom.css")" rel="stylesheet" type="text/css" />
 @* =============== Tab *@
 <link href="@Url.Content("~/Content/Tab/easy-responsive-tabs.css")" rel="stylesheet" type="text/css" />
 <script src="@Url.Content("~/Scripts/Tab/easyResponsiveTabs.js")" type="text/javascript"></script>
@@ -19,54 +18,38 @@
 <link href="@Url.Content("~/Content/timepicker/wickedpicker.css")" rel="stylesheet" type="text/css" />
 <script src="@Url.Content("~/Scripts/timepicker/wickedpicker.js")" type="text/javascript"></script>
 
-<div id="dialog" title="ลูกค้า" class="dialogstyle">
-    <div class="DialogDiv">
-        <table id="example2" class="display" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>ลูกค้า</th>
-                    <th>เบอร์โทร</th>
-                    <th>บุคคลติดต่อ</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>ลูกค้า1</td>
-                    <td>09x-xxx-xxxx</td>
-                    <td>บุคคลติดต่อ1</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>ลูกค้า2</td>
-                    <td>09x-xxx-xxxx</td>
-                    <td>บุคคลติดต่อ2</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>ลูกค้า3</td>
-                    <td>09x-xxx-xxxx</td>
-                    <td>บุคคลติดต่อ3</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>ลูกค้า4</td>
-                    <td>09x-xxx-xxxx</td>
-                    <td>บุคคลติดต่อ4</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>ลูกค้า5</td>
-                    <td>09x-xxx-xxxx</td>
-                    <td>บุคคลติดต่อ5</td>
-                </tr>
-            </tbody>
-        </table>
+<!-- Modal -->
+<div class="modal fade" id="customerDialog" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Customer</h4>
+            </div>
+            <div class="modal-body">
+                <table id="tblCustomer" class="table table-striped">
+                    <thead class="bgthead">
+                        <tr>
+                            <th>No.</th>
+                            <th>รหัสลูกค้า</th>
+                            <th>ลูกค้า</th>
+                            <th>เบอร์โทร</th>
+                            <th>บุคคลติดต่อ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerBody"></tbody>
+                </table>
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>*@
+        </div>
+
     </div>
 </div>
 
-<div id="myModal">
     @using (Html.BeginForm())
     {
 
@@ -96,18 +79,9 @@
                     <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
                 </li>
                 <li>
-                    <select name="field4" class="field-divided">
-                        <option value="volvo">Leak Sealing Online</option>
-                        <option value="saab">On-Site Maching</option>
-                        <option value="mercedes">Supply Man Power</option>
-                        <option value="mercedes">Hydraulic Torque</option>
-                    </select>&nbsp;<select name="field4" class="field-divided">
-                        <option value="volvo">InProgress</option>
-                        <option value="saab">Pending</option>
-                        <option value="mercedes">Completed</option>
-                        <option value="mercedes">Cancel</option>
-                    </select>
+                    <select id="cmbTypeWorking" class="field-divided-2"></select><select id="cmbJobStatus" class="field-divided"></select>
                 </li>
+
                 <li>
                     <label>รายละเอียดงาน</label>
                     <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
@@ -118,9 +92,10 @@
 
                 <li>
                     <label>ลูกค้า</label>
-                    <input type="text" name="field1" class="field-divided" placeholder="ลูกค้า/บริษัท" disabled />&nbsp;<a href="#" id="opener">
+                    <input type="text" id="txtCustomerName" class="field-divided" placeholder="ลูกค้า/บริษัท" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#customerDialog">
                         <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
                     </a>
+                    <input type="hidden" id="hidCustID" />
                 </li>
                 <li>
                     <input type="text" name="field2" class="field-divided" placeholder="โทรศัพท์" disabled />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="แฟกซ์" disabled />
@@ -910,7 +885,6 @@
             </ul>
         </form>
     }
-</div>
 
 
 
@@ -958,6 +932,70 @@
         $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
     });
     $(document).ready(function () {
+        $("#customerBody").on("click", "tr", function (e) {
+            $("#txtCustomerName").val($(this).find("td:eq(3)").text());
+            $("#hidCustID").val($(this).find("td:eq(1)").text());
+        })
+
+        var dataObject = { typeID: '001' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService/',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $.each(data.Table, function (i) {
+                    $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+
+        var dataObject = { typeID: '002' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService/',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $.each(data.Table, function (i) {
+                    $('#cmbJobStatus').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+
+        $.ajax(
+            {
+                url: 'http://localhost:13131/api/Customer',
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+                    data = JSON.parse(data);
+                    var html = '';
+                    for (var i = 0; i < data.Table.length; i++) {
+                        html += '<tr>';
+                        html += '<td>' + data.Table[i].RowNum + '</td>';
+                        html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
+                        html += '<td>' + data.Table[i].CustID + '</td>';
+                        html += '<td>' + data.Table[i].Name + '</td>';
+                        html += '<td>' + data.Table[i].Tel + '</td>';
+                        html += '<td>' + data.Table[i].Contact + '</td>';
+                        html += '</tr>';
+                    }
+                    document.getElementById("customerBody").innerHTML = html;
+
+                },
+                error: function (msg) {
+                    alert(msg)
+                }
+            });
 
         $('#parentHorizontalTab').easyResponsiveTabs({
             type: 'default', //Types: default, vertical, accordion

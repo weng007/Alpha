@@ -112,10 +112,11 @@
 	text-decoration: none;
 	color: #fff;
 	/*background: #19c589;*/
-    background: #bc0d0d;
+    background: #6bc8bf;
 	text-align: center;
 	padding: 10px 0;
 	display: none;
+    margin-bottom: 0px !important;
 }
 
 /*Hide checkbox*/
@@ -158,14 +159,17 @@ input[type=checkbox]:checked ~ #menu{
 	}
     .menuli a {
 	display:block;
-    min-width: 100px;
+    /*min-width: 100px;*/
+    width:99%;
 	height: 40px;
 	text-align: left;
 	line-height: 40px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #fff;
 	/*background: rgba(209, 11, 11, 0);*/
-    background: #e3557f;
+    /*background: #e3557f;*/
+    background: #6bc8bf;
+    
     
 	text-decoration: none;
 }
@@ -180,8 +184,8 @@ input[type=checkbox]:checked ~ #menu{
         padding-left: 5px !important;
     }
     .menuli:hover a {
-	/*background: #19c589;*/
-    background: #c20a0a;
+    /*background: #c20a0a;*/
+    background: #75bab3;
 }
 
 /*Style for dropdown links*/
