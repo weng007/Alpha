@@ -3,20 +3,12 @@
 }
 
 <h2>JobOrder</h2>
-@* ------------------------------- Header -------------------------------*@
-<table class="btnAdd">
-    <tr>
-        <td>
-            <div class="topictd">List</div>
-            <a href="/JobOrder/CreateJobOrder"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" /></a>
-        </td>
-    </tr>
-</table>
 @* ------------------------------- grid  -------------------------------*@
 <table class="barattach-2">
     <tr>
         <td>
-            <div class="topicattach-2">Search : <input id="searchInput" placeholder="Type To Filter"><br /></div>
+            @*<div class="topicattach-2">Search : <input id="searchInput" placeholder="Type To Filter"><br /></div>*@
+            <a href="/JobOrder/CreateJobOrder"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" class="imgadd" /></a>
         </td>
     </tr>
 </table>
@@ -46,7 +38,7 @@
                 <td class="hideANDseek">ผู้ประสานงาน1</td>
                 <td class="hideANDseek">หมายเหตุ1</td>
                 <td>
-                    <a href="@Url.Action("Edit", "JobOrder")">
+                    <a href="@Url.Action("EditJobOrder", "JobOrder")">
                         <img src="@Url.Content("~/Images/edit.png")" />
                     </a>
                     <a href="@Url.Action("Delete", "Trachnician")">
@@ -64,7 +56,7 @@
                 <td class="hideANDseek">ผู้ประสานงาน2</td>
                 <td class="hideANDseek">หมายเหตุ2</td>
                 <td>
-                    <a href="@Url.Action("Edit", "JobOrder")">
+                    <a href="@Url.Action("EditJobOrder", "JobOrder")">
                         <img src="@Url.Content("~/Images/edit.png")" />
                     </a>
                     <a href="@Url.Action("Delete", "Trachnician")">
@@ -82,7 +74,7 @@
                 <td class="hideANDseek">ผู้ประสานงาน3</td>
                 <td class="hideANDseek">หมายเหตุ3</td>
                 <td>
-                    <a href="@Url.Action("Edit", "JobOrder")">
+                    <a href="@Url.Action("EditJobOrder", "JobOrder")">
                         <img src="@Url.Content("~/Images/edit.png")" />
                     </a>
                     <a href="@Url.Action("Delete", "Trachnician")">
@@ -100,7 +92,7 @@
                 <td class="hideANDseek">ผู้ประสานงาน4</td>
                 <td class="hideANDseek">หมายเหตุ4</td>
                 <td>
-                    <a href="@Url.Action("Edit", "JobOrder")">
+                    <a href="@Url.Action("EditJobOrder", "JobOrder")">
                         <img src="@Url.Content("~/Images/edit.png")" />
                     </a>
                     <a href="@Url.Action("Delete", "Trachnician")">
@@ -118,7 +110,7 @@
                 <td class="hideANDseek">ผู้ประสานงาน5</td>
                 <td class="hideANDseek">หมายเหตุ5</td>
                 <td>
-                    <a href="@Url.Action("Edit", "JobOrder")">
+                    <a href="@Url.Action("EditJobOrder", "JobOrder")">
                         <img src="@Url.Content("~/Images/edit.png")" />
                     </a>
                     <a href="@Url.Action("Delete", "Trachnician")">
@@ -136,7 +128,7 @@
                 <td class="hideANDseek">ผู้ประสานงาน6</td>
                 <td class="hideANDseek">หมายเหตุ6</td>
                 <td>
-                    <a href="@Url.Action("Edit", "JobOrder")">
+                    <a href="@Url.Action("EditJobOrder", "JobOrder")">
                         <img src="@Url.Content("~/Images/edit.png")" />
                     </a>
                     <a href="@Url.Action("Delete", "Trachnician")">
@@ -154,7 +146,7 @@
                 <td class="hideANDseek">ผู้ประสานงาน7</td>
                 <td class="hideANDseek">หมายเหตุ7</td>
                 <td>
-                    <a href="@Url.Action("Edit", "JobOrder")">
+                    <a href="@Url.Action("EditJobOrder", "JobOrder")">
                         <img src="@Url.Content("~/Images/edit.png")" />
                     </a>
                     <a href="@Url.Action("Delete", "Trachnician")">
@@ -167,4 +159,3 @@
 </div>
 
 @* ------------------------------- grid  -------------------------------*@
-
