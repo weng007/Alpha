@@ -58,7 +58,7 @@
                     <label class="btnnew">Doc Version</label>&nbsp;<img src="@Url.Content("~/images/btnNewVersion.jpg")" alt="IMAGES" class="btnimage-3" />
                 </li>
                 <li>
-                    <input type="text" id="Docver" name="field1" class="field-select-small-2" placeholder="V1" disabled />
+                    <input type="text" id="txtDocver" name="field1" class="field-select-small-2" placeholder="V1" disabled />
                 </li>
                 <li>
                     <label>ใบเสนอราคา<span class="required">*</span></label>
@@ -71,17 +71,17 @@
             <ul class="form-style-1">
                 <li>
                     <label class="label-big">ราคาขาย<span class="required">*</span></label>&nbsp;<label class="label-small">ราคาทุน<span class="required">*</span></label>
-                    <input type="text" id="Price" name="field1" class="field-divided" placeholder="ราคาขาย" />&nbsp;<input type="text" id="Cost" name="field2" class="field-divided" placeholder="ราคาทุน" />
+                    <input type="text" id="txtPrice" name="field1" class="field-divided" placeholder="ราคาขาย" />&nbsp;<input type="text" id="txtCost" name="field2" class="field-divided" placeholder="ราคาทุน" />
                 </li>
                 <li>
                     <label>กำไร<span class="required">*</span></label>
-                    <input type="text" id="Profit" name="field1" class="field-divided" placeholder="กำไร" />
+                    <input type="text" id="txtProfit" name="field1" class="field-divided" placeholder="กำไร" />
                 </li>
             </ul>
             <ul class="form-style-1">
                 <li>
                     <label>หมายเหตุ<span class="required">*</span></label>
-                    <textarea name="field5" id="Remark" class="field-long field-textarea"></textarea>
+                    <textarea name="field5" id="txtRemark" class="field-long field-textarea"></textarea>
                 </li>
                 <br />
             </ul>
@@ -266,6 +266,36 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#quotationBody").on("click", "tr", function (e) {
+            $("#txtQuoNo").val($(this).find("td:eq(2)").text());
+            $("#hidQuoID").val($(this).find("td:eq(1)").text());
+        })
+
+        $.ajax(
+           {
+               url: 'http://localhost:13131/api/Quotation',
+               type: 'GET',
+               datatype: 'json',
+               success: function (data) {
+                   data = JSON.parse(data);
+                   var html = '';
+                   for (var i = 0; i < data.Table.length; i++) {
+                       html += '<tr>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
+                       html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].QuoNo + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].Detail + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].Price + '</td>';
+                       html += '</tr>';
+                   }
+                   document.getElementById("quotationBody").innerHTML = html;
+               },
+               error: function (msg) {
+                   alert(msg)
+               }
+           });
+
         var id= @Request.Params["id"];
         $.ajax(
        {
@@ -274,8 +304,8 @@
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
-               $("#Docver").val(data.Table[0].Docver),$("#QuotationNo").val(data.Table[0].QuotationNo),$("#Price").val(data.Table[0].Price)
-               ,$("#Cost").val(data.Table[0].Cost),$("#Profit").val(data.Table[0].Profit),$("#Remark").val(data.Table[0].Remark);
+               $("#txtDocver").val(data.Table[0].Docver),$("#txtQuoNo").val(data.Table[0].QuoNo),$("#txtPrice").val(data.Table[0].Price)
+               ,$("#txtCost").val(data.Table[0].Cost),$("#txtProfit").val(data.Table[0].Profit),$("#txtRemark").val(data.Table[0].Remark);
            },
            error: function (msg) {
                alert(msg);
@@ -284,8 +314,8 @@
        });
 
         $("#Update").click(function () {
-            var dataObject = { ID: @Request.Params["id"], Docver: 1, QuotationNo: $("#QuotationNo").val(), Price: $("#Price").val(), Cost: $("#Cost").val(),
-                Profit: $("#Profit").val(), Remark: $("#Remark").val()};
+            var dataObject = { ID: @Request.Params["id"], Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: $("#txtPrice").val(), Cost: $("#txtCost").val(),
+                Profit: $("#txtProfit").val(), Remark: $("#txtRemark").val()};
             console.log(dataObject);
             $.ajax(
             {
