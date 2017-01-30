@@ -5,8 +5,6 @@
 <h2>
     JobOrder Edit
 </h2>
-@*<link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />*@
-<link href="@Url.Content("~/Content/custom.css")" rel="stylesheet" type="text/css" />
 @* =============== Tab *@
 <link href="@Url.Content("~/Content/Tab/easy-responsive-tabs.css")" rel="stylesheet" type="text/css" />
 <script src="@Url.Content("~/Scripts/Tab/easyResponsiveTabs.js")" type="text/javascript"></script>
@@ -17,6 +15,8 @@
 @* =============== timepicker *@
 <link href="@Url.Content("~/Content/timepicker/wickedpicker.css")" rel="stylesheet" type="text/css" />
 <script src="@Url.Content("~/Scripts/timepicker/wickedpicker.js")" type="text/javascript"></script>
+@* =============== Pager *@
+<script src="@Url.Content("~/Scripts/EditableGrid/Pager.js")" type="text/javascript"></script>
 
 <!-- Modal -->
 <div class="modal fade" id="customerDialog" role="dialog">
@@ -29,569 +29,149 @@
                 <h4 class="modal-title">Customer</h4>
             </div>
             <div class="modal-body">
-                <table id="tblCustomer" class="table table-striped">
-                    <thead class="bgthead">
-                        <tr>
-                            <th>No.</th>
-                            <th>รหัสลูกค้า</th>
-                            <th>ลูกค้า</th>
-                            <th>เบอร์โทร</th>
-                            <th>บุคคลติดต่อ</th>
-                        </tr>
-                    </thead>
-                    <tbody id="customerBody"></tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="tblCustomer" class="table table-striped table-hover">
+                        <thead class="bgthead">
+                            <tr>
+                                <th>No.</th>
+                                <th>รหัสลูกค้า</th>
+                                <th>ลูกค้า</th>
+                                <th>เบอร์โทร</th>
+                                <th>บุคคลติดต่อ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customerBody"></tbody>
+                    </table>
+                </div>
+                @*<ul class="pagination pagination-lg pager" id="myPager"></ul>*@
             </div>
-            @*<div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>*@
         </div>
 
     </div>
 </div>
 
-    @using (Html.BeginForm())
-    {
+@using (Html.BeginForm())
+{
 
-        <form>
-            <ul class="form-style-1">
-                <li>
-                    <label>รายละเอียด<span class="required">*</span></label>
-                    <input type="text" name="field1" class="field-divided" placeholder="เลขที่ใบสั่งงาน" />
-                </li>
-                <li>
-                    <input type="text" id="datepicker" class="field-divided" placeholder="วันที่" />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="รถปิกอัพ" />
-                </li>
-                <li>
-                    <label class="label-2">วันเริ่มทำงาน</label>&nbsp;<label class="label-2">วันจบงาน</label>
-                </li>
-                <li>
-                    <input type="text" id="datepicker2" class="field-divided" placeholder="วันเริ่มทำงาน" />&nbsp;<input type="text" id="datepicker3" class="field-divided" placeholder="วันจบงาน" />
-                </li>
-                <li>
-                    <label class="label-4">รับงานโดย</label>&nbsp;<label class="label-2">ออกโดย</label>
+    <form>
+        <ul class="form-style-1">
+            <li>
+                <label>รายละเอียด<span class="required">*</span></label>
+                <input type="text" name="field1" class="field-divided" placeholder="เลขที่ใบสั่งงาน" />
+            </li>
+            <li>
+                <input type="text" id="datepicker" class="field-divided" placeholder="วันที่" />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="รถปิกอัพ" />
+            </li>
+            <li>
+                <label class="label-2">วันเริ่มทำงาน</label>&nbsp;<label class="label-2">วันจบงาน</label>
+            </li>
+            <li>
+                <input type="text" id="datepicker2" class="field-divided" placeholder="วันเริ่มทำงาน" />&nbsp;<input type="text" id="datepicker3" class="field-divided" placeholder="วันจบงาน" />
+            </li>
+            <li>
+                <label class="label-4">รับงานโดย</label>&nbsp;<label class="label-2">ออกโดย</label>
 
-                </li>
-                <li>
-                    <input type="text" name="field1" class="field-divided" placeholder="รับงานโดย" />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="ออกโดย" />
-                </li>
-                <li>
-                    <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
-                </li>
-                <li>
-                    <select id="cmbTypeWorking" class="field-divided-2"></select><select id="cmbJobStatus" class="field-divided"></select>
-                </li>
+            </li>
+            <li>
+                <input type="text" name="field1" class="field-divided" placeholder="รับงานโดย" />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="ออกโดย" />
+            </li>
+            <li>
+                <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
+            </li>
+            <li>
+                <select id="cmbTypeWorking" class="field-divided-2"></select><select id="cmbJobStatus" class="field-divided"></select>
+            </li>
 
-                <li>
-                    <label>รายละเอียดงาน</label>
-                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
-                </li>
+            <li>
+                <label>รายละเอียดงาน</label>
+                <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+            </li>
 
-            </ul>
-            <ul class="form-style-1">
+        </ul>
+        <ul class="form-style-1">
 
-                <li>
-                    <label>ลูกค้า</label>
-                    <input type="text" id="txtCustomerName" class="field-divided" placeholder="ลูกค้า/บริษัท" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#customerDialog">
-                        <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
-                    </a>
-                    <input type="hidden" id="hidCustID" />
-                </li>
-                <li>
-                    <input type="text" name="field2" class="field-divided" placeholder="โทรศัพท์" disabled />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="แฟกซ์" disabled />
-                </li>
-                <li>
-                    <input type="text" name="field1" class="field-divided" placeholder="บุคคลติดต่อ" disabled />&nbsp;<input type="text" name="field2" class="field-divided" placeholder="ผู้ประสานงาน" disabled />
-                </li>
-                <li>
-                    <textarea name="field5" id="field5" class="field-long field-textarea" placeholder="ที่อยู่" disabled></textarea>
-                </li>
-                <li>
-                    <input type="text" name="field1" class="field-divided" placeholder="Job Reference" disabled />
-                </li>
-                <li>
-                    <label>หมายเหตุ</label>
-                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
-                </li>
-            </ul>
+            <li>
+                <label>ลูกค้า</label>
+                <input type="text" id="txtCustomerName" class="field-divided" placeholder="ลูกค้า/บริษัท" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#customerDialog">
+                    <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
+                </a>
+                <input type="hidden" id="hidCustID" />
+            </li>
+            <li>
+                <input type="text" name="field2" class="field-divided" placeholder="โทรศัพท์" disabled />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="แฟกซ์" disabled />
+            </li>
+            <li>
+                <input type="text" name="field1" class="field-divided" placeholder="บุคคลติดต่อ" disabled />&nbsp;<input type="text" name="field2" class="field-divided" placeholder="ผู้ประสานงาน" disabled />
+            </li>
+            <li>
+                <textarea name="field5" id="field5" class="field-long field-textarea" placeholder="ที่อยู่" disabled></textarea>
+            </li>
+            <li>
+                <input type="text" name="field1" class="field-divided" placeholder="Job Reference" disabled />
+            </li>
+            <li>
+                <label>หมายเหตุ</label>
+                <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+            </li>
+        </ul>
 
-            <table class="tabbar">
+        <table class="tabbar">
 
-                <tr>
-                    <td>
-                        <div id="container">
-                            <div id="parentHorizontalTab">
-                                <ul class="resp-tabs-list hor_1">
-                                    <li>Expense</li>
-                                    <li>ManPower</li>
-                                    <li>Sale Order</li>
-                                    <li>Invoice</li>
-                                    <li>Receipt</li>
-                                    <li>Borrow</li>
-                                </ul>
-                                <div class="resp-tabs-container hor_1">
-                                    <div>
-                                        <div class="wrapper">
-                                            <table class="tableexpense">
-                                                <tr>
-                                                    <td>
-                                                        <ul class="form-style-1">
-                                                            <li>
-                                                                @*class="label-small-2"*@
-                                                                <label>Income</label>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <div class="myDIV">
-                                                <table id="t6" class="example">
-                                                    <thead class="theader">
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>Item</th>
-                                                            <th>Description</th>
-                                                            <th>Unit</th>
-                                                            <th>Qty</th>
-                                                            <th class="wraptext">Unit Price</th>
-                                                            <th>Amount</th>
-                                                            <th colspan="2"></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <td colspan="6" class="textalign">Total</td>
-                                                            <td colspan="3"><input id="Premium" type="text" value="" class="txtdisable" disabled /></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="6" class="textalign">Discount</td>
-                                                            <td colspan="3"><input id="Premium" type="text" value="" class="txtdiscount" /></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="6" class="textalign">Sub Total</td>
-                                                            <td colspan="3"><input id="Premium" type="text" value="" class="txtdisable" disabled /></td>
-                                                        </tr>
-                                                    </tfoot>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="No" type="text" value="" class="tdno" disabled />
-                                                            </td>
-                                                            <td>
-                                                                <select class="select-3">
-                                                                    <option value="1">Service of Hydraulic Torque Bolt</option>
-                                                                    <option value="2">Service of On-Site Machining</option>
-                                                                    <option value="3">Service of Leak Sealing Online</option>
-                                                                    <option value="3">Service of Supply Man Power</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="Unit" class="input-1">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="Qty" class="input-1">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="UnitPrice" class="input-3">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="Amount" class="input-4">
-                                                            </td>
-
-                                                            <td>
-                                                                <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
-                                                            </td>
-                                                            <td>
-                                                                <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="add-template6">
-                                                            <td>
-                                                                <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="No" type="text" value="" class="tdno" disabled />
-                                                            </td>
-                                                            <td>
-                                                                <select class="select-3">
-                                                                    <option value="1">Service of Hydraulic Torque Bolt</option>
-                                                                    <option value="2">Service of On-Site Machining</option>
-                                                                    <option value="3">Service of Leak Sealing Online</option>
-                                                                    <option value="3">Service of Supply Man Power</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="Unit" class="input-1">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="Qty" class="input-1">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="UnitPrice" class="input-3">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="Amount" class="input-4">
-                                                            </td>
-                                                            <td>
-                                                                <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
-                                                            </td>
-                                                            <td>
-                                                                <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <a id="add-row6" href="#">Add Row</a>
-
-                                            <table class="tableexpense">
-                                                <tr>
-                                                    <td>
-                                                        <ul class="form-style-1">
-                                                            <li>
-                                                                <label>Manpower and Tool Cost</label>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <div class="myDIV">
-                                                <table id="t7" class="example">
-                                                    <thead class="theader">
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>Item</th>
-                                                            <th>Description</th>
-                                                            <th>Unit</th>
-                                                            <th>Qty</th>
-                                                            <th class="wraptext">Unit Price</th>
-                                                            <th>Amount</th>
-                                                            <th colspan="2"></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <td colspan="6" class="textalign">Total</td>
-                                                            <td colspan="3"><input id="Premium" type="text" value="" class="txtdisable" disabled /></td>
-                                                        </tr>
-                                                    </tfoot>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="No" type="text" value="" class="tdno" disabled />
-                                                            </td>
-                                                            <td>
-                                                                <select class="select">
-                                                                    <option value="1">Job Lead</option>
-                                                                    <option value="2">Job Tech</option>
-                                                                    <option value="3">Job Manpower</option>
-                                                                    <option value="3">Allowance</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <select>
-                                                                    <option value="1">Person</option>
-                                                                    <option value="2">Day</option>
-                                                                    <option value="3">Date</option>
-                                                                    <option value="3">ea</option>
-                                                                    <option value="3">Trip</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="Qty" class="input-1">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="UnitPrice" class="input-3">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="Amount" class="input-4">
-                                                            </td>
-
-                                                            <td>
-                                                                <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
-                                                            </td>
-                                                            <td>
-                                                                <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="add-template7">
-                                                            <td>
-                                                                <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="No" type="text" value="" class="tdno" disabled />
-                                                            </td>
-                                                            <td>
-                                                                <select class="select">
-                                                                    <option value="1">Job Lead</option>
-                                                                    <option value="2">Job Tech</option>
-                                                                    <option value="3">Job Manpower</option>
-                                                                    <option value="3">Allowance</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <select>
-                                                                    <option value="1">Person</option>
-                                                                    <option value="2">Day</option>
-                                                                    <option value="3">Date</option>
-                                                                    <option value="3">ea</option>
-                                                                    <option value="3">Trip</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="Qty" class="input-1">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="UnitPrice" class="input-1">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="Amount" class="input-4">
-                                                            </td>
-                                                            <td>
-                                                                <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
-                                                            </td>
-                                                            <td>
-                                                                <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <a id="add-row7" href="#">Add Row</a>
-                                            @*<div class="myDIV">*@
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <ul class="form-style">
-                                                            <li>
-                                                                <label class="label-small-5">ราคาขายไม่รวม compound</label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="text" name="field6" class="field-select-small-3" disabled />
-                                                            </li>
-                                                            <li>
-                                                                <label class="label-small-3">ต้นทุน(Manpower and Tool Cost)</label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="text" name="field6" class="field-select-small-3" disabled />
-                                                            </li>
-                                                            <li>
-                                                                <label class="label-small-6">กำไร</label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="text" name="field6" class="field-select-small-3" disabled />
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            @*</div>*@
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="wrapper">
-                                            <div class="myDIV">
-                                                <table id="t2" class="example">
-                                                    <thead class="theader">
-                                                        <tr>
-                                                            <th rowspan="3"></th>
-                                                            <th rowspan="3">No.</th>
-                                                            <th rowspan="3">ชื่อ</th>
-                                                            <th rowspan="3">เลขบัตรประชาชน</th>
-                                                            <th rowspan="3">ประเภทพนักงาน</th>
-                                                            <th rowspan="3">Date</th>
-                                                            <th rowspan="3">Day</th>
-                                                            <th rowspan="3">Time</th>
-                                                            <th colspan="2">WORKING TIME</th>
-                                                            <th colspan="4">NUMBER OF HOUSE</th>
-                                                            <th rowspan="3" colspan="2"></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th rowspan="2">FROM</th>
-                                                            <th rowspan="2">TO</th>
-                                                            <th rowspan="2" class="thwrap">TOTAL HOURS</th>
-                                                            <th colspan="3">OVERTIME</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Normal(1)</th>
-                                                            <th>Premium(1.5)</th>
-                                                            <th>Special(3)</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="No" type="text" value="" class="tdno" disabled />
-                                                            </td>
-                                                            <td>
-                                                                <select>
-                                                                    <option value="1">Technician1</option>
-                                                                    <option value="2">Technician2</option>
-                                                                    <option value="3">Technician3</option>
-                                                                    <option value="3">Technician4</option>
-                                                                    <option value="3">Technician5</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input id="CardID" type="text" value="" class="inputdisable" disabled />
-                                                            </td>
-                                                            <td>
-                                                                <select class="select-2">
-                                                                    <option value="1">พนักงานประจำ</option>
-                                                                    <option value="2">พนักงานชั่งคราว</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="datepicker4" class="input-3" />
-                                                            </td>
-                                                            <td>
-                                                                <select class="selday">
-                                                                    <option value="1">อา</option>
-                                                                    <option value="2">จ</option>
-                                                                    <option value="3">อ</option>
-                                                                    <option value="3">พ</option>
-                                                                    <option value="3">พฤ</option>
-                                                                    <option value="3">ศ</option>
-                                                                    <option value="3">ส</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="CreateDate" class="input-1">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="input-1" name="timepicker" class="timepicker">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="input-1" name="timepicker" class="timepicker">
-                                                            </td>
-                                                            <td>
-                                                                <input id="Hours" type="text" value="" class="input-1" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="Normal" type="text" value="" class="input-2" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="Premium" type="text" value="" class="input-2" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="Special" type="text" value="" class="input-2" />
-                                                            </td>
-                                                            <td>
-                                                                <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
-                                                            </td>
-                                                            <td>
-                                                                <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="add-template2">
-                                                            <td>
-                                                                <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="No" type="text" value="" class="tdno" disabled />
-                                                            </td>
-                                                            <td>
-                                                                <select>
-                                                                    <option value="1">Technician1</option>
-                                                                    <option value="2">Technician2</option>
-                                                                    <option value="3">Technician3</option>
-                                                                    <option value="3">Technician4</option>
-                                                                    <option value="3">Technician5</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input id="CardID" type="text" value="" class="inputdisable" disabled />
-                                                            </td>
-                                                            <td>
-                                                                <select class="select-2">
-                                                                    <option value="1">พนักงานประจำ</option>
-                                                                    <option value="2">พนักงานชั่งคราว</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="datepicker5" class="input-3" />
-                                                            </td>
-                                                            <td>
-                                                                <select class="selday">
-                                                                    <option value="1">อา</option>
-                                                                    <option value="2">จ</option>
-                                                                    <option value="3">อ</option>
-                                                                    <option value="3">พ</option>
-                                                                    <option value="3">พฤ</option>
-                                                                    <option value="3">ศ</option>
-                                                                    <option value="3">ส</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Time" name="CreateDate" class="input-1">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="input-1" name="timepicker" class="timepicker">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="input-1" name="timepicker" class="timepicker">
-                                                            </td>
-                                                            <td>
-                                                                <input id="Hours" type="text" value="" class="input-1" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="Normal" type="text" value="" class="input-2" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="Premium" type="text" value="" class="input-2" />
-                                                            </td>
-                                                            <td>
-                                                                <input id="Special" type="text" value="" class="input-2" />
-                                                            </td>
-                                                            <td>
-                                                                <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
-                                                            </td>
-                                                            <td>
-                                                                <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <a id="add-row2" href="#">Add Row</a>
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <ul class="form-style-1">
-                                                            <li>
-                                                                <label class="label-small-5">Sup</label>&nbsp;<label class="label-small-5">F/M</label>&nbsp;<label class="label-small-5">Tech</label>&nbsp;<label class="label-small-5">Safety</label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="text" name="field6" class="field-select-small" placeholder="Sup" />&nbsp;<input type="text" name="field7" class="field-select-small" placeholder="F/M" />&nbsp;<input type="text" name="field8" class="field-select-small" placeholder="Tech" />&nbsp;<input type="text" name="field8" class="field-select-small" placeholder="Safety" />
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="wrapper">
-                                            <table id="t3" class="example">
+            <tr>
+                <td>
+                    <div id="container">
+                        <div id="parentHorizontalTab">
+                            <ul class="resp-tabs-list hor_1">
+                                <li>Expense</li>
+                                <li>ManPower</li>
+                                <li>Sale Order</li>
+                                <li>Invoice</li>
+                                <li>Receipt</li>
+                                <li>Borrow</li>
+                                @*<li>Attach File</li>*@
+                            </ul>
+                            <div class="resp-tabs-container hor_1">
+                                <div>
+                                    <div class="wrapper">
+                                        <table class="tableexpense">
+                                            <tr>
+                                                <td>
+                                                    <ul class="form-style-1">
+                                                        <li>
+                                                            <label>Income</label>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <div class="myDIV">
+                                            <table id="t6" class="example">
                                                 <thead class="theader">
                                                     <tr>
                                                         <th></th>
-                                                        <th>No.</th>
-                                                        <th>SO No.</th>
-                                                        <th>จำนวนเงิน</th>
+                                                        <th>Item</th>
+                                                        <th>Description</th>
+                                                        <th>Unit</th>
+                                                        <th>Qty</th>
+                                                        <th class="wraptext">Unit Price</th>
+                                                        <th>Amount</th>
                                                         <th colspan="2"></th>
                                                     </tr>
                                                 </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="6" class="textalign">Total</td>
+                                                        <td colspan="3"><input id="Premium" type="text" value="" class="txtdisable" disabled /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="6" class="textalign">Discount</td>
+                                                        <td colspan="3"><input id="Premium" type="text" value="" class="txtdiscount" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="6" class="textalign">Sub Total</td>
+                                                        <td colspan="3"><input id="Premium" type="text" value="" class="txtdisable" disabled /></td>
+                                                    </tr>
+                                                </tfoot>
                                                 <tbody>
                                                     <tr>
                                                         <td>
@@ -601,11 +181,26 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo" class="txt-1">
+                                                            <select class="select-3">
+                                                                <option value="1">Service of Hydraulic Torque Bolt</option>
+                                                                <option value="2">Service of On-Site Machining</option>
+                                                                <option value="3">Service of Leak Sealing Online</option>
+                                                                <option value="3">Service of Supply Man Power</option>
+                                                            </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="txt-1">
+                                                            <input type="text" id="Time" name="Unit" class="input-1">
                                                         </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="Qty" class="input-1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="UnitPrice" class="input-3">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="Amount" class="input-4">
+                                                        </td>
+
                                                         <td>
                                                             <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
                                                         </td>
@@ -613,7 +208,7 @@
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                                         </td>
                                                     </tr>
-                                                    <tr id="add-template3">
+                                                    <tr id="add-template6">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
@@ -621,10 +216,24 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo" class="txt-1">
+                                                            <select class="select-3">
+                                                                <option value="1">Service of Hydraulic Torque Bolt</option>
+                                                                <option value="2">Service of On-Site Machining</option>
+                                                                <option value="3">Service of Leak Sealing Online</option>
+                                                                <option value="3">Service of Supply Man Power</option>
+                                                            </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="txt-1">
+                                                            <input type="text" id="Time" name="Unit" class="input-1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="Qty" class="input-1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="UnitPrice" class="input-3">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="Amount" class="input-4">
                                                         </td>
                                                         <td>
                                                             <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -635,25 +244,41 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <a id="add-row3" href="#">Add Row</a>
                                         </div>
-                                        <p></p>
+                                        <a id="add-row6" href="#">+ Add Row</a>
 
-                                        <div class="clr"></div>
-                                    </div>
-                                    <div>
-                                        <div class="wrapper">
-                                            <table id="t4" class="example">
+                                        <table class="tableexpense">
+                                            <tr>
+                                                <td>
+                                                    <ul class="form-style-1">
+                                                        <li>
+                                                            @*class="label-small-2"*@
+                                                            <label>Manpower and Tool Cost</label>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <div class="myDIV">
+                                            <table id="t7" class="example">
                                                 <thead class="theader">
                                                     <tr>
                                                         <th></th>
-                                                        <th>No.</th>
-                                                        <th>Inv No</th>
-                                                        <th>So No.</th>
-                                                        <th>จำนวนเงิน</th>
+                                                        <th>Item</th>
+                                                        <th>Description</th>
+                                                        <th>Unit</th>
+                                                        <th>Qty</th>
+                                                        <th class="wraptext">Unit Price</th>
+                                                        <th>Amount</th>
                                                         <th colspan="2"></th>
                                                     </tr>
                                                 </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="6" class="textalign">Total</td>
+                                                        <td colspan="3"><input id="Premium" type="text" value="" class="txtdisable" disabled /></td>
+                                                    </tr>
+                                                </tfoot>
                                                 <tbody>
                                                     <tr>
                                                         <td>
@@ -663,14 +288,32 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo" class="txt-2">
+                                                            <select class="select">
+                                                                <option value="1">Job Lead</option>
+                                                                <option value="2">Job Tech</option>
+                                                                <option value="3">Job Manpower</option>
+                                                                <option value="3">Allowance</option>
+                                                            </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="InvNo" class="txt-2">
+                                                            <select>
+                                                                <option value="1">Person</option>
+                                                                <option value="2">Day</option>
+                                                                <option value="3">Date</option>
+                                                                <option value="3">ea</option>
+                                                                <option value="3">Trip</option>
+                                                            </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="txt-2">
+                                                            <input type="text" id="Time" name="Qty" class="input-1">
                                                         </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="UnitPrice" class="input-3">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="Amount" class="input-4">
+                                                        </td>
+
                                                         <td>
                                                             <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
                                                         </td>
@@ -678,7 +321,7 @@
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                                         </td>
                                                     </tr>
-                                                    <tr id="add-template4">
+                                                    <tr id="add-template7">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
@@ -686,13 +329,30 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo" class="txt-2">
+                                                            <select class="select">
+                                                                <option value="1">Job Lead</option>
+                                                                <option value="2">Job Tech</option>
+                                                                <option value="3">Job Manpower</option>
+                                                                <option value="3">Allowance</option>
+                                                            </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="InvNo" class="txt-2">
+                                                            <select>
+                                                                <option value="1">Person</option>
+                                                                <option value="2">Day</option>
+                                                                <option value="3">Date</option>
+                                                                <option value="3">ea</option>
+                                                                <option value="3">Trip</option>
+                                                            </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="txt-2">
+                                                            <input type="text" id="Time" name="Qty" class="input-1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="UnitPrice" class="input-1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="Amount" class="input-4">
                                                         </td>
                                                         <td>
                                                             <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -703,23 +363,66 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <a id="add-row4" href="#">Add Row</a>
                                         </div>
-                                        <p></p>
-
-                                        <div class="clr"></div>
+                                        <a id="add-row7" href="#">+ Add Row</a>
+                                        @*<div class="myDIV">*@
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <ul class="form-style">
+                                                        <li>
+                                                            <label class="label-small-5">ราคาขายไม่รวม compound</label>
+                                                        </li>
+                                                        <li>
+                                                            <input type="text" name="field6" class="field-select-small-3" disabled />
+                                                        </li>
+                                                        <li>
+                                                            <label class="label-small-3">ต้นทุน(Manpower and Tool Cost)</label>
+                                                        </li>
+                                                        <li>
+                                                            <input type="text" name="field6" class="field-select-small-3" disabled />
+                                                        </li>
+                                                        <li>
+                                                            <label class="label-small-6">กำไร</label>
+                                                        </li>
+                                                        <li>
+                                                            <input type="text" name="field6" class="field-select-small-3" disabled />
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        @*</div>*@
                                     </div>
-                                    <div>
-                                        <div class="wrapper">
-                                            <table id="t5" class="example">
+                                </div>
+                                <div>
+                                    <div class="wrapper">
+                                        <div class="myDIV">
+                                            <table id="t2" class="example">
                                                 <thead class="theader">
                                                     <tr>
-                                                        <th></th>
-                                                        <th>No.</th>
-                                                        <th>Rep No.</th>
-                                                        <th>Inv No.</th>
-                                                        <th>จำนวนเงิน</th>
-                                                        <th colspan="2"></th>
+                                                        <th rowspan="3"></th>
+                                                        <th rowspan="3">No.</th>
+                                                        <th rowspan="3">ชื่อ</th>
+                                                        <th rowspan="3">เลขบัตรประชาชน</th>
+                                                        <th rowspan="3">ประเภทพนักงาน</th>
+                                                        <th rowspan="3">Date</th>
+                                                        <th rowspan="3">Day</th>
+                                                        <th rowspan="3">Time</th>
+                                                        <th colspan="2">WORKING TIME</th>
+                                                        <th colspan="4">NUMBER OF HOUSE</th>
+                                                        <th rowspan="3" colspan="2"></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th rowspan="2">FROM</th>
+                                                        <th rowspan="2">TO</th>
+                                                        <th rowspan="2" class="thwrap">TOTAL HOURS</th>
+                                                        <th colspan="3">OVERTIME</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Normal(1)</th>
+                                                        <th>Premium(1.5)</th>
+                                                        <th>Special(3)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -731,13 +434,57 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo" class="txt-2">
+                                                            <select>
+                                                                <option value="1">Technician1</option>
+                                                                <option value="2">Technician2</option>
+                                                                <option value="3">Technician3</option>
+                                                                <option value="3">Technician4</option>
+                                                                <option value="3">Technician5</option>
+                                                            </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="InvNo" class="txt-2">
+                                                            <input id="CardID" type="text" value="" class="inputdisable" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="txt-2">
+                                                            <select class="select-2">
+                                                                <option value="1">พนักงานประจำ</option>
+                                                                <option value="2">พนักงานชั่งคราว</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="datepicker4" class="input-3" />
+                                                        </td>
+                                                        <td>
+                                                            <select class="selday">
+                                                                <option value="1">อา</option>
+                                                                <option value="2">จ</option>
+                                                                <option value="3">อ</option>
+                                                                <option value="3">พ</option>
+                                                                <option value="3">พฤ</option>
+                                                                <option value="3">ศ</option>
+                                                                <option value="3">ส</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="CreateDate" class="input-1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="input-1" name="timepicker" class="timepicker">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="input-1" name="timepicker" class="timepicker">
+                                                        </td>
+                                                        <td>
+                                                            <input id="Hours" type="text" value="" class="input-1" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="Normal" type="text" value="" class="input-2" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="Premium" type="text" value="" class="input-2" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="Special" type="text" value="" class="input-2" />
                                                         </td>
                                                         <td>
                                                             <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -746,7 +493,7 @@
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                                         </td>
                                                     </tr>
-                                                    <tr id="add-template5">
+                                                    <tr id="add-template2">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
@@ -754,13 +501,57 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo" class="txt-2">
+                                                            <select>
+                                                                <option value="1">Technician1</option>
+                                                                <option value="2">Technician2</option>
+                                                                <option value="3">Technician3</option>
+                                                                <option value="3">Technician4</option>
+                                                                <option value="3">Technician5</option>
+                                                            </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="InvNo" class="txt-2">
+                                                            <input id="CardID" type="text" value="" class="inputdisable" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="txt-2">
+                                                            <select class="select-2">
+                                                                <option value="1">พนักงานประจำ</option>
+                                                                <option value="2">พนักงานชั่งคราว</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="datepicker5" class="input-3" />
+                                                        </td>
+                                                        <td>
+                                                            <select class="selday">
+                                                                <option value="1">อา</option>
+                                                                <option value="2">จ</option>
+                                                                <option value="3">อ</option>
+                                                                <option value="3">พ</option>
+                                                                <option value="3">พฤ</option>
+                                                                <option value="3">ศ</option>
+                                                                <option value="3">ส</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="Time" name="CreateDate" class="input-1">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="input-1" name="timepicker" class="timepicker">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="input-1" name="timepicker" class="timepicker">
+                                                        </td>
+                                                        <td>
+                                                            <input id="Hours" type="text" value="" class="input-1" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="Normal" type="text" value="" class="input-2" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="Premium" type="text" value="" class="input-2" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="Special" type="text" value="" class="input-2" />
                                                         </td>
                                                         <td>
                                                             <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -771,155 +562,342 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <a id="add-row5" href="#">Add Row</a>
                                         </div>
-                                        <p></p>
+                                        <a id="add-row2" href="#">+ Add Row</a>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <ul class="form-style-1">
+                                                        <li>
+                                                            <label class="label-small-5">Sup</label>&nbsp;<label class="label-small-5">F/M</label>&nbsp;<label class="label-small-5">Tech</label>&nbsp;<label class="label-small-5">Safety</label>
+                                                        </li>
+                                                        <li>
+                                                            <input type="text" name="field6" class="field-select-small" placeholder="Sup" />&nbsp;<input type="text" name="field7" class="field-select-small" placeholder="F/M" />&nbsp;<input type="text" name="field8" class="field-select-small" placeholder="Tech" />&nbsp;<input type="text" name="field8" class="field-select-small" placeholder="Safety" />
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </table>
 
-                                        <div class="clr"></div>
                                     </div>
-                                    <div>
-                                        <a href="@Url.Action("Create", "Borrow")" class="alink"><img src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
-                                        <div class="grigbar">
-                                            <table class="table table-striped">
-                                                <thead class="bgthead">
-                                                    <tr>
-                                                        <th rowspan="2">ลำดับ</th>
-                                                        <th rowspan="2">Serial</th>
-                                                        <th rowspan="2">รายละเอียด</th>
-                                                        <th rowspan="2" class="hideANDseek">ยี่ห้อ</th>
-                                                        <th rowspan="2" class="hideANDseek">รุ่น</th>
-                                                        <th rowspan="2">ขนาด</th>
-                                                        <th rowspan="2">จำนวน</th>
-                                                        <th colspan="4" class="hideANDseek">คืน</th>
-                                                        <th rowspan="2"></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="hideANDseek">ดี</th>
-                                                        <th class="hideANDseek">หาย</th>
-                                                        <th class="hideANDseek">ซ่อม</th>
-                                                        <th class="hideANDseek">ชำรุด</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>P0001</td>
-                                                        <td>รายละเอียด1</td>
-                                                        <td class="hideANDseek">ยี่ห้อ1</td>
-                                                        <td class="hideANDseek">รุ่น1</td>
-                                                        <td>5.5" x 10"</td>
-                                                        <td>1</td>
-                                                        @* ----- คืน ----- *@
-                                                        <td class="hideANDseek"></td>
-                                                        <td class="hideANDseek"></td>
-                                                        <td class="hideANDseek"></td>
-                                                        <td class="hideANDseek"></td>
-                                                        <td>
-                                                            <a href="@Url.Action("Edit", "Borrow")">
-                                                                <img src="@Url.Content("~/Images/edit.png")" />
-                                                            </a>
-                                                            <a href="@Url.Action("Delete", "Trachnician")">
-                                                                <img src="@Url.Content("~/Images/delete.png")" />
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>P0002</td>
-                                                        <td>รายละเอียด2</td>
-                                                        <td class="hideANDseek">ยี่ห้อ2</td>
-                                                        <td class="hideANDseek">รุ่น2</td>
-                                                        <td>2.5" x 5"</td>
-                                                        <td>5</td>
-                                                        @* ----- คืน ----- *@
-                                                        <td class="hideANDseek">2</td>
-                                                        <td class="hideANDseek"></td>
-                                                        <td class="hideANDseek">1</td>
-                                                        <td class="hideANDseek"></td>
-                                                        <td>
-                                                            <a href="@Url.Action("Edit", "Borrow")">
-                                                                <img src="@Url.Content("~/Images/edit.png")" />
-                                                            </a>
-                                                            <a href="@Url.Action("Delete", "Trachnician")">
-                                                                <img src="@Url.Content("~/Images/delete.png")" />
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>P0003</td>
-                                                        <td>รายละเอียด3</td>
-                                                        <td class="hideANDseek">ยี่ห้อ4</td>
-                                                        <td class="hideANDseek">รุ่น4</td>
-                                                        <td>8" x 12"</td>
-                                                        <td>3</td>
-                                                        @* ----- คืน ----- *@
-                                                        <td class="hideANDseek">1</td>
-                                                        <td class="hideANDseek"></td>
-                                                        <td class="hideANDseek"></td>
-                                                        <td class="hideANDseek"></td>
-                                                        <td>
-                                                            <a href="@Url.Action("Edit", "Borrow")">
-                                                                <img src="@Url.Content("~/Images/edit.png")" />
-                                                            </a>
-                                                            <a href="@Url.Action("Delete", "Trachnician")">
-                                                                <img src="@Url.Content("~/Images/delete.png")" />
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                </div>
+                                <div>
+                                    <div class="wrapper">
+                                        <table id="t3" class="example">
+                                            <thead class="theader">
+                                                <tr>
+                                                    <th></th>
+                                                    <th>No.</th>
+                                                    <th>SO No.</th>
+                                                    <th>จำนวนเงิน</th>
+                                                    <th colspan="2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                    </td>
+                                                    <td>
+                                                        <input id="No" type="text" value="" class="tdno" disabled />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="SoNo" class="txt-1">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="Amount" class="txt-1">
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                    </td>
+                                                </tr>
+                                                <tr id="add-template3">
+                                                    <td>
+                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                    </td>
+                                                    <td>
+                                                        <input id="No" type="text" value="" class="tdno" disabled />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="SoNo" class="txt-1">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="Amount" class="txt-1">
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <a id="add-row3" href="#">+ Add Row</a>
+                                    </div>
+                                    <p></p>
+
+                                    <div class="clr"></div>
+                                </div>
+                                <div>
+                                    <div class="wrapper">
+                                        <table id="t4" class="example">
+                                            <thead class="theader">
+                                                <tr>
+                                                    <th></th>
+                                                    <th>No.</th>
+                                                    <th>Inv No</th>
+                                                    <th>So No.</th>
+                                                    <th>จำนวนเงิน</th>
+                                                    <th colspan="2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                    </td>
+                                                    <td>
+                                                        <input id="No" type="text" value="" class="tdno" disabled />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="SoNo" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="InvNo" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="Amount" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                    </td>
+                                                </tr>
+                                                <tr id="add-template4">
+                                                    <td>
+                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                    </td>
+                                                    <td>
+                                                        <input id="No" type="text" value="" class="tdno" disabled />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="SoNo" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="InvNo" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="Amount" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <a id="add-row4" href="#">+ Add Row</a>
+                                    </div>
+                                    <p></p>
+
+                                    <div class="clr"></div>
+                                </div>
+                                <div>
+                                    <div class="wrapper">
+                                        <table id="t5" class="example">
+                                            <thead class="theader">
+                                                <tr>
+                                                    <th></th>
+                                                    <th>No.</th>
+                                                    <th>Rep No.</th>
+                                                    <th>Inv No.</th>
+                                                    <th>จำนวนเงิน</th>
+                                                    <th colspan="2"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                    </td>
+                                                    <td>
+                                                        <input id="No" type="text" value="" class="tdno" disabled />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="SoNo" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="InvNo" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="Amount" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                    </td>
+                                                </tr>
+                                                <tr id="add-template5">
+                                                    <td>
+                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                    </td>
+                                                    <td>
+                                                        <input id="No" type="text" value="" class="tdno" disabled />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="SoNo" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="InvNo" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="Amount" class="txt-2">
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                    </td>
+                                                    <td>
+                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <a id="add-row5" href="#">+ Add Row</a>
+                                    </div>
+                                    <p></p>
+
+                                    <div class="clr"></div>
+                                </div>
+                                <div>
+                                    <a href="@Url.Action("CreateBorrow", "Borrow")" class="alink"><img src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
+                                    <div class="grigbar">
+                                        <table class="table table-striped">
+                                            <thead class="bgthead">
+                                                <tr>
+                                                    <th rowspan="2">ลำดับ</th>
+                                                    <th rowspan="2">Serial</th>
+                                                    <th rowspan="2">รายละเอียด</th>
+                                                    <th rowspan="2" class="hideANDseek">ยี่ห้อ</th>
+                                                    <th rowspan="2" class="hideANDseek">รุ่น</th>
+                                                    <th rowspan="2">ขนาด</th>
+                                                    <th rowspan="2">จำนวน</th>
+                                                    <th colspan="4" class="hideANDseek">คืน</th>
+                                                    <th rowspan="2"></th>
+                                                </tr>
+                                                <tr>
+                                                    <th class="hideANDseek">ดี</th>
+                                                    <th class="hideANDseek">หาย</th>
+                                                    <th class="hideANDseek">ซ่อม</th>
+                                                    <th class="hideANDseek">ชำรุด</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>P0001</td>
+                                                    <td>รายละเอียด1</td>
+                                                    <td class="hideANDseek">ยี่ห้อ1</td>
+                                                    <td class="hideANDseek">รุ่น1</td>
+                                                    <td>5.5" x 10"</td>
+                                                    <td>1</td>
+                                                    @* ----- คืน ----- *@
+                                                    <td class="hideANDseek"></td>
+                                                    <td class="hideANDseek"></td>
+                                                    <td class="hideANDseek"></td>
+                                                    <td class="hideANDseek"></td>
+                                                    <td>
+                                                        <a href="@Url.Action("EditBorrow", "Borrow")">
+                                                            <img src="@Url.Content("~/Images/edit.png")" />
+                                                        </a>
+                                                        <a href="@Url.Action("Delete", "Trachnician")">
+                                                            <img src="@Url.Content("~/Images/delete.png")" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>P0002</td>
+                                                    <td>รายละเอียด2</td>
+                                                    <td class="hideANDseek">ยี่ห้อ2</td>
+                                                    <td class="hideANDseek">รุ่น2</td>
+                                                    <td>2.5" x 5"</td>
+                                                    <td>5</td>
+                                                    @* ----- คืน ----- *@
+                                                    <td class="hideANDseek">2</td>
+                                                    <td class="hideANDseek"></td>
+                                                    <td class="hideANDseek">1</td>
+                                                    <td class="hideANDseek"></td>
+                                                    <td>
+                                                        <a href="@Url.Action("EditBorrow", "Borrow")">
+                                                            <img src="@Url.Content("~/Images/edit.png")" />
+                                                        </a>
+                                                        <a href="@Url.Action("Delete", "Trachnician")">
+                                                            <img src="@Url.Content("~/Images/delete.png")" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>P0003</td>
+                                                    <td>รายละเอียด3</td>
+                                                    <td class="hideANDseek">ยี่ห้อ4</td>
+                                                    <td class="hideANDseek">รุ่น4</td>
+                                                    <td>8" x 12"</td>
+                                                    <td>3</td>
+                                                    @* ----- คืน ----- *@
+                                                    <td class="hideANDseek">1</td>
+                                                    <td class="hideANDseek"></td>
+                                                    <td class="hideANDseek"></td>
+                                                    <td class="hideANDseek"></td>
+                                                    <td>
+                                                        <a href="@Url.Action("EditBorrow", "Borrow")">
+                                                            <img src="@Url.Content("~/Images/edit.png")" />
+                                                        </a>
+                                                        <a href="@Url.Action("Delete", "Trachnician")">
+                                                            <img src="@Url.Content("~/Images/delete.png")" />
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
 
-            <ul class="form-style-1">
-                <li>
-                    <input type="submit" value="Save" />
-                </li>
-            </ul>
-        </form>
-    }
-
-
-
-<script>
+        <ul class="form-style-1">
+            <li>
+                <input type="submit" value="Save" />
+            </li>
+        </ul>
+    </form>
+}
+<script type="text/javascript">
+    //------------------ Standard --------------------------
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
     $(function () {
-        $("#dialog").dialog({
-            scoll: true,
-            height: "auto",
-            width: 550,
-            paging: false,
-            modal: true,
-            autoOpen: false,
-            show: {
-                effect: "blind",
-                duration: 1000
-            },
-            hide: {
-                effect: "explode",
-                duration: 1000
-            }
-        });
-
-        $("#opener").on("click", function () {
-            $("#dialog").dialog("open");
-        });
 
         $("#datepicker").datepicker();
         $("#datepicker2").datepicker();
         $("#datepicker3").datepicker();
         $("#datepicker4").datepicker();
         $("#datepicker5").datepicker();
-
         $('#t1').dynoTable();
         $('#t2').dynoTable2();
         $('#t3').dynoTable3();
@@ -931,6 +909,8 @@
         var dates = new Date();
         $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
     });
+
+    //------------------ Custom --------------------------
     $(document).ready(function () {
         $("#customerBody").on("click", "tr", function (e) {
             $("#txtCustomerName").val($(this).find("td:eq(3)").text());
@@ -981,12 +961,12 @@
                     var html = '';
                     for (var i = 0; i < data.Table.length; i++) {
                         html += '<tr>';
-                        html += '<td>' + data.Table[i].RowNum + '</td>';
-                        html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                        html += '<td>' + data.Table[i].CustID + '</td>';
-                        html += '<td>' + data.Table[i].Name + '</td>';
-                        html += '<td>' + data.Table[i].Tel + '</td>';
-                        html += '<td>' + data.Table[i].Contact + '</td>';
+                        html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
+                        html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
+                        html += '<td data-dismiss="modal">' + data.Table[i].CustNo + '</td>';
+                        html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
+                        html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
+                        html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
                         html += '</tr>';
                     }
                     document.getElementById("customerBody").innerHTML = html;
@@ -1011,5 +991,5 @@
             }
         });
     });
-    
+
 </script>
