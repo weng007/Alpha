@@ -18,49 +18,34 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 @*<link href="@Url.Content("~/Content/custom.css")" rel="stylesheet" type="text/css" />*@
 
-<div id="dialog" title="Quotation" class="dialogstyle">
-    <table id="example2" class="display" cellspacing="0">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Quo No.</th>
-                <th>วันที่</th>
-                <th>ลูกค้า</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Quo1</td>
-                <td>17/12/2017</td>
-                <td>บริษัท1</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Quo2</td>
-                <td>17/12/2017</td>
-                <td>บริษัท2</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Quo3</td>
-                <td>17/12/2017</td>
-                <td>บริษัท3</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Quo4</td>
-                <td>17/12/2017</td>
-                <td>บริษัท4</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Quo5</td>
-                <td>17/12/2017</td>
-                <td>บริษัท5</td>
-            </tr>
-        </tbody>
-    </table>
+  <!-- Modal -->
+<div class="modal fade" id="quotationDialog" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Quotation</h4>
+            </div>
+            <div class="modal-body">
+                <table id="tblQuotation" class="table table-striped table-hover">
+                    <thead class="bgthead">
+                        <tr>
+                            <th>No.</th>
+                            <th>เลขที่ Quotation</th>
+                            <th>รายละเอียด</th>
+                            <th>ลูกค้า</th>
+                            <th>ราคา</th>
+                        </tr>
+                    </thead>
+                    <tbody id="quotationBody"></tbody>
+                </table>
+                @*<ul class="pagination pagination-lg pager" id="myPager"></ul>*@
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <div id="myModal">
@@ -77,8 +62,10 @@
                     </li>
                     <li>
                         <label>ใบเสนอราคา<span class="required">*</span></label>
-                        <input type="text" id = "QuotationNo" name="field1" class="field-select-big" placeholder="ใบเสนอราคา" disabled />&nbsp;<img src="@Url.Content("~/Images/search-engine.png")" alt="IMAGES" class="btnimage" />
-                    </li>
+                        <input type="text" id = "QuotationNo" name="field1" class="field-select-big" placeholder="ใบเสนอราคา" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#quotationDialog">
+                        <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
+                    </a>
+                    <input type="hidden" id="hidQuoID" /></li>
                 </ul>
                 <ul class="form-style-1">
                     <li>
@@ -290,6 +277,37 @@
         });
     });
     $(document).ready(function () {
+        $("#quotaionBody").on("click", "tr", function (e) {
+            $("#txtQuoNo").val($(this).find("td:eq(3)").text());
+            $("#hidQuoID").val($(this).find("td:eq(1)").text());
+        })
+
+        $.ajax(
+           {
+               url: 'http://localhost:13131/api/Quotation',
+               type: 'GET',
+               datatype: 'json',
+               success: function (data) {
+                   data = JSON.parse(data);
+                   var html = '';
+                   for (var i = 0; i < data.Table.length; i++) {
+                       html += '<tr>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
+                       html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].CustID + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
+                       html += '</tr>';
+                   }
+                   document.getElementById("customerBody").innerHTML = html;
+
+               },
+               error: function (msg) {
+                   alert(msg)
+               }
+           });
+
         $("#Create").click(function () {
             var dataObject = {
                 Docver: 1, QuotationNo: 1, Price: $("#Price").val(), Cost: $("#Cost").val(),
