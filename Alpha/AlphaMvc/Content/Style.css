@@ -617,6 +617,14 @@ select{
         -o-transition: all 0.30s ease-in-out;
         outline: none;  
     }
+        .form-style-1 .label-2 {
+        margin: 0 0 3px 0;
+        padding: 0px;
+        display: block;
+        font-weight: bold;
+        float: left;
+        margin-right: 25%;
+    }
 }
 .form-style-1 input[type=text]:focus, 
 .form-style-1 input[type=date]:focus,
