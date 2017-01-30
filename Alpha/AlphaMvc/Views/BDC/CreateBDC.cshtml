@@ -62,7 +62,7 @@
                     </li>
                     <li>
                         <label>ใบเสนอราคา<span class="required">*</span></label>
-                        <input type="text" id = "QuotationNo" name="field1" class="field-select-big" placeholder="ใบเสนอราคา" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#quotationDialog">
+                        <input type="text" id = "txtQuoNo" name="txtQuoNo" class="field-select-big" placeholder="ใบเสนอราคา" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#quotationDialog">
                         <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
                     </a>
                     <input type="hidden" id="hidQuoID" /></li>
@@ -277,8 +277,8 @@
         });
     });
     $(document).ready(function () {
-        $("#quotaionBody").on("click", "tr", function (e) {
-            $("#txtQuoNo").val($(this).find("td:eq(3)").text());
+        $("#quotationBody").on("click", "tr", function (e) {
+            $("#txtQuoNo").val($(this).find("td:eq(2)").text());
             $("#hidQuoID").val($(this).find("td:eq(1)").text());
         })
 
@@ -294,14 +294,14 @@
                        html += '<tr>';
                        html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
                        html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
-                       html += '<td data-dismiss="modal">' + data.Table[i].CustID + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].QuoNo + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].Detail + '</td>';
                        html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
-                       html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
-                       html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].Price + '</td>';
                        html += '</tr>';
                    }
-                   document.getElementById("customerBody").innerHTML = html;
-
+                   document.getElementById("quotationBody").innerHTML = html;
+                   alert('test');
                },
                error: function (msg) {
                    alert(msg)

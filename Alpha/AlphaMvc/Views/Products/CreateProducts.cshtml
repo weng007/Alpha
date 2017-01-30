@@ -32,10 +32,7 @@
                 </li>
                 <li>
                     <label>ประเภทสินค้า</label>
-                    <select name="field4" class="field-select">
-                        <option value="Advertise">Alphair</option>
-                        <option value="Partnership">Air Vent</option>
-                        <option value="General Question">Ball Valve </option>
+                    <select id="cmbToolType" name="cmbToolType" class="field-select">
                     </select>
                 </li>
                 <li>
@@ -48,10 +45,8 @@
                     <label class="label-big">รับเข้า</label>&nbsp;<label class="label-small">หน่วยนับ</label>
                 </li>
                 <li>
-                    <input type="text" id = "ReceiveDate" class="field-divided" placeholder="วันที่รับเข้า" />&nbsp;<select name="field4" class="field-select-small-2">
-                        <option value="Advertise">ชิ้น</option>
-                        <option value="Partnership">แท่ง</option>
-                        <option value="General Question">pack</option>
+                    <input type="text" id = "ReceiveDate" class="field-divided" placeholder="วันที่รับเข้า" />&nbsp;
+                    <select id="cmbUnitWeight" name="cmbUnitWeight" class="field-select-small-2">
                     </select>
                 </li>
                 <li>
@@ -178,6 +173,40 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        var dataObject = { typeID: '003' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $.each(data.Table, function (i) {
+                    $('#cmbToolType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+
+        var dataObject = { typeID: '004' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $.each(data.Table, function (i) {
+                    $('#cmbUnitWeight').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+
         $("#ReceiveDate").datepicker();
 
         $("#Create").click(function () {
