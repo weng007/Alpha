@@ -29,7 +29,7 @@
                     <h4 class="modal-title">Customer</h4>
                 </div>
                 <div class="modal-body">
-                    <table id="tblCustomer" class="table table-striped">
+                    <table id="tblCustomer" class="table table-striped table-hover">
                         <thead class="bgthead">
                             <tr>
                                 <th>No.</th>
@@ -961,12 +961,12 @@
                     var html = '';
                     for (var i = 0; i < data.Table.length; i++) {
                         html += '<tr>';
-                        html += '<td>' + data.Table[i].RowNum + '</td>';
-                        html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                        html += '<td>' + data.Table[i].CustID + '</td>';
-                        html += '<td>' + data.Table[i].Name + '</td>';
-                        html += '<td>' + data.Table[i].Tel + '</td>';
-                        html += '<td>' + data.Table[i].Contact + '</td>';
+                        html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
+                        html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
+                        html += '<td data-dismiss="modal">' + data.Table[i].CustID + '</td>';
+                        html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
+                        html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
+                        html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
                         html += '</tr>';
                     }
                     document.getElementById("customerBody").innerHTML = html;
