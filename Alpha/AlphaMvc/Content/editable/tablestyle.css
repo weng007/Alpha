@@ -519,7 +519,7 @@ select{
 
     }
     .myDIV {
-        width:350px;
+        width:300px;
         overflow-x:auto;
     }
     .DialogDiv
@@ -556,7 +556,7 @@ select{
         display: block;
         font-weight: bold;
         float: left;
-        margin-right: 54.2%;
+        margin-right: 56%;
     }
         .example{
         /*background: #D0E5F5;
