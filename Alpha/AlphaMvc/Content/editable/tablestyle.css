@@ -267,7 +267,7 @@
         word-wrap: break-word;
     }
     table td .textalign{
-       text-align:center;
+       text-align:right;
        border-bottom: 1px solid #d7d1bc;
        background: #f4eed6;
        padding-right: 20px;
