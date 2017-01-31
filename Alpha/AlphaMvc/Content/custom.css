@@ -2114,9 +2114,14 @@ fieldset[disabled] .btn-default.active {
 }
 
 .btn-primary {
-  color: #ffffff;
+  /*color: #ffffff;
   background-color: #428bca;
-  border-color: #357ebd;
+  border-color: #357ebd;*/
+    color: #ffffff;
+    background-color: #f1a250;
+    border-color: #f1a250;
+    height: 35px;
+    width: 85px;
 }
 
 .btn-primary:hover,

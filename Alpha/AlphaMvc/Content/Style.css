@@ -663,6 +663,7 @@ select{
 }
 .form-style-1 .field-select-small{
     width: 20%;
+    text-align: left;
 }
 .form-style-1 .field-select-small-2 {
     width: 25%;
