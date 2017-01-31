@@ -185,16 +185,16 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="UnitWeight" name="UnitWeight" class="input-1">
+                                                                <input type="text" id="UnitWeight" class="input-1">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Qty" name="Qty" class="Quantity number" placeholder="0">
+                                                                <input type="text" id="Qty" class="Quantity number" placeholder="0">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="UnitPrice" name="UnitPrice" class="Price number" placeholder="0">
+                                                                <input type="text" id="UnitPrice" class="Price number" placeholder="0">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Amount" name="Amount" class="Amount number">
+                                                                <input type="text" id="Amount" class="Amount" onchange="AddComma()">
                                                             </td>
 
                                                             <td>
@@ -216,16 +216,16 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="UnitWeight" name="UnitWeight" class="input-1">
+                                                                <input type="text" id="UnitWeight" class="input-1">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Qty" name="Qty" class="Quantity number" onchange="RowCal()">
+                                                                <input type="text" id="Qty" class="Quantity number" onchange="RowCal()">
                                                             </td>
                                                             <td>
-                                                                <input type="text"  id="UnitPrice" name="UnitPrice" class="Price number" onchange="RowCal()">
+                                                                <input type="text"  id="UnitPrice" class="Price number" onchange="RowCal()">
                                                             </td>
                                                             <td>
-                                                                <input type="text" step="0.01" id="Amount" name="Amount" disabled class="Amount number">
+                                                                <input type="text" id="Amount" disabled class="Amount">
                                                             </td>
                                                             <td>
                                                                 <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -908,12 +908,38 @@
     
     function RowCal()
     {
-        $(".Price").change(function () {
-            update_amounts();
-        });
         $(".Quantity").change(function () {
             update_amounts();
         });
+        $(".Price").change(function () {
+            update_amounts();
+        });
+        
+        $('input.number').blur(function (event) {
+
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) return;
+
+            // format number
+            $(this).val(function (index, value) {
+                return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                ;
+            });
+        });
+    }
+
+    function AddComma(nStr) {
+        nStr += '';
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
     }
 
     function update_amounts() {
@@ -927,20 +953,6 @@
             $(this).find('.Amount').val(amount);
         });
     }
-
-    $('input.number').keyup(function (event) {
-
-        // skip for arrow keys
-        if (event.which >= 37 && event.which <= 40) return;
-
-        // format number
-        $(this).val(function (index, value) {
-            return value
-            .replace(/\D/g, "")
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-            ;
-        });
-    });
 
         function AddRowIncome() {
         $.ajax({
@@ -962,11 +974,26 @@
     }
   
     $(document).ready(function () {
+        $(".Quantity").change(function () {
+            update_amounts();
+        });
         $(".Price").change(function () {
             update_amounts();
         });
-        $(".Quantity").change(function () {
-            update_amounts();
+       
+
+        $('input.number').blur(function (event) {
+
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) return;
+
+            // format number
+            $(this).val(function (index, value) {
+                return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                ;
+            });
         });
 
         $("#customerBody").on("click", "tr", function (e) {
