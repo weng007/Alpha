@@ -173,7 +173,7 @@
                                                         </tr>
                                                     </tfoot>
                                                     <tbody>
-                                                        <tr>
+                                                        <tr class="RowCal">
                                                             <td>
                                                                 <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                             </td>
@@ -181,24 +181,20 @@
                                                                 <input id="No" type="text" value="" class="tdno" disabled />
                                                             </td>
                                                             <td>
-                                                                <select class="select-3">
-                                                                    <option value="1">Service of Hydraulic Torque Bolt</option>
-                                                                    <option value="2">Service of On-Site Machining</option>
-                                                                    <option value="3">Service of Leak Sealing Online</option>
-                                                                    <option value="3">Service of Supply Man Power</option>
+                                                                <select id="cmbIncomeType">
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="Unit" class="input-1">
+                                                                <input type="text" id="UnitWeight" class="input-1">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="Qty" class="input-1">
+                                                                <input type="text" id="Qty" class="Quantity number" placeholder="0">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="UnitPrice" class="input-3">
+                                                                <input type="text" id="UnitPrice" class="Price number" placeholder="0">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="Amount" class="input-4">
+                                                                <input type="text" id="Amount" class="Amount">
                                                             </td>
 
                                                             <td>
@@ -208,7 +204,7 @@
                                                                 <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                                             </td>
                                                         </tr>
-                                                        <tr id="add-template6">
+                                                        <tr class="RowCal" id="add-template6">
                                                             <td>
                                                                 <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                             </td>
@@ -216,24 +212,20 @@
                                                                 <input id="No" type="text" value="" class="tdno" disabled />
                                                             </td>
                                                             <td>
-                                                                <select class="select-3">
-                                                                    <option value="1">Service of Hydraulic Torque Bolt</option>
-                                                                    <option value="2">Service of On-Site Machining</option>
-                                                                    <option value="3">Service of Leak Sealing Online</option>
-                                                                    <option value="3">Service of Supply Man Power</option>
+                                                                <select class="select1">
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="Unit" class="input-1">
+                                                                <input type="text" id="UnitWeight" class="input-1">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="Qty" class="input-1">
+                                                                <input type="text" id="Qty" class="Quantity number" onchange="RowCal()">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="UnitPrice" class="input-3">
+                                                                <input type="text"  id="UnitPrice" class="Price number" onchange="RowCal()">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="Amount" class="input-4">
+                                                                <input type="text" id="Amount" disabled class="Amount">
                                                             </td>
                                                             <td>
                                                                 <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -245,7 +237,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <a id="add-row6" href="#">+ Add Row</a>
+                                            <a id="add-row6" href="#" onclick="AddRowIncome()">+ Add Row</a>
                                             
                                                 <table class="tableexpense">
                                                     <tr>
@@ -913,12 +905,105 @@
     });
 
     //------------------ Custom --------------------------
+    
+    function RowCal()
+    {
+        $(".Quantity").change(function () {
+            update_amounts();
+        });
+        $(".Price").change(function () {
+            update_amounts();
+        });
+        
+        $('input.number').blur(function (event) {
+
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) return;
+
+            // format number
+            $(this).val(function (index, value) {
+                return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                ;
+            });
+        });
+    }
+
+    function update_amounts() {
+        var sum = 0.0;
+        $(".RowCal").each(function () {
+            var qty = parseFloat($(this).find(".Quantity").val().replace(",",""));
+            var price = parseFloat($(this).find(".Price").val().replace(",", ""));
+
+            var amount = qty * price;
+
+            $(this).find('.Amount').val(amount);
+        });
+    }
+
+        function AddRowIncome() {
+        $.ajax({
+            url: 'http://localhost:13131/api/IncomeMaster',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
+
+                $('.select1').find("option").remove();
+                $.each(data.Table, function (i) {           
+                    $('.select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+    }
+  
     $(document).ready(function () {
+        $(".Quantity").change(function () {
+            update_amounts();
+        });
+        $(".Price").change(function () {
+            update_amounts();
+        });
+       
+
+        $('input.number').blur(function (event) {
+
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) return;
+
+            // format number
+            $(this).val(function (index, value) {
+                return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                ;
+            });
+        });
+
         $("#customerBody").on("click", "tr", function (e) {
             $("#txtCustomerName").val($(this).find("td:eq(3)").text());
             $("#hidCustID").val($(this).find("td:eq(1)").text());
         })
-   
+
+        $.ajax({
+            url: 'http://localhost:13131/api/IncomeMaster',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
+                $.each(data.Table, function (i) {
+                    $('#cmbIncomeType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+ 
         var dataObject = { typeID: '001' };
         $.ajax({
             url: 'http://localhost:13131/api/MasterService/',
