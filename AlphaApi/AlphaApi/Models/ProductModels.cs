@@ -27,7 +27,7 @@ namespace AlphaApi.Models
 
         public DateTime ReceiveDate { get; set; }
 
-        public int Unit { get; set; }
+        public int UnitWeight { get; set; }
 
         public double Balance { get; set; }
 

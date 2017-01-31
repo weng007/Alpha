@@ -176,6 +176,19 @@
     }
 </div>
 <script type="text/javascript">
+    //var ProductTypeVal
+    //var UnitWeightVal
+    //console.log(ProductTypeVal);
+
+    //function cmbProductType_Change()
+    //{
+    //    ProductTypeVal = $("#cmbProductType").find(":selected").val();
+    //}
+
+    //function cmbUnitWeight_Change()
+    //{
+    //    UnitWeightVal = $("#cmbUnitWeight").find(":selected").val();
+    //}
 
     $(document).ready(function () {
         $("#ReceiveDate").datepicker();
@@ -189,9 +202,9 @@
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
-               $("#SerialNo").val(data.Table[0].SerialNo),$("#MachineNo").val(data.Table[0].MachineNo), $("#ProductType").val(data.Table[0].ProductType),
-               $("#Brand").val(data.Table[0].Brand),$("#Size").val(data.Table[0].Size),$("#Model").val(data.Table[0].Model),$("#Lifetime").val(data.Table[0].Lifetime),
-               $("#ReceiveDate").val(data.Table[0].ReceiveDate),$("#Unit").val(data.Table[0].Unit),$("#Balance").val(data.Table[0].Balance),$("#Remain").val(data.Table[0].Remain),$("#Lost").val(data.Table[0].Lost),$("#Repair").val(data.Table[0].Repair),$("#Break").val(data.Table[0].Break),$("#Remark").val(data.Table[0].Remark)
+               $("#txtSerialNo").val(data.Table[0].SerialNo),$("#txtMachineNo").val(data.Table[0].MachineNo), $("#cmbProductType").val(data.Table[0].ProductType),
+               $("#txtBrand").val(data.Table[0].Brand),$("#txtSize").val(data.Table[0].Size),$("#txtModel").val(data.Table[0].Model),$("#txtLifetime").val(data.Table[0].Lifetime),
+               $("#dtReceiveDate").val(data.Table[0].ReceiveDate),$("#cmbUnitWeight").val(data.Table[0].Unit),$("#txtBalance").val(data.Table[0].Balance),$("#txtRemain").val(data.Table[0].Remain),$("#txtLost").val(data.Table[0].Lost),$("#txtRepair").val(data.Table[0].Repair),$("#txtBreak").val(data.Table[0].Break),$("#txtRemark").val(data.Table[0].Remark)
            },
            error: function (msg) {
                alert(msg);
@@ -200,10 +213,10 @@
        });
 
         $("#Update").click(function () {
-            var dataObject = { ID: @Request.Params["id"], SerialNo: $("#SerialNo").val(), MachineNo: $("#MachineNo").val(), ProductType: 1, Brand: $("#Brand").val(),
-                Size: $("#Size").val(), Model: $("#Model").val(), Lifetime: $("#Lifetime").val(), ReceiveDate: $("#ReceiveDate").val(),
-                Unit: 1, Balance: $("#Balance").val(), Remain: $("#Remain").val(), Lost: $("#Lost").val(), Repair: $("#Repair").val(),
-                Break: $("#Break").val(), Remark: $("#Remark").val()};
+            var dataObject = { ID: @Request.Params["id"], SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
+                Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#txtReceiveDate").val(),
+                UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Lost: $("#txtLost").val(), Repair: $("#txtRepair").val(),
+                Break: $("#txtBreak").val(), Remark: $("#txtRemark").val()};
             console.log(dataObject);
             $.ajax(
             {

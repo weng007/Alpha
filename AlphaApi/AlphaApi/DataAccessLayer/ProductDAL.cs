@@ -28,7 +28,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Model", Product.Model);
                     cmd.Parameters.AddWithValue("@Lifetime", Product.Lifetime);
                     cmd.Parameters.AddWithValue("@ReceiveDate", Product.ReceiveDate);
-                    cmd.Parameters.AddWithValue("@Unit", Product.Unit);
+                    cmd.Parameters.AddWithValue("@UnitWeight", Product.UnitWeight);
                     cmd.Parameters.AddWithValue("@Balance", Product.Balance);
                     cmd.Parameters.AddWithValue("@Remain", Product.Remain);
                     cmd.Parameters.AddWithValue("@Lost", Product.Lost);
@@ -71,7 +71,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Model", Product.Model);
                     cmd.Parameters.AddWithValue("@Lifetime", Product.Lifetime);
                     cmd.Parameters.AddWithValue("@ReceiveDate", Product.ReceiveDate);
-                    cmd.Parameters.AddWithValue("@Unit", Product.Unit);
+                    cmd.Parameters.AddWithValue("@UnitWeight", Product.UnitWeight);
                     cmd.Parameters.AddWithValue("@Balance", Product.Balance);
                     cmd.Parameters.AddWithValue("@Remain", Product.Remain);
                     cmd.Parameters.AddWithValue("@Lost", Product.Lost);

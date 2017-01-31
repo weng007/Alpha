@@ -7,6 +7,7 @@
     Product Create
 </h2>
 <link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/NumberFormat/jquery.number.js")" type="text/javascript"></script>
 
 <style>
     table {
@@ -28,38 +29,40 @@
             <ul class="form-style-1">
                 <li>
                     <label>Products <span class="required">*</span></label>
-                    <input type="text" id = "SerialNo" name="field1" class="field-divided" placeholder="Serial" />&nbsp;<input type="text" id = "MachineNo" name="field1" class="field-divided" placeholder="หมายเลขเครื่อง" />
+                    <input type="text" id = "txtSerialNo" name="field1" class="field-divided" placeholder="Serial" />&nbsp;<input type="text" id = "txtMachineNo" name="field1" class="field-divided" placeholder="หมายเลขเครื่อง" />
                 </li>
                 <li>
                     <label>ประเภทสินค้า</label>
-                    <select id="cmbToolType" name="cmbToolType" class="field-select">
+                    <select id="cmbProductType" name="cmbProductType" class="field-select" >
                     </select>
+                    @*onchange="cmbProductType_Change()"*@
                 </li>
                 <li>
-                    <input type="text" id = "Brand" name="field1" class="field-divided" placeholder="ยี่ห้อ" />&nbsp;<input type="text" id = "Size" name="field2" class="field-select-small" placeholder="ขนาด" />
+                    <input type="text" id = "txtBrand" name="field1" class="field-divided" placeholder="ยี่ห้อ" />&nbsp;<input type="text" id = "txtSize" name="field2" class="field-select-small" placeholder="ขนาด" />
                 </li>
                 <li>
-                    <input type="text" id = "Model" name="field2" class="field-divided" placeholder="รุ่น" />&nbsp;<input type="text" id = "Lifetime" name="field2" class="field-select-small-3" placeholder="อายุการใช้งาน" />&nbsp;<label>ปี</label>
+                    <input type="text" id = "txtModel" name="field2" class="field-divided" placeholder="รุ่น" />&nbsp;<input type="text" id = "txtLifetime" name="field2" class="field-select-small-3" placeholder="อายุการใช้งาน" />&nbsp;<label>ปี</label>
                 </li>
                 <li>
                     <label class="label-big">รับเข้า</label>&nbsp;<label class="label-small">หน่วยนับ</label>
                 </li>
                 <li>
-                    <input type="text" id = "ReceiveDate" class="field-divided" placeholder="วันที่รับเข้า" />&nbsp;
-                    <select id="cmbUnitWeight" name="cmbUnitWeight" class="field-select-small-2">
+                    <input type="text" id = "dtReceiveDate" class="field-divided" placeholder="วันที่รับเข้า" />&nbsp;
+                    <select id="cmbUnitWeight" name="cmbUnitWeight" class="field-select-small-2" >
                     </select>
+                    @*onchange="cmbUnitWeight_Change()"*@
                 </li>
                 <li>
                     <label class="label-small">ยกมา</label>&nbsp;<label class="label-small-3">คงเหลือ</label>
                 </li>
                 <li>
-                    <input type="text" id = "Balance" name="field1" class="field-select-small" placeholder="ยกมา" />&nbsp;<input type="text" id = "Remain" name="field2" class="field-select-small" placeholder="คงเหลือ" />
+                    <input type="text" id = "txtBalance" name="field1" class="field-select-small" placeholder="ยกมา" />&nbsp;<input type="text" id = "txtRemain" name="field2" class="field-select-small" placeholder="คงเหลือ" />
                 </li>
                 <li>
                     <label class="label-small-2">หาย</label>&nbsp;<label class="label-small-2">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>
                 </li>
                 <li>
-                    <input type="text" id = "Lost" name="field6" class="field-select-small" placeholder="หาย" />&nbsp;<input type="text" id = "Repair" name="field7" class="field-select-small" placeholder="ซ่อม" />&nbsp;<input type="text" id = "Break" name="field8" class="field-select-small" placeholder="ชำรุด" />
+                    <input type="text" id = "txtLost" name="field6" class="field-select-small" placeholder="หาย" />&nbsp;<input type="text" id = "txtRepair" name="field7" class="field-select-small" placeholder="ซ่อม" />&nbsp;<input type="text" id = "txtBreak" name="field8" class="field-select-small" placeholder="ชำรุด" />
                 </li>
             </ul>
             <ul class="form-style-1">
@@ -68,7 +71,7 @@
                 </li>
                 <li>
                     <label>หมายเหตุ<span class="required">*</span></label>
-                    <textarea name="field5" id = "Remark" id="field5" class="field-long field-textarea"></textarea>
+                    <textarea name="field5" id = "txtRemark" class="field-long field-textarea"></textarea>
                 </li>
                 <li>
                     <input type="submit" value="Save" id="Create"  />
@@ -172,6 +175,7 @@
 </div>
 
 <script type="text/javascript">
+
     $(document).ready(function () {
         var dataObject = { typeID: '003' };
         $.ajax({
@@ -182,8 +186,12 @@
             success: function (data) {
                 data = JSON.parse(data);
                 $.each(data.Table, function (i) {
-                    $('#cmbToolType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                    $('#cmbProductType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
+                $('#cmbProductType').find('option:first-child').attr('selected', true);
+
+                //ProductTypeVal = $("#cmbProductType").find(":selected").val();
+                
             },
             failure: function () {
                 alert('Error');
@@ -201,20 +209,26 @@
                 $.each(data.Table, function (i) {
                     $('#cmbUnitWeight').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
+                $('#cmbUnitWeight').find('option:first-child').attr('selected', true);
+
+                //UnitWeightVal = $("#cmbUnitWeight").find(":selected").val();
+                //console.log(UnitWeightVal);
             },
             failure: function () {
                 alert('Error');
             }
         });
 
-        $("#ReceiveDate").datepicker();
+        $("#dtReceiveDate").datepicker();
+       
 
         $("#Create").click(function () {
             var dataObject = {
-                SerialNo: $("#SerialNo").val(), MachineNo: $("#MachineNo").val(), ProductType: 1, Brand: $("#Brand").val(),
-                Size: $("#Size").val(), Model: $("#Model").val(), Lifetime: $("#Lifetime").val(), ReceiveDate: $("#ReceiveDate").val(),
-                Unit: 1, Balance: $("#Balance").val(), Remain: $("#Remain").val(), Lost: $("#Lost").val(), Repair: $("#Repair").val(),
-                Break: $("#Break").val(), Remark: $("#Remark").val()};
+                SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
+                Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
+                UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Lost: $("#txtLost").val(), Repair: $("#txtRepair").val(),
+                Break: $("#txtBreak").val(), Remark: $("#txtRemark").val()
+            };
             console.log(dataObject);
             $.ajax(
             {
