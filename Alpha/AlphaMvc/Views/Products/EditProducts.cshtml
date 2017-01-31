@@ -35,32 +35,28 @@
                     <select id="cmbProductType" name="cmbProductType" class="field-select"></select>
                 </li>
                 <li>
-                    <input type="text" id="Brand" name="field1" class="field-divided" placeholder="ยี่ห้อ" />&nbsp;<input type="text" id="Size" name="field2" class="field-select-small" placeholder="ขนาด" />
+                    <input type="text" id="txtBrand" name="field1" class="field-divided" placeholder="ยี่ห้อ" />&nbsp;<input type="text" id="txtSize" name="field2" class="field-select-small" placeholder="ขนาด" />
                 </li>
                 <li>
-                    <input type="text" id="Model" name="field2" class="field-divided" placeholder="รุ่น" />&nbsp;<input type="text" id="Lifetime" name="field2" class="field-select-small-3" placeholder="อายุการใช้งาน" />&nbsp;<label>ปี</label>
+                    <input type="text" id="txtModel" name="field2" class="field-divided" placeholder="รุ่น" />&nbsp;<input type="text" id="txtLifetime" name="field2" class="field-select-small-3" placeholder="อายุการใช้งาน" />&nbsp;<label>ปี</label>
                 </li>
                 <li>
                     <label class="label-big">รับเข้า</label>&nbsp;<label class="label-small">หน่วยนับ</label>
                 </li>
                 <li>
-                    <input type="text" id="ReceiveDate" class="field-divided" placeholder="วันที่รับเข้า" />&nbsp;<select name="field4" class="field-select-small-2">
-                        <option value="Advertise">ชิ้น</option>
-                        <option value="Partnership">แท่ง</option>
-                        <option value="General Question">pack</option>
-                    </select>
+                    <input type="text" id="dtReceiveDate" class="field-divided" placeholder="วันที่รับเข้า" />&nbsp;<select id="cmbUnitWeight" name="cmbUnitWeight" class="field-select-small-2"></select>
                 </li>
                 <li>
                     <label class="label-small">ยกมา</label>&nbsp;<label class="label-small-3">คงเหลือ</label>
                 </li>
                 <li>
-                    <input type="text" id="Balance" name="field1" class="field-select-small" placeholder="ยกมา" />&nbsp;<input type="text" id="Remain" name="field2" class="field-select-small" placeholder="คงเหลือ" />
+                    <input type="text" id="txtBalance" name="field1" class="field-select-small" placeholder="ยกมา" />&nbsp;<input type="text" id="txtRemain" name="field2" class="field-select-small" placeholder="คงเหลือ" />
                 </li>
                 <li>
                     <label class="label-small-2">หาย</label>&nbsp;<label class="label-small-2">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>
                 </li>
                 <li>
-                    <input type="text" id="Lost" name="field6" class="field-select-small" placeholder="หาย" />&nbsp;<input type="text" id="Repair" name="field7" class="field-select-small" placeholder="ซ่อม" />&nbsp;<input type="text" id="Break" name="field8" class="field-select-small" placeholder="ชำรุด" />
+                    <input type="text" id="txtLost" name="field6" class="field-select-small" placeholder="หาย" disabled />&nbsp;<input type="text" id="txtRepair" name="field7" class="field-select-small" placeholder="ซ่อม" disabled />&nbsp;<input type="text" id="txtBreak" name="field8" class="field-select-small" placeholder="ชำรุด" disabled />
                 </li>
             </ul>
             <ul class="form-style-1">
@@ -69,7 +65,7 @@
                 </li>
                 <li>
                     <label>หมายเหตุ<span class="required">*</span></label>
-                    <textarea name="field5" id="Remark" id="field5" class="field-long field-textarea"></textarea>
+                    <textarea name="field5" id="txtRemark" class="field-long field-textarea"></textarea>
                 </li>
                 <li>
                     <input type="submit" value="Save" id="Update" />
@@ -174,7 +170,46 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        $("#ReceiveDate").datepicker();
+
+        var dataObject = { typeID: '003' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $.each(data.Table, function (i) {
+                    $('#cmbProductType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+                $('#cmbProductType').find('option:first-child').attr('selected', true);
+                
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+
+        var dataObject = { typeID: '004' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $.each(data.Table, function (i) {
+                    $('#cmbUnitWeight').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+                $('#cmbUnitWeight').find('option:first-child').attr('selected', true);
+
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+
+        $("#dtReceiveDate").datepicker();
 
         var dataObject = { ID : @Request.Params["id"]};
         console.log(dataObject);
@@ -188,7 +223,7 @@
                data = JSON.parse(data);
                $("#txtSerialNo").val(data.Table[0].SerialNo),$("#txtMachineNo").val(data.Table[0].MachineNo), $("#cmbProductType").val(data.Table[0].ProductType),
                $("#txtBrand").val(data.Table[0].Brand),$("#txtSize").val(data.Table[0].Size),$("#txtModel").val(data.Table[0].Model),$("#txtLifetime").val(data.Table[0].Lifetime),
-               $("#dtReceiveDate").val(data.Table[0].ReceiveDate),$("#cmbUnitWeight").val(data.Table[0].Unit),$("#txtBalance").val(data.Table[0].Balance),$("#txtRemain").val(data.Table[0].Remain),$("#txtLost").val(data.Table[0].Lost),$("#txtRepair").val(data.Table[0].Repair),$("#txtBreak").val(data.Table[0].Break),$("#txtRemark").val(data.Table[0].Remark);
+               $("#dtReceiveDate").val(data.Table[0].ReceiveDate),$("#cmbUnitWeight").val(data.Table[0].UnitWeight),$("#txtBalance").val(data.Table[0].Balance),$("#txtRemain").val(data.Table[0].Remain),$("#txtLost").val(data.Table[0].Lost),$("#txtRepair").val(data.Table[0].Repair),$("#txtBreak").val(data.Table[0].Break),$("#txtRemark").val(data.Table[0].Remark);
            },
            error: function (msg) {
                alert(msg);
@@ -196,29 +231,31 @@
 
        });
 
-        $("#Update").click(function () {
-            var dataObject = { ID: @Request.Params["id"], SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
-                Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#txtReceiveDate").val(),
-                UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Lost: $("#txtLost").val(), Repair: $("#txtRepair").val(),
-                Break: $("#txtBreak").val(), Remark: $("#txtRemark").val()};
-            console.log(dataObject);
-            $.ajax(
-            {
-                url: 'http://localhost:13131/api/Product/Put',
-                type: 'PUT',
-                data: dataObject,
-                datatype: 'json',
+    });
 
-                success: function (result) {
-                    alert('Update is completed');
-                    top.location.href = "/Products/IndexProducts";
-                }
-                ,
-                error: function (msg) {
-                    alert(msg);
-                    //top.location.href = "/ExpenseMaster/Index";
-                }
-            });
+    $("#Update").click(function () {
+        var dataObject = { ID: @Request.Params["id"], SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
+            Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
+            UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Lost: $("#txtLost").val(), Repair: $("#txtRepair").val(),
+            Break: $("#txtBreak").val(), Remark: $("#txtRemark").val()
+        };
+        console.log(dataObject);
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/Product/Put',
+            type: 'PUT',
+            data: dataObject,
+            datatype: 'json',
+
+            success: function (data) {
+                alert('Update is completed');
+                top.location.href = "/Products/IndexProducts";
+            }
+            ,
+            error: function (msg) {
+                alert(msg);
+                //top.location.href = "/ExpenseMaster/Index";
+            }
         });
     });
 </script>
