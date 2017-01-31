@@ -28,15 +28,11 @@
             <ul class="form-style-1">
                 <li>
                     <label>Products <span class="required">*</span></label>
-                    <input type="text" id="txtSerialNo" name="field1" class="field-divided" placeholder="Serial" />&nbsp;<input type="text" id="MachineNo" name="field1" class="field-divided" placeholder="หมายเลขเครื่อง" />
+                    <input type="text" id="txtSerialNo" name="field1" class="field-divided" placeholder="Serial" />&nbsp;<input type="text" id="txtMachineNo" name="field1" class="field-divided" placeholder="หมายเลขเครื่อง" />
                 </li>
                 <li>
                     <label>ประเภทสินค้า</label>
-                    <select name="field4" class="field-select">
-                        <option value="Advertise">Alphair</option>
-                        <option value="Partnership">Air Vent</option>
-                        <option value="General Question">Ball Valve </option>
-                    </select>
+                    <select id="cmbProductType" name="cmbProductType" class="field-select"></select>
                 </li>
                 <li>
                     <input type="text" id="Brand" name="field1" class="field-divided" placeholder="ยี่ห้อ" />&nbsp;<input type="text" id="Size" name="field2" class="field-select-small" placeholder="ขนาด" />
@@ -180,24 +176,22 @@
     $(document).ready(function () {
         $("#ReceiveDate").datepicker();
 
-        var id = { ID : @Request.Params["id"]};
-        //console.log(dataObject);
+        var dataObject = { ID : @Request.Params["id"]};
+        console.log(dataObject);
         $.ajax(
        {
-           url: 'http://localhost:13131/api/Product/'+id,
+           url: 'http://localhost:13131/api/Product/',
            type: 'GET',
            data: dataObject,
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
-               alert(data)
-               //$("#txtSerialNo").val(data.Table[0].SerialNo)
-               //,$("#txtMachineNo").val(data.Table[0].MachineNo), $("#cmbProductType").val(data.Table[0].ProductType),
-               //$("#txtBrand").val(data.Table[0].Brand),$("#txtSize").val(data.Table[0].Size),$("#txtModel").val(data.Table[0].Model),$("#txtLifetime").val(data.Table[0].Lifetime),
-               //$("#dtReceiveDate").val(data.Table[0].ReceiveDate),$("#cmbUnitWeight").val(data.Table[0].Unit),$("#txtBalance").val(data.Table[0].Balance),$("#txtRemain").val(data.Table[0].Remain),$("#txtLost").val(data.Table[0].Lost),$("#txtRepair").val(data.Table[0].Repair),$("#txtBreak").val(data.Table[0].Break),$("#txtRemark").val(data.Table[0].Remark);
+               $("#txtSerialNo").val(data.Table[0].SerialNo),$("#txtMachineNo").val(data.Table[0].MachineNo), $("#cmbProductType").val(data.Table[0].ProductType),
+               $("#txtBrand").val(data.Table[0].Brand),$("#txtSize").val(data.Table[0].Size),$("#txtModel").val(data.Table[0].Model),$("#txtLifetime").val(data.Table[0].Lifetime),
+               $("#dtReceiveDate").val(data.Table[0].ReceiveDate),$("#cmbUnitWeight").val(data.Table[0].Unit),$("#txtBalance").val(data.Table[0].Balance),$("#txtRemain").val(data.Table[0].Remain),$("#txtLost").val(data.Table[0].Lost),$("#txtRepair").val(data.Table[0].Repair),$("#txtBreak").val(data.Table[0].Break),$("#txtRemark").val(data.Table[0].Remark);
            },
            error: function (msg) {
-               alert("Test");
+               alert(msg);
            }
 
        });
