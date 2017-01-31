@@ -140,7 +140,7 @@
                         html += '<td class="hideANDseek">' + data.Table[i].Model + '</td>';
                         html += '<td>' + data.Table[i].Size + '</td>';
                         html += '<td>' + data.Table[i].Remain + '</td>';
-                        html += '<td class="hideANDseek">' + data.Table[i].Unit + '</td>';
+                        html += '<td class="hideANDseek">' + data.Table[i].Detail + '</td>';
                         html += '<td>';
                         html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="@Url.Content("~/Images/edit.png")"/></a>';
                         html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="@Url.Content("~/Images/delete.png")" /></a>';
