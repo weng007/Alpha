@@ -145,7 +145,7 @@
                                                 </tr>
                                             </table>
                                             <div class="myDIV">
-                                                <table id="t6" class="example">
+                                                <table id="tabIncome" class="example">
                                                     <thead class="theader">
                                                         <tr>
                                                             <th></th>
@@ -188,13 +188,13 @@
                                                                 <input type="text" id="UnitWeight" class="input-1">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Qty" class="Quantity Number" placeholder="0" onchange="CalSum()" />
+                                                                <input type="text" id="Qty" class="Quantity txtqty" placeholder="0" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="UnitPrice" class="Price Number" placeholder="0" onchange="CalSum()" />
+                                                                <input type="text" id="UnitPrice" class="Price txtUniPrice" placeholder="0" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Amount" disabled class="Amount Number">
+                                                                <input type="text" id="Amount" disabled class="Amount txtdisable-2">
                                                             </td>
 
                                                             <td>
@@ -219,13 +219,13 @@
                                                                 <input type="text" id="UnitWeight" class="input-1" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Qty" class="Quantity Number" onchange="CalSum()" />
+                                                                <input type="text" id="Qty" class="Quantity txtqty" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text"  id="UnitPrice" class="Price Number" onchange="CalSum()" />
+                                                                <input type="text"  id="UnitPrice" class="Price txtUniPrice" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Amount" disabled class="Amount Number">
+                                                                <input type="text" id="Amount" disabled class="Amount txtdisable-2">
                                                             </td>
                                                             <td>
                                                                 <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -252,7 +252,7 @@
                                                     </tr>
                                                 </table>
                                             <div class="myDIV">
-                                                <table id="t7" class="example">
+                                                <table id="tabCost" class="example">
                                                     <thead class="theader">
                                                         <tr>
                                                             <th></th>
@@ -288,7 +288,7 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <select>
+                                                                <select class="unitSelect">
                                                                     <option value="1">Person</option>
                                                                     <option value="2">Day</option>
                                                                     <option value="3">Date</option>
@@ -297,13 +297,13 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="Qty" class="input-1">
+                                                                <input type="text" id="Time" name="Qty" class="txtqty">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="UnitPrice" class="input-3">
+                                                                <input type="text" id="Time" name="UnitPrice" class="txtUniPrice">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="Amount" class="input-4">
+                                                                <input type="text" id="Time" name="Amount" class="txtdisable-2">
                                                             </td>
 
                                                             <td>
@@ -329,7 +329,7 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <select>
+                                                                <select class="unitSelect">
                                                                     <option value="1">Person</option>
                                                                     <option value="2">Day</option>
                                                                     <option value="3">Date</option>
@@ -338,13 +338,13 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="Qty" class="input-1">
+                                                                <input type="text" id="Time" name="Qty" class="txtqty">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="UnitPrice" class="input-1">
+                                                                <input type="text" id="Time" name="UnitPrice" class="txtUniPrice">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Time" name="Amount" class="input-4">
+                                                                <input type="text" id="Time" name="Amount" class="txtdisable-2">
                                                             </td>
                                                             <td>
                                                                 <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -358,7 +358,7 @@
                                                 </div>
                                                 <a id="add-row7" href="#">+ Add Row</a>
                                             @*<div class="myDIV">*@
-                                                <table>
+                                                <table class="tableexpense">
                                                     <tr>
                                                         <td>
                                                             <ul class="form-style">
@@ -390,7 +390,7 @@
                                     <div>
                                         <div class="wrapper">
                                             <div class="myDIV">
-                                                <table id="t2" class="example">
+                                                <table id="tabManpower" class="example">
                                                     <thead class="theader">
                                                         <tr>
                                                             <th rowspan="3"></th>
@@ -575,7 +575,7 @@
                                     </div>
                                     <div>
                                         <div class="wrapper">
-                                            <table id="t3" class="example">
+                                            <table id="tabSaleOrder" class="example">
                                                 <thead class="theader">
                                                     <tr>
                                                         <th></th>
@@ -636,7 +636,7 @@
                                     </div>
                                     <div>
                                         <div class="wrapper">
-                                            <table id="t4" class="example">
+                                            <table id="tabInvoice" class="example">
                                                 <thead class="theader">
                                                     <tr>
                                                         <th></th>
@@ -704,7 +704,7 @@
                                     </div>
                                     <div>
                                         <div class="wrapper">
-                                            <table id="t5" class="example">
+                                            <table id="tabReceipt" class="example">
                                                 <thead class="theader">
                                                     <tr>
                                                         <th></th>
@@ -892,13 +892,12 @@
         $("#datepicker3").datepicker();
         $("#datepicker4").datepicker();
         $("#datepicker5").datepicker();
-        $('#t1').dynoTable();
-        $('#t2').dynoTable2();
-        $('#t3').dynoTable3();
-        $('#t4').dynoTable4();
-        $('#t5').dynoTable5();
-        $('#t6').dynoTable6();
-        $('#t7').dynoTable7();
+        $('#tabManpower').dynoTable2();
+        $('#tabSaleOrder').dynoTable3();
+        $('#tabInvoice').dynoTable4();
+        $('#tabReceipt').dynoTable5();
+        $('#tabIncome').dynoTable6();
+        $('#tabCost').dynoTable7();
 
         var dates = new Date();
         $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });

@@ -100,6 +100,14 @@
             margin: 0;
             background: #fff;
             height: 25px;
+            text-align: right;
+        }
+        table td .txtqty {
+            margin: 0;
+            background: #fff;
+            height: 25px;
+            text-align: right;
+            width:80px;
         }
         table td .txt-1 {
             margin: 0;
@@ -134,9 +142,20 @@
     .txtdisable {
         /*width: 50px;*/
         margin: 0;
-        background: #d3cba9;
+        /*background: #f0ebd8;*/
+        background: #f0ede3;
         height: 29px;
         border: none;
+        text-align: right;
+    }
+    .txtdisable-2 {
+        /*width: 50px;*/
+        margin: 0;
+        background: #fafafa;
+        height: 29px;
+        border: none;
+        text-align: right;
+        border-bottom: 1px solid #acc;
     }
     .myDIV {
         width:inherit;
@@ -162,11 +181,18 @@
                 height: 18px;
                 width: 90px;*/
         background: #fff;
-        height: 25px;
+        height: 29px;
         font-size: small;
         width: 150px;
         padding: 2px !important;
     }
+    table td .unitSelect {
+    background: #fff;
+    height: 29px;
+    font-size: small;
+    width: 80px;
+    padding: 2px !important;
+}
     table td .select-2 {
         /*background: #fff;
                 height: 18px;
@@ -217,6 +243,12 @@
             height: 25px;
             width: 70px;
         }
+    table td .txtUniPrice {
+            margin: 0;
+            background: #fff;
+            height: 25px;
+            width: 130px;
+        }
     table td .input-4 {
             margin: 0;
             background: #fff;
@@ -236,8 +268,9 @@
     }
     table td .textalign{
        text-align:center;
-       /*border: 1px solid #a9a9a9;*/
-       background: #eee6c4;
+       border-bottom: 1px solid #d7d1bc;
+       background: #f4eed6;
+       padding-right: 20px;
     }
 
     #input-1__c
@@ -433,7 +466,7 @@ select{
     width: 25%;
 }
 .form-style .field-select-small-3 {
-    background-color: #d3cba9;
+    background-color: #f0ede3;
     border: none !important;
     width: 35%;
 }
