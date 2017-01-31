@@ -188,13 +188,13 @@
                                                                 <input type="text" id="UnitWeight" class="input-1">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Qty" class="Quantity number" placeholder="0">
+                                                                <input type="text" id="Qty" class="Quantity Number" placeholder="0" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="UnitPrice" class="Price number" placeholder="0">
+                                                                <input type="text" id="UnitPrice" class="Price Number" placeholder="0" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Amount" class="Amount">
+                                                                <input type="text" id="Amount" disabled class="Amount Number">
                                                             </td>
 
                                                             <td>
@@ -216,16 +216,16 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="UnitWeight" class="input-1">
+                                                                <input type="text" id="UnitWeight" class="input-1" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Qty" class="Quantity number" onchange="RowCal()">
+                                                                <input type="text" id="Qty" class="Quantity Number" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text"  id="UnitPrice" class="Price number" onchange="RowCal()">
+                                                                <input type="text"  id="UnitPrice" class="Price Number" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Amount" disabled class="Amount">
+                                                                <input type="text" id="Amount" disabled class="Amount Number">
                                                             </td>
                                                             <td>
                                                                 <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -905,43 +905,18 @@
     });
 
     //------------------ Custom --------------------------
-    
-    function RowCal()
-    {
-        $(".Quantity").change(function () {
-            update_amounts();
-        });
-        $(".Price").change(function () {
-            update_amounts();
-        });
-        
-        $('input.number').blur(function (event) {
-
-            // skip for arrow keys
-            if (event.which >= 37 && event.which <= 40) return;
-
-            // format number
-            $(this).val(function (index, value) {
-                return value
-                .replace(/\D/g, "")
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                ;
-            });
-        });
-    }
-
-    function update_amounts() {
-        var sum = 0.0;
+    function CalSum() {
         $(".RowCal").each(function () {
-            var qty = parseFloat($(this).find(".Quantity").val().replace(",",""));
-            var price = parseFloat($(this).find(".Price").val().replace(",", ""));
-
+            var qty = $(this).find(".Quantity").val();
+            var price = $(this).find(".Price").val();
             var amount = qty * price;
 
-            $(this).find('.Amount').val(amount);
+
+            $(this).find('.Amount').val(amount).number(true, 2);
+            $(this).find('.Price').val(price).number(true, 2);
+            $(this).find('.Quantity').val(qty).number(true, 2);
         });
     }
-
         function AddRowIncome() {
         $.ajax({
             url: 'http://localhost:13131/api/IncomeMaster',
@@ -962,28 +937,6 @@
     }
   
     $(document).ready(function () {
-        $(".Quantity").change(function () {
-            update_amounts();
-        });
-        $(".Price").change(function () {
-            update_amounts();
-        });
-       
-
-        $('input.number').blur(function (event) {
-
-            // skip for arrow keys
-            if (event.which >= 37 && event.which <= 40) return;
-
-            // format number
-            $(this).val(function (index, value) {
-                return value
-                .replace(/\D/g, "")
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                ;
-            });
-        });
-
         $("#customerBody").on("click", "tr", function (e) {
             $("#txtCustomerName").val($(this).find("td:eq(3)").text());
             $("#hidCustID").val($(this).find("td:eq(1)").text());
