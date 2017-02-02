@@ -18,6 +18,7 @@
 @* =============== Pager *@
 <script src="@Url.Content("~/Scripts/EditableGrid/Pager.js")" type="text/javascript"></script>
 
+
 <!-- Modal -->
 <div class="modal fade" id="customerDialog" role="dialog">
     <div class="modal-dialog">
@@ -57,23 +58,23 @@
         <ul class="form-style-1">
             <li>
                 <label>รายละเอียด<span class="required">*</span></label>
-                <input type="text" name="field1" class="field-divided" placeholder="เลขที่ใบสั่งงาน" />
+                <input type="text" id="txtJobNo" name="field1" class="field-divided" placeholder="เลขที่ใบสั่งงาน" />
             </li>
             <li>
-                <input type="text" id="datepicker" class="field-divided" placeholder="วันที่" />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="รถปิกอัพ" />
+                <input type="text" id="dtJobDate" class="field-divided" placeholder="วันที่" />&nbsp;<input type="text" id="txtCar" name="field1" class="field-divided" placeholder="รถปิกอัพ" />
             </li>
             <li>
                 <label class="label-2">วันเริ่มทำงาน</label>&nbsp;<label class="label-2">วันจบงาน</label>
             </li>
             <li>
-                <input type="text" id="datepicker2" class="field-divided" placeholder="วันเริ่มทำงาน" />&nbsp;<input type="text" id="datepicker3" class="field-divided" placeholder="วันจบงาน" />
+                <input type="text" id="dtSWorking" class="field-divided" placeholder="วันเริ่มทำงาน" />&nbsp;<input type="text" id="dtEWorking" class="field-divided" placeholder="วันจบงาน" />
             </li>
             <li>
                 <label class="label-4">รับงานโดย</label>&nbsp;<label class="label-2">ออกโดย</label>
 
             </li>
             <li>
-                <input type="text" name="field1" class="field-divided" placeholder="รับงานโดย" />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="ออกโดย" />
+                <input type="text" id="txtJobBy" name="field1" class="field-divided" placeholder="รับงานโดย" />&nbsp;<input type="text" id="txtIssuedBy" name="field1" class="field-divided" placeholder="ออกโดย" />
             </li>
             <li>
                 <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
@@ -84,7 +85,7 @@
 
             <li>
                 <label>รายละเอียดงาน</label>
-                <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                <textarea name="field5" id="txtDetail" class="field-long field-textarea"></textarea>
             </li>
 
         </ul>
@@ -107,11 +108,11 @@
                 <textarea name="field5" id="field5" class="field-long field-textarea" placeholder="ที่อยู่" disabled></textarea>
             </li>
             <li>
-                <input type="text" name="field1" class="field-divided" placeholder="Job Reference" disabled />
+                <input type="text" id="txtJobReference" name="field1" class="field-divided" placeholder="Job Reference" disabled />
             </li>
             <li>
                 <label>หมายเหตุ</label>
-                <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                <textarea name="field5" id="txtRemark" class="field-long field-textarea"></textarea>
             </li>
         </ul>
 
@@ -145,7 +146,7 @@
                                             </tr>
                                         </table>
                                         <div class="myDIV">
-                                            <table id="t6" class="example">
+                                            <table id="tabIncome" class="example">
                                                 <thead class="theader">
                                                     <tr>
                                                         <th></th>
@@ -165,7 +166,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td colspan="6" class="textalign">Discount</td>
-                                                        <td colspan="3"><input id="Premium" type="text" value="" class="txtdiscount" /></td>
+                                                        <td colspan="3"><input id="txtDiscount" type="text" value="" class="txtdiscount" /></td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="6" class="textalign">Sub Total</td>
@@ -173,7 +174,7 @@
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
-                                                    <tr>
+                                                    <tr class="RowCal">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
@@ -181,34 +182,29 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <select class="select-3">
-                                                                <option value="1">Service of Hydraulic Torque Bolt</option>
-                                                                <option value="2">Service of On-Site Machining</option>
-                                                                <option value="3">Service of Leak Sealing Online</option>
-                                                                <option value="3">Service of Supply Man Power</option>
-                                                            </select>
+                                                            <select id="cmbIncomeType"></select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Unit" class="input-1">
+                                                            <input type="text" id="UnitWeight" class="txtqty">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Qty" class="input-1">
+                                                            <input type="text" id="Qty" class="Quantity txtqty" placeholder="0" onchange="CalSum()" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="UnitPrice" class="input-3">
+                                                            <input type="text" id="UnitPrice" class="Price txtUniPrice" placeholder="0" onchange="CalSum()" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Amount" class="input-4">
+                                                            <input type="text" id="Amount" disabled class="Amount txtdisable-2">
                                                         </td>
 
                                                         <td>
-                                                            <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                            <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                         </td>
                                                         <td>
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                                         </td>
                                                     </tr>
-                                                    <tr id="add-template6">
+                                                    <tr class="RowCal" id="add-template6">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
@@ -216,27 +212,22 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <select class="select-3">
-                                                                <option value="1">Service of Hydraulic Torque Bolt</option>
-                                                                <option value="2">Service of On-Site Machining</option>
-                                                                <option value="3">Service of Leak Sealing Online</option>
-                                                                <option value="3">Service of Supply Man Power</option>
-                                                            </select>
+                                                            <select class="select1"></select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Unit" class="input-1">
+                                                            <input type="text" id="UnitWeight" class="txtqty" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Qty" class="input-1">
+                                                            <input type="text" id="Qty" class="Quantity txtqty" onchange="CalSum()" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="UnitPrice" class="input-3">
+                                                            <input type="text" id="UnitPrice" class="Price txtUniPrice" onchange="CalSum()" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Amount" class="input-4">
+                                                            <input type="text" id="Amount" disabled class="Amount txtdisable-2">
                                                         </td>
                                                         <td>
-                                                            <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                            <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                         </td>
                                                         <td>
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -245,7 +236,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a id="add-row6" href="#">+ Add Row</a>
+                                        <button id="add-row6" onclick="AddRowIncome()" class="btn btn-primary">Add Row</button>
 
                                         <table class="tableexpense">
                                             <tr>
@@ -260,7 +251,7 @@
                                             </tr>
                                         </table>
                                         <div class="myDIV">
-                                            <table id="t7" class="example">
+                                            <table id="tabCost" class="example">
                                                 <thead class="theader">
                                                     <tr>
                                                         <th></th>
@@ -296,7 +287,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <select>
+                                                            <select class="unitSelect">
                                                                 <option value="1">Person</option>
                                                                 <option value="2">Day</option>
                                                                 <option value="3">Date</option>
@@ -305,17 +296,17 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Qty" class="input-1">
+                                                            <input type="text" id="Time" name="Qty" class="txtqty">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="UnitPrice" class="input-3">
+                                                            <input type="text" id="Time" name="UnitPrice" class="txtUniPrice">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Amount" class="input-4">
+                                                            <input type="text" id="Time" name="Amount" class="txtdisable-2">
                                                         </td>
 
                                                         <td>
-                                                            <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                            <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                         </td>
                                                         <td>
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -337,7 +328,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <select>
+                                                            <select class="unitSelect">
                                                                 <option value="1">Person</option>
                                                                 <option value="2">Day</option>
                                                                 <option value="3">Date</option>
@@ -346,16 +337,16 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Qty" class="input-1">
+                                                            <input type="text" id="Time" name="Qty" class="txtqty">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="UnitPrice" class="input-1">
+                                                            <input type="text" id="Time" name="UnitPrice" class="txtUniPrice">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Amount" class="input-4">
+                                                            <input type="text" id="Time" name="Amount" class="txtdisable-2">
                                                         </td>
                                                         <td>
-                                                            <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                            <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                         </td>
                                                         <td>
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -364,9 +355,9 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a id="add-row7" href="#">+ Add Row</a>
+                                        <button id="add-row7" class="btn btn-primary">Add Row</button>
                                         @*<div class="myDIV">*@
-                                        <table>
+                                        <table class="tableexpense">
                                             <tr>
                                                 <td>
                                                     <ul class="form-style">
@@ -398,7 +389,7 @@
                                 <div>
                                     <div class="wrapper">
                                         <div class="myDIV">
-                                            <table id="t2" class="example">
+                                            <table id="tabManpower" class="example">
                                                 <thead class="theader">
                                                     <tr>
                                                         <th rowspan="3"></th>
@@ -487,7 +478,7 @@
                                                             <input id="Special" type="text" value="" class="input-2" />
                                                         </td>
                                                         <td>
-                                                            <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                            <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                         </td>
                                                         <td>
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -554,7 +545,7 @@
                                                             <input id="Special" type="text" value="" class="input-2" />
                                                         </td>
                                                         <td>
-                                                            <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                            <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                         </td>
                                                         <td>
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -563,7 +554,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a id="add-row2" href="#">+ Add Row</a>
+                                        <button id="add-row2" class="btn btn-primary">Add Row</button><br /><br />
                                         <table>
                                             <tr>
                                                 <td>
@@ -583,7 +574,7 @@
                                 </div>
                                 <div>
                                     <div class="wrapper">
-                                        <table id="t3" class="example">
+                                        <table id="tabSaleOrder" class="example">
                                             <thead class="theader">
                                                 <tr>
                                                     <th></th>
@@ -605,10 +596,10 @@
                                                         <input type="text" id="SoNo" class="txt-1">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="txt-1">
+                                                        <input type="text" id="Amount" class="txt-3">
                                                     </td>
                                                     <td>
-                                                        <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                        <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                     </td>
                                                     <td>
                                                         <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -625,10 +616,10 @@
                                                         <input type="text" id="SoNo" class="txt-1">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="txt-1">
+                                                        <input type="text" id="Amount" class="txt-3">
                                                     </td>
                                                     <td>
-                                                        <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                        <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                     </td>
                                                     <td>
                                                         <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -636,7 +627,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <a id="add-row3" href="#">+ Add Row</a>
+                                        <button id="add-row3" class="btn btn-primary">Add Row</button>
                                     </div>
                                     <p></p>
 
@@ -644,7 +635,7 @@
                                 </div>
                                 <div>
                                     <div class="wrapper">
-                                        <table id="t4" class="example">
+                                        <table id="tabInvoice" class="example">
                                             <thead class="theader">
                                                 <tr>
                                                     <th></th>
@@ -670,10 +661,10 @@
                                                         <input type="text" id="InvNo" class="txt-2">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="txt-2">
+                                                        <input type="text" id="Amount" class="txt-3">
                                                     </td>
                                                     <td>
-                                                        <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                        <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                     </td>
                                                     <td>
                                                         <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -693,10 +684,10 @@
                                                         <input type="text" id="InvNo" class="txt-2">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="txt-2">
+                                                        <input type="text" id="Amount" class="txt-3">
                                                     </td>
                                                     <td>
-                                                        <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
+                                                        <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                     </td>
                                                     <td>
                                                         <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -704,7 +695,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <a id="add-row4" href="#">+ Add Row</a>
+                                        <button id="add-row4" class="btn btn-primary">Add Row</button>
                                     </div>
                                     <p></p>
 
@@ -712,7 +703,7 @@
                                 </div>
                                 <div>
                                     <div class="wrapper">
-                                        <table id="t5" class="example">
+                                        <table id="tabReceipt" class="example">
                                             <thead class="theader">
                                                 <tr>
                                                     <th></th>
@@ -738,7 +729,7 @@
                                                         <input type="text" id="InvNo" class="txt-2">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="txt-2">
+                                                        <input type="text" id="Amount" class="txt-3">
                                                     </td>
                                                     <td>
                                                         <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -761,7 +752,7 @@
                                                         <input type="text" id="InvNo" class="txt-2">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="txt-2">
+                                                        <input type="text" id="Amount" class="txt-3">
                                                     </td>
                                                     <td>
                                                         <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -772,7 +763,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <a id="add-row5" href="#">+ Add Row</a>
+                                        <button id="add-row5" class="btn btn-primary">Add Row</button>
                                     </div>
                                     <p></p>
 
@@ -883,7 +874,7 @@
 
         <ul class="form-style-1">
             <li>
-                <input type="submit" value="Save" />
+                <input type="submit" value="Save" id="Update" />
             </li>
         </ul>
     </form>
@@ -895,29 +886,75 @@
 
     $(function () {
 
-        $("#datepicker").datepicker();
-        $("#datepicker2").datepicker();
-        $("#datepicker3").datepicker();
+        $("#dtJobDate").datepicker();
+        $("#dtSWorking").datepicker();
+        $("#dtEWorking").datepicker();
         $("#datepicker4").datepicker();
         $("#datepicker5").datepicker();
-        $('#t1').dynoTable();
-        $('#t2').dynoTable2();
-        $('#t3').dynoTable3();
-        $('#t4').dynoTable4();
-        $('#t5').dynoTable5();
-        $('#t6').dynoTable6();
-        $('#t7').dynoTable7();
+        $('#tabManpower').dynoTable2();
+        $('#tabSaleOrder').dynoTable3();
+        $('#tabInvoice').dynoTable4();
+        $('#tabReceipt').dynoTable5();
+        $('#tabIncome').dynoTable6();
+        $('#tabCost').dynoTable7();
 
         var dates = new Date();
         $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
     });
 
     //------------------ Custom --------------------------
+    function CalSum() {
+        $(".RowCal").each(function () {
+            var qty = $(this).find(".Quantity").val();
+            var price = $(this).find(".Price").val();
+            var amount = qty * price;
+
+
+            $(this).find('.Amount').val(amount).number(true, 2);
+            $(this).find('.Price').val(price).number(true, 2);
+            $(this).find('.Quantity').val(qty).number(true, 2);
+        });
+    }
+        function AddRowIncome() {
+        $.ajax({
+            url: 'http://localhost:13131/api/IncomeMaster',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
+
+                $('.select1').find("option").remove();
+                $.each(data.Table, function (i) {
+                    $('.select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+    }
+
     $(document).ready(function () {
         $("#customerBody").on("click", "tr", function (e) {
             $("#txtCustomerName").val($(this).find("td:eq(3)").text());
             $("#hidCustID").val($(this).find("td:eq(1)").text());
         })
+
+        $.ajax({
+            url: 'http://localhost:13131/api/IncomeMaster',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
+                $.each(data.Table, function (i) {
+                    $('#cmbIncomeType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+                $('#cmbIncomeType').find('option:first-child').attr('selected', true);
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
 
         var dataObject = { typeID: '001' };
         $.ajax({
@@ -930,6 +967,7 @@
                 $.each(data.Table, function (i) {
                     $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
+                $('#cmbTypeWorking').find('option:first-child').attr('selected', true);
             },
             failure: function () {
                 alert('Error');
@@ -947,6 +985,7 @@
                 $.each(data.Table, function (i) {
                     $('#cmbJobStatus').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
+                $('#cmbJobStatus').find('option:first-child').attr('selected', true);
             },
             failure: function () {
                 alert('Error');
@@ -991,6 +1030,50 @@
                 $name.text($tab.text());
                 $info.show();
             }
+        });
+
+        //================================================Edit GetByID
+        var dataObject = { ID : @Request.Params["id"]};
+        console.log(dataObject);
+        $.ajax(
+       {
+           url: 'http://localhost:13131/api/JobOrder/',
+           type: 'GET',
+           data: dataObject,
+           datatype: 'json',
+           success: function (data) {
+               data = JSON.parse(data);
+               $("#txtJobNo").val(data.Table[0].JobNo),$("#dtJobDate").val(data.Table[0].JobDate),$("#txtCar").val(data.Table[0].Car),$("#dtSWorking").val(data.Table[0].SWorking),$("#dtEWorking").val(data.Table[0].EWorking),$("#txtJobBy").val(data.Table[0].JobBy),$("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus),$("#txtDetail").val(data.Table[0].Detail),
+                 $("#txtCustomerName").val(data.Table[0].Customer),$("#txtJobReference").val(data.Table[0].Brand),$("#txtRemark").val(data.Table[0].Remark),
+                 $("#txtDiscount").val(data.Table[0].Discount);
+           },
+           error: function (msg) {
+               alert(msg);
+           }
+
+       });
+      //================================================Update
+        $("#Update").click(function () {
+            var dataObject = { ID: @Request.Params["id"], JobNo: $("#txtJobNo").val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() 
+            };
+            console.log(dataObject);
+            $.ajax(
+            {
+                url: 'http://localhost:13131/api/JobOrder/Put',
+                type: 'PUT',
+                data: dataObject,
+                datatype: 'json',
+
+                success: function (data) {
+                    alert('Update is completed');
+                    top.location.href = "/JobOrder/IndexJobOrder";
+                }
+                ,
+                error: function (msg) {
+                    alert(msg);
+                    //top.location.href = "/ExpenseMaster/Index";
+                }
+            });
         });
     });
 

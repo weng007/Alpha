@@ -20,22 +20,22 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_Product_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@SerialNo", Product.SerialNo);
-                    cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo);
-                    cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
-                    cmd.Parameters.AddWithValue("@Brand", Product.Brand);
-                    cmd.Parameters.AddWithValue("@Size", Product.Size);
-                    cmd.Parameters.AddWithValue("@Model", Product.Model);
-                    cmd.Parameters.AddWithValue("@Lifetime", Product.Lifetime);
+                    cmd.Parameters.AddWithValue("@SerialNo", "t5");
+                    cmd.Parameters.AddWithValue("@MachineNo", "t4");
+                    cmd.Parameters.AddWithValue("@ProductType", 1);
+                    cmd.Parameters.AddWithValue("@Brand", 1);
+                    cmd.Parameters.AddWithValue("@Size", "t2");
+                    cmd.Parameters.AddWithValue("@Model", "t1");
+                    cmd.Parameters.AddWithValue("@Lifetime", 1);
                     cmd.Parameters.AddWithValue("@ReceiveDate", Product.ReceiveDate);
-                    cmd.Parameters.AddWithValue("@UnitWeight", Product.UnitWeight);
-                    cmd.Parameters.AddWithValue("@Balance", Product.Balance);
-                    cmd.Parameters.AddWithValue("@Remain", Product.Remain);
-                    cmd.Parameters.AddWithValue("@Lost", Product.Lost);
-                    cmd.Parameters.AddWithValue("@Repair", Product.Repair);
-                    cmd.Parameters.AddWithValue("@Break", Product.Break);
-                    //cmd.Parameters.AddWithValue("@img", Product.img);
-                    cmd.Parameters.AddWithValue("@Remark", Product.Remark);
+                    cmd.Parameters.AddWithValue("@UnitWeight", 1);
+                    cmd.Parameters.AddWithValue("@Balance", 1);
+                    cmd.Parameters.AddWithValue("@Remain", 1);
+                    cmd.Parameters.AddWithValue("@Lost", 1);
+                    cmd.Parameters.AddWithValue("@Repair", 1);
+                    cmd.Parameters.AddWithValue("@Break", 1);
+                    cmd.Parameters.AddWithValue("@Img", Product.Img);
+                    cmd.Parameters.AddWithValue("@Remark", "test");
                     conObj.Open();
                     result = cmd.ExecuteScalar().ToString();
 
@@ -77,7 +77,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Lost", Product.Lost);
                     cmd.Parameters.AddWithValue("@Repair", Product.Repair);
                     cmd.Parameters.AddWithValue("@Break", Product.Break);
-                    //cmd.Parameters.AddWithValue("@img", Product.img);
+                    cmd.Parameters.AddWithValue("@Img", Product.Img);
                     cmd.Parameters.AddWithValue("@Remark", Product.Remark);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();

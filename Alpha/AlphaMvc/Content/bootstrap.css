@@ -3752,6 +3752,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  width: 90px;
+  height: 50px;
 }
 
 .input-group-addon:first-child {
@@ -3765,6 +3767,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .input-group-btn:first-child > .btn:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
+  height: 50px;
+  width: 100px;
 }
 
 .input-group-addon:last-child {
@@ -3781,7 +3785,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .input-group-btn > .btn + .btn {
-  margin-left: -4px;
+  /*margin-left: -4px;*/
+  margin-left: 5px;
 }
 
 .input-group-btn > .btn:hover,

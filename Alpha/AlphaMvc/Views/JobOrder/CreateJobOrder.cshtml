@@ -1,4 +1,5 @@
-﻿@{
+﻿@model AlphaMvc.Models.JobOrderModels
+@{
     ViewBag.Title = "CreateJobOrder";
 }
 
@@ -60,20 +61,20 @@
                     <input type="text" id="txtJobNo" name="field1" class="field-divided" placeholder="เลขที่ใบสั่งงาน" />
                 </li>
                 <li>
-                    <input type="text" id="datepicker" class="field-divided" placeholder="วันที่" />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="รถปิกอัพ" />
+                    <input type="text" id="dtJobDate" class="field-divided" placeholder="วันที่" />&nbsp;<input type="text" id="txtCar" name="field1" class="field-divided" placeholder="รถปิกอัพ" />
                 </li>
                 <li>
                     <label class="label-2">วันเริ่มทำงาน</label>&nbsp;<label class="label-2">วันจบงาน</label>
                 </li>
                 <li>
-                    <input type="text" id="datepicker2" class="field-divided" placeholder="วันเริ่มทำงาน" />&nbsp;<input type="text" id="datepicker3" class="field-divided" placeholder="วันจบงาน" />
+                    <input type="text" id="dtSWorking" class="field-divided" placeholder="วันเริ่มทำงาน" />&nbsp;<input type="text" id="dtEWorking" class="field-divided" placeholder="วันจบงาน" />
                 </li>
                 <li>
                     <label class="label-4">รับงานโดย</label>&nbsp;<label class="label-2">ออกโดย</label>
 
                 </li>
                 <li>
-                    <input type="text" name="field1" class="field-divided" placeholder="รับงานโดย" />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="ออกโดย" />
+                    <input type="text" id="txtJobBy" name="field1" class="field-divided" placeholder="รับงานโดย" />&nbsp;<input type="text" id="txtIssuedBy" name="field1" class="field-divided" placeholder="ออกโดย" />
                 </li>
                 <li>
                     <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
@@ -84,7 +85,7 @@
                 
                 <li>
                     <label>รายละเอียดงาน</label>
-                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                    <textarea name="field5" id="txtDetail" class="field-long field-textarea"></textarea>
                 </li>
 
             </ul>
@@ -107,11 +108,11 @@
                     <textarea name="field5" id="field5" class="field-long field-textarea" placeholder="ที่อยู่" disabled></textarea>
                 </li>
                <li>
-                   <input type="text" name="field1" class="field-divided" placeholder="Job Reference" disabled />
+                   <input type="text" id="txtJobReference" name="field1" class="field-divided" placeholder="Job Reference" disabled />
                </li>
                 <li>
                     <label>หมายเหตุ</label>
-                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                    <textarea name="field5" id="txtRemark" class="field-long field-textarea"></textarea>
                 </li>
             </ul>
 
@@ -165,7 +166,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td colspan="6" class="textalign">Discount</td>
-                                                            <td colspan="3"><input id="Premium" type="text" value="" class="txtdiscount" /></td>
+                                                            <td colspan="3"><input id="txtDiscount" type="text" value="" class="txtdiscount" /></td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="6" class="textalign">Sub Total</td>
@@ -185,16 +186,16 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="UnitWeight" class="txtqty">
+                                                                <input type="text" id="txtUnitWeight" class="UnitWeight txtqty">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Qty" class="Quantity txtqty" placeholder="0" onchange="CalSum()" />
+                                                                <input type="text" id="txtQty" class="Quantity txtqty" placeholder="0" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="UnitPrice" class="Price txtUniPrice" placeholder="0" onchange="CalSum()" />
+                                                                <input type="text" id="txtUnitPrice" class="Price txtUniPrice" placeholder="0" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Amount" disabled class="Amount txtdisable-2">
+                                                                <input type="text" id="txtAmount" disabled class="Amount txtdisable-2">
                                                             </td>
 
                                                             <td>
@@ -216,16 +217,16 @@
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="UnitWeight" class="txtqty" />
+                                                                <input type="text" id="txtUnitWeight" class="UnitWeight txtqty" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Qty" class="Quantity txtqty" onchange="CalSum()" />
+                                                                <input type="text" id="txtQty" class="Quantity txtqty" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text"  id="UnitPrice" class="Price txtUniPrice" onchange="CalSum()" />
+                                                                <input type="text"  id="txtUnitPrice" class="Price txtUniPrice" onchange="CalSum()" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Amount" disabled class="Amount txtdisable-2">
+                                                                <input type="text" id="txtAmount" disabled class="Amount txtdisable-2">
                                                             </td>
                                                             <td>
                                                                 <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -875,21 +876,23 @@
 
             <ul class="form-style-1">
                 <li>
-                    <input type="submit" value="Save" />
+                    <input type="submit" value="Save" id="Create" />
                 </li>
             </ul>
+            @*<input type="submit" value="Test" onclick="Test()" />*@
         </form>
     }
 <script type="text/javascript">
+    
     //------------------ Standard --------------------------
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
     $(function () {
 
-        $("#datepicker").datepicker();
-        $("#datepicker2").datepicker();
-        $("#datepicker3").datepicker();
+        $("#dtJobDate").datepicker();
+        $("#dtSWorking").datepicker();
+        $("#dtEWorking").datepicker();
         $("#datepicker4").datepicker();
         $("#datepicker5").datepicker();
         $('#tabManpower').dynoTable2();
@@ -935,7 +938,7 @@
         });
     }
   
-    $(document).ready(function () {
+        $(document).ready(function () {
         $("#customerBody").on("click", "tr", function (e) {
             $("#txtCustomerName").val($(this).find("td:eq(3)").text());
             $("#hidCustID").val($(this).find("td:eq(1)").text());
@@ -950,12 +953,15 @@
                 $.each(data.Table, function (i) {
                     $('#cmbIncomeType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
+                $('#cmbIncomeType').find('option:first-child').attr('selected', true);
             },
             failure: function () {
                 alert('Error');
             }
         });
- 
+
+        
+
         var dataObject = { typeID: '001' };
         $.ajax({
             url: 'http://localhost:13131/api/MasterService/',
@@ -967,6 +973,7 @@
                 $.each(data.Table, function (i) {
                     $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
+                $('#cmbTypeWorking').find('option:first-child').attr('selected', true);
             },
             failure: function () {
                 alert('Error');
@@ -984,6 +991,7 @@
                 $.each(data.Table, function (i) {
                     $('#cmbJobStatus').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
+                $('#cmbTypeWorking').find('option:first-child').attr('selected', true);
             },
             failure: function () {
                 alert('Error');
@@ -1029,6 +1037,61 @@
                 $info.show();
             }
         });
+        });
+
+    $("#Create").click(function () {
+        var dataObject = { JobNo: $("#txtJobNo").val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
+        var ID;
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/JobOrder',
+            type: 'POST',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+                ID = data;
+                alert('Create is completed');
+                window.location.href = "../JobOrder/IndexJobOrder";
+            }
+            ,
+            error: function (msg) {
+                alert(msg)
+            }
+        });
+
+        var obj1 = [];
+        var obj = {};
+        $(".RowCal").each(function () {
+            obj.JobID = ID;
+            obj.IncomeType = $(this).find('#cmbIncomeType').find(":selected").val();
+            obj.UnitWeight = $(this).find(".UnitWeight").val();
+            obj.Qty = $(this).find(".Quantity").val();
+            obj.UnitPrice = $(this).find(".Price").val();
+            obj.Amount = $(this).find(".Amount").val();
+            obj1.push(obj);
+            console.log(obj1);
+        });
+        alert('test');
+        alert(obj1[0].JobID);
+        alert(obj1[0].Qty);
+        alert(obj1[0].UnitPrice);
+
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/JobOrderIncome',
+            type: 'POST',
+            async: false,
+            data: obj,
+            datatype: 'json',
+            success: function (data) {
+                alert('Create is completed');
+            }
+            ,
+            error: function (msg) {
+                alert(msg)
+            }
+        });
+
     });
-   
 </script>

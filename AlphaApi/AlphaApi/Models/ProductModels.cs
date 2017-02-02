@@ -39,7 +39,9 @@ namespace AlphaApi.Models
 
         public double Break { get; set; }
 
-        //public byte img { get; set; }
+        public string Img { get; set; }
+
+        public string ImgData { get; set; }
 
         public string Remark { get; set; }
 

@@ -10,6 +10,7 @@ using System.Data;
 using System.Json;
 using Newtonsoft.Json;
 using System.Web.Http.Cors;
+using System.IO;
 
 namespace AlphaApi.Controllers
 {
@@ -21,6 +22,19 @@ namespace AlphaApi.Controllers
         [HttpPost]
         public string Post(ProductModels PD)
         {
+            
+            //if (!Directory.Exists(yourD)
+            //{
+            //    Directory.CreateDirectory("",;
+            //}
+                
+            if (PD.ImgData != null)
+            {
+
+                byte[] img = Convert.FromBase64String(PD.ImgData);
+                File.WriteAllBytes(@"D:\leadssoft\Picture", img);
+            }
+
             var response = Productdb.InsertData(PD);
             return response;
 
