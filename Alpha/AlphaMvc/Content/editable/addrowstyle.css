@@ -102,13 +102,7 @@
             height: 25px;
             text-align: right;
         }
-        table td .txtqty {
-            margin: 0;
-            background: #fff;
-            height: 25px;
-            text-align: right;
-            width:80px;
-        }
+        
         table td .txt-1 {
             margin: 0;
             background: #fff;
@@ -127,13 +121,6 @@
             height: 25px;
             text-align: left;
         }
-        table td .txtdiscount {
-            width: 168px;
-            margin: 0;
-            background: #fff;
-            height: 25px;
-            text-align: right;
-        }
     .txtbox{
         margin: 0;
         background: #fff;
@@ -147,27 +134,6 @@
         background: #eaebff;
         height: 29px;
         border: none;
-    }
-    .txtdisable {
-        width: 170px;
-        margin: 0;
-        /*background: #f0ebd8;*/
-        background: #ebe7d8;
-        height: 29px;
-        border: 1px solid #d7d1bc;
-        text-align: right;
-    }
-    .txtdisable-2 {
-        width: 165px;
-        margin: 0;
-        background: #fafafa;
-        height: 29px;
-        border: none;
-        text-align: right;
-        border-left: 1px solid #acc;
-        border-right: 1px solid #acc;
-        border-bottom: 1px solid #acc;
-        padding-right: 5px;
     }
     .myDIV {
         width:inherit;
@@ -209,30 +175,42 @@
         padding-left: 3px;
         padding-right: 3px;
     }
-    table td .select-2 {
-        /*background: #fff;
-                height: 18px;
-                width: 90px;*/
+    table td .select-size120 {
         background: #fff;
         height: 29px;
         width: 120px;
         padding: 2px !important;
     }
     table td .select-3 {
-        /*background: #fff;
-                height: 18px;
-                width: 90px;*/
         background: #fff;
         height: 25px;
         width: 220px;
         padding: 2px !important;
         font-size: small;
     }
-    table td .selday {
+    table td .select-size50 {
         background: #fff;
         height: 29px;
         width: 50px;
         padding: 2px !important;
+    }
+    .txtdisablerow {
+        margin: 0;
+        background: #fafafa;
+        height: 29px;
+        border: none;
+        text-align: right;
+        border-left: 1px solid #acc;
+        border-right: 1px solid #acc;
+        border-bottom: 1px solid #acc;
+        padding-right: 5px;
+    }
+    .txtdisablefooter {
+        margin: 0;
+        background: #ebe7d8;
+        height: 29px;
+        border: 1px solid #d7d1bc;
+        text-align: right;
     }
     table td .inputdisable {
             margin: 0;
@@ -240,7 +218,7 @@
             height: 25px;
             border: 1px solid #BEBEBE;
             width: 140px;
-        }
+        }  
     table td .input-1 {
             margin: 0;
             background: #fff;
@@ -255,18 +233,62 @@
             width: 110px;
             text-align: center;
         }
-    table td .input-3 {
+    .textright {
             margin: 0;
             background: #fff;
             height: 25px;
-            width: 100px;
+            text-align: right;
+        }
+    .textleft {
+            margin: 0;
+            background: #fff;
+            height: 25px;
+            text-align: left;
+        }
+    .textcenter {
+            margin: 0;
+            background: #fff;
+            height: 25px;
             text-align: center;
         }
-    table td .txtUniPrice {
-            margin: 0;
-            background: #fff;
-            height: 25px;
+    table td .text-size50 {
+            width: 50px;
+        }
+    table td .text-size80 {
+            width:80px;
+        }
+    table td .text-size90 {
+            width:90px;
+        }
+    table td .text-size100 {
+            width: 100px;
+        }
+    table td .text-size110 {
+            width: 110px;
+        }
+    table td .text-size130 {
             width: 130px;
+        }
+    table td .text-size140 {
+            width: 140px;
+        }
+    table td .text-size160 {
+            width: 160px;
+        }
+    table td .text-size165 {
+            width: 165px;
+        }
+    table td .text-size168 {
+            width: 168px;
+        }
+    table td .text-size170 {
+            width: 170px;
+        }
+    table td .text-size180 {
+            width: 180px;
+        }
+    table td .text-size200 {
+            width: 200px;
         }
     table td .input-4 {
             margin: 0;

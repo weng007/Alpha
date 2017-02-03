@@ -4,10 +4,10 @@
 }
 
 <h2>Master Expense Create</h2>
-<link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
-
+<script src="@Url.Content("~/Scripts/CUDS/ExpenseMaster/CreateExpenseMaster.js")" type="text/javascript"></script>
     @using (Html.BeginForm())
     {
+        //===================================================================CSS w3school
         <form>
             <ul class="form-style">
                 <li>
@@ -23,24 +23,3 @@
             </ul>
         </form>
     }
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#Save").click(function () {
-            var dataObject = { Detail: $("#Detail").val() };
-            $.ajax(
-            {
-                url: 'http://localhost:13131/api/ExpenseMaster/Post',
-                type: 'POST',
-                data: dataObject,
-                datatype: 'json',
-
-                success: function (data) {
-                    alert('Created Successfully');
-                    window.location.href = "../ExpenseMaster/IndexExpenseMaster";
-                },
-                error: function (msg) { alert(msg); }
-            });
-        });
-    }); 
-</script>

@@ -4,7 +4,7 @@
 }
 
 <h2>Master Expense Edit</h2>
-<link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/CUDS/ExpenseMaster/EditExpenseMaster.js")" type="text/javascript"></script>
 
     @using (Html.BeginForm())
     {
@@ -28,42 +28,11 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        var id= @Request.Params["id"];
-        //alert('Round2');
-        $.ajax(
-       {
-           url: 'http://localhost:13131/api/ExpenseMaster/'+id,
-           type: 'GET',
-           datatype: 'json',
-           success: function (data) {
-               data = JSON.parse(data);
-               $("#Detail").val(data.Table[0].Detail);
-           },
-           error: function (msg) {
-               alert(msg);
-           }
 
-       });
+        GetData(@Request.Params["id"]);
 
-        $("#Update").click(function () {
-            var dataObject = { ID: @Request.Params["id"], Detail: $("#Detail").val() };
-            $.ajax(
-            {
-                url: 'http://localhost:13131/api/ExpenseMaster/PUT',
-                type: 'PUT',
-                data: dataObject,
-                datatype: 'json',
-
-                success: function (result) {
-                    alert('Update is completed');
-                    top.location.href = "/ExpenseMaster/IndexExpenseMaster";
-                }
-                ,
-                error: function (msg) {
-                    alert(msg);
-                    top.location.href = "/ExpenseMaster/Index";
-                }
-            });
-        });
     });
+
+    $("#Update").click(function () { Update(@Request.Params["id"]); });
+
 </script>

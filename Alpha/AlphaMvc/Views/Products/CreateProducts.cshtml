@@ -6,14 +6,7 @@
 <h2>
     Product Create
 </h2>
-@*<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">*@
-<link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
-<link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
-<link href="@Url.Content("~/Content/editable/tablestyle.css")" rel="stylesheet" type="text/css" />
-<link href="@Url.Content("~/Content/fileInput/fileinput.css")" rel="stylesheet" type="text/css" />
-<script src="@Url.Content("~/Scripts/fileInput/fileinput.js")" type="text/javascript"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
-
+<script src="@Url.Content("~/Scripts/CUDS/Products/CreateProducts.js")" type="text/javascript"></script>
 <style>
     table {
         background: #fbfbf1;
@@ -34,6 +27,7 @@
 <div id="myModal">
     @using (Html.BeginForm())
     {
+        //===================================================================CSS w3school
         <form>
             <ul class="form-style-1">
                 <li>
@@ -76,10 +70,7 @@
             </ul>
             <ul class="form-style-1">
                 <li>
-                    @*<button class="imgbutton" id="img"></button>*@
-                    @*<input id="photo" type="file" class="file" data-upload-url="#">*@
 
-                    <input id="urlText" />
                     <input type="file" name="photo" id="photo" onchange="readURL(this);">
                     <img id="imgPreview" src="#" alt="your image" />
 
@@ -185,119 +176,8 @@
                 </li>
                 <br />
             </ul>
+            
 </form>
     }
+    @*//===================================================================CSS w3school*@
 </div>
-
-<script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imgPreview')
-                    .attr('src', e.target.result)
-                    .width(100)
-                    .height(120);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    $(document).ready(function () {
-        var dataObject = { typeID: '003' };
-        $.ajax({
-            url: 'http://localhost:13131/api/MasterService',
-            type: 'GET',
-            dataType: 'json',
-            data: dataObject,
-            success: function (data) {
-                data = JSON.parse(data);
-                $.each(data.Table, function (i) {
-                    $('#cmbProductType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-                });
-                $('#cmbProductType').find('option:first-child').attr('selected', true);
-
-                //ProductTypeVal = $("#cmbProductType").find(":selected").val();
-                
-            },
-            failure: function () {
-                alert('Error');
-            }
-        });
-
-        var dataObject = { typeID: '004' };
-        $.ajax({
-            url: 'http://localhost:13131/api/MasterService',
-            type: 'GET',
-            dataType: 'json',
-            data: dataObject,
-            success: function (data) {
-                data = JSON.parse(data);
-                $.each(data.Table, function (i) {
-                    $('#cmbUnitWeight').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-                });
-                $('#cmbUnitWeight').find('option:first-child').attr('selected', true);
-
-                //UnitWeightVal = $("#cmbUnitWeight").find(":selected").val();
-                //console.log(UnitWeightVal);
-            },
-            failure: function () {
-                alert('Error');
-            }
-        });
-
-        $("#dtReceiveDate").datepicker();
-        
-    });
-    function getBase64Image(imgElem) {
-        // imgElem must be on the same server otherwise a cross-origin error will be thrown "SECURITY_ERR: DOM Exception 18"
-        var canvas = document.createElement("canvas");
-        canvas.width = imgElem.clientWidth;
-        canvas.height = imgElem.clientHeight;
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(imgElem, 0, 0);
-        var dataURL = canvas.toDataURL("image/png");
-        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-    }
-
-    $("#Create").click(function () {
-        var imgElem = document.getElementById('imgPreview');
-
-        var photo = document.getElementById("photo");
-        var file = photo.files[0];
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getYear();
-        var str = y.toString();
-        var res = str.substring(1, 3);
-        var date2 = d + "_" + m + "_" + res;
-        alert(date2);
-        FileName = date2 + file.name;
-        alert(FileName);
-        var imgData = getBase64Image(imgElem);
-        var imgPath = ("../Picture/" + FileName);
-        alert(imgData);
-        var dataObject = {
-            SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
-            Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
-            UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Lost: $("#txtLost").val(), Repair: $("#txtRepair").val(),
-            Break: $("#txtBreak").val(), Img: imgPath, ImgData: imgData, Remark: $("#txtRemark").val()
-        };
-        console.log(dataObject);
-        $.ajax(
-        {
-            url: 'http://localhost:13131/api/Product',
-            type: 'POST',
-            data: dataObject,
-            datatype: 'json',
-
-            success: function (data) {
-                alert('Created Successfully');
-                window.location.href = "../ExpenseMaster/IndexExpenseMaster";
-            },
-            error: function (msg) { alert(msg); }
-        });
-    });
-</script>
