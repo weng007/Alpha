@@ -251,6 +251,12 @@
             height: 25px;
             text-align: center;
         }
+    .floatleft{
+        float:left;
+    }
+    .floatright{
+        float:right;
+    }
     table td .text-size50 {
             width: 50px;
         }

@@ -151,60 +151,64 @@ $(document).ready(function () {
             $info.show();
         }
     });
+
+    $("#Create").click(function () {
+        alert("test0");
+        var dataObject = { JobNo: $("#txtJobNo").val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
+        var ID;
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/JobOrder',
+            type: 'POST',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+                ID = data;
+                alert('Create is completed');
+                window.location.href = "../JobOrder/IndexJobOrder";
+            }
+            ,
+            error: function (msg) {
+                alert(msg)
+            }
+        });
+
+        //var obj1 = [];
+        //var obj = {};
+        //$(".RowCal").each(function () {
+        //    obj.JobID = ID;
+        //    obj.IncomeType = $(this).find('#cmbIncomeType').find(":selected").val();
+        //    obj.UnitWeight = $(this).find(".UnitWeight").val();
+        //    obj.Qty = $(this).find(".Quantity").val();
+        //    obj.UnitPrice = $(this).find(".Price").val();
+        //    obj.Amount = $(this).find(".Amount").val();
+        //    obj1.push(obj);
+        //    console.log(obj1);
+        //});
+        //alert('test');
+        //alert(obj1[0].JobID);
+        //alert(obj1[0].Qty);
+        //alert(obj1[0].UnitPrice);
+
+        //$.ajax(
+        //{
+        //    url: 'http://localhost:13131/api/JobOrderIncome',
+        //    type: 'POST',
+        //    async: false,
+        //    data: obj,
+        //    datatype: 'json',
+        //    success: function (data) {
+        //        alert('Create is completed');
+        //    }
+        //    ,
+        //    error: function (msg) {
+        //        alert(msg)
+        //    }
+        //});
+
+    });
+
+
 });
 
-$("#Create").click(function () {
-    var dataObject = { JobNo: $("#txtJobNo").val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
-    var ID;
-    $.ajax(
-    {
-        url: 'http://localhost:13131/api/JobOrder',
-        type: 'POST',
-        async: false,
-        data: dataObject,
-        datatype: 'json',
-        success: function (data) {
-            ID = data;
-            alert('Create is completed');
-            window.location.href = "../JobOrder/IndexJobOrder";
-        }
-        ,
-        error: function (msg) {
-            alert(msg)
-        }
-    });
-
-    var obj1 = [];
-    var obj = {};
-    $(".RowCal").each(function () {
-        obj.JobID = ID;
-        obj.IncomeType = $(this).find('#cmbIncomeType').find(":selected").val();
-        obj.UnitWeight = $(this).find(".UnitWeight").val();
-        obj.Qty = $(this).find(".Quantity").val();
-        obj.UnitPrice = $(this).find(".Price").val();
-        obj.Amount = $(this).find(".Amount").val();
-        obj1.push(obj);
-        console.log(obj1);
-    });
-    alert('test');
-    alert(obj1[0].JobID);
-    alert(obj1[0].Qty);
-    alert(obj1[0].UnitPrice);
-
-    $.ajax(
-    {
-        url: 'http://localhost:13131/api/JobOrderIncome',
-        type: 'POST',
-        async: false,
-        data: obj,
-        datatype: 'json',
-        success: function (data) {
-            alert('Create is completed');
-        }
-        ,
-        error: function (msg) {
-            alert(msg)
-        }
-    });
-
-});

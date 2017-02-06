@@ -41,12 +41,37 @@ $(document).ready(function () {
     $("#dtReceiveDate").datepicker();
 });
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imgPreview')
+                .attr('src', e.target.result)
+                .width(100)
+                .height(120);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+function getBase64Image(imgElem) {
+    // imgElem must be on the same server otherwise a cross-origin error will be thrown "SECURITY_ERR: DOM Exception 18"
+    var canvas = document.createElement("canvas");
+    canvas.width = imgElem.clientWidth;
+    canvas.height = imgElem.clientHeight;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(imgElem, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
 function GetData(val) {
     var dataObject = { ID: val}
         //{ ID : @Request.Params["id"]};
     $.ajax(
    {
-       url: 'http://localhost:13131/api/Product/',
+       url: 'http://localhost:13131/api/Product',
        type: 'GET',
        data: dataObject,
        datatype: 'json',
@@ -64,15 +89,29 @@ function GetData(val) {
 }
 
 function Update(val) {
+    var imgElem = document.getElementById('imgPreview');
+    var photo = document.getElementById("photo");
+    var file = photo.files[0];
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getYear();
+    var str = y.toString();
+    var res = str.substring(1, 3);
+    var date2 = d + "_" + m + "_" + res;
+    FileName = date2 + file.name;
+    alert(FileName);
+    var imgData = getBase64Image(imgElem);
+    var imgPath = ("../Picture/" + FileName);
     var dataObject = {ID: val, SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
         Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
         UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Lost: $("#txtLost").val(), Repair: $("#txtRepair").val(),
-        Break: $("#txtBreak").val(), Remark: $("#txtRemark").val()
+        Break: $("#txtBreak").val(), Img: imgPath, ImgData: imgData, Remark: $("#txtRemark").val()
     };
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/Product/Put',
+        url: 'http://localhost:13131/api/Product',
         type: 'PUT',
         data: dataObject,
         datatype: 'json',
@@ -83,7 +122,8 @@ function Update(val) {
         }
         ,
         error: function (msg) {
-            alert(msg);
+            //alert(msg);
+            alert("test3");
         }
     });
 }

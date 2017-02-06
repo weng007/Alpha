@@ -19,9 +19,10 @@ namespace AlphaApi.Controllers
         static BDCDAL BDCdb = new BDCDAL();
 
         [HttpPost]
-        public void Post(BDCModels BDCModel)
+        public int Post(BDCModels BDCModel)
         {
-            BDCdb.InsertData(BDCModel);
+            var response = BDCdb.InsertData(BDCModel);
+            return response;
         }
 
         [HttpGet]

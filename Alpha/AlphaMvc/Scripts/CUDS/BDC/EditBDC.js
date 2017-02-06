@@ -31,11 +31,13 @@ $(document).ready(function () {
 });
 
 function GetData(val) {
-    var dataObject = { ID: val}
+    var dataObject = { ID: val }
+    alert(val);
     $.ajax(
    {
        url: 'http://localhost:13131/api/BDC',
        type: 'GET',
+       data: dataObject,
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
@@ -50,9 +52,12 @@ function GetData(val) {
 }
 
 function Update(val) {
+    alert("test0");
     var dataObject = {ID: val, Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: $("#txtPrice").val(), Cost: $("#txtCost").val(),
         Profit: $("#txtProfit").val(), Remark: $("#txtRemark").val()};
     console.log(dataObject);
+    //alert(val);
+    alert("test1");
     $.ajax(
     {
         url: 'http://localhost:13131/api/BDC',
@@ -60,13 +65,15 @@ function Update(val) {
         data: dataObject,
         datatype: 'json',
 
-        success: function (result) {
+        success: function (data) {
+            alert("test2");
             alert('Update is completed');
             top.location.href = "/BDC/IndexBDC";
         }
         ,
         error: function (msg) {
-            alert(msg);
+            alert("testError");
+            //alert(msg);
         }
     });
 }

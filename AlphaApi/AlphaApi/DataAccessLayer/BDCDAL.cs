@@ -12,7 +12,7 @@ namespace AlphaApi.DataAccessLayer
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         int result = 0;
-        public void InsertData(BDCModels BDC)
+        public int InsertData(BDCModels BDC)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -27,7 +27,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Profit", BDC.Profit);
                     cmd.Parameters.AddWithValue("@Remark", BDC.Remark);
                     conObj.Open();
-                    cmd.ExecuteNonQuery();
+                    result = cmd.ExecuteNonQuery();
+                    return result;
                 }
                 catch (Exception ex)
                 {
