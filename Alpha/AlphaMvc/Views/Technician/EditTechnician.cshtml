@@ -1,0 +1,123 @@
+﻿@model AlphaMvc.Models.TechnicianModels
+@{
+    ViewBag.Title = "EditTechnician";
+}
+
+<h2>Technician Edit</h2>
+<script src="@Url.Content("~/Scripts/CUDS/Technician/EditTechnician.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CUDS/Technician/TechnicianCard.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CUDS/Technician/TechnicianSkill.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CUDS/Technician/TechnicianFile.js")" type="text/javascript"></script>
+<table>
+    <tr>
+        <td>
+            @Html.ActionLink("Teachnician List", "IndexTechnician")
+        </td>
+    </tr>
+</table>
+
+<div id="myModal">
+    @using (Html.BeginForm())
+    {
+        //===================================================================CSS w3school
+        <form>
+            <ul class="form-style">
+                <li>
+                    <label>TechnicianID<span class="required">*</span></label>
+                    <input type="text" id="txtTechnicianID" name="field1" class="field-divided" placeholder="T0008" disabled />&nbsp;<input type="text" id="txtHRCode" name="field2" class="field-divided" placeholder="HR Code" disabled/>
+                </li>
+
+                <li>
+                    <label>ชื่อ - นามสกุล</label>
+                    <input type="text" id="txtFirstName" name="field1" class="field-divided" placeholder="ชื่อ" disabled />&nbsp;<input type="text" id="txtLastName" name="field2" class="field-divided" placeholder="นามสกุล" disabled/>
+                </li>
+                <li>
+                    <label>ประเภทพนักงาน</label>
+                    <select name="field4" id="cmbTechnicianType" class="field-select-medium" disabled></select>
+                    &nbsp;<input type="text" id="txtIDcard" name="field2" class="field-divided" placeholder="เลขบัตรประชาชน" disabled />
+                </li>
+                <li><label class="label-big-2">Position</label>&nbsp;<label class="label-small">เกรด</label></li>
+                <li>
+                    <input type="text" id="txtPosition" name="field2" class="field-divided" placeholder="Position" disabled />&nbsp;<select name="field4" id="cmbGrade" class="field-select-small-2" disabled></select>
+                </li>
+                <br />
+            </ul>
+            @*//===================================================================CSS Jquery*@
+            <table class="tabbar">
+                <tr>
+                    <td>
+                        <div id="container">
+                            <div id="parentHorizontalTab">
+                                <ul class="resp-tabs-list hor_1">
+                                    <li>Card</li>
+                                    <li>Skill</li>
+                                    <li>Attach File</li>
+                                </ul>
+                                <div class="resp-tabs-container hor_1">
+                                    <div>
+                                        <div class="grigbar">
+                                            <table class="table table-striped">
+                                                <thead class="bgthead">
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>บริษัท</th>
+                                                        <th>ประเภทบัตร</th>
+                                                        <th>วันออกบัตร</th>
+                                                        <th>วันหมดอายุ</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="Card"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="grigbar">
+                                            <table class="table table-striped">
+                                                <thead class="bgthead">
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Skill</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="Skill"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="grigbar">
+                                            <table class="table table-striped">
+                                                <thead class="bgthead">
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>File Name</th>
+                                                        <th>Doc Type</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="File"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        GetData(@Request.Params["id"]);
+
+        GetDataCard(@Request.Params["id"]);
+        GetDataSkill(@Request.Params["id"]);
+        GetDataFile(@Request.Params["id"]);
+
+    });
+
+</script>

@@ -50,7 +50,7 @@
                     <a href="@Url.Action("Index", "Home")" class="imagelogo"></a>
                     <img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" /><p class="logonname">Administrator</p>
                     <img src="@Url.Content("~/Images/log-in.png")" alt="IMAGES" class="imgicon" />
-                    <div class="loginname">@Html.ActionLink("Log Out", "Index", "Login")</div>
+                    <div class="loginname">@Html.ActionLink("Log Out", "IndexLogin", "Login")</div>
                 </div>
                 @*<div class="float-right">*@
                     @*<section id="login">
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "IndexEmployee", "Employee")</div></div></li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "IndexTechnician", "Technician")</div></div></li>
                         <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Products", "IndexProducts", "Products")</div></div></li>
                         <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Break Down Cost", "IndexBDC", "BDC")</div></div></li>
                         <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Job Order", "IndexJobOrder", "JobOrder")</div></div></li>

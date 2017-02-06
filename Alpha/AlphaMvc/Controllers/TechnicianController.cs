@@ -6,25 +6,25 @@ using System.Web.Mvc;
 
 namespace AlphaMvc.Controllers
 {
-    public class EmployeeController : Controller
+    public class TechnicianController : Controller
     {
         //
         // GET: /Employee/
 
-        public ActionResult IndexEmployee()
+        public ActionResult IndexTechnician()
         {
             return View();
         }
-        public ActionResult EditEmployee()
+        public ActionResult EditTechnician()
         {
             return View();
         }
-        public ActionResult CreateEmployee()
+        public ActionResult CreateTechnician()
         {
             return View();
         }
 
-        public ActionResult ExpiredEmployee()
+        public ActionResult ExpiredTechnician()
         {
             return View();
         }
