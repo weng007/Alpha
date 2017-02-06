@@ -23,6 +23,7 @@
             <button type="submit" value="Login" id="UserLogin"></button>
             @*<button type="submit">@Html.ActionLink("Login", "Index", "Home")</button>*@
             <input type="checkbox" checked="checked"> Remember me
+            
         </div>
 
         <div class="container">
@@ -30,4 +31,20 @@
             <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
     </form>
+    <input type="text" id="demo">
 @* -------------------------------------------- form login ----------------------------------- *@
+<script type="text/javascript">
+
+    $("#Login").click(function () { GetData(); });
+
+    var IsExists = $("#demo").val()
+    alert($("#demo").val());
+
+    if(IsExists)
+    {
+        @*@Url.Action("Index", "Home")*@
+        window.location.hef = "http://localhost:1042/Technician/indexTechnician";
+
+    }
+
+</script>
