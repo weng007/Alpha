@@ -213,7 +213,7 @@ $(document).ready(function () {
             url: 'http://localhost:13131/api/JobOrderIncome',
             type: 'POST',
             async: false,
-            data: JSON.stringify(sc),
+            data: sc,
             datatype: 'json',
             success: function (data) {
                 alert('Create is completed');
