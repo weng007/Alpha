@@ -18,8 +18,9 @@ namespace AlphaApi.Controllers
     {
         public JobOrderIncomeDAL jobOrderIncome = new JobOrderIncomeDAL();
 
+        [EnableCorsAttribute("*", "*", "*")]
         [HttpPost]
-        public int Post(List<JobOrderIncomeModels> jobOrderIncomeModel)
+        public int Post(string job)
         {
             var response = 0;
             //var response = jobOrderIncome.InsertData(jobOrderIncomeModel);
