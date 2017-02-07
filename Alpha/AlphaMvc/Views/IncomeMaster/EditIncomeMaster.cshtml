@@ -18,21 +18,24 @@
 
             <ul class="form-style">
                 <li>
-                    <input type="submit" value="Save" id="Update" />
+                    <input type="submit" value="Save" id="Update" onblur="Redirect()"/>
                 </li>
             </ul>
         </form>
 
     }
 <script type="text/javascript">
-
     $(document).ready(function () {
-
         GetData(@Request.Params["id"]);
-
     });
 
-    $("#Update").click(function () { Update(@Request.Params["id"]); });
+    $("#Update").click(function () {
+        Update(@Request.Params["id"])
+    });
+
+    function Redirect() {
+        window.location = "IndexIncomeMaster";
+    }
 
 </script>
 
