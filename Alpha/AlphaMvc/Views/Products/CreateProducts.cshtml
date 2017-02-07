@@ -28,11 +28,11 @@
     @using (Html.BeginForm())
     {
         //===================================================================CSS w3school
-        <form>
+        <form id="myform">
             <ul class="form-style-1">
                 <li>
                     <label>Products <span class="required">*</span></label>
-                    <input type="text" id = "txtSerialNo" name="field1" class="field-divided" placeholder="Serial" />&nbsp;<input type="text" id = "txtMachineNo" name="field1" class="field-divided" placeholder="หมายเลขเครื่อง" />
+                    <input type="text" id = "txtSerialNo" name="field_1" class="field-divided" placeholder="Serial" autofocus required />&nbsp;<input type="text" id = "txtMachineNo" name="field1" class="field-divided" placeholder="หมายเลขเครื่อง" required />
                 </li>
                 <li>
                     <label>ประเภทสินค้า</label>
@@ -50,7 +50,7 @@
                     <label class="label-big">รับเข้า</label>&nbsp;<label class="label-small">หน่วยนับ</label>
                 </li>
                 <li>
-                    <input type="text" id = "dtReceiveDate" class="field-divided" placeholder="วันที่รับเข้า" />&nbsp;
+                    <input type="text" id = "dtReceiveDate" class="field-divided" placeholder="วันที่รับเข้า" required />&nbsp;
                     <select id="cmbUnitWeight" name="cmbUnitWeight" class="field-select-small-2" >
                     </select>
                     @*onchange="cmbUnitWeight_Change()"*@
@@ -59,7 +59,7 @@
                     <label class="label-small">ยกมา</label>&nbsp;<label class="label-small-3">คงเหลือ</label>
                 </li>
                 <li>
-                    <input type="text" id = "txtBalance" name="field1" class="field-select-small" placeholder="ยกมา" />&nbsp;<input type="text" id = "txtRemain" name="field2" class="field-select-small" placeholder="คงเหลือ" />
+                    <input type="number" id = "txtBalance" name="field1" class="field-select-small" placeholder="ยกมา" required />&nbsp;<input type="number" id = "txtRemain" name="field2" class="field-select-small" placeholder="คงเหลือ" required />
                 </li>
                 <li>
                     <label class="label-small-2">หาย</label>&nbsp;<label class="label-small-2">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>

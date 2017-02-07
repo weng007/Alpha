@@ -24,18 +24,15 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo);
                     cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
                     cmd.Parameters.AddWithValue("@Brand", Product.Brand);
-                    cmd.Parameters.AddWithValue("@Size", Product.Size);
-                    cmd.Parameters.AddWithValue("@Model", Product.Model);
+                    cmd.Parameters.AddWithValue("@Size", Product.Size != null ? Product.Size : "");
+                    cmd.Parameters.AddWithValue("@Model", Product.Model != null? Product.Model : "");
                     cmd.Parameters.AddWithValue("@Lifetime", Product.Lifetime);
                     cmd.Parameters.AddWithValue("@ReceiveDate", Product.ReceiveDate);
                     cmd.Parameters.AddWithValue("@UnitWeight", Product.UnitWeight);
                     cmd.Parameters.AddWithValue("@Balance", Product.Balance);
                     cmd.Parameters.AddWithValue("@Remain", Product.Remain);
-                    cmd.Parameters.AddWithValue("@Lost", Product.Lost);
-                    cmd.Parameters.AddWithValue("@Repair", Product.Repair);
-                    cmd.Parameters.AddWithValue("@Break", Product.Break);
                     cmd.Parameters.AddWithValue("@Img", Product.Img);
-                    cmd.Parameters.AddWithValue("@Remark", Product.Remark);
+                    cmd.Parameters.AddWithValue("@Remark", Product.Remark != null ? Product.Remark : "");
                     conObj.Open();
                     result = cmd.ExecuteScalar().ToString();
 

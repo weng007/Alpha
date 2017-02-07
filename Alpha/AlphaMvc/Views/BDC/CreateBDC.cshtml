@@ -57,26 +57,26 @@
                         <input type="text" id = "txtDocver"  name="field1" class="field-select-small-2" placeholder="V1" disabled />
                     </li>
                     <li>
-                        <label>ใบเสนอราคา<span class="required">*</span></label>
-                        <input type="text" id = "txtQuoNo" name="txtQuoNo" class="field-select-big" placeholder="ใบเสนอราคา" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#quotationDialog">
+                        <label>ใบเสนอราคา</label>
+                        <input type="text" id = "txtQuoNo" name="txtQuoNo" class="field-select-big" placeholder="ใบเสนอราคา" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#quotationDialog" >
                         <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
                     </a>
                     <input type="hidden" id="hidQuoID" /></li>
                 </ul>
                 <ul class="form-style-1">
                     <li>
-                        <label class="label-big">ราคาขาย<span class="required">*</span></label>&nbsp;<label class="label-small">ราคาทุน<span class="required">*</span></label>
-                        <input type="text" id = "txtPrice" name="field1" class="field-divided" placeholder="ราคาขาย" />&nbsp;<input type="text" id = "txtCost" name="field2" class="field-divided" placeholder="ราคาทุน" />
+                        <label class="label-big">ราคาขาย</label>&nbsp;<label class="label-small">ราคาทุน</label>
+                        <input type="text" id = "txtPrice" name="field1" class="field-divided" placeholder="ราคาขาย" disabled />&nbsp;<input type="text" id = "txtCost" name="field2" class="field-divided" placeholder="ราคาทุน" disabled />
                     </li>
                     <li>
-                        <label>กำไร<span class="required">*</span></label>
-                        <input type="text" id = "txtProfit" name="field1" class="field-divided" placeholder="กำไร" />
+                        <label>กำไร</label>
+                        <input type="text" id = "txtProfit" name="field1" class="field-divided" placeholder="กำไร" disabled />
                     </li>
                 </ul>
                 <ul class="form-style-1">
                     <li>
                         <label>หมายเหตุ<span class="required">*</span></label>
-                        <textarea name="field5" id = "txtRemark" class="field-long field-textarea"></textarea>
+                        <textarea name="field5" id = "txtRemark" class="field-long field-textarea" autofocus></textarea>
                     </li>
                     <br />
                 </ul>
@@ -254,7 +254,8 @@
             </table>
             <ul class="form-style-1">
                 <li>
-                    <input type="submit" value="Save" id="Create" />
+                    <input type="submit" value="Save" />
+                    @*id="Create"*@
                 </li>
             </ul>
         </form>
