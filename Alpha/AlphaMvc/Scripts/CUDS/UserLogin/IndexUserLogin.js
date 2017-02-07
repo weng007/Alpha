@@ -20,7 +20,7 @@ $(document).ready(function () {
                 }
 
                 if (IsExists) {
-                    alert('Insert');
+                    alert("test");
                     Redirect();
                 }
                 else {

@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $('#txtQuoNo').attr("required", true);
+
     $("#quotationBody").on("click", "tr", function (e) {
         $("#txtQuoNo").val($(this).find("td:eq(2)").text());
         $("#hidQuoID").val($(this).find("td:eq(1)").text());
@@ -31,8 +33,8 @@ $(document).ready(function () {
 
     $("#Create").click(function () {
         var dataObject = {
-            Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: $("#txtPrice").val(), Cost: $("#txtCost").val(),
-            Profit: $("#txtProfit").val(), Remark: $("#txtRemark").val()
+            Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: 1, Cost: 2,
+            Profit: 3, Remark: $("#txtRemark").val()
         };
         console.log(dataObject);
         $.ajax(

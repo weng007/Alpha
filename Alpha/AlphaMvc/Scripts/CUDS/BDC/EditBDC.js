@@ -54,8 +54,8 @@ function GetData(val) {
 
 function Update(val) {
     //alert("test0");
-    var dataObject = {ID: val, Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: $("#txtPrice").val(), Cost: $("#txtCost").val(),
-        Profit: $("#txtProfit").val(), Remark: $("#txtRemark").val()};
+    var dataObject = {ID: val, Docver: 1, QuotationNo: $("#hidQuoID").val(), Price:1, Cost: 2,
+        Profit: 3, Remark: $("#txtRemark").val()};
     console.log(dataObject);
     //alert(val);
     //alert("test1");

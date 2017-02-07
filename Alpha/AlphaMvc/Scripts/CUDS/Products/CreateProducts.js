@@ -22,11 +22,14 @@ function getBase64Image(imgElem) {
     var dataURL = canvas.toDataURL("image/png");
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
+
 $(document).ready(function () {
+
     var dataObject = { typeID: '003' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService',
         type: 'GET',
+        async: false,
         dataType: 'json',
         data: dataObject,
         success: function (data) {
@@ -87,14 +90,14 @@ $(document).ready(function () {
         var dataObject = {
             SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
             Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
-            UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Lost: $("#txtLost").val(), Repair: $("#txtRepair").val(),
-            Break: $("#txtBreak").val(), Img: imgPath, ImgData: imgData, Remark: $("#txtRemark").val()
+            UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Img: imgPath, ImgData: imgData, Remark: $("#txtRemark").val()
         };
         console.log(dataObject);
         $.ajax(
         {
             url: 'http://localhost:13131/api/Product',
             type: 'POST',
+            async: false,
             data: dataObject,
             datatype: 'json',
 
