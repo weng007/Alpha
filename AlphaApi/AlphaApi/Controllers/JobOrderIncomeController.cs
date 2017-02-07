@@ -20,7 +20,7 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPost]
-        public int Post(IEnumerable<JobOrderIncomeModels> job)
+        public int Post(object[] obj)
         {
             var response = 0;
             //var response = jobOrderIncome.InsertData(jobOrderIncomeModel);
@@ -43,14 +43,14 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
-        public int Put(JobOrderIncomeModels jobOrderIncomeModel)
+        public int Put(JobOrderIncomeModel jobOrderIncomeModel)
         {  
             var response = jobOrderIncome.UpdateData(jobOrderIncomeModel);
             return response;
 
         }
         [HttpDelete]
-        public string Delete(JobOrderIncomeModels jobOrderIncomeModel)
+        public string Delete(JobOrderIncomeModel jobOrderIncomeModel)
         {  
             var response = jobOrderIncome.DeleteData(jobOrderIncomeModel);
             return response;

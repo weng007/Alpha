@@ -18,6 +18,7 @@ namespace AlphaApi.Controllers
     {
         public JobOrderDAL jobOrder = new JobOrderDAL();
 
+        [EnableCorsAttribute("*", "*", "*")]
         [HttpPost]
         public int Post(JobOrderModels jobOrderModel)
         {

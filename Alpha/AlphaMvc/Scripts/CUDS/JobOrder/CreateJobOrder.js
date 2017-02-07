@@ -232,9 +232,6 @@ $(document).ready(function () {
 
         $.ajax(
         {
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            },
             url: 'http://localhost:13131/api/JobOrderIncome',
             type: 'POST',
             async: false,
