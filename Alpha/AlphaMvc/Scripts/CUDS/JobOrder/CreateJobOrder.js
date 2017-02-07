@@ -76,7 +76,7 @@ $(document).ready(function () {
     }
     today = mm + '/' + dd + '/' + yyyy;
     $("#dtSWorking").val(today)
-
+    $("#dtJobDate").val(today)
 
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
