@@ -52,23 +52,23 @@
             <ul class="form-style-1">
                 <li>
                     <label>รายละเอียด<span class="required">*</span></label>
-                    <input type="text" id="txtJobNo" name="field1" class="field-divided" placeholder="เลขที่ใบสั่งงาน" />
+                    <input type="text" id="txtJobNo" name="field1" class="field-divided" placeholder="เลขที่ใบสั่งงาน" disabled />
                 </li>
                 <li>
-                    <input type="text" id="dtJobDate" class="field-divided" placeholder="วันที่" />&nbsp;<input type="text" id="txtCar" name="field1" class="field-divided" placeholder="รถปิกอัพ" />
+                    <input type="text" id="dtJobDate" class="field-divided" placeholder="วันที่" autofocus required />&nbsp;<input type="text" id="txtCar" name="field1" class="field-divided" placeholder="รถปิกอัพ" />
                 </li>
                 <li>
                     <label class="label-2">วันเริ่มทำงาน</label>&nbsp;<label class="label-2">วันจบงาน</label>
                 </li>
                 <li>
-                    <input type="text" id="dtSWorking" class="field-divided" placeholder="วันเริ่มทำงาน" />&nbsp;<input type="text" id="dtEWorking" class="field-divided" placeholder="วันจบงาน" />
+                    <input type="text" id="dtSWorking" class="field-divided" placeholder="วันเริ่มทำงาน" required/>&nbsp;<input type="text" id="dtEWorking" class="field-divided" placeholder="วันจบงาน" required />
                 </li>
                 <li>
                     <label class="label-4">รับงานโดย</label>&nbsp;<label class="label-2">ออกโดย</label>
 
                 </li>
                 <li>
-                    <input type="text" id="txtJobBy" name="field1" class="field-divided" placeholder="รับงานโดย" />&nbsp;<input type="text" id="txtIssuedBy" name="field1" class="field-divided" placeholder="ออกโดย" />
+                    <input type="text" id="txtJobBy" name="field1" class="field-divided" placeholder="รับงานโดย" required/>&nbsp;<input type="text" id="txtIssuedBy" name="field1" class="field-divided" placeholder="ออกโดย" required/>
                 </li>
                 <li>
                     <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
@@ -871,7 +871,8 @@
 
             <ul class="form-style-1">
                 <li>
-                    <input type="submit" value="Save" id="Create" />
+                    <input type="submit" value="Save"  />
+                    @*id="Create"*@
                 </li>
             </ul>
         </form>

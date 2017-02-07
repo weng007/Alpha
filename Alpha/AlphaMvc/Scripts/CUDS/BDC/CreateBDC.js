@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    $('#txtQuoNo').attr("required", true);
 
     $("#quotationBody").on("click", "tr", function (e) {
         $("#txtQuoNo").val($(this).find("td:eq(2)").text());
