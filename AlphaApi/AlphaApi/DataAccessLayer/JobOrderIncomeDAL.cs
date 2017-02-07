@@ -12,7 +12,7 @@ namespace AlphaApi.DataAccessLayer
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         int result = 0;
-        public void InsertData(JobOrderIncomeModels jobOrderIncome)
+        public int InsertData(JobOrderIncomeModels jobOrderIncome)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -27,7 +27,9 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@UnitPrice", jobOrderIncome.UnitPrice);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderIncome.Amount);
                     conObj.Open();
-                    cmd.ExecuteNonQuery();
+                    object obj = cmd.ExecuteScalar();
+                    result = Convert.ToInt32(obj);
+                    return result;
                 }
                 catch (Exception ex)
                 {
