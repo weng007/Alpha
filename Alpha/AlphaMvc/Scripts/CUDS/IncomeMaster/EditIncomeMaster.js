@@ -1,11 +1,11 @@
 
 function GetData(val) {
     var dataObject = { ID: val}
-        //{ ID : @Request.Params["id"]};
     $.ajax(
    {
        url: 'http://localhost:13131/api/IncomeMaster',
        type: 'GET',
+       async: false,
        data : dataObject,
        datatype: 'json',
        success: function (data) {
@@ -20,22 +20,22 @@ function GetData(val) {
 }
 
 function Update(val) {
-    alert(val);
     var dataObject = { ID: val, Detail: $("#Detail").val() }
-            //{ ID: @Request.Params["id"], Detail: $("#Detail").val() };
-        $.ajax(
+
+       $.ajax(
         {
             url: 'http://localhost:13131/api/IncomeMaster',
             type: 'PUT',
+            async: false,
             data: dataObject,
             datatype: 'json',
             success: function (data) {
                 alert('Update is completed');
-                window.location.href = "../IncomeMaster/IndexIncomeMaster";
-            }
-            ,
+                window.location = "IndexIncomeMaster";
+            },
             error: function (msg) {
                 alert(msg);
-            }
-        });
-}
+            }           
+        })
+};
+

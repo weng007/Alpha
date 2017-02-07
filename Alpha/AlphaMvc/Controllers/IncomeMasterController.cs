@@ -23,6 +23,5 @@ namespace AlphaMvc.Controllers
         {
             return View();
         }
-
     }
 }
