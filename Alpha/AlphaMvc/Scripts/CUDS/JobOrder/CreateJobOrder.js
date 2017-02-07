@@ -153,7 +153,6 @@ $(document).ready(function () {
     });
 
     $("#Create").click(function () {
-        //alert("test0");
         var dataObject = { JobNo: $("#txtJobNo").val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
         var ID;
         $.ajax(
@@ -165,8 +164,6 @@ $(document).ready(function () {
             datatype: 'json',
             success: function (data) {
                 ID = data;
-                alert('Create is completed');
-                window.location.href = "../JobOrder/IndexJobOrder";
             }
             ,
             error: function (msg) {
@@ -174,41 +171,57 @@ $(document).ready(function () {
             }
         });
 
-        //var obj1 = [];
-        //var obj = {};
-        //$(".RowCal").each(function () {
-        //    obj.JobID = ID;
-        //    obj.IncomeType = $(this).find('#cmbIncomeType').find(":selected").val();
-        //    obj.UnitWeight = $(this).find(".UnitWeight").val();
-        //    obj.Qty = $(this).find(".Quantity").val();
-        //    obj.UnitPrice = $(this).find(".Price").val();
-        //    obj.Amount = $(this).find(".Amount").val();
-        //    obj1.push(obj);
-        //    console.log(obj1);
-        //});
-        //alert('test');
-        //alert(obj1[0].JobID);
-        //alert(obj1[0].Qty);
-        //alert(obj1[0].UnitPrice);
+        var sc = [{
+            "JobID": ID,
+            "IncomeType": 2,
+            "UnitWeight": 2,
+            "Qty": 3,
+            "UnitPrice": 100,
+            "Amount":500
+        },
+          {
+              "JobID": ID,
+              "IncomeType": 2,
+              "UnitWeight": 2,
+              "Qty": 3,
+              "UnitPrice": 100,
+              "Amount": 500
+          },
+          {
+              "JobID": ID,
+              "IncomeType": 2,
+              "UnitWeight": 2,
+              "Qty": 3,
+              "UnitPrice": 100,
+              "Amount": 500
+          }];
+        var obj = {};
+        $(".RowCal").each(function () {
+            obj.JobID = ID;
+            obj.IncomeType = $(this).find('#cmbIncomeType').find(":selected").val();
+            obj.UnitWeight = $(this).find(".UnitWeight").val();
+            obj.Qty = $(this).find(".Quantity").val();
+            obj.UnitPrice = $(this).find(".Price").val();
+            obj.Amount = $(this).find(".Amount").val();
+        });
 
-        //$.ajax(
-        //{
-        //    url: 'http://localhost:13131/api/JobOrderIncome',
-        //    type: 'POST',
-        //    async: false,
-        //    data: obj,
-        //    datatype: 'json',
-        //    success: function (data) {
-        //        alert('Create is completed');
-        //    }
-        //    ,
-        //    error: function (msg) {
-        //        alert(msg)
-        //    }
-        //});
-
+        $.ajax(
+        {
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            },
+            url: 'http://localhost:13131/api/JobOrderIncome',
+            type: 'POST',
+            async: false,
+            data: JSON.stringify(sc),
+            datatype: 'json',
+            success: function (data) {
+                alert('Create is completed');
+            },
+            error: function (msg) {
+                alert(msg)
+            }
+        });
     });
-
-
 });
 

@@ -18,17 +18,12 @@ namespace AlphaApi.Controllers
     {
         public JobOrderIncomeDAL jobOrderIncome = new JobOrderIncomeDAL();
 
-
         [HttpPost]
-        public void Post(JobOrderIncomeModels jobOrderIncomeModel)
+        public int Post(List<JobOrderIncomeModels> jobOrderIncomeModel)
         {
-            object[] jobArray = new object[] {jobOrderIncomeModel };
-            List<object> jobList = new List<object>(jobArray);
-
-            foreach (object obj in jobList)
-            {
-                //jobOrderIncome.InsertData(obj);
-            }     
+            var response = 0;
+            //var response = jobOrderIncome.InsertData(jobOrderIncomeModel);
+            return response;
         }
 
         [HttpGet]
