@@ -1,10 +1,8 @@
 $(document).ready(function () {
     $("#UserLogin").click(function () {
-        alert("test0");
         var dataObject = { UserName: $("#txtUserName").val(), Password: $("#txtpassword").val() };
         //console.log(dataObject);
         var IsExists = false;
-        var html = '<body>';
         $.ajax(
         {
             url: 'http://localhost:13131/api/UserLogin',
@@ -18,19 +16,17 @@ $(document).ready(function () {
                     if (dataObject.UserName == data.Table[i].UserName) {
                         console.log(dataObject.UserName);
                         IsExists = true;
-                        var val = IsExists;
                     }
                 }
 
                 if (IsExists) {
                     alert('Insert');
+                    Redirect();
                 }
                 else {
                     alert('User is not found');
                 }
 
-                document.getElementById("result").innerHTML = html;
-                alert(html);
             },
             error: function (msg) {
                 alert(msg)
@@ -39,7 +35,7 @@ $(document).ready(function () {
     });
 });
 
-//function init()
-//{
-//    window.location = "http://localhost:1042/Technician/indexTechnician";        
-//}
+function Redirect()
+{
+    window.location = "http://localhost:1042/Home/index";        
+}

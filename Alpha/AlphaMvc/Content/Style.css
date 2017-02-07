@@ -822,14 +822,11 @@ select{
     height: 40px;
     background-color: #5baa8c;
 }
-.imgadd{
+/*.imgadd{
     margin-left:10px;
     margin-top: 10px;
-}
-.imgadd-2{
-    margin-left:10px;
-    margin-top:8px;
-}
+}*/
+
 .tabbar{
     margin-top: 0px;
     width: 100%;

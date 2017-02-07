@@ -8,6 +8,23 @@
 
     img {
     }
+    .imgadd{
+        width: 170px;
+        height: 120px;
+        margin-top: 5px;
+        background-color:#f5f5f5;
+        border-style: solid;
+        border-color: cadetblue;
+        border-width: 1px;
+        text-align: center;
+        font-family: monospace;
+        color: #dddddd;
+        font-size: -webkit-xxx-large;
+    }
+    .img-center{
+        margin-left: 50px;
+        margin-top: 25px;
+    }
 
     #log {
         width: 420px;

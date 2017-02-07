@@ -36,7 +36,7 @@
                 </li>
                 <li>
                     <label>ประเภทสินค้า</label>
-                    <select id="cmbProductType" name="cmbProductType" class="field-select" >
+                    <select id="cmbProductType" name="cmbProductType" class="field-divided" >
                     </select>
                     @*onchange="cmbProductType_Change()"*@
                 </li>
@@ -44,7 +44,7 @@
                     <input type="text" id = "txtBrand" name="field1" class="field-divided" placeholder="ยี่ห้อ" />&nbsp;<input type="text" id = "txtSize" name="field2" class="field-select-small" placeholder="ขนาด" />
                 </li>
                 <li>
-                    <input type="text" id = "txtModel" name="field2" class="field-divided" placeholder="รุ่น" />&nbsp;<input type="text" id = "txtLifetime" name="field2" class="field-select-small" placeholder="อายุการใช้งาน" />&nbsp;<label class="label-3">ปี</label>
+                    <input type="text" id = "txtModel" name="field2" class="field-divided" placeholder="รุ่น" />&nbsp;<input type="text" id = "txtLifetime" name="field2" class="field-select-small" placeholder="อายุใช้งาน" />&nbsp;<label class="label-3">ปี</label>
                 </li>
                 <li>
                     <label class="label-big">รับเข้า</label>&nbsp;<label class="label-small">หน่วยนับ</label>
@@ -72,8 +72,8 @@
                 <li>
 
                     <input type="file" name="photo" id="photo" onchange="readURL(this);">
-                    <img id="imgPreview" src="#" alt="your image" />
-
+                    <img id="imgPreview"  alt="your image" class="imgadd"  />
+                    
                 </li>
                 <li>
                     <label>หมายเหตุ<span class="required">*</span></label>
