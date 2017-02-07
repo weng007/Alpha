@@ -7,7 +7,7 @@
 @* ------------------------------------------- login -------------------------------------- *@
 <link href="@Url.Content("~/Content/LoginStyle.css")" rel="stylesheet" type="text/css" />
 @* -------------------------------------------- form login ----------------------------------- *@
-<script src="@Url.Content("~/Scripts/CUDS/UserLogin/IndexUserLogin.js")" type="text/javascript"></script>
+@*<script src="@Url.Content("~/Scripts/CUDS/UserLogin/IndexUserLogin.js")" type="text/javascript"></script>*@
 <form id="dialog" method="post">
         <div class="imgcontainer">
             <img src="@Url.Content("~/images/img_avatar2.png")" alt="Avatar" class="avatar"/>
@@ -31,20 +31,10 @@
             <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
     </form>
-    <input type="text" id="demo">
+    
 @* -------------------------------------------- form login ----------------------------------- *@
-<script type="text/javascript">
+@*<script type="text/javascript">
 
-    $("#Login").click(function () { GetData(); });
+    $("#Update").click(function () { init(); });
 
-    var IsExists = $("#demo").val()
-    alert($("#demo").val());
-
-    if(IsExists)
-    {
-        @*@Url.Action("Index", "Home")*@
-        window.location.hef = "http://localhost:1042/Technician/indexTechnician";
-
-    }
-
-</script>
+</script>*@
