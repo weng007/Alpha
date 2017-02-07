@@ -62,7 +62,7 @@ function GetData(val) {
    {
        url: 'http://localhost:13131/api/Technician',
        type: 'GET',
-       //async: false,
+       async: false,
        data: dataObject,
        datatype: 'json',
        success: function (data) {

@@ -64,7 +64,6 @@ $(document).ready(function () {
 
 function RowDelete(id) {
     var dataObject = { ID: id };
-    alert("test1");
     $.ajax(
         {
             url: 'http://localhost:13131/api/IncomeMaster',
@@ -73,13 +72,10 @@ function RowDelete(id) {
             datatype: 'json',
 
             success: function (result) {
-                alert("test2");
                 alert('Delete is completed');
-                window.location.href = "../IncomeMaster/IndexIncomeMaster";
             }
             ,
             error: function (msg) {
-                alert("test3");
                 alert(msg)
             }
 

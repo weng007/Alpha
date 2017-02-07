@@ -6,6 +6,7 @@ function GetData(val) {
    {
        url: 'http://localhost:13131/api/ExpenseMaster',
        type: 'GET',
+       async: false,
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
@@ -21,22 +22,23 @@ function GetData(val) {
 function Update(val) {
     alert(val);
     var dataObject = { ID: val, Detail: $("#Detail").val() }
-            //{ ID: @Request.Params["id"], Detail: $("#Detail").val() };
         $.ajax(
         {
             url: 'http://localhost:13131/api/ExpenseMaster',
             type: 'PUT',
+            async: false,
             data: dataObject,
             datatype: 'json',
 
             success: function (result) {
                 alert('Update is completed');
-                top.location.href = "/ExpenseMaster/IndexExpenseMaster";
             }
             ,
             error: function (msg) {
                 alert(msg);
-                top.location.href = "/ExpenseMaster/Index";
             }
         });
+}
+function Redirect() {
+    window.location = "IndexExpenseMaster";
 }

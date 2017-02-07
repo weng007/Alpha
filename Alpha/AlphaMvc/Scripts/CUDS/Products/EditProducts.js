@@ -122,8 +122,10 @@ function Update(val) {
         }
         ,
         error: function (msg) {
-            //alert(msg);
-            alert("test3");
+            alert(msg);
         }
     });
+}
+function Redirect() {
+    window.location = "IndexIncomeProducts";
 }

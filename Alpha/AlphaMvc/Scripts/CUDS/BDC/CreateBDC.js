@@ -30,7 +30,6 @@ $(document).ready(function () {
        });
 
     $("#Create").click(function () {
-        alert("test0");
         var dataObject = {
             Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: $("#txtPrice").val(), Cost: $("#txtCost").val(),
             Profit: $("#txtProfit").val(), Remark: $("#txtRemark").val()
@@ -40,17 +39,15 @@ $(document).ready(function () {
         {
             url: 'http://localhost:13131/api/BDC',
             type: 'POST',
+            async: false,
             data: dataObject,
             datatype: 'json',
 
             success: function (data) {
-                alert(data);
+                //alert(data);
                 if (data == true) {
                     alert('Create is completed');
-                    window.location = "http://localhost:1042/BDC/IndexBDC";
                 }
-                //alert('Create is completed')
-                //window.location.href = 'http://localhost:1042/BDC/IndexBDC';
             }
             ,
             error: function (msg) {

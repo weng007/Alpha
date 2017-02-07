@@ -158,6 +158,7 @@ function GetData(val) {
    {
        url: 'http://localhost:13131/api/JobOrder',
        type: 'GET',
+       async: false,
        data: dataObject,
        datatype: 'json',
        success: function (data) {
@@ -174,7 +175,7 @@ function GetData(val) {
 }
 
 function Update(val) {
-    alert("test0");
+    //alert("test0");
     var dataObject = { ID: val, JobNo: $("#txtJobNo").val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() 
     };
     console.log(dataObject);
@@ -182,6 +183,7 @@ function Update(val) {
     {
         url: 'http://localhost:13131/api/JobOrder',
         type: 'PUT',
+        async: false,
         data: dataObject,
         datatype: 'json',
 
@@ -194,4 +196,8 @@ function Update(val) {
             alert(msg);
         }
     });
+}
+
+function Redirect() {
+    window.location = "IndexJobOrder";
 }

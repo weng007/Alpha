@@ -31,11 +31,14 @@ function Update(val) {
             datatype: 'json',
             success: function (data) {
                 alert('Update is completed');
-                window.location = "IndexIncomeMaster";
             },
             error: function (msg) {
                 alert(msg);
             }           
         })
 };
+
+function Redirect() {
+    window.location = "IndexIncomeMaster";
+}
 

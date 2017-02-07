@@ -99,10 +99,7 @@ $(document).ready(function () {
             datatype: 'json',
 
             success: function (data) {
-                alert(data);
                 alert('Created Successfully');
-                window.location.href = "../Products/IndexProducts";
-                //if (result === "no_errors") location.href = "http://www.example.com/ThankYou.html"
             },
             error: function (msg) {
                 alert(msg);

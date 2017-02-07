@@ -32,11 +32,12 @@ $(document).ready(function () {
 
 function GetData(val) {
     var dataObject = { ID: val }
-    alert(val);
+    //alert(val);
     $.ajax(
    {
        url: 'http://localhost:13131/api/BDC',
        type: 'GET',
+       async: false,
        data: dataObject,
        datatype: 'json',
        success: function (data) {
@@ -52,28 +53,31 @@ function GetData(val) {
 }
 
 function Update(val) {
-    alert("test0");
+    //alert("test0");
     var dataObject = {ID: val, Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: $("#txtPrice").val(), Cost: $("#txtCost").val(),
         Profit: $("#txtProfit").val(), Remark: $("#txtRemark").val()};
     console.log(dataObject);
     //alert(val);
-    alert("test1");
+    //alert("test1");
     $.ajax(
     {
         url: 'http://localhost:13131/api/BDC',
         type: 'PUT',
+        async: false,
         data: dataObject,
         datatype: 'json',
 
         success: function (data) {
-            alert("test2");
+            //alert("test2");
             alert('Update is completed');
-            top.location.href = "/BDC/IndexBDC";
         }
         ,
         error: function (msg) {
-            alert("testError");
-            //alert(msg);
+            alert(msg);
         }
     });
+}
+
+function Redirect() {
+    window.location = "IndexBDC";
 }
