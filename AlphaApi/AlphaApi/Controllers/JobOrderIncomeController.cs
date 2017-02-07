@@ -20,7 +20,7 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPost]
-        public int Post(string job)
+        public int Post(IEnumerable<JobOrderIncomeModels> job)
         {
             var response = 0;
             //var response = jobOrderIncome.InsertData(jobOrderIncomeModel);
