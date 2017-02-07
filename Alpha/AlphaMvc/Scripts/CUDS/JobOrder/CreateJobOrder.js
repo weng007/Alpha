@@ -52,7 +52,31 @@ function AddRowIncome() {
     });
 }
 
+function DateWorking()
+{
+    if ($("#dtSWorking").val() > $("#dtEWorking").val()) {
+
+        $("#dtEWorking").val("")
+        alert("Please Input Endworking more than Startworking");
+    }
+}
+
+
 $(document).ready(function () {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+    today = mm + '/' + dd + '/' + yyyy;
+    $("#dtSWorking").val(today)
+
+
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
         $("#hidCustID").val($(this).find("td:eq(1)").text());

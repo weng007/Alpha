@@ -1,3 +1,11 @@
+function DateWorking() {
+    if ($("#dtSWorking").val() > $("#dtEWorking").val()) {
+
+        $("#dtEWorking").val("")
+        alert("Please Input Endworking more than Startworking");
+    }
+}
+
 $(document).ready(function () {
 
     var dataObject = { typeID: '003' };
