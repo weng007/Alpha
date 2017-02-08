@@ -196,54 +196,30 @@ $(document).ready(function () {
             }
         });
 
-        var sc = [{
-            "JobID": ID,
-            "IncomeType": 2,
-            "UnitWeight": 2,
-            "Qty": 3,
-            "UnitPrice": 100,
-            "Amount":500
-        },
-          {
-              "JobID": ID,
-              "IncomeType": 2,
-              "UnitWeight": 2,
-              "Qty": 3,
-              "UnitPrice": 100,
-              "Amount": 500
-          },
-          {
-              "JobID": ID,
-              "IncomeType": 2,
-              "UnitWeight": 2,
-              "Qty": 3,
-              "UnitPrice": 100,
-              "Amount": 500
-          }];
-        var obj = {};
+        var dataObject = {};
         $(".RowCal").each(function () {
-            obj.JobID = ID;
-            obj.IncomeType = $(this).find('#cmbIncomeType').find(":selected").val();
-            obj.UnitWeight = $(this).find(".UnitWeight").val();
-            obj.Qty = $(this).find(".Quantity").val();
-            obj.UnitPrice = $(this).find(".Price").val();
-            obj.Amount = $(this).find(".Amount").val();
-        });
+                dataObject.JobID = ID;
+                dataObject.IncomeType = $(this).find('#cmbIncomeType').find(":selected").val();
+                dataObject.UnitWeight = $(this).find(".UnitWeight").val();
+                dataObject.Qty = $(this).find(".Quantity").val();
+                dataObject.UnitPrice = $(this).find(".Price").val();
+                dataObject.Amount = $(this).find(".Amount").val();
 
-        $.ajax(
-        {
-            url: 'http://localhost:13131/api/JobOrderIncome',
-            type: 'POST',
-            async: false,
-            data: sc,
-            datatype: 'json',
-            success: function (data) {
-                alert('Create is completed');
-            },
-            error: function (msg) {
-                alert(msg)
-            }
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/JobOrderIncome',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                        alert('Create is completed');
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            });
         });
     });
-});
 

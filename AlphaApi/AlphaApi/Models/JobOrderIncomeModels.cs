@@ -10,7 +10,8 @@ using System.Collections.Generic;
 
 namespace AlphaApi.Models
 {
-    public class JobOrderIncomeModel
+    [Serializable]
+    public class JobOrderIncomeModels
     {
         public int ID { get; set; }
 
@@ -24,29 +25,12 @@ namespace AlphaApi.Models
 
         public double UnitPrice { get; set; }
 
-        public double Amount { get; set; }
+        public double Amount { get; set; }      
     }
 
-    public class JobOrderIncomeModels : IEnumerable<JobOrderIncomeModel>
+    [Serializable]
+    public class JobOrderIncomeModelsList
     {
-        public DataSet StoreAllData { get; set; }
-
-        List<JobOrderIncomeModel> mylist = new List<JobOrderIncomeModel>();
-
-        public JobOrderIncomeModel this[int index]
-        {
-            get { return mylist[index]; }
-            set { mylist.Insert(index, value); }
-        }
-
-        public IEnumerator<JobOrderIncomeModel> GetEnumerator()
-        {
-            return mylist.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
+        public List<JobOrderIncomeModels> jobOrderIncomeModelsList { get; set; }
     }
 }

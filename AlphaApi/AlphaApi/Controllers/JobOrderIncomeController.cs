@@ -10,9 +10,11 @@ using System.Data;
 using System.Json;
 using Newtonsoft.Json;
 using System.Web.Http.Cors;
+using Newtonsoft.Json.Linq;
 
 namespace AlphaApi.Controllers
 {
+    [Serializable]
     [EnableCorsAttribute("*", "*", "*")]
     public class JobOrderIncomeController : ApiController
     {
@@ -20,10 +22,10 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPost]
-        public int Post(object[] obj)
+       
+        public int Post(JobOrderIncomeModels jobOrderIncomeModels)
         {
-            var response = 0;
-            //var response = jobOrderIncome.InsertData(jobOrderIncomeModel);
+            var response = jobOrderIncome.InsertData(jobOrderIncomeModels);
             return response;
         }
 
@@ -43,14 +45,14 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
-        public int Put(JobOrderIncomeModel jobOrderIncomeModel)
+        public int Put(JobOrderIncomeModels jobOrderIncomeModel)
         {  
             var response = jobOrderIncome.UpdateData(jobOrderIncomeModel);
             return response;
 
         }
         [HttpDelete]
-        public string Delete(JobOrderIncomeModel jobOrderIncomeModel)
+        public string Delete(JobOrderIncomeModels jobOrderIncomeModel)
         {  
             var response = jobOrderIncome.DeleteData(jobOrderIncomeModel);
             return response;

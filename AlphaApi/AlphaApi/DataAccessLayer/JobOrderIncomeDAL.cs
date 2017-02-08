@@ -12,7 +12,7 @@ namespace AlphaApi.DataAccessLayer
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         int result = 0;
-        public int InsertData(JobOrderIncomeModel jobOrderIncome)
+        public int InsertData(JobOrderIncomeModels jobOrderIncome)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -42,7 +42,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public int UpdateData(JobOrderIncomeModel jobOrderIncome)
+        public int UpdateData(JobOrderIncomeModels jobOrderIncome)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -72,7 +72,7 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string DeleteData(JobOrderIncomeModel jobOrderIncome)
+        public string DeleteData(JobOrderIncomeModels jobOrderIncome)
         {
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
