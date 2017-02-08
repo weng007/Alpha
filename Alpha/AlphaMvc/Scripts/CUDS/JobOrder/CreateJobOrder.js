@@ -27,7 +27,6 @@ function CalSum() {
         var price = $(this).find(".Price").val();
         var amount = qty * price;
 
-
         $(this).find('.Amount').val(amount).number(true, 2);
         $(this).find('.Price').val(price).number(true, 2);
         $(this).find('.Quantity').val(qty).number(true, 2);
@@ -41,10 +40,12 @@ function AddRowIncome() {
         success: function (data) {
             data = JSON.parse(data);
 
-            $('.select1').find("option").remove();
+            $('.Select1').find("option").remove();
             $.each(data.Table, function (i) {
-                $('.select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
+            $('.Select1').find('option:first-child').attr('selected', true);
+
         },
         failure: function () {
             alert('Error');
@@ -55,10 +56,8 @@ function AddRowIncome() {
 function DateWorking()
 {
     if ($("#dtSWorking").val() > $("#dtEWorking").val()) {
-
         $("#dtEWorking").val("")
         alert("Please Input Endworking more than Startworking");
-
     }
 }
 
@@ -90,16 +89,14 @@ $(document).ready(function () {
         success: function (data) {
             data = JSON.parse(data);
             $.each(data.Table, function (i) {
-                $('#cmbIncomeType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            $('#cmbIncomeType').find('option:first-child').attr('selected', true);
+            $('.Select1').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
         }
     });
-
-
 
     var dataObject = { typeID: '001' };
     $.ajax({
@@ -130,7 +127,7 @@ $(document).ready(function () {
             $.each(data.Table, function (i) {
                 $('#cmbJobStatus').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            $('#cmbTypeWorking').find('option:first-child').attr('selected', true);
+            $('#cmbJobStatus').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
@@ -199,7 +196,7 @@ $(document).ready(function () {
         var dataObject = {};
         $(".RowCal").each(function () {
                 dataObject.JobID = ID;
-                dataObject.IncomeType = $(this).find('#cmbIncomeType').find(":selected").val();
+                dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
                 dataObject.UnitWeight = $(this).find(".UnitWeight").val();
                 dataObject.Qty = $(this).find(".Quantity").val();
                 dataObject.UnitPrice = $(this).find(".Price").val();
