@@ -175,7 +175,7 @@ $(document).ready(function () {
     });
 
     $("#Create").click(function () {
-        var dataObject = { JobNo: "Joo1", JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
+        var dataObject = { JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
         var ID;
         $.ajax(
         {
@@ -210,13 +210,62 @@ $(document).ready(function () {
                     data: dataObject,
                     datatype: 'json',
                     success: function (data) {
+                        ID = data;
                         alert('Create is completed');
                     },
                     error: function (msg) {
                         alert(msg)
                     }
                 });
-            });
+        });
+        var dataObject = { JobID: ID };
+        
+        console.log(dataObject);
+        alert('Test');
+        //while (1) { }
+        
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/JobOrderIncome',
+            type: 'GET',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
+                alert(data.Table[2].ID);
+                alert('Test2');
+                console.log(data);
+                //while (1) { }
+                //if (data.Table[2].ID > 0) {
+                //    //alert(data.Table[2].ID);
+                //    //$('.Select1').find("option").remove();
+                //    var html = '<tbody>';
+                //    for (var i = 0; i < data.Table.length; i++) {
+                //        html += '<tr class="RowCal">';
+                //        html += '<td>';
+                //        html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
+                //        html += '</td>';
+                //        html += '<td> <input id="No" type="text" value="' + data.Table[i].RowNum + '" class="tdno" disabled /></td>';
+                //        html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table[i].ID + '" class="tdID" disabled /></td>';
+                //        html += '<td> <select id="cmbIncomeType" class="Select1" value="' + data.Table[0].IncomeType + '"></select></td>';
+                //        html += '<td> <input type="text" id="txtUnitWeight" value="' + data.Table[i].UnitWeight + '" class="UnitWeight text-size80 textright"></td>';
+                //        html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table[i].QuoNo + '" placeholder="0" onchange="CalSum()" /></td>';
+                //        html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + data.Table[i].UnitPrice + '" placeholder="0" onchange="CalSum()" /></td>';
+                //        html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table[i].Amount + '" disabled></td>';
+                //        html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
+                //        html += '<td> <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" /></td>';
+                //        html += '</tr>';
+                //    }
+                //    html += '</tbody>';
+                //}
+                //document.getElementById("result").innerHTML = html;
+            },
+            error: function (msg) {
+                alert(msg)
+            }
+        });
+        
         });
     });
 
