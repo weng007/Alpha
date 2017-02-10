@@ -21,7 +21,6 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_JobOrder_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@JobReference", jobOrder.JobReference);
-                    cmd.Parameters.AddWithValue("@JobNo", jobOrder.JobNo);
                     cmd.Parameters.AddWithValue("@JobDate", jobOrder.JobDate);
                     cmd.Parameters.AddWithValue("@Car", jobOrder.Car != null ? jobOrder.Car : "");
                     cmd.Parameters.AddWithValue("@SWorking", jobOrder.SWorking);
@@ -60,7 +59,6 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", jobOrder.ID);
                     cmd.Parameters.AddWithValue("@JobReference", jobOrder.JobReference);
-                    cmd.Parameters.AddWithValue("@JobNo", jobOrder.JobNo);
                     cmd.Parameters.AddWithValue("@JobDate", jobOrder.JobDate);
                     cmd.Parameters.AddWithValue("@Car", jobOrder.Car != null ? jobOrder.Car : "");
                     cmd.Parameters.AddWithValue("@SWorking", jobOrder.SWorking);
