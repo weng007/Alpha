@@ -12,12 +12,15 @@ namespace AlphaApi.DataAccessLayer
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         int result = 0;
+
         public int InsertData(JobOrderModels jobOrder)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
+                    DataSet ds = new DataSet();
+
                     SqlCommand cmd = new SqlCommand("SP_JobOrder_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@JobReference", jobOrder.JobReference);
@@ -34,9 +37,11 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Remark", jobOrder.Remark != null ? jobOrder.Remark : "");
                     cmd.Parameters.AddWithValue("@Discount", jobOrder.Discount);
                     conObj.Open();
-                    object obj = cmd.ExecuteScalar();
-                    result = Convert.ToInt32(obj);
-                    return result;
+                    SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                    adap.Fill(ds);
+                    conObj.Close();
+                    cmd.Parameters.Clear();
+                    return Convert.ToInt32(ds.Tables[1].Rows[0][0]);
                 }
                 catch (Exception ex)
                 {
