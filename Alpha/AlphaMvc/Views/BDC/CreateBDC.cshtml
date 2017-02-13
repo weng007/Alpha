@@ -5,6 +5,7 @@
 <h2>BreakDown Cost Create</h2>
 <script src="@Url.Content("~/Scripts/CUDS/BDC/CreateBDC.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/CUDS/BDC/BDCJob.js")" type="text/javascript"></script>
+<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <table>
     <tr>
         <td>
@@ -127,7 +128,7 @@
             </table>
             <ul class="form-style-1">
                 <li>
-                    <input type="submit" value="Save" />
+                    <button type="button" class="btn btn-primary" onclick="ConfirmDialog('Create','BDC',0)">Save</button>
                     @*id="Create"*@
                 </li>
             </ul>

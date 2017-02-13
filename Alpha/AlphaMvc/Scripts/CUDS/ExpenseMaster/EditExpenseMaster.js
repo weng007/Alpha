@@ -1,8 +1,6 @@
 
 function GetData(val) {
     var dataObject = { ID: val}
-    alert('Round');
-    alert(val);
     $.ajax(
    {
        url: 'http://localhost:13131/api/ExpenseMaster',
@@ -22,7 +20,6 @@ function GetData(val) {
 }
 
 function Update(val) {
-    alert(val);
     var dataObject = { ID: val, Detail: $("#Detail").val() }
         $.ajax(
         {

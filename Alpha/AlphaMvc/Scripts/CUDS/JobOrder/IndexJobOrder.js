@@ -69,7 +69,7 @@ $(document).ready(function () {
                 html += '<td class="hideANDseek">' + data.Table[i].Remark + '</td>';
                 html += '<td>';
                 html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="/Images/delete.png" /></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'JobOrder'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }

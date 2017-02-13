@@ -1,6 +1,6 @@
 function ConfirmDialog(val, topic,id) {
     if (val == "Create") {
-        $('#customerDialog').modal('show');
+        $('#ShowDialog').modal('show');
         var html = '<div class="modal-dialog">';
         html += '<div class="modal-content">';
         html += '<div class="modal-header">';
@@ -12,10 +12,10 @@ function ConfirmDialog(val, topic,id) {
         html += '<button type="button" class="btn btn-primary" onclick="CreateData()">Yes</button>';
         html += '<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>';
         html += '</div></div></div>';
-        document.getElementById("customerDialog").innerHTML = html;
+        document.getElementById("ShowDialog").innerHTML = html;
     }
     else if (val == "Update") {
-        $('#customerDialog').modal('show');
+        $('#ShowDialog').modal('show');
         var html = '<div class="modal-dialog">';
         html += '<div class="modal-content">';
         html += '<div class="modal-header">';
@@ -27,10 +27,10 @@ function ConfirmDialog(val, topic,id) {
         html += '<button type="button" class="btn btn-primary" onclick="Update(' + id + ')" onblur="Redirect()">Yes</button>';
         html += '<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>';
         html += '</div></div></div>';
-        document.getElementById("customerDialog").innerHTML = html;
+        document.getElementById("ShowDialog").innerHTML = html;
     }
     else if (val == "Delete") {
-        $('#customerDialog').modal('show');
+        $('#ShowDialog').modal('show');
         var html = '<div class="modal-dialog">';
         html += '<div class="modal-content">';
         html += '<div class="modal-header">';
@@ -42,7 +42,7 @@ function ConfirmDialog(val, topic,id) {
         html += '<button type="button" class="btn btn-primary" onclick="RowDelete('+id+')">Yes</button>';
         html += '<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>';
         html += '</div></div></div>';
-        document.getElementById("customerDialog").innerHTML = html;
+        document.getElementById("ShowDialog").innerHTML = html;
     }
 
 }
