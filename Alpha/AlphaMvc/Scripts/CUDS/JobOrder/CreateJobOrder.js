@@ -32,6 +32,17 @@ function CalSum() {
         $(this).find('.Quantity').val(qty).number(true, 2);
     });
 }
+function CalSumExpense() {
+    $(".RowCal").each(function () {
+        var qty = $(this).find(".Quantity").val();
+        var price = $(this).find(".Price").val();
+        var amount = qty * price;
+
+        $(this).find('.Amount').val(amount).number(true, 2);
+        $(this).find('.Price').val(price).number(true, 2);
+        $(this).find('.Quantity').val(qty).number(true, 2);
+    });
+}
 function AddRowIncome() {
     $.ajax({
         url: 'http://localhost:13131/api/IncomeMaster',
@@ -45,6 +56,26 @@ function AddRowIncome() {
                 $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('.Select1').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
+function AddRowExpense() {
+    $.ajax({
+        url: 'http://localhost:13131/api/ExpenseMaster',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
+
+            $('.ExpenseSelect').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
 
         },
         failure: function () {
@@ -92,6 +123,40 @@ $(document).ready(function () {
                 $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('.Select1').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+    $.ajax({
+        
+        url: 'http://localhost:13131/api/ExpenseMaster',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+
+    var dataObject = { typeID: '010' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('.unitSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.unitSelect').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
@@ -218,54 +283,81 @@ $(document).ready(function () {
                     }
                 });
         });
-        var dataObject = { JobID: ID };
+        //var dataObject = { JobID: ID };
         
-        console.log(dataObject);
-        alert('Test');
-        //while (1) { }
+        //console.log(dataObject);
+        //alert('Test');
+        ////while (1) { }
         
-        $.ajax(
-        {
-            url: 'http://localhost:13131/api/JobOrderIncome',
-            type: 'GET',
-            async: false,
-            data: dataObject,
-            datatype: 'json',
-            success: function (data) {
-                data = JSON.parse(data);
-                alert(data.Table[2].ID);
-                alert('Test2');
-                console.log(data);
-                //while (1) { }
-                //if (data.Table[2].ID > 0) {
-                //    //alert(data.Table[2].ID);
-                //    //$('.Select1').find("option").remove();
-                //    var html = '<tbody>';
-                //    for (var i = 0; i < data.Table.length; i++) {
-                //        html += '<tr class="RowCal">';
-                //        html += '<td>';
-                //        html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-                //        html += '</td>';
-                //        html += '<td> <input id="No" type="text" value="' + data.Table[i].RowNum + '" class="tdno" disabled /></td>';
-                //        html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table[i].ID + '" class="tdID" disabled /></td>';
-                //        html += '<td> <select id="cmbIncomeType" class="Select1" value="' + data.Table[0].IncomeType + '"></select></td>';
-                //        html += '<td> <input type="text" id="txtUnitWeight" value="' + data.Table[i].UnitWeight + '" class="UnitWeight text-size80 textright"></td>';
-                //        html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table[i].QuoNo + '" placeholder="0" onchange="CalSum()" /></td>';
-                //        html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + data.Table[i].UnitPrice + '" placeholder="0" onchange="CalSum()" /></td>';
-                //        html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table[i].Amount + '" disabled></td>';
-                //        html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-                //        html += '<td> <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" /></td>';
-                //        html += '</tr>';
-                //    }
-                //    html += '</tbody>';
-                //}
-                //document.getElementById("result").innerHTML = html;
-            },
-            error: function (msg) {
-                alert(msg)
-            }
+        //$.ajax(
+        //{
+        //    url: 'http://localhost:13131/api/JobOrderIncome',
+        //    type: 'GET',
+        //    async: false,
+        //    data: dataObject,
+        //    datatype: 'json',
+        //    success: function (data) {
+        //        data = JSON.parse(data);
+        //        alert(data.Table[2].ID);
+        //        alert('Test2');
+        //        console.log(data);
+        //        //while (1) { }
+        //        //if (data.Table[2].ID > 0) {
+        //        //    //alert(data.Table[2].ID);
+        //        //    //$('.Select1').find("option").remove();
+        //        //    var html = '<tbody>';
+        //        //    for (var i = 0; i < data.Table.length; i++) {
+        //        //        html += '<tr class="RowCal">';
+        //        //        html += '<td>';
+        //        //        html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
+        //        //        html += '</td>';
+        //        //        html += '<td> <input id="No" type="text" value="' + data.Table[i].RowNum + '" class="tdno" disabled /></td>';
+        //        //        html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table[i].ID + '" class="tdID" disabled /></td>';
+        //        //        html += '<td> <select id="cmbIncomeType" class="Select1" value="' + data.Table[0].IncomeType + '"></select></td>';
+        //        //        html += '<td> <input type="text" id="txtUnitWeight" value="' + data.Table[i].UnitWeight + '" class="UnitWeight text-size80 textright"></td>';
+        //        //        html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table[i].QuoNo + '" placeholder="0" onchange="CalSum()" /></td>';
+        //        //        html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + data.Table[i].UnitPrice + '" placeholder="0" onchange="CalSum()" /></td>';
+        //        //        html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table[i].Amount + '" disabled></td>';
+        //        //        html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
+        //        //        html += '<td> <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" /></td>';
+        //        //        html += '</tr>';
+        //        //    }
+        //        //    html += '</tbody>';
+        //        //}
+        //        //document.getElementById("result").innerHTML = html;
+        //    },
+        //    error: function (msg) {
+        //        alert(msg)
+        //    }
+        //});
+
+        //===================insertJobOrder Expense
+        var dataObject = {};
+        $(".RowCal").each(function () {
+            dataObject.JobID = ID;
+            dataObject.ExpenseType = $(this).find('.Expenseselect').find(":selected").val();
+            dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
+            dataObject.Qty = $(this).find(".Quantity").val();
+            dataObject.UnitPrice = $(this).find(".Price").val();
+            dataObject.Amount = $(this).find(".Amount").val();
+
+            $.ajax(
+            {
+                url: 'http://localhost:13131/api/JobOrderExpense',
+                type: 'POST',
+                async: false,
+                data: dataObject,
+                datatype: 'json',
+                success: function (data) {
+                    ID = data;
+                    alert('Create is completed');
+                },
+                error: function (msg) {
+                    alert(msg)
+                }
+            });
         });
-        
+
         });
     });
 
