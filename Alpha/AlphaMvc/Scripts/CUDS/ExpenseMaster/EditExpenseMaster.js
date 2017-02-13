@@ -1,12 +1,14 @@
 
 function GetData(val) {
     var dataObject = { ID: val}
-    //alert('Round2');
+    alert('Round');
+    alert(val);
     $.ajax(
    {
        url: 'http://localhost:13131/api/ExpenseMaster',
        type: 'GET',
        async: false,
+       data: dataObject,
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);

@@ -50,7 +50,8 @@ $(document).ready(function () {
                 html += '<td>' + data.Table[i].Detail + '</td>';
                 html += '<td>';
                 html += '<a href="/ExpenseMaster/EditExpenseMaster?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="/Images/delete.png"/></a>';
+                //html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="/Images/delete.png"/></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'ExpenseMaster'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
@@ -82,5 +83,5 @@ function RowDelete(id) {
             }
 
 
-        }); alert(id);
+        });
 }
