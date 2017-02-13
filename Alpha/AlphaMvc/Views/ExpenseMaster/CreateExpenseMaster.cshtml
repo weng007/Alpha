@@ -5,21 +5,49 @@
 
 <h2>Master Expense Create</h2>
 <script src="@Url.Content("~/Scripts/CUDS/ExpenseMaster/CreateExpenseMaster.js")" type="text/javascript"></script>
-    @using (Html.BeginForm())
-    {
-        //===================================================================CSS w3school
-        <form>
-            <ul class="form-style">
-                <li>
-                    <label>Detail<span class="required">*</span></label>
-                    <input type="text" id="Detail" class="field-divided" placeholder="Detail" />
-                </li> 
-            </ul>
-            <br />
-            <ul class="form-style">
-                <li>
-                    <input type="submit" value="Save" id="Save" />
-                </li>
-            </ul>
-        </form>
-    }
+<!-- Modal -->
+<div class="modal fade" id="customerDialog" role="dialog"></div>
+@using (Html.BeginForm())
+{
+    //===================================================================CSS w3school
+    <form>
+        <ul class="form-style">
+            <li>
+                <label>Detail<span class="required">*</span></label>
+                <input type="text" id="Detail" class="field-divided" placeholder="Detail" />
+            </li>
+        </ul>
+        <br />
+        <ul class="form-style">
+            <li>
+                @*<input type="button" value="Save" data-toggle="modal" data-target="#customerDialog" />*@
+                @*<input type="button" value="Save" onclick="ConfirmData()" />*@
+            </li>
+        </ul>
+    </form>
+
+}
+
+<script>
+    //function ConfirmData() {
+
+    //    var input = '<input type="button" value="Save" data-toggle="modal" data-target="#customerDialog" />';
+    //    document.getElementById("input").innerHTML = input;
+    
+    //}
+$(document).ready(function()
+{
+    var html = '<div class="modal-dialog">';
+    html += '<div class="modal-content">';
+    html += '<div class="modal-header">';
+    html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+    html += '<h4 class="modal-title">Customer</h4>';
+    html += '</div>';
+    html += '<div class="modal-body">Do you want to Save?</div>';
+    html += '<div class="modal-footer">';
+    html += '<button type="button" class="btn btn-primary" onclick="CreateData()">Yes</button>';
+    html += '<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>';
+    html += '</div></div></div>';
+    document.getElementById("customerDialog").innerHTML = html; 
+});
+</script>
