@@ -301,7 +301,7 @@ $(document).ready(function () {
                 });
         });
         
-        //Binding Data JobOrderIncome
+        //Binding Data
         var dataObject = {ID : ID};
         $.ajax(
         {
@@ -314,6 +314,7 @@ $(document).ready(function () {
                 data = JSON.parse(data);
                 alert('Show');
                 alert(data.Table[0].ID);
+                alert(data.Table1[0].ID);
                 
 
                 //if (data.Table[2].ID > 0) {
