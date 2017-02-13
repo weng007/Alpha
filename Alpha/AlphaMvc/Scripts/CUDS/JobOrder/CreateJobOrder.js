@@ -33,7 +33,7 @@ function CalSum() {
     });
 }
 function CalSumExpense() {
-    $(".RowCal").each(function () {
+    $(".RowCal1").each(function () {
         var qty = $(this).find(".Quantity").val();
         var price = $(this).find(".Price").val();
         var amount = qty * price;
@@ -77,6 +77,24 @@ function AddRowExpense() {
             });
             $('.ExpenseSelect').find('option:first-child').attr('selected', true);
 
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+    var dataObject = { typeID: '010' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $('.unitSelect').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.unitSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.unitSelect').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
@@ -333,7 +351,7 @@ $(document).ready(function () {
 
         //===================insertJobOrder Expense
         var dataObject = {};
-        $(".RowCal").each(function () {
+        $(".RowCal1").each(function () {
             dataObject.JobID = ID;
             dataObject.ExpenseType = $(this).find('.ExpenseSelect').find(":selected").val();
             dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
