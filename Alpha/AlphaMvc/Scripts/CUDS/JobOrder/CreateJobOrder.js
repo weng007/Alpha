@@ -361,7 +361,7 @@ $(document).ready(function () {
             dataObject.UnitPrice = $(this).find(".Price").val();
             dataObject.Amount = $(this).find(".Amount").val();
 
-            console.log(dataObject.UnitWeight);
+            console.log($(this).find('.unitSelect').find(":selected").val());
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderExpense',
