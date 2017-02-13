@@ -335,7 +335,7 @@ $(document).ready(function () {
         var dataObject = {};
         $(".RowCal").each(function () {
             dataObject.JobID = ID;
-            dataObject.ExpenseType = $(this).find('.Expenseselect').find(":selected").val();
+            dataObject.ExpenseType = $(this).find('.ExpenseSelect').find(":selected").val();
             dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
             dataObject.Qty = $(this).find(".Quantity").val();
             dataObject.UnitPrice = $(this).find(".Price").val();
