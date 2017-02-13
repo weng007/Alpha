@@ -20,30 +20,13 @@ namespace AlphaApi.Controllers
     {
         public JobOrderIncomeDAL jobOrderIncome = new JobOrderIncomeDAL();
 
-        [EnableCorsAttribute("*", "*", "*")]
-        [HttpPost]
-       
+        [HttpPost]    
         public int Post(JobOrderIncomeModels jobOrderIncomeModels)
         {
             var response = jobOrderIncome.InsertData(jobOrderIncomeModels);
             return response;
         }
 
-        [HttpGet]
-        public string Get()
-        {
-            var response = jobOrderIncome.SelectData();
-            return JsonConvert.SerializeObject(response, Formatting.Indented);
-        }
-
-        [HttpGet]
-        public string Get(int id)
-        {
-            var response = jobOrderIncome.SelectByID(id);
-            return JsonConvert.SerializeObject(response, Formatting.Indented);
-        }
-
-        [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(JobOrderIncomeModels jobOrderIncomeModel)
         {  
@@ -56,7 +39,6 @@ namespace AlphaApi.Controllers
         {  
             var response = jobOrderIncome.DeleteData(jobOrderIncomeModel);
             return response;
-
         }
     }
 }
