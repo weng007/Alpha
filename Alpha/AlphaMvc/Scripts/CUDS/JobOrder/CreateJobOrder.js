@@ -277,6 +277,7 @@ $(document).ready(function () {
         });
 
         var dataObject = {};
+        alert(ID)
         $(".RowCal").each(function () {
                 dataObject.JobID = ID;
                 dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
@@ -293,7 +294,7 @@ $(document).ready(function () {
                     data: dataObject,
                     datatype: 'json',
                     success: function (data) {
-                        ID = data;
+                        //ID = data;
                         alert('Create is completed');
                     },
                     error: function (msg) {
@@ -351,6 +352,7 @@ $(document).ready(function () {
 
         //===================insertJobOrder Expense
         var dataObject = {};
+        alert(ID)
         $(".RowCal1").each(function () {
             dataObject.JobID = ID;
             dataObject.ExpenseType = $(this).find('.ExpenseSelect').find(":selected").val();
@@ -359,6 +361,7 @@ $(document).ready(function () {
             dataObject.UnitPrice = $(this).find(".Price").val();
             dataObject.Amount = $(this).find(".Amount").val();
 
+            console.log(dataObject.UnitWeight);
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderExpense',
@@ -367,7 +370,7 @@ $(document).ready(function () {
                 data: dataObject,
                 datatype: 'json',
                 success: function (data) {
-                    ID = data;
+                    //ID = data;
                     alert('Create is completed');
                 },
                 error: function (msg) {
