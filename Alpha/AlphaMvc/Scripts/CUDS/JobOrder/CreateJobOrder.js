@@ -43,7 +43,7 @@ function CalSumExpense() {
         $(this).find('.Quantity').val(qty).number(true, 2);
     });
 }
-function AddRowIncome() {
+function AddRowIncome(row) {
     $.ajax({
         url: 'http://localhost:13131/api/IncomeMaster',
         type: 'GET',
@@ -56,7 +56,6 @@ function AddRowIncome() {
                 $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('.Select1').find('option:first-child').attr('selected', true);
-
         },
         failure: function () {
             alert('Error');

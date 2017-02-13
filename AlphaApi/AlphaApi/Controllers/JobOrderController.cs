@@ -39,7 +39,6 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
-        [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(JobOrderModels jobOrderModel)
         {
