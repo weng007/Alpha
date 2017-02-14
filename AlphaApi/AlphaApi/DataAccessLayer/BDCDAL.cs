@@ -27,7 +27,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Profit", BDC.Profit);
                     cmd.Parameters.AddWithValue("@Remark", BDC.Remark != null ? BDC.Remark : "");
                     conObj.Open();
-                    result = cmd.ExecuteNonQuery();
+                    result = Convert.ToInt32(cmd.ExecuteScalar().ToString());
                     return result;
                 }
                 catch (Exception ex)

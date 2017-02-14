@@ -1,22 +1,19 @@
-$(document).ready(function () {
+function CreateData() {
+    var dataObject = { Detail: $("#Detail").val() };
+    $.ajax(
+    {
+        url: 'http://localhost:13131/api/IncomeMaster',
+        type: 'POST',
+        data: dataObject,
+        datatype: 'json',
 
-    $("#Create").click(function () {
-        var dataObject = { Detail: $("#Detail").val() };
-        $.ajax(
-        {
-            url: 'http://localhost:13131/api/IncomeMaster',
-            type: 'POST',
-            data: dataObject,
-            datatype: 'json',
-
-            success: function (result) {
-                alert('Create is completed')
-                window.location.href = "../IncomeMaster/IndexIncomeMaster";
-            }
-            ,
-            error: function (msg) {
-                alert(msg)
-            }
-        });
+        success: function (result) {
+            alert('Create is completed')
+            window.location.href = "../IncomeMaster/IndexIncomeMaster";
+        }
+        ,
+        error: function (msg) {
+            alert(msg)
+        }
     });
-});
+}

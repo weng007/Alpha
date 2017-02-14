@@ -134,5 +134,5 @@ function Update(val) {
     });
 }
 function Redirect() {
-    window.location = "IndexIncomeProducts";
+    window.location = "IndexProducts";
 }

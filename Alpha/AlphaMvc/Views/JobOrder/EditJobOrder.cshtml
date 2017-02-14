@@ -147,6 +147,7 @@
                                                     <tr>
                                                         <th></th>
                                                         <th>Item</th>
+                                                        <th class="hidecolumn">ID</th>
                                                         <th>Description</th>
                                                         <th>Unit</th>
                                                         <th>Qty</th>
@@ -169,7 +170,7 @@
                                                         <td colspan="3"><input id="Premium" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
                                                     </tr>
                                                 </tfoot>
-                                                <tbody>
+                                                <tbody id="tBodyRowIncome">
                                                     <tr class="RowCal">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
@@ -177,8 +178,11 @@
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="JobID" type="text" value="" class="tdID" disabled />
+                                                        </td>
                                                         <td>
-                                                            <select id="cmbIncomeType"></select>
+                                                            <select id="cmbIncomeType" class="Select1"></select>
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtUnitWeight" class="UnitWeight text-size80 textright">
@@ -207,8 +211,11 @@
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="JobID" type="text" value="" class="tdID" disabled />
+                                                        </td>
                                                         <td>
-                                                            <select class="select1"></select>
+                                                            <select class="Select1"></select>
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtUnitWeight" class="UnitWeight text-size80 textright" />
