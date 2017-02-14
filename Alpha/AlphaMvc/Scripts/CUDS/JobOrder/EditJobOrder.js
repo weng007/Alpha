@@ -280,7 +280,7 @@ function GetData(val) {
                $('.unitSelect').find("option").remove();
                var html = '<tbody>';
                for (var i = 0; i < data.Table2.length; i++) {
-                   html += '<tr class="RowCal">';
+                   html += '<tr class="RowCal1">';
                    html += '<td>';
                    html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
                    html += '</td>';
@@ -304,27 +304,61 @@ function GetData(val) {
                $("#txtTotalExpense").val(data.Table8[0].TotelExpense), $("#txtProfit").val(data.Table9[0].Profit);
 
            ////Binding Data SaleOrder
-               $('.ExpenseSelect').find("option").remove();
-               $('.unitSelect').find("option").remove();
                var html = '<tbody>';
-               for (var i = 0; i < data.Table2.length; i++) {
-                   html += '<tr class="RowCal">';
+               for (var i = 0; i < data.Table3.length; i++) {
+                   html += '<tr>';
                    html += '<td>';
                    html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
                    html += '</td>';
-                   html += '<td> <input id="No" type="text" value="' + data.Table2[i].RowNum + '" class="tdno" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table2[i].ID + '" class="tdID" disabled /></td>';
-                   html += '<td> <select id="cmbExpenseType" class="ExpenseSelect" value="' + data.Table2[i].ExpenseType + '"></select></td>';
-                   html += '<td> <select  class="unitSelect" value="' + data.Table2[i].UnitWeight + '"></select></td>';
-                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table2[i].Qty + '" placeholder="0" onchange="CalSum()" /></td>';
-                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + data.Table2[i].UnitPrice + '" placeholder="0" onchange="CalSum()" /></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table2[i].Amount + '" disabled></td>';
+                   html += '<td> <input id="No" type="text" value="' + data.Table3[i].RowNum + '" class="tdno" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table3[i].ID + '" class="tdID" disabled /></td>';
+                   html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table3[i].SaleOrderNo + '" class="SaleOrderNo text-size180 textleft"></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table3[i].Amount + '" disabled></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
                }
                html += '</tbody>';
-               document.getElementById("tBodyRowExpense").innerHTML = html;
+               document.getElementById("tBodyRowSaleOrder").innerHTML = html;
+
+           ////Binding Data Invoice
+
+               var html = '<tbody>';
+               for (var i = 0; i < data.Table4.length; i++) {
+                   html += '<tr>';
+                   html += '<td>';
+                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
+                   html += '</td>';
+                   html += '<td> <input id="No" type="text" value="' + data.Table4[i].RowNum + '" class="tdno" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table4[i].ID + '" class="tdID" disabled /></td>';
+                   html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table4[i].InvoiceNo + '" class="InvoiceNo text-size180 textleft"></td>';
+                   html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table4[i].SaleOrderNo + '" class="SaleOrderNo text-size180 textleft"></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table4[i].Amount + '" disabled></td>';
+                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
+                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
+                   html += '</tr>';
+               }
+               html += '</tbody>';
+               document.getElementById("tBodyRowInvoice").innerHTML = html;
+
+           ////Binding Data Receipt
+               var html = '<tbody>';
+               for (var i = 0; i < data.Table5.length; i++) {
+                   html += '<tr>';
+                   html += '<td>';
+                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
+                   html += '</td>';
+                   html += '<td> <input id="No" type="text" value="' + data.Table5[i].RowNum + '" class="tdno" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table5[i].ID + '" class="tdID" disabled /></td>';
+                   html += '<td> <input type="text" id="txtReceiptNo" value="' + data.Table5[i].ReceiptNo + '" class="ReceiptNo text-size180 textleft"></td>';
+                   html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table5[i].InvoiceNo + '" class="InvoiceNo text-size180 textleft"></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table5[i].Amount + '" disabled></td>';
+                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
+                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
+                   html += '</tr>';
+               }
+               html += '</tbody>';
+               document.getElementById("tBodyRowReceipt").innerHTML = html;
        },
        error: function (msg) {
            alert(msg);

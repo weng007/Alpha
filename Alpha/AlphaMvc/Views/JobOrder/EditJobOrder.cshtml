@@ -567,12 +567,13 @@
                                                 <tr>
                                                     <th></th>
                                                     <th>No.</th>
+                                                    <th class="hidecolumn">ID</th>
                                                     <th>SO No.</th>
                                                     <th>จำนวนเงิน</th>
                                                     <th colspan="2"></th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="tBodyRowSaleOrder">
                                                 <tr>
                                                     <td>
                                                         <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
@@ -580,11 +581,14 @@
                                                     <td>
                                                         <input id="No" type="text" value="" class="tdno" disabled />
                                                     </td>
-                                                    <td>
-                                                        <input type="text" id="SoNo" class="text-size180 textleft">
+                                                    <td class="hidecolumn">
+                                                        <input id="JobID" type="text" value="" class="tdID" disabled />
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="text-size180 textright">
+                                                        <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="txtAmount" class="Amoun text-size180 textright">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -600,11 +604,14 @@
                                                     <td>
                                                         <input id="No" type="text" value="" class="tdno" disabled />
                                                     </td>
-                                                    <td>
-                                                        <input type="text" id="SoNo" class="text-size180 textleft">
+                                                    <td class="hidecolumn">
+                                                        <input id="JobID" type="text" value="" class="tdID" disabled />
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="text-size180 textright">
+                                                        <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="txtAmount" class="Amoun text-size180 textright">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -628,13 +635,14 @@
                                                 <tr>
                                                     <th></th>
                                                     <th>No.</th>
+                                                    <th class="hidecolumn">ID</th>
                                                     <th>Inv No</th>
                                                     <th>So No.</th>
                                                     <th>จำนวนเงิน</th>
                                                     <th colspan="2"></th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="tBodyRowInvoice">
                                                 <tr>
                                                     <td>
                                                         <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
@@ -642,14 +650,17 @@
                                                     <td>
                                                         <input id="No" type="text" value="" class="tdno" disabled />
                                                     </td>
-                                                    <td>
-                                                        <input type="text" id="SoNo" class="text-size165 textleft">
+                                                    <td class="hidecolumn">
+                                                        <input id="JobID" type="text" value="" class="tdID" disabled />
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="InvNo" class="text-size165 textleft">
+                                                        <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="text-size165 textright">
+                                                        <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="txtAmount" class="Amount text-size165 textright">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -665,14 +676,17 @@
                                                     <td>
                                                         <input id="No" type="text" value="" class="tdno" disabled />
                                                     </td>
-                                                    <td>
-                                                        <input type="text" id="SoNo" class="text-size165 textleft">
+                                                    <td class="hidecolumn">
+                                                        <input id="JobID" type="text" value="" class="tdID" disabled />
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="InvNo" class="text-size165 textleft">
+                                                        <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="text-size165 textright">
+                                                        <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="txtAmount" class="Amount text-size165 textright">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -702,7 +716,7 @@
                                                     <th colspan="2"></th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="tBodyRowReceipt">
                                                 <tr>
                                                     <td>
                                                         <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
@@ -710,14 +724,17 @@
                                                     <td>
                                                         <input id="No" type="text" value="" class="tdno" disabled />
                                                     </td>
-                                                    <td>
-                                                        <input type="text" id="SoNo" class="text-size165 textleft">
+                                                    <td class="hidecolumn">
+                                                        <input id="JobID" type="text" value="" class="tdID" disabled />
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="InvNo" class="text-size165 textleft">
+                                                        <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="text-size165 textright">
+                                                        <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="txtAmount" class="Amount text-size165 textright">
                                                     </td>
                                                     <td>
                                                         <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -733,14 +750,17 @@
                                                     <td>
                                                         <input id="No" type="text" value="" class="tdno" disabled />
                                                     </td>
-                                                    <td>
-                                                        <input type="text" id="SoNo" class="text-size165 textleft">
+                                                    <td class="hidecolumn">
+                                                        <input id="JobID" type="text" value="" class="tdID" disabled />
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="InvNo" class="text-size165 textleft">
+                                                        <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="Amount" class="text-size165 textright">
+                                                        <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="txtAmount" class="Amount text-size165 textright">
                                                     </td>
                                                     <td>
                                                         <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
