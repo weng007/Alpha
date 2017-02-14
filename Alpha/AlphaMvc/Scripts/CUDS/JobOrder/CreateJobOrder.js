@@ -112,6 +112,8 @@ function DateWorking()
 function CreateData() {
         var dataObject = { JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
         var ID;
+        var SaleID;
+        var INVID;
         $.ajax(
         {
             url: 'http://localhost:13131/api/JobOrder',
@@ -180,30 +182,72 @@ function CreateData() {
                 }
             });
         });
-    //===================Insert JobOrderManPower ยังไม่เสร็จ
-        //var dataObject = {};
-        //$(".RowCal1").each(function () {
-        //    dataObject.JobID = ID;
-        //    dataObject.ExpenseType = $(this).find('.ExpenseSelect').find(":selected").val();
-        //    dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
-        //    dataObject.Qty = $(this).find(".Quantity").val();
-        //    dataObject.UnitPrice = $(this).find(".Price").val();
-        //    dataObject.Amount = $(this).find(".Amount").val();
-        //    $.ajax(
-        //    {
-        //        url: 'http://localhost:13131/api/JobOrderExpense',
-        //        type: 'POST',
-        //        async: false,
-        //        data: dataObject,
-        //        datatype: 'json',
-        //        success: function (data) {
-        //            alert('Create is completed');
-        //        },
-        //        error: function (msg) {
-        //            alert(msg)
-        //        }
-        //    });
-        //});
+    ////===================Insert JobOrderSaleOrder 
+        var dataObject = {};
+        $(".RowCal2").each(function () {
+            dataObject.JobID = ID;
+            dataObject.Amount = $(this).find(".Amount").val();
+            $.ajax(
+            {
+                url: 'http://localhost:13131/api/JobOrderSaleOrder',
+                type: 'POST',
+                async: false,
+                data: dataObject,
+                datatype: 'json',
+                success: function (data) {
+                    SaleID = data
+                    alert("SaleID" + SaleID)
+                    alert('Create is completed');
+                },
+                error: function (msg) {
+                    alert(msg)
+                }
+            });
+        });
+    ////===================Insert JobOrderInvoice
+        var dataObject = {};
+        $(".RowCal3").each(function () {
+            dataObject.JobID = ID;
+            dataObject.SaleOrderID = SaleID;
+            dataObject.Amount = $(this).find(".Amount").val();
+            $.ajax(
+            {
+                url: 'http://localhost:13131/api/JobOrderSaleOrder',
+                type: 'POST',
+                async: false,
+                data: dataObject,
+                datatype: 'json',
+                success: function (data) {
+                    INVID = data
+                    alert("INVID" + INVID)
+                    alert('Create is completed');
+                },
+                error: function (msg) {
+                    alert(msg)
+                }
+            });
+        });
+    ////===================Insert JobOrderReceipt
+        var dataObject = {};
+        $(".RowCal4").each(function () {
+            dataObject.JobID = ID;
+            dataObject.InvoiceID = INVID;
+            dataObject.Amount = $(this).find(".Amount").val();
+            $.ajax(
+            {
+                url: 'http://localhost:13131/api/JobOrderReceipt',
+                type: 'POST',
+                async: false,
+                data: dataObject,
+                datatype: 'json',
+                success: function (data) {
+                    alert('Create is completed');
+                },
+                error: function (msg) {
+                    alert(msg)
+                }
+            });
+        });
         window.location.href = "../JobOrder/EditJobOrder?id=" + ID;
 }
 

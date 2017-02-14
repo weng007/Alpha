@@ -141,6 +141,7 @@
                                                     </td>
                                                 </tr>
                                             </table>
+                                            @* Income *@
                                             <div class="myDIV">
                                                 <table id="tabIncome" class="example">
                                                     <thead class="theader">
@@ -234,7 +235,7 @@
                                                 </table>
                                             </div>
                                             <button id="add-row6" onclick="AddRowIncome()" class="btn btn-primary">Add Row</button>
-                                            
+                                            @* Expense *@
                                                 <table class="tableexpense">
                                                     <tr>
                                                         <td>
@@ -264,7 +265,7 @@
                                                     <tfoot>
                                                         <tr>
                                                             <td colspan="6" class="textalign">Total</td>
-                                                            <td colspan="3"><input id="Premium" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
+                                                            <td colspan="3"><input id="txtTotalExpense" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
                                                         </tr>
                                                     </tfoot>
                                                     <tbody>
@@ -340,19 +341,19 @@
                                                                     <label class="label-small-5">ราคาขายไม่รวม compound</label>
                                                                 </li>
                                                                 <li>
-                                                                    <input type="text" name="field6" class="text-size130 txtdisablerow" disabled />
+                                                                    <input type="text" id="txtNoCompound" name="field6" class="text-size130 txtdisablerow" disabled />
                                                                 </li>
                                                                 <li>
                                                                     <label class="label-small-3">ต้นทุน(Manpower and Tool Cost)</label>
                                                                 </li>
                                                                 <li>
-                                                                    <input type="text" name="field6" class="text-size130 txtdisablerow" disabled />
+                                                                    <input type="text" id="txtExpense" name="field6" class="text-size130 txtdisablerow" disabled />
                                                                 </li>
                                                                 <li>
                                                                     <label class="label-small-6">กำไร</label>
                                                                 </li>
                                                                 <li>
-                                                                    <input type="text" name="field6" class="text-size130 txtdisablerow" disabled />
+                                                                    <input type="text" id="txtProfit" name="field6" class="text-size130 txtdisablerow" disabled />
                                                                 </li>
                                                             </ul>
                                                         </td>
@@ -362,6 +363,7 @@
                                          </div>
                                     </div>
                                     <div>
+                                        @* ManPower *@
                                         <div class="wrapper">
                                             <div class="myDIV">
                                                 <table id="tabManpower" class="example">
@@ -548,6 +550,7 @@
                                         </div>
                                     </div>
                                     <div>
+                                        @* SaleOrder *@
                                         <div class="wrapper">
                                             <table id="tabSaleOrder" class="example">
                                                 <thead class="theader">
@@ -560,7 +563,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
+                                                    <tr class="RowCal2">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
@@ -568,10 +571,10 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo" class="text-size180 textleft">
+                                                            <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="text-size180 textright">
+                                                            <input type="text" id="txtAmount" class="Amount text-size180 textright">
                                                         </td>
                                                         <td>
                                                             <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -580,7 +583,7 @@
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                                         </td>
                                                     </tr>
-                                                    <tr id="add-template3">
+                                                    <tr class="RowCal2" id="add-template3">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
@@ -588,10 +591,10 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo"  class="text-size180 textleft">
+                                                            <input type="text" id="txtSaleOrderNo"  class="SaleOrderNo text-size180 textleft">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="text-size180 textright">
+                                                            <input type="text" id="txtAmount" class="Amoun text-size180 textright">
                                                         </td>
                                                         <td>
                                                             <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -609,6 +612,7 @@
                                         <div class="clr"></div>
                                     </div>
                                     <div>
+                                        @* Invoice *@
                                         <div class="wrapper">
                                             <table id="tabInvoice" class="example">
                                                 <thead class="theader">
@@ -622,7 +626,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
+                                                    <tr class="RowCal3">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
@@ -630,13 +634,13 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo" class="text-size165 textleft">
+                                                            <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="InvNo" class="text-size165 textleft">
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="text-size165 textright">
+                                                            <input type="text" id="txtAmount" class="Amount text-size165 textright">
                                                         </td>
                                                         <td>
                                                             <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -645,7 +649,7 @@
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                                         </td>
                                                     </tr>
-                                                    <tr id="add-template4">
+                                                    <tr class="RowCal3" id="add-template4">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
@@ -653,13 +657,13 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo" class="text-size165 textleft">
+                                                            <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="InvNo" class="text-size165 textleft">
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="text-size165 textright">
+                                                            <input type="text" id="txtAmount" class="Amount text-size165 textright">
                                                         </td>
                                                         <td>
                                                             <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -677,6 +681,7 @@
                                         <div class="clr"></div>
                                     </div>
                                     <div>
+                                        @* Receipt *@
                                         <div class="wrapper">
                                             <table id="tabReceipt" class="example">
                                                 <thead class="theader">
@@ -690,7 +695,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
+                                                    <tr class="RowCal4">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
@@ -698,13 +703,13 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo" class="text-size165 textleft">
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="InvNo" class="text-size165 textleft">
+                                                            <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="text-size165 textright">
+                                                            <input type="text" id="txtAmount" class="Amount text-size165 textright">
                                                         </td>
                                                         <td>
                                                             <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -713,7 +718,7 @@
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                                         </td>
                                                     </tr>
-                                                    <tr id="add-template5">
+                                                    <tr class="RowCal5" id="add-template5">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
@@ -721,13 +726,13 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="SoNo" class="text-size165 textleft">
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="InvNo" class="text-size165 textleft">
+                                                            <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Amount" class="text-size165 textright">
+                                                            <input type="text" id="txtAmount" class="Amount text-size165 textright">
                                                         </td>
                                                         <td>
                                                             <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />

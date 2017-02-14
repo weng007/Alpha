@@ -159,7 +159,7 @@
                                                 <tfoot>
                                                     <tr>
                                                         <td colspan="6" class="textalign">Total</td>
-                                                        <td colspan="3"><input id="Premium" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
+                                                        <td colspan="3"><input id="txtTotal" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="6" class="textalign">Discount</td>
@@ -167,7 +167,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td colspan="6" class="textalign">Sub Total</td>
-                                                        <td colspan="3"><input id="Premium" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
+                                                        <td colspan="3"><input id="txtSubTotal" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
                                                     </tr>
                                                 </tfoot>
                                                 <tbody id="tBodyRowIncome">
@@ -259,6 +259,7 @@
                                                     <tr>
                                                         <th></th>
                                                         <th>Item</th>
+                                                        <th class="hidecolumn">ID</th>
                                                         <th>Description</th>
                                                         <th>Unit</th>
                                                         <th>Qty</th>
@@ -267,45 +268,37 @@
                                                         <th colspan="2"></th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
+                                                <tfoot id="tBodyRowExpense">
                                                     <tr>
                                                         <td colspan="6" class="textalign">Total</td>
-                                                        <td colspan="3"><input id="Premium" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
+                                                        <td colspan="3"><input id="txtTotalExpense" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
                                                     </tr>
                                                 </tfoot>
                                                 <tbody>
-                                                    <tr>
+                                                    <tr class="RowCal1">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
-                                                        <td>
-                                                            <select class="select">
-                                                                <option value="1">Job Lead</option>
-                                                                <option value="2">Job Tech</option>
-                                                                <option value="3">Job Manpower</option>
-                                                                <option value="3">Allowance</option>
-                                                            </select>
+                                                        <td class="hidecolumn">
+                                                            <input id="JobID" type="text" value="" class="tdID" disabled />
                                                         </td>
                                                         <td>
-                                                            <select class="unitSelect">
-                                                                <option value="1">Person</option>
-                                                                <option value="2">Day</option>
-                                                                <option value="3">Date</option>
-                                                                <option value="3">ea</option>
-                                                                <option value="3">Trip</option>
-                                                            </select>
+                                                            <select id="cmbExpenseType" class="ExpenseSelect"></select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Qty" class="text-size80">
+                                                            <select class="unitSelect"></select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="UnitPrice" class="text-size130">
+                                                            <input type="text" id="txtQty" name="Qty" class="Quantity text-size80">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Amount" class="text-size165 txtdisablerow" disabled>
+                                                            <input type="text" id="txtUnitPrice" name="UnitPrice" class="Price text-size130">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtAmount" name="Amount" class="Amount text-size165 txtdisablerow" disabled>
                                                         </td>
 
                                                         <td>
@@ -315,38 +308,30 @@
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                                         </td>
                                                     </tr>
-                                                    <tr id="add-template7">
+                                                    <tr class="RowCal1" id="add-template7">
                                                         <td>
                                                             <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                         </td>
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
-                                                        <td>
-                                                            <select class="select">
-                                                                <option value="1">Job Lead</option>
-                                                                <option value="2">Job Tech</option>
-                                                                <option value="3">Job Manpower</option>
-                                                                <option value="3">Allowance</option>
-                                                            </select>
+                                                        <td class="hidecolumn">
+                                                            <input id="JobID" type="text" value="" class="tdID" disabled />
                                                         </td>
                                                         <td>
-                                                            <select class="unitSelect">
-                                                                <option value="1">Person</option>
-                                                                <option value="2">Day</option>
-                                                                <option value="3">Date</option>
-                                                                <option value="3">ea</option>
-                                                                <option value="3">Trip</option>
-                                                            </select>
+                                                            <select id="cmbExpenseType" class="ExpenseSelect"></select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Qty" class="text-size80">
+                                                            <select class="unitSelect"></select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="UnitPrice" class="text-size130">
+                                                            <input type="text" id="txtQty" name="Qty" class="Quantity text-size80">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="Time" name="Amount" class="text-size165 txtdisablerow" disabled>
+                                                            <input type="text" id="txtUnitPrice" name="UnitPrice" class="Price text-size130">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtAmount" name="Amount" class="Amount text-size165 txtdisablerow" disabled>
                                                         </td>
                                                         <td>
                                                             <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -358,7 +343,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <button id="add-row7" class="btn btn-primary">Add Row</button>
+                                        <button id="add-row7" onclick="AddRowExpense()" class="btn btn-primary">Add Row</button>
                                         @*<div class="myDIV">*@
                                         <table class="tableexpense">
                                             <tr>
@@ -368,19 +353,19 @@
                                                             <label class="label-small-5">ราคาขายไม่รวม compound</label>
                                                         </li>
                                                         <li>
-                                                            <input type="text" name="field6" class="text-size130 txtdisablerow" disabled />
+                                                            <input type="text" id="txtNoCompound" name="field6" class="text-size130 txtdisablerow" disabled />
                                                         </li>
                                                         <li>
                                                             <label class="label-small-3">ต้นทุน(Manpower and Tool Cost)</label>
                                                         </li>
                                                         <li>
-                                                            <input type="text" name="field6" class="text-size130 txtdisablerow" disabled />
+                                                            <input type="text" id="txtExpense" name="field6" class="text-size130 txtdisablerow" disabled />
                                                         </li>
                                                         <li>
                                                             <label class="label-small-6">กำไร</label>
                                                         </li>
                                                         <li>
-                                                            <input type="text" name="field6" class="text-size130 txtdisablerow" disabled />
+                                                            <input type="text" id="txtProfit" name="field6" class="text-size130 txtdisablerow" disabled />
                                                         </li>
                                                     </ul>
                                                 </td>

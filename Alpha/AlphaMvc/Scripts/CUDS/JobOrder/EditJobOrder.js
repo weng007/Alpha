@@ -33,7 +33,18 @@ function CalSum() {
         $(this).find('.Quantity').val(qty).number(true, 2);
     });
 }
-function AddRowIncome() {
+function CalSumExpense() {
+    $(".RowCal1").each(function () {
+        var qty = $(this).find(".Quantity").val();
+        var price = $(this).find(".Price").val();
+        var amount = qty * price;
+
+        $(this).find('.Amount').val(amount).number(true, 2);
+        $(this).find('.Price').val(price).number(true, 2);
+        $(this).find('.Quantity').val(qty).number(true, 2);
+    });
+}
+function AddRowIncome(row) {
     $.ajax({
         url: 'http://localhost:13131/api/IncomeMaster',
         type: 'GET',
@@ -41,10 +52,50 @@ function AddRowIncome() {
         success: function (data) {
             data = JSON.parse(data);
 
-            $('.select1').find("option").remove();
+            $('.Select1').find("option").remove();
             $.each(data.Table, function (i) {
-                $('.select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
+            $('.Select1').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
+
+function AddRowExpense() {
+    $.ajax({
+        url: 'http://localhost:13131/api/ExpenseMaster',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
+
+            $('.ExpenseSelect').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+    var dataObject = { typeID: '010' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $('.unitSelect').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.unitSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.unitSelect').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
@@ -68,6 +119,40 @@ $(document).ready(function () {
                 $('#cmbIncomeType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('#cmbIncomeType').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+    $.ajax({
+
+        url: 'http://localhost:13131/api/ExpenseMaster',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+
+    var dataObject = { typeID: '010' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('.unitSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.unitSelect').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
@@ -152,6 +237,7 @@ $(document).ready(function () {
 
 });
 
+
 function GetData(val) {
     var dataObject = { ID: val}
     $.ajax(
@@ -168,8 +254,6 @@ function GetData(val) {
              $("#txtDiscount").val(data.Table[0].Discount);
 
            ////Binding Data Income
-           //if (data.Table[2].ID > 0) {
-               //alert(data.Table[2].ID);
                $('.Select1').find("option").remove();
                var html = '<tbody>';
                for (var i = 0; i < data.Table1.length; i++) {
@@ -179,7 +263,7 @@ function GetData(val) {
                    html += '</td>';
                    html += '<td> <input id="No" type="text" value="' + data.Table1[i].RowNum + '" class="tdno" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table1[i].ID + '" class="tdID" disabled /></td>';
-                   html += '<td> <select id="cmbIncomeType" class="Select1" value="' + data.Table1[0].IncomeType + '"></select></td>';
+                   html += '<td> <select id="cmbIncomeType" class="Select1" value="' + data.Table1[i].IncomeType + '"></select></td>';
                    html += '<td> <input type="text" id="txtUnitWeight" value="' + data.Table1[i].UnitWeight + '" class="UnitWeight text-size80 textright"></td>';
                    html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table1[i].Qty + '" placeholder="0" onchange="CalSum()" /></td>';
                    html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + data.Table1[i].UnitPrice + '" placeholder="0" onchange="CalSum()" /></td>';
@@ -189,8 +273,58 @@ function GetData(val) {
                    html += '</tr>';
                }
                html += '</tbody>';
-           //}
                document.getElementById("tBodyRowIncome").innerHTML = html;
+
+           ////Binding Data Expense
+               $('.ExpenseSelect').find("option").remove();
+               $('.unitSelect').find("option").remove();
+               var html = '<tbody>';
+               for (var i = 0; i < data.Table2.length; i++) {
+                   html += '<tr class="RowCal">';
+                   html += '<td>';
+                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
+                   html += '</td>';
+                   html += '<td> <input id="No" type="text" value="' + data.Table2[i].RowNum + '" class="tdno" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table2[i].ID + '" class="tdID" disabled /></td>';
+                   html += '<td> <select id="cmbExpenseType" class="ExpenseSelect" value="' + data.Table2[i].ExpenseType + '"></select></td>';
+                   html += '<td> <select  class="unitSelect" value="' + data.Table2[i].UnitWeight + '"></select></td>';
+                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table2[i].Qty + '" placeholder="0" onchange="CalSum()" /></td>';
+                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + data.Table2[i].UnitPrice + '" placeholder="0" onchange="CalSum()" /></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table2[i].Amount + '" disabled></td>';
+                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
+                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
+                   html += '</tr>';
+               }
+               html += '</tbody>';
+               document.getElementById("tBodyRowExpense").innerHTML = html;
+
+           ////Binding Data Total
+               $("#txtTotal").val(data.Table6[0].TotelIncome), $("#txtSubTotal").val(data.Table7[0].SubTotelIncome),
+               $("#txtNoCompound").val(data.Table7[0].SubTotelIncome), $("#txtExpense").val(data.Table8[0].TotelExpense),
+               $("#txtTotalExpense").val(data.Table8[0].TotelExpense), $("#txtProfit").val(data.Table9[0].Profit);
+
+           ////Binding Data SaleOrder
+               $('.ExpenseSelect').find("option").remove();
+               $('.unitSelect').find("option").remove();
+               var html = '<tbody>';
+               for (var i = 0; i < data.Table2.length; i++) {
+                   html += '<tr class="RowCal">';
+                   html += '<td>';
+                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
+                   html += '</td>';
+                   html += '<td> <input id="No" type="text" value="' + data.Table2[i].RowNum + '" class="tdno" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table2[i].ID + '" class="tdID" disabled /></td>';
+                   html += '<td> <select id="cmbExpenseType" class="ExpenseSelect" value="' + data.Table2[i].ExpenseType + '"></select></td>';
+                   html += '<td> <select  class="unitSelect" value="' + data.Table2[i].UnitWeight + '"></select></td>';
+                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table2[i].Qty + '" placeholder="0" onchange="CalSum()" /></td>';
+                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + data.Table2[i].UnitPrice + '" placeholder="0" onchange="CalSum()" /></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table2[i].Amount + '" disabled></td>';
+                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
+                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
+                   html += '</tr>';
+               }
+               html += '</tbody>';
+               document.getElementById("tBodyRowExpense").innerHTML = html;
        },
        error: function (msg) {
            alert(msg);
