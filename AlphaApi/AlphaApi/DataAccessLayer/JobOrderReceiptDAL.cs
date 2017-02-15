@@ -21,7 +21,8 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_JobOrderReceipt_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@JobID", jobOrderReceipt.JobID);
-                    cmd.Parameters.AddWithValue("@InvoiceID", jobOrderReceipt.InvoiceID);
+                    cmd.Parameters.AddWithValue("@ReceiptNo", jobOrderReceipt.ReceiptNo);
+                    cmd.Parameters.AddWithValue("@InvoiceNo", jobOrderReceipt.InvoiceNo);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderReceipt.Amount);
                     conObj.Open();
                     object obj = cmd.ExecuteScalar();
@@ -49,7 +50,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", jobOrderReceipt.ID);
                     cmd.Parameters.AddWithValue("@JobID", jobOrderReceipt.JobID);
-                    cmd.Parameters.AddWithValue("@InvoiceID", jobOrderReceipt.InvoiceID);
+                    cmd.Parameters.AddWithValue("@ReceiptNo", jobOrderReceipt.ReceiptNo);
+                    cmd.Parameters.AddWithValue("@InvoiceNo", jobOrderReceipt.InvoiceNo);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderReceipt.Amount);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();

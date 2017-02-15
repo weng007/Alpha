@@ -61,7 +61,6 @@ $(document).ready(function () {
     });
 
 });
-
 function RowDelete(id) {
     var dataObject = { ID: id };
     $.ajax(

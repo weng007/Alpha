@@ -1,28 +1,3 @@
-function CreateData() {
-    var dataObject = {
-        Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: 1, Cost: 2,
-        Profit: 3, Remark: $("#txtRemark").val()
-    };
-    console.log(dataObject);
-    $.ajax(
-    {
-        url: 'http://localhost:13131/api/BDC',
-        type: 'POST',
-        async: false,
-        data: dataObject,
-        datatype: 'json',
-
-        success: function (data) {
-                alert('Create is completed');
-                window.location.href = "../BDC/EditBDC?id=" + data;
-        }
-        ,
-        error: function (msg) {
-            alert(msg)
-        }
-    });
-}
-
 $(document).ready(function () {
 
     $("#quotationBody").on("click", "tr", function (e) {
@@ -70,3 +45,28 @@ $(document).ready(function () {
     });
 
 });
+function CreateData() {
+    var dataObject = {
+        Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: 1, Cost: 2,
+        Profit: 3, Remark: $("#txtRemark").val()
+    };
+    console.log(dataObject);
+    $.ajax(
+    {
+        url: 'http://localhost:13131/api/BDC',
+        type: 'POST',
+        async: false,
+        data: dataObject,
+        datatype: 'json',
+
+        success: function (data) {
+                alert('Create is completed');
+                window.location.href = "../BDC/EditBDC?id=" + data;
+        }
+        ,
+        error: function (msg) {
+            alert(msg)
+        }
+    });
+}
+

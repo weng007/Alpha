@@ -1,4 +1,3 @@
-
 function GetData(val) {
     var dataObject = { ID: val}
     $.ajax(
@@ -18,7 +17,6 @@ function GetData(val) {
 
    });
 }
-
 function Update(val) {
     var dataObject = { ID: val, Detail: $("#Detail").val() }
         $.ajax(

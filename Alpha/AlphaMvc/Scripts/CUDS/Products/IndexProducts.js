@@ -1,8 +1,5 @@
 $(document).ready(function () {
 
-
-    //------------------------- Paging -------------------------
-
     //------------------------- Sorting ------------------------
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)

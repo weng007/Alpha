@@ -45,31 +45,6 @@ $(document).ready(function () {
 
     $("#dtReceiveDate").datepicker();
 });
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#imgPreview')
-                .attr('src', e.target.result)
-                .width(100)
-                .height(120);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-function getBase64Image(imgElem) {
-    // imgElem must be on the same server otherwise a cross-origin error will be thrown "SECURITY_ERR: DOM Exception 18"
-    var canvas = document.createElement("canvas");
-    canvas.width = imgElem.clientWidth;
-    canvas.height = imgElem.clientHeight;
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(imgElem, 0, 0);
-    var dataURL = canvas.toDataURL("image/png");
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
 function CreateData() {
     var imgElem = document.getElementById('imgPreview');
     var photo = document.getElementById("photo");
@@ -109,6 +84,31 @@ function CreateData() {
         }
     });
 }
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imgPreview')
+                .attr('src', e.target.result)
+                .width(100)
+                .height(120);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+function getBase64Image(imgElem) {
+    // imgElem must be on the same server otherwise a cross-origin error will be thrown "SECURITY_ERR: DOM Exception 18"
+    var canvas = document.createElement("canvas");
+    canvas.width = imgElem.clientWidth;
+    canvas.height = imgElem.clientHeight;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(imgElem, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
 
 
 

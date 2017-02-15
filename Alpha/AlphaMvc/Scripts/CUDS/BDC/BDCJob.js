@@ -1,9 +1,4 @@
 $(document).ready(function () {
-
-
-    //$('#tableData').paging({ limit: 5 });
-
-
     //------------------------- Paging -------------------------
 
     //------------------------- Sorting ------------------------
@@ -98,6 +93,5 @@ function RowDelete(id) {
             error: function (msg) {
                 alert(msg)
             }
-
         });
 }

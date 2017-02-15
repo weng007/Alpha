@@ -22,7 +22,8 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_JobOrderInvoice_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@JobID", jobOrderInvoice.JobID);
-                    cmd.Parameters.AddWithValue("@SaleOrderID", jobOrderInvoice.SaleOrderID);
+                    cmd.Parameters.AddWithValue("@InvoiceNo", jobOrderInvoice.InvoiceNo);
+                    cmd.Parameters.AddWithValue("@SaleOrderNo", jobOrderInvoice.SaleOrderNo);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderInvoice.Amount);
                     conObj.Open();
                     SqlDataAdapter adap = new SqlDataAdapter(cmd);
@@ -52,7 +53,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", jobOrderInvoice.ID);
                     cmd.Parameters.AddWithValue("@JobID", jobOrderInvoice.JobID);
-                    cmd.Parameters.AddWithValue("@SaleOrderID", jobOrderInvoice.SaleOrderID);
+                    cmd.Parameters.AddWithValue("@InvoiceNo", jobOrderInvoice.InvoiceNo);
+                    cmd.Parameters.AddWithValue("@SaleOrderNo", jobOrderInvoice.SaleOrderNo);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderInvoice.Amount);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();

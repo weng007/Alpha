@@ -29,7 +29,6 @@ $(document).ready(function () {
            }
        });
 });
-
 function GetData(val) {
     var dataObject = { ID: val }
     //alert(val);
@@ -48,17 +47,12 @@ function GetData(val) {
        error: function (msg) {
            alert(msg);
        }
-
    });
 }
-
 function Update(val) {
-    //alert("test0");
     var dataObject = {ID: val, Docver: 1, QuotationNo: $("#hidQuoID").val(), Price:1, Cost: 2,
         Profit: 3, Remark: $("#txtRemark").val()};
     console.log(dataObject);
-    //alert(val);
-    //alert("test1");
     $.ajax(
     {
         url: 'http://localhost:13131/api/BDC',
@@ -68,7 +62,6 @@ function Update(val) {
         datatype: 'json',
 
         success: function (data) {
-            //alert("test2");
             alert('Update is completed');
         }
         ,
@@ -77,7 +70,6 @@ function Update(val) {
         }
     });
 }
-
 function Redirect() {
     window.location = "IndexBDC";
 }
