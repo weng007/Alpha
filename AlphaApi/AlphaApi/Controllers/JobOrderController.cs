@@ -21,7 +21,17 @@ namespace AlphaApi.Controllers
         [HttpPost]
         public int Post(JobOrderModels jobOrderModel)
         {
-            var response = jobOrder.InsertData(jobOrderModel);
+            var response = 0;
+
+            if (jobOrderModel.ID > 0)
+            {
+                response = jobOrder.UpdateData(jobOrderModel);
+            }
+            else
+            {
+              response = jobOrder.InsertData(jobOrderModel);  
+            }
+            
             return response;
         }
 

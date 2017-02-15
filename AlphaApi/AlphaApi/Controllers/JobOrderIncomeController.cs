@@ -21,16 +21,33 @@ namespace AlphaApi.Controllers
         public JobOrderIncomeDAL jobOrderIncome = new JobOrderIncomeDAL();
 
         [HttpPost]    
-        public int Post(JobOrderIncomeModels jobOrderIncomeModels)
+        public int Post(JobOrderIncomeModels jobOrderIncomeModel)
         {
-            var response = jobOrderIncome.InsertData(jobOrderIncomeModels);
+            var response = 0;
+            if(jobOrderIncomeModel.ID > 0)
+            {
+                response = jobOrderIncome.UpdateData(jobOrderIncomeModel);
+            }
+            else
+            {
+                response = jobOrderIncome.InsertData(jobOrderIncomeModel);
+            }
+             
             return response;
         }
 
         [HttpPut]
         public int Put(JobOrderIncomeModels jobOrderIncomeModel)
-        {  
-            var response = jobOrderIncome.UpdateData(jobOrderIncomeModel);
+        {
+            var response = 0;
+            if (jobOrderIncomeModel.ID > 0)
+            {
+                response = jobOrderIncome.UpdateData(jobOrderIncomeModel);
+            }
+            else
+            {
+                response = jobOrderIncome.InsertData(jobOrderIncomeModel);
+            }
             return response;
 
         }

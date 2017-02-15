@@ -304,8 +304,10 @@ function GetData(val) {
 }
 function Update(val) {
     var dataObject = {
-        ID: val, JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val()
-    };
+        ID: val, JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(),
+        JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
+        TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1,
+        Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
     $.ajax(
     {
         url: 'http://localhost:13131/api/JobOrder',
@@ -322,14 +324,20 @@ function Update(val) {
             alert(msg);
         }
     });
+
     var dataObject = {};
     $(".RowCal").each(function () {
-        dataObject.JobID = ID;
+        alert('test');
+        //ตัวนี้ทำให้ ไม่เข้า Put น่าจะ ID ไม่มีค่า
+        //dataObject.JobID = ID;
         dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
+        alert('test0');
         dataObject.UnitWeight = $(this).find(".UnitWeight").val();
         dataObject.Qty = $(this).find(".Quantity").val();
+        alert('test1');
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = $(this).find(".Amount").val();
+        alert('test2');
         $.ajax(
         {
             url: 'http://localhost:13131/api/JobOrderIncome',
