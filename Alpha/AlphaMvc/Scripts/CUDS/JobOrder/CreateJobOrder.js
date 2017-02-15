@@ -212,7 +212,7 @@ function CreateData() {
             dataObject.Amount = $(this).find(".Amount").val();
             $.ajax(
             {
-                url: 'http://localhost:13131/api/JobOrderSaleOrder',
+                url: 'http://localhost:13131/api/JobOrderInvoice',
                 type: 'POST',
                 async: false,
                 data: dataObject,

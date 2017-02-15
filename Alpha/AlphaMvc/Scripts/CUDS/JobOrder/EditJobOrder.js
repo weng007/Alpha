@@ -306,7 +306,7 @@ function GetData(val) {
            ////Binding Data SaleOrder
                var html = '<tbody>';
                for (var i = 0; i < data.Table3.length; i++) {
-                   html += '<tr>';
+                   html += '<tr class="RowCal2">';
                    html += '<td>';
                    html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
                    html += '</td>';
@@ -325,7 +325,7 @@ function GetData(val) {
 
                var html = '<tbody>';
                for (var i = 0; i < data.Table4.length; i++) {
-                   html += '<tr>';
+                   html += '<tr class="RowCal3">';
                    html += '<td>';
                    html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
                    html += '</td>';
@@ -344,7 +344,7 @@ function GetData(val) {
            ////Binding Data Receipt
                var html = '<tbody>';
                for (var i = 0; i < data.Table5.length; i++) {
-                   html += '<tr>';
+                   html += '<tr class="RowCal4">';
                    html += '<td>';
                    html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
                    html += '</td>';
