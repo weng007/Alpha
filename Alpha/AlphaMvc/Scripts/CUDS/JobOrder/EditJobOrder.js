@@ -194,8 +194,8 @@ function GetData(val) {
                    html += '</td>';
                    html += '<td> <input id="No" type="text" value="' + data.Table1[i].RowNum + '" class="tdno" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table1[i].ID + '" class="tdID" disabled /></td>';
-
-                   html += '<td> <select id="cmbIncomeType" class="Select1" onload="cmbIncomeMaster(' + data.Table1[i].IncomeType + ')"></select></td>';
+                   GetIncomeMaster();
+                   html += '<td> <select id="cmbIncomeType" class="Select1" value="' + data.Table1[i].IncomeType + '"></select></td>';
 
                    html += '<td> <input type="text" id="txtUnitWeight" value="' + data.Table1[i].UnitWeight + '" class="UnitWeight text-size80 textright"></td>';
                    html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table1[i].Qty + '" placeholder="0" onchange="CalSum()" /></td>';
@@ -207,6 +207,10 @@ function GetData(val) {
                }
                html += '</tbody>';
                document.getElementById("tBodyRowIncome").innerHTML = html;
+
+
+              
+
            }
 
            if (data.Table2.length > 0) {
@@ -526,4 +530,23 @@ function AddRowExpense() {
 }
 function Redirect() {
     window.location = "IndexJobOrder";
+}
+
+function GetIncomeMaster(){
+     $.ajax({
+    url: 'http://localhost:13131/api/IncomeMaster',
+    type: 'GET',
+    dataType: 'json',
+    success: function (data) {
+        data = JSON.parse(data);
+
+        $('.Select1').find("option").remove();
+        $.each(data.Table, function (i) {
+            $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+        });
+    },
+    failure: function () {
+        alert('Error');
+    }
+});
 }
