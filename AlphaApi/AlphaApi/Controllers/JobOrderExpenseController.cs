@@ -25,9 +25,17 @@ namespace AlphaApi.Controllers
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPost]
 
-        public int Post(JobOrderExpenseModels jobOrderExpenseModels)
+        public int Post(JobOrderExpenseModels jobOrderExpenseModel)
         {
-            var response = jobOrderExpense.InsertData(jobOrderExpenseModels);
+            var response = 0;
+            if (jobOrderExpenseModel.ID > 0)
+            {
+                response = jobOrderExpense.UpdateData(jobOrderExpenseModel);
+            }
+            else
+            {
+                response = jobOrderExpense.InsertData(jobOrderExpenseModel);
+            }
             return response;
         }
 
@@ -49,8 +57,16 @@ namespace AlphaApi.Controllers
         [HttpPut]
         public int Put(JobOrderExpenseModels jobOrderExpenseModel)
         {
-            var response = jobOrderExpense.UpdateData(jobOrderExpenseModel);
-            return response;
+            var response = 0;
+            if (jobOrderExpenseModel.ID > 0)
+            {
+               response = jobOrderExpense.UpdateData(jobOrderExpenseModel);
+            }
+            else
+            {
+                response = jobOrderExpense.InsertData(jobOrderExpenseModel);
+            }
+                return response;
 
         }
         [HttpDelete]

@@ -25,8 +25,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@InvoiceNo", jobOrderReceipt.InvoiceNo);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderReceipt.Amount);
                     conObj.Open();
-                    object obj = cmd.ExecuteScalar();
-                    result = Convert.ToInt32(obj);
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
                 catch (Exception ex)
@@ -49,7 +48,6 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_JobOrderReceipt_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", jobOrderReceipt.ID);
-                    cmd.Parameters.AddWithValue("@JobID", jobOrderReceipt.JobID);
                     cmd.Parameters.AddWithValue("@ReceiptNo", jobOrderReceipt.ReceiptNo);
                     cmd.Parameters.AddWithValue("@InvoiceNo", jobOrderReceipt.InvoiceNo);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderReceipt.Amount);

@@ -193,7 +193,7 @@ function GetData(val) {
                    html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
                    html += '</td>';
                    html += '<td> <input id="No" type="text" value="' + data.Table1[i].RowNum + '" class="tdno" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table1[i].ID + '" class="tdID" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="IncomeID" type="text" value="' + data.Table1[i].ID + '" class="IncomeID" disabled /></td>';
                    GetIncomeMaster();
                    html += '<td> <select id="cmbIncomeType" class="Select1" value="' + data.Table1[i].IncomeType + '"></select></td>';
 
@@ -207,10 +207,6 @@ function GetData(val) {
                }
                html += '</tbody>';
                document.getElementById("tBodyRowIncome").innerHTML = html;
-
-
-              
-
            }
 
            if (data.Table2.length > 0) {
@@ -224,11 +220,11 @@ function GetData(val) {
                    html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
                    html += '</td>';
                    html += '<td> <input id="No" type="text" value="' + data.Table2[i].RowNum + '" class="tdno" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table2[i].ID + '" class="tdID" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="ExpenseID" type="text" value="' + data.Table2[i].ID + '" class="ExpenseID" disabled /></td>';
                    html += '<td> <select id="cmbExpenseType" class="ExpenseSelect" value="' + data.Table2[i].ExpenseType + '"></select></td>';
                    html += '<td> <select  class="unitSelect" value="' + data.Table2[i].UnitWeight + '"></select></td>';
-                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table2[i].Qty + '" placeholder="0" onchange="CalSum()" /></td>';
-                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + data.Table2[i].UnitPrice + '" placeholder="0" onchange="CalSum()" /></td>';
+                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table2[i].Qty + '" placeholder="0" onchange="CalSumExpense()" /></td>';
+                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + data.Table2[i].UnitPrice + '" placeholder="0" onchange="CalSumExpense()" /></td>';
                    html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table2[i].Amount + '" disabled></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
@@ -244,61 +240,66 @@ function GetData(val) {
            $("#txtTotalExpense").val(data.Table8[0].TotelExpense), $("#txtProfit").val(data.Table9[0].Profit);
 
            ////Binding Data SaleOrder
-           var html = '<tbody>';
-           for (var i = 0; i < data.Table3.length; i++) {
-               html += '<tr class="RowCal2">';
-               html += '<td>';
-               html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-               html += '</td>';
-               html += '<td> <input id="No" type="text" value="' + data.Table3[i].RowNum + '" class="tdno" disabled /></td>';
-               html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table3[i].ID + '" class="tdID" /></td>';
-               html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table3[i].SaleOrderNo + '" class="SaleOrderNo text-size180 textleft"></td>';
-               html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table3[i].Amount + '"></td>';
-               html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-               html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
-               html += '</tr>';
+           if (data.Table3.length > 0) {
+               var html = '<tbody>';
+               for (var i = 0; i < data.Table3.length; i++) {
+                   html += '<tr class="RowCal2">';
+                   html += '<td>';
+                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
+                   html += '</td>';
+                   html += '<td> <input id="No" type="text" value="' + data.Table3[i].RowNum + '" class="tdno" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="SaleOrderID" type="text" value="' + data.Table3[i].ID + '" class="SaleOrderID" /></td>';
+                   html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table3[i].SaleOrderNo + '" class="SaleOrderNo text-size180 textleft"></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size180 textright" value="' + data.Table3[i].Amount + '"></td>';
+                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
+                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
+                   html += '</tr>';
+               }
+               html += '</tbody>';
+               document.getElementById("tBodyRowSaleOrder").innerHTML = html;
            }
-           html += '</tbody>';
-           document.getElementById("tBodyRowSaleOrder").innerHTML = html;
 
            ////Binding Data Invoice
-
-           var html = '<tbody>';
-           for (var i = 0; i < data.Table4.length; i++) {
-               html += '<tr class="RowCal3">';
-               html += '<td>';
-               html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-               html += '</td>';
-               html += '<td> <input id="No" type="text" value="' + data.Table4[i].RowNum + '" class="tdno" disabled /></td>';
-               html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table4[i].ID + '" class="tdID" disabled /></td>';
-               html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table4[i].InvoiceNo + '" class="InvoiceNo text-size180 textleft" ></td>';
-               html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table4[i].SaleOrderNo + '" class="SaleOrderNo text-size180 textleft" ></td>';
-               html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table4[i].Amount + '" ></td>';
-               html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-               html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
-               html += '</tr>';
+           if (data.Table4.length > 0) {
+               var html = '<tbody>';
+               for (var i = 0; i < data.Table4.length; i++) {
+                   html += '<tr class="RowCal3">';
+                   html += '<td>';
+                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
+                   html += '</td>';
+                   html += '<td> <input id="No" type="text" value="' + data.Table4[i].RowNum + '" class="tdno" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="InvoiceID" type="text" value="' + data.Table4[i].ID + '" class="InvoiceID" disabled /></td>';
+                   html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table4[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
+                   html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table4[i].SaleOrderNo + '" class="SaleOrderNo text-size165 textleft" ></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 textright" value="' + data.Table4[i].Amount + '" ></td>';
+                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
+                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
+                   html += '</tr>';
+               }
+               html += '</tbody>';
+               document.getElementById("tBodyRowInvoice").innerHTML = html;
            }
-           html += '</tbody>';
-           document.getElementById("tBodyRowInvoice").innerHTML = html;
 
            ////Binding Data Receipt
-           var html = '<tbody>';
-           for (var i = 0; i < data.Table5.length; i++) {
-               html += '<tr class="RowCal4">';
-               html += '<td>';
-               html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-               html += '</td>';
-               html += '<td> <input id="No" type="text" value="' + data.Table5[i].RowNum + '" class="tdno" disabled /></td>';
-               html += '<td class="hidecolumn"><input id="No" type="text" value="' + data.Table5[i].ID + '" class="tdID" disabled /></td>';
-               html += '<td> <input type="text" id="txtReceiptNo" value="' + data.Table5[i].ReceiptNo + '" class="ReceiptNo text-size180 textleft"></td>';
-               html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table5[i].InvoiceNo + '" class="InvoiceNo text-size180 textleft" ></td>';
-               html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table5[i].Amount + '" ></td>';
-               html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-               html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
-               html += '</tr>';
+           if (data.Table5.length > 0) {
+               var html = '<tbody>';
+               for (var i = 0; i < data.Table5.length; i++) {
+                   html += '<tr class="RowCal4">';
+                   html += '<td>';
+                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
+                   html += '</td>';
+                   html += '<td> <input id="No" type="text" value="' + data.Table5[i].RowNum + '" class="tdno" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="ReceiptID" type="text" value="' + data.Table5[i].ID + '" class="ReceiptID" disabled /></td>';
+                   html += '<td> <input type="text" id="txtReceiptNo" value="' + data.Table5[i].ReceiptNo + '" class="ReceiptNo text-size165 textleft"></td>';
+                   html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table5[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 textright" value="' + data.Table5[i].Amount + '" ></td>';
+                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
+                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
+                   html += '</tr>';
+               }
+               html += '</tbody>';
+               document.getElementById("tBodyRowReceipt").innerHTML = html;
            }
-           html += '</tbody>';
-           document.getElementById("tBodyRowReceipt").innerHTML = html;
        },
        error: function (msg) {
            alert(msg);
@@ -311,7 +312,9 @@ function Update(val) {
         ID: val, JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(),
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
         TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1,
-        Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
+        Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val()
+    };
+    var JobID;
     $.ajax(
     {
         url: 'http://localhost:13131/api/JobOrder',
@@ -321,6 +324,7 @@ function Update(val) {
         datatype: 'json',
 
         success: function (data) {
+            JobID = data;
             alert('Update is completed');
         }
         ,
@@ -328,20 +332,16 @@ function Update(val) {
             alert(msg);
         }
     });
-
+    
     var dataObject = {};
     $(".RowCal").each(function () {
-        alert('test');
-        //ตัวนี้ทำให้ ไม่เข้า Put น่าจะ ID ไม่มีค่า
-        //dataObject.JobID = ID;
+        dataObject.ID = $(this).find(".IncomeID").val();
+        dataObject.JobID = JobID;
         dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
-        alert('test0');
         dataObject.UnitWeight = $(this).find(".UnitWeight").val();
         dataObject.Qty = $(this).find(".Quantity").val();
-        alert('test1');
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = $(this).find(".Amount").val();
-        alert('test2');
         $.ajax(
         {
             url: 'http://localhost:13131/api/JobOrderIncome',
@@ -360,7 +360,8 @@ function Update(val) {
     //===================Insert JobOrderExpense
     var dataObject = {};
     $(".RowCal1").each(function () {
-        dataObject.JobID = ID;
+        dataObject.ID = $(this).find(".ExpenseID").val();
+        dataObject.JobID = JobID;
         dataObject.ExpenseType = $(this).find('.ExpenseSelect').find(":selected").val();
         dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
         dataObject.Qty = $(this).find(".Quantity").val();
@@ -369,7 +370,7 @@ function Update(val) {
         $.ajax(
         {
             url: 'http://localhost:13131/api/JobOrderExpense',
-            type: 'POST',
+            type: 'PUT',
             async: false,
             data: dataObject,
             datatype: 'json',
@@ -384,13 +385,14 @@ function Update(val) {
     ////===================Insert JobOrderSaleOrder 
     var dataObject = {};
     $(".RowCal2").each(function () {
-        dataObject.JobID = ID;
+        dataObject.ID = $(this).find(".SaleOrderID").val();
+        dataObject.JobID = JobID;
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
         $.ajax(
         {
             url: 'http://localhost:13131/api/JobOrderSaleOrder',
-            type: 'POST',
+            type: 'PUT',
             async: false,
             data: dataObject,
             datatype: 'json',
@@ -405,14 +407,15 @@ function Update(val) {
     ////===================Insert JobOrderInvoice
     var dataObject = {};
     $(".RowCal3").each(function () {
-        dataObject.JobID = ID;
+        dataObject.ID = $(this).find(".InvoiceID").val();
+        dataObject.JobID = JobID;
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
         $.ajax(
         {
             url: 'http://localhost:13131/api/JobOrderInvoice',
-            type: 'POST',
+            type: 'PUT',
             async: false,
             data: dataObject,
             datatype: 'json',
@@ -427,14 +430,15 @@ function Update(val) {
     ////===================Insert JobOrderReceipt
     var dataObject = {};
     $(".RowCal4").each(function () {
-        dataObject.JobID = ID;
+        dataObject.ID = $(this).find(".ReceiptID").val();
+        dataObject.JobID = JobID;
         dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
         $.ajax(
         {
             url: 'http://localhost:13131/api/JobOrderReceipt',
-            type: 'POST',
+            type: 'PUT',
             async: false,
             data: dataObject,
             datatype: 'json',
@@ -446,7 +450,7 @@ function Update(val) {
             }
         });
     });
-    window.location.href = "../JobOrder/EditJobOrder?id=" + ID;
+    window.location.href = "../JobOrder/EditJobOrder?id=" + JobID;
 }
 function CalSum() {
     $(".RowCal").each(function () {

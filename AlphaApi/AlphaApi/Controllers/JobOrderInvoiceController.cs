@@ -23,17 +23,33 @@ namespace AlphaApi.Controllers
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPost]
 
-        public int Post(JobOrderInvoiceModels jobOrderInvoiceModels)
+        public int Post(JobOrderInvoiceModels jobOrderInvoiceModel)
         {
-            var response = jobOrderInvoice.InsertData(jobOrderInvoiceModels);
-            return response;
+            var response = 0;
+            if (jobOrderInvoiceModel.ID > 0)
+            {
+                response = jobOrderInvoice.UpdateData(jobOrderInvoiceModel);
+            }
+            else
+            {
+                response = jobOrderInvoice.InsertData(jobOrderInvoiceModel);
+            }
+                return response;
         }
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(JobOrderInvoiceModels jobOrderInvoiceModel)
         {
-            var response = jobOrderInvoice.UpdateData(jobOrderInvoiceModel);
+            var response = 0;
+            if (jobOrderInvoiceModel.ID > 0)
+            {
+                response = jobOrderInvoice.UpdateData(jobOrderInvoiceModel);
+            }
+            else
+            {
+                response = jobOrderInvoice.InsertData(jobOrderInvoiceModel);
+            }
             return response;
 
         }

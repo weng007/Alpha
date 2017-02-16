@@ -179,6 +179,9 @@
                                                             <td>
                                                                 <input id="No" type="text" value="" class="tdno" disabled />
                                                             </td>
+                                                            <td class="hidecolumn">
+                                                                <input id="IncomeID" type="text" value="" class="IncomeID" disabled />
+                                                            </td>
                                                             <td>
                                                                 <select id="cmbIncomeType" class="Select1"></select>
                                                             </td>
@@ -208,6 +211,9 @@
                                                             </td>
                                                             <td>
                                                                 <input id="No" type="text" value="" class="tdno" disabled />
+                                                            </td>
+                                                            <td class="hidecolumn">
+                                                                <input id="IncomeID" type="text" value="" class="IncomeID" disabled />
                                                             </td>
                                                             <td>
                                                                 <select class="Select1"></select>
@@ -254,6 +260,7 @@
                                                         <tr>
                                                             <th></th>
                                                             <th>Item</th>
+                                                            <th class="hidecolumn">ID</th>
                                                             <th>Description</th>
                                                             <th>Unit</th>
                                                             <th>Qty</th>
@@ -275,6 +282,9 @@
                                                             </td>
                                                             <td>
                                                                 <input id="No" type="text" value="" class="tdno" disabled />
+                                                            </td>
+                                                            <td class="hidecolumn">
+                                                                <input id="ExpenseID" type="text" value="" class="ExpenseID" disabled />
                                                             </td>
                                                             <td>
                                                                 <select id="cmbExpenseType" class="ExpenseSelect"></select>
@@ -305,6 +315,9 @@
                                                             </td>
                                                             <td>
                                                                 <input id="No" type="text" value="" class="tdno" disabled />
+                                                            </td>
+                                                            <td class="hidecolumn">
+                                                                <input id="ExpenseID" type="text" value="" class="ExpenseID" disabled />
                                                             </td>
                                                             <td>
                                                                 <select id="cmbExpenseType" class="ExpenseSelect"></select>
@@ -557,6 +570,7 @@
                                                     <tr>
                                                         <th></th>
                                                         <th>No.</th>
+                                                        <th class="hidecolumn">ID</th>
                                                         <th>SO No.</th>
                                                         <th>จำนวนเงิน</th>
                                                         <th colspan="2"></th>
@@ -569,6 +583,9 @@
                                                         </td>
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="SaleOrderID" type="text" value="" class="SaleOrderID" disabled />
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
@@ -589,6 +606,9 @@
                                                         </td>
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="SaleOrderID" type="text" value="" class="SaleOrderID" disabled />
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtSaleOrderNo"  class="SaleOrderNo text-size180 textleft">
@@ -619,6 +639,7 @@
                                                     <tr>
                                                         <th></th>
                                                         <th>No.</th>
+                                                        <th class="hidecolumn">ID</th>
                                                         <th>Inv No</th>
                                                         <th>So No.</th>
                                                         <th>จำนวนเงิน</th>
@@ -633,11 +654,14 @@
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
-                                                        <td>
-                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft" disabled>
+                                                        <td class="hidecolumn">
+                                                            <input id="InvoiceID" type="text" value="" class="InvoiceID" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft" disabled>
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtAmount" class="Amount text-size165 textright">
@@ -656,11 +680,14 @@
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
-                                                        <td>
-                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft" disabled>
+                                                        <td class="hidecolumn">
+                                                            <input id="InvoiceID" type="text" value="" class="InvoiceID" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft" disabled>
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtAmount" class="Amount text-size165 textright">
@@ -688,6 +715,7 @@
                                                     <tr>
                                                         <th></th>
                                                         <th>No.</th>
+                                                        <th class="hidecolumn">ID</th>
                                                         <th>Rep No.</th>
                                                         <th>Inv No.</th>
                                                         <th>จำนวนเงิน</th>
@@ -702,11 +730,14 @@
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
-                                                        <td>
-                                                            <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft" disabled>
+                                                        <td class="hidecolumn">
+                                                            <input id="ReceiptID" type="text" value="" class="ReceiptID" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft" disabled>
+                                                            <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtAmount" class="Amount text-size165 textright">
@@ -725,11 +756,14 @@
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
-                                                        <td>
-                                                            <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft" disabled>
+                                                        <td class="hidecolumn">
+                                                            <input id="ReceiptID" type="text" value="" class="ReceiptID" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft" disabled>
+                                                            <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtAmount" class="Amount text-size165 textright">

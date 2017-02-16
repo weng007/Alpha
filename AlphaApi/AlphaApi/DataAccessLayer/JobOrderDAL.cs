@@ -77,7 +77,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Remark", jobOrder.Remark != null ? jobOrder.Remark : "");
                     cmd.Parameters.AddWithValue("@Discount", jobOrder.Discount);
                     conObj.Open();
-                    result = cmd.ExecuteNonQuery();
+                    object obj = cmd.ExecuteScalar();
+                    result = Convert.ToInt32(obj);
                     return result;
                 }
                 catch (Exception ex)

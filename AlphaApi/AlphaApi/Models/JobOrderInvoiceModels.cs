@@ -17,7 +17,7 @@ namespace AlphaApi.Models
 
         public int JobID { get; set; }
 
-        public int SaleOrderNo { get; set; }
+        public string SaleOrderNo { get; set; }
 
         public string InvoiceNo { get; set; }
 

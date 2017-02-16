@@ -26,11 +26,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@SaleOrderNo", jobOrderSaleOrder.SaleOrderNo);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderSaleOrder.Amount);
                     conObj.Open();
-                    SqlDataAdapter adap = new SqlDataAdapter(cmd);
-                    adap.Fill(ds);
-                    conObj.Close();
-                    cmd.Parameters.Clear();
-                    return Convert.ToInt32(ds.Tables[1].Rows[0][0]);
+                    result = cmd.ExecuteNonQuery();
+                    return result;
                 }
                 catch (Exception ex)
                 {
@@ -52,7 +49,6 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_JobOrderSaleOrder_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", jobOrderSaleOrder.ID);
-                    cmd.Parameters.AddWithValue("@JobID", jobOrderSaleOrder.JobID);
                     cmd.Parameters.AddWithValue("@SaleOrderNo", jobOrderSaleOrder.SaleOrderNo);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderSaleOrder.Amount);
                     conObj.Open();
