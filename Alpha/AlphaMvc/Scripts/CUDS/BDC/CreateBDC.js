@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     $("#quotationBody").on("click", "tr", function (e) {
         $("#txtQuoNo").val($(this).find("td:eq(2)").text());
         $("#hidQuoID").val($(this).find("td:eq(1)").text());
@@ -50,6 +49,7 @@ function CreateData() {
         Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: 1, Cost: 2,
         Profit: 3, Remark: $("#txtRemark").val()
     };
+    alert(Docver);
     console.log(dataObject);
     $.ajax(
     {

@@ -13,7 +13,7 @@ namespace AlphaApi.Models
     {
         public int ID { get; set; }
 
-        public string JobReference { get; set; }
+        public int JobRef { get; set; }
 
         public string JobNo { get; set; }
 

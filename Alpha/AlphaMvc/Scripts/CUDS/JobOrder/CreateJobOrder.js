@@ -1,6 +1,18 @@
 $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
+
+    var BDCID
+    var Url = document.location;
+    var tabname = Url.match(/(#.+?)-/);
+    //tabname = tabname[1];
+    //var ids = url.split('-');
+
+    //var idone = ids[1];
+    //var idtwo = ids[2];
+
+    alert(Url);
+
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!

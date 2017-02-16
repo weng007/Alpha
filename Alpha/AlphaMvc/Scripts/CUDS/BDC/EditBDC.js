@@ -29,6 +29,12 @@ $(document).ready(function () {
            }
        });
 });
+function GetDocversion() {
+    var x;
+    x = parseInt($("#txtDocver").val());
+    var Docver = x + 1;
+    $("#txtDocver").val(Docver);
+}
 function GetData(val) {
     var dataObject = { ID: val }
     //alert(val);
@@ -41,8 +47,7 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
-           $("#txtDocver").val(data.Table[0].Docver),$("#txtQuoNo").val(data.Table[0].QuoNo),$("#txtPrice").val(data.Table[0].Price)
-           ,$("#txtCost").val(data.Table[0].Cost),$("#txtProfit").val(data.Table[0].Profit),$("#txtRemark").val(data.Table[0].Remark);
+           $("#txtDocver").val(data.Table[0].Docver), $("#txtQuoNo").val(data.Table[0].QuoNo), $("#hidQuoID").val(data.Table[0].QuotationNo), $("#txtPrice").val(data.Table[0].Price),$("#txtCost").val(data.Table[0].Cost),$("#txtProfit").val(data.Table[0].Profit),$("#txtRemark").val(data.Table[0].Remark);
        },
        error: function (msg) {
            alert(msg);
@@ -50,7 +55,8 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var dataObject = {ID: val, Docver: 1, QuotationNo: $("#hidQuoID").val(), Price:1, Cost: 2,
+    var dataObject = {
+        ID: val, Docver: $("#txtDocver").val(), QuotationNo: $("#hidQuoID").val(), Price: 1, Cost: 2,
         Profit: 3, Remark: $("#txtRemark").val()};
     console.log(dataObject);
     $.ajax(
