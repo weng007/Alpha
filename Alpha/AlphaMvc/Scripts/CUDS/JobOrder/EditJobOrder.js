@@ -190,7 +190,7 @@ function GetData(val) {
            $("#hidCustID").val(data.Table[0].Customer), $("#txtJobNo").val(data.Table[0].JobNo), $("#dtJobDate").val(data.Table[0].JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(data.Table[0].SWorking), $("#dtEWorking").val(data.Table[0].EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
              $("#txtContact").val(data.Table[0].Contact), $("#txtCoWorker").val(data.Table[0].CoWorker), $("#txtAddress").val(data.Table[0].Address),
-             $("#txtJobReference").val(data.Table[0].Brand), $("#txtRemark").val(data.Table[0].Remark),
+             $("#txtJobReference").val(data.Table[0].JobRef), $("#txtRemark").val(data.Table[0].Remark),
              $("#txtDiscount").val(data.Table[0].Discount);
 
            ////Binding Data Income
