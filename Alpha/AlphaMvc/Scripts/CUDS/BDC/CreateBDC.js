@@ -49,7 +49,6 @@ function CreateData() {
         Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: 1, Cost: 2,
         Profit: 3, Remark: $("#txtRemark").val()
     };
-    alert(Docver);
     console.log(dataObject);
     $.ajax(
     {

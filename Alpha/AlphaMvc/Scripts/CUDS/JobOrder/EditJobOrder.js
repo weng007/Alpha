@@ -335,9 +335,7 @@ function Update(val) {
 
         success: function (data) {
             JobID = data;
-            alert('Update is completed');
-        }
-        ,
+        },
         error: function (msg) {
             alert(msg);
         }
@@ -361,7 +359,6 @@ function Update(val) {
                 data: dataObject,
                 datatype: 'json',
                 success: function (data) {
-                    alert('Create is completed');
                 },
                 error: function (msg) {
                     alert(msg)
@@ -388,7 +385,6 @@ function Update(val) {
                 data: dataObject,
                 datatype: 'json',
                 success: function (data) {
-                    alert('Create is completed');
                 },
                 error: function (msg) {
                     alert(msg)
@@ -412,7 +408,6 @@ function Update(val) {
                 data: dataObject,
                 datatype: 'json',
                 success: function (data) {
-                    alert('Create is completed');
                 },
                 error: function (msg) {
                     alert(msg)
@@ -437,7 +432,6 @@ function Update(val) {
                 data: dataObject,
                 datatype: 'json',
                 success: function (data) {
-                    alert('Create is completed');
                 },
                 error: function (msg) {
                     alert(msg)
@@ -462,7 +456,6 @@ function Update(val) {
                 data: dataObject,
                 datatype: 'json',
                 success: function (data) {
-                    alert('Create is completed');
                 },
                 error: function (msg) {
                     alert(msg)
@@ -470,6 +463,7 @@ function Update(val) {
             });
         }
     });
+    alert('Update is completed');
     window.location.href = "../JobOrder/EditJobOrder?id=" + JobID;
 }
 function CalSum() {

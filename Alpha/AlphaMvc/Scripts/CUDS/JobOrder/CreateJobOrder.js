@@ -216,7 +216,7 @@ function CreateData() {
                     data: dataObject,
                     datatype: 'json',
                     success: function (data) {
-                        alert('Create is completed');
+                        
                     },
                     error: function (msg) {
                         alert(msg)
@@ -244,7 +244,6 @@ function CreateData() {
                     data: dataObject,
                     datatype: 'json',
                     success: function (data) {
-                        alert('Create is completed');
                     },
                     error: function (msg) {
                         alert(msg)
@@ -268,7 +267,6 @@ function CreateData() {
                     data: dataObject,
                     datatype: 'json',
                     success: function (data) {
-                        alert('Create is completed');
                     },
                     error: function (msg) {
                         alert(msg)
@@ -293,7 +291,6 @@ function CreateData() {
                     data: dataObject,
                     datatype: 'json',
                     success: function (data) {
-                        alert('Create is completed');
                     },
                     error: function (msg) {
                         alert(msg)
@@ -318,7 +315,6 @@ function CreateData() {
                     data: dataObject,
                     datatype: 'json',
                     success: function (data) {
-                        alert('Create is completed');
                     },
                     error: function (msg) {
                         alert(msg)
@@ -326,6 +322,7 @@ function CreateData() {
                 });
             }
         });
+        alert('Create is completed');
         window.location.href = "../JobOrder/EditJobOrder?id=" + ID;
 }
 function CalSum() {

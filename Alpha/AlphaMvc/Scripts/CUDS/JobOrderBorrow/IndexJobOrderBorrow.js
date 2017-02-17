@@ -1,5 +1,5 @@
-$(document).ready(function () {
-    //------------------------------------ Standard ------------------------------------
+function GetJobOrderBorrow(val)
+{
     //Sorting
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)
@@ -32,13 +32,7 @@ $(document).ready(function () {
     }).css({ "color": "#C0C0C0" });
 
     //------------------------------------ Custom ------------------------------------
-    var input = window.location.href;
-    var after = input.split('?')[1]
-    var JobID = after.split('=');
-    var str = JobID[1];
-    var res = str.substring(0, 1);
-    var ID = res
-    var dataObject = { ID: ID }
+    var dataObject = { ID: val }
     $.ajax(
     {
         url: 'http://localhost:13131/api/JobOrderBorrowRefID',
@@ -75,8 +69,7 @@ $(document).ready(function () {
             alert(msg)
         }
     });
-
-});
+}
 function RowDelete(id) {
     var dataObject = { ID: id };
     $.ajax(
