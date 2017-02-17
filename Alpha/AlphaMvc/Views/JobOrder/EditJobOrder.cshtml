@@ -10,7 +10,7 @@
 <script src="@Url.Content("~/Scripts/timepicker/wickedpicker.js")" type="text/javascript"></script>
 @* =============== Pager *@
 <script src="@Url.Content("~/Scripts/EditableGrid/Pager.js")" type="text/javascript"></script>
-
+<script src="@Url.Content("~/Scripts/CUDS/JobOrderBorrow/IndexJobOrderBorrow.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/CUDS/JobOrder/EditJobOrder.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
@@ -94,16 +94,17 @@
                 <input type="hidden" id="hidCustID" />
             </li>
             <li>
-                <input type="text" name="field2" class="field-divided" placeholder="โทรศัพท์" disabled />&nbsp;<input type="text" name="field1" class="field-divided" placeholder="แฟกซ์" disabled />
+                <input type="text" id="txtTel" name="field2" class="field-divided" placeholder="โทรศัพท์" disabled />&nbsp;<input type="text" name="field1" id="txtFax" class="field-divided" placeholder="แฟกซ์" disabled />
             </li>
             <li>
-                <input type="text" name="field1" class="field-divided" placeholder="บุคคลติดต่อ" disabled />&nbsp;<input type="text" name="field2" class="field-divided" placeholder="ผู้ประสานงาน" disabled />
+                <input type="text" id="txtContact" name="field1" class="field-divided" placeholder="บุคคลติดต่อ" disabled />&nbsp;<input type="text" name="field2" id="txtCoWorker" class="field-divided" placeholder="ผู้ประสานงาน" disabled />
             </li>
             <li>
-                <textarea name="field5" id="field5" class="field-long field-textarea" placeholder="ที่อยู่" disabled></textarea>
+                <textarea name="field5" id="txtAddress" class="field-long field-textarea" placeholder="ที่อยู่" disabled></textarea>
             </li>
             <li>
                 <input type="text" id="txtJobReference" name="field1" class="field-divided" placeholder="Job Reference" disabled />
+                <input type="hidden" id="hidBDCID" />
             </li>
             <li>
                 <label>หมายเหตุ</label>
@@ -780,7 +781,7 @@
                                 </div>
                                 <div>
                                     <div class="barattach-2">
-                                        <a href="@Url.Action("CreateBorrow", "Borrow")" class="alink"><img src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
+                                        <a href="@Url.Action("CreateBorrow", "Borrow")?@Request.Params["id"]" class="alink"><img src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
                                     </div>
                                     <div class="grigbar">
                                         <table class="table table-striped">
@@ -803,74 +804,7 @@
                                                     <th class="hideANDseek">ชำรุด</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>P0001</td>
-                                                    <td>รายละเอียด1</td>
-                                                    <td class="hideANDseek">ยี่ห้อ1</td>
-                                                    <td class="hideANDseek">รุ่น1</td>
-                                                    <td>5.5" x 10"</td>
-                                                    <td>1</td>
-                                                    @* ----- คืน ----- *@
-                                                    <td class="hideANDseek"></td>
-                                                    <td class="hideANDseek"></td>
-                                                    <td class="hideANDseek"></td>
-                                                    <td class="hideANDseek"></td>
-                                                    <td>
-                                                        <a href="@Url.Action("EditBorrow", "Borrow")">
-                                                            <img src="@Url.Content("~/Images/edit.png")" />
-                                                        </a>
-                                                        <a href="@Url.Action("Delete", "Trachnician")">
-                                                            <img src="@Url.Content("~/Images/delete.png")" />
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>P0002</td>
-                                                    <td>รายละเอียด2</td>
-                                                    <td class="hideANDseek">ยี่ห้อ2</td>
-                                                    <td class="hideANDseek">รุ่น2</td>
-                                                    <td>2.5" x 5"</td>
-                                                    <td>5</td>
-                                                    @* ----- คืน ----- *@
-                                                    <td class="hideANDseek">2</td>
-                                                    <td class="hideANDseek"></td>
-                                                    <td class="hideANDseek">1</td>
-                                                    <td class="hideANDseek"></td>
-                                                    <td>
-                                                        <a href="@Url.Action("EditBorrow", "Borrow")">
-                                                            <img src="@Url.Content("~/Images/edit.png")" />
-                                                        </a>
-                                                        <a href="@Url.Action("Delete", "Trachnician")">
-                                                            <img src="@Url.Content("~/Images/delete.png")" />
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>P0003</td>
-                                                    <td>รายละเอียด3</td>
-                                                    <td class="hideANDseek">ยี่ห้อ4</td>
-                                                    <td class="hideANDseek">รุ่น4</td>
-                                                    <td>8" x 12"</td>
-                                                    <td>3</td>
-                                                    @* ----- คืน ----- *@
-                                                    <td class="hideANDseek">1</td>
-                                                    <td class="hideANDseek"></td>
-                                                    <td class="hideANDseek"></td>
-                                                    <td class="hideANDseek"></td>
-                                                    <td>
-                                                        <a href="@Url.Action("EditBorrow", "Borrow")">
-                                                            <img src="@Url.Content("~/Images/edit.png")" />
-                                                        </a>
-                                                        <a href="@Url.Action("Delete", "Trachnician")">
-                                                            <img src="@Url.Content("~/Images/delete.png")" />
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
+                                            <tbody id="result"></tbody>
                                         </table>
                                     </div>
                                 </div>

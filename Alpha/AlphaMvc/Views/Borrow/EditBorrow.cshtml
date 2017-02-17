@@ -2,12 +2,11 @@
     ViewBag.Title = "EditBorrow";
 }
 
-<h2>Edit</h2>
+<h2>Borrow Edit</h2>
+<script src="@Url.Content("~/Scripts/CUDS/JobOrderBorrow/EditJobOrderBorrow.js")" type="text/javascript"></script>
+<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <style>
     table {
-        /*background: #D0E5F5;
-        border: 1px solid #c0c0c0;
-        width: 520px;*/
         background: #fbfbf1;
         width: 335px;
     }
@@ -20,24 +19,24 @@
             <ul class="form-style-1">
                 <li>
                     <label>Serial <span class="required">*</span></label>
-                    <input type="text" name="field1" class="field-divided" placeholder="Serial" />
+                    <input type="text" id="txtSerial" name="field1" class="field-divided" placeholder="Serial" />
                 </li>
                 <li>
                     <label class="label-small">ยี่ห้อ</label>&nbsp;<label class="label-small-3">รุ่น</label>
                 </li>
                 <li>
-                    <input type="text" name="field1" class="field-select-small" placeholder="ห้อ" />&nbsp;<input type="text" name="field2" class="field-select-small" placeholder="รุ่น" />
+                    <input type="text" id="txtBrand" name="field1" class="field-select-small" placeholder="ยี่ห้อ" />&nbsp;<input type="text" name="field2" id="txtModel" class="field-select-small" placeholder="รุ่น" />
                 </li>
                 <li>
                     <label class="label-small">ขนาด</label>&nbsp;<label class="label-small-3">จำนวนที่ยืม</label>
                 </li>
                 <li>
-                    <input type="text" name="field1" class="field-select-small" placeholder="ขนาด" />&nbsp;<input type="text" name="field2" class="field-select-small" placeholder="จำนวน" />
+                    <input type="text" id="txtSize" name="field1" class="field-select-small" placeholder="ขนาด" />&nbsp;<input type="text" name="field2" id="txtAmount" class="field-select-small" placeholder="จำนวน" />
                 </li>
 
                 <li>
                     <label>หมายเหตุ<span class="required">*</span></label>
-                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                    <textarea name="field5" id="txtRemark" class="field-long field-textarea"></textarea>
                 </li>
 
             </ul>
@@ -49,12 +48,21 @@
                     <label class="label-small-2">ดี</label>&nbsp;<label class="label-small-2">หาย</label>&nbsp;<label class="label-small">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>
                 </li>
                 <li>
-                    <input type="text" name="field6" class="field-select-small" placeholder="ดี" />&nbsp;<input type="text" name="field6" class="field-select-small" placeholder="หาย" />&nbsp;<input type="text" name="field7" class="field-select-small" placeholder="ซ่อม" />&nbsp;<input type="text" name="field8" class="field-select-small" placeholder="ชำรุด" />
+                    <input type="text" id="txtReturnGood" name="field6" class="field-select-small" placeholder="ดี" />&nbsp;<input type="text" name="field6" id="txtReturnLost" class="field-select-small" placeholder="หาย" />&nbsp;<input type="text" id="txtReturnRepair" name="field7" class="field-select-small" placeholder="ซ่อม" />&nbsp;<input type="text" id="txtReturnBad" name="field8" class="field-select-small" placeholder="ชำรุด" />
                 </li>
                 <li>
-                    <input type="submit" value="Save" class="btnposition" />
+                    <button type="button" class="btn btn-primary" onclick="ConfirmDialog('Update', 'JobOrderBorrow', @Request.Params["id"])">Save</button>
                 </li>
             </ul>
         </form>
     }
 </div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        GetData(@Request.Params["id"]);
+
+    });
+
+</script>

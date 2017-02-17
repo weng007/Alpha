@@ -1,6 +1,6 @@
 $(document).ready(function () {
-
-    //------------------------- Sorting ------------------------
+    //------------------------------------ Standard ------------------------------------
+    //Sorting
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)
         var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
@@ -15,87 +15,84 @@ $(document).ready(function () {
         }
     }
     function getCellValue(row, index) { return $(row).children('td').eq(index).html() }
-    //------------------------- Sorting ------------------------
-    //-------------------------filter------------------------
+
+    //filter
     $("#searchInput").keyup(function () {
-        //hide all the rows
         $("#result").find("tr").hide();
-
-        //split the current value of searchInput
         var data = this.value.split(" ");
-        //create a jquery object of the rows
         var jo = $("#result").find("tr");
-
-        //Recusively filter the jquery object to get results.
         $.each(data, function (i, v) {
             jo = jo.filter("*:contains('" + v + "')");
         });
-        //show the rows that match.
         jo.show();
-        //Removes the placeholder text
 
     }).focus(function () {
-        this.value = "";
         $(this).css({ "color": "black" });
         $(this).unbind('focus');
     }).css({ "color": "#C0C0C0" });
-    //-------------------------filter------------------------
+
+    //------------------------------------ Custom ------------------------------------
     var input = window.location.href;
     var after = input.split('?')[1]
-    var BDCID = after.split('=');
-    var ID = BDCID[1];
+    var JobID = after.split('=');
+    var str = JobID[1];
+    var res = str.substring(0, 1);
+    var ID = res
     var dataObject = { ID: ID }
     $.ajax(
     {
-        url: 'http://localhost:13131/api/BDCJob',
+        url: 'http://localhost:13131/api/JobOrderBorrowRefID',
         type: 'GET',
+        async: false,
         data: dataObject,
         datatype: 'json',
         success: function (data) {
             data = JSON.parse(data);
-            console.log(data);
-            var html = '<tbody>';
+            var html = '';
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
                 html += '<td>' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                html += '<td>' + data.Table[i].JobNo + '</td>';
-                html += '<td>' + data.Table[i].JobDate + '</td>';
-                html += '<td>' + data.Table[i].Customer + '</td>';
-                html += '<td>' + data.Table[i].Tel + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].Contact + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].CoWorker + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].Remark + '</td>';
+                html += '<td>' + data.Table[i].Serial + '</td>';
+                html += '<td>' + data.Table[i].Remark + '</td>';
+                html += '<td class="hideANDseek">' + data.Table[i].Brand + '</td>';
+                html += '<td class="hideANDseek">' + data.Table[i].Model + '</td>';
+                html += '<td>' + data.Table[i].Size + '</td>';
+                html += '<td>' + data.Table[i].Amount + '</td>';
+                html += '<td>' + data.Table[i].ReturnGood + '</td>';
+                html += '<td>' + data.Table[i].ReturnLost + '</td>';
+                html += '<td>' + data.Table[i].ReturnRepair + '</td>';
+                html += '<td>' + data.Table[i].ReturnBad + '</td>';
                 html += '<td>';
-                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="/Images/delete.png" /></a>';
+                html += '<a href="/Borrow/EditBorrow?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'JobOrderBorrow'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
-            html += '</tbody>';
             document.getElementById("result").innerHTML = html;
         },
-        error: function (result) {
-            alert(result)
+        error: function (msg) {
+            alert(msg)
         }
     });
+
 });
 function RowDelete(id) {
     var dataObject = { ID: id };
     $.ajax(
         {
-            url: 'http://localhost:13131/api/JobOrder',
+            url: 'http://localhost:13131/api/IncomeMaster',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',
 
             success: function (result) {
-                alert('Delete is completed')
-                window.location.href = "../JobOrder/IndexJobOrder";
+                alert('Delete is completed');
             }
             ,
             error: function (msg) {
                 alert(msg)
             }
+
         });
 }

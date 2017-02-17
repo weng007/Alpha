@@ -2,16 +2,12 @@ $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
-    var BDCID
-    var Url = document.location;
-    var tabname = Url.match(/(#.+?)-/);
-    //tabname = tabname[1];
-    //var ids = url.split('-');
-
-    //var idone = ids[1];
-    //var idtwo = ids[2];
-
-    alert(Url);
+    var input = window.location.href;
+    var after = input.split('?')[1]
+    var BDCID = after.split('-');
+    $('#txtJobReference').val(BDCID);
+    $('#hidBDCID').val(BDCID);
+    
 
     var today = new Date();
     var dd = today.getDate();
@@ -30,6 +26,11 @@ $(document).ready(function () {
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
         $("#hidCustID").val($(this).find("td:eq(1)").text());
+        $("#txtTel").val($(this).find("td:eq(4)").text());
+        $("#txtContact").val($(this).find("td:eq(5)").text());
+        $("#txtCoWorker").val($(this).find("td:eq(6)").text());
+        $("#txtFax").val($(this).find("td:eq(7)").text());
+        $("#txtAddress").val($(this).find("td:eq(8)").text());
     })
 
     $.ajax({
@@ -134,6 +135,9 @@ $(document).ready(function () {
                     html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
                     html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
                     html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
+                    html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
+                    html += '<td class="hidecolumn">' + data.Table[i].Fax + '</td>';
+                    html += '<td class="hidecolumn">' + data.Table[i].Address + '</td>';
                     html += '</tr>';
                 }
                 document.getElementById("customerBody").innerHTML = html;
@@ -176,7 +180,7 @@ $(function () {
     $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 });
 function CreateData() {
-        var dataObject = { JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
+    var dataObject = { JobRef: $('#hidBDCID').val(),JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
         var ID;
         $.ajax(
         {
@@ -202,21 +206,23 @@ function CreateData() {
             dataObject.Qty = $(this).find(".Quantity").val();
             dataObject.UnitPrice = $(this).find(".Price").val();
             dataObject.Amount = $(this).find(".Amount").val();
-
-            $.ajax(
+            if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '')
             {
-                url: 'http://localhost:13131/api/JobOrderIncome',
-                type: 'POST',
-                async: false,
-                data: dataObject,
-                datatype: 'json',
-                success: function (data) {
-                    alert('Create is completed');
-                },
-                error: function (msg) {
-                    alert(msg)
-                }
-            });
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/JobOrderIncome',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                        alert('Create is completed');
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
         });
 
         //===================Insert JobOrderExpense
@@ -228,20 +234,23 @@ function CreateData() {
             dataObject.Qty = $(this).find(".Quantity").val();
             dataObject.UnitPrice = $(this).find(".Price").val();
             dataObject.Amount = $(this).find(".Amount").val();
-            $.ajax(
+            if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '')
             {
-                url: 'http://localhost:13131/api/JobOrderExpense',
-                type: 'POST',
-                async: false,
-                data: dataObject,
-                datatype: 'json',
-                success: function (data) {
-                    alert('Create is completed');
-                },
-                error: function (msg) {
-                    alert(msg)
-                }
-            });
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/JobOrderExpense',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                        alert('Create is completed');
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
         });
     ////===================Insert JobOrderSaleOrder 
         var dataObject = {};
@@ -249,20 +258,23 @@ function CreateData() {
             dataObject.JobID = ID;
             dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
             dataObject.Amount = $(this).find(".Amount").val();
-            $.ajax(
-            {
-                url: 'http://localhost:13131/api/JobOrderSaleOrder',
-                type: 'POST',
-                async: false,
-                data: dataObject,
-                datatype: 'json',
-                success: function (data) {
-                    alert('Create is completed');
-                },
-                error: function (msg) {
-                    alert(msg)
-                }
-            });
+            if ($(this).find(".SaleOrderNo").val() != '')
+            { 
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/JobOrderSaleOrder',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                        alert('Create is completed');
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
         });
     ////===================Insert JobOrderInvoice
         var dataObject = {};
@@ -271,20 +283,23 @@ function CreateData() {
             dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
             dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
             dataObject.Amount = $(this).find(".Amount").val();
-            $.ajax(
-            {
-                url: 'http://localhost:13131/api/JobOrderInvoice',
-                type: 'POST',
-                async: false,
-                data: dataObject,
-                datatype: 'json',
-                success: function (data) {
-                    alert('Create is completed');
-                },
-                error: function (msg) {
-                    alert(msg)
-                }
-            });
+            if ($(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '')
+            { 
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/JobOrderInvoice',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                        alert('Create is completed');
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
         });
     ////===================Insert JobOrderReceipt
         var dataObject = {};
@@ -293,20 +308,23 @@ function CreateData() {
             dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
             dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
             dataObject.Amount = $(this).find(".Amount").val();
-            $.ajax(
+            if ($(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '')
             {
-                url: 'http://localhost:13131/api/JobOrderReceipt',
-                type: 'POST',
-                async: false,
-                data: dataObject,
-                datatype: 'json',
-                success: function (data) {
-                    alert('Create is completed');
-                },
-                error: function (msg) {
-                    alert(msg)
-                }
-            });
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/JobOrderReceipt',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                        alert('Create is completed');
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
         });
         window.location.href = "../JobOrder/EditJobOrder?id=" + ID;
 }

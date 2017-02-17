@@ -63,7 +63,6 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_JobOrder_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", jobOrder.ID);
-                    cmd.Parameters.AddWithValue("@JobRef", jobOrder.JobRef);
                     cmd.Parameters.AddWithValue("@JobDate", jobOrder.JobDate);
                     cmd.Parameters.AddWithValue("@Car", jobOrder.Car != null ? jobOrder.Car : "");
                     cmd.Parameters.AddWithValue("@SWorking", jobOrder.SWorking);

@@ -60,7 +60,7 @@ $(document).ready(function () {
                 html += '<td>' + data.Table[i].Customer + '</td>';
                 html += '<td>' + data.Table[i].Tel + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].Contact + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].Coordinate + '</td>';
+                html += '<td class="hideANDseek">' + data.Table[i].CoWorker + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].Remark + '</td>';
                 html += '<td>';
                 html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';

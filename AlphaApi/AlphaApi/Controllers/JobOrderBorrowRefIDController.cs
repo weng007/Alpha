@@ -14,13 +14,15 @@ using System.Web.Http.Cors;
 namespace AlphaApi.Controllers
 {
     [EnableCorsAttribute("*", "*", "*")]
-    public class BDCJobController : ApiController
+    public class JobOrderBorrowRefIDController : ApiController
     {
-        public BDCJobOrderDAL BDCjobOrder = new BDCJobOrderDAL();
+        static JobOrderBorrowDAL jobOrderBorrow = new JobOrderBorrowDAL();
+
+        [EnableCorsAttribute("*", "*", "*")]
         [HttpGet]
         public string Get(int id)
         {
-            var response = BDCjobOrder.SelectByID(id);
+            var response = jobOrderBorrow.SelectByRefID(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
     }
