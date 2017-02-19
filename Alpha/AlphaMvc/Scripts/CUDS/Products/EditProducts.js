@@ -49,9 +49,12 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
+           var ReceiveDate = new Date(data.Table[0].ReceiveDate);
+           ReceiveDate = (ReceiveDate.getDate() + '/' + (ReceiveDate.getMonth() + 1) + '/' + ReceiveDate.getFullYear());
+
            $("#txtSerialNo").val(data.Table[0].SerialNo),$("#txtMachineNo").val(data.Table[0].MachineNo), $("#cmbProductType").val(data.Table[0].ProductType),
            $("#txtBrand").val(data.Table[0].Brand),$("#txtSize").val(data.Table[0].Size),$("#txtModel").val(data.Table[0].Model),$("#txtLifetime").val(data.Table[0].Lifetime),
-           $("#dtReceiveDate").val(data.Table[0].ReceiveDate),$("#cmbUnitWeight").val(data.Table[0].UnitWeight),$("#txtBalance").val(data.Table[0].Balance),$("#txtRemain").val(data.Table[0].Remain),$("#txtLost").val(data.Table[0].Lost),$("#txtRepair").val(data.Table[0].Repair),$("#txtBreak").val(data.Table[0].Break),$("#txtRemark").val(data.Table[0].Remark);
+           $("#dtReceiveDate").val(ReceiveDate), $("#cmbUnitWeight").val(data.Table[0].UnitWeight), $("#txtBalance").val(data.Table[0].Balance), $("#txtRemain").val(data.Table[0].Remain), $("#txtLost").val(data.Table[0].Lost), $("#txtRepair").val(data.Table[0].Repair), $("#txtBreak").val(data.Table[0].Break), $("#txtRemark").val(data.Table[0].Remark);
        },
        error: function (msg) {
            alert(msg);
