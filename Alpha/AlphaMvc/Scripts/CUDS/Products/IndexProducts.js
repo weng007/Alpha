@@ -54,7 +54,8 @@ $(document).ready(function () {
                 html += '<tr>';
                 html += '<td>' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                html += '<td>' + data.Table[i].ReceiveDate + '</td>';
+                var date = new Date(data.Table[i].ReceiveDate);
+                html += '<td>' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + '</td>';
                 html += '<td>' + data.Table[i].SerialNo + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].MachineNo + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].ProductType + '</td>';
