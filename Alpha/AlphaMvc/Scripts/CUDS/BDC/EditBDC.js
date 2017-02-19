@@ -57,7 +57,8 @@ function GetData(val) {
 function Update(val) {
     var dataObject = {
         ID: val, Docver: $("#txtDocver").val(), QuotationNo: $("#hidQuoID").val(), Price: 1, Cost: 2,
-        Profit: 3, Remark: $("#txtRemark").val()};
+        Profit: 3, Remark: $("#txtRemark").val(), EditBy: 1
+    };
     console.log(dataObject);
     $.ajax(
     {

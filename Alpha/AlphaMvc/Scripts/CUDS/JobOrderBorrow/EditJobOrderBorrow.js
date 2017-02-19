@@ -22,7 +22,7 @@ function GetData(val) {
 function Update(val) {
     var dataObject = {
         ID: val, Brand: $("#txtBrand").val(), Serial: $("#txtSerial").val(), Model: $("#txtModel").val(), Size: $("#txtSize").val(), Amount: $("#txtAmount").val(), Remark: $("#txtRemark").val(), ReturnGood: $("#txtReturnGood").val(), ReturnLost: $("#txtReturnLost").val(),
-        ReturnRepair: $("#txtReturnRepair").val(), ReturnBad: $("#txtReturnBad").val()
+        ReturnRepair: $("#txtReturnRepair").val(), ReturnBad: $("#txtReturnBad").val(), EditBy: 1
     }
 
        $.ajax(

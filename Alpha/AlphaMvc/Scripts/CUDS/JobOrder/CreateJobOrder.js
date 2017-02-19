@@ -180,7 +180,7 @@ $(function () {
     $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 });
 function CreateData() {
-    var dataObject = { JobRef: $('#hidBDCID').val(),JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val() };
+    var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), CreateBy: 1, EditBy: 1 };
         var ID;
         $.ajax(
         {
@@ -206,6 +206,8 @@ function CreateData() {
             dataObject.Qty = $(this).find(".Quantity").val();
             dataObject.UnitPrice = $(this).find(".Price").val();
             dataObject.Amount = $(this).find(".Amount").val();
+            dataObject.CreateBy = 1;
+            dataObject.EditBy = 1;
             if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '')
             {
                 $.ajax(
@@ -234,6 +236,8 @@ function CreateData() {
             dataObject.Qty = $(this).find(".Quantity").val();
             dataObject.UnitPrice = $(this).find(".Price").val();
             dataObject.Amount = $(this).find(".Amount").val();
+            dataObject.CreateBy = 1;
+            dataObject.EditBy = 1;
             if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '')
             {
                 $.ajax(
@@ -257,6 +261,8 @@ function CreateData() {
             dataObject.JobID = ID;
             dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
             dataObject.Amount = $(this).find(".Amount").val();
+            dataObject.CreateBy = 1;
+            dataObject.EditBy = 1;
             if ($(this).find(".SaleOrderNo").val() != '')
             { 
                 $.ajax(
@@ -281,6 +287,8 @@ function CreateData() {
             dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
             dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
             dataObject.Amount = $(this).find(".Amount").val();
+            dataObject.CreateBy = 1;
+            dataObject.EditBy = 1;
             if ($(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '')
             { 
                 $.ajax(
@@ -305,6 +313,8 @@ function CreateData() {
             dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
             dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
             dataObject.Amount = $(this).find(".Amount").val();
+            dataObject.CreateBy = 1;
+            dataObject.EditBy = 1;
             if ($(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '')
             {
                 $.ajax(

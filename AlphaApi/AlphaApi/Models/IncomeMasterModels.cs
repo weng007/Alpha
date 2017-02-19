@@ -13,6 +13,10 @@ namespace AlphaApi.Models
 
         public string Detail { get; set; }
 
+        public int CreateBy { get; set; }
+
+        public int EditBy { get; set; }
+
         public DataSet StoreAllData { get; set; }
     }
 }

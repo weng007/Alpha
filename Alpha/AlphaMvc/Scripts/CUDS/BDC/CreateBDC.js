@@ -45,9 +45,11 @@ $(document).ready(function () {
 
 });
 function CreateData() {
+    //var x = new Userlogin()
+    //alert(x.UserID);
     var dataObject = {
         Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: 1, Cost: 2,
-        Profit: 3, Remark: $("#txtRemark").val()
+        Profit: 3, Remark: $("#txtRemark").val(),CreateBy: 1,EditBy:1
     };
     console.log(dataObject);
     $.ajax(

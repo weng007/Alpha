@@ -5,7 +5,8 @@ function CreateData() {
     alert(ID);
     var dataObject = {
         RefID: ID, Brand: $("#txtBrand").val(), Serial: $("#txtSerial").val(), Model: $("#txtModel").val(), Size: $("#txtSize").val(), Amount: $("#txtAmount").val(), Remark: $("#txtRemark").val(), ReturnGood: $("#txtReturnGood").val(), ReturnLost: $("#txtReturnLost").val(),
-        ReturnRepair: $("#txtReturnRepair").val(), ReturnBad: $("#txtReturnBad").val()};
+        ReturnRepair: $("#txtReturnRepair").val(), ReturnBad: $("#txtReturnBad").val(), CreateBy: 1, EditBy: 1
+    };
     $.ajax(
     {
         url: 'http://localhost:13131/api/JobOrderBorrow',

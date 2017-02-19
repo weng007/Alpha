@@ -23,5 +23,13 @@ namespace AlphaApi.Controllers
             var response = Userdb.SelectData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+
+        [EnableCorsAttribute("*", "*", "*")]
+        [HttpGet]
+        public string Get(int id)
+        {
+            var response = Userdb.SelectByID(id);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
     }
 }

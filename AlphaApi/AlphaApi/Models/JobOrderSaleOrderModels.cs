@@ -20,6 +20,10 @@ namespace AlphaApi.Models
         public string SaleOrderNo { get; set; }
 
         public double Amount { get; set; }
+
+        public int CreateBy { get; set; }
+
+        public int EditBy { get; set; }
     }
 
     [Serializable]

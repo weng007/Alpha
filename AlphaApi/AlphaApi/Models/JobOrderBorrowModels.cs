@@ -33,6 +33,10 @@ namespace AlphaApi.Models
 
         public string Remark { get; set; }
 
+        public int CreateBy { get; set; }
+
+        public int EditBy { get; set; }
+
         public DataSet StoreAllData { get; set; }
     }
 }

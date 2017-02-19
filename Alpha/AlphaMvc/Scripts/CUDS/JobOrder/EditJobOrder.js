@@ -322,7 +322,7 @@ function Update(val) {
         ID: val, JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(),
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
         TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1,
-        Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val()
+        Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), EditBy: 1
     };
     var JobID;
     $.ajax(
@@ -350,6 +350,7 @@ function Update(val) {
         dataObject.Qty = $(this).find(".Quantity").val();
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = $(this).find(".Amount").val();
+        dataObject.EditBy = 1;
         if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
             {
@@ -376,6 +377,7 @@ function Update(val) {
         dataObject.Qty = $(this).find(".Quantity").val();
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = $(this).find(".Amount").val();
+        dataObject.EditBy = 1;
         if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
             {
@@ -399,6 +401,7 @@ function Update(val) {
         dataObject.JobID = JobID;
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
+        dataObject.EditBy = 1;
         if ($(this).find(".SaleOrderNo").val() != '') {
             $.ajax(
             {
@@ -423,6 +426,7 @@ function Update(val) {
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
+        dataObject.EditBy = 1;
         if ($(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
             {
@@ -447,6 +451,7 @@ function Update(val) {
         dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
+        dataObject.EditBy = 1;
         if ($(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
             {
