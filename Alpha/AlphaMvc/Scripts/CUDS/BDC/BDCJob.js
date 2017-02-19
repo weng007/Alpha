@@ -53,14 +53,14 @@ $(document).ready(function () {
         datatype: 'json',
         success: function (data) {
             data = JSON.parse(data);
-            console.log(data);
             var html = '<tbody>';
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
                 html += '<td>' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td>' + data.Table[i].JobNo + '</td>';
-                html += '<td>' + data.Table[i].JobDate + '</td>';
+                var JobDate = new Date(data.Table[i].JobDate);
+                html += '<td>' + JobDate.getDate() + '/' + (JobDate.getMonth() + 1) + '/' + JobDate.getFullYear() + '</td>';
                 html += '<td>' + data.Table[i].Customer + '</td>';
                 html += '<td>' + data.Table[i].Tel + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].Contact + '</td>';
