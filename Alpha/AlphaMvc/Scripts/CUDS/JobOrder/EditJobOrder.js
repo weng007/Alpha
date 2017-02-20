@@ -216,9 +216,9 @@ function GetData(val) {
                    html += '<td> <select id="cmbIncomeType" class="Select1" value="' + data.Table1[i].IncomeType + '"></select></td>';
 
                    html += '<td> <input type="text" id="txtUnitWeight" value="' + data.Table1[i].UnitWeight + '" class="UnitWeight text-size80 textright"></td>';
-                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table1[i].Qty + '" placeholder="0" onchange="CalSum()" /></td>';
-                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + data.Table1[i].UnitPrice + '" placeholder="0" onchange="CalSum()" /></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table1[i].Amount + '" disabled></td>';
+                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + parseFloat(data.Table1[i].Qty).toFixed(2) + '" placeholder="0" onchange="CalSum()" /></td>';
+                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + parseFloat(data.Table1[i].UnitPrice).toFixed(2) + '" placeholder="0" onchange="CalSum()" /></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + parseFloat(data.Table1[i].Amount).toFixed(2) + '" disabled></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
@@ -241,9 +241,9 @@ function GetData(val) {
                    html += '<td class="hidecolumn"><input id="ExpenseID" type="text" value="' + data.Table2[i].ID + '" class="ExpenseID" disabled /></td>';
                    html += '<td> <select id="cmbExpenseType" class="ExpenseSelect" value="' + data.Table2[i].ExpenseType + '"></select></td>';
                    html += '<td> <select  class="unitSelect" value="' + data.Table2[i].UnitWeight + '"></select></td>';
-                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + data.Table2[i].Qty + '" placeholder="0" onchange="CalSumExpense()" /></td>';
-                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + data.Table2[i].UnitPrice + '" placeholder="0" onchange="CalSumExpense()" /></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + data.Table2[i].Amount + '" disabled></td>';
+                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + parseFloat(data.Table2[i].Qty).toFixed(2) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
+                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + parseFloat(data.Table2[i].UnitPrice).toFixed(2) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + parseFloat(data.Table2[i].Amount).toFixed(2) + '" disabled></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
@@ -253,9 +253,14 @@ function GetData(val) {
            }
 
            ////Binding Data Total
-           $("#txtTotal").val(data.Table6[0].TotelIncome), $("#txtSubTotal").val(data.Table7[0].SubTotelIncome),
-           $("#txtNoCompound").val(data.Table7[0].SubTotelIncome), $("#txtExpense").val(data.Table8[0].TotelExpense),
-           $("#txtTotalExpense").val(data.Table8[0].TotelExpense), $("#txtProfit").val(data.Table9[0].Profit);
+           var SubTotal = data.Table7[0].SubTotelIncome;
+           var TotalExpense = data.Table8[0].TotelExpense;
+           var Profit = SubTotal - TotalExpense;
+
+           $("#txtTotal").val(data.Table6[0].TotelIncome).number(true, 2), $("#txtSubTotal").val(data.Table7[0].SubTotelIncome).number(true, 2),
+           $("#txtNoCompound").val(data.Table7[0].SubTotelIncome).number(true, 2), $("#txtExpense").val(data.Table8[0].TotelExpense).number(true, 2),
+           $("#txtTotalExpense").val(data.Table8[0].TotelExpense).number(true, 2),
+           $("#txtProfit").val(Profit).number(true, 2);
 
            ////Binding Data SaleOrder
            if (data.Table3.length > 0) {
@@ -268,7 +273,7 @@ function GetData(val) {
                    html += '<td> <input id="No" type="text" value="' + data.Table3[i].RowNum + '" class="tdno" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="SaleOrderID" type="text" value="' + data.Table3[i].ID + '" class="SaleOrderID" /></td>';
                    html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table3[i].SaleOrderNo + '" class="SaleOrderNo text-size180 textleft"></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size180 textright" value="' + data.Table3[i].Amount + '"></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size180 textright" value="' + parseFloat(data.Table3[i].Amount).toFixed(2) + '"></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
@@ -289,7 +294,7 @@ function GetData(val) {
                    html += '<td class="hidecolumn"><input id="InvoiceID" type="text" value="' + data.Table4[i].ID + '" class="InvoiceID" disabled /></td>';
                    html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table4[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
                    html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table4[i].SaleOrderNo + '" class="SaleOrderNo text-size165 textleft" ></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 textright" value="' + data.Table4[i].Amount + '" ></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 textright" value="' + parseFloat(data.Table4[i].Amount).toFixed(2) + '" ></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
@@ -310,7 +315,7 @@ function GetData(val) {
                    html += '<td class="hidecolumn"><input id="ReceiptID" type="text" value="' + data.Table5[i].ID + '" class="ReceiptID" disabled /></td>';
                    html += '<td> <input type="text" id="txtReceiptNo" value="' + data.Table5[i].ReceiptNo + '" class="ReceiptNo text-size165 textleft"></td>';
                    html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table5[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 textright" value="' + data.Table5[i].Amount + '" ></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 textright" value="' + parseFloat(data.Table5[i].Amount).toFixed(2) + '" ></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';

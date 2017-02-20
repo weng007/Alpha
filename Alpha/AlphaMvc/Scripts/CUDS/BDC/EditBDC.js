@@ -39,20 +39,39 @@ function GetData(val) {
     var dataObject = { ID: val }
     //alert(val);
     $.ajax(
-   {
-       url: 'http://localhost:13131/api/BDC',
-       type: 'GET',
-       async: false,
-       data: dataObject,
-       datatype: 'json',
-       success: function (data) {
-           data = JSON.parse(data);
-           $("#txtDocver").val(data.Table[0].Docver), $("#txtQuoNo").val(data.Table[0].QuoNo), $("#hidQuoID").val(data.Table[0].QuotationNo), $("#txtPrice").val(data.Table[0].Price),$("#txtCost").val(data.Table[0].Cost),$("#txtProfit").val(data.Table[0].Profit),$("#txtRemark").val(data.Table[0].Remark);
-       },
-       error: function (msg) {
-           alert(msg);
-       }
-   });
+       {
+           url: 'http://localhost:13131/api/BDC',
+           type: 'GET',
+           async: false,
+           data: dataObject,
+           datatype: 'json',
+           success: function (data) {
+               data = JSON.parse(data);
+               $("#txtDocver").val(data.Table[0].Docver), $("#txtQuoNo").val(data.Table[0].QuoNo), $("#hidQuoID").val(data.Table[0].QuotationNo), $("#txtPrice").val(data.Table[0].Price),$("#txtCost").val(data.Table[0].Cost),$("#txtProfit").val(data.Table[0].Profit),$("#txtRemark").val(data.Table[0].Remark);
+           },
+           error: function (msg) {
+               alert(msg);
+           }
+       });
+    //$.ajax(
+    //   {
+    //       url: 'http://localhost:13131/api/BDCJobOrderProfit',
+    //       type: 'GET',
+    //       async: false,
+    //       data: dataObject,
+    //       datatype: 'json',
+    //       success: function (data) {
+    //           data = JSON.parse(data);
+    //           var SubTotal = data.Table[0].SubTotelIncome;
+    //           var TotalExpense = data.Table[0].TotelExpense;
+    //           var Profit = SubTotal - TotalExpense;
+
+    //           $("#txtPrice").val(data.Table[0].SubTotelIncome), $("#txtCost").val(data.Table[0].TotelExpense), $("#txtProfit").val(Profit);
+    //       },
+    //       error: function (msg) {
+    //           alert(msg);
+    //       }
+    //   });
 }
 function Update(val) {
     var dataObject = {
