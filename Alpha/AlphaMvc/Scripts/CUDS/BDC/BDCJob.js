@@ -44,7 +44,6 @@ $(document).ready(function () {
     var after = input.split('?')[1]
     var BDCID = after.split('=');
     var ID = BDCID[1];
-    alert(ID);
     var dataObject = { ID: ID }
     $.ajax(
     {
