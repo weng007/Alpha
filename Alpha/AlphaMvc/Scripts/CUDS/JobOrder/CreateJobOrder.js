@@ -365,11 +365,10 @@ function AddRowIncome(row) {
         success: function (data) {
             data = JSON.parse(data);
 
-            $('.Select1').find("option").remove();
             $.each(data.Table, function (i) {
-                $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('.Select1:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            $('.Select1').find('option:first-child').attr('selected', true);
+            $('.Select1:last').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');

@@ -212,8 +212,8 @@ function GetData(val) {
                    html += '</td>';
                    html += '<td> <input id="No" type="text" value="' + data.Table1[i].RowNum + '" class="tdno" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="IncomeID" type="text" value="' + data.Table1[i].ID + '" class="IncomeID" disabled /></td>';
-                   GetIncomeMaster();
-                   html += '<td> <select id="cmbIncomeType" class="Select1" value="' + data.Table1[i].IncomeType + '"></select></td>';
+                   
+                   html += '<td> <select id="cmbIncomeType" class="Select1"></select></td>';
 
                    html += '<td> <input type="text" id="txtUnitWeight" value="' + data.Table1[i].UnitWeight + '" class="UnitWeight text-size80 textright"></td>';
                    html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + parseFloat(data.Table1[i].Qty).toFixed(2) + '" placeholder="0" onchange="CalSum()" /></td>';
@@ -225,6 +225,10 @@ function GetData(val) {
                }
                html += '</tbody>';
                document.getElementById("tBodyRowIncome").innerHTML = html;
+               GetIncomeMaster();
+
+               $('.Select1:nth-child(1)').val(1004)
+               //value = "' + data.Table1[i].IncomeType + '"
            }
 
            if (data.Table2.length > 0) {
@@ -515,11 +519,10 @@ function AddRowIncome(row) {
         success: function (data) {
             data = JSON.parse(data);
 
-            $('.Select1').find("option").remove();
             $.each(data.Table, function (i) {
-                $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('.Select1:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            $('.Select1').find('option:first-child').attr('selected', true);
+            $('.Select1:last').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
