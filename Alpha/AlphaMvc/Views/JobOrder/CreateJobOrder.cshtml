@@ -60,12 +60,14 @@
                 </li>
                 <li>
                     <input type="text" id="dtJobDate" class="field-divided" placeholder="วันที่"  required />&nbsp;<input type="text" id="txtCar" name="field1" class="field-divided" placeholder="รถปิกอัพ" autofocus/>
+                    <input type="hidden" id="hidJobDate" />
                 </li>
                 <li>
                     <label class="label-2">วันเริ่มทำงาน</label>&nbsp;<label class="label-2">วันจบงาน</label>
                 </li>
                 <li>
                     <input type="text" id="dtSWorking" class="field-divided" placeholder="วันเริ่มทำงาน" required/>&nbsp;<input type="text" id="dtEWorking" class="field-divided" placeholder="วันจบงาน" onchange="DateWorking()" required />
+                    <input type="hidden" id="hidSWorking" /><input type="hidden" id="hiddtEWorking" />
                 </li>
                 <li>
                     <label class="label-4">รับงานโดย</label>&nbsp;<label class="label-2">ออกโดย</label>

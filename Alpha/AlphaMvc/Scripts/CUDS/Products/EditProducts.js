@@ -79,7 +79,7 @@ function Update(val) {
     var imgPath = ("../Picture/" + FileName);
     var dataObject = {ID: val, SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
         Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
-        UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Img: imgPath, ImgData: imgData, Remark: $("#txtRemark").val(), EditBy: 1
+        UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Img: imgPath, ImgData: imgData, Remark: $("#txtRemark").val(), EditBy: localStorage['UserID']
     };
     console.log(dataObject);
     $.ajax(

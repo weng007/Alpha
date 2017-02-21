@@ -1,71 +1,44 @@
 $(document).ready(function () {
-    //$("#UserLogin").click(function () {
-        
-    //});
-    var userName = "Shekhar Shete";
-    var mySessionVariable = '@Session["' + userName + '"]';
+    $("#btnCancel").click(function () {
+        $("#txtUserName").val("")
+        $("#txtPassword").val("")
+    });
+
 });
-function pasuser() {
-    var dataObject = { UserName: $("#txtUserName").val(), Password: $("#txtpassword").val() };
+function UserLogin() {
+    alert('test');
+    var dataObject = { Password: $("#txtUserName").val()+'-'+ $("#txtPassword").val() };
+    console.log(dataObject);
     $.ajax(
     {
         url: 'http://localhost:13131/api/UserLogin',
         type: 'GET',
         async: false,
+        data: dataObject,
         datatype: 'json',
         success: function (data) {
             data = JSON.parse(data);
             console.log(data);
-            for (var i = 0; i < data.Table.length; i++) {
-                if (dataObject.UserName == data.Table[i].UserName) {
-                    if (dataObject.Password == data.Table[i].Password) {
-                        location = "http://localhost:1042/Home/index";
-                    } else {
-                        alert("Invalid Password")
-                    }
-                } else {
-                    alert("User is not found")
-                }
+            alert('test2');
+            alert(data.Table.length);
+            if (data.Table.length > 0)
+            {
+                localStorage['UserID'] = data.Table[0].ID;
+                localStorage['UserName'] = data.Table[0].UserName;
+                alert(localStorage['UserID']);
+                alert(localStorage['UserName']);
+                location = "http://localhost:1042/Home/index";
+            }else 
+            {
+                alert("User is not found");
             }
-            
-            this.UserID = ID;
         },
         error: function (msg) {
             alert(msg)
         }
     });
 }
-
-function GetUserLogin(id,flag)
-{
-    var dataObject = { ID: id };
-    var Flag = flag;
-    var login;
-    $.ajax(
-        {
-            url: 'http://localhost:13131/api/UserLogin',
-            type: 'GET',
-            async: false,
-            data: dataObject,
-            datatype: 'json',
-            success: function (data) {
-                data = JSON.parse(data);
-                console.log(data);
-                if (Flag == 0) // GetUserLogin
-                {
-                    login = data.Table[0].UserName;
-                }
-                else if (Flag == 1) // GetLoginID
-                {
-                    login = data.Table[0].ID;
-                }
-
-                return login;
-            },
-            error: function (msg) {
-                alert(msg)
-            }
-        }); 
-}
-
+//function GetUserName() {
+//    document.getElementById("lblUserName").innerHTML = localStorage['UserName'];
+//}
 

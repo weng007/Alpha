@@ -10,6 +10,7 @@ using System.Data;
 using System.Json;
 using Newtonsoft.Json;
 using System.Web.Http.Cors;
+using Newtonsoft.Json.Linq;
 
 namespace AlphaApi.Controllers
 {
@@ -17,18 +18,12 @@ namespace AlphaApi.Controllers
     public class UserLoginController : ApiController
     {
         static UserLoginDAL Userdb = new UserLoginDAL();
-        [HttpGet]
-        public string Get()
-        {
-            var response = Userdb.SelectData();
-            return JsonConvert.SerializeObject(response, Formatting.Indented);
-        }
 
-        [EnableCorsAttribute("*", "*", "*")]
         [HttpGet]
-        public string Get(int id)
+        public string Get(string password)
         {
-            var response = Userdb.SelectByID(id);
+            string[] str = password.Split('-');
+            var response = Userdb.SelectByID(str[0],str[1]);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
     }

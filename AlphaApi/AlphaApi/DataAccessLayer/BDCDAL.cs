@@ -26,6 +26,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Cost", BDC.Cost);
                     cmd.Parameters.AddWithValue("@Profit", BDC.Profit);
                     cmd.Parameters.AddWithValue("@Remark", BDC.Remark != null ? BDC.Remark : "");
+                    cmd.Parameters.AddWithValue("@CreateBy", BDC.CreateBy);
+                    cmd.Parameters.AddWithValue("@EditBy", BDC.EditBy);
                     conObj.Open();
                     result = Convert.ToInt32(cmd.ExecuteScalar().ToString());
                     return result;
@@ -56,6 +58,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Cost", BDC.Cost);
                     cmd.Parameters.AddWithValue("@Profit", BDC.Profit);
                     cmd.Parameters.AddWithValue("@Remark", BDC.Remark != null ? BDC.Remark : "");
+                    cmd.Parameters.AddWithValue("@EditBy", BDC.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
                     return result;

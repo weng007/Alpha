@@ -12,7 +12,7 @@ namespace AlphaApi.DataAccessLayer
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         int result = 0;
-        public DataSet SelectData()
+        public DataSet SelectByID(string userName, string password)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -21,6 +21,8 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_UserLogin", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserName", userName);
+                    cmd.Parameters.AddWithValue("@Password", password); // i will pass zero to MobileID beacause its Primary .
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;
@@ -29,37 +31,9 @@ namespace AlphaApi.DataAccessLayer
 
                     return ds;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return ds;
-                }
-                finally
-                {
-                    conObj.Close();
-                }
-            }
-        }
-        public DataSet SelectByID(int id)
-        {
-            DataSet ds = null;
-            using (SqlConnection conObj = new SqlConnection(conStr))
-            {
-                try
-                {
-                    SqlCommand cmd = new SqlCommand("SP_UserLogin_ByID", conObj);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
-                    conObj.Open();
-                    SqlDataAdapter da = new SqlDataAdapter();
-                    da.SelectCommand = cmd;
-                    ds = new DataSet();
-                    da.Fill(ds);
-
-                    return ds;
-                }
-                catch
-                {
-                    return ds;
+                    throw ex;
                 }
                 finally
                 {

@@ -188,11 +188,11 @@ function GetData(val) {
        success: function (data) {
            data = JSON.parse(data);
            var JobDate = new Date(data.Table[0].JobDate);
-           JobDate = (JobDate.getDate() + '/' + (JobDate.getMonth() + 1) + '/' + JobDate.getFullYear());
+           JobDate = $.datepicker.formatDate('dd-mm-yy', JobDate);
            var SWorking = new Date(data.Table[0].SWorking);
-           SWorking = (SWorking.getDate() + '/' + (SWorking.getMonth() + 1) + '/' + SWorking.getFullYear());
+           SWorking = $.datepicker.formatDate('dd-mm-yy', SWorking);
            var EWorking = new Date(data.Table[0].EWorking);
-           EWorking = (EWorking.getDate() + '/' + (EWorking.getMonth() + 1) + '/' + EWorking.getFullYear());
+           EWorking = SWorking = $.datepicker.formatDate('dd-mm-yy', EWorking);
 
            $("#hidCustID").val(data.Table[0].Customer), $("#txtJobNo").val(data.Table[0].JobNo), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
@@ -339,8 +339,9 @@ function Update(val) {
         ID: val, JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(),
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
         TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1,
-        Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), EditBy: 1
+        Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), EditBy: localStorage['UserID']
     };
+    console.log(dataObject);
     var JobID;
     $.ajax(
     {
@@ -367,7 +368,7 @@ function Update(val) {
         dataObject.Qty = $(this).find(".Quantity").val();
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = $(this).find(".Amount").val();
-        dataObject.EditBy = 1;
+        dataObject.EditBy = localStorage['UserID'];
         if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
             {
@@ -443,7 +444,7 @@ function Update(val) {
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
-        dataObject.EditBy = 1;
+        dataObject.EditBy = localStorage['UserID'];
         if ($(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
             {
@@ -468,7 +469,7 @@ function Update(val) {
         dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
-        dataObject.EditBy = 1;
+        dataObject.EditBy = localStorage['UserID'];
         if ($(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
             {
@@ -568,7 +569,7 @@ function AddRowExpense() {
     });
 }
 function Redirect() {
-    window.location = "IndexJobOrder";
+    window.location = "IndexBDC";
 }
 
 function GetIncomeMaster(){

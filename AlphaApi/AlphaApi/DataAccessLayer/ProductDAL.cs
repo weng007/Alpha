@@ -33,6 +33,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Remain", Product.Remain);
                     cmd.Parameters.AddWithValue("@Img", Product.Img);
                     cmd.Parameters.AddWithValue("@Remark", Product.Remark != null ? Product.Remark : "");
+                    cmd.Parameters.AddWithValue("@CreateBy", Product.CreateBy);
+                    cmd.Parameters.AddWithValue("@EditBy", Product.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteScalar().ToString();
 
@@ -76,6 +78,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Break", Product.Break);
                     cmd.Parameters.AddWithValue("@Img", Product.Img);
                     cmd.Parameters.AddWithValue("@Remark", Product.Remark);
+                    cmd.Parameters.AddWithValue("@EditBy", Product.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
                     return result;

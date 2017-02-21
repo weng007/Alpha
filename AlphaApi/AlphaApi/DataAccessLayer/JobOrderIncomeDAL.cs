@@ -26,6 +26,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Qty", jobOrderIncome.Qty);
                     cmd.Parameters.AddWithValue("@UnitPrice", jobOrderIncome.UnitPrice);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderIncome.Amount);
+                    cmd.Parameters.AddWithValue("@CreateBy", jobOrderIncome.CreateBy);
+                    cmd.Parameters.AddWithValue("@EditBy", jobOrderIncome.EditBy);
                     conObj.Open();
                     object obj = cmd.ExecuteScalar();
                     result = Convert.ToInt32(obj);
@@ -57,6 +59,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Qty", jobOrderIncome.Qty);
                     cmd.Parameters.AddWithValue("@UnitPrice", jobOrderIncome.UnitPrice);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderIncome.Amount);
+                    cmd.Parameters.AddWithValue("@EditBy", jobOrderIncome.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
                     return result;

@@ -25,6 +25,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@InvoiceNo", jobOrderInvoice.InvoiceNo);
                     cmd.Parameters.AddWithValue("@SaleOrderNo", jobOrderInvoice.SaleOrderNo);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderInvoice.Amount);
+                    cmd.Parameters.AddWithValue("@CreateBy", jobOrderInvoice.CreateBy);
+                    cmd.Parameters.AddWithValue("@EditBy", jobOrderInvoice.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
                     return result;
@@ -52,6 +54,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@InvoiceNo", jobOrderInvoice.InvoiceNo);
                     cmd.Parameters.AddWithValue("@SaleOrderNo", jobOrderInvoice.SaleOrderNo);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderInvoice.Amount);
+                    cmd.Parameters.AddWithValue("@EditBy", jobOrderInvoice.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
                     return result;

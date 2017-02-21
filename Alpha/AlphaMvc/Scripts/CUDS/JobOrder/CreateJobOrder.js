@@ -8,20 +8,15 @@ $(document).ready(function () {
     $('#txtJobReference').val(BDCID);
     $('#hidBDCID').val(BDCID);
     
+    $("#dtJobDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    $('#dtJobDate').datepicker().datepicker('setDate', 'today');
 
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-    if (mm < 10) {
-        mm = '0' + mm
-    }
-    today = mm + '/' + dd + '/' + yyyy;
-    $("#dtSWorking").val(today)
-    $("#dtJobDate").val(today)
+    $("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    $('#dtSWorking').datepicker().datepicker('setDate', 'today');
+    
+    $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()
+
+
 
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
@@ -180,8 +175,14 @@ $(function () {
     $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 });
 function CreateData() {
-    var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), CreateBy: 1, EditBy: 1 };
+    alert($("#dtJobDate").val());
+    alert($("#dtSWorking").val());
+    alert($("#dtEWorking").val());
+
+    var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
+    console.log(dataObject);
         var ID;
+
         $.ajax(
         {
             url: 'http://localhost:13131/api/JobOrder',
@@ -206,8 +207,8 @@ function CreateData() {
             dataObject.Qty = $(this).find(".Quantity").val();
             dataObject.UnitPrice = $(this).find(".Price").val();
             dataObject.Amount = $(this).find(".Amount").val();
-            dataObject.CreateBy = 1;
-            dataObject.EditBy = 1;
+            dataObject.CreateBy = localStorage['UserID'];
+            dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '')
             {
                 $.ajax(
@@ -236,8 +237,8 @@ function CreateData() {
             dataObject.Qty = $(this).find(".Quantity").val();
             dataObject.UnitPrice = $(this).find(".Price").val();
             dataObject.Amount = $(this).find(".Amount").val();
-            dataObject.CreateBy = 1;
-            dataObject.EditBy = 1;
+            dataObject.CreateBy = localStorage['UserID'];
+            dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '')
             {
                 $.ajax(
@@ -261,8 +262,8 @@ function CreateData() {
             dataObject.JobID = ID;
             dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
             dataObject.Amount = $(this).find(".Amount").val();
-            dataObject.CreateBy = 1;
-            dataObject.EditBy = 1;
+            dataObject.CreateBy = localStorage['UserID'];
+            dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".SaleOrderNo").val() != '')
             { 
                 $.ajax(
@@ -287,8 +288,8 @@ function CreateData() {
             dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
             dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
             dataObject.Amount = $(this).find(".Amount").val();
-            dataObject.CreateBy = 1;
-            dataObject.EditBy = 1;
+            dataObject.CreateBy = localStorage['UserID'];
+            dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '')
             { 
                 $.ajax(
@@ -313,8 +314,8 @@ function CreateData() {
             dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
             dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
             dataObject.Amount = $(this).find(".Amount").val();
-            dataObject.CreateBy = 1;
-            dataObject.EditBy = 1;
+            dataObject.CreateBy = localStorage['UserID'];
+            dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '')
             {
                 $.ajax(
@@ -415,7 +416,7 @@ function AddRowExpense() {
 }
 function DateWorking()
 {
-    if ($("#dtSWorking").val() > $("#dtEWorking").val()) {
+    if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {
         $("#dtEWorking").val("")
         alert("Please Input Endworking more than Startworking");
     }

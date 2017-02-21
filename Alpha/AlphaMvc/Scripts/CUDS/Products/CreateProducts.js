@@ -43,7 +43,8 @@ $(document).ready(function () {
         }
     });
 
-    $("#dtReceiveDate").datepicker();
+    $("#dtReceiveDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    $('#dtReceiveDate').datepicker().datepicker('setDate', 'today');
 });
 function CreateData() {
     var imgElem = document.getElementById('imgPreview');
@@ -64,8 +65,9 @@ function CreateData() {
     var dataObject = {
         SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
         Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
-        UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Img: imgPath, ImgData: imgData, Remark: $("#txtRemark").val(),CreateBy: 1,EditBy:1
+        UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Img: imgPath, ImgData: imgData, Remark: $("#txtRemark").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
+    alert($("#dtReceiveDate").val());
     console.log(dataObject);
     $.ajax(
     {

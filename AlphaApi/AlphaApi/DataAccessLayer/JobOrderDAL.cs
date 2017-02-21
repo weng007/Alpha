@@ -36,6 +36,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Customer", jobOrder.Customer);
                     cmd.Parameters.AddWithValue("@Remark", jobOrder.Remark != null ? jobOrder.Remark : "");
                     cmd.Parameters.AddWithValue("@Discount", jobOrder.Discount);
+                    cmd.Parameters.AddWithValue("@CreateBy", jobOrder.CreateBy);
+                    cmd.Parameters.AddWithValue("@EditBy", jobOrder.EditBy);
                     conObj.Open();
                     SqlDataAdapter adap = new SqlDataAdapter(cmd);
                     adap.Fill(ds);
@@ -75,6 +77,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Customer", jobOrder.Customer);
                     cmd.Parameters.AddWithValue("@Remark", jobOrder.Remark != null ? jobOrder.Remark : "");
                     cmd.Parameters.AddWithValue("@Discount", jobOrder.Discount);
+                    cmd.Parameters.AddWithValue("@EditBy", jobOrder.EditBy);
                     conObj.Open();
                     object obj = cmd.ExecuteScalar();
                     result = Convert.ToInt32(obj);

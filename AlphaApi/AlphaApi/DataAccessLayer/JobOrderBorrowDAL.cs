@@ -31,6 +31,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@ReturnRepair", jobOrderBorrow.ReturnRepair);
                     cmd.Parameters.AddWithValue("@ReturnBad", jobOrderBorrow.ReturnBad);
                     cmd.Parameters.AddWithValue("@Remark", jobOrderBorrow.Remark);
+                    cmd.Parameters.AddWithValue("@CreateBy", jobOrderBorrow.CreateBy);
+                    cmd.Parameters.AddWithValue("@EditBy", jobOrderBorrow.EditBy);
                     //cmd.Parameters.AddWithValue("@ReturnGood", BDC.Remark != null ? BDC.Remark : "");
                     conObj.Open();
                     result = Convert.ToInt32(cmd.ExecuteScalar().ToString());
@@ -65,6 +67,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@ReturnLost", jobOrderBorrow.ReturnLost);
                     cmd.Parameters.AddWithValue("@ReturnRepair", jobOrderBorrow.ReturnRepair);
                     cmd.Parameters.AddWithValue("@Remark", jobOrderBorrow.Remark);
+                    cmd.Parameters.AddWithValue("@EditBy", jobOrderBorrow.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
                     return result;

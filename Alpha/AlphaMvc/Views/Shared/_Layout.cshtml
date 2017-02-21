@@ -29,6 +29,7 @@
         <script src="@Url.Content("~/Scripts/EditableGrid/jquery.dynotable.js")" type="text/javascript"></script>
 
         <script language="javascript" type="text/javascript">
+            //GetUserName();
         $(function () {
             $("#products").accordion();
             //$('#nav li:has(ul)').doubleTapToGo();
@@ -51,7 +52,7 @@
             <div class="content-wrapper">
                 <div class="float-left">
                     <a href="@Url.Action("Index", "Home")" class="imagelogo"></a>
-                    <img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" /><p class="logonname">Administrator</p>
+                    <img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" /><label id="lblUserName" class="logonname"></label>
                     <img src="@Url.Content("~/Images/log-in.png")" alt="IMAGES" class="imgicon" />
                     <div class="loginname">@Html.ActionLink("Log Out", "IndexLogin", "Login")</div>
                 </div>
