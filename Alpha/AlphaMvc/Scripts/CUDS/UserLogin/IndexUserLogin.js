@@ -6,7 +6,6 @@ $(document).ready(function () {
 
 });
 function UserLogin() {
-    alert('test');
     var dataObject = { Password: $("#txtUserName").val()+'-'+ $("#txtPassword").val() };
     console.log(dataObject);
     $.ajax(
@@ -19,15 +18,12 @@ function UserLogin() {
         success: function (data) {
             data = JSON.parse(data);
             console.log(data);
-            alert('test2');
             alert(data.Table.length);
             if (data.Table.length > 0)
             {
                 localStorage['UserID'] = data.Table[0].ID;
                 localStorage['UserName'] = data.Table[0].UserName;
-                alert(localStorage['UserID']);
-                alert(localStorage['UserName']);
-                location = "http://localhost:1042/Home/index";
+                location = "../Home/index";
             }else 
             {
                 alert("User is not found");

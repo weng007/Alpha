@@ -225,10 +225,8 @@ function GetData(val) {
                }
                html += '</tbody>';
                document.getElementById("tBodyRowIncome").innerHTML = html;
-               GetIncomeMaster();
-
-               $('.Select1:nth-child(1)').val(1004)
-               //value = "' + data.Table1[i].IncomeType + '"
+               InitIncomeMaster();
+               SetIncomeMaster(data.Table1);
            }
 
            if (data.Table2.length > 0) {
@@ -572,7 +570,7 @@ function Redirect() {
     window.location = "IndexBDC";
 }
 
-function GetIncomeMaster(){
+function InitIncomeMaster(){
      $.ajax({
     url: 'http://localhost:13131/api/IncomeMaster',
     type: 'GET',
@@ -580,7 +578,6 @@ function GetIncomeMaster(){
     success: function (data) {
         data = JSON.parse(data);
 
-        $('.Select1').find("option").remove();
         $.each(data.Table, function (i) {
             $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
         });
@@ -589,4 +586,10 @@ function GetIncomeMaster(){
         alert('Error');
     }
 });
+}
+
+function SetIncomeMaster(data) {
+    $.each(data, function (i) {
+        $('.Select1').row(i).append($('<option></option>').val(data[i].ID).html(data[i].Detail));
+    });
 }
