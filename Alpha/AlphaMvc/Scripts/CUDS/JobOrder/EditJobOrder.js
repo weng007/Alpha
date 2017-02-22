@@ -375,8 +375,6 @@ function Update(val) {
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = $(this).find(".Amount").val();
         dataObject.EditBy = localStorage['UserID'];
-        alert($(this).find(".IncomeID").val());
-        alert(JobID);
         if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
             {
