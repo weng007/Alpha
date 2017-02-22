@@ -2,6 +2,10 @@ $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
+    $("#dtJobDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    $("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()
+
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
         $("#hidCustID").val($(this).find("td:eq(1)").text());
@@ -393,7 +397,7 @@ function Update(val) {
         dataObject.Qty = $(this).find(".Quantity").val();
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = $(this).find(".Amount").val();
-        dataObject.EditBy = 1;
+        dataObject.EditBy = localStorage['UserID'];
         if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
             {
@@ -417,7 +421,7 @@ function Update(val) {
         dataObject.JobID = JobID;
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
-        dataObject.EditBy = 1;
+        dataObject.EditBy = localStorage['UserID'];
         if ($(this).find(".SaleOrderNo").val() != '') {
             $.ajax(
             {
@@ -567,7 +571,7 @@ function AddRowExpense() {
     });
 }
 function Redirect() {
-    window.location = "IndexBDC";
+    window.location = "../BDC/IndexBDC";
 }
 
 function InitIncomeMaster(){
@@ -592,4 +596,10 @@ function SetIncomeMaster(data) {
     $.each(data, function (i) {
         $('.Select1').row(i).append($('<option></option>').val(data[i].ID).html(data[i].Detail));
     });
+}
+function DateWorking() {
+    if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {
+        $("#dtEWorking").val("")
+        alert("Please Input Endworking more than Startworking");
+    }
 }

@@ -8,6 +8,7 @@ using Newtonsoft.Json.Serialization;
 using WebApiContrib.Formatting.Jsonp;
 using System.Web.Http.Cors;
 using System.Web.Routing;
+using Newtonsoft.Json.Converters;
 
 namespace AlphaApi
 {
@@ -36,6 +37,8 @@ namespace AlphaApi
             );
 
             config.EnableCors();
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(
+             new IsoDateTimeConverter());
         }
     }
 }
