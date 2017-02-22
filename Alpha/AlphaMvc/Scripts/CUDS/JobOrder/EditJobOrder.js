@@ -368,7 +368,7 @@ function Update(val) {
     alert('test');
     $(".RowCal").each(function () {
         dataObject.ID = $(this).find(".IncomeID").val();
-        dataObject.JobID = $(this).find(".JobID").val();
+        dataObject.JobID = JobID;
         dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
         dataObject.UnitWeight = $(this).find(".UnitWeight").val();
         dataObject.Qty = $(this).find(".Quantity").val();
@@ -395,7 +395,7 @@ function Update(val) {
     var dataObject = {};
     $(".RowCal1").each(function () {
         dataObject.ID = $(this).find(".ExpenseID").val();
-        dataObject.JobID = $(this).find(".JobID").val();
+        dataObject.JobID = JobID;
         dataObject.ExpenseType = $(this).find('.ExpenseSelect').find(":selected").val();
         dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
         dataObject.Qty = $(this).find(".Quantity").val();
@@ -422,7 +422,7 @@ function Update(val) {
     var dataObject = {};
     $(".RowCal2").each(function () {
         dataObject.ID = $(this).find(".SaleOrderID").val();
-        dataObject.JobID = $(this).find(".JobID").val();
+        dataObject.JobID = JobID;
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
         dataObject.EditBy = localStorage['UserID'];
@@ -446,7 +446,7 @@ function Update(val) {
     var dataObject = {};
     $(".RowCal3").each(function () {
         dataObject.ID = $(this).find(".InvoiceID").val();
-        dataObject.JobID = $(this).find(".JobID").val();
+        dataObject.JobID = JobID;
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
@@ -471,7 +471,7 @@ function Update(val) {
     var dataObject = {};
     $(".RowCal4").each(function () {
         dataObject.ID = $(this).find(".ReceiptID").val();
-        dataObject.JobID = $(this).find(".JobID").val();
+        dataObject.JobID = JobID;
         dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
