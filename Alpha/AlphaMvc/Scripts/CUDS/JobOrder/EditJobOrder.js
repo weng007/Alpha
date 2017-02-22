@@ -2,10 +2,6 @@ $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
-    $("#dtJobDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
-    $("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()
-    $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()
-
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
         $("#hidCustID").val($(this).find("td:eq(1)").text());
@@ -192,11 +188,11 @@ function GetData(val) {
        success: function (data) {
            data = JSON.parse(data);
            var JobDate = new Date(data.Table[0].JobDate);
-           JobDate = $.datepicker.formatDate('dd-mm-yy', JobDate);
+           JobDate = $.datepicker.formatDate('mm/dd/yy', JobDate);
            var SWorking = new Date(data.Table[0].SWorking);
-           SWorking = $.datepicker.formatDate('dd-mm-yy', SWorking);
+           SWorking = $.datepicker.formatDate('mm/dd/yy', SWorking);
            var EWorking = new Date(data.Table[0].EWorking);
-           EWorking = SWorking = $.datepicker.formatDate('dd-mm-yy', EWorking);
+           EWorking = SWorking = $.datepicker.formatDate('mm/dd/yy', EWorking);
 
            $("#hidCustID").val(data.Table[0].Customer), $("#txtJobNo").val(data.Table[0].JobNo), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
@@ -216,6 +212,7 @@ function GetData(val) {
                    html += '</td>';
                    html += '<td> <input id="No" type="text" value="' + data.Table1[i].RowNum + '" class="tdno" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="IncomeID" type="text" value="' + data.Table1[i].ID + '" class="IncomeID" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table1[i].JobID + '" class="JobID" disabled /></td>';
                    
                    html += '<td> <select id="cmbIncomeType" class="Select1"></select></td>';
 
@@ -245,6 +242,7 @@ function GetData(val) {
                    html += '</td>';
                    html += '<td> <input id="No" type="text" value="' + data.Table2[i].RowNum + '" class="tdno" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="ExpenseID" type="text" value="' + data.Table2[i].ID + '" class="ExpenseID" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table2[i].JobID + '" class="JobID" disabled /></td>';
                    html += '<td> <select id="cmbExpenseType" class="ExpenseSelect" value="' + data.Table2[i].ExpenseType + '"></select></td>';
                    html += '<td> <select  class="unitSelect" value="' + data.Table2[i].UnitWeight + '"></select></td>';
                    html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + parseFloat(data.Table2[i].Qty).toFixed(2) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
@@ -259,9 +257,11 @@ function GetData(val) {
            }
 
            ////Binding Data Total
+           alert('test Bind Total');
            var SubTotal = data.Table7[0].SubTotelIncome;
            var TotalExpense = data.Table8[0].TotelExpense;
            var Profit = SubTotal - TotalExpense;
+           alert(Profit);
 
            $("#txtTotal").val(data.Table6[0].TotelIncome).number(true, 2), $("#txtSubTotal").val(data.Table7[0].SubTotelIncome).number(true, 2),
            $("#txtNoCompound").val(data.Table7[0].SubTotelIncome).number(true, 2), $("#txtExpense").val(data.Table8[0].TotelExpense).number(true, 2),
@@ -278,6 +278,7 @@ function GetData(val) {
                    html += '</td>';
                    html += '<td> <input id="No" type="text" value="' + data.Table3[i].RowNum + '" class="tdno" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="SaleOrderID" type="text" value="' + data.Table3[i].ID + '" class="SaleOrderID" /></td>';
+                   html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table3[i].JobID + '" class="JobID" disabled /></td>';
                    html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table3[i].SaleOrderNo + '" class="SaleOrderNo text-size180 textleft"></td>';
                    html += '<td> <input type="text" id="txtAmount"  class="Amount text-size180 textright" value="' + parseFloat(data.Table3[i].Amount).toFixed(2) + '"></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
@@ -298,6 +299,7 @@ function GetData(val) {
                    html += '</td>';
                    html += '<td> <input id="No" type="text" value="' + data.Table4[i].RowNum + '" class="tdno" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="InvoiceID" type="text" value="' + data.Table4[i].ID + '" class="InvoiceID" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table4[i].JobID + '" class="JobID" disabled /></td>';
                    html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table4[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
                    html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table4[i].SaleOrderNo + '" class="SaleOrderNo text-size165 textleft" ></td>';
                    html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 textright" value="' + parseFloat(data.Table4[i].Amount).toFixed(2) + '" ></td>';
@@ -319,6 +321,7 @@ function GetData(val) {
                    html += '</td>';
                    html += '<td> <input id="No" type="text" value="' + data.Table5[i].RowNum + '" class="tdno" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="ReceiptID" type="text" value="' + data.Table5[i].ID + '" class="ReceiptID" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table5[i].JobID + '" class="JobID" disabled /></td>';
                    html += '<td> <input type="text" id="txtReceiptNo" value="' + data.Table5[i].ReceiptNo + '" class="ReceiptNo text-size165 textleft"></td>';
                    html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table5[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
                    html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 textright" value="' + parseFloat(data.Table5[i].Amount).toFixed(2) + '" ></td>';
@@ -362,15 +365,18 @@ function Update(val) {
     });
     
     var dataObject = {};
+    alert('test');
     $(".RowCal").each(function () {
         dataObject.ID = $(this).find(".IncomeID").val();
-        dataObject.JobID = JobID;
+        dataObject.JobID = $(this).find(".JobID").val();
         dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
         dataObject.UnitWeight = $(this).find(".UnitWeight").val();
         dataObject.Qty = $(this).find(".Quantity").val();
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = $(this).find(".Amount").val();
         dataObject.EditBy = localStorage['UserID'];
+        alert($(this).find(".IncomeID").val());
+        alert(JobID);
         if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
             {
@@ -391,7 +397,7 @@ function Update(val) {
     var dataObject = {};
     $(".RowCal1").each(function () {
         dataObject.ID = $(this).find(".ExpenseID").val();
-        dataObject.JobID = JobID;
+        dataObject.JobID = $(this).find(".JobID").val();
         dataObject.ExpenseType = $(this).find('.ExpenseSelect').find(":selected").val();
         dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
         dataObject.Qty = $(this).find(".Quantity").val();
@@ -418,7 +424,7 @@ function Update(val) {
     var dataObject = {};
     $(".RowCal2").each(function () {
         dataObject.ID = $(this).find(".SaleOrderID").val();
-        dataObject.JobID = JobID;
+        dataObject.JobID = $(this).find(".JobID").val();
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
         dataObject.EditBy = localStorage['UserID'];
@@ -442,7 +448,7 @@ function Update(val) {
     var dataObject = {};
     $(".RowCal3").each(function () {
         dataObject.ID = $(this).find(".InvoiceID").val();
-        dataObject.JobID = JobID;
+        dataObject.JobID = $(this).find(".JobID").val();
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
@@ -467,7 +473,7 @@ function Update(val) {
     var dataObject = {};
     $(".RowCal4").each(function () {
         dataObject.ID = $(this).find(".ReceiptID").val();
-        dataObject.JobID = JobID;
+        dataObject.JobID = $(this).find(".JobID").val();
         dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();

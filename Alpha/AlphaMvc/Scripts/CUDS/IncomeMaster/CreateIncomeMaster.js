@@ -1,5 +1,5 @@
 function CreateData() {
-    var dataObject = { Detail: $("#Detail").val(),CreateBy: 1,EditBy:1 };
+    var dataObject = { Detail: $("#Detail").val(),CreateBy: localStorage['UserID'],EditBy:localStorage['UserID'] };
     $.ajax(
     {
         url: 'http://localhost:13131/api/IncomeMaster',
