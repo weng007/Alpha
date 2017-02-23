@@ -64,9 +64,8 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string DeleteData(ExpenseMasterModels ME)
+        public int DeleteData(ExpenseMasterModels ME)
         {
-            string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -74,14 +73,16 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_ExpenseMaster_Del", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", ME.ID);
+                    cmd.Parameters.AddWithValue("@EditBy", ME.EditBy);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
+
                 finally
                 {
                     conObj.Close();

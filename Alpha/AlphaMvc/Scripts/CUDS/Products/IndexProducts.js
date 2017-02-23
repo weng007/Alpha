@@ -79,7 +79,7 @@ $(document).ready(function () {
     });
 });
 function RowDelete(id) {
-    var dataObject = { ID: id };
+    var dataObject = { ID: id, EditBy: localStorage['UserID'] };
     $.ajax(
         {
             url: 'http://localhost:13131/api/Product',
