@@ -1,4 +1,4 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
@@ -213,7 +213,7 @@ function GetData(val) {
                    html += '<td class="hidecolumn"><input id="IncomeID" type="text" value="' + data.Table1[i].ID + '" class="IncomeID" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table1[i].JobID + '" class="JobID" disabled /></td>';
                    
-                   html += '<td> <select id="cmbIncomeType" class="Select1"></select></td>';
+                   html += '<td> <select id="cmbIncomeType" class="Select1" value = "'+data.Table1.IncomeType+'"></select></td>';
 
                    html += '<td> <input type="text" id="txtUnitWeight" value="' + data.Table1[i].UnitWeight + '" class="UnitWeight text-size80 textright"></td>';
                    html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + parseFloat(data.Table1[i].Qty).toFixed(2) + '" placeholder="0" onchange="CalSum()" /></td>';
@@ -224,9 +224,8 @@ function GetData(val) {
                    html += '</tr>';
                }
                html += '</tbody>';
-               document.getElementById("tBodyRowIncome").innerHTML = html;
-               InitIncomeMaster();
-               SetIncomeMaster(data.Table1);
+               document.getElementById("tBodyRowIncome").innerHTML = html;                        
+               SetIncomeMaster(data.Table1);            
            }
 
            if (data.Table2.length > 0) {
@@ -334,7 +333,6 @@ function GetData(val) {
        error: function (msg) {
            alert(msg);
        }
-
    });
 }
 function Update(val) {
@@ -523,6 +521,7 @@ function AddRowIncome(row) {
         success: function (data) {
             data = JSON.parse(data);
 
+            $('.Select1:last').find("option").remove();
             $.each(data.Table, function (i) {
                 $('.Select1:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
@@ -575,7 +574,8 @@ function Redirect() {
     window.location = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
 }
 
-function InitIncomeMaster(){
+function SetIncomeMaster(tmp) {
+    
      $.ajax({
     url: 'http://localhost:13131/api/IncomeMaster',
     type: 'GET',
@@ -584,8 +584,13 @@ function InitIncomeMaster(){
         data = JSON.parse(data);
 
         $.each(data.Table, function (i) {
-            $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            $(".Select1").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));       
         });
+
+        for(i=0;i<tmp.length;i++)
+        {
+            $(".Select1:eq("+i+")").val(tmp[i].IncomeType).change();
+        }
     },
     failure: function () {
         alert('Error');
@@ -593,11 +598,6 @@ function InitIncomeMaster(){
 });
 }
 
-function SetIncomeMaster(data) {
-    $.each(data, function (i) {
-        $('.Select1').row(i).append($('<option></option>').val(data[i].ID).html(data[i].Detail));
-    });
-}
 function DateWorking() {
     if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {
         $("#dtEWorking").val("")
