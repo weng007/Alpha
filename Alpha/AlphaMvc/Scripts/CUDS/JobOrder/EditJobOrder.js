@@ -197,9 +197,8 @@ function GetData(val) {
            $("#hidCustID").val(data.Table[0].Customer), $("#txtJobNo").val(data.Table[0].JobNo), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
              $("#txtContact").val(data.Table[0].Contact), $("#txtCoWorker").val(data.Table[0].CoWorker), $("#txtAddress").val(data.Table[0].Address),
-             $("#txtJobReference").val(data.Table[0].JobRef), $("#txtRemark").val(data.Table[0].Remark),
-             $("#txtDiscount").val(data.Table[0].Discount)
-           ;
+             $("#txtJobReference").val(data.Table[0].JobRef), $("#hidBDCID").val(data.Table[0].JobRef), $("#txtRemark").val(data.Table[0].Remark),
+             $("#txtDiscount").val(data.Table[0].Discount);
 
            ////Binding Data Income
            if (data.Table1.length > 0) {
@@ -261,7 +260,6 @@ function GetData(val) {
            var SubTotal = data.Table7[0].SubTotelIncome;
            var TotalExpense = data.Table8[0].TotelExpense;
            var Profit = SubTotal - TotalExpense;
-           alert(Profit);
 
            $("#txtTotal").val(data.Table6[0].TotelIncome).number(true, 2), $("#txtSubTotal").val(data.Table7[0].SubTotelIncome).number(true, 2),
            $("#txtNoCompound").val(data.Table7[0].SubTotelIncome).number(true, 2), $("#txtExpense").val(data.Table8[0].TotelExpense).number(true, 2),
@@ -343,7 +341,7 @@ function Update(val) {
     var dataObject = {
         ID: val, JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(),
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
-        TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(), JobReference: 1,
+        TypeWorking: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(),
         Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), EditBy: localStorage['UserID']
     };
     console.log(dataObject);
@@ -365,7 +363,6 @@ function Update(val) {
     });
     
     var dataObject = {};
-    alert('test');
     $(".RowCal").each(function () {
         dataObject.ID = $(this).find(".IncomeID").val();
         dataObject.JobID = JobID;
@@ -375,7 +372,7 @@ function Update(val) {
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = $(this).find(".Amount").val();
         dataObject.EditBy = localStorage['UserID'];
-        if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
+        if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderIncome',
@@ -402,7 +399,7 @@ function Update(val) {
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = $(this).find(".Amount").val();
         dataObject.EditBy = localStorage['UserID'];
-        if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
+        if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderExpense',
@@ -426,7 +423,7 @@ function Update(val) {
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
         dataObject.EditBy = localStorage['UserID'];
-        if ($(this).find(".SaleOrderNo").val() != '') {
+        if (JobID != 0 && $(this).find(".SaleOrderNo").val() != '') {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderSaleOrder',
@@ -451,7 +448,7 @@ function Update(val) {
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
         dataObject.EditBy = localStorage['UserID'];
-        if ($(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
+        if (JobID != 0 && $(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderInvoice',
@@ -476,7 +473,7 @@ function Update(val) {
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
         dataObject.Amount = $(this).find(".Amount").val();
         dataObject.EditBy = localStorage['UserID'];
-        if ($(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
+        if (JobID != 0 && $(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderReceipt',
@@ -493,7 +490,7 @@ function Update(val) {
         }
     });
     alert('Update is completed');
-    window.location.href = "../JobOrder/EditJobOrder?id=" + JobID;
+    window.location.href = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
 }
 function CalSum() {
     $(".RowCal").each(function () {
@@ -575,7 +572,7 @@ function AddRowExpense() {
     });
 }
 function Redirect() {
-    window.location = "../BDC/IndexBDC";
+    window.location = "../BDC/EditBDC" + $("#hidBDCID").val();
 }
 
 function InitIncomeMaster(){

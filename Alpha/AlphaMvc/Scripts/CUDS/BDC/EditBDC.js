@@ -47,36 +47,24 @@ function GetData(val) {
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
-               $("#txtDocver").val(data.Table[0].Docver), $("#txtQuoNo").val(data.Table[0].QuoNo), $("#hidQuoID").val(data.Table[0].QuotationNo), $("#txtPrice").val(data.Table[0].Price),$("#txtCost").val(data.Table[0].Cost),$("#txtProfit").val(data.Table[0].Profit),$("#txtRemark").val(data.Table[0].Remark);
+               var SubTotal = data.Table1[0].SubTotelIncome;
+               var TotalExpense = data.Table2[0].TotelExpense;
+               var Profit = SubTotal - TotalExpense;
+
+               $("#txtDocver").val(data.Table[0].Docver), $("#txtQuoNo").val(data.Table[0].QuoNo), $("#hidQuoID").val(data.Table[0].QuotationNo), $("#txtRemark").val(data.Table[0].Remark),
+               $("#txtPrice").val(data.Table1[0].SubTotelIncome).number(true, 2), $("#txtCost").val(data.Table2[0].TotelExpense).number(true, 2),
+               $("#txtProfit").val(Profit).number(true, 2);
+               
            },
            error: function (msg) {
                alert(msg);
            }
        });
-    //$.ajax(
-    //   {
-    //       url: 'http://localhost:13131/api/BDCJobOrderProfit',
-    //       type: 'GET',
-    //       async: false,
-    //       data: dataObject,
-    //       datatype: 'json',
-    //       success: function (data) {
-    //           data = JSON.parse(data);
-    //           var SubTotal = data.Table[0].SubTotelIncome;
-    //           var TotalExpense = data.Table[0].TotelExpense;
-    //           var Profit = SubTotal - TotalExpense;
-
-    //           $("#txtPrice").val(data.Table[0].SubTotelIncome), $("#txtCost").val(data.Table[0].TotelExpense), $("#txtProfit").val(Profit);
-    //       },
-    //       error: function (msg) {
-    //           alert(msg);
-    //       }
-    //   });
 }
 function Update(val) {
     var dataObject = {
-        ID: val, Docver: $("#txtDocver").val(), QuotationNo: $("#hidQuoID").val(), Price: 1, Cost: 2,
-        Profit: 3, Remark: $("#txtRemark").val(), EditBy: localStorage['UserID']
+        ID: val, Docver: $("#txtDocver").val(), QuotationNo: $("#hidQuoID").val(), Price: $("#txtPrice").val(), Cost: $("#txtCost").val(),
+        Profit: $("#txtProfit").val(), Remark: $("#txtRemark").val(), EditBy: localStorage['UserID']
     };
     console.log(dataObject);
     $.ajax(
