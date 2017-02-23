@@ -1,9 +1,6 @@
-function ConfirmDialog(val, topic,id) {
-    if (val == "Create") {
-        //CustomValidate(topic);
-        //var Isvalidate = CustomValidate
-        //if()
-        $('#ShowDialog').modal('show');
+function Isvalidate(pageName) {
+    //if (pageName == "IncomeMaster") {
+    //    if($("#txtDetail").val() == '')
         var html = '<div class="modal-dialog">';
         html += '<div class="modal-content">';
         html += '<div class="modal-header">';

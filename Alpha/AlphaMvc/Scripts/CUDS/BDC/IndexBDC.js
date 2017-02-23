@@ -39,7 +39,9 @@ $(document).ready(function () {
         $(this).unbind('focus');
     }).css({ "color": "#C0C0C0" });
     //-------------------------filter------------------------
-
+    var price;
+    var cost;
+    var profit;
     $.ajax(
     {
         url: 'http://localhost:13131/api/BDC',
@@ -54,9 +56,19 @@ $(document).ready(function () {
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td>' + data.Table[i].Docver + '</td>';
                 html += '<td>' + data.Table[i].QuoNo + '</td>';
-                html += '<td>' + data.Table[i].Price + '</td>';
-                html += '<td>' + data.Table[i].Cost + '</td>';
-                html += '<td>' + data.Table[i].Profit + '</td>';
+                html += '<td class="text-right">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Price) + '</td>';
+                html += '<td class="text-right">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Cost) + '</td>';
+                price = data.Table[i].Price;
+                cost = data.Table[i].Cost;
+                profit = price - cost;
+                if (profit < 0)
+                {
+                    html += '<td style="color:#FF0000" class="text-right"> ' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
+                }
+                else
+                {
+                    html += '<td style="Color: black" class="text-right">' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
+                }
                 html += '<td>';
                 html += '<a href="/BDC/EditBDC?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'BDC'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png"/></a>';

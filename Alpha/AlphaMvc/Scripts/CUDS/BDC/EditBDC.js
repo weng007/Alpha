@@ -52,9 +52,13 @@ function GetData(val) {
                var Profit = SubTotal - TotalExpense;
 
                $("#txtDocver").val(data.Table[0].Docver), $("#txtQuoNo").val(data.Table[0].QuoNo), $("#hidQuoID").val(data.Table[0].QuotationNo), $("#txtRemark").val(data.Table[0].Remark),
-               $("#txtPrice").val(data.Table1[0].SubTotelIncome).number(true, 2), $("#txtCost").val(data.Table2[0].TotelExpense).number(true, 2),
-               $("#txtProfit").val(Profit).number(true, 2);
-               
+               $("#txtPrice").val(data.Table1[0].SubTotelIncome).number(true, 2), $("#txtCost").val(data.Table2[0].TotelExpense).number(true, 2);
+               if (Profit < 0) {
+                   $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+               }
+               else {
+                   $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+               }
            },
            error: function (msg) {
                alert(msg);
@@ -64,8 +68,7 @@ function GetData(val) {
 function Update(val) {
     var dataObject = {
         ID: val, Docver: $("#txtDocver").val(), QuotationNo: $("#hidQuoID").val(), Price: $("#txtPrice").val(), Cost: $("#txtCost").val(),
-        Profit: $("#txtProfit").val(), Remark: $("#txtRemark").val(), EditBy: localStorage['UserID']
-    };
+        Remark: $("#txtRemark").val(), EditBy: localStorage['UserID']};
     console.log(dataObject);
     $.ajax(
     {

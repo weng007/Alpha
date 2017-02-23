@@ -19,8 +19,6 @@ namespace AlphaApi.Models
 
         public double Cost { get; set; }
 
-        public double Profit { get; set; }
-
         public string Remark { get; set; }
 
         public int CreateBy { get; set; }

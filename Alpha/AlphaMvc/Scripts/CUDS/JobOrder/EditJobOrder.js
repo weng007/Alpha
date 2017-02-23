@@ -572,7 +572,7 @@ function AddRowExpense() {
     });
 }
 function Redirect() {
-    window.location = "../BDC/EditBDC" + $("#hidBDCID").val();
+    window.location = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
 }
 
 function InitIncomeMaster(){

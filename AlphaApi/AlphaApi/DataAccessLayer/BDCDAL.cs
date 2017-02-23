@@ -24,7 +24,6 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@QuotationNo", BDC.QuotationNo);
                     cmd.Parameters.AddWithValue("@Price", BDC.Price);
                     cmd.Parameters.AddWithValue("@Cost", BDC.Cost);
-                    cmd.Parameters.AddWithValue("@Profit", BDC.Profit);
                     cmd.Parameters.AddWithValue("@Remark", BDC.Remark != null ? BDC.Remark : "");
                     cmd.Parameters.AddWithValue("@CreateBy", BDC.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", BDC.EditBy);
@@ -56,7 +55,6 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@QuotationNo", BDC.QuotationNo);
                     cmd.Parameters.AddWithValue("@Price", BDC.Price);
                     cmd.Parameters.AddWithValue("@Cost", BDC.Cost);
-                    cmd.Parameters.AddWithValue("@Profit", BDC.Profit);
                     cmd.Parameters.AddWithValue("@Remark", BDC.Remark != null ? BDC.Remark : "");
                     cmd.Parameters.AddWithValue("@EditBy", BDC.EditBy);
                     conObj.Open();
