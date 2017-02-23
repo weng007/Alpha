@@ -130,9 +130,6 @@ function ConfirmDialog(val, topic, id) {
 
     }
     else if (val == "Update") {
-        CustomValidate(topic);
-        var Isvalidate = CustomValidate
-        if (Isvalidate) {
             $('#ShowDialog').modal('show');
             var html = '<div class="modal-dialog">';
             html += '<div class="modal-content">';
@@ -146,7 +143,6 @@ function ConfirmDialog(val, topic, id) {
             html += '<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>';
             html += '</div></div></div>';
             document.getElementById("ShowDialog").innerHTML = html;
-        }
     }
     else if (val == "Delete") {
             $('#ShowDialog').modal('show');
