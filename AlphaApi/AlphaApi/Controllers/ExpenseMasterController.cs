@@ -47,7 +47,7 @@ namespace AlphaApi.Controllers
             return response;
         }
         [HttpDelete]
-        public string Delete(ExpenseMasterModels expenseModel)
+        public int Delete(ExpenseMasterModels expenseModel)
         {  
             var response = expenseMasterdb.DeleteData(expenseModel);
             return response;

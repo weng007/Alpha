@@ -63,7 +63,7 @@ namespace AlphaApi.Controllers
 
         }
         [HttpDelete]
-        public string Delete(ProductModels PD)
+        public int Delete(ProductModels PD)
         {
             var response = Productdb.DeleteData(PD);
             return response;

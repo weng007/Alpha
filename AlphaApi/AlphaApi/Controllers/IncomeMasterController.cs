@@ -48,7 +48,7 @@ namespace AlphaApi.Controllers
 
         }
         [HttpDelete]
-        public string Delete(IncomeMasterModels incomeModel)
+        public int Delete(IncomeMasterModels incomeModel)
         {
             //calling DBData Class Method and storing Repsonse   
             var response = incomeMaster.DeleteData(incomeModel);

@@ -18,7 +18,7 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var dataObject = { ID: val, Detail: $("#Detail").val(), EditBy: localStorage['UserID'] }
+    var dataObject = { ID: val, Detail: $("#txtDetail").val(), EditBy: localStorage['UserID'] }
         $.ajax(
         {
             url: 'http://localhost:13131/api/ExpenseMaster',

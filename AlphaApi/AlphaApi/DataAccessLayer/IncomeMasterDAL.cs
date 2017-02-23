@@ -62,9 +62,8 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string DeleteData(IncomeMasterModels incomeMaster)
+        public int DeleteData(IncomeMasterModels incomeMaster)
         {
-            string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -74,12 +73,12 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@ID", incomeMaster.ID);
                     cmd.Parameters.AddWithValue("@EditBy", incomeMaster.EditBy);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
                 finally
                 {

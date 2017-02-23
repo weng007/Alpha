@@ -62,7 +62,7 @@ $(document).ready(function () {
 
 });
 function RowDelete(id) {
-    var dataObject = { ID: id };
+    var dataObject = { ID: id, EditBy: localStorage['UserID'] };
     $.ajax(
         {
             url: 'http://localhost:13131/api/IncomeMaster',
@@ -72,6 +72,7 @@ function RowDelete(id) {
 
             success: function (result) {
                 alert('Delete is completed');
+                window.location.href = "../IncomeMaster/IndexIncomeMaster";
             }
             ,
             error: function (msg) {
