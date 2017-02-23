@@ -213,7 +213,7 @@ function GetData(val) {
                    html += '<td class="hidecolumn"><input id="IncomeID" type="text" value="' + data.Table1[i].ID + '" class="IncomeID" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table1[i].JobID + '" class="JobID" disabled /></td>';
                    
-                   html += '<td> <select id="cmbIncomeType" class="Select1" value = "'+data.Table1.IncomeType+'"></select></td>';
+                   html += '<td> <select id="cmbIncomeType" class="Select1"></select></td>';
 
                    html += '<td> <input type="text" id="txtUnitWeight" value="' + data.Table1[i].UnitWeight + '" class="UnitWeight text-size80 textright"></td>';
                    html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + parseFloat(data.Table1[i].Qty).toFixed(2) + '" placeholder="0" onchange="CalSum()" /></td>';
