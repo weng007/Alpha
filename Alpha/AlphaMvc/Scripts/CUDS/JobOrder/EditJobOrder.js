@@ -241,17 +241,22 @@ function GetData(val) {
                    html += '<td> <input id="No" type="text" value="' + data.Table2[i].RowNum + '" class="tdno" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="ExpenseID" type="text" value="' + data.Table2[i].ID + '" class="ExpenseID" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table2[i].JobID + '" class="JobID" disabled /></td>';
-                   html += '<td> <select id="cmbExpenseType" class="ExpenseSelect" value="' + data.Table2[i].ExpenseType + '"></select></td>';
-                   html += '<td> <select  class="unitSelect" value="' + data.Table2[i].UnitWeight + '"></select></td>';
+
+                   html += '<td> <select id="cmbExpenseType" class="ExpenseSelect"></select></td>';
+
+                   html += '<td> <select  class="unitSelect"></select></td>';
+
                    html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + parseFloat(data.Table2[i].Qty).toFixed(2) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
                    html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + parseFloat(data.Table2[i].UnitPrice).toFixed(2) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + parseFloat(data.Table2[i].Amount).toFixed(2) + '" disabled></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount1 text-size165 txtdisablerow" value="' + parseFloat(data.Table2[i].Amount).toFixed(2) + '" disabled></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
                }
                html += '</tbody>';
                document.getElementById("tBodyRowExpense").innerHTML = html;
+               SetExpenseType(data.Table2);
+               SetUnitWeight(data.Table2);
            }
 
            ////Binding Data Total
@@ -262,8 +267,13 @@ function GetData(val) {
 
            $("#txtTotal").val(data.Table6[0].TotelIncome).number(true, 2), $("#txtSubTotal").val(data.Table7[0].SubTotelIncome).number(true, 2),
            $("#txtNoCompound").val(data.Table7[0].SubTotelIncome).number(true, 2), $("#txtExpense").val(data.Table8[0].TotelExpense).number(true, 2),
-           $("#txtTotalExpense").val(data.Table8[0].TotelExpense).number(true, 2),
-           $("#txtProfit").val(Profit).number(true, 2);
+           $("#txtTotalExpense").val(data.Table8[0].TotelExpense).number(true, 2);
+           if (Profit < 0) {
+               $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+           }
+           else {
+               $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+           }
 
            ////Binding Data SaleOrder
            if (data.Table3.length > 0) {
@@ -277,7 +287,7 @@ function GetData(val) {
                    html += '<td class="hidecolumn"><input id="SaleOrderID" type="text" value="' + data.Table3[i].ID + '" class="SaleOrderID" /></td>';
                    html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table3[i].JobID + '" class="JobID" disabled /></td>';
                    html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table3[i].SaleOrderNo + '" class="SaleOrderNo text-size180 textleft"></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size180 textright" value="' + parseFloat(data.Table3[i].Amount).toFixed(2) + '"></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount2 text-size180 textright" value="' + parseFloat(data.Table3[i].Amount).toFixed(2) + '"></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
@@ -299,7 +309,7 @@ function GetData(val) {
                    html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table4[i].JobID + '" class="JobID" disabled /></td>';
                    html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table4[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
                    html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table4[i].SaleOrderNo + '" class="SaleOrderNo text-size165 textleft" ></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 textright" value="' + parseFloat(data.Table4[i].Amount).toFixed(2) + '" ></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount3 text-size165 textright" value="' + parseFloat(data.Table4[i].Amount).toFixed(2) + '" ></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
@@ -321,7 +331,7 @@ function GetData(val) {
                    html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table5[i].JobID + '" class="JobID" disabled /></td>';
                    html += '<td> <input type="text" id="txtReceiptNo" value="' + data.Table5[i].ReceiptNo + '" class="ReceiptNo text-size165 textleft"></td>';
                    html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table5[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 textright" value="' + parseFloat(data.Table5[i].Amount).toFixed(2) + '" ></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount4 text-size165 textright" value="' + parseFloat(data.Table5[i].Amount).toFixed(2) + '" ></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
@@ -395,7 +405,7 @@ function Update(val) {
         dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
         dataObject.Qty = $(this).find(".Quantity").val();
         dataObject.UnitPrice = $(this).find(".Price").val();
-        dataObject.Amount = $(this).find(".Amount").val();
+        dataObject.Amount = $(this).find(".Amount1").val();
         dataObject.EditBy = localStorage['UserID'];
         if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
@@ -419,7 +429,7 @@ function Update(val) {
         dataObject.ID = $(this).find(".SaleOrderID").val();
         dataObject.JobID = JobID;
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
-        dataObject.Amount = $(this).find(".Amount").val();
+        dataObject.Amount = $(this).find(".Amount2").val();
         dataObject.EditBy = localStorage['UserID'];
         if (JobID != 0 && $(this).find(".SaleOrderNo").val() != '') {
             $.ajax(
@@ -444,7 +454,7 @@ function Update(val) {
         dataObject.JobID = JobID;
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
-        dataObject.Amount = $(this).find(".Amount").val();
+        dataObject.Amount = $(this).find(".Amount3").val();
         dataObject.EditBy = localStorage['UserID'];
         if (JobID != 0 && $(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
@@ -469,7 +479,7 @@ function Update(val) {
         dataObject.JobID = JobID;
         dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
-        dataObject.Amount = $(this).find(".Amount").val();
+        dataObject.Amount = $(this).find(".Amount4").val();
         dataObject.EditBy = localStorage['UserID'];
         if (JobID != 0 && $(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
@@ -491,6 +501,9 @@ function Update(val) {
     window.location.href = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
 }
 function CalSum() {
+    var total = 0;
+    var SubTotal = 0;
+    var Discount = 0;
     $(".RowCal").each(function () {
         var qty = $(this).find(".Quantity").val();
         var price = $(this).find(".Price").val();
@@ -501,17 +514,43 @@ function CalSum() {
         $(this).find('.Price').val(price).number(true, 2);
         $(this).find('.Quantity').val(qty).number(true, 2);
     });
+    for (var i = 0; i < $(".RowCal").length; i++) {
+        total = total + parseFloat($('.Amount:eq(' + i + ')').val());
+    }
+    Discount = $('#txtDiscount').val();
+    SubTotal = total - Discount;
+    $('#txtTotal').val(total).number(true, 2);
+    $('#txtSubTotal').val(SubTotal).number(true, 2);
+    $('#txtNoCompound').val(SubTotal).number(true, 2);
+    return SubTotal;
 }
 function CalSumExpense() {
+    var totalExpense = 0;
+    var SubTotal = 0;
+    var Profit = 0;
+    SubTotal = CalSum();
+    alert(SubTotal);
     $(".RowCal1").each(function () {
         var qty = $(this).find(".Quantity").val();
         var price = $(this).find(".Price").val();
         var amount = qty * price;
 
-        $(this).find('.Amount').val(amount).number(true, 2);
+        $(this).find('.Amount1').val(amount).number(true, 2);
         $(this).find('.Price').val(price).number(true, 2);
         $(this).find('.Quantity').val(qty).number(true, 2);
     });
+    for (var i = 0; i < $(".RowCal1").length; i++) {
+        totalExpense = totalExpense + parseFloat($('.Amount1:eq(' + i + ')').val());
+    }
+    Profit = SubTotal - totalExpense;
+    $('#txtTotalExpense').val(totalExpense).number(true, 2);
+    $('#txtExpense').val(totalExpense).number(true, 2);
+    if (Profit < 0) {
+        $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+    }
+    else {
+        $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+    }
 }
 function AddRowIncome(row) {
     $.ajax({
@@ -540,11 +579,11 @@ function AddRowExpense() {
         success: function (data) {
             data = JSON.parse(data);
 
-            $('.ExpenseSelect').find("option").remove();
+            $('.ExpenseSelect:last').find("option").remove();
             $.each(data.Table, function (i) {
-                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+            $('.ExpenseSelect:last').find('option:first-child').attr('selected', true);
 
         },
         failure: function () {
@@ -559,11 +598,11 @@ function AddRowExpense() {
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
-            $('.unitSelect').find("option").remove();
+            $('.unitSelect:last').find("option").remove();
             $.each(data.Table, function (i) {
-                $('.unitSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('.unitSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            $('.unitSelect').find('option:first-child').attr('selected', true);
+            $('.unitSelect:last').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
@@ -597,6 +636,53 @@ function SetIncomeMaster(tmp) {
     }
 });
 }
+
+function SetExpenseType(tmp) {
+
+    $.ajax({
+        url: 'http://localhost:13131/api/ExpenseMaster',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
+
+            $.each(data.Table, function (i) {
+                $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+
+            for (i = 0; i < tmp.length; i++) {
+                $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
+            }
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
+
+function SetUnitWeight(tmp) {
+
+    $.ajax({
+        url: 'http://localhost:13131/api/ExpenseMaster',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
+
+            $.each(data.Table, function (i) {
+                $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+
+            for (i = 0; i < tmp.length; i++) {
+                $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
+            }
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
+
 
 function DateWorking() {
     if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {

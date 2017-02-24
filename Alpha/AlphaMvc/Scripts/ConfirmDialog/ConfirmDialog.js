@@ -111,6 +111,101 @@
             ConfirmDialog(val, topic, id);
         }
     }
+    if (topic == "BDC") {
+        if ($("#hidQuoID").val() == '') {
+            $('#ShowDialog').modal('show');
+            var html = '<div class="modal-dialog">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">' + topic + '</h4>';
+            html += '</div>';
+            html += '<div class="modal-body">Please input QuotationNo.</div>';
+            html += '</div></div>';
+            document.getElementById("ShowDialog").innerHTML = html;
+        }
+        else {
+            ConfirmDialog(val, topic, id);
+        }
+    }
+    if (topic == "JobOrder") {
+        if ($("#dtJobDate").val() == '') {
+            $('#ShowDialog').modal('show');
+            var html = '<div class="modal-dialog">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">' + topic + '</h4>';
+            html += '</div>';
+            html += '<div class="modal-body">Please input วันที่.</div>';
+            html += '</div></div>';
+            document.getElementById("ShowDialog").innerHTML = html;
+        }
+        else if ($("#dtSWorking").val() == '') {
+            $('#ShowDialog').modal('show');
+            var html = '<div class="modal-dialog">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">' + topic + '</h4>';
+            html += '</div>';
+            html += '<div class="modal-body">Please input วันเริ่มทำงาน.</div>';
+            html += '</div></div>';
+            document.getElementById("ShowDialog").innerHTML = html;
+        }
+        else if ($("#dtEWorking").val() == '') {
+            $('#ShowDialog').modal('show');
+            var html = '<div class="modal-dialog">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">' + topic + '</h4>';
+            html += '</div>';
+            html += '<div class="modal-body">Please input วันจบงาน.</div>';
+            html += '</div></div>';
+            document.getElementById("ShowDialog").innerHTML = html;
+        }
+        else if ($("#txtJobBy").val() == '') {
+            $('#ShowDialog').modal('show');
+            var html = '<div class="modal-dialog">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">' + topic + '</h4>';
+            html += '</div>';
+            html += '<div class="modal-body">Please input รับงานโดย.</div>';
+            html += '</div></div>';
+            document.getElementById("ShowDialog").innerHTML = html;
+        }
+        else if ($("#txtIssuedBy").val() == '') {
+            $('#ShowDialog').modal('show');
+            var html = '<div class="modal-dialog">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">' + topic + '</h4>';
+            html += '</div>';
+            html += '<div class="modal-body">Please input ออกโดย.</div>';
+            html += '</div></div>';
+            document.getElementById("ShowDialog").innerHTML = html;
+        }
+        else if ($("#hidCustID").val() == '') {
+            $('#ShowDialog').modal('show');
+            var html = '<div class="modal-dialog">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">' + topic + '</h4>';
+            html += '</div>';
+            html += '<div class="modal-body">Please input ลูกค้า.</div>';
+            html += '</div></div>';
+            document.getElementById("ShowDialog").innerHTML = html;
+        }
+        else {
+            ConfirmDialog(val, topic, id);
+        }
+    }
+
 }
 function ConfirmDialog(val, topic, id) {
     if (val == "Create") {

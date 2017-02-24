@@ -48,8 +48,7 @@ function CreateData() {
     //var x = new Userlogin()
     //alert(x.UserID);
     var dataObject = {
-        Docver: 1, QuotationNo: $("#hidQuoID").val(), Price: 1, Cost: 2,
-        Profit: 3, Remark: $("#txtRemark").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
+        Docver: 1, QuotationNo: $("#hidQuoID").val(), Remark: $("#txtRemark").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
     console.log(dataObject);
     $.ajax(

@@ -236,7 +236,7 @@ function CreateData() {
             dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
             dataObject.Qty = $(this).find(".Quantity").val();
             dataObject.UnitPrice = $(this).find(".Price").val();
-            dataObject.Amount = $(this).find(".Amount").val();
+            dataObject.Amount = $(this).find(".Amount1").val();
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '')
@@ -261,7 +261,7 @@ function CreateData() {
         $(".RowCal2").each(function () {
             dataObject.JobID = ID;
             dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
-            dataObject.Amount = $(this).find(".Amount").val();
+            dataObject.Amount = $(this).find(".Amount2").val();
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".SaleOrderNo").val() != '')
@@ -287,7 +287,7 @@ function CreateData() {
             dataObject.JobID = ID;
             dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
             dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
-            dataObject.Amount = $(this).find(".Amount").val();
+            dataObject.Amount = $(this).find(".Amount3").val();
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '')
@@ -313,7 +313,7 @@ function CreateData() {
             dataObject.JobID = ID;
             dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
             dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
-            dataObject.Amount = $(this).find(".Amount").val();
+            dataObject.Amount = $(this).find(".Amount4").val();
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '')
@@ -337,26 +337,55 @@ function CreateData() {
         window.location.href = "../JobOrder/EditJobOrder?id=" + ID;
 }
 function CalSum() {
+    var total = 0;
+    var SubTotal = 0;
+    var Discount = 0;
     $(".RowCal").each(function () {
         var qty = $(this).find(".Quantity").val();
         var price = $(this).find(".Price").val();
         var amount = qty * price;
-
+        
         $(this).find('.Amount').val(amount).number(true, 2);
         $(this).find('.Price').val(price).number(true, 2);
         $(this).find('.Quantity').val(qty).number(true, 2);
     });
+    for (var i = 0; i < $(".RowCal").length; i++) {
+        total = total + parseFloat($('.Amount:eq(' + i + ')').val());
+    }
+    Discount = $('#txtDiscount').val();
+    SubTotal = total - Discount;
+    $('#txtTotal').val(total).number(true, 2);
+    $('#txtSubTotal').val(SubTotal).number(true, 2);
+    $('#txtNoCompound').val(SubTotal).number(true, 2);
+    return SubTotal;
 }
 function CalSumExpense() {
+    var totalExpense = 0;
+    var SubTotal = 0;
+    var Profit = 0;
+    SubTotal = CalSum();
+    alert(SubTotal);
     $(".RowCal1").each(function () {
         var qty = $(this).find(".Quantity").val();
         var price = $(this).find(".Price").val();
         var amount = qty * price;
 
-        $(this).find('.Amount').val(amount).number(true, 2);
+        $(this).find('.Amount1').val(amount).number(true, 2);
         $(this).find('.Price').val(price).number(true, 2);
         $(this).find('.Quantity').val(qty).number(true, 2);
     });
+    for (var i = 0; i < $(".RowCal1").length; i++) {
+        totalExpense = totalExpense + parseFloat($('.Amount1:eq(' + i + ')').val());
+    }
+    Profit = SubTotal - totalExpense;
+    $('#txtTotalExpense').val(totalExpense).number(true, 2);
+    $('#txtExpense').val(totalExpense).number(true, 2);
+    if (Profit < 0) {
+        $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+    }
+    else {
+        $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+    }
 }
 function AddRowIncome(row) {
     $.ajax({
@@ -384,11 +413,11 @@ function AddRowExpense() {
         success: function (data) {
             data = JSON.parse(data);
 
-            $('.ExpenseSelect').find("option").remove();
+            //$('.ExpenseSelect:last').find("option").remove();
             $.each(data.Table, function (i) {
-                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+            $('.ExpenseSelect:last').find('option:first-child').attr('selected', true);
 
         },
         failure: function () {
@@ -403,11 +432,11 @@ function AddRowExpense() {
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
-            $('.unitSelect').find("option").remove();
+            //$('.unitSelect:last').find("option").remove();
             $.each(data.Table, function (i) {
-                $('.unitSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('.unitSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            $('.unitSelect').find('option:first-child').attr('selected', true);
+            $('.unitSelect:last').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
