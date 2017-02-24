@@ -61,7 +61,7 @@ $(document).ready(function () {
                 html += '<td>' + data.Table[i].JobNo + '</td>';
                 var JobDate = new Date(data.Table[i].JobDate);
                 html += '<td>' + JobDate.getDate() + '/' + (JobDate.getMonth() + 1) + '/' + JobDate.getFullYear() + '</td>';
-                html += '<td>' + data.Table[i].Customer + '</td>';
+                html += '<td>' + data.Table[i].Name + '</td>';
                 html += '<td>' + data.Table[i].Tel + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].Contact + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].CoWorker + '</td>';

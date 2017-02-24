@@ -43,6 +43,11 @@ $(document).ready(function () {
         }
     });
 
+    $("#dtReceiveDate").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
     $("#dtReceiveDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
     $('#dtReceiveDate').datepicker().datepicker('setDate', 'today');
 });
@@ -67,7 +72,6 @@ function CreateData() {
         Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
         UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Img: imgPath, ImgData: imgData, Remark: $("#txtRemark").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
-    alert($("#dtReceiveDate").val());
     console.log(dataObject);
     $.ajax(
     {

@@ -4,6 +4,8 @@
 
     $('.Number').number(true, 2);
 
+    
+
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
         $("#hidCustID").val($(this).find("td:eq(1)").text());
@@ -132,6 +134,24 @@
 
 });
 $(function () {
+
+    $("#dtJobDate").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+
+    $("#dtSWorking").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+
+    $("#dtEWorking").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
 
     $("#dtJobDate").datepicker();
     $("#dtSWorking").datepicker();
@@ -262,7 +282,6 @@ function GetData(val) {
            }
 
            ////Binding Data Total
-           alert('test Bind Total');
            var SubTotal = data.Table7[0].SubTotelIncome;
            var TotalExpense = data.Table8[0].TotelExpense;
            var Profit = SubTotal - TotalExpense;
@@ -531,7 +550,6 @@ function CalSumExpense() {
     var SubTotal = 0;
     var Profit = 0;
     SubTotal = CalSum();
-    alert(SubTotal);
     $(".RowCal1").each(function () {
         var qty = $(this).find(".Quantity").val();
         var price = $(this).find(".Price").val();

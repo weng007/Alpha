@@ -83,6 +83,13 @@
     margin-left: 10px;
     z-index: 1;
 }
+.text-floatleft{
+    float:left;
+    margin-right:5px !important;
+}
+.text-floatright{
+    float:right;
+}
  @media screen and (max-width:680px) {
             .btnimage-4 {
         float: left;

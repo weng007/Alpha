@@ -10,6 +10,24 @@ $(document).ready(function () {
     $('#txtJobReference').val(BDCID);
     $('#hidBDCID').val(BDCID);
     
+    $("#dtJobDate").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+
+    $("#dtSWorking").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+
+    $("#dtEWorking").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+
     $("#dtJobDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
     $('#dtJobDate').datepicker().datepicker('setDate', 'today');
 

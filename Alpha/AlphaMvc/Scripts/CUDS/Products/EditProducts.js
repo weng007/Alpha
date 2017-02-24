@@ -35,8 +35,12 @@ $(document).ready(function () {
             alert('Error');
         }
     });
-
-    $("#dtReceiveDate").datepicker();
+    $("#dtReceiveDate").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+    $("#dtReceiveDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
 });
 function GetData(val) {
     var dataObject = { ID: val}
