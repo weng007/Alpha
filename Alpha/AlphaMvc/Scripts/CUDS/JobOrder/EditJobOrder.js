@@ -2,6 +2,8 @@
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
+    $('.Number').number(true, 2);
+
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
         $("#hidCustID").val($(this).find("td:eq(1)").text());
