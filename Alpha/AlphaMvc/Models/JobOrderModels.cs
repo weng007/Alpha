@@ -11,7 +11,7 @@ namespace AlphaMvc.Models
     {
         public int ID { get; set; }
 
-        public string JobReference { get; set; }
+        public int JobRef { get; set; }
 
         public string JobNo { get; set; }
 
@@ -38,6 +38,10 @@ namespace AlphaMvc.Models
         public string Remark { get; set; }
 
         public double Discount { get; set; }
+
+        public int CreateBy { get; set; }
+
+        public int EditBy { get; set; }
 
         public DataSet StoreAllData { get; set; }
     }

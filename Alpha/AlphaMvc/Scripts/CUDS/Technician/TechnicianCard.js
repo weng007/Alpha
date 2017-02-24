@@ -67,8 +67,10 @@ function GetDataCard(val) {
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td>' + data.Table[i].CompanyName + '</td>';
                 html += '<td>' + data.Table[i].CardTypeName + '</td>';
-                html += '<td>' + data.Table[i].IssueDate + '</td>';
-                html += '<td>' + data.Table[i].ExpiryDate + '</td>';
+                var IssueDate = new Date(data.Table[i].IssueDate);
+                html += '<td>' + IssueDate.getDate() + '/' + (IssueDate.getMonth() + 1) + '/' + IssueDate.getFullYear() + '</td>';
+                var ExpiryDate = new Date(data.Table[i].IssueDate);
+                html += '<td>' + ExpiryDate.getDate() + '/' + (ExpiryDate.getMonth() + 1) + '/' + ExpiryDate.getFullYear() + '</td>';
                 html += '</tr>';
             }
             html += '</tbody>';
