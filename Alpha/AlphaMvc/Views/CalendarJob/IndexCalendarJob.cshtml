@@ -12,7 +12,56 @@
 
 <script>
 
-	$(document).ready(function() {
+    $(document).ready(function() {
+        var event = [{
+            title: 'All Day Event',
+            start: '2016-12-01'
+        },
+        {
+            title: 'Long Event',
+            start: '2016-12-07',
+            end: '2016-12-10'
+        },
+        {
+            id: 999,
+            title: 'Repeating Event',
+            start: '2016-12-09T16:00:00'
+        },
+        {
+            id: 999,
+            title: 'Repeating Event',
+            start: '2016-12-16T16:00:00'
+        },
+        {
+            title: 'J00006 (H)',
+            start: '2017-01-05'
+        },
+        {
+            title: 'J00006 (H)',
+            start: '2017-01-05'
+        },
+        {
+            title: 'J00005 (S)',
+            start: '2017-01-19'
+        },
+        {
+            title: 'J00001 (O)',
+            start: '2017-01-19'
+        },
+        {
+            title: 'J00001 (O)',
+            start: '2017-01-19'
+        },
+        {
+            title: 'Job201702-0001 (L)',
+            url: '/JobOrder/EditJobOrder?id=5',
+            start: '2017-01-19',
+        },
+        {
+            title: 'Click for Google',
+            url: 'http://google.com/',
+            start: '2016-12-28'
+        }];
 
 		$('#calendar').fullCalendar({
 			header: {
@@ -24,57 +73,7 @@
 			navLinks: true, // can click day/week names to navigate views
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
-			events: [
-				{
-					title: 'All Day Event',
-					start: '2016-12-01'
-				},
-				{
-					title: 'Long Event',
-					start: '2016-12-07',
-					end: '2016-12-10'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2016-12-09T16:00:00'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2016-12-16T16:00:00'
-				},
-				{
-				    title: 'J00006 (H)',
-					start: '2017-01-05'
-				},
-				{
-				    title: 'J00006 (H)',
-				    start: '2017-01-05'
-				},
-				{
-				    title: 'J00005 (S)',
-				    start: '2017-01-19'
-				},
-				{
-				    title: 'J00001 (O)',
-				    start: '2017-01-19'
-				},
-				{
-				    title: 'J00001 (O)',
-				    start: '2017-01-19'
-				},
-				{
-				    title: 'Job201702-0001 (L)',
-	                url: '/JobOrder/EditJobOrder?id=5',
-				    start: '2017-01-19'
-				},
-				{
-					title: 'Click for Google',
-					url: 'http://google.com/',
-					start: '2016-12-28'
-				}
-			]
+			events: event
 		});
 
 	});
@@ -89,7 +88,8 @@
     }
 
     #calendar {
-        max-width: 900px;
+        max-width: 700px;
+        max-height: 600px;
         margin: 0 auto;
     }
 </style>
