@@ -200,7 +200,7 @@ function GetData(val) {
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
              $("#txtContact").val(data.Table[0].Contact), $("#txtCoWorker").val(data.Table[0].CoWorker), $("#txtAddress").val(data.Table[0].Address),
              $("#txtJobReference").val(data.Table[0].JobRef), $("#hidBDCID").val(data.Table[0].JobRef), $("#txtRemark").val(data.Table[0].Remark),
-             $("#txtDiscount").val(data.Table[0].Discount);
+             $("#txtDiscount").val(data.Table[0].Discount).number(true, 2);
 
            ////Binding Data Income
            if (data.Table1.length > 0) {
@@ -218,9 +218,9 @@ function GetData(val) {
                    html += '<td> <select id="cmbIncomeType" class="Select1"></select></td>';
 
                    html += '<td> <input type="text" id="txtUnitWeight" value="' + data.Table1[i].UnitWeight + '" class="UnitWeight text-size80 textright"></td>';
-                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + parseFloat(data.Table1[i].Qty).toFixed(2) + '" placeholder="0" onchange="CalSum()" /></td>';
-                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + parseFloat(data.Table1[i].UnitPrice).toFixed(2) + '" placeholder="0" onchange="CalSum()" /></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + parseFloat(data.Table1[i].Amount).toFixed(2) + '" disabled></td>';
+                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table1[i].Qty)+ '" placeholder="0" onchange="CalSum()" /></td>';
+                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table1[i].UnitPrice) + '" placeholder="0" onchange="CalSum()" /></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + new Intl.NumberFormat('en-IN').format(data.Table1[i].Amount) + '" disabled></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
@@ -248,9 +248,9 @@ function GetData(val) {
 
                    html += '<td> <select  class="unitSelect"></select></td>';
 
-                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + parseFloat(data.Table2[i].Qty).toFixed(2) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
-                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + parseFloat(data.Table2[i].UnitPrice).toFixed(2) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount1 text-size165 txtdisablerow" value="' + parseFloat(data.Table2[i].Amount).toFixed(2) + '" disabled></td>';
+                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].Qty) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
+                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].UnitPrice) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount1 text-size165 txtdisablerow" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].Amount) + '" disabled></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
@@ -289,7 +289,7 @@ function GetData(val) {
                    html += '<td class="hidecolumn"><input id="SaleOrderID" type="text" value="' + data.Table3[i].ID + '" class="SaleOrderID" /></td>';
                    html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table3[i].JobID + '" class="JobID" disabled /></td>';
                    html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table3[i].SaleOrderNo + '" class="SaleOrderNo text-size180 textleft"></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount2 text-size180 textright" value="' + parseFloat(data.Table3[i].Amount).toFixed(2) + '"></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount2 text-size180 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table3[i].Amount) + '"></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
@@ -311,7 +311,7 @@ function GetData(val) {
                    html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table4[i].JobID + '" class="JobID" disabled /></td>';
                    html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table4[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
                    html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table4[i].SaleOrderNo + '" class="SaleOrderNo text-size165 textleft" ></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount3 text-size165 textright" value="' + parseFloat(data.Table4[i].Amount).toFixed(2) + '" ></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount3 text-size165 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table4[i].Amount) + '" ></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
@@ -333,7 +333,7 @@ function GetData(val) {
                    html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table5[i].JobID + '" class="JobID" disabled /></td>';
                    html += '<td> <input type="text" id="txtReceiptNo" value="' + data.Table5[i].ReceiptNo + '" class="ReceiptNo text-size165 textleft"></td>';
                    html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table5[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount4 text-size165 textright" value="' + parseFloat(data.Table5[i].Amount).toFixed(2) + '" ></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount4 text-size165 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table5[i].Amount) + '" ></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
                    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
                    html += '</tr>';
