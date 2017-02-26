@@ -36,6 +36,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Customer", jobOrder.Customer);
                     cmd.Parameters.AddWithValue("@Remark", jobOrder.Remark != null ? jobOrder.Remark : "");
                     cmd.Parameters.AddWithValue("@Discount", jobOrder.Discount);
+                    cmd.Parameters.AddWithValue("@Price", jobOrder.Price);
+                    cmd.Parameters.AddWithValue("@Cost", jobOrder.Cost);
                     cmd.Parameters.AddWithValue("@CreateBy", jobOrder.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", jobOrder.EditBy);
                     conObj.Open();
@@ -77,6 +79,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Customer", jobOrder.Customer);
                     cmd.Parameters.AddWithValue("@Remark", jobOrder.Remark != null ? jobOrder.Remark : "");
                     cmd.Parameters.AddWithValue("@Discount", jobOrder.Discount);
+                    cmd.Parameters.AddWithValue("@Price", jobOrder.Price);
+                    cmd.Parameters.AddWithValue("@Cost", jobOrder.Cost);
                     cmd.Parameters.AddWithValue("@EditBy", jobOrder.EditBy);
                     conObj.Open();
                     object obj = cmd.ExecuteScalar();

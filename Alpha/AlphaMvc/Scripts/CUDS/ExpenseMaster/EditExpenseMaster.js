@@ -9,7 +9,7 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
-           $("#Detail").val(data.Table[0].Detail);
+           $("#txtDetail").val(data.Table[0].Detail);
        },
        error: function (msg) {
            alert(msg);

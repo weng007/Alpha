@@ -41,6 +41,10 @@ namespace AlphaApi.Models
 
         public double Discount { get; set; }
 
+        public double Price { get; set; }
+
+        public double Cost { get; set; }
+
         public int CreateBy { get; set; }
 
         public int EditBy { get; set; }

@@ -64,7 +64,7 @@ $(document).ready(function () {
                 html += '<td>' + data.Table[i].TechnicianNo + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].HRCode + '</td>';
                 html += '<td>' + data.Table[i].FirstName + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].TechnicianType + '</td>';
+                html += '<td class="hideANDseek">' + data.Table[i].TechnicianTypeName + '</td>';
                 html += '<td>' + data.Table[i].IDCard + '</td>';
                 html += '<td>' + data.Table[i].Position + '</td>';
                 html += '<td>';
