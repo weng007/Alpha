@@ -11,7 +11,7 @@ namespace AlphaApi.DataAccessLayer
     public class CalendarJobOrderDAL
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
-        public DataSet SelectByMonth(CalendarJobOrderModels calendarJobModel)
+        public DataSet SelectByMonth(int CalendarMonth)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -20,7 +20,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_JobOrder_Carlendar", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@calendarMonth", calendarJobModel.CalendarMonth);
+                    cmd.Parameters.AddWithValue("@calendarMonth", CalendarMonth);
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

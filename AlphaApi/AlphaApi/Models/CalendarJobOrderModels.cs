@@ -12,8 +12,6 @@ namespace AlphaApi.Models
     {
         public int ID { get; set; }
 
-        public int CalendarMonth { get; set; }
-
         public string JobNo { get; set; }
 
         public DateTime JobDate { get; set; }

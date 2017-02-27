@@ -11,17 +11,17 @@ namespace AlphaApi.DataAccessLayer
     public class CalendarManPowerDAL
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
-        int result = 0;
-        public DataSet SelectByID(int id)
+        
+        public DataSet SelectByID(int CalendarMonth)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_ManPower_SelByJobID", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_Manpower_Carlendar", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@JobID", id); // i will pass zero to MobileID beacause its Primary .
+                    cmd.Parameters.AddWithValue("@calendarMonth", CalendarMonth);
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

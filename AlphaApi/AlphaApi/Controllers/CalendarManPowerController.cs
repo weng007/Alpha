@@ -20,9 +20,9 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpGet]
-        public string Get(int id)
+        public string Get(int CalendarMonth)
         {
-            var response = calendarManPower.SelectByID(id);
+            var response = calendarManPower.SelectByID(CalendarMonth);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
     }

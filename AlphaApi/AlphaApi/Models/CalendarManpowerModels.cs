@@ -11,6 +11,19 @@ namespace AlphaApi.Models
     public class CalendarManpowerModels
     {
         public int ID { get; set; }
+
+        public string TypeWorkingName { get; set; }
+
+        public string TechFullName { get; set; }
+
+        public string JobNo { get; set; }
+
+        public DateTime JobDate { get; set; }
+
+        public DateTime SWorking { get; set; }
+
+        public DateTime EWorking { get; set; }
+
         public DataSet StoreAllData { get; set; }
     }
 }

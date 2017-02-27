@@ -17,9 +17,9 @@ namespace AlphaApi.Controllers
     {
         public CalendarJobOrderDAL calendarJob = new CalendarJobOrderDAL();
         [HttpGet]
-        public string Get(CalendarJobOrderModels calendarJobModel)
+        public string Get(int CalendarMonth)
         {
-            var response = calendarJob.SelectByMonth(calendarJobModel);
+            var response = calendarJob.SelectByMonth(CalendarMonth);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
     }
