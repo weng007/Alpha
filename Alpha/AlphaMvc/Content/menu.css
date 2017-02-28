@@ -121,7 +121,8 @@
 
 /*Hide checkbox*/
 input[type=checkbox]{
-    display: none;
+    /*display: none;*/
+    display: block;
     -webkit-appearance: none;
 }
 

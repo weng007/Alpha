@@ -11,7 +11,7 @@ namespace AlphaApi.Models
     {
         public int ID { get; set; }
 
-        public int RefID { get; set; }
+        public int JobID { get; set; }
 
         public string Brand { get; set; }
 

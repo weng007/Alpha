@@ -20,7 +20,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_Borrow_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@RefID", jobOrderBorrow.RefID);
+                    cmd.Parameters.AddWithValue("@JobID", jobOrderBorrow.JobID);
                     cmd.Parameters.AddWithValue("@Brand", jobOrderBorrow.Brand);
                     cmd.Parameters.AddWithValue("@Serial", jobOrderBorrow.Serial);
                     cmd.Parameters.AddWithValue("@Model", jobOrderBorrow.Model);
@@ -108,6 +108,8 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
+
+        
 
         public DataSet SelectByID(int id)
         {

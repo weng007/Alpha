@@ -81,6 +81,10 @@ $(document).ready(function () {
     });
 });
 function RowDelete(id) {
+    var input = window.location.href;
+    var after = input.split('?')[1]
+    var ID = after.split('=');
+    var BDCID = ID[1];
     var dataObject = { ID: id };
     $.ajax(
         {
@@ -91,7 +95,7 @@ function RowDelete(id) {
 
             success: function (result) {
                 alert('Delete is completed')
-                window.location.href = "../JobOrder/IndexJobOrder";
+                window.location.href = "../BDC/EditBDC?id=" + BDCID;
             }
             ,
             error: function (msg) {
