@@ -153,5 +153,32 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
+        public DataSet SelectByLastVersion()
+        {
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand("SP_BDC_SelMaxVersion", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    return ds;
+                }
+                catch
+                {
+                    return ds;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
     }
 }

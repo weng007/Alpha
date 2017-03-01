@@ -40,6 +40,13 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [HttpGet]
+        public string Get(string isLastVersion)
+        {
+            var response = BDCdb.SelectByLastVersion();
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
         [HttpPut]
         public int Put(BDCModels BDC)
         {
