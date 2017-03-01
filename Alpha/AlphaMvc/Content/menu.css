@@ -120,10 +120,14 @@
 }
 
 /*Hide checkbox*/
-input[type=checkbox]{
-    /*display: none;*/
-    display: block;
-    -webkit-appearance: none;
+/*input[type=checkbox]{
+    display: none;
+     -webkit-appearance: none;
+}*/
+.Hidecheckbox
+{
+    display: none;
+     -webkit-appearance: none;
 }
 
 /*Show menu when invisible checkbox is checked*/
