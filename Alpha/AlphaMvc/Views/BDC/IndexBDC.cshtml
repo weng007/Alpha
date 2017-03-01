@@ -3,10 +3,6 @@
 }
 
 <h2>BreakDownCost</h2>
-
-    <input type="checkbox" id="checkbox2" role="button" />
-
-
 @*<br />*@
 @* ------------------------------- grid  -------------------------------*@
 <script src="@Url.Content("~/Scripts/EditableGrid/paging.js")" type="text/javascript"></script>
@@ -40,21 +36,18 @@
         font-family: Arial, sans-serif;
     }
 </style>
-<div class="checkbox checkbox-primary">
-    <input id="checkbox2" type="checkbox" checked="">
-    <label for="checkbox2">
-        Primary
-    </label>
-</div>
 <table class="barattach-2">
     <tr>
         <td>
             
             <a href="/BDC/CreateBDC"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" class="imgadd "/></a>
-            @*<input id="CheckAll" type="checkbox" />*@
-            
-            <div class="topicattach-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
-        </td>
+
+                <div class="topicattach-2">
+                <input id="chkShowAll" type="checkbox" class="chkShowAllinput
+">
+                <label for="chkShowAll" class="chkShowAll">Primary</label>
+                Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+</td>
     </tr>
 </table>
 
