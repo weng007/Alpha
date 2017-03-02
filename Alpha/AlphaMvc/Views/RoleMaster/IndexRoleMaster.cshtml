@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "IndexRoleMaster";
+}
+
+<h2>IndexRoleMaster</h2>
+<script src="@Url.Content("~/Scripts/CUDS/RoleMaster/IndexRoleMaster.js")" type="text/javascript"></script>
+@*<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>*@
+@* ------------------------------- Header -------------------------------*@
+@*//===================================================================CSS w3school*@
+
+    <table id="tabIncome" class="example">
+        <thead class="theader">
+            <tr>
+                <th></th>
+                <th>Item</th>
+                <th class="hidecolumn">ID</th>
+                <th>Description</th>
+                <th>Unit</th>
+                <th>Qty</th>
+                <th class="wraptext">Unit Price</th>
+                <th>Amount</th>
+                <th colspan="2"></th>
+            </tr>
+        </thead>
+        <tbody id="tBodyRowRole">
+            <tr>
+                <td>
+                    <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                </td>
+                <td>
+                    <input id="No" type="text" value="" class="tdno" disabled />
+                </td>
+                <td class="hidecolumn">
+                    <input id="IncomeID" type="text" value="" class="IncomeID" disabled />
+                </td>
+                <td>
+                    <select id="cmbIncomeType" class="Select1"></select>
+                </td>
+                <td>
+                    <input type="text" id="txtUnitWeight" class="UnitWeight Number text-size80 textright">
+                </td>
+                <td>
+                    <input type="text" id="txtQty" class="Quantity Number text-size80 textright" placeholder="0" onchange="CalSum()" />
+                </td>
+                <td>
+                    <input type="text" id="txtUnitPrice" class="Price Number text-size130 textright" placeholder="0" onchange="CalSum()" />
+                </td>
+                <td>
+                    <input type="text" id="txtAmount" disabled class="Amount Number text-size165 txtdisablerow">
+                </td>
+
+                <td>
+                    <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                </td>
+                <td>
+                    <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                </td>
+            </tr>
+            <tr id="add-template">
+                <td>
+                    <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                </td>
+                <td>
+                    <input id="No" type="text" value="" class="tdno" disabled />
+                </td>
+                <td class="hidecolumn">
+                    <input id="IncomeID" type="text" value="" class="IncomeID" disabled />
+                </td>
+                <td>
+                    <select class="Select1"></select>
+                </td>
+                <td>
+                    <input type="text" id="txtUnitWeight" class="UnitWeight text-size80 textright" />
+                </td>
+                <td>
+                    <input type="text" id="txtQty" class="Quantity Number text-size80 textright" onchange="CalSum()" />
+                </td>
+                <td>
+                    <input type="text" id="txtUnitPrice" class="Price Number text-size130 textright" onchange="CalSum()" />
+                </td>
+                <td>
+                    <input type="text" id="txtAmount" disabled class="Amount Number text-size165 txtdisablerow">
+                </td>
+                <td>
+                    <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                </td>
+                <td>
+                    <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<a id="add-row" href="#" onclick="AddRowReleMaster()">+ Add Row</a>
+
