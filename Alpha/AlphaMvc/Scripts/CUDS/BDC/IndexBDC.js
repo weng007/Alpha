@@ -1,4 +1,14 @@
 $(document).ready(function () {
+    var ShowAll = false;
+    GetData(ShowAll);
+});
+function GetChecked(isCheck)
+{
+    var ShowAll = isCheck.checked;
+    GetData(ShowAll);
+}
+function GetData(val)
+{
     //------------------------- Sorting ------------------------
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)
@@ -42,10 +52,15 @@ $(document).ready(function () {
     var price;
     var cost;
     var profit;
+    
+    var dataObject = { isLastVersion: val };
+    console.log(dataObject);
     $.ajax(
     {
         url: 'http://localhost:13131/api/BDC',
         type: 'GET',
+        async: false,
+        data: dataObject,
         datatype: 'json',
         success: function (data) {
             data = JSON.parse(data);
@@ -82,7 +97,7 @@ $(document).ready(function () {
             alert(msg)
         }
     });
-});
+}
 function RowDelete(id) {
     var dataObject = { ID: id };
     $.ajax(

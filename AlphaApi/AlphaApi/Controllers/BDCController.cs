@@ -17,7 +17,7 @@ namespace AlphaApi.Controllers
     public class BDCController : ApiController
     {
         static BDCDAL BDCdb = new BDCDAL();
-
+        DataSet ds = null;
         [HttpPost]
         public int Post(BDCModels BDCModel)
         {
@@ -41,10 +41,20 @@ namespace AlphaApi.Controllers
         }
 
         [HttpGet]
-        public string Get(string isLastVersion)
+        public string Get(bool isLastVersion)
         {
-            var response = BDCdb.SelectByLastVersion();
-            return JsonConvert.SerializeObject(response, Formatting.Indented);
+            DataSet ds = new DataSet();
+
+            if (isLastVersion)
+            {
+                ds = BDCdb.SelectData();
+            }
+            else
+            {
+                ds = BDCdb.SelectByLastVersion();
+            }
+
+            return JsonConvert.SerializeObject(ds, Formatting.Indented);
         }
 
         [HttpPut]

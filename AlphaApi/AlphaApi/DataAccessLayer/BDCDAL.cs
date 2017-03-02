@@ -143,9 +143,9 @@ namespace AlphaApi.DataAccessLayer
                     da.Fill(ds);
                     return ds;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return ds;
+                    throw ex;
                 }
                 finally
                 {
@@ -170,9 +170,9 @@ namespace AlphaApi.DataAccessLayer
                     da.Fill(ds);
                     return ds;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return ds;
+                    throw ex;
                 }
                 finally
                 {
