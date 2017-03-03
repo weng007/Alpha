@@ -35,7 +35,7 @@ namespace AlphaApi.Models
 
         public string Detail { get; set; }
 
-        public int Customer { get; set; }
+        public int CustID { get; set; }
 
         public string Remark { get; set; }
 

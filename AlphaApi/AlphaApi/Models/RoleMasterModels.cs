@@ -21,6 +21,8 @@ namespace AlphaApi.Models
 
         public string IsDelete { get; set; }
 
+        public int MenuTypeID { get; set; }
+
         public int CreateBy { get; set; }
 
         public int EditBy { get; set; }

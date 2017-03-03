@@ -16,7 +16,7 @@
         $("#txtAddress").val($(this).find("td:eq(8)").text());
     })
 
-    cmbIncomeMaster(0);
+    //cmbIncomeMaster(0);
 
     $.ajax({
 
@@ -133,6 +133,7 @@
     });
 
 });
+
 $(function () {
 
     $("#dtJobDate").datepicker({
@@ -168,36 +169,36 @@ $(function () {
     var dates = new Date();
     $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 });
-function cmbIncomeMaster(val) {
-    $.ajax({
-        url: 'http://localhost:13131/api/IncomeMaster',
-        type: 'GET',
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-            //alert(val);
-            $.each(data.Table, function (i) {
-                //alert('master');
-                //alert(data.Table[i].ID);
-                //alert(data.Table[i].Detail); 
-                $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            if (val == 0) {
-                //alert('000');
-                $('.Select1').find('option:first-child').attr('selected', true);
-            }
-            else {
-                //alert('111');
-                //alert(val);
-                $(".Select1").val(val);
-            }
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-}
+//function cmbIncomeMaster(val) {
+//    $.ajax({
+//        url: 'http://localhost:13131/api/IncomeMaster',
+//        type: 'GET',
+//        async: false,
+//        dataType: 'json',
+//        success: function (data) {
+//            data = JSON.parse(data);
+//            //alert(val);
+//            $.each(data.Table, function (i) {
+//                //alert('master');
+//                //alert(data.Table[i].ID);
+//                //alert(data.Table[i].Detail); 
+//                $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+//            });
+//            if (val == 0) {
+//                //alert('000');
+//                $('.Select1').find('option:first-child').attr('selected', true);
+//            }
+//            else {
+//                //alert('111');
+//                //alert(val);
+//                $(".Select1").val(val);
+//            }
+//        },
+//        failure: function () {
+//            alert('Error');
+//        }
+//    });
+//}
 function GetData(val) {
     var dataObject = { ID: val }
     $.ajax(
@@ -216,7 +217,7 @@ function GetData(val) {
            var EWorking = new Date(data.Table[0].EWorking);
            EWorking =  $.datepicker.formatDate('mm/dd/yy', EWorking);
 
-           $("#hidCustID").val(data.Table[0].Customer), $("#txtJobNo").val(data.Table[0].JobNo), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
+           $("#hidCustID").val(data.Table[0].CustID), $("#txtJobNo").val(data.Table[0].JobNo), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
              $("#txtContact").val(data.Table[0].Contact), $("#txtCoWorker").val(data.Table[0].CoWorker), $("#txtAddress").val(data.Table[0].Address),
              $("#txtJobReference").val(data.Table[0].JobRef), $("#hidBDCID").val(data.Table[0].JobRef), $("#txtRemark").val(data.Table[0].Remark),
@@ -370,7 +371,7 @@ function Update(val) {
     var dataObject = {
         ID: val, JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(),
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
-        JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), Customer: $("#hidCustID").val(),
+        JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(),
         Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), EditBy: localStorage['UserID']
     };
     console.log(dataObject);
@@ -385,6 +386,7 @@ function Update(val) {
 
         success: function (data) {
             JobID = data;
+            $("#hidJobID").val(data)
         },
         error: function (msg) {
             alert(msg);
@@ -519,7 +521,9 @@ function Update(val) {
         }
     });
     alert('Update is completed');
-    window.location.href = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
+    
+    window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();
+    //window.location.href = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
 }
 function CalSum() {
     var total = 0;
@@ -630,7 +634,8 @@ function AddRowExpense() {
     });
 }
 function Redirect() {
-    window.location = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
+    window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();
+    //window.location = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
 }
 
 function SetIncomeMaster(tmp) {
@@ -682,10 +687,12 @@ function SetExpenseType(tmp) {
 
 function SetUnitWeight(tmp) {
 
+    var dataObject = { typeID: '010' };
     $.ajax({
-        url: 'http://localhost:13131/api/ExpenseMaster',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         dataType: 'json',
+        data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
 

@@ -2,40 +2,8 @@
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
-    $('.Number').number(true, 2);
 
-    
-
-    $("#customerBody").on("click", "tr", function (e) {
-        $("#txtCustomerName").val($(this).find("td:eq(3)").text());
-        $("#hidCustID").val($(this).find("td:eq(1)").text());
-        $("#txtTel").val($(this).find("td:eq(4)").text());
-        $("#txtContact").val($(this).find("td:eq(5)").text());
-        $("#txtCoWorker").val($(this).find("td:eq(6)").text());
-        $("#txtFax").val($(this).find("td:eq(7)").text());
-        $("#txtAddress").val($(this).find("td:eq(8)").text());
-    })
-
-    cmbIncomeMaster(0);
-
-    $.ajax({
-
-        url: 'http://localhost:13131/api/ExpenseMaster',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-            $.each(data.Table, function (i) {
-                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-
-    var dataObject = { typeID: '010' };
+    var dataObject = { typeID: '009' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
@@ -44,16 +12,16 @@
         success: function (data) {
             data = JSON.parse(data);
             $.each(data.Table, function (i) {
-                $('.unitSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('.cmbRole').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            $('.unitSelect').find('option:first-child').attr('selected', true);
+            $('.cmbRole').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
         }
     });
 
-    var dataObject = { typeID: '001' };
+    var dataObject = { typeID: '011' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
@@ -62,61 +30,15 @@
         success: function (data) {
             data = JSON.parse(data);
             $.each(data.Table, function (i) {
-                $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('.cmbMenuType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            $('#cmbTypeWorking').find('option:first-child').attr('selected', true);
+            $('.cmbMenuType').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
         }
     });
 
-    var dataObject = { typeID: '002' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $.each(data.Table, function (i) {
-                $('#cmbJobStatus').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('#cmbJobStatus').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-
-    $.ajax(
-        {
-            url: 'http://localhost:13131/api/Customer',
-            type: 'GET',
-            datatype: 'json',
-            success: function (data) {
-                data = JSON.parse(data);
-                var html = '';
-                for (var i = 0; i < data.Table.length; i++) {
-                    html += '<tr>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
-                    html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].CustNo + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
-                    html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
-                    html += '<td class="hidecolumn">' + data.Table[i].Fax + '</td>';
-                    html += '<td class="hidecolumn">' + data.Table[i].Address + '</td>';
-                    html += '</tr>';
-                }
-                document.getElementById("customerBody").innerHTML = html;
-
-            },
-            error: function (msg) {
-                alert(msg)
-            }
-        });
 
     $('#parentHorizontalTab').easyResponsiveTabs({
         type: 'default', //Types: default, vertical, accordion
@@ -131,73 +53,26 @@
             $info.show();
         }
     });
-
 });
-$(function () {
+function GetChecked() {
 
-    $("#dtJobDate").datepicker({
-        inline: true,
-        showOtherMonths: true
-    })
-    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+    $(".RowCal").each(function () {
+        var IsInsert = $(this).find('.IsInsert').is(":checked");
+        var IsUpdate = $(this).find('.IsUpdate').is(":checked");
 
-    $("#dtSWorking").datepicker({
-        inline: true,
-        showOtherMonths: true
-    })
-    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
-
-    $("#dtEWorking").datepicker({
-        inline: true,
-        showOtherMonths: true
-    })
-    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
-
-    $("#dtJobDate").datepicker();
-    $("#dtSWorking").datepicker();
-    $("#dtEWorking").datepicker();
-    $("#datepicker4").datepicker();
-    $("#datepicker5").datepicker();
-    $('#tabManpower').dynoTable2();
-    $('#tabSaleOrder').dynoTable3();
-    $('#tabInvoice').dynoTable4();
-    $('#tabReceipt').dynoTable5();
-    $('#tabIncome').dynoTable6();
-    $('#tabCost').dynoTable7();
-
-    var dates = new Date();
-    $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
-});
-function cmbIncomeMaster(val) {
-    $.ajax({
-        url: 'http://localhost:13131/api/IncomeMaster',
-        type: 'GET',
-        async: false,
-        dataType: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-            //alert(val);
-            $.each(data.Table, function (i) {
-                //alert('master');
-                //alert(data.Table[i].ID);
-                //alert(data.Table[i].Detail); 
-                $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            if (val == 0) {
-                //alert('000');
-                $('.Select1').find('option:first-child').attr('selected', true);
-            }
-            else {
-                //alert('111');
-                //alert(val);
-                $(".Select1").val(val);
-            }
-        },
-        failure: function () {
-            alert('Error');
+        if (IsInsert || IsUpdate) {
+            $(this).find('.IsView').prop('checked', true);
+            $(this).find('.IsView').prop('disabled', true);
+        }
+        else if (IsInsert == false && IsUpdate == false) {
+            $(this).find('.IsView').prop('checked', false);
+            $(this).find('.IsView').prop('disabled', false);
         }
     });
 }
+$(function () {
+    $('#arwRoleMaster').dynoTable();
+});
 function GetData(val) {
     var dataObject = { ID: val }
     $.ajax(
@@ -235,7 +110,7 @@ function GetData(val) {
                    html += '</tr>';
                }
                html += '</tbody>';
-               document.getElementById("tBodyRowIncome").innerHTML = html;                        
+               document.getElementById("tBodyRowRole").innerHTML = html;
                SetIncomeMaster(data.Table1);            
            }
            

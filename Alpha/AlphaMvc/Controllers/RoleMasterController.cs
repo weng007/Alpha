@@ -11,7 +11,11 @@ namespace MymobilewalaMvc.Controllers
         //
         // GET: /RoleMaster/
 
-        public ActionResult Index()
+        public ActionResult IndexRoleMaster()
+        {
+            return View();
+        }
+        public ActionResult EditRoleMaster()
         {
             return View();
         }

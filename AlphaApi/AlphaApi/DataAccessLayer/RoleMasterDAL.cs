@@ -8,12 +8,12 @@ using System;
 
 namespace AlphaApi.DataAccessLayer
 {
-    public class RoleDAL
+    public class RoleMasterDAL
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
-        public string InsertData(RoleMasterModels roleMasterModel)
+        int result = 0;
+        public int InsertData(RoleMasterModels roleMasterModel)
         {
-            string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -25,10 +25,11 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@IsInsert", roleMasterModel.IsInsert);
                     cmd.Parameters.AddWithValue("@IsUpdate", roleMasterModel.IsUpdate);
                     cmd.Parameters.AddWithValue("@IsDelete", roleMasterModel.IsDelete);
+                    cmd.Parameters.AddWithValue("@MenuTypeID ", roleMasterModel.MenuTypeID);
                     cmd.Parameters.AddWithValue("@CreateBy", roleMasterModel.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", roleMasterModel.EditBy);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
+                    result = cmd.ExecuteNonQuery();
 
                     return result;
 
@@ -50,7 +51,7 @@ namespace AlphaApi.DataAccessLayer
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_Product_Upd", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_RoleMaster_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", roleMasterModel.ID);
                     cmd.Parameters.AddWithValue("@RoleID", roleMasterModel.RoleID);
@@ -58,10 +59,40 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@IsInsert", roleMasterModel.IsInsert);
                     cmd.Parameters.AddWithValue("@IsUpdate", roleMasterModel.IsUpdate);
                     cmd.Parameters.AddWithValue("@IsDelete", roleMasterModel.IsDelete);
+                    cmd.Parameters.AddWithValue("@MenuTypeID ", roleMasterModel.MenuTypeID);
                     cmd.Parameters.AddWithValue("@EditBy", roleMasterModel.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
                     return result;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
+        public DataSet SelectData()
+        {
+            SqlConnection con = null;
+            string result = "";
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand("SP_RoleMaster_Sel", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    return ds;
                 }
                 catch (Exception ex)
                 {

@@ -33,7 +33,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@TypeWorking", jobOrder.TypeWorking);
                     cmd.Parameters.AddWithValue("@JobStatus", jobOrder.JobStatus);
                     cmd.Parameters.AddWithValue("@Detail", jobOrder.Detail != null ? jobOrder.Detail : "");
-                    cmd.Parameters.AddWithValue("@Customer", jobOrder.Customer);
+                    cmd.Parameters.AddWithValue("@CustID", jobOrder.CustID);
                     cmd.Parameters.AddWithValue("@Remark", jobOrder.Remark != null ? jobOrder.Remark : "");
                     cmd.Parameters.AddWithValue("@Discount", jobOrder.Discount);
                     cmd.Parameters.AddWithValue("@Price", jobOrder.Price);
@@ -76,7 +76,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@TypeWorking", jobOrder.TypeWorking);
                     cmd.Parameters.AddWithValue("@JobStatus", jobOrder.JobStatus);
                     cmd.Parameters.AddWithValue("@Detail", jobOrder.Detail != null ? jobOrder.Detail : "");
-                    cmd.Parameters.AddWithValue("@Customer", jobOrder.Customer);
+                    cmd.Parameters.AddWithValue("@CustID", jobOrder.CustID);
                     cmd.Parameters.AddWithValue("@Remark", jobOrder.Remark != null ? jobOrder.Remark : "");
                     cmd.Parameters.AddWithValue("@Discount", jobOrder.Discount);
                     cmd.Parameters.AddWithValue("@Price", jobOrder.Price);
