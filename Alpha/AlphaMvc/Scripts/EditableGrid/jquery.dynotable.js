@@ -739,8 +739,6 @@
 
             var cloneRow = function (btn) {
                 var clonedRow = $(btn).closest('tr').clone();
-                alert('test');
-                alert(clonedRow.find('td:eq("2")').val());
                 var tbod = $(btn).closest('tbody');
                 insertRow(clonedRow, tbod);
                 options.onRowClone();
@@ -749,7 +747,7 @@
             var insertRow = function (clonedRow, tbod) {
                 var numRows = $(tbod).children("tr").length;
                 if (options.hideTableOnEmpty && numRows == 0) {
-                    $(tbod).parents("table").first().show();
+                    $(tbod).parents("table").first().show();            
                 }
 
                 $(clonedRow).find('*').andSelf().filter('[id]').each(function () {
