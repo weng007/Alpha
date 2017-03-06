@@ -272,23 +272,23 @@ function GetData(val) {
                //SetIncomeMaster(data.Table1);
            }
 
-           if (data.Table2.length > 0) {
-               ////Binding Data Expense
-               for (var j = 0; j < data.Table1.length; j++) {
-                   $("#add-row7").trigger("click");
-               }
-               SetIncomeMaster();
+           //if (data.Table2.length > 0) {
+           //    ////Binding Data Expense
+           //    for (var j = 0; j < data.Table1.length; j++) {
+           //        $("#add-row7").trigger("click");
+           //    }
+           //    SetIncomeMaster();
 
-               $(".RowCal").each(function (i) {
-                   $(this).find('.tdno').val(data.Table1[i].RowNum);
-                   $(this).find('.JobID').val(data.Table1[i].JobID);
-                   $(this).find('.IncomeID').val(data.Table1[i].ID);
-                   $(this).find('.Select1').val(data.Table1[i].IncomeType).change();
-                   $(this).find('.UnitWeight').val(data.Table1[i].UnitWeight).number(true, 2);
-                   $(this).find('.Quantity').val(data.Table1[i].Qty).number(true, 2);
-                   $(this).find('.Price').val(data.Table1[i].UnitPrice).number(true, 2);
-                   $(this).find('.Amount').val(data.Table1[i].Amount).number(true, 2);
-               });
+           //    $(".RowCal").each(function (i) {
+           //        $(this).find('.tdno').val(data.Table1[i].RowNum);
+           //        $(this).find('.JobID').val(data.Table1[i].JobID);
+           //        $(this).find('.IncomeID').val(data.Table1[i].ID);
+           //        $(this).find('.Select1').val(data.Table1[i].IncomeType).change();
+           //        $(this).find('.UnitWeight').val(data.Table1[i].UnitWeight).number(true, 2);
+           //        $(this).find('.Quantity').val(data.Table1[i].Qty).number(true, 2);
+           //        $(this).find('.Price').val(data.Table1[i].UnitPrice).number(true, 2);
+           //        $(this).find('.Amount').val(data.Table1[i].Amount).number(true, 2);
+           //    });
 
            //    $('.ExpenseSelect').find("option").remove();
            //    $('.unitSelect').find("option").remove();
