@@ -23,7 +23,21 @@ namespace AlphaApi.Controllers
         public string Get(string password)
         {
             string[] str = password.Split('-');
-            var response = Userdb.SelectByID(str[0],str[1]);
+            var response = Userdb.SelectByUserName(str[0],str[1]);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [HttpGet]
+        public string Get(int id)
+        {
+            var response = Userdb.SelectByID(id);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [HttpGet]
+        public string Get()
+        {
+            var response = Userdb.SelectData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
     }

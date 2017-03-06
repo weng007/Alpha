@@ -7,11 +7,13 @@ using System.Data;
 
 namespace AlphaApi.Models
 {
-    public class UserLoginModels
+    public class AuthorizationModels
     {
         public int ID { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+
+        public int UserID { get; set; }
+
+        public int RoleID { get; set; }
 
         public int CreateBy { get; set; }
 
