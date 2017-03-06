@@ -739,8 +739,8 @@
 
             var cloneRow = function (btn) {
                 var clonedRow = $(btn).closest('tr').clone();
-                //alert('test');
-                //alert(clonedRow.find('td:eq("2")').val());
+                alert('test');
+                alert(clonedRow.find('td:eq("2")').val());
                 var tbod = $(btn).closest('tbody');
                 insertRow(clonedRow, tbod);
                 options.onRowClone();
