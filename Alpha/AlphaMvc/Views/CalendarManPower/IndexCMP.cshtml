@@ -45,6 +45,7 @@
                            ////id: data.Table[i].ID
                        });
                    }
+                   console.log(events);
                    $('#calendar').fullCalendar({
                        async: false,
                        header: {
@@ -59,6 +60,7 @@
                        eventLimit: true, // allow "more" link when too many events
                        displayEventTime: false,
                        events: events
+
                    });
                },
                error: function (msg) {
@@ -79,7 +81,7 @@
         $('#calendar').on('click', '.fc-prev-button', function () {
             var currentMonth = $('#calendar').fullCalendar('getDate');
             currentMonth = parseInt(currentMonth.format('M'));
-            alert(currentMonth);
+            //alert(currentMonth);
             GetDetail(currentMonth);
         });
     });

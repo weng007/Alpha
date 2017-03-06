@@ -3,6 +3,7 @@ $(document).ready(function () {
     $.ajax({
         url: 'http://localhost:13131/api/MasterService',
         type: 'GET',
+        async: false,
         dataType: 'json',
         data: dataObject,
         success: function (data) {
@@ -21,6 +22,7 @@ $(document).ready(function () {
     $.ajax({
         url: 'http://localhost:13131/api/MasterService',
         type: 'GET',
+        async: false,
         dataType: 'json',
         data: dataObject,
         success: function (data) {
@@ -49,6 +51,7 @@ function GetData(val) {
    {
        url: 'http://localhost:13131/api/Product',
        type: 'GET',
+       async: false,
        data: dataObject,
        datatype: 'json',
        success: function (data) {
@@ -67,35 +70,38 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var imgElem = document.getElementById('imgPreview');
-    var photo = document.getElementById("photo");
-    var file = photo.files[0];
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getYear();
-    var str = y.toString();
-    var res = str.substring(1, 3);
-    var date2 = d + "_" + m + "_" + res;
-    FileName = date2 + file.name;
-    alert(FileName);
-    var imgData = getBase64Image(imgElem);
-    var imgPath = ("../Picture/" + FileName);
+    //var imgElem = document.getElementById('imgPreview');
+    //var photo = document.getElementById("photo");
+    //var file = photo.files[0];
+    //var date = new Date();
+    //var d = date.getDate();
+    //var m = date.getMonth();
+    //var y = date.getYear();
+    //var str = y.toString();
+    //var res = str.substring(1, 3);
+    //var date2 = d + "_" + m + "_" + res;
+    //FileName = date2 + file.name;
+    //alert(FileName);
+    //var imgData = getBase64Image(imgElem);
+    //var imgPath = ("../Picture/" + FileName);
     var dataObject = {ID: val, SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
         Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
-        UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(), Img: imgPath, ImgData: imgData, Remark: $("#txtRemark").val(), EditBy: localStorage['UserID']
+        UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(),Remark: $("#txtRemark").val(), EditBy: localStorage['UserID']
+        //Img: imgPath, ImgData: imgData,
+        
     };
     console.log(dataObject);
     $.ajax(
     {
         url: 'http://localhost:13131/api/Product',
         type: 'PUT',
+        async: false,
         data: dataObject,
         datatype: 'json',
 
         success: function (data) {
             alert('Update is completed');
-            top.location.href = "/Products/IndexProducts";
+            window.location.href = "../Products/IndexProducts";
         }
         ,
         error: function (msg) {

@@ -33,7 +33,7 @@
                 </li>
                 <li>
                     <label>ประเภทสินค้า</label>
-                    <select id="cmbProductType" name="cmbProductType" class="field-select"></select>
+                    <select id="cmbProductType" name="cmbProductType" class="field-divided"></select>
                 </li>
                 <li>
                     <input type="text" id="txtBrand" name="field1" class="field-divided" placeholder="ยี่ห้อ" />&nbsp;<input type="text" id="txtSize" name="field2" class="field-select-small" placeholder="ขนาด" />
@@ -62,15 +62,15 @@
             </ul>
             <ul class="form-style-1">
                 <li>
-                    <input type="file" name="photo" id="photo" onchange="readURL(this);">
+                    <input type="file" name="photo" id="photo" onchange="readURL(this);" disabled>
                     <img id="imgPreview" alt="your image" class="imgpreview" />
                 </li>
                 <li>
-                    <label>หมายเหตุ<span class="required">*</span></label>
+                    <label>หมายเหตุ</label>
                     <textarea name="field5" id="txtRemark" class="field-long field-textarea"></textarea>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-primary" onclick="Isvalidate('Update', 'Product', @Request.Params["id"])">Save</button>
+                    <button type="button" class="btn btn-primary" onclick="Isvalidate('Update', 'Products', @Request.Params["id"])">Save</button>
                 </li>
             </ul>
             <ul class="attachgrid">

@@ -32,7 +32,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@UnitWeight", Product.UnitWeight);
                     cmd.Parameters.AddWithValue("@Balance", Product.Balance);
                     cmd.Parameters.AddWithValue("@Remain", Product.Remain);
-                    cmd.Parameters.AddWithValue("@Img", Product.Img);
+                    cmd.Parameters.AddWithValue("@Img", Product.Img != null ? Product.Img : "");
                     cmd.Parameters.AddWithValue("@Remark", Product.Remark != null ? Product.Remark : "");
                     cmd.Parameters.AddWithValue("@CreateBy", Product.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", Product.EditBy);
@@ -74,9 +74,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@UnitWeight", Product.UnitWeight);
                     cmd.Parameters.AddWithValue("@Balance", Product.Balance);
                     cmd.Parameters.AddWithValue("@Remain", Product.Remain);
-                    cmd.Parameters.AddWithValue("@Img", Product.Img);
+                    cmd.Parameters.AddWithValue("@Img", Product.Img != null ? Product.Img : "");
                     cmd.Parameters.AddWithValue("@Remark", Product.Remark != null ? Product.Remark : "");
-                    cmd.Parameters.AddWithValue("@CreateBy", Product.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", Product.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();

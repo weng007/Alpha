@@ -81,7 +81,7 @@ $(document).ready(function () {
     $('#calendar').on('click', '.fc-prev-button', function () {
         var currentMonth = $('#calendar').fullCalendar('getDate');
         currentMonth = parseInt(currentMonth.format('M'));
-        alert(currentMonth);
+        //alert(currentMonth);
         GetDetail(currentMonth);
     });
 });

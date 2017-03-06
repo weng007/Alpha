@@ -74,10 +74,9 @@ function GetChecked() {
     });
 }
 $(function () {
-    $('#arwRoleMaster').dynoTable();
+    $('#arwRoleMaster').dynoTable9();
 });
 function CreateData() {
-    alert('testCreate');
     $(".RowCal").each(function () {
         if ($(this).find(".RoleMasterID").val() > 0)
         {
