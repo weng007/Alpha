@@ -18,7 +18,6 @@ function UserLogin() {
         success: function (data) {
             data = JSON.parse(data);
             console.log(data);
-            alert(data.Table.length);
             if (data.Table.length > 0)
             {
                 localStorage['UserID'] = data.Table[0].ID;
