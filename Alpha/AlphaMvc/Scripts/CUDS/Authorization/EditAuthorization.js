@@ -38,7 +38,6 @@ $(function () {
     $('#arwAuthorization').dynoTable8();
 });
 function GetData(val) {
-    alert(val)
     var dataObject = { ID: val }
     $.ajax(
    {
@@ -56,7 +55,6 @@ function GetData(val) {
        }
    });
 
-    alert(val);
     $.ajax(
    {
        url: 'http://localhost:13131/api/Authorization',
@@ -70,13 +68,14 @@ function GetData(val) {
                $('.Author').find("option").remove();
                var html = '<tbody>';
                for (var i = 0; i < data.Table.length; i++) {
+                   $("#hidUserID").val(data.Table[i].UserID);
                    html += '<tr class="RowCal">';
                    html += '<td>';
                    html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
                    html += '</td>';
                    html += '<td> <input id="No" type="text" value="' + data.Table[i].RowNum + '" class="tdno" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="AuthorID" type="text" value="' + data.Table[i].ID + '" class="AuthorID" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="UserID" type="text" value="' + data.Table[i].UserID + '" class="UserID" disabled /></td>'; 
+                   html += '<td class="hidecolumn"><input id="UserID" type="text" value="' + data.Table[i].UserID + '" class="UserID" disabled /></td>';
                    html += '<td class="hidecolumn"><input id="RoleID" type="text" value="' + data.Table[i].RoleID + '" class="RoleID" disabled /></td>'; 
                    html += '<td> <select id="cmbAuthor" class="Author"></select></td>';
                    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
@@ -94,20 +93,22 @@ function GetData(val) {
            
    });
 }
+
 function Update(val) {
 
     var input = window.location.href;
     var after = input.split('?')[1]
-    var UserID = after.split('-');
-    $('#hidUserID').val(UserID);
+    var str = after.split('-');
+    var res = String(str);
+    var UserID = res.substring(4, 3);
 
         var dataObject = {};
         $(".RowCal").each(function () {
-            dataObject.UserID = $('#hidUserID').val();
+            dataObject.ID = $(this).find('.AuthorID').val();
+            dataObject.UserID = UserID;
             dataObject.RoleID = $(this).find('.Author').find(":selected").val();
-            dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
-            if ($('#hidUserID').val() != '')
+            if (UserID != '')
             {
                 $.ajax(
                 {
@@ -125,8 +126,9 @@ function Update(val) {
                 });
             }
         });
-        alert('Create is completed');
-        window.location.href = "../Authorization/EditAuthorization?id=" + $('#hidUserID').val();
+        alert('Update is completed');
+        window.location.href = "../Authorization/EditAuthorization?id=" + UserID;
+        ;
 }
 function AddRowAuthor() {
     var dataObject = { typeID: '009' };

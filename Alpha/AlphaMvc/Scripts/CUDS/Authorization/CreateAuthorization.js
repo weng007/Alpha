@@ -2,13 +2,45 @@ $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
-    var input = window.location.href;
-    var after = input.split('?')[1]
-    var str = after.split('-');
-    var res = String(str);
-    var UserID = res.substring(4, 3);
-    alert(UserID);
-    $('#hidUserID').val(UserID);
+    //var input = window.location.href;
+    //var after = input.split('?')[1]
+    //var str = after.split('-');
+    //var res = String(str);
+    //var UserID = res.substring(4, 3);
+    //alert(UserID);
+    //$('#hidUserID').val(UserID);
+
+
+    $("#userBody").on("click", "tr", function (e) {
+        $("#txtUser").val($(this).find("td:eq(2)").text());
+        $("#hidUserID").val($(this).find("td:eq(1)").text());
+    })
+
+    var dataObject = { Mode: false};
+    $.ajax(
+       {
+           url: 'http://localhost:13131/api/UserLogin',
+           type: 'GET',
+           async: false,
+           datatype: 'json',
+           data: dataObject,
+           success: function (data) {
+               data = JSON.parse(data);
+               var html = '';
+               for (var i = 0; i < data.Table.length; i++) {
+                   html += '<tr>';
+                   html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
+                   html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
+                   html += '<td data-dismiss="modal">' + data.Table[i].UserName + '</td>';
+                   html += '</tr>';
+               }
+               document.getElementById("userBody").innerHTML = html;
+
+           },
+           error: function (msg) {
+               alert(msg)
+           }
+       });
 
     var dataObject = { typeID: '009' };
     $.ajax({
@@ -25,25 +57,6 @@ $(document).ready(function () {
         },
         failure: function () {
             alert('Error');
-        }
-    });
-
-    var dataObject = { ID: $('#hidUserID').val() };
-    console.log(dataObject);
-    $.ajax(
-    {
-        url: 'http://localhost:13131/api/UserLogin',
-        type: 'GET',
-        async: false,
-        data: dataObject,
-        datatype: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-            console.log(data);
-            $("#txtUser").val(data.Table[0].UserName)
-        },
-        error: function (msg) {
-            alert(msg)
         }
     });
 
@@ -102,7 +115,7 @@ function AddRowAuthor() {
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
-
+            $('.Author:last').find("option").remove();
             $.each(data.Table, function (i) {
                 $('.Author:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
