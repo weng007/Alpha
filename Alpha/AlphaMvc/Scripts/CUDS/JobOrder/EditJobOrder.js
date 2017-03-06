@@ -1,10 +1,7 @@
 ﻿$(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
-
     $('.Number').number(true, 2);
-
-    
 
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
@@ -15,6 +12,13 @@
         $("#txtFax").val($(this).find("td:eq(7)").text());
         $("#txtAddress").val($(this).find("td:eq(8)").text());
     })
+
+    $(window).load(function () {
+        $("img").click(function () {
+            $('.RowCal:last').find('td input[type=text]').eq(0).val('');
+            $('.RowCal:last').find('td input[type=text]').eq(1).val('');
+        });
+    });
 
     //cmbIncomeMaster(0);
 
@@ -683,6 +687,9 @@ function CalSumExpense() {
         $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
     }
 }
+
+
+
 function AddRowIncome() {
     if (localStorage['flagAddRowIncome'] == 0) {
         $.ajax({

@@ -204,7 +204,7 @@
                                                         </td>
 
                                                         <td>
-                                                            <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                                            <div class="clone-1"><img id="cloneRowIncome"  class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                         </td>
                                                         <td>
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -239,7 +239,7 @@
                                                             <input type="text" id="txtAmount" disabled class="Amount Number text-size165 txtdisablerow">
                                                         </td>
                                                         <td>
-                                                            <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                                            <div class="clone-1"><img id="cloneRowIncome" class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                         </td>
                                                         <td>
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -857,8 +857,7 @@
 
         <ul class="form-style-1">
             <li>
-                <button type="button" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button>
-                @*<a href="@Url.Action("IndexRptJobOrder", "RptJobOrder")" class="alink"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-4" /></a>*@
+                <button type="button" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button><a href="@Url.Action("IndexRptJobOrder", "RptJobOrder")" class="alink"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-4" /></a>
             </li>
         </ul>
     </form>

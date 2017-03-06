@@ -223,28 +223,88 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\BDCController.cs" />
+    <Compile Include="Controllers\BDCJobController.cs" />
+    <Compile Include="Controllers\CalendarJobOrderController.cs" />
+    <Compile Include="Controllers\CalendarManPowerController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ExpenseMasterController.cs" />
     <Compile Include="Controllers\IncomeMasterController.cs" />
+    <Compile Include="Controllers\JobOrderBorrowController.cs" />
+    <Compile Include="Controllers\JobOrderBorrowRefIDController.cs" />
+    <Compile Include="Controllers\JobOrderController.cs" />
+    <Compile Include="Controllers\JobOrderExpenseController.cs" />
+    <Compile Include="Controllers\JobOrderIncomeController.cs" />
+    <Compile Include="Controllers\JobOrderInvoiceController.cs" />
+    <Compile Include="Controllers\JobOrderReceiptController.cs" />
+    <Compile Include="Controllers\JobOrderSaleOrderController.cs" />
+    <Compile Include="Controllers\MasterServiceController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\QuotationController.cs" />
+    <Compile Include="Controllers\RoleMasterController.cs" />
+    <Compile Include="Controllers\RptJobOrderController.cs" />
+    <Compile Include="Controllers\TechnicianCardController.cs" />
+    <Compile Include="Controllers\TechnicianController.cs" />
+    <Compile Include="Controllers\TechnicianFileController.cs" />
+    <Compile Include="Controllers\TechnicianSkillController.cs" />
+    <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="DataAccessLayer\BDC.cs" />
-    <Compile Include="DataAccessLayer\DBData.cs" />
-    <Compile Include="DataAccessLayer\IncomeMaster.cs" />
-    <Compile Include="DataAccessLayer\Product.cs" />
+    <Compile Include="DataAccessLayer\AuthorizationDAL.cs" />
+    <Compile Include="DataAccessLayer\BDCDAL.cs" />
+    <Compile Include="DataAccessLayer\BDCJobOrderDAL.cs" />
+    <Compile Include="DataAccessLayer\CalendarJobOrderDAL.cs" />
+    <Compile Include="DataAccessLayer\CalendarManPowerDAL.cs" />
+    <Compile Include="DataAccessLayer\CustomerDAL.cs" />
+    <Compile Include="DataAccessLayer\ExpenseMasterDAL.cs" />
+    <Compile Include="DataAccessLayer\IncomeMasterDAL.cs" />
+    <Compile Include="DataAccessLayer\JobOrderBorrowDAL.cs" />
+    <Compile Include="DataAccessLayer\JobOrderDAL.cs" />
+    <Compile Include="DataAccessLayer\JobOrderExpenseDAL.cs" />
+    <Compile Include="DataAccessLayer\JobOrderIncomeDAL.cs" />
+    <Compile Include="DataAccessLayer\JobOrderInvoiceDAL.cs" />
+    <Compile Include="DataAccessLayer\JobOrderReceiptDAL.cs" />
+    <Compile Include="DataAccessLayer\JobOrderSaleOrderDAL.cs" />
+    <Compile Include="DataAccessLayer\MasterServiceDAL.cs" />
+    <Compile Include="DataAccessLayer\ProductDAL.cs" />
+    <Compile Include="DataAccessLayer\QuotationDAL.cs" />
+    <Compile Include="DataAccessLayer\RoleMasterDAL.cs" />
+    <Compile Include="DataAccessLayer\RptJobOrderDAL.cs" />
+    <Compile Include="DataAccessLayer\TechnicianSkillDAL.cs" />
+    <Compile Include="DataAccessLayer\TechnicianFileDAL.cs" />
+    <Compile Include="DataAccessLayer\TechnicianCardDAL.cs" />
+    <Compile Include="DataAccessLayer\TechnicianDAL.cs" />
+    <Compile Include="DataAccessLayer\UserLoginDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AuthorizationModels.cs" />
+    <Compile Include="Models\BDCJobOrderModels.cs" />
     <Compile Include="Models\BDCModels.cs" />
+    <Compile Include="Models\CalendarJobOrderModels.cs" />
+    <Compile Include="Models\CalendarManpowerModels.cs" />
+    <Compile Include="Models\JobOrderBorrowModels.cs" />
     <Compile Include="Models\EmployeeModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ExpenseMasterModels.cs" />
     <Compile Include="Models\IncomeMasterModels.cs" />
+    <Compile Include="Models\JobOrderExpenseModels.cs" />
+    <Compile Include="Models\JobOrderIncomeModels.cs" />
+    <Compile Include="Models\JobOrderInvoiceModels.cs" />
+    <Compile Include="Models\JobOrderModels.cs" />
+    <Compile Include="Models\JobOrderReceiptModels.cs" />
+    <Compile Include="Models\JobOrderSaleOrderModels.cs" />
     <Compile Include="Models\ProductModels.cs" />
+    <Compile Include="Models\RoleMasterModels.cs" />
+    <Compile Include="Models\TechnicianCardModels.cs" />
+    <Compile Include="Models\TechnicianFileModels.cs" />
+    <Compile Include="Models\TechnicianModels.cs" />
+    <Compile Include="Models\TechnicianSkillModels.cs" />
+    <Compile Include="Models\UserLoginModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -288,7 +348,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -334,7 +396,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>13131</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:13132/</IISUrl>
+          <IISUrl>http://localhost:13131/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
