@@ -69,6 +69,7 @@ function GetData(val) {
                var html = '<tbody>';
                for (var i = 0; i < data.Table.length; i++) {
                    $("#hidUserID").val(data.Table[i].UserID);
+
                    html += '<tr class="RowCal">';
                    html += '<td>';
                    html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
