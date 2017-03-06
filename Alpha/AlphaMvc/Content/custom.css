@@ -5741,8 +5741,10 @@ body.modal-open,
 
 .modal-body-Warning {
   position: relative;
+  /*padding: 10px;
+  height:50px*/
   padding: 10px;
-  height:50px
+  height:20px
 }
 
 .modal-footer {

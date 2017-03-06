@@ -432,52 +432,52 @@ function SetIncomeMaster()
         }
     });
 }
-function SetExpenseType() {
+//function SetExpenseType() {
 
-    $.ajax({
-        url: 'http://localhost:13131/api/ExpenseMaster',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
+//    $.ajax({
+//        url: 'http://localhost:13131/api/ExpenseMaster',
+//        type: 'GET',
+//        dataType: 'json',
+//        success: function (data) {
+//            data = JSON.parse(data);
 
-            $.each(data.Table, function (i) {
-                $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
-            //for (i = 0; i < tmp.length; i++) {
-            //    $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
-            //}
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-}
-function SetUnitWeight() {
+//            $.each(data.Table, function (i) {
+//                $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+//            });
+//            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+//            //for (i = 0; i < tmp.length; i++) {
+//            //    $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
+//            //}
+//        },
+//        failure: function () {
+//            alert('Error');
+//        }
+//    });
+//}
+//function SetUnitWeight() {
 
-    var dataObject = { typeID: '010' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
+//    var dataObject = { typeID: '010' };
+//    $.ajax({
+//        url: 'http://localhost:13131/api/MasterService/',
+//        type: 'GET',
+//        dataType: 'json',
+//        data: dataObject,
+//        success: function (data) {
+//            data = JSON.parse(data);
 
-            $.each(data.Table, function (i) {
-                $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.unitSelect').find('option:first-child').attr('selected', true);
-            //for (i = 0; i < tmp.length; i++) {
-            //    $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
-            //}
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-}
+//            $.each(data.Table, function (i) {
+//                $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+//            });
+//            $('.unitSelect').find('option:first-child').attr('selected', true);
+//            //for (i = 0; i < tmp.length; i++) {
+//            //    $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
+//            //}
+//        },
+//        failure: function () {
+//            alert('Error');
+//        }
+//    });
+//}
 function Update(val) {
     var dataObject = {
         ID: val, JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(),
@@ -514,6 +514,7 @@ function Update(val) {
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = $(this).find(".Amount").val();
         dataObject.EditBy = localStorage['UserID'];
+
         if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
             {
@@ -756,53 +757,53 @@ function Redirect() {
 }
 
 
-//function SetExpenseType(tmp) {
+function SetExpenseType(tmp) {
 
-//    $.ajax({
-//        url: 'http://localhost:13131/api/ExpenseMaster',
-//        type: 'GET',
-//        dataType: 'json',
-//        success: function (data) {
-//            data = JSON.parse(data);
+    $.ajax({
+        url: 'http://localhost:13131/api/ExpenseMaster',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
 
-//            $.each(data.Table, function (i) {
-//                $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-//            });
+            $.each(data.Table, function (i) {
+                $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
 
-//            for (i = 0; i < tmp.length; i++) {
-//                $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
-//            }
-//        },
-//        failure: function () {
-//            alert('Error');
-//        }
-//    });
-//}
+            for (i = 0; i < tmp.length; i++) {
+                $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
+            }
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 
-//function SetUnitWeight(tmp) {
+function SetUnitWeight(tmp) {
 
-//    var dataObject = { typeID: '010' };
-//    $.ajax({
-//        url: 'http://localhost:13131/api/MasterService/',
-//        type: 'GET',
-//        dataType: 'json',
-//        data: dataObject,
-//        success: function (data) {
-//            data = JSON.parse(data);
+    var dataObject = { typeID: '010' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
 
-//            $.each(data.Table, function (i) {
-//                $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-//            });
+            $.each(data.Table, function (i) {
+                $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
 
-//            for (i = 0; i < tmp.length; i++) {
-//                $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
-//            }
-//        },
-//        failure: function () {
-//            alert('Error');
-//        }
-//    });
-//}
+            for (i = 0; i < tmp.length; i++) {
+                $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
+            }
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 
 function DateWorking() {
     if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {

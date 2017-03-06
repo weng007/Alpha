@@ -149,7 +149,7 @@
                                                     <tr>
                                                         <th></th>
                                                         <th>Item</th>
-                                                        <th>ID</th>
+                                                        <th class="hidecolumn">ID</th>
                                                         <th class="hidecolumn">JobID</th>
                                                         <th>Description</th>
                                                         <th>Unit</th>
@@ -181,7 +181,7 @@
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
-                                                        <td>
+                                                        <td class="hidecolumn">
                                                             <input id="IncomeID" type="text" value="" class="IncomeID" disabled />
                                                         </td>
                                                         <td class="hidecolumn">
@@ -217,7 +217,7 @@
                                                         <td>
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
-                                                        <td>
+                                                        <td class="hidecolumn">
                                                             <input id="IncomeID" type="text" value="" class="IncomeID" disabled />
                                                         </td>
                                                         <td class="hidecolumn">
@@ -857,7 +857,8 @@
 
         <ul class="form-style-1">
             <li>
-                <button type="button" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button><a href="@Url.Action("IndexRptJobOrder", "RptJobOrder")" class="alink"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-4" /></a>
+                <button type="button" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button>
+                @*<a href="@Url.Action("IndexRptJobOrder", "RptJobOrder")" class="alink"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-4" /></a>*@
             </li>
         </ul>
     </form>
