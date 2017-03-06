@@ -10,7 +10,7 @@
     <li>
         <label>User</label>
         <input type="text" id="txtUser" class="field-divided" placeholder="User" disabled />
-        <input type="hidden" id="hidUserID" />
+        
     </li>
 </ul>
 <table class="tabbar">
@@ -47,9 +47,11 @@
                                             </td>
                                             <td class="hidecolumn">
                                                 <input id="AuthorID" type="text" value="" class="AuthorID" disabled />
+                                                <input type="hidden" id="hidAuthorID" />
                                             </td>
                                             <td class="hidecolumn">
                                                 <input id="UserID" type="text" value="" class="UserID" disabled />
+                                                <input type="hidden" id="hidUserID" />
                                             </td>
                                             <td class="hidecolumn">
                                                 <input id="RoleID" type="text" value="" class="RoleID" disabled />
@@ -108,7 +110,6 @@
 </ul>
 <script type="text/javascript">
     $(document).ready(function () {
-
         GetData(@Request.Params["id"]);
     });
 

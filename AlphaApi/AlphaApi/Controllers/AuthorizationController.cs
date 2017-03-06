@@ -21,7 +21,17 @@ namespace AlphaApi.Controllers
         [HttpPost]
         public int Post(AuthorizationModels authorizationModel)
         {
-            var response = Autherdb.InsertData(authorizationModel);
+            var response = 0;
+
+            if (authorizationModel.ID > 0)
+            {
+                response = Autherdb.UpdateData(authorizationModel);
+            }
+            else
+            {
+                response = Autherdb.InsertData(authorizationModel);
+            }
+
             return response;
         }
 
@@ -43,8 +53,17 @@ namespace AlphaApi.Controllers
         [HttpPut]
         public int Put(AuthorizationModels authorizationModel)
         {
-            //calling DBData Class Method and storing Repsonse   
-            var response = Autherdb.UpdateData(authorizationModel);
+            var response = 0;
+
+            if (authorizationModel.ID > 0)
+            {
+                response = Autherdb.UpdateData(authorizationModel);
+            }
+            else
+            {
+                response = Autherdb.InsertData(authorizationModel);
+            }
+
             return response;
 
         }

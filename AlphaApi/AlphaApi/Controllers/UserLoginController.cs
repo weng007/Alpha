@@ -40,5 +40,13 @@ namespace AlphaApi.Controllers
             var response = Userdb.SelectData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+
+        [HttpGet]
+        public string Get(bool mode)
+        {
+            //Get เฉพาะ User ที่ยังไม่ใส่ Role
+            var response = Userdb.SelectByCondition();
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
     }
 }

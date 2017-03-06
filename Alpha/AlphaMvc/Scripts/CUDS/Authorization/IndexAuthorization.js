@@ -32,7 +32,6 @@ $(document).ready(function () {
     }).css({ "color": "#C0C0C0" });
 
     //------------------------------------ Custom ------------------------------------
-    alert('test');
     $.ajax(
     {
         url: 'http://localhost:13131/api/UserLogin',
@@ -47,7 +46,6 @@ $(document).ready(function () {
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td>' + data.Table[i].UserName + '</td>';
                 html += '<td>';
-                html += '<a href="/Authorization/CreateAuthorization?id=' + data.Table[i].ID + '" id="Create' + data.Table[i].ID + '">' + '<img src="/Images/Create.png"/></a>';
                 html += '<a href="/Authorization/EditAuthorization?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'IncomeMaster'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png"/></a>';
                 html += '</td>';
