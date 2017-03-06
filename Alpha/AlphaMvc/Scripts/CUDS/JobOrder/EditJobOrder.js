@@ -230,6 +230,8 @@ function GetData(val) {
                {
                    $("#add-row6").trigger("click");
                }
+               $('.RowCal:eq('+ data.Table1.length +')').remove();
+               
                SetIncomeMaster();
                 
                 $(".RowCal").each(function (i) {
@@ -270,54 +272,56 @@ function GetData(val) {
                //html += '</tbody>';
                //document.getElementById("tBodyRowIncome").innerHTML = html;                        
                //SetIncomeMaster(data.Table1);
-           }
-
+           //}
+           //alert('Expense');
            //if (data.Table2.length > 0) {
+           //    alert('Expense');
            //    ////Binding Data Expense
-           //    for (var j = 0; j < data.Table1.length; j++) {
+           //    for (var j = 0; j < data.Table2.length; j++) {
            //        $("#add-row7").trigger("click");
            //    }
-           //    SetIncomeMaster();
+           //    SetExpenseType();
+           //    SetUnitWeight();
 
-           //    $(".RowCal").each(function (i) {
-           //        $(this).find('.tdno').val(data.Table1[i].RowNum);
-           //        $(this).find('.JobID').val(data.Table1[i].JobID);
-           //        $(this).find('.IncomeID').val(data.Table1[i].ID);
-           //        $(this).find('.Select1').val(data.Table1[i].IncomeType).change();
-           //        $(this).find('.UnitWeight').val(data.Table1[i].UnitWeight).number(true, 2);
-           //        $(this).find('.Quantity').val(data.Table1[i].Qty).number(true, 2);
-           //        $(this).find('.Price').val(data.Table1[i].UnitPrice).number(true, 2);
-           //        $(this).find('.Amount').val(data.Table1[i].Amount).number(true, 2);
+           //    $(".RowCal1").each(function (i) {
+           //        $(this).find('.tdno').val(data.Table2[i].RowNum);
+           //        $(this).find('.ExpenseID').val(data.Table2[i].ID);
+           //        $(this).find('.JobID').val(data.Table2[i].JobID);
+           //        $(this).find('.ExpenseSelect').val(data.Table2[i].ExpenseType).change();
+           //        $(this).find('.unitSelect').val(data.Table2[i].UnitWeight).change();
+           //        $(this).find('.Quantity').val(data.Table2[i].Qty).number(true, 2);
+           //        $(this).find('.Price').val(data.Table2[i].UnitPrice).number(true, 2);
+           //        $(this).find('.Amount').val(data.Table2[i].Amount).number(true, 2);
            //    });
 
-           //    $('.ExpenseSelect').find("option").remove();
-           //    $('.unitSelect').find("option").remove();
-           //    var html = '<tbody>';
-           //    for (var i = 0; i < data.Table2.length; i++) {
-           //        html += '<tr class="RowCal1">';
-           //        html += '<td>';
-           //        html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-           //        html += '</td>';
-           //        html += '<td> <input id="No" type="text" value="' + data.Table2[i].RowNum + '" class="tdno" disabled /></td>';
-           //        html += '<td class="hidecolumn"><input id="ExpenseID" type="text" value="' + data.Table2[i].ID + '" class="ExpenseID" disabled /></td>';
-           //        html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table2[i].JobID + '" class="JobID" disabled /></td>';
+               $('.ExpenseSelect').find("option").remove();
+               $('.unitSelect').find("option").remove();
+               var html = '<tbody>';
+               for (var i = 0; i < data.Table2.length; i++) {
+                   html += '<tr class="RowCal1">';
+                   html += '<td>';
+                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
+                   html += '</td>';
+                   html += '<td> <input id="No" type="text" value="' + data.Table2[i].RowNum + '" class="tdno" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="ExpenseID" type="text" value="' + data.Table2[i].ID + '" class="ExpenseID" disabled /></td>';
+                   html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table2[i].JobID + '" class="JobID" disabled /></td>';
 
-           //        html += '<td> <select id="cmbExpenseType" class="ExpenseSelect"></select></td>';
+                   html += '<td> <select id="cmbExpenseType" class="ExpenseSelect"></select></td>';
 
-           //        html += '<td> <select  class="unitSelect"></select></td>';
+                   html += '<td> <select  class="unitSelect"></select></td>';
 
-           //        html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].Qty) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
-           //        html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].UnitPrice) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
-           //        html += '<td> <input type="text" id="txtAmount"  class="Amount1 text-size165 txtdisablerow" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].Amount) + '" disabled></td>';
-           //        html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-           //        html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
-           //        html += '</tr>';
-           //    }
-           //    html += '</tbody>';
-           //    document.getElementById("tBodyRowExpense").innerHTML = html;
-           //    SetExpenseType(data.Table2);
-           //    SetUnitWeight(data.Table2);
-           //}
+                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].Qty) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
+                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].UnitPrice) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
+                   html += '<td> <input type="text" id="txtAmount"  class="Amount1 text-size165 txtdisablerow" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].Amount) + '" disabled></td>';
+                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
+                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
+                   html += '</tr>';
+               }
+               html += '</tbody>';
+               document.getElementById("tBodyRowExpense").innerHTML = html;
+               SetExpenseType(data.Table2);
+               SetUnitWeight(data.Table2);
+           }
 
            ////Binding Data Total
            var SubTotal = data.Table7[0].SubTotelIncome;
@@ -436,9 +440,33 @@ function SetExpenseType() {
             $.each(data.Table, function (i) {
                 $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
             //for (i = 0; i < tmp.length; i++) {
             //    $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
+            //}
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
+function SetUnitWeight() {
+
+    var dataObject = { typeID: '010' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+
+            $.each(data.Table, function (i) {
+                $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.unitSelect').find('option:first-child').attr('selected', true);
+            //for (i = 0; i < tmp.length; i++) {
+            //    $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
             //}
         },
         failure: function () {
@@ -721,53 +749,53 @@ function Redirect() {
 }
 
 
-function SetExpenseType(tmp) {
+//function SetExpenseType(tmp) {
 
-    $.ajax({
-        url: 'http://localhost:13131/api/ExpenseMaster',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
+//    $.ajax({
+//        url: 'http://localhost:13131/api/ExpenseMaster',
+//        type: 'GET',
+//        dataType: 'json',
+//        success: function (data) {
+//            data = JSON.parse(data);
 
-            $.each(data.Table, function (i) {
-                $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
+//            $.each(data.Table, function (i) {
+//                $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+//            });
 
-            for (i = 0; i < tmp.length; i++) {
-                $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
-            }
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-}
+//            for (i = 0; i < tmp.length; i++) {
+//                $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
+//            }
+//        },
+//        failure: function () {
+//            alert('Error');
+//        }
+//    });
+//}
 
-function SetUnitWeight(tmp) {
+//function SetUnitWeight(tmp) {
 
-    var dataObject = { typeID: '010' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
+//    var dataObject = { typeID: '010' };
+//    $.ajax({
+//        url: 'http://localhost:13131/api/MasterService/',
+//        type: 'GET',
+//        dataType: 'json',
+//        data: dataObject,
+//        success: function (data) {
+//            data = JSON.parse(data);
 
-            $.each(data.Table, function (i) {
-                $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
+//            $.each(data.Table, function (i) {
+//                $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+//            });
 
-            for (i = 0; i < tmp.length; i++) {
-                $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
-            }
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-}
+//            for (i = 0; i < tmp.length; i++) {
+//                $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
+//            }
+//        },
+//        failure: function () {
+//            alert('Error');
+//        }
+//    });
+//}
 
 function DateWorking() {
     if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {
