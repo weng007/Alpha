@@ -274,7 +274,7 @@ function GetData(val) {
                CalSumExpense();
            }
 
-           ////Binding Data Total
+           //Binding Data Total
            var SubTotal = data.Table7[0].SubTotelIncome;
            var TotalExpense = data.Table8[0].TotelExpense;
            var Profit = SubTotal - TotalExpense;
@@ -446,7 +446,7 @@ function Update(val) {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderIncome',
-                type: 'POST',
+                type: 'PUT',
                 async: false,
                 data: dataObject,
                 datatype: 'json',
@@ -635,12 +635,10 @@ function AddRowIncome() {
             url: 'http://localhost:13131/api/IncomeMaster',
             type: 'GET',
             dataType: 'json',
-            success: function (data) {
-                
+            success: function (data) {          
                 data = JSON.parse(data);
-                $('.Select1:last').find("option").remove();
+                //$('.Select1:last').find("option").remove();
                 $.each(data.Table, function (i) {
-                    alert(data.Table[i].ID);
                     $('.Select1:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
                 $('.Select1:last').find('option:first-child').attr('selected', true);

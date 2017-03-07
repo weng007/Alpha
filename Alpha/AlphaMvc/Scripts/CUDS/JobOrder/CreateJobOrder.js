@@ -143,6 +143,7 @@ $(document).ready(function () {
                 data = JSON.parse(data);
                 var html = '';
                 for (var i = 0; i < data.Table.length; i++) {
+                    //alert(data.Table[i].CustNo);
                     html += '<tr>';
                     html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
                     html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
@@ -195,11 +196,7 @@ $(function () {
     $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 });
 function CreateData() {
-    alert($("#dtJobDate").val());
-    alert($("#dtSWorking").val());
-    alert($("#dtEWorking").val());
-
-    var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
+      var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
     console.log(dataObject);
         var ID;
 
@@ -384,7 +381,6 @@ function CalSumExpense() {
     var SubTotal = 0;
     var Profit = 0;
     SubTotal = CalSum();
-    alert(SubTotal);
     $(".RowCal1").each(function () {
         var qty = $(this).find(".Quantity").val();
         var price = $(this).find(".Price").val();
