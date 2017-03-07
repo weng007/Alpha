@@ -203,38 +203,9 @@ $(function () {
     var dates = new Date();
     $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 });
-//function cmbIncomeMaster(val) {
-//    $.ajax({
-//        url: 'http://localhost:13131/api/IncomeMaster',
-//        type: 'GET',
-//        async: false,
-//        dataType: 'json',
-//        success: function (data) {
-//            data = JSON.parse(data);
-//            //alert(val);
-//            $.each(data.Table, function (i) {
-//                //alert('master');
-//                //alert(data.Table[i].ID);
-//                //alert(data.Table[i].Detail); 
-//                $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-//            });
-//            if (val == 0) {
-//                //alert('000');
-//                $('.Select1').find('option:first-child').attr('selected', true);
-//            }
-//            else {
-//                //alert('111');
-//                //alert(val);
-//                $(".Select1").val(val);
-//            }
-//        },
-//        failure: function () {
-//            alert('Error');
-//        }
-//    });
-//}
+
 function GetData(val) {
-    localStorage['flagAddRowIncome'] = 1;
+    localStorage['flagAddRow'] = 1;
     var dataObject = { ID: val }
     $.ajax(
    {
@@ -272,7 +243,6 @@ function GetData(val) {
                     $(this).find('.tdno').val(data.Table1[i].RowNum);
                     $(this).find('.JobID').val(data.Table1[i].JobID);
                     $(this).find('.IncomeID').val(data.Table1[i].ID);
-                    alert('GetData IncomeType ' +data.Table1[i].IncomeType);
                     $(this).find('.Select1').val(data.Table1[i].IncomeType).change();
                     $(this).find('.UnitWeight').val(data.Table1[i].UnitWeight).number(true, 2);
                     $(this).find('.Quantity').val(data.Table1[i].Qty).number(true, 2);
@@ -295,9 +265,7 @@ function GetData(val) {
                    $(this).find('.tdno').val(data.Table2[i].RowNum);
                    $(this).find('.ExpenseID').val(data.Table2[i].ID);
                    $(this).find('.JobID').val(data.Table2[i].JobID);
-                   //alert(data.Table2[i].ExpenseType);
                    $(this).find('.ExpenseSelect').val(data.Table2[i].ExpenseType).change();
-                   //alert(data.Table2[i].UnitWeight);
                    $(this).find('.unitSelect').val(data.Table2[i].UnitWeight).change();
                    $(this).find('.Quantity').val(data.Table2[i].Qty).number(true, 2);
                    $(this).find('.Price').val(data.Table2[i].UnitPrice).number(true, 2);
@@ -373,7 +341,7 @@ function GetData(val) {
            alert(msg);
        }
    });
-    localStorage['flagAddRowIncome'] = 0;
+    localStorage['flagAddRow'] = 0;
 }
 function SetIncomeMaster()
 {
@@ -384,7 +352,7 @@ function SetIncomeMaster()
         dataType: 'json',
         success: function (data) {
             data = JSON.parse(data);
-            alert('SetIncomeMaster');
+
             $.each(data.Table, function (i) {
                 $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
@@ -408,9 +376,6 @@ function SetExpenseType() {
                 $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('.ExpenseSelect').find('option:first-child').attr('selected', true);
-            //for (i = 0; i < tmp.length; i++) {
-            //    $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
-            //}
         },
         failure: function () {
             alert('Error');
@@ -434,9 +399,6 @@ function SetUnitWeight() {
                 $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('.unitSelect').find('option:first-child').attr('selected', true);
-            //for (i = 0; i < tmp.length; i++) {
-            //    $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
-            //}
         },
         failure: function () {
             alert('Error');
@@ -474,7 +436,6 @@ function Update(val) {
         dataObject.ID = $(this).find(".IncomeID").val();
         dataObject.JobID = JobID;
         dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
-        alert($(this).find('.Select1').find(":selected").val())
         dataObject.UnitWeight = $(this).find(".UnitWeight").val();
         dataObject.Qty = $(this).find(".Quantity").val();
         dataObject.UnitPrice = $(this).find(".Price").val();
@@ -669,11 +630,10 @@ function CalSumExpense() {
     }
 }
 function AddRowIncome() {
-    if (localStorage['flagAddRowIncome'] == 0) {
+    if (localStorage['flagAddRow'] == 0) {
         $.ajax({
             url: 'http://localhost:13131/api/IncomeMaster',
             type: 'GET',
-            async:false,
             dataType: 'json',
             success: function (data) {
                 alert('AddRowIncome');
@@ -693,7 +653,7 @@ function AddRowIncome() {
     }
 }
 function AddRowExpense() {
-    if (localStorage['flagAddRowIncome'] == 0) {
+    if (localStorage['flagAddRow'] == 0) {
         $.ajax({
             url: 'http://localhost:13131/api/ExpenseMaster',
             type: 'GET',
@@ -731,7 +691,6 @@ function AddRowExpense() {
             }
         });
     }
-    localStorage['flagAddRowIncome'] = 0;
 }
 function Redirect() {
     window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();
