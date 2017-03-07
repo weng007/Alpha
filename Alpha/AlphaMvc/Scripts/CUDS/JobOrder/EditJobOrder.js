@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
+
     $('.Number').number(true, 2);
 
     $("#customerBody").on("click", "tr", function (e) {
@@ -14,9 +15,39 @@
     })
 
     $(window).load(function () {
-        $("img").click(function () {
+         //Income
+        $('.cloneRowIncome').click(function () {
             $('.RowCal:last').find('td input[type=text]').eq(0).val('');
             $('.RowCal:last').find('td input[type=text]').eq(1).val('');
+            CalSum();
+        });
+        
+        //Expense
+        $('.cloneRowExpense').click(function () {
+            $('.RowCal1:last').find('td input[type=text]').eq(0).val('');
+            $('.RowCal1:last').find('td input[type=text]').eq(1).val('');
+            CalSumExpense();
+        });
+
+        //SaleOrder
+        $('.cloneRowSaleOrder').click(function () {
+            $('.RowCal2:last').find('td input[type=text]').eq(0).val('');
+            $('.RowCal2:last').find('td input[type=text]').eq(1).val('');
+            CalSumExpense();
+        });
+        
+        //Invoice
+        $('.cloneRowInvoice').click(function () {
+            $('.RowCal3:last').find('td input[type=text]').eq(0).val('');
+            $('.RowCal3:last').find('td input[type=text]').eq(1).val('');
+            CalSumExpense();
+        });
+
+        //Receipt
+        $('.cloneRowReceipt').click(function () {
+            $('.RowCal4:last').find('td input[type=text]').eq(0).val('');
+            $('.RowCal4:last').find('td input[type=text]').eq(1).val('');
+            CalSumExpense();
         });
     });
 
@@ -135,7 +166,6 @@
             $info.show();
         }
     });
-
 });
 
 $(function () {
@@ -242,89 +272,38 @@ function GetData(val) {
                     $(this).find('.tdno').val(data.Table1[i].RowNum);
                     $(this).find('.JobID').val(data.Table1[i].JobID);
                     $(this).find('.IncomeID').val(data.Table1[i].ID);
+                    alert('GetData IncomeType ' +data.Table1[i].IncomeType);
                     $(this).find('.Select1').val(data.Table1[i].IncomeType).change();
                     $(this).find('.UnitWeight').val(data.Table1[i].UnitWeight).number(true, 2);
                     $(this).find('.Quantity').val(data.Table1[i].Qty).number(true, 2);
                     $(this).find('.Price').val(data.Table1[i].UnitPrice).number(true, 2);
                     $(this).find('.Amount').val(data.Table1[i].Amount).number(true, 2);
                });
+                CalSum();
+           }
 
-               //$('.Select1').find("option").remove();
-               //var html = '<tbody>';
-               //for (var i = 0; i < data.Table1.length; i++) {
-               //    html += '<tr class="RowCal">';
-               //    html += '<td>';
-               //    html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-               //    html += '</td>';
-               //    html += '<td> <input id="No" type="text" value="' + data.Table1[i].RowNum + '" class="tdno" disabled /></td>';
-               //    html += '<td class="hidecolumn"><input id="IncomeID" type="text" value="' + data.Table1[i].ID + '" class="IncomeID" disabled /></td>';
-               //    html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table1[i].JobID + '" class="JobID" disabled /></td>';
-                   
-               //    html += '<td> <select id="cmbIncomeType" class="Select1"></select></td>';
-
-               //    html += '<td> <input type="text" id="txtUnitWeight" value="' + data.Table1[i].UnitWeight + '" class="UnitWeight text-size80 textright"></td>';
-               //    html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table1[i].Qty)+ '" placeholder="0" onchange="CalSum()" /></td>';
-
-               //    html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table1[i].UnitPrice) + '" placeholder="0" onchange="CalSum()" /></td>';
-
-               //    html += '<td> <input type="text" id="txtAmount"  class="Amount text-size165 txtdisablerow" value="' + new Intl.NumberFormat('en-IN').format(data.Table1[i].Amount) + '" disabled></td>';
-
-               //    html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-               //    html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
-               //    html += '</tr>';
-               //}
-               //html += '</tbody>';
-               //document.getElementById("tBodyRowIncome").innerHTML = html;                        
-               //SetIncomeMaster(data.Table1);
-           //}
-           //alert('Expense');
-           //if (data.Table2.length > 0) {
-           //    alert('Expense');
-           //    ////Binding Data Expense
-           //    for (var j = 0; j < data.Table2.length; j++) {
-           //        $("#add-row7").trigger("click");
-           //    }
-           //    SetExpenseType();
-           //    SetUnitWeight();
-
-           //    $(".RowCal1").each(function (i) {
-           //        $(this).find('.tdno').val(data.Table2[i].RowNum);
-           //        $(this).find('.ExpenseID').val(data.Table2[i].ID);
-           //        $(this).find('.JobID').val(data.Table2[i].JobID);
-           //        $(this).find('.ExpenseSelect').val(data.Table2[i].ExpenseType).change();
-           //        $(this).find('.unitSelect').val(data.Table2[i].UnitWeight).change();
-           //        $(this).find('.Quantity').val(data.Table2[i].Qty).number(true, 2);
-           //        $(this).find('.Price').val(data.Table2[i].UnitPrice).number(true, 2);
-           //        $(this).find('.Amount').val(data.Table2[i].Amount).number(true, 2);
-           //    });
-
-               $('.ExpenseSelect').find("option").remove();
-               $('.unitSelect').find("option").remove();
-               var html = '<tbody>';
-               for (var i = 0; i < data.Table2.length; i++) {
-                   html += '<tr class="RowCal1">';
-                   html += '<td>';
-                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-                   html += '</td>';
-                   html += '<td> <input id="No" type="text" value="' + data.Table2[i].RowNum + '" class="tdno" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="ExpenseID" type="text" value="' + data.Table2[i].ID + '" class="ExpenseID" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table2[i].JobID + '" class="JobID" disabled /></td>';
-
-                   html += '<td> <select id="cmbExpenseType" class="ExpenseSelect"></select></td>';
-
-                   html += '<td> <select  class="unitSelect"></select></td>';
-
-                   html += '<td> <input type="text" id="txtQty" class="Quantity text-size80 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].Qty) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
-                   html += '<td> <input type="text" id="txtUnitPrice" class="Price text-size130 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].UnitPrice) + '" placeholder="0" onchange="CalSumExpense()" /></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount1 text-size165 txtdisablerow" value="' + new Intl.NumberFormat('en-IN').format(data.Table2[i].Amount) + '" disabled></td>';
-                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
-                   html += '</tr>';
+           if (data.Table2.length > 0) {
+               ////Binding Data Expense
+               for (var j = 0; j < data.Table2.length; j++) {
+                   $("#add-row7").trigger("click");
                }
-               html += '</tbody>';
-               document.getElementById("tBodyRowExpense").innerHTML = html;
-               SetExpenseType(data.Table2);
-               SetUnitWeight(data.Table2);
+               $('.RowCal1:eq(' + data.Table2.length + ')').remove();
+               SetExpenseType();
+               SetUnitWeight();
+
+               $(".RowCal1").each(function (i) {
+                   $(this).find('.tdno').val(data.Table2[i].RowNum);
+                   $(this).find('.ExpenseID').val(data.Table2[i].ID);
+                   $(this).find('.JobID').val(data.Table2[i].JobID);
+                   //alert(data.Table2[i].ExpenseType);
+                   $(this).find('.ExpenseSelect').val(data.Table2[i].ExpenseType).change();
+                   //alert(data.Table2[i].UnitWeight);
+                   $(this).find('.unitSelect').val(data.Table2[i].UnitWeight).change();
+                   $(this).find('.Quantity').val(data.Table2[i].Qty).number(true, 2);
+                   $(this).find('.Price').val(data.Table2[i].UnitPrice).number(true, 2);
+                   $(this).find('.Amount1').val(data.Table2[i].Amount).number(true, 2);
+               });
+               CalSumExpense();
            }
 
            ////Binding Data Total
@@ -344,73 +323,57 @@ function GetData(val) {
 
            ////Binding Data SaleOrder
            if (data.Table3.length > 0) {
-               var html = '<tbody>';
-               for (var i = 0; i < data.Table3.length; i++) {
-                   html += '<tr class="RowCal2">';
-                   html += '<td>';
-                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-                   html += '</td>';
-                   html += '<td> <input id="No" type="text" value="' + data.Table3[i].RowNum + '" class="tdno" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="SaleOrderID" type="text" value="' + data.Table3[i].ID + '" class="SaleOrderID" /></td>';
-                   html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table3[i].JobID + '" class="JobID" disabled /></td>';
-                   html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table3[i].SaleOrderNo + '" class="SaleOrderNo text-size180 textleft"></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount2 text-size180 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table3[i].Amount) + '"></td>';
-                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
-                   html += '</tr>';
+               for (var j = 0; j < data.Table3.length; j++) {
+                   $("#add-row3").trigger("click");
                }
-               html += '</tbody>';
-               document.getElementById("tBodyRowSaleOrder").innerHTML = html;
+               $('.RowCal2:eq(' + data.Table3.length + ')').remove();
+
+               $(".RowCal2").each(function (i) {
+                   $(this).find('.tdno').val(data.Table3[i].RowNum);
+                   $(this).find('.SaleOrderID').val(data.Table3[i].ID);
+                   $(this).find('.JobID').val(data.Table3[i].JobID);
+                   $(this).find('.SaleOrderNo').val(data.Table3[i].SaleOrderNo);
+                   $(this).find('.Amount2').val(data.Table3[i].Amount).number(true, 2);
+               });
            }
 
            ////Binding Data Invoice
            if (data.Table4.length > 0) {
-               var html = '<tbody>';
-               for (var i = 0; i < data.Table4.length; i++) {
-                   html += '<tr class="RowCal3">';
-                   html += '<td>';
-                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-                   html += '</td>';
-                   html += '<td> <input id="No" type="text" value="' + data.Table4[i].RowNum + '" class="tdno" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="InvoiceID" type="text" value="' + data.Table4[i].ID + '" class="InvoiceID" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table4[i].JobID + '" class="JobID" disabled /></td>';
-                   html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table4[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
-                   html += '<td> <input type="text" id="txtSaleOrderNo" value="' + data.Table4[i].SaleOrderNo + '" class="SaleOrderNo text-size165 textleft" ></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount3 text-size165 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table4[i].Amount) + '" ></td>';
-                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
-                   html += '</tr>';
+               for (var j = 0; j < data.Table4.length; j++) {
+                   $("#add-row4").trigger("click");
                }
-               html += '</tbody>';
-               document.getElementById("tBodyRowInvoice").innerHTML = html;
+               $('.RowCal3:eq(' + data.Table4.length + ')').remove();
+               $(".RowCal3").each(function (i) {
+                   $(this).find('.tdno').val(data.Table4[i].RowNum);
+                   $(this).find('.InvoiceID').val(data.Table4[i].ID);
+                   $(this).find('.JobID').val(data.Table4[i].JobID);
+                   $(this).find('.SaleOrderNo').val(data.Table4[i].SaleOrderNo);
+                   $(this).find('.InvoiceNo').val(data.Table4[i].InvoiceNo);
+                   $(this).find('.Amount3').val(data.Table4[i].Amount).number(true, 2);
+               });
            }
 
            ////Binding Data Receipt
            if (data.Table5.length > 0) {
-               var html = '<tbody>';
-               for (var i = 0; i < data.Table5.length; i++) {
-                   html += '<tr class="RowCal4">';
-                   html += '<td>';
-                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-                   html += '</td>';
-                   html += '<td> <input id="No" type="text" value="' + data.Table5[i].RowNum + '" class="tdno" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="ReceiptID" type="text" value="' + data.Table5[i].ID + '" class="ReceiptID" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="JobID" type="text" value="' + data.Table5[i].JobID + '" class="JobID" disabled /></td>';
-                   html += '<td> <input type="text" id="txtReceiptNo" value="' + data.Table5[i].ReceiptNo + '" class="ReceiptNo text-size165 textleft"></td>';
-                   html += '<td> <input type="text" id="txtInvoiceNo" value="' + data.Table5[i].InvoiceNo + '" class="InvoiceNo text-size165 textleft" ></td>';
-                   html += '<td> <input type="text" id="txtAmount"  class="Amount4 text-size165 textright" value="' + new Intl.NumberFormat('en-IN').format(data.Table5[i].Amount) + '" ></td>';
-                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
-                   html += '</tr>';
+               for (var j = 0; j < data.Table5.length; j++) {
+                   $("#add-row5").trigger("click");
                }
-               html += '</tbody>';
-               document.getElementById("tBodyRowReceipt").innerHTML = html;
+               $('.RowCal4:eq(' + data.Table5.length + ')').remove();
+               $(".RowCal4").each(function (i) {
+                   $(this).find('.tdno').val(data.Table5[i].RowNum);
+                   $(this).find('.ReceiptID').val(data.Table5[i].ID);
+                   $(this).find('.JobID').val(data.Table5[i].JobID);
+                   $(this).find('.ReceiptNo').val(data.Table5[i].ReceiptNo);
+                   $(this).find('.InvoiceNo').val(data.Table5[i].InvoiceNo);
+                   $(this).find('.Amount4').val(data.Table5[i].Amount).number(true, 2);
+               });
            }
        },
        error: function (msg) {
            alert(msg);
        }
    });
+    localStorage['flagAddRowIncome'] = 0;
 }
 function SetIncomeMaster()
 {
@@ -421,7 +384,7 @@ function SetIncomeMaster()
         dataType: 'json',
         success: function (data) {
             data = JSON.parse(data);
-
+            alert('SetIncomeMaster');
             $.each(data.Table, function (i) {
                 $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
@@ -432,52 +395,54 @@ function SetIncomeMaster()
         }
     });
 }
-//function SetExpenseType() {
+function SetExpenseType() {
+    $.ajax({
+        url: 'http://localhost:13131/api/ExpenseMaster',
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
 
-//    $.ajax({
-//        url: 'http://localhost:13131/api/ExpenseMaster',
-//        type: 'GET',
-//        dataType: 'json',
-//        success: function (data) {
-//            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+            //for (i = 0; i < tmp.length; i++) {
+            //    $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
+            //}
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 
-//            $.each(data.Table, function (i) {
-//                $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-//            });
-//            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
-//            //for (i = 0; i < tmp.length; i++) {
-//            //    $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
-//            //}
-//        },
-//        failure: function () {
-//            alert('Error');
-//        }
-//    });
-//}
-//function SetUnitWeight() {
+function SetUnitWeight() {
 
-//    var dataObject = { typeID: '010' };
-//    $.ajax({
-//        url: 'http://localhost:13131/api/MasterService/',
-//        type: 'GET',
-//        dataType: 'json',
-//        data: dataObject,
-//        success: function (data) {
-//            data = JSON.parse(data);
+    var dataObject = { typeID: '010' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
 
-//            $.each(data.Table, function (i) {
-//                $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-//            });
-//            $('.unitSelect').find('option:first-child').attr('selected', true);
-//            //for (i = 0; i < tmp.length; i++) {
-//            //    $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
-//            //}
-//        },
-//        failure: function () {
-//            alert('Error');
-//        }
-//    });
-//}
+            $.each(data.Table, function (i) {
+                $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.unitSelect').find('option:first-child').attr('selected', true);
+            //for (i = 0; i < tmp.length; i++) {
+            //    $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
+            //}
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 function Update(val) {
     var dataObject = {
         ID: val, JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(),
@@ -509,10 +474,11 @@ function Update(val) {
         dataObject.ID = $(this).find(".IncomeID").val();
         dataObject.JobID = JobID;
         dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
+        alert($(this).find('.Select1').find(":selected").val())
         dataObject.UnitWeight = $(this).find(".UnitWeight").val();
         dataObject.Qty = $(this).find(".Quantity").val();
         dataObject.UnitPrice = $(this).find(".Price").val();
-        dataObject.Amount = $(this).find(".Amount").val();
+        dataObject.Amount = ConvertAmount($(this).find(".Amount").val());
         dataObject.EditBy = localStorage['UserID'];
 
         if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
@@ -540,7 +506,7 @@ function Update(val) {
         dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
         dataObject.Qty = $(this).find(".Quantity").val();
         dataObject.UnitPrice = $(this).find(".Price").val();
-        dataObject.Amount = $(this).find(".Amount1").val();
+        dataObject.Amount = ConvertAmount($(this).find(".Amount1").val());
         dataObject.EditBy = localStorage['UserID'];
         if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
@@ -564,7 +530,7 @@ function Update(val) {
         dataObject.ID = $(this).find(".SaleOrderID").val();
         dataObject.JobID = JobID;
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
-        dataObject.Amount = $(this).find(".Amount2").val();
+        dataObject.Amount = ConvertAmount($(this).find(".Amount2").val());
         dataObject.EditBy = localStorage['UserID'];
         if (JobID != 0 && $(this).find(".SaleOrderNo").val() != '') {
             $.ajax(
@@ -589,7 +555,7 @@ function Update(val) {
         dataObject.JobID = JobID;
         dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
-        dataObject.Amount = $(this).find(".Amount3").val();
+        dataObject.Amount = ConvertAmount($(this).find(".Amount3").val());
         dataObject.EditBy = localStorage['UserID'];
         if (JobID != 0 && $(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
@@ -614,7 +580,7 @@ function Update(val) {
         dataObject.JobID = JobID;
         dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
         dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
-        dataObject.Amount = $(this).find(".Amount4").val();
+        dataObject.Amount = ConvertAmount($(this).find(".Amount4").val());
         dataObject.EditBy = localStorage['UserID'];
         if (JobID != 0 && $(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
@@ -635,12 +601,25 @@ function Update(val) {
     alert('Update is completed');
     
     window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();
-    //window.location.href = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
+}
+function ConvertAmount(val)
+{
+    var Amount = 0;
+    Amount = val;
+    Amount = Amount.replace(/,/g, "");
+    if (Amount % 1 == 0)
+    {
+        Amount = parseInt(Amount, 10);
+    }   
+    //alert(Amount);
+    return Amount;
 }
 function CalSum() {
     var total = 0;
     var SubTotal = 0;
     var Discount = 0;
+    $('.Number').number(true, 2);
+
     $(".RowCal").each(function () {
         var qty = $(this).find(".Quantity").val();
         var price = $(this).find(".Price").val();
@@ -666,6 +645,7 @@ function CalSumExpense() {
     var SubTotal = 0;
     var Profit = 0;
     SubTotal = CalSum();
+    $('.Number').number(true, 2);
     $(".RowCal1").each(function () {
         var qty = $(this).find(".Quantity").val();
         var price = $(this).find(".Price").val();
@@ -688,19 +668,20 @@ function CalSumExpense() {
         $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
     }
 }
-
-
-
 function AddRowIncome() {
     if (localStorage['flagAddRowIncome'] == 0) {
         $.ajax({
             url: 'http://localhost:13131/api/IncomeMaster',
             type: 'GET',
+            async:false,
             dataType: 'json',
             success: function (data) {
+                alert('AddRowIncome');
+                
                 data = JSON.parse(data);
                 $('.Select1:last').find("option").remove();
                 $.each(data.Table, function (i) {
+                    alert(data.Table[i].ID);
                     $('.Select1:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
                 $('.Select1:last').find('option:first-child').attr('selected', true);
@@ -710,101 +691,55 @@ function AddRowIncome() {
             }
         });
     }
-    localStorage['flagAddRowIncome'] = 0;
-
 }
 function AddRowExpense() {
-    $.ajax({
-        url: 'http://localhost:13131/api/ExpenseMaster',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
+    if (localStorage['flagAddRowIncome'] == 0) {
+        $.ajax({
+            url: 'http://localhost:13131/api/ExpenseMaster',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
 
-            $('.ExpenseSelect:last').find("option").remove();
-            $.each(data.Table, function (i) {
-                $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.ExpenseSelect:last').find('option:first-child').attr('selected', true);
+                $('.ExpenseSelect:last').find("option").remove();
+                $.each(data.Table, function (i) {
+                    $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+                $('.ExpenseSelect:last').find('option:first-child').attr('selected', true);
 
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-    var dataObject = { typeID: '010' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $('.unitSelect:last').find("option").remove();
-            $.each(data.Table, function (i) {
-                $('.unitSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.unitSelect:last').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+        var dataObject = { typeID: '010' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService/',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $('.unitSelect:last').find("option").remove();
+                $.each(data.Table, function (i) {
+                    $('.unitSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+                $('.unitSelect:last').find('option:first-child').attr('selected', true);
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+    }
+    localStorage['flagAddRowIncome'] = 0;
 }
 function Redirect() {
     window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();
-    //window.location = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
 }
-
-
-function SetExpenseType(tmp) {
-
-    $.ajax({
-        url: 'http://localhost:13131/api/ExpenseMaster',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-
-            $.each(data.Table, function (i) {
-                $(".ExpenseSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-
-            for (i = 0; i < tmp.length; i++) {
-                $(".ExpenseSelect:eq(" + i + ")").val(tmp[i].ExpenseType).change();
-            }
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
+function convertFloat()
+{
+    $('.Number').number(true, 2);
 }
-
-function SetUnitWeight(tmp) {
-
-    var dataObject = { typeID: '010' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-
-            $.each(data.Table, function (i) {
-                $(".unitSelect").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-
-            for (i = 0; i < tmp.length; i++) {
-                $(".unitSelect:eq(" + i + ")").val(tmp[i].UnitWeight).change();
-            }
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-}
-
 function DateWorking() {
     if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {
         $("#dtEWorking").val("")
