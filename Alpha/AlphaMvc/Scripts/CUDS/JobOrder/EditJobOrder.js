@@ -446,7 +446,7 @@ function Update(val) {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderIncome',
-                type: 'PUT',
+                type: 'POST',
                 async: false,
                 data: dataObject,
                 datatype: 'json',
@@ -636,7 +636,6 @@ function AddRowIncome() {
             type: 'GET',
             dataType: 'json',
             success: function (data) {
-                alert('AddRowIncome');
                 
                 data = JSON.parse(data);
                 $('.Select1:last').find("option").remove();

@@ -84,7 +84,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_JobOrderIncome_Del", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", jobOrderIncome.ID);
+                    cmd.Parameters.AddWithValue("@ID", jobOrderIncome.JobID);
                     conObj.Open();
                     result = cmd.ExecuteScalar().ToString();
                     return result;
