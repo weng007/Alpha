@@ -580,7 +580,6 @@ function CalSum() {
     var SubTotal = 0;
     var Discount = 0;
     $('.Number').number(true, 2);
-
     $(".RowCal").each(function () {
         var qty = $(this).find(".Quantity").val();
         var price = $(this).find(".Price").val();
@@ -630,6 +629,7 @@ function CalSumExpense() {
     }
 }
 function AddRowIncome() {
+    alert('income');
     if (localStorage['flagAddRow'] == 0) {
         $.ajax({
             url: 'http://localhost:13131/api/IncomeMaster',
@@ -637,8 +637,10 @@ function AddRowIncome() {
             dataType: 'json',
             success: function (data) {          
                 data = JSON.parse(data);
-                //$('.Select1:last').find("option").remove();
+
+                $('.Select1:last').find("option").remove();
                 $.each(data.Table, function (i) {
+                    alert(data.Table[i].ID);
                     $('.Select1:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
                 $('.Select1:last').find('option:first-child').attr('selected', true);
