@@ -74,7 +74,7 @@ function GetChecked() {
     });
 }
 $(function () {
-    $('#arwRoleMaster').dynoTable9();
+    $('#arwRoleMaster').dynoTable();
 });
 function CreateData() {
     $(".RowCal").each(function () {
