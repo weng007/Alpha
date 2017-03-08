@@ -403,7 +403,7 @@ function CalSumExpense() {
         $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
     }
 }
-function AddRowIncome(row) {
+function AddRowIncome() {
     $.ajax({
         url: 'http://localhost:13131/api/IncomeMaster',
         type: 'GET',

@@ -82,7 +82,7 @@ namespace AlphaApi.DataAccessLayer
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_JobOrderIncome_Del", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_JobOrderDetail_Del", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", jobOrderIncome.JobID);
                     conObj.Open();

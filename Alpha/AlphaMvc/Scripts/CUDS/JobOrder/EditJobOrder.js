@@ -52,6 +52,22 @@
     });
 
     //cmbIncomeMaster(0);
+    $.ajax({
+
+        url: 'http://localhost:13131/api/IncomeMaster',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.Select1').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
 
     $.ajax({
 
@@ -230,7 +246,8 @@ function GetData(val) {
              $("#txtDiscount").val(data.Table[0].Discount).number(true, 2);
 
            ////Binding Data Income
-           if (data.Table1.length > 0) {
+           if (data.Table1.length > 0) {          
+               $('.RowCal').remove();
                for(var j=0;j< data.Table1.length;j++)
                {
                    $("#add-row6").trigger("click");
@@ -253,6 +270,7 @@ function GetData(val) {
            }
 
            if (data.Table2.length > 0) {
+               $('.RowCal1').remove();
                ////Binding Data Expense
                for (var j = 0; j < data.Table2.length; j++) {
                    $("#add-row7").trigger("click");
@@ -275,24 +293,27 @@ function GetData(val) {
            }
 
            //Binding Data Total
-           alert('test');
-           alert(data.Table7[0].SubTotelIncome);
-           var SubTotal = data.Table7[0].SubTotelIncome;
-           var TotalExpense = data.Table8[0].TotelExpense;
-           var Profit = SubTotal - TotalExpense;
+           if (data.Table6[0].TotalIncome >0)
+           {
+                var SubTotal = data.Table7[0].SubTotalIncome;
+                var TotalExpense = data.Table8[0].TotalExpense;
+                var Profit = SubTotal - TotalExpense;
 
-           $("#txtTotal").val(data.Table6[0].TotelIncome).number(true, 2), $("#txtSubTotal").val(data.Table7[0].SubTotelIncome).number(true, 2),
-           $("#txtNoCompound").val(data.Table7[0].SubTotelIncome).number(true, 2), $("#txtExpense").val(data.Table8[0].TotelExpense).number(true, 2),
-           $("#txtTotalExpense").val(data.Table8[0].TotelExpense).number(true, 2);
-           if (Profit < 0) {
-               $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
-           }
-           else {
-               $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
-           }
+                $("#txtTotal").val(data.Table6[0].TotalIncome).number(true, 2), $("#txtSubTotal").val(data.Table7[0].SubTotalIncome).number(true, 2),
+                $("#txtNoCompound").val(data.Table7[0].SubTotalIncome).number(true, 2), $("#txtExpense").val(data.Table8[0].TotalExpense).number(true, 2),
+                $("#txtTotalExpense").val(data.Table8[0].TotalExpense).number(true, 2);
+                if (Profit < 0) {
+                    $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+                }
+                else {
+                    $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+                }
+            }
+           
 
            ////Binding Data SaleOrder
            if (data.Table3.length > 0) {
+               $('.RowCal2').remove();
                for (var j = 0; j < data.Table3.length; j++) {
                    $("#add-row3").trigger("click");
                }
@@ -309,6 +330,7 @@ function GetData(val) {
 
            ////Binding Data Invoice
            if (data.Table4.length > 0) {
+               $('.RowCal3').remove();
                for (var j = 0; j < data.Table4.length; j++) {
                    $("#add-row4").trigger("click");
                }
@@ -325,6 +347,7 @@ function GetData(val) {
 
            ////Binding Data Receipt
            if (data.Table5.length > 0) {
+               $('.RowCal4').remove();
                for (var j = 0; j < data.Table5.length; j++) {
                    $("#add-row5").trigger("click");
                }
@@ -432,6 +455,21 @@ function Update(val) {
             alert(msg);
         }
     });
+   
+    var dataObject = { JobID: JobID};
+    $.ajax(
+            {
+                url: 'http://localhost:13131/api/JobOrderIncome',
+                type: 'DELETE',
+                async: false,
+                data: dataObject,
+                datatype: 'json',
+                success: function (data) {
+                },
+                error: function (msg) {
+                    alert(msg)
+                }
+            });
     
     var dataObject = {};
     $(".RowCal").each(function () {
@@ -447,7 +485,7 @@ function Update(val) {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderIncome',
-                type: 'PUT',
+                type: 'POST',
                 async: false,
                 data: dataObject,
                 datatype: 'json',
@@ -474,7 +512,7 @@ function Update(val) {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderExpense',
-                type: 'PUT',
+                type: 'POST',
                 async: false,
                 data: dataObject,
                 datatype: 'json',
@@ -498,7 +536,7 @@ function Update(val) {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderSaleOrder',
-                type: 'PUT',
+                type: 'POST',
                 async: false,
                 data: dataObject,
                 datatype: 'json',
@@ -523,7 +561,7 @@ function Update(val) {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderInvoice',
-                type: 'PUT',
+                type: 'POST',
                 async: false,
                 data: dataObject,
                 datatype: 'json',
@@ -548,7 +586,7 @@ function Update(val) {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderReceipt',
-                type: 'PUT',
+                type: 'POST',
                 async: false,
                 data: dataObject,
                 datatype: 'json',

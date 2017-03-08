@@ -26,14 +26,8 @@ namespace AlphaApi.Controllers
         public int Post(JobOrderSaleOrderModels jobOrderSaleOrderModel)
         {
             var response = 0;
-            if (jobOrderSaleOrderModel.ID > 0)
-            {
-                response = jobOrderSaleOrder.UpdateData(jobOrderSaleOrderModel);
-            }
-            else
-            {
+
                 response = jobOrderSaleOrder.InsertData(jobOrderSaleOrderModel);
-            }
             return response;
         }
 
