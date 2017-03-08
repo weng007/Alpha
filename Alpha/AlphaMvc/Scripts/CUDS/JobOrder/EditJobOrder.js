@@ -275,6 +275,8 @@ function GetData(val) {
            }
 
            //Binding Data Total
+           alert('test');
+           alert(data.Table7[0].SubTotelIncome);
            var SubTotal = data.Table7[0].SubTotelIncome;
            var TotalExpense = data.Table8[0].TotelExpense;
            var Profit = SubTotal - TotalExpense;
@@ -433,7 +435,6 @@ function Update(val) {
     
     var dataObject = {};
     $(".RowCal").each(function () {
-        dataObject.ID = $(this).find(".IncomeID").val();
         dataObject.JobID = JobID;
         dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
         dataObject.UnitWeight = $(this).find(".UnitWeight").val();

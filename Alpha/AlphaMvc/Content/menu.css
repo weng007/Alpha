@@ -174,8 +174,6 @@ input[type=checkbox]:checked ~ #menu{
 	/*background: rgba(209, 11, 11, 0);*/
     /*background: #e3557f;*/
     background: #6bc8bf;
-    
-    
 	text-decoration: none;
 }
     .menua a{
@@ -185,7 +183,7 @@ input[type=checkbox]:checked ~ #menu{
     padding-right: 0px !important;
     text-decoration: none !important;
 }
-    .menutext a {
+    .menutext {
         padding-left: 5px !important;
     }
     .menuli:hover a {
