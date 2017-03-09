@@ -32,7 +32,7 @@ namespace AlphaApi.Controllers
             {
 
                 byte[] img = Convert.FromBase64String(PD.ImgData);
-                //File.WriteAllBytes(@"D:\leadssoft\Picture", img);
+                File.WriteAllBytes(@"F:\Project\Alpha\AlphaApi\AlphaApi\bin\Picture\test.jpg", img);
             }
 
             var response = Productdb.InsertData(PD);

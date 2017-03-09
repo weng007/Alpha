@@ -35,17 +35,21 @@
                datatype: 'json',
                success: function (data) {
                    data = JSON.parse(data);
-                   var events = [];
+                   var event = [];
                    for (var i = 0; i < data.Table.length; i++) {
                        var EWorking = data.Table[i].EWorking.replace('T00:00:00', 'T23:59:00');
-                       events.push({
+                       event.push({
                            title: data.Table[i].TechFullName + ' (' + data.Table[i].JobNo + ')',
                            start: data.Table[i].SWorking,
                            end: EWorking
                            ////id: data.Table[i].ID
                        });
+
+                       $('#calendar').fullCalendar('removeEvents');
+                       $('#calendar').fullCalendar('addEventSource', event);
+                       $('#calendar').fullCalendar('rerenderEvents');
                    }
-                   console.log(events);
+
                    $('#calendar').fullCalendar({
                        async: false,
                        header: {
@@ -54,12 +58,13 @@
                            right: ''
                        },
 
-                       defaultDate: today,
-                       navLinks: true, // can click day/week names to navigate views
-                       editable: true,
+                       defaultView: 'month',
+                       //defaultDate: today,
+                       //navLinks: true, // can click day/week names to navigate views
+                       editable: false,
                        eventLimit: true, // allow "more" link when too many events
                        displayEventTime: false,
-                       events: events
+                       events: event
 
                    });
                },
@@ -81,7 +86,6 @@
         $('#calendar').on('click', '.fc-prev-button', function () {
             var currentMonth = $('#calendar').fullCalendar('getDate');
             currentMonth = parseInt(currentMonth.format('M'));
-            //alert(currentMonth);
             GetDetail(currentMonth);
         });
     });
@@ -166,7 +170,7 @@
     }
 
     #calendar {
-        max-width: 900px;
+        max-width: 0 auto;
         margin: 0 auto;
     }
 </style>
