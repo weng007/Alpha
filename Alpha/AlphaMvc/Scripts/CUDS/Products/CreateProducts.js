@@ -52,22 +52,23 @@ $(document).ready(function () {
     $("#dtReceiveDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
     $('#dtReceiveDate').datepicker().datepicker('setDate', 'today');
 });
-function CreateData() {
-    alert('test');
+function CreateData() {  
     var imgElem = document.getElementById('imgPreview');
     var photo = document.getElementById("photo");
-    var file = photo.files[0];
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getYear();
-    var str = y.toString();
-    var res = str.substring(1, 3);
-    var date2 = d + "_" + m + "_" + res+"_";
-    FileName = date2 + file.name;
-    var imgData = getBase64Image(imgElem);
-    var imgPath = ("../Picture/" + FileName);
-    alert(imgPath);
+    var photoname = photo.value;
+    if (photoname != '') {
+        var file = photo.files[0];
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getYear();
+        var str = y.toString();
+        var res = str.substring(1, 3);
+        var date2 = d + "_" + m + "_" + res + "_";
+        FileName = date2 + file.name;
+        var imgData = getBase64Image(imgElem);
+        var imgPath = ("../Picture/" + FileName);
+    }
     var dataObject = {
         SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
         Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
@@ -75,7 +76,6 @@ function CreateData() {
         Img: imgPath, ImgData: imgData,
         
     };
-    console.log(dataObject);
     $.ajax(
     {
         url: 'http://localhost:13131/api/Product',

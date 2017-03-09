@@ -5,6 +5,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using AlphaApi.Models;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace AlphaApi.DataAccessLayer
 {
@@ -132,6 +135,26 @@ namespace AlphaApi.DataAccessLayer
                     da.SelectCommand = cmd;
                     ds = new DataSet();
                     da.Fill(ds);
+
+                    string path;
+                    string ImgName;
+                    Image image;
+                    string base64String ="";
+                    ImgName = ds.Tables[0].Rows[0]["Img"].ToString();
+                    if (ImgName != "")
+                    {
+                        //string[] str = ImgName.Split('/');
+                        path = System.Web.HttpContext.Current.Server.MapPath(ImgName);
+                        image = Image.FromFile(path);
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            image.Save(ms, image.RawFormat);
+                            byte[] imageBytes = ms.ToArray();
+                            base64String = Convert.ToBase64String(imageBytes);
+                        }
+                    }
+                    ds.Tables[0].Columns.Add("ImgBase");
+                    ds.Tables[0].Rows[0]["ImgBase"] = base64String != "" ? base64String : "";
 
                     return ds;
                 }

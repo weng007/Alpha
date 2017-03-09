@@ -62,8 +62,9 @@
             </ul>
             <ul class="form-style-1">
                 <li>
-                    <input type="file" name="photo" id="photo" onchange="readURL(this);" disabled>
-                    <img id="imgPreview" alt="your image" class="imgpreview" />
+                    <input type="file" name="photo" id="photo" onchange="readURL(this);" style="color:transparent;">
+                    <div class="imgpreview"><img id="imgPreview" alt="your image" class="img-center" /></div>
+                    <input type="hidden" id="hidFilePath" />
                 </li>
                 <li>
                     <label>หมายเหตุ</label>

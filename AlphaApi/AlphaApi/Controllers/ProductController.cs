@@ -33,16 +33,10 @@ namespace AlphaApi.Controllers
 
                 byte[] img = Convert.FromBase64String(PD.ImgData);
                 string path;
-                string ImgName;
-                ImgName = PD.Img;
-                string[] str = ImgName.Split('/');
-                string str0;
-                str0  = str[0];
-                string str1;
-                str1 = str[1];
-                string str2;
-                str2 = str[2];
-                path = System.Web.HttpContext.Current.Server.MapPath("../Picture/")+ str[2];
+                //string ImgName;
+                //ImgName = PD.Img;
+                //string[] str = ImgName.Split('/');
+                path = System.Web.HttpContext.Current.Server.MapPath(PD.Img);
                 File.WriteAllBytes(path, img);
             }
 
