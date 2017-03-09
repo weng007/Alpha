@@ -53,6 +53,7 @@ $(document).ready(function () {
     $('#dtReceiveDate').datepicker().datepicker('setDate', 'today');
 });
 function CreateData() {
+    alert('test');
     var imgElem = document.getElementById('imgPreview');
     var photo = document.getElementById("photo");
     var file = photo.files[0];
@@ -62,10 +63,11 @@ function CreateData() {
     var y = date.getYear();
     var str = y.toString();
     var res = str.substring(1, 3);
-    var date2 = d + "_" + m + "_" + res;
+    var date2 = d + "_" + m + "_" + res+"_";
     FileName = date2 + file.name;
     var imgData = getBase64Image(imgElem);
     var imgPath = ("../Picture/" + FileName);
+    alert(imgPath);
     var dataObject = {
         SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
         Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
