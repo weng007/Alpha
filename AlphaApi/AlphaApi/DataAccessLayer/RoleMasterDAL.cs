@@ -104,5 +104,29 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
+        public string DeleteDetail()
+        {
+            SqlConnection con = null;
+            string result = "";
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_RoleMasterDetail_Del", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    conObj.Open();
+                    result = cmd.ExecuteScalar().ToString();
+                    return result;
+                }
+                catch
+                {
+                    return result = "";
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
     }
 }

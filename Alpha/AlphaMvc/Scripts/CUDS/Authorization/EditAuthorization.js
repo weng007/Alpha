@@ -109,23 +109,38 @@ function Update(val) {
     var res = String(str);
     var UserID = res.substring(4, 3);
 
+    var dataObject = { userID: String(UserID) };
+    $.ajax(
+            {
+                url: 'http://localhost:13131/api/Authorization',
+                type: 'DELETE',
+                async: false,
+                data: dataObject,
+                datatype: 'json',
+                success: function (data) {
+                },
+                error: function (msg) {
+                    alert(msg)
+                }
+            });
+
         var dataObject = {};
         $(".RowCal").each(function () {
-            dataObject.ID = $(this).find('.AuthorID').val();
-            dataObject.UserID = UserID;
+            alert($('#hidUserID').val());
+            dataObject.UserID = $('#hidUserID').val();
             dataObject.RoleID = $(this).find('.Author').find(":selected").val();
+            dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
-            if (UserID != '')
-            {
+            if ($('#hidUserID').val() != '') {
                 $.ajax(
                 {
                     url: 'http://localhost:13131/api/Authorization',
-                    type: 'PUT',
+                    type: 'POST',
                     async: false,
                     data: dataObject,
                     datatype: 'json',
                     success: function (data) {
-                        
+
                     },
                     error: function (msg) {
                         alert(msg)

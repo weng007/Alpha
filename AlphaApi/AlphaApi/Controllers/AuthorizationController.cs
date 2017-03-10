@@ -68,10 +68,19 @@ namespace AlphaApi.Controllers
 
         }
         [HttpDelete]
-        public string Delete(AuthorizationModels authorizationModel)
+        public string Delete(int id)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = Autherdb.DeleteData(authorizationModel);
+            var response = Autherdb.DeleteData(id);
+            return response;
+
+        }
+
+        [HttpDelete]
+        public string Delete(string userID)
+        {
+            //calling DBData Class Method and storing Repsonse   
+            var response = Autherdb.DeleteDetail(userID);
             return response;
 
         }

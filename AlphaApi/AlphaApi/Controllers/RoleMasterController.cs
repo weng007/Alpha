@@ -40,5 +40,14 @@ namespace AlphaApi.Controllers
             return response;
 
         }
+
+        [HttpDelete]
+        public string Delete()
+        {
+            //calling DBData Class Method and storing Repsonse   
+            var response = roleMaster.DeleteDetail();
+            return response;
+
+        }
     }
 }
