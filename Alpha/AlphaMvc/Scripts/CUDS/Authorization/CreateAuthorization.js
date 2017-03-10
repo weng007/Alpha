@@ -10,7 +10,6 @@ $(document).ready(function () {
     //alert(UserID);
     //$('#hidUserID').val(UserID);
 
-
     $("#userBody").on("click", "tr", function (e) {
         $("#txtUser").val($(this).find("td:eq(2)").text());
         $("#hidUserID").val($(this).find("td:eq(1)").text());
