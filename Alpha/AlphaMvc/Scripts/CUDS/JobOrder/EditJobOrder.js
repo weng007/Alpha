@@ -51,23 +51,23 @@
         });
     });
 
-    //cmbIncomeMaster(0);
-    $.ajax({
+        //$.ajax({
 
-        url: 'http://localhost:13131/api/IncomeMaster',
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-            $.each(data.Table, function (i) {
-                $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.Select1').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
+        //    url: 'http://localhost:13131/api/IncomeMaster',
+        //    type: 'GET',
+        //    dataType: 'json',
+        //    success: function (data) {
+        //        data = JSON.parse(data);
+
+        //        $.each(data.Table, function (i) {
+        //            $('.Select1').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+        //        });
+        //        $('.Select1').find('option:first-child').attr('selected', true);
+        //    },
+        //    failure: function () {
+        //        alert('Error');
+        //    }
+        //});
 
     $.ajax({
 
@@ -222,8 +222,7 @@ function BrowseCustomer() {
         });
 }
 
-function GetData(val) {
-    localStorage['flagAddRow'] = 1;
+function GetData(val) {  
     var dataObject = { ID: val }
     $.ajax(
    {
@@ -233,6 +232,7 @@ function GetData(val) {
        data: dataObject,
        datatype: 'json',
        success: function (data) {
+           localStorage['flagAddRow'] = 0;
            data = JSON.parse(data);
            var JobDate = new Date(data.Table[0].JobDate);
            JobDate = $.datepicker.formatDate('mm/dd/yy', JobDate);
@@ -247,6 +247,7 @@ function GetData(val) {
              $("#txtJobReference").val(data.Table[0].JobRef), $("#hidBDCID").val(data.Table[0].JobRef), $("#txtRemark").val(data.Table[0].Remark),
              $("#txtDiscount").val(data.Table[0].Discount).number(true, 2);
 
+           SetIncomeMaster();
            ////Binding Data Income
            if (data.Table1.length > 0) {          
                $('.RowCal').remove();
@@ -368,7 +369,7 @@ function GetData(val) {
            alert(msg);
        }
    });
-    localStorage['flagAddRow'] = 0;
+    localStorage['flagAddRow'] = 1;
 }
 function SetIncomeMaster()
 {
@@ -670,7 +671,7 @@ function CalSumExpense() {
     }
 }
 function AddRowIncome() {
-    if (localStorage['flagAddRow'] == 0) {
+    if (localStorage['flagAddRow'] == 1) {
         $.ajax({
             url: 'http://localhost:13131/api/IncomeMaster',
             type: 'GET',
