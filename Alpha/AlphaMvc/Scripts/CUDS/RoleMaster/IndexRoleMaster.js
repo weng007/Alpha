@@ -3,43 +3,8 @@ $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
     $('#tabRoleMaster').dynoTable9();
-
-    var dataObject = { typeID: '009' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $.each(data.Table, function (i) {
-                $('.cmbRole').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.cmbRole').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-
-    var dataObject = { typeID: '011' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $.each(data.Table, function (i) {
-                $('.cmbMenuType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.cmbMenuType').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-
+    SetRoleMaster();
+    SetMenuType();
     GetData();
 
     $('#parentHorizontalTab').easyResponsiveTabs({
@@ -54,6 +19,12 @@ $(document).ready(function () {
             $name.text($tab.text());
             $info.show();
         }
+    });
+    $(window).load(function () {
+        $('.cloneRoleMaster').click(function () {
+            $('.RowCal:last').find('td input[type=text]').eq(0).val('');
+            $('.RowCal:last').find('td input[type=text]').eq(1).val('');
+        });
     });
 });
 function GetChecked() {
@@ -76,39 +47,19 @@ function GetChecked() {
 }
 
 function CreateData() {
-    $(".RowCal").each(function () {
-        if ($(this).find(".RoleMasterID").val() > 0)
-        {
-            var dataObject = {};
-            $(".RowCal").each(function () {
-                dataObject.ID = $(this).find(".RoleMasterID").val();
-                dataObject.RoleID = $(this).find('.cmbRole').find(":selected").val();
-                dataObject.MenuTypeID = $(this).find('.cmbMenuType').find(":selected").val();
-                dataObject.IsView = $(this).find('.IsView').is(":checked") == true ? 1 : 0;
-                dataObject.IsInsert = $(this).find('.IsInsert').is(":checked") == true ? 1 : 0;
-                dataObject.IsUpdate = $(this).find(".IsUpdate").is(":checked") == true ? 1 : 0;
-                dataObject.IsDelete = $(this).find(".IsDelete").is(":checked") == true ? 1 : 0;
-                dataObject.EditBy = localStorage['UserID'];
-                if ($(this).find(".IsView").val() != '' || $(this).find(".IsInsert").val() != '' || $(this).find(".IsUpdate").val() != '') {
-                    $.ajax(
-                    {
-                        url: 'http://localhost:13131/api/RoleMaster',
-                        type: 'PUT',
-                        async: false,
-                        data: dataObject,
-                        datatype: 'json',
-                        success: function (data) {
-                        },
-                        error: function (msg) {
-                            alert(msg)
-                        }
-                    });
-                    $('.RowCal').remove();
+    $.ajax(
+            {
+                url: 'http://localhost:13131/api/RoleMaster',
+                type: 'DELETE',
+                async: false,
+                datatype: 'json',
+                success: function (result) {
+                },
+                error: function (msg) {
+                    alert(msg)
                 }
             });
-        }
-        else
-        {
+    $(".RowCal").each(function () {
             var dataObject = {};
             $(".RowCal").each(function () {
                 dataObject.RoleID = $(this).find('.cmbRole').find(":selected").val();
@@ -121,7 +72,6 @@ function CreateData() {
                 dataObject.EditBy = localStorage['UserID'];
 
                 if ($(this).find(".IsView").is(":checked") == true || $(this).find(".IsInsert").is(":checked") == true || $(this).find(".IsUpdate").is(":checked") == true) {
-                    alert('save');
                     $.ajax(
                     {
                         url: 'http://localhost:13131/api/RoleMaster',
@@ -130,7 +80,7 @@ function CreateData() {
                         data: dataObject,
                         datatype: 'json',
                         success: function (data) {
-
+                            
                         },
                         error: function (msg) {
                             alert(msg)
@@ -139,13 +89,14 @@ function CreateData() {
                     $('.RowCal').remove();
                 }
             });
-        }
     });
-    
+    alert('Update is completed');
     window.location.href = "../RoleMaster/IndexRoleMaster";
 }
 function GetData() {
     localStorage['flagAddRow'] = 1;
+    SetRoleMaster();
+    SetMenuType();
     $.ajax(
    {
        url: 'http://localhost:13131/api/RoleMaster',
