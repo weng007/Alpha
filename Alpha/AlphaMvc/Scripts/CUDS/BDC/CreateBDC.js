@@ -4,31 +4,6 @@ $(document).ready(function () {
         $("#hidQuoID").val($(this).find("td:eq(1)").text());
     })
 
-    $.ajax(
-       {
-           url: 'http://localhost:13131/api/Quotation',
-           type: 'GET',
-           datatype: 'json',
-           success: function (data) {
-               data = JSON.parse(data);
-               var html = '';
-               for (var i = 0; i < data.Table.length; i++) {
-                   html += '<tr>';
-                   html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
-                   html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
-                   html += '<td data-dismiss="modal">' + data.Table[i].QuoNo + '</td>';
-                   html += '<td data-dismiss="modal">' + data.Table[i].Detail + '</td>';
-                   html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
-                   html += '<td data-dismiss="modal">' + data.Table[i].Price + '</td>';
-                   html += '</tr>';
-               }
-               document.getElementById("quotationBody").innerHTML = html;
-           },
-           error: function (msg) {
-               alert(msg)
-           }
-       });
-
     $('#parentHorizontalTab').easyResponsiveTabs({
         type: 'default', //Types: default, vertical, accordion
         width: 'auto', //auto or any width like 600px
@@ -44,6 +19,34 @@ $(document).ready(function () {
     });
 
 });
+
+function BrowseQuotation() {
+    $.ajax(
+      {
+          url: 'http://localhost:13131/api/Quotation',
+          type: 'GET',
+          datatype: 'json',
+          success: function (data) {
+              data = JSON.parse(data);
+              var html = '';
+              for (var i = 0; i < data.Table.length; i++) {
+                  html += '<tr>';
+                  html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
+                  html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
+                  html += '<td data-dismiss="modal">' + data.Table[i].QuoNo + '</td>';
+                  html += '<td data-dismiss="modal">' + data.Table[i].Detail + '</td>';
+                  html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
+                  html += '<td data-dismiss="modal">' + data.Table[i].Price + '</td>';
+                  html += '</tr>';
+              }
+              document.getElementById("quotationBody").innerHTML = html;
+          },
+          error: function (msg) {
+              alert(msg)
+          }
+      });
+}
+
 function CreateData() {
     //var x = new Userlogin()
     //alert(x.UserID);
