@@ -32,29 +32,31 @@
         <form id="myform">
             <ul class="form-style-1">
                 <li>
-                    <label>Products <span class="required">*</span></label>
+                    <label class="label-2" style="margin-right: 25%;">Serial Number <span class="required">*</span></label>&nbsp;<label class="label-2" style="margin-right: 10%;">หมายเลขเครื่อง<span class="required">*</span></label>
+                </li>
+                <li>
                     <input type="text" id = "txtSerialNo" name="field_1" class="field-divided" placeholder="Serial" autofocus required />&nbsp;<input type="text" id = "txtMachineNo" name="field1" class="field-divided" placeholder="หมายเลขเครื่อง" required />
                 </li>
                 <li>
-                    <label>ประเภทสินค้า</label>
+                    <label>ประเภทสินค้า<span class="required">*</span></label>
                     <select id="cmbProductType" name="cmbProductType" class="field-divided" >
                     </select>
                     @*onchange="cmbProductType_Change()"*@
                 </li>
                 <li>
-                    <label class="label-2" style="margin-right: 43%;">ยี่ห้อ</label>&nbsp;<label class="label-2">ขนาด</label>
+                    <label class="label-2" style="margin-right: 42%;">ยี่ห้อ<span class="required">*</span></label>&nbsp;<label class="label-2">ขนาด<span class="required">*</span></label>
                 </li>
                 <li>
                     <input type="text" id = "txtBrand" name="field1" class="field-divided" placeholder="ยี่ห้อ" />&nbsp;<input type="text" id = "txtSize" name="field2" class="field-select-small" placeholder="ขนาด" />
                 </li>
                 <li>
-                    <label class="label-2" style="margin-right: 46%;">รุ่น</label>&nbsp;<label class="label-2">อายุใช้งาน</label>
+                    <label class="label-2" style="margin-right: 45%;">รุ่น<span class="required">*</span></label>&nbsp;<label class="label-2">อายุใช้งาน<span class="required">*</span></label>
                 </li>
                 <li>
                     <input type="text" id = "txtModel" name="field2" class="field-divided" placeholder="รุ่น" />&nbsp;<input type="text" id = "txtLifetime" name="field2" class="field-select-small" placeholder="อายุใช้งาน" />&nbsp;<label class="label-3">ปี</label>
                 </li>
                 <li>
-                    <label class="label-big">รับเข้า</label>&nbsp;<label class="label-small">หน่วยนับ</label>
+                    <label class="label-big">รับเข้า<span class="required">*</span></label>&nbsp;<label class="label-small">หน่วยนับ</label>
                 </li>
                 <li>
                     <input type="text" id = "dtReceiveDate" class="field-divided" placeholder="วันที่รับเข้า" required />&nbsp;
@@ -63,7 +65,7 @@
                     @*onchange="cmbUnitWeight_Change()"*@
                 </li>
                 <li>
-                    <label class="label-small">ยกมา</label>&nbsp;<label class="label-small-3">คงเหลือ</label>
+                    <label class="label-small">ยกมา<span class="required">*</span></label>&nbsp;<label class="label-small-3">คงเหลือ<span class="required">*</span></label>
                 </li>
                 <li>
                     <input type="number" id = "txtBalance" name="field1" class="field-select-small" placeholder="ยกมา" required />&nbsp;<input type="number" id = "txtRemain" name="field2" class="field-select-small" placeholder="คงเหลือ" required />

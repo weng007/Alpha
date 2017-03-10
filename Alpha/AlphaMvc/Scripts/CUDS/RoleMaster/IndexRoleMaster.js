@@ -74,7 +74,7 @@ function GetChecked() {
     });
 }
 $(function () {
-    $('#arwRoleMaster').dynoTable();
+    $('#arwRoleMaster').dynoTable9();
 });
 function CreateData() {
     $(".RowCal").each(function () {
@@ -156,6 +156,31 @@ function GetData() {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
+
+           ////Binding Data Income
+           //if (data.Table.length > 0) {
+           //    $('.RowCal').remove();
+           //    for (var j = 0; j < data.Table.length; j++) {
+           //        $("#add-row9").trigger("click");
+           //    }
+           //    $('.RowCal:eq(' + data.Table.length + ')').remove();
+
+           //    SetRoleMaster();
+           //    SetMenuType();
+
+           //    $(".RowCal").each(function (i) {
+           //        $(this).find('.tdno').val(data.Table[i].RowNum);
+           //        $(this).find('.RoleMasterID').val(data.Table[i].ID);
+           //        $(this).find('.cmbRole').val(data.Table[i].RoleID).change();
+           //        $(this).find('.IsView').val(data.Table[i].IsView)
+           //        $(this).find('.Quantity').val(data.Table[i].Qty).number(true, 2);
+           //        $(this).find('.Price').val(data.Table[i].UnitPrice).number(true, 2);
+           //        $(this).find('.Amount').val(data.Table[i].Amount).number(true, 2);
+           //    });
+           //    //SetRoleMaster(data.Table);
+           //    //SetMenuType(data.Table);
+           //    GetChecked();
+           //}
 
            ////Binding Data Income
            if (data.Table.length > 0) {
