@@ -2,6 +2,7 @@ $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
+
     var dataObject = { typeID: '009' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService/',
@@ -33,11 +34,19 @@ $(document).ready(function () {
             $info.show();
         }
     });
+
+    $(window).load(function () {
+        $('.cloneRowAuthor').click(function () {
+            $('.RowCal:last').find('td input[type=text]').eq(0).val('');
+            $('.RowCal:last').find('td input[type=text]').eq(1).val('');
+        });
+    });
 });
 $(function () {
     $('#arwAuthorization').dynoTable8();
 });
 function GetData(val) {
+    localStorage['flagAddRow'] = 1;
     var dataObject = { ID: val }
     $.ajax(
    {
@@ -64,28 +73,24 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
-           if (data.Table.length > 0) {
-               $('.Author').find("option").remove();
-               var html = '<tbody>';
-               for (var i = 0; i < data.Table.length; i++) {
-                   $("#hidUserID").val(data.Table[i].UserID);
-
-                   html += '<tr class="RowCal">';
-                   html += '<td>';
-                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-                   html += '</td>';
-                   html += '<td> <input id="No" type="text" value="' + data.Table[i].RowNum + '" class="tdno" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="AuthorID" type="text" value="' + data.Table[i].ID + '" class="AuthorID" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="UserID" type="text" value="' + data.Table[i].UserID + '" class="UserID" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="RoleID" type="text" value="' + data.Table[i].RoleID + '" class="RoleID" disabled /></td>'; 
-                   html += '<td> <select id="cmbAuthor" class="Author"></select></td>';
-                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
-                   html += '</tr>';
+           ////Binding Data Income
+           if (data.Table.length > 0) {          
+               $('.RowCal').remove();
+               for(var j=0;j< data.Table.length;j++)
+               {
+                   $("#add-row8").trigger("click");
                }
-               html += '</tbody>';
-               document.getElementById("tBodyRowAuthorization").innerHTML = html;                        
-               SetAuthorization(data.Table);
+               $('.RowCal:eq('+ data.Table.length +')').remove();
+               
+               SetAuthorization();
+                
+               $(".RowCal").each(function (i) {
+                   $(this).find('.tdno').val(data.Table[i].RowNum);
+                   $(this).find('.AuthorID').val(data.Table[i].ID);
+                   $(this).find('.UserID').val(data.Table[i].UserID);
+                   $(this).find('.RoleID').val(data.Table[i].RoleID);
+                   $(this).find('.Author').val(data.Table[i].RoleID).change();
+               });                 
            }
        },
        error: function (msg) {
@@ -93,6 +98,7 @@ function GetData(val) {
        }
            
    });
+    localStorage['flagAddRow'] = 0;
 }
 
 function Update(val) {
@@ -129,35 +135,36 @@ function Update(val) {
         });
         alert('Update is completed');
         window.location.href = "../Authorization/EditAuthorization?id=" + UserID;
-        ;
 }
 function AddRowAuthor() {
-    var dataObject = { typeID: '009' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $('.Author:last').find("option").remove();
-            $.each(data.Table, function (i) {
-                $('.Author:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.Author:last').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
+    if (localStorage['flagAddRow'] == 0) {
+        var dataObject = { typeID: '009' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService/',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $('.Author:last').find("option").remove();
+                $.each(data.Table, function (i) {
+                    $('.Author:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+                $('.Author:last').find('option:first-child').attr('selected', true);
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+    }
 }
 
-function SetAuthorization(tmp) {
-
+function SetAuthorization() {
     var dataObject = { typeID: '009' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
+        async: false,
         dataType: 'json',
         data: dataObject,
         success: function (data) {
@@ -166,9 +173,10 @@ function SetAuthorization(tmp) {
             $.each(data.Table, function (i) {
                 $(".Author").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            for (i = 0; i < tmp.length; i++) {
-                $(".Author:eq(" + i + ")").val(tmp[i].RoleID).change();
-            }
+            $('.Author').find('option:first-child').attr('selected', true);
+            //for (i = 0; i < tmp.length; i++) {
+            //    $(".Author:eq(" + i + ")").val(tmp[i].RoleID).change();
+            //}
         },
         failure: function () {
             alert('Error');

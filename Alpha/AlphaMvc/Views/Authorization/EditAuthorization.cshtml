@@ -9,7 +9,10 @@
 
     <li>
         <label>User</label>
-        <input type="text" id="txtUser" class="field-divided" placeholder="User" disabled />
+        <input type="text" id="txtUser" class="field-divided" placeholder="User" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#userDialog">
+            <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
+        </a>
+        <input type="hidden" id="hidUserID" />
         
     </li>
 </ul>
@@ -60,7 +63,7 @@
                                                 <select id="cmbAuthor" class="Author"></select>
                                             </td>
                                             <td>
-                                                <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                                <div class="clone-1"><img class="cloneRowAuthor row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                             </td>
                                             <td>
                                                 <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -86,7 +89,7 @@
                                                 <select id="cmbAuthor" class="Author"></select>
                                             </td>
                                             <td>
-                                                <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                                <div class="clone-1"><img class="cloneRowAuthor row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                             </td>
                                             <td>
                                                 <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
