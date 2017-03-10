@@ -2,6 +2,7 @@
 $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
+    $('#tabRoleMaster').dynoTable9();
 
     var dataObject = { typeID: '009' };
     $.ajax({
@@ -73,9 +74,7 @@ function GetChecked() {
         }
     });
 }
-$(function () {
-    $('#arwRoleMaster').dynoTable9();
-});
+
 function CreateData() {
     $(".RowCal").each(function () {
         if ($(this).find(".RoleMasterID").val() > 0)
@@ -143,8 +142,6 @@ function CreateData() {
         }
     });
     
-    alert('Create is completed');
-    //GetData()
     window.location.href = "../RoleMaster/IndexRoleMaster";
 }
 function GetData() {
@@ -158,12 +155,10 @@ function GetData() {
        success: function (data) {
            data = JSON.parse(data);
 
-           ////Binding Data Income
            if (data.Table.length > 0) {
                $('.RowCal').remove();
-               alert(data.Table.length);
+
                for (var j = 0; j < data.Table.length; j++) {
-                   alert(j)
                    $("#add-row9").trigger("click");
                }
                $('.RowCal:eq(' + data.Table.length + ')').remove();
@@ -211,10 +206,6 @@ function SetRoleMaster() {
                 $(".cmbRole").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('.cmbRole').find('option:first-child').attr('selected', true);
-
-            //for (i = 0; i < tmp.length; i++) {
-            //    $(".cmbRole:eq(" + i + ")").val(tmp[i].RoleID).change();
-            //}
         },
         failure: function () {
             alert('Error');
