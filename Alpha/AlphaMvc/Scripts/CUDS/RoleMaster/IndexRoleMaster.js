@@ -148,6 +148,7 @@ function CreateData() {
     window.location.href = "../RoleMaster/IndexRoleMaster";
 }
 function GetData() {
+    localStorage['flagAddRow'] = 1;
     $.ajax(
    {
        url: 'http://localhost:13131/api/RoleMaster',
@@ -158,111 +159,84 @@ function GetData() {
            data = JSON.parse(data);
 
            ////Binding Data Income
-           //if (data.Table.length > 0) {
-           //    $('.RowCal').remove();
-           //    for (var j = 0; j < data.Table.length; j++) {
-           //        $("#add-row9").trigger("click");
-           //    }
-           //    $('.RowCal:eq(' + data.Table.length + ')').remove();
-
-           //    SetRoleMaster();
-           //    SetMenuType();
-
-           //    $(".RowCal").each(function (i) {
-           //        $(this).find('.tdno').val(data.Table[i].RowNum);
-           //        $(this).find('.RoleMasterID').val(data.Table[i].ID);
-           //        $(this).find('.cmbRole').val(data.Table[i].RoleID).change();
-           //        $(this).find('.IsView').val(data.Table[i].IsView)
-           //        $(this).find('.Quantity').val(data.Table[i].Qty).number(true, 2);
-           //        $(this).find('.Price').val(data.Table[i].UnitPrice).number(true, 2);
-           //        $(this).find('.Amount').val(data.Table[i].Amount).number(true, 2);
-           //    });
-           //    //SetRoleMaster(data.Table);
-           //    //SetMenuType(data.Table);
-           //    GetChecked();
-           //}
-
-           ////Binding Data Income
            if (data.Table.length > 0) {
-               $('.cmbMenuType').find("option").remove();
-               $('.cmbRole').find("option").remove();
-               var html = '<tbody>';
-               for (var i = 0; i < data.Table.length; i++) {
-                   var IsView = data.Table[i].IsView == '1' ? 'Checked' : '';
-                   var IsInsert = data.Table[i].IsInsert == '1' ? 'Checked' : '';
-                   var IsUpdate = data.Table[i].IsUpdate == '1' ? 'Checked' : '';
-                   var IsDelete = data.Table[i].IsDelete == '1' ? 'Checked' : '';
-                   html += '<tr class="RowCal">';
-                   html += '<td>';
-                   html += '<img class="drag-handle" src="/Images/drag.png" alt="click and drag to rearrange" />';
-                   html += '</td>';
-                   html += '<td> <input id="No" type="text" value="' + data.Table[i].RowNum + '" class="tdno" disabled /></td>';
-                   html += '<td class="hidecolumn"><input id="RoleMasterID" type="text" class="RoleMasterID" value="' + data.Table[i].ID + '" class="JobID" disabled /></td>';
-                   html += '<td> <select id="cmbRole" class="cmbRole"></select></td>';
-                   html += '<td> <input type="Checkbox" id="chkIsView"  class="IsView" ' + IsView + ' /></td>';
-                   html += '<td> <input type="Checkbox" id="chkIsInsert"  class="IsInsert" ' + IsInsert + ' /></td>';
-                   html += '<td> <input type="Checkbox" id="chkIsUpdate"  class="IsUpdate" ' + IsUpdate + '></td>';
-                   html += '<td> <input type="Checkbox" id="chkIsDelete"  class="IsDelete" ' + IsDelete + '></td>';
-                   html += '<td> <select id="cmbMenuType" class="cmbMenuType"></select></td>';
-                   html += '<td> <div class="clone-1"><img class="row-cloner" src="/images/clone.png" alt="Clone Row" /></div></td>';
-                   html += '<td> <img class="row-remover" src="/images/remove.png" alt="Remove Row" /></td>';
-                   html += '</tr>';
+               $('.RowCal').remove();
+               alert(data.Table.length);
+               for (var j = 0; j < data.Table.length; j++) {
+                   alert(j)
+                   $("#add-row9").trigger("click");
                }
-               html += '</tbody>';
-               document.getElementById("tBodyRowRole").innerHTML = html;
-               SetRoleMaster(data.Table);
-               SetMenuType(data.Table);
+               $('.RowCal:eq(' + data.Table.length + ')').remove();
+
+               SetRoleMaster();
+               SetMenuType();
+
+               $(".RowCal").each(function (i) {
+                   var IsView = data.Table[i].IsView == '1' ? true : false;
+                   var IsInsert = data.Table[i].IsInsert == '1' ? true : false;
+                   var IsUpdate = data.Table[i].IsUpdate == '1' ? true : false;
+                   var IsDelete = data.Table[i].IsDelete == '1' ? true : false;
+
+                   $(this).find('.tdno').val(data.Table[i].RowNum);
+                   $(this).find('.RoleMasterID').val(data.Table[i].ID);
+                   $(this).find('.cmbRole').val(data.Table[i].RoleID).change();
+                   $(this).find('.IsView').prop('checked', IsView);
+                   $(this).find('.IsInsert').prop('checked', IsInsert);
+                   $(this).find('.IsUpdate').prop('checked', IsUpdate);
+                   $(this).find('.IsDelete').prop('checked', IsDelete);
+                   $(this).find('.cmbMenuType').val(data.Table[i].MenuTypeID).change();
+               });
                GetChecked();
            }
-
        },
        error: function (msg) {
            alert(msg);
        }
    });
+    localStorage['flagAddRow'] = 0;
 }
-function SetRoleMaster(tmp) {
+function SetRoleMaster() {
 
     var dataObject = { typeID: '009' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService',
         type: 'GET',
+        async: false,
         dataType: 'json',
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
-            //$('.cmbRole').find("option").remove();
+
             $.each(data.Table, function (i) {
                 $(".cmbRole").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
+            $('.cmbRole').find('option:first-child').attr('selected', true);
 
-            for (i = 0; i < tmp.length; i++) {
-                $(".cmbRole:eq(" + i + ")").val(tmp[i].RoleID).change();
-            }
+            //for (i = 0; i < tmp.length; i++) {
+            //    $(".cmbRole:eq(" + i + ")").val(tmp[i].RoleID).change();
+            //}
         },
         failure: function () {
             alert('Error');
         }
     });
 }
-function SetMenuType(tmp) {
+function SetMenuType() {
 
     var dataObject = { typeID: '011' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService',
         type: 'GET',
+        async: false,
         dataType: 'json',
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
-            //$('.cmbMenuType').find("option").remove();
+
             $.each(data.Table, function (i) {
                 $(".cmbMenuType").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-
-            for (i = 0; i < tmp.length; i++) {
-                $(".cmbMenuType:eq(" + i + ")").val(tmp[i].MenuTypeID).change();
-            }
+            $('.cmbMenuType').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
@@ -270,43 +244,45 @@ function SetMenuType(tmp) {
     });
 }
 function AddRowRoleMaster() {
-    var dataObject = { typeID: '009' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
+    if (localStorage['flagAddRow'] == 0) {
+        var dataObject = { typeID: '009' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
 
-            $('.cmbRole:last').find("option").remove();
-            $.each(data.Table, function (i) {
-                $('.cmbRole:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.cmbRole:last').find('option:first-child').attr('selected', true);
+                $('.cmbRole:last').find("option").remove();
+                $.each(data.Table, function (i) {
+                    $('.cmbRole:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+                $('.cmbRole:last').find('option:first-child').attr('selected', true);
 
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-    var dataObject = { typeID: '011' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+        var dataObject = { typeID: '011' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService/',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
 
-            $('.cmbMenuType:last').find("option").remove();
-            $.each(data.Table, function (i) {
-                $('.cmbMenuType:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.cmbMenuType:last').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
+                $('.cmbMenuType:last').find("option").remove();
+                $.each(data.Table, function (i) {
+                    $('.cmbMenuType:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+                $('.cmbMenuType:last').find('option:first-child').attr('selected', true);
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+    }
 }
