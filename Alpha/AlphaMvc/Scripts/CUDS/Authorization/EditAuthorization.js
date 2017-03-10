@@ -108,25 +108,27 @@ function Update(val) {
     var str = after.split('-');
     var res = String(str);
     var UserID = res.substring(4, 3);
+    var id = 1;
 
-    var dataObject = { userID: String(UserID) };
+    
+    var dataObject = { userID: UserID };
+    console.log(dataObject);
     $.ajax(
             {
                 url: 'http://localhost:13131/api/Authorization',
-                type: 'DELETE',
+                type: 'PUT',
                 async: false,
                 data: dataObject,
                 datatype: 'json',
-                success: function (data) {
+                success: function (result) {
                 },
-                error: function (msg) {
+                error: function (msg) {               
                     alert(msg)
                 }
             });
 
         var dataObject = {};
-        $(".RowCal").each(function () {
-            alert($('#hidUserID').val());
+        $(".RowCal").each(function () {           
             dataObject.UserID = $('#hidUserID').val();
             dataObject.RoleID = $(this).find('.Author').find(":selected").val();
             dataObject.CreateBy = localStorage['UserID'];

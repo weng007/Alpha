@@ -64,10 +64,8 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-        public string DeleteDetail(string userID)
+        public int DeleteDetail(AuthorizationModels authorizationModel)
         {
-            SqlConnection con = null;
-            string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -75,13 +73,13 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_AuthorizationDetail_Del", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     conObj.Open();
-                    cmd.Parameters.AddWithValue("@UserID", Convert.ToInt32(userID));
-                    result = cmd.ExecuteScalar().ToString();
+                    cmd.Parameters.AddWithValue("@UserID", authorizationModel.UserID);
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
                 finally
                 {
@@ -89,7 +87,7 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-        public string DeleteData(int id)
+        public string DeleteData(AuthorizationModels authorizationModel)
         {
             SqlConnection con = null;
             string result = "";
@@ -99,7 +97,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_Authorization_Del", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.Parameters.AddWithValue("@ID", authorizationModel.ID);
                     conObj.Open();
                     result = cmd.ExecuteScalar().ToString();
                     return result;

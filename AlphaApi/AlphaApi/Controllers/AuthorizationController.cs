@@ -50,37 +50,22 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [EnableCorsAttribute("*", "*", "*")]
+        [HttpDelete]
+        public string Delete(AuthorizationModels authorizationModel)
+        {
+            //calling DBData Class Method and storing Repsonse   
+            var response = Autherdb.DeleteData(authorizationModel);
+            return response;
+
+        }
+
+        [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(AuthorizationModels authorizationModel)
         {
-            var response = 0;
-
-            if (authorizationModel.ID > 0)
-            {
-                response = Autherdb.UpdateData(authorizationModel);
-            }
-            else
-            {
-                response = Autherdb.InsertData(authorizationModel);
-            }
-
-            return response;
-
-        }
-        [HttpDelete]
-        public string Delete(int id)
-        {
             //calling DBData Class Method and storing Repsonse   
-            var response = Autherdb.DeleteData(id);
-            return response;
-
-        }
-
-        [HttpDelete]
-        public string Delete(string userID)
-        {
-            //calling DBData Class Method and storing Repsonse   
-            var response = Autherdb.DeleteDetail(userID);
+            var response = Autherdb.DeleteDetail(authorizationModel);
             return response;
 
         }
