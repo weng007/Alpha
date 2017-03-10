@@ -134,36 +134,6 @@ $(document).ready(function () {
         }
     });
 
-    $.ajax(
-        {
-            url: 'http://localhost:13131/api/Customer',
-            type: 'GET',
-            datatype: 'json',
-            success: function (data) {
-                data = JSON.parse(data);
-                var html = '';
-                for (var i = 0; i < data.Table.length; i++) {
-                    //alert(data.Table[i].CustNo);
-                    html += '<tr>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
-                    html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].CustNo + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
-                    html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
-                    html += '<td class="hidecolumn">' + data.Table[i].Fax + '</td>';
-                    html += '<td class="hidecolumn">' + data.Table[i].Address + '</td>';
-                    html += '</tr>';
-                }
-                document.getElementById("customerBody").innerHTML = html;
-
-            },
-            error: function (msg) {
-                alert(msg)
-            }
-        });
-
     $('#parentHorizontalTab').easyResponsiveTabs({
         type: 'default', //Types: default, vertical, accordion
         width: 'auto', //auto or any width like 600px
@@ -195,6 +165,39 @@ $(function () {
     var dates = new Date();
     $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 });
+
+function BrowseCustomer() {
+    $.ajax(
+           {
+               url: 'http://localhost:13131/api/Customer',
+               type: 'GET',
+               datatype: 'json',
+               success: function (data) {
+                   data = JSON.parse(data);
+                   var html = '';
+                   for (var i = 0; i < data.Table.length; i++) {
+                       //alert(data.Table[i].CustNo);
+                       html += '<tr>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
+                       html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].CustNo + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
+                       html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
+                       html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
+                       html += '<td class="hidecolumn">' + data.Table[i].Fax + '</td>';
+                       html += '<td class="hidecolumn">' + data.Table[i].Address + '</td>';
+                       html += '</tr>';
+                   }
+                   document.getElementById("customerBody").innerHTML = html;
+
+               },
+               error: function (msg) {
+                   alert(msg)
+               }
+           });
+}
+
 function CreateData() {
       var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
     console.log(dataObject);
