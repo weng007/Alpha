@@ -51,8 +51,6 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@ID", BDC.ID);
                     cmd.Parameters.AddWithValue("@Docver", BDC.Docver);
                     cmd.Parameters.AddWithValue("@QuotationNo", BDC.QuotationNo);
-                    cmd.Parameters.AddWithValue("@Price", BDC.Price);
-                    cmd.Parameters.AddWithValue("@Cost", BDC.Cost);
                     cmd.Parameters.AddWithValue("@Remark", BDC.Remark != null ? BDC.Remark : "");
                     cmd.Parameters.AddWithValue("@EditBy", BDC.EditBy);
                     conObj.Open();

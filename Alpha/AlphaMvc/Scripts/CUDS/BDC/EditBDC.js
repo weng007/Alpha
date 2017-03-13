@@ -4,7 +4,6 @@ $(document).ready(function () {
         $("#hidQuoID").val($(this).find("td:eq(1)").text());
     })
 });
-
 function BrowseQuotation() {
     $.ajax(
       {
@@ -38,9 +37,19 @@ function GetDocversion() {
     var Docver = x + 1;
     $("#txtDocver").val(Docver);
 }
+function ControlEnable(Isview) {
+    //var Isview = val;
+    if (Isview) {
+        document.getElementById("txtDocver").disabled = true;
+        document.getElementById("txtQuoNo").disabled = true;
+        document.getElementById("txtRemark").disabled = true;
+        document.getElementById("btnSave").disabled = true;
+        document.getElementById("imgQuotation").disabled = true;
+    }
+}
 function GetData(val) {
     var dataObject = { ID: val }
-    //alert(val);
+    alert('test val '+val);
     $.ajax(
        {
            url: 'http://localhost:13131/api/BDC',

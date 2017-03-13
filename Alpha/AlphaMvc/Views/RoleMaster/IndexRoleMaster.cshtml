@@ -7,97 +7,119 @@
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 @* ------------------------------- Header -------------------------------*@
 @*//===================================================================CSS w3school*@
+<table class="tabbar">
+    <tr>
+        <td>
+            <div id="container">
 
-    <table id="tabRoleMaster" class="example">
-        <thead class="theader">
-            <tr>
-                <th></th>
-                <th>Item</th>
-                <th class="hidecolumn">ID</th>
-                <th>RoleName</th>
-                <th>View</th>
-                <th>Insert</th>
-                <th class="wraptext">Update</th>
-                <th>Delete</th>
-                <th>MenuType</th>
-                <th colspan="2"></th>
-            </tr>
-        </thead>
-        <tbody id="tBodyRowRole">
-            <tr class="RowCal">
-                <td>
-                    <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                </td>
-                <td>
-                    <input id="No" type="text" value="" class="tdno" disabled />
-                </td>
-                <td class="hidecolumn">
-                    <input id="RoleMasterID" type="text" value="" class="RoleMasterID" disabled />
-                </td>
-                <td>
-                    <select id="cmbRole" class="cmbRole"></select>
-                </td>
-                <td>
-                    <input id="chkIsView" type="checkbox" class="IsView">
-                </td>
-                <td>
-                    <input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()">
-                </td>
-                <td>
-                    <input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()">
-                </td>
-                <td>
-                    <input id="chkIsDelete" type="checkbox" class="IsDelete">
-                </td>
-                <td>
-                    <select id="cmbMenuType" class="cmbMenuType"></select>
-                </td>
+                <div id="parentHorizontalTab">
+                    <ul class="resp-tabs-list hor_1">
+                        <li>RoleMaster</li>
+                    </ul>
+                    <div class="resp-tabs-container hor_1">
+                        <div>
+                            <div class="myDIV">
+                                <table id="tabRoleMaster" class="example">
+                                    <thead class="theader">
+                                        <tr>
+                                            <th></th>
+                                            <th>Item</th>
+                                            <th class="hidecolumn">ID</th>
+                                            <th>RoleName</th>
+                                            <th>View</th>
+                                            <th>Insert</th>
+                                            <th class="wraptext">Update</th>
+                                            <th>Delete</th>
+                                            <th>MenuType</th>
+                                            <th colspan="2"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tBodyRowRole">
+                                        <tr class="RowCal">
+                                            <td>
+                                                <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                            </td>
+                                            <td>
+                                                <input id="No" type="text" value="" class="tdno" disabled />
+                                            </td>
+                                            <td class="hidecolumn">
+                                                <input id="RoleMasterID" type="text" value="" class="RoleMasterID" disabled />
+                                            </td>
+                                            <td>
+                                                <select id="cmbRole" class="cmbRole"></select>
+                                            </td>
+                                            <td>
+                                                <input id="chkIsView" type="checkbox" class="IsView">
+                                            </td>
+                                            <td>
+                                                <input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()">
+                                            </td>
+                                            <td>
+                                                <input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()">
+                                            </td>
+                                            <td>
+                                                <input id="chkIsDelete" type="checkbox" class="IsDelete">
+                                            </td>
+                                            <td>
+                                                <select id="cmbMenuType" class="cmbMenuType"></select>
+                                            </td>
 
-                <td>
-                    <div class="clone-1"><img class="cloneRoleMaster row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
-                </td>
-                <td>
-                    <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                </td>
-            </tr>
-            <tr class="RowCal" id="add-template9">
-                <td>
-                    <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                </td>
-                <td>
-                    <input id="No" type="text" value="" class="tdno" disabled />
-                </td>
-                <td class="hidecolumn">
-                    <input id="RoleMasterID" type="text" value="" class="RoleMasterID" disabled />
-                </td>
-                <td>
-                    <select id="cmbRole" class="cmbRole"></select>
-                </td>
-                <td>
-                    <input id="chkIsView" type="checkbox" class="IsView">
-                </td>
-                <td>
-                    <input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()">
-                </td>
-                <td>
-                    <input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()">
-                </td>
-                <td>
-                    <input id="chkIsDelete" type="checkbox" class="IsDelete">
-                </td>
-                <td>
-                    <select id="cmbMenuType" class="cmbMenuType"></select>
-                </td>
-                <td>
-                    <div class="clone-1"><img class="cloneRoleMaster row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
-                </td>
-                <td>
-                    <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                </td>
-            </tr>
-        </tbody>
-    </table>
-        <a id="add-row9" href="#" onclick="AddRowRoleMaster()">+ Add Row</a>
+                                            <td>
+                                                <div class="clone-1"><img class="cloneRoleMaster row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                            </td>
+                                            <td style="padding-right: 5px;">
+                                                <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                            </td>
+                                        </tr>
+                                        <tr class="RowCal" id="add-template9">
+                                            <td>
+                                                <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                            </td>
+                                            <td>
+                                                <input id="No" type="text" value="" class="tdno" disabled />
+                                            </td>
+                                            <td class="hidecolumn">
+                                                <input id="RoleMasterID" type="text" value="" class="RoleMasterID" disabled />
+                                            </td>
+                                            <td>
+                                                <select id="cmbRole" class="cmbRole"></select>
+                                            </td>
+                                            <td>
+                                                <input id="chkIsView" type="checkbox" class="IsView">
+                                            </td>
+                                            <td>
+                                                <input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()">
+                                            </td>
+                                            <td>
+                                                <input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()">
+                                            </td>
+                                            <td>
+                                                <input id="chkIsDelete" type="checkbox" class="IsDelete">
+                                            </td>
+                                            <td>
+                                                <select id="cmbMenuType" class="cmbMenuType"></select>
+                                            </td>
+                                            <td>
+                                                <div class="clone-1"><img class="cloneRoleMaster row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                            </td>
+                                            <td style="padding-right: 5px;">
+                                                <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <a id="add-row9" href="#" onclick="AddRowRoleMaster()">+ Add Row</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<ul class="form-style-1">
+    <li>
         <button type="button" class="btn btn-primary pull-right" onclick="ConfirmDialog('Create', 'RoleMaster', 0)">Save</button>
-        
+    </li>
+</ul>
 

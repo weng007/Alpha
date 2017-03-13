@@ -49,7 +49,7 @@ $(document).ready(function () {
                 html += '<td>';
                 html += '<a href="/IncomeMaster/EditIncomeMaster?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'IncomeMaster'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png"/></a>';
-                html += '<a href="/IncomeMaster/EditIncomeMaster?id=' + data.Table[i].ID + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png"/></a>';
+                html += '<a href="/IncomeMaster/EditIncomeMaster?id=' + data.Table[i].ID + '&IsView='+true+'" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }

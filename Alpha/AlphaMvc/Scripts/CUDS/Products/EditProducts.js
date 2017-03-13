@@ -44,6 +44,28 @@ $(document).ready(function () {
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
     $("#dtReceiveDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
 });
+function ControlEnable(Isview) {
+    //var Isview = val;
+    if (Isview) {
+        document.getElementById("txtSerialNo").disabled = true;
+        document.getElementById("txtMachineNo").disabled = true;
+        document.getElementById("cmbProductType").disabled = true;
+        document.getElementById("txtBrand").disabled = true;
+        document.getElementById("txtSize").disabled = true;
+        document.getElementById("txtModel").disabled = true;
+        document.getElementById("txtLifetime").disabled = true;
+        document.getElementById("dtReceiveDate").disabled = true;
+        document.getElementById("cmbUnitWeight").disabled = true;
+        document.getElementById("txtBalance").disabled = true;
+        document.getElementById("txtRemain").disabled = true;
+        document.getElementById("txtLost").disabled = true;
+        document.getElementById("txtRepair").disabled = true;
+        document.getElementById("txtBreak").disabled = true;
+        document.getElementById("txtRemark").disabled = true;
+        document.getElementById("btnSave").disabled = true;
+        document.getElementById("photo").disabled = true;
+    }
+}
 function GetData(val) {
     var dataObject = { ID: val}
         //{ ID : @Request.Params["id"]};

@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+  
+});
+function GetJobOrder(val)
+{
     //------------------------- Sorting ------------------------
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)
@@ -40,11 +44,12 @@ $(document).ready(function () {
         $(this).unbind('focus');
     }).css({ "color": "#C0C0C0" });
     //-------------------------filter------------------------
-    var input = window.location.href;
-    var after = input.split('?')[1]
-    var BDCID = after.split('=');
-    var ID = BDCID[1];
-    var dataObject = { ID: ID }
+    //var input = window.location.href;
+    //var after = input.split('?')[1]
+    //var BDCID = after.split('=');
+    //var ID = BDCID[1];
+    //alert('JobBDC '+ID);
+    var dataObject = { ID: val }
     $.ajax(
     {
         url: 'http://localhost:13131/api/BDCJob',
@@ -69,6 +74,7 @@ $(document).ready(function () {
                 html += '<td>';
                 html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " RowDelete(' + data.Table[i].ID + ') " >' + '<img src="/Images/delete.png" /></a>';
+                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
@@ -79,7 +85,7 @@ $(document).ready(function () {
             alert(result)
         }
     });
-});
+}
 function RowDelete(id) {
     var input = window.location.href;
     var after = input.split('?')[1]

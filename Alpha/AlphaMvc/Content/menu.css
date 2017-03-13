@@ -1,4 +1,8 @@
 ﻿/*Strip the ul of padding and list styling*/
+.iconIncome {
+    background-image: url('../Images/iconIncomeMaster.png');
+    background-repeat:no-repeat;
+}
 .menuholder
 {
     position:center !important;
@@ -49,6 +53,7 @@
     /*background: #d10b0b;*/
     /*min-width:140px;*/
     min-width: 120px;
+    width: 130px;
 	height: 40px;
 	text-align: center;
 	line-height: 40px;
@@ -62,6 +67,7 @@
 .menuli:hover a {
 	/*background: #19c589;*/
     background: #c20a0a;
+    /*width:120px;*/
 }
 
 /*Style for dropdown links*/
@@ -70,6 +76,8 @@
 	color: #2f3036;
 	height: 35px;
 	line-height: 35px;
+    width:120px;
+    
 }
 
 /*Hover state for dropdown links*/
@@ -83,6 +91,9 @@
 /*Hide dropdown links until they are needed*/
 .menuli ul {
 	display: none;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c0c0c0;
 }
 
 /*Make dropdown links vertical*/
@@ -96,7 +107,12 @@
     display: inline-block;
 	/*width: auto;*/
 	min-width: 120px;
-	padding: 0 7px;
+	/*padding: 0 7px;*/
+    text-align:left;
+    padding-top: 0px;
+    padding-right: 7px;
+    padding-left: 7px !important;
+    padding-bottom: 0px;
 }
 
 /*Display the dropdown on hover*/
@@ -152,7 +168,7 @@ input[type=checkbox]:checked ~ #menu{
 	/*Make all menu links full width*/
 	.menuul .menuli, .menuli a {
 		/*width: 100%;*/
-        width: 99.4%;
+        width: 99.7%;
         /*height: 45px;*/
 	}
 	/*Display 'show menu' link*/
@@ -165,7 +181,7 @@ input[type=checkbox]:checked ~ #menu{
     .menuli a {
 	display:block;
     /*min-width: 100px;*/
-    width:99%;
+    width:97.5%;
 	height: 40px;
 	text-align: left;
 	line-height: 40px;
@@ -179,12 +195,12 @@ input[type=checkbox]:checked ~ #menu{
     .menua a{
     color: #ffffff !important;
     outline: none;
-    padding-left: 0px !important;
+    padding-left: 10px !important;
     padding-right: 0px !important;
     text-decoration: none !important;
 }
     .menutext {
-        padding-left: 5px !important;
+        padding-left: 0px !important;
     }
     .menuli:hover a {
     /*background: #c20a0a;*/
@@ -197,7 +213,8 @@ input[type=checkbox]:checked ~ #menu{
 	color: #2f3036 !important;
 	height: 35px;
 	line-height: 35px;
-    width:100%
+    /*width:100%;*/
+    width:99%
 }
 
 /*Hover state for dropdown links*/

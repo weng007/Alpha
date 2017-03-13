@@ -13,7 +13,7 @@
             <ul class="form-style">
                 <li>
                     <label>Detail<span class="required">*</span></label>
-                    <input type="text" id="txtDetail" class="field-divided text-floatleft" placeholder="Detail" />&nbsp;<button type="button" class="btn btn-primary" onclick="Isvalidate('Update', 'ExpenseMaster', @Request.Params["id"])">Save</button>
+                    <input type="text" id="txtDetail" class="field-divided text-floatleft" placeholder="Detail" />&nbsp;<button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'ExpenseMaster', @Request.Params["id"])">Save</button>
                     
                 </li>
             </ul>
@@ -29,9 +29,13 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+        var input = window.location.href;
+        var after = input.split('?')[1]
+        var val = after.split('=');
+        var Isview = val[2];
 
         GetData(@Request.Params["id"]);
-
+        ControlEnable(Isview);
     });
 
 </script>

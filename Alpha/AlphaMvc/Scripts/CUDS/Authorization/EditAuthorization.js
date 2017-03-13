@@ -26,6 +26,17 @@ $(document).ready(function () {
 $(function () {
     $('#arwAuthorization').dynoTable8();
 });
+function ControlEnable(Isview) {
+    //var Isview = val;
+    if (Isview) {
+        document.getElementById("imgUser").disabled = true;
+        document.getElementById("btnSave").disabled = true;
+        document.getElementById("add-row8").style.visibility = "hidden";
+    }
+    else {
+        document.getElementById("add-row8").style.visibility = "show";
+    }
+}
 function GetData(val) {
     localStorage['flagAddRow'] = 1;
     SetAuthorization();

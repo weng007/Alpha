@@ -1,3 +1,10 @@
+function ControlEnable(Isview) {
+    //var Isview = val;
+    if (Isview) {
+        document.getElementById("txtDetail").disabled = true;
+        document.getElementById("btnSave").disabled = true;
+    }
+}
 function GetData(val) {
     var dataObject = { ID: val}
     $.ajax(

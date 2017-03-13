@@ -10,7 +10,7 @@
     <li>
         <label>User</label>
         <input type="text" id="txtUser" class="field-divided" placeholder="User" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#userDialog">
-            <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
+            <img id="imgUser" src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
         </a>
         <input type="hidden" id="hidUserID" />
         
@@ -65,7 +65,7 @@
                                             <td>
                                                 <div class="clone-1"><img class="cloneRowAuthor row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                             </td>
-                                            <td>
+                                            <td style="padding-right: 5px;">
                                                 <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                             </td>
                                         </tr>
@@ -91,7 +91,7 @@
                                             <td>
                                                 <div class="clone-1"><img class="cloneRowAuthor row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                             </td>
-                                            <td>
+                                            <td style="padding-right: 5px;">
                                                 <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                             </td>
                                         </tr>
@@ -108,12 +108,17 @@
 </table>
 <ul class="form-style-1">
     <li>
-        <button type="button" class="btn btn-primary" onclick="ConfirmDialog('Update', 'Authorization', 0)">Save</button>
+        <button type="button" id="btnSave" class="btn btn-primary" onclick="ConfirmDialog('Update', 'Authorization', 0)">Save</button>
     </li>
 </ul>
 <script type="text/javascript">
     $(document).ready(function () {
+        var input = window.location.href;
+        var after = input.split('?')[1]
+        var val = after.split('=');
+        var Isview = val[2];
         GetData(@Request.Params["id"]);
+        ControlEnable(Isview);
     });
 
 </script>
