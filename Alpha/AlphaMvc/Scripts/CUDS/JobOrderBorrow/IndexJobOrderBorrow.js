@@ -58,8 +58,8 @@ function GetJobOrderBorrow(val)
                 html += '<td>' + data.Table[i].ReturnRepair + '</td>';
                 html += '<td>' + data.Table[i].ReturnBad + '</td>';
                 html += '<td>';
-                html += '<a href="/Borrow/EditBorrow?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'JobOrderBorrow'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png"/></a>';
+                html += '<a href="/Borrow/EditBorrow?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png"/></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'JobOrderBorrow'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
