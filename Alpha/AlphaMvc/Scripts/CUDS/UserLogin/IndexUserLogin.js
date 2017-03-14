@@ -22,7 +22,7 @@ function UserLogin() {
             {
                 localStorage['UserID'] = data.Table[0].ID;
                 localStorage['UserName'] = data.Table[0].UserName;
-                location = "../Home/index";
+                location = "../Technician/ExpiredTechnician";
             }else 
             {
                 alert("User is not found");

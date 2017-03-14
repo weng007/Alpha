@@ -86,6 +86,7 @@
     /*background: #ffbfbf;*/
     background: #eb7979;
 	color: #fff;
+    z-index:100;
 }
 
 /*Hide dropdown links until they are needed*/
@@ -94,6 +95,7 @@
     border-style: solid;
     border-width: 1px;
     border-color: #c0c0c0;
+    z-index:100;
 }
 
 /*Make dropdown links vertical*/

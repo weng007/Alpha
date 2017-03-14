@@ -88,26 +88,26 @@
                     <label for="show-menu" class="show-menu">Menu ☰</label>
                     <input type="checkbox" id="show-menu" role="button" class="Hidecheckbox">
                     <ul id="menu" class="menuul">
-                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Home", "Index", "Home")</div></div></li>
+                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Dashboard", "ExpiredTechnician", "Technician")</div></div></li>
                         <li class="menuli">
                             <div class="menua">
                                 <div class="menutext">
-                                    @Html.ActionLink("Master", "Index", "Home")
+                                    @Html.ActionLink("Administration", "ExpiredTechnician", "Technician")
                                     <ul class="hidden">
                                         @*<img src="~/Images/iconIncomeMaster.png" />*@
                                         <li class="menuli"><div class="submenua">@Html.ActionLink("Income", "IndexIncomeMaster", "IncomeMaster")</div></li>
                                         <li class="menuli"><div class="submenua">@Html.ActionLink("Expense", "IndexExpenseMaster", "ExpenseMaster")</div></li>
                                         <li class="menuli"><div class="submenua">@Html.ActionLink("RoleMaster", "IndexRoleMaster", "RoleMaster")</div></li>
-                                        <li class="menuli"><div class="submenua">@Html.ActionLink("Authorization", "IndexAuthorization", "Authorization")</div></li>
+                                        <li class="menuli"><div class="submenua">@Html.ActionLink("User", "IndexAuthorization", "Authorization")</div></li>
                                     </ul>
                                 </div>
                             </div>
                         </li>
-                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Warning", "ExpiredTechnician", "Technician")</div></div></li>
+                        @*<li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Warning", "ExpiredTechnician", "Technician")</div></div></li>*@
                         <li class="menuli">
                             <div class="menua">
                                 <div class="menutext">
-                                    @Html.ActionLink("Calendar", "Index", "Home")
+                                    @Html.ActionLink("Calendar", "ExpiredTechnician", "Technician")
                                     <ul class="hidden">
                                         <li class="menuli"><div class="submenua">@Html.ActionLink("Job", "IndexCalendarJob", "CalendarJob")</div></li>
                                         <li class="menuli"><div class="submenua">@Html.ActionLink("Man Power", "IndexCMP", "CalendarManPower")</div></li>
@@ -121,7 +121,7 @@
                         <li class="menuli">
                             <div class="menua">
                                 <div class="menutext">
-                                    @Html.ActionLink("Payment", "Index", "Home")
+                                    @Html.ActionLink("Payment", "ExpiredTechnician", "Technician")
                                     <ul class="hidden">
                                         <li class="menuli"><div class="submenua">@Html.ActionLink("Technician", "IndexWageTeachnician", "WageTeachnician")</div></li>
                                         <li class="menuli"><div class="submenua">@Html.ActionLink("Vendor", "IndexWageVendor", "WageVendor")</div></li>
