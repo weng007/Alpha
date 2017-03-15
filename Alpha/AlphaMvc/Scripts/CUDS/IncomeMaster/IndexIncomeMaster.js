@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.imgadd').attr("style", "margin-left: 78%; margin-top: 10px;");
+    $('.imgadd').attr("style", "margin-left: 69%; margin-top: 10px;");
     
     $('.topicattach-2').attr("style", "color: #FFFFFF; font-size: 14px; font-weight: bold; float: right; padding-top: 5px; padding-bottom: 5px; padding-right: 5px; margin-left: 0%;  margin-right: 0%;");
     //------------------------------------ Standard ------------------------------------

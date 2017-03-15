@@ -2,7 +2,7 @@
     ViewBag.Title = "IndexIncomeMaster";
 }
 
-<h2>Master Income</h2>
+@*<h2>Master Income</h2>*@
 <script src="@Url.Content("~/Scripts/CUDS/IncomeMaster/IndexIncomeMaster.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 @* ------------------------------- Header -------------------------------*@
@@ -37,6 +37,7 @@
 <table class="barattach-2">
     <tr>
         <td>
+            <label>Master Income</label>
             <a href="/IncomeMaster/CreateIncomeMaster"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" class="imgadd" /></a>
             <div class="topicattach-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
         </td>

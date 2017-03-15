@@ -1,4 +1,9 @@
-﻿ .hideANDseek
+﻿.topictable{
+        margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+}
+.hideANDseek
 {
     display: grid;
 }
