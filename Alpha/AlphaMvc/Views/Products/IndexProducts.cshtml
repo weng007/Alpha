@@ -1,9 +1,9 @@
 ﻿@{
     ViewBag.Title = "IndexProducts";
 }
-<h2>
+@*<h2>
     Products
-</h2>
+</h2>*@
 @* ------------------------------- grid  -------------------------------*@
 <script src="@Url.Content("~/Scripts/EditableGrid/paging.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/CUDS/Products/IndexProducts.js")" type="text/javascript"></script>
@@ -36,13 +36,12 @@
         font-family: Arial, sans-serif;
     }
 </style>
-
 <table class="barattach-2">
     <tr>
         <td>
+            <label class="topictable">Products</label>
             <a href="/Products/CreateProducts"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" class="imgadd" /></a>
-            <div class="topicattach-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
-            
+            <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
         </td>
     </tr>
 </table>

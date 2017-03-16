@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('.imgadd').attr("style", "margin-left: 60%; margin-top: -2px;");
     var ShowAll = false;
     GetData(ShowAll);
 });

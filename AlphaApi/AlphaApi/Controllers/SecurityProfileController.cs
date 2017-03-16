@@ -14,11 +14,11 @@ using System.Web.Http.Cors;
 namespace AlphaApi.Controllers
 {
     [EnableCorsAttribute("*", "*", "*")]
-    public class RoleMasterController : ApiController
+    public class SecurityProfileController : ApiController
     {
-        public RoleMasterDAL roleMaster = new RoleMasterDAL();
+        public SecurityProfileDAL roleMaster = new SecurityProfileDAL();
         [HttpPost]
-        public int Post(RoleMasterModels roleMasterModel)
+        public int Post(SecurityProfileModels roleMasterModel)
         {
             var response = roleMaster.InsertData(roleMasterModel);
             return response;
@@ -33,7 +33,7 @@ namespace AlphaApi.Controllers
         }
 
         [HttpPut]
-        public int Put(RoleMasterModels roleMasterModel)
+        public int Put(SecurityProfileModels roleMasterModel)
         {
             //calling DBData Class Method and storing Repsonse   
             var response = roleMaster.UpdateData(roleMasterModel);

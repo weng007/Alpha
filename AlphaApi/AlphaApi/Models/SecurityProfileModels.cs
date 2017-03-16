@@ -7,11 +7,11 @@ using System.Data;
 
 namespace AlphaApi.Models
 {
-    public class RoleMasterModels
+    public class SecurityProfileModels
     {
         public int ID { get; set; }
 
-        public int RoleID { get; set; }
+        public int SecurityID { get; set; }
 
         public string IsView { get; set; }
 

@@ -1,7 +1,22 @@
 ﻿.topictable{
-        margin-top: 10px;
+    margin-top: 10px;
     margin-left: 10px;
     color: white;
+}
+.imgadd{
+    margin-left: 69%; 
+    margin-top: -2px;
+}
+.topicText{
+    color: #FFFFFF; 
+    font-size: 14px;
+    font-weight: bold; 
+    float: right; 
+    padding-top: 5px; 
+    padding-bottom: 5px; 
+    padding-right: 5px; 
+    margin-left: 0%;  
+    margin-right: 0%;
 }
 .hideANDseek
 {
@@ -12,6 +27,10 @@
     display: none;
 }
  @media screen and (max-width:680px) {
+     .imgadd{
+        margin-left: 55%; 
+        margin-top: -2px;
+    }
       .hideANDseek
     {
         display: none;
@@ -829,15 +848,11 @@ select{
     /*width: 48.10%;*/
     background-color: #96788f;
 }
-.barattach-2{
+.barattach-2 {
     margin-top: 0px;
     width: 100%;
     height: 40px;
     background-color: #5baa8c;
-}
-.imgadd{
-    margin-left:10px;
-    margin-top: 10px;
 }
 
 .tabbar{
@@ -903,6 +918,7 @@ select{
 }
 .chkShowAll{
     margin-right: 10px;
+    color: white;
 }
 .chkShowAllinput
 {

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    $('.imgadd').attr("style", "margin-left: 72%; margin-top: -2px;");
     //------------------------- Sorting ------------------------
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)

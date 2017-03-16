@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('.imgadd').attr("style", "margin-left: 68%; margin-top: -2px;");
     //------------------------------------ Standard ------------------------------------
     //Sorting
     $('#tableData').paging({ limit: 5 });

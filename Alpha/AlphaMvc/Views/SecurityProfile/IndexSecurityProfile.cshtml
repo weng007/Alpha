@@ -1,12 +1,11 @@
 ﻿@{
-    ViewBag.Title = "IndexExpenseMaster";
+    ViewBag.Title = "IndexSecurityProfile";
 }
 
-@*<h2>Master Expense</h2>*@
-<script src="@Url.Content("~/Scripts/EditableGrid/paging.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/CUDS/ExpenseMaster/IndexExpenseMaster.js")" type="text/javascript"></script>
+<h2>IndexSecurityProfile</h2>
+@*<script src="@Url.Content("~/Scripts/CUDS/IncomeMaster/IndexIncomeMaster.js")" type="text/javascript"></script>*@
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-
+@* ------------------------------- Header -------------------------------*@
 <style>
     .paging-nav {
         text-align: right;
@@ -35,17 +34,16 @@
         font-family: Arial, sans-serif;
     }
 </style>
-@* ------------------------------- Header -------------------------------*@
 <table class="barattach-2">
     <tr>
         <td>
-            <label class="topictable">Master Expense</label>
-            <a href="/ExpenseMaster/CreateExpenseMaster"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" class="imgadd" /></a>
+            <label class="topictable">Security Profile</label>
+            <a href="/SecurityProfile/CreateSecurityProfile"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" class="imgadd" /></a>
             <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
         </td>
     </tr>
 </table>
-
+@*//===================================================================CSS w3school*@
 <table class="table table-striped">
     <thead class="bgthead">
         <tr>
@@ -57,5 +55,3 @@
     </thead>
     <tbody id="result"></tbody>
 </table>
-
-

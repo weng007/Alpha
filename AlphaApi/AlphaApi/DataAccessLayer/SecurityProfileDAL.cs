@@ -8,11 +8,11 @@ using System;
 
 namespace AlphaApi.DataAccessLayer
 {
-    public class RoleMasterDAL
+    public class SecurityProfileDAL
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         int result = 0;
-        public int InsertData(RoleMasterModels roleMasterModel)
+        public int InsertData(SecurityProfileModels roleMasterModel)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
@@ -20,7 +20,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_RoleMaster_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@RoleID", roleMasterModel.RoleID);
+                    cmd.Parameters.AddWithValue("@SecurityID", roleMasterModel.SecurityID);
                     cmd.Parameters.AddWithValue("@IsView", roleMasterModel.IsView);
                     cmd.Parameters.AddWithValue("@IsInsert", roleMasterModel.IsInsert);
                     cmd.Parameters.AddWithValue("@IsUpdate", roleMasterModel.IsUpdate);
@@ -44,7 +44,7 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-        public int UpdateData(RoleMasterModels roleMasterModel)
+        public int UpdateData(SecurityProfileModels roleMasterModel)
         {
             int result = 0;
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -54,7 +54,7 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_RoleMaster_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", roleMasterModel.ID);
-                    cmd.Parameters.AddWithValue("@RoleID", roleMasterModel.RoleID);
+                    cmd.Parameters.AddWithValue("@SecurityID", roleMasterModel.SecurityID);
                     cmd.Parameters.AddWithValue("@IsView", roleMasterModel.IsView);
                     cmd.Parameters.AddWithValue("@IsInsert", roleMasterModel.IsInsert);
                     cmd.Parameters.AddWithValue("@IsUpdate", roleMasterModel.IsUpdate);
