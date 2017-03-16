@@ -7,17 +7,24 @@ using System.Data;
 
 namespace AlphaApi.Models
 {
-    public class UserLoginModels
+    public class SecurityProfileDetailModels
     {
         public int ID { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public int Status { get; set; }
+
         public int SecurityID { get; set; }
+
+        public string IsView { get; set; }
+
+        public string IsInsert { get; set; }
+
+        public string IsUpdate { get; set; }
+
+        public string IsDelete { get; set; }
+
+        public int MenuTypeID { get; set; }
+
         public int CreateBy { get; set; }
+
         public int EditBy { get; set; }
 
         public DataSet StoreAllData { get; set; }

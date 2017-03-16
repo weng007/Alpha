@@ -11,17 +11,7 @@ namespace AlphaApi.Models
     {
         public int ID { get; set; }
 
-        public int SecurityID { get; set; }
-
-        public string IsView { get; set; }
-
-        public string IsInsert { get; set; }
-
-        public string IsUpdate { get; set; }
-
-        public string IsDelete { get; set; }
-
-        public int MenuTypeID { get; set; }
+        public string Profile { get; set; }
 
         public int CreateBy { get; set; }
 

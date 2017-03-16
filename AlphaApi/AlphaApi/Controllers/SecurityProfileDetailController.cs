@@ -14,13 +14,13 @@ using System.Web.Http.Cors;
 namespace AlphaApi.Controllers
 {
     [EnableCorsAttribute("*", "*", "*")]
-    public class SecurityProfileController : ApiController
+    public class SecurityProfileDetailController : ApiController
     {
-        public SecurityProfileDAL securityProfile = new SecurityProfileDAL();
+        public SecurityProfileDetailDAL securityProfileDetail = new SecurityProfileDetailDAL();
         [HttpPost]
-        public int Post(SecurityProfileModels securityProfileModel)
+        public int Post(SecurityProfileDetailModels securityProfileDetailModel)
         {
-            var response = securityProfile.InsertData(securityProfileModel);
+            var response = securityProfileDetail.InsertData(securityProfileDetailModel);
             return response;
         }
 
@@ -28,32 +28,32 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get()
         {
-            var response = securityProfile.SelectData();
+            var response = securityProfileDetail.SelectData();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpGet]
-        public string Get(int id)
+        public string Get(int SecurityID)
         {
-            var response = securityProfile.SelectByID(id);
+            var response = securityProfileDetail.SelectBySecurityID(SecurityID);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
         [HttpPut]
-        public int Put(SecurityProfileModels securityProfileModel)
+        public int Put(SecurityProfileDetailModels securityProfileDetailModel)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = securityProfile.UpdateData(securityProfileModel);
+            var response = securityProfileDetail.UpdateData(securityProfileDetailModel);
             return response;
 
         }
 
         [HttpDelete]
-        public string Delete(SecurityProfileModels securityProfileModel)
+        public string Delete(SecurityProfileDetailModels securityProfileDetailModel)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = securityProfile.DeleteDetail(securityProfileModel);
+            var response = securityProfileDetail.DeleteDetail(securityProfileDetailModel);
             return response;
 
         }

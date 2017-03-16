@@ -242,7 +242,7 @@ $(function () {
 });
 
 function GetData(val) {
-    alert(val);
+    //alert(val);
     var dataObject = { ID: val }
     $.ajax(
    {

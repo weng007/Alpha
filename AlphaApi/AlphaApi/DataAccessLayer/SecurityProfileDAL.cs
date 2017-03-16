@@ -12,25 +12,20 @@ namespace AlphaApi.DataAccessLayer
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         int result = 0;
-        public int InsertData(SecurityProfileModels roleMasterModel)
+        public int InsertData(SecurityProfileModels securityProfileModel)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_RoleMaster_Ins", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_SecurityProfile_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@SecurityID", roleMasterModel.SecurityID);
-                    cmd.Parameters.AddWithValue("@IsView", roleMasterModel.IsView);
-                    cmd.Parameters.AddWithValue("@IsInsert", roleMasterModel.IsInsert);
-                    cmd.Parameters.AddWithValue("@IsUpdate", roleMasterModel.IsUpdate);
-                    cmd.Parameters.AddWithValue("@IsDelete", roleMasterModel.IsDelete);
-                    cmd.Parameters.AddWithValue("@MenuTypeID ", roleMasterModel.MenuTypeID);
-                    cmd.Parameters.AddWithValue("@CreateBy", roleMasterModel.CreateBy);
-                    cmd.Parameters.AddWithValue("@EditBy", roleMasterModel.EditBy);
+                    cmd.Parameters.AddWithValue("@Profile", securityProfileModel.Profile);
+                    cmd.Parameters.AddWithValue("@CreateBy", securityProfileModel.CreateBy);
+                    cmd.Parameters.AddWithValue("@EditBy", securityProfileModel.EditBy);
                     conObj.Open();
-                    result = cmd.ExecuteNonQuery();
-
+                    object obj = cmd.ExecuteScalar();
+                    result = Convert.ToInt32(obj);
                     return result;
 
                 }
@@ -44,23 +39,18 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-        public int UpdateData(SecurityProfileModels roleMasterModel)
+        public int UpdateData(SecurityProfileModels securityProfileModel)
         {
             int result = 0;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_RoleMaster_Upd", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_SecurityProfile_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", roleMasterModel.ID);
-                    cmd.Parameters.AddWithValue("@SecurityID", roleMasterModel.SecurityID);
-                    cmd.Parameters.AddWithValue("@IsView", roleMasterModel.IsView);
-                    cmd.Parameters.AddWithValue("@IsInsert", roleMasterModel.IsInsert);
-                    cmd.Parameters.AddWithValue("@IsUpdate", roleMasterModel.IsUpdate);
-                    cmd.Parameters.AddWithValue("@IsDelete", roleMasterModel.IsDelete);
-                    cmd.Parameters.AddWithValue("@MenuTypeID ", roleMasterModel.MenuTypeID);
-                    cmd.Parameters.AddWithValue("@EditBy", roleMasterModel.EditBy);
+                    cmd.Parameters.AddWithValue("@ID", securityProfileModel.ID);
+                    cmd.Parameters.AddWithValue("@Profile", securityProfileModel.Profile);
+                    cmd.Parameters.AddWithValue("@EditBy", securityProfileModel.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
                     return result;
@@ -77,15 +67,13 @@ namespace AlphaApi.DataAccessLayer
         }
         public DataSet SelectData()
         {
-            SqlConnection con = null;
-            string result = "";
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
 
-                    SqlCommand cmd = new SqlCommand("SP_RoleMaster_Sel", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_SecurityProfile_Sel", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
@@ -104,7 +92,34 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-        public string DeleteDetail()
+        public DataSet SelectByID(int id)
+        {
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_SecurityProfile_SelByID", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    return ds;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
+        public string DeleteDetail(SecurityProfileModels securityProfileModel)
         {
             SqlConnection con = null;
             string result = "";
@@ -112,8 +127,9 @@ namespace AlphaApi.DataAccessLayer
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_RoleMasterDetail_Del", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_SecurityProfile_Del", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", securityProfileModel.ID);
                     conObj.Open();
                     result = cmd.ExecuteScalar().ToString();
                     return result;

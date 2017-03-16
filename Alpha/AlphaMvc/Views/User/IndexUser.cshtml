@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "IndexUser";
+}
+
+<h2>IndexUser</h2>
+<script src="@Url.Content("~/Scripts/CUDS/User/IndexUser.js")" type="text/javascript"></script>
+<style>
+    .paging-nav {
+        text-align: right;
+        padding-top: 2px;
+    }
+
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #91b9e6;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .paging-nav .selected-page {
+            background: #187ed5;
+            font-weight: bold;
+        }
+
+    .paging-nav,
+    #tableData {
+        width: 400px;
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+    }
+</style>
+<table class="barattach-2">
+    <tr>
+        <td>
+            @*<a href="/Authorization/CreateAuthorization"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" class="imgadd" /></a>*@
+            <div class="topicattach-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+        </td>
+    </tr>
+</table>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="bgthead">
+            <tr>
+                <th>No.</th>
+                <th class="hidecolumn">ID</th>
+                <th>UserName</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>UserStatus</th>
+                <th>SecurityProfile</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="result"></tbody>
+    </table>
+</div>

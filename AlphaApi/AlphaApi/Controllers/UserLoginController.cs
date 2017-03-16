@@ -48,5 +48,12 @@ namespace AlphaApi.Controllers
             var response = Userdb.SelectByCondition();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+
+        [HttpPut]
+        public string Put(UserLoginModels userLoginModel)
+        {
+            var response = Userdb.UpdateData(userLoginModel);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
     }
 }

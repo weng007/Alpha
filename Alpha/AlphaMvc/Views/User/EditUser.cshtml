@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "EditUser";
+}
+
+<h2>EditUser</h2>
+<script src="@Url.Content("~/Scripts/CUDS/User/EditUser.js")" type="text/javascript"></script>
+<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<style>
+    table {
+        background: #fbfbf1;
+        width: 335px;
+    }
+
+    .btn-xs {
+        padding: 1px 1px;
+        width: 20px;
+    }
+</style>
+<table>
+    <tr>
+        <td>
+            <div class="linkstyle">@Html.ActionLink("User List", "IndexUser")</div>
+        </td>
+    </tr>
+</table>
+<div id="myModal">
+    @using (Html.BeginForm())
+    {
+        //===================================================================CSS w3school
+        <form id="myform">
+            <ul class="form-style-1">
+                <li>
+                    <label class="label-2" style="margin-right: 25%;">ชื่อ</label>&nbsp;<label class="label-2" style="margin-right: 10%;">นามสกุล</label>
+                </li>
+                <li>
+                    <input type="text" id="txtFirstName" name="field_1" class="field-divided" disabled />&nbsp;<input type="text" id="txtLastName" name="field1" class="field-divided" disabled />
+                </li>
+                <li>
+                    <label class="label-2" style="margin-right: 42%;">E-mail</label>&nbsp;<label class="label-2">Status<span class="required">*</span></label>
+                </li>
+                <li>
+                    <input type="text" id="txtEmail" name="field1" class="field-divided" placeholder="E-mail" disabled />&nbsp;<select id="cmbStatus" name="cmbStatus" class="field-divided"></select>
+                </li>
+                <li>
+                    <label class="label-2" style="margin-right: 45%;">SecurityProfile<span class="required">*</span></label>
+                </li>
+                <li>
+                    <select id="cmbSecurityProfile" name="cmbSecurityProfile" class="field-divided"></select>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-primary" onclick="ConfirmDialog('Update', 'User', @Request.Params["id"])">Save</button>
+                </li>
+            </ul>
+        </form>
+    }
+    @*//===================================================================CSS w3school*@
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        GetData(@Request.Params["id"]);
+    });
+</script>
