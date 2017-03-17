@@ -1,7 +1,9 @@
-﻿/*#bodyLogin
+﻿#bodyLogin
 {
-
-}*/
+    background-color: #efeeef; 
+    clear: both; 
+    margin-top: 5%;
+}
 .lblStyle{
     color:white;
 }

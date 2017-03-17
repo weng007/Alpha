@@ -22,7 +22,7 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get(string password)
         {
-            string[] str = password.Split('-');
+            string[] str = password.Split('&');
             var response = Userdb.SelectByUserName(str[0],str[1]);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }

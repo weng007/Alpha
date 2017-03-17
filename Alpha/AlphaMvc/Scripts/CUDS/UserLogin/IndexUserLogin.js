@@ -4,11 +4,9 @@ $(document).ready(function () {
         $("#txtPassword").val("")
     });
 
-    $('#body').attr("style", "background-color: #efeeef; clear: both; margin-top: 5%;");
-
 });
 function UserLogin() {
-    var dataObject = { Password: $("#txtUserName").val()+'-'+ $("#txtPassword").val() };
+    var dataObject = { Password: $("#txtUserName").val()+'&'+ $("#txtPassword").val() };
     console.log(dataObject);
     $.ajax(
     {
