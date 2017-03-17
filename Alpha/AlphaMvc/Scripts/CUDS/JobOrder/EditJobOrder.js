@@ -269,7 +269,7 @@ function GetData(val) {
 
            SetIncomeMaster();
            ////Binding Data Income
-           alert('Income '+data.Table1.length);
+           //alert('Income '+data.Table1.length);
            if (data.Table1.length > 0) {          
                $('.RowCal').remove();
                for(var j=0;j< data.Table1.length;j++)

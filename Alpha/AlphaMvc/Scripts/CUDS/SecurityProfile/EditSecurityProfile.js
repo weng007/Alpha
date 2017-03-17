@@ -1,5 +1,5 @@
 function GetData(val) {
-    alert('test');
+    //alert('test');
     var dataObject = { ID: val}
     $.ajax(
    {
@@ -12,18 +12,18 @@ function GetData(val) {
            data = JSON.parse(data);
            $("#txtProfile").val(data.Table[0].Profile);
 
-           alert(data.Table1.length);
+           //alert(data.Table1.length);
            if (data.Table1.length > 0) {
 
                    var html = '';
                    for (var i = 0; i < data.Table1.length; i++) {
-                       alert(data.Table1[i].IsView);
+                       //alert(data.Table1[i].IsView);
                        var IsView = data.Table1[i].IsView == '1' ? 'Checked' : '';
                        var IsInsert = data.Table1[i].IsInsert == '1' ? 'Checked' : '';
                        var IsUpdate = data.Table1[i].IsUpdate == '1' ? 'Checked' : '';
                        var IsDelete = data.Table1[i].IsDelete == '1' ? 'Checked' : '';
 
-                       alert(IsView);
+                       //alert(IsView);
                        html += '<tr class="RowCal">';
                        html += '<td>' + data.Table1[i].RowNum + '</td>';
                        html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table1[i].ID + '"/></td>';
@@ -55,7 +55,7 @@ function Update(val) {
         data: dataObject,
         datatype: 'json',
         success: function (data) {
-            alert('data ' + data);
+            //alert('data ' + data);
             SecurityID = data;
         }
         ,

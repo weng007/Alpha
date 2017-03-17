@@ -49,7 +49,7 @@ function ControlEnable(Isview) {
 }
 function GetData(val) {
     var dataObject = { ID: val }
-    alert('test val '+val);
+    //alert('test val '+val);
     $.ajax(
        {
            url: 'http://localhost:13131/api/BDC',
