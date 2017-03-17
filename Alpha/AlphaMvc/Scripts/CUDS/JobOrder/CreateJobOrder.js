@@ -6,7 +6,8 @@ $(document).ready(function () {
 
     var input = window.location.href;
     var after = input.split('?')[1]
-    var BDCID = after.split('-');
+    var res = after.split('#');
+    var BDCID = res[0];
     $('#txtJobReference').val(BDCID);
     $('#hidBDCID').val(BDCID);
     
@@ -37,7 +38,6 @@ $(document).ready(function () {
     $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()
 
 
-
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
         $("#hidCustID").val($(this).find("td:eq(1)").text());
@@ -47,6 +47,42 @@ $(document).ready(function () {
         $("#txtFax").val($(this).find("td:eq(7)").text());
         $("#txtAddress").val($(this).find("td:eq(8)").text());
     })
+    alert('test1');
+    $('#txtName').autocomplete({
+        source: function (request, response) {
+            alert('test2');
+            $.ajax({
+                url: 'http://localhost:13131/api/Technician',
+                //cache: false,
+                type: 'GET',
+                //async: false,
+                dataType: 'json',
+                data: {
+                    q: request.term
+                },
+                success: function (data) {
+                    alert('test3');
+                    response($.map(data, function (data1, id) {
+                        alert('FirstName '+data1.FirstName);
+                        return {
+                            label: data1.FirstName,
+                            value: data1.ID
+                        };
+                    }));
+                },
+                error: function (xmlHttpRequest, textStatus, errorThrown) {
+                    console.log('some error occured', textStatus, errorThrown);
+                    alert('Error');
+                }
+            });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+            alert('you have selected ' + ui.item.label + ' ID: ' + ui.item.value);
+            $('#txtName').val(ui.item.label);
+            return false;
+        }
+    });
 
     $.ajax({
         url: 'http://localhost:13131/api/IncomeMaster',
