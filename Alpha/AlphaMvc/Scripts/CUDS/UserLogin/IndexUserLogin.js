@@ -3,7 +3,6 @@ $(document).ready(function () {
         $("#txtUserName").val("")
         $("#txtPassword").val("")
     });
-
 });
 function UserLogin() {
     var dataObject = { Password: $("#txtUserName").val()+'&'+ $("#txtPassword").val() };
