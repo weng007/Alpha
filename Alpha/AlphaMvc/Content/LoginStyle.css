@@ -4,6 +4,12 @@
     clear: both; 
     margin-top: 5%;
 }
+.lblpsw{
+    margin-right: 10px;
+}
+.lbluser{
+    margin-right: 7px;
+}
 .lblStyle{
     color:white;
 }
@@ -12,18 +18,25 @@ form {
     /*border: 2px solid #298db2;*/
     /*background-color: #fafae5;*/
     border: 2px solid #7f1613;
-    background-color: #c71e1e;
+    /*background-color: #c71e1e;*/
+    background: red;   
+    background: -webkit-linear-gradient(top,#c71e1e, #c71e1e,#821c1c);
+    background: -o-linear-gradient(top,#c71e1e, #c71e1e,#821c1c);
+    background: -moz-linear-gradient(top,#c71e1e, #c71e1e,#821c1c);
+    background: linear-gradient(top,#c71e1e, #c71e1e,#821c1c);
     margin-top: 30px;
     margin-left: 30%;
     width: 40%;
 }
 input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
+    /*width: 100%;*/
+    width: 40%;
+    padding: 12px 10px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    height:30px;
 }
 
 .loginbutton a {
@@ -51,11 +64,11 @@ button {
     color: #fff;
     padding: 14px 20px;
     margin: 8px 0;
-    /* border: none; */
     cursor: pointer;
-    width: 40%;
+    width: 30%;
+    height: 40px;
     font-weight: 700;
-    margin-left: 60%;
+    margin-left: 70%;
 }
 a {
     color: white;
@@ -111,5 +124,30 @@ span.psw {
        width: auto;
        padding: 10px 18px;
        background-color: #f44336;
+    }
+    .imgcontainer {
+        text-align: center;
+        margin: 10px 10px 0px 0;
+    }
+    input[type=text], input[type=password] {
+        /*width: 100%;*/
+        width: 60%;
+        padding: 12px 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        height: 20px;
+    }
+    button {
+        border: 1px solid #fdc9c9;
+        background-color: #de4848;
+        color: #fff;
+        margin: 8px 0;
+        cursor: pointer;
+        width: 40%;
+        height: 30px;
+        font-weight: 700;
+        margin-left: 56%;
     }
 }
