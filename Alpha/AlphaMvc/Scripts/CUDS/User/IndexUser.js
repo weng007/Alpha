@@ -64,23 +64,23 @@ $(document).ready(function () {
     });
 
 });
-function RowDelete(id) {
-    var dataObject = { ID: id, EditBy: localStorage['UserID'] };
-    $.ajax(
-        {
-            url: 'http://localhost:13131/api/UserLogin',
-            type: 'DELETE',
-            data: dataObject,
-            datatype: 'json',
+//function RowDelete(id) {
+//    var dataObject = { ID: id, EditBy: localStorage['UserID'] };
+//    $.ajax(
+//        {
+//            url: 'http://localhost:13131/api/UserLogin',
+//            type: 'DELETE',
+//            data: dataObject,
+//            datatype: 'json',
 
-            success: function (result) {
-                alert('Delete is completed');
-                window.location.href = "../Authorization/IndexAuthorization";
-            }
-            ,
-            error: function (msg) {
-                alert(msg)
-            }
+//            success: function (result) {
+//                alert('Delete is completed');
+//                window.location.href = "../Authorization/IndexAuthorization";
+//            }
+//            ,
+//            error: function (msg) {
+//                alert(msg)
+//            }
 
-        });
-}
+//        });
+//}

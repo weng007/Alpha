@@ -92,7 +92,7 @@ function CreateData() {
         data: dataObject,
         datatype: 'json',
         success: function (data) {
-            alert('data '+data);
+            //alert('data '+data);
             SecurityID = data;
         }
         ,
