@@ -241,17 +241,22 @@ NOTE: use percentage font sizes or else old IE chokes
 .fc-state-active,
 .fc-state-disabled {
 	color: #333333;
-	background-color: #e6e6e6;
+	/*background-color: #e6e6e6;*/
+    background-color: #f4acac;
 }
 
 .fc-state-hover {
 	color: #333333;
 	text-decoration: none;
-	background-position: 0 -15px;
-	-webkit-transition: background-position 0.1s linear;
+	background-position: 0 30px;
+    -webkit-transition: background-position 0.2s;
+	   -moz-transition: background-position 0.2s;
+	     -o-transition: background-position 0.2s;
+	        transition: background-position 0.2s;
+	/*-webkit-transition: background-position 0.1s linear;
 	   -moz-transition: background-position 0.1s linear;
 	     -o-transition: background-position 0.1s linear;
-	        transition: background-position 0.1s linear;
+	        transition: background-position 0.1s linear;*/
 }
 
 .fc-state-down,

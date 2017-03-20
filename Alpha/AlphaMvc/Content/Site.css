@@ -152,7 +152,8 @@ h5, h6 {
         /*padding-left: 10px;
         padding-top: 30px;*/
         padding-left: 10px;
-        padding-top: 10px;
+        padding-top: 30px;
+        /*padding-top: 10px;*/
     }
 
     .featured + .main-content {

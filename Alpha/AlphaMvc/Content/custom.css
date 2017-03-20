@@ -1423,7 +1423,8 @@ th {
 
     text-align: center;
     border-style: solid;
-    border-color: #5baa8c;
+    /*border-color: #5baa8c;*/
+    border-color: #cd300c;
     border-width: 1px;
 }
 
@@ -1432,7 +1433,8 @@ th {
   margin-bottom: 5px;
 
     border-style: solid;
-    border-color: #5baa8c;
+    /*border-color: #5baa8c;*/
+    border-color: #cd300c;
     border-width: 1px;
 }
 
@@ -1445,13 +1447,15 @@ th {
   padding: 8px;
   line-height: 1.428571429;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  /*border-top: 1px solid #dddddd;*/
+  border-top: 1px solid #e8cfca;
 }
 
 .table thead > tr > th {
   vertical-align: bottom;
   /*border-bottom: 2px solid #dddddd;*/
-  border-bottom: 2px solid #5baa8c;
+  /*border-bottom: 2px solid #5baa8c;*/
+    border-bottom: 2px solid #b32b0b;
 }
 
 .table caption + thead tr:first-child th,
