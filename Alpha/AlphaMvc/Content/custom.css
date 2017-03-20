@@ -1500,8 +1500,8 @@ th {
 
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
-  /*background-color: #f9f9f9;*/
-   background-color: #effae6;
+   /*background-color: #effae6;*/
+   background-color: rgb(255, 239, 236);
    cursor: pointer;
 }
 
