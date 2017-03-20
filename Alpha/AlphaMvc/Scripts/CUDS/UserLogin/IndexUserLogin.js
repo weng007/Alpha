@@ -3,7 +3,6 @@ $(document).ready(function () {
         $("#txtUserName").val("")
         $("#txtPassword").val("")
     });
-
 });
 function UserLogin() {
     var dataObject = { Password: $("#txtUserName").val()+'&'+ $("#txtPassword").val() };
@@ -20,10 +19,18 @@ function UserLogin() {
             console.log(data);
             if (data.Table.length > 0)
             {
-                localStorage['UserID'] = data.Table[0].ID;
-                localStorage['UserName'] = data.Table[0].UserName;
-                location = "../Technician/ExpiredTechnician";
-            }else 
+                //46 = InActive
+                if (data.Table[0].Status != 46)
+                {
+                    localStorage['UserID'] = data.Table[0].ID;
+                    localStorage['UserName'] = data.Table[0].UserName;
+                    location = "../Technician/ExpiredTechnician";
+                }
+                else {
+                    alert("User is InActive");
+                }
+            }
+            else
             {
                 alert("User is not found");
             }
