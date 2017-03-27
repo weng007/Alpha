@@ -29,13 +29,13 @@ $(document).ready(function () {
     })
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
 
-    $("#dtJobDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    $("#dtJobDate").datepicker({ dateFormat: "mm/dd/yy" }).val();
     $('#dtJobDate').datepicker().datepicker('setDate', 'today');
 
-    $("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    $("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val();
     $('#dtSWorking').datepicker().datepicker('setDate', 'today');
     
-    $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val();
 
 
     $("#customerBody").on("click", "tr", function (e) {
@@ -46,42 +46,36 @@ $(document).ready(function () {
         $("#txtCoWorker").val($(this).find("td:eq(6)").text());
         $("#txtFax").val($(this).find("td:eq(7)").text());
         $("#txtAddress").val($(this).find("td:eq(8)").text());
-    })
-    //alert('test1');
-    //$('#txtName').autocomplete({
-    //    source: function (request, response) {
-    //        alert('test2');
-    //        $.ajax({
-    //            url: 'http://localhost:13131/api/Technician',
-    //            cache: false,
-    //            type: 'GET',
-    //            dataType: 'json',
-    //            data: {
-    //                q: request.term
-    //            },
-    //            success: function (data) {
-    //                alert('test3');
-    //                response($.map(data, function (data1, id) {
-    //                    alert('FirstName '+data1.FirstName);
-    //                    return {
-    //                        label: data1.FirstName,
-    //                        value: data1.ID
-    //                    };
-    //                }));
-    //            },
-    //            error: function (xmlHttpRequest, textStatus, errorThrown) {
-    //                console.log('some error occured', textStatus, errorThrown);
-    //                alert('Error');
-    //            }
-    //        });
-    //    },
-    //    minLength: 2,
-    //    select: function (event, ui) {
-    //        alert('you have selected ' + ui.item.label + ' ID: ' + ui.item.value);
-    //        $('#txtName').val(ui.item.label);
-    //        return false;
-    //    }
-    //});
+    });
+
+    $('#txtName').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: 'http://localhost:13131/api/Technician',
+                type: 'GET',
+                dataType: 'json',
+                data: { name:request.term },
+                success: function (data) {
+                    data = JSON.parse(data);
+                    response($.map(data.Table, function (item) {
+                        return {
+                            label: item.FirstName,
+                            value: item.ID
+                        }
+                    }));
+                },
+                error: function (xmlHttpRequest, textStatus, errorThrown) {
+                    console.log('some error occured', textStatus, errorThrown);
+                    alert('Error');
+                }
+            });
+        },
+        minLength: 3,
+        select: function (event, ui) {     
+            $('#txtName:last').val(ui.item.label);
+            return false;
+        }
+    });
 
     $.ajax({
         url: 'http://localhost:13131/api/IncomeMaster',

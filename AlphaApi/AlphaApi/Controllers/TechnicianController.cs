@@ -32,5 +32,12 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [HttpGet]
+        public string Get(string name)
+        {
+            var response = Techniciandb.SelectByName(name);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
     }
 }

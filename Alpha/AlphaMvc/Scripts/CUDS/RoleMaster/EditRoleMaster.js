@@ -5,7 +5,7 @@
 
     var dataObject = { typeID: '009' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
+        url: 'http://localhost:13132/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -23,7 +23,7 @@
 
     var dataObject = { typeID: '011' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
+        url: 'http://localhost:13132/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -77,7 +77,7 @@ function GetData(val) {
     var dataObject = { ID: val }
     $.ajax(
    {
-       url: 'http://localhost:13131/api/JobOrder',
+       url: 'http://localhost:13132/api/JobOrder',
        type: 'GET',
        async: false,
        data: dataObject,
@@ -135,7 +135,7 @@ function Update(val) {
         if ($(this).find(".IsView").val() != '' || $(this).find(".IsInsert").val() != '' || $(this).find(".IsUpdate").val() != '') {
             $.ajax(
             {
-                url: 'http://localhost:13131/api/RoleMaster',
+                url: 'http://localhost:13132/api/RoleMaster',
                 type: 'PUT',
                 async: false,
                 data: dataObject,
@@ -155,7 +155,7 @@ function Update(val) {
 
 function AddRowIncome(row) {
     $.ajax({
-        url: 'http://localhost:13131/api/IncomeMaster',
+        url: 'http://localhost:13132/api/IncomeMaster',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -174,7 +174,7 @@ function AddRowIncome(row) {
 }
 function AddRowExpense() {
     $.ajax({
-        url: 'http://localhost:13131/api/ExpenseMaster',
+        url: 'http://localhost:13132/api/ExpenseMaster',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -193,7 +193,7 @@ function AddRowExpense() {
     });
     var dataObject = { typeID: '010' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
+        url: 'http://localhost:13132/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -217,7 +217,7 @@ function Redirect() {
 function SetIncomeMaster(tmp) {
     
      $.ajax({
-    url: 'http://localhost:13131/api/IncomeMaster',
+    url: 'http://localhost:13132/api/IncomeMaster',
     type: 'GET',
     dataType: 'json',
     success: function (data) {
@@ -241,7 +241,7 @@ function SetIncomeMaster(tmp) {
 function SetExpenseType(tmp) {
 
     $.ajax({
-        url: 'http://localhost:13131/api/ExpenseMaster',
+        url: 'http://localhost:13132/api/ExpenseMaster',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -264,7 +264,7 @@ function SetExpenseType(tmp) {
 function SetUnitWeight(tmp) {
 
     $.ajax({
-        url: 'http://localhost:13131/api/ExpenseMaster',
+        url: 'http://localhost:13132/api/ExpenseMaster',
         type: 'GET',
         dataType: 'json',
         success: function (data) {

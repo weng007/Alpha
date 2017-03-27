@@ -49,7 +49,7 @@ function GetChecked() {
 function CreateData() {
     $.ajax(
             {
-                url: 'http://localhost:13131/api/RoleMaster',
+                url: 'http://localhost:13132/api/RoleMaster',
                 type: 'DELETE',
                 async: false,
                 datatype: 'json',
@@ -74,7 +74,7 @@ function CreateData() {
                 if ($(this).find(".IsView").is(":checked") == true || $(this).find(".IsInsert").is(":checked") == true || $(this).find(".IsUpdate").is(":checked") == true) {
                     $.ajax(
                     {
-                        url: 'http://localhost:13131/api/RoleMaster',
+                        url: 'http://localhost:13132/api/RoleMaster',
                         type: 'POST',
                         async: false,
                         data: dataObject,
@@ -99,7 +99,7 @@ function GetData() {
     SetMenuType();
     $.ajax(
    {
-       url: 'http://localhost:13131/api/RoleMaster',
+       url: 'http://localhost:13132/api/RoleMaster',
        type: 'GET',
        async: false,
        datatype: 'json',
@@ -145,7 +145,7 @@ function SetRoleMaster() {
 
     var dataObject = { typeID: '009' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService',
+        url: 'http://localhost:13132/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -167,7 +167,7 @@ function SetMenuType() {
 
     var dataObject = { typeID: '011' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService',
+        url: 'http://localhost:13132/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -189,7 +189,7 @@ function AddRowRoleMaster() {
     if (localStorage['flagAddRow'] == 0) {
         var dataObject = { typeID: '009' };
         $.ajax({
-            url: 'http://localhost:13131/api/MasterService',
+            url: 'http://localhost:13132/api/MasterService',
             type: 'GET',
             dataType: 'json',
             data: dataObject,
@@ -209,7 +209,7 @@ function AddRowRoleMaster() {
         });
         var dataObject = { typeID: '011' };
         $.ajax({
-            url: 'http://localhost:13131/api/MasterService/',
+            url: 'http://localhost:13132/api/MasterService/',
             type: 'GET',
             dataType: 'json',
             data: dataObject,
