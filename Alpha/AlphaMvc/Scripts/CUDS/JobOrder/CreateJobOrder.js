@@ -182,8 +182,9 @@ $(document).ready(function () {
         }
     });
 });
+var row_index;
+var col_index;
 $(function () {
-
     $('.dtDate').datepicker();
     var dates = new Date();
     $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
@@ -197,7 +198,13 @@ $(function () {
     $('#tabReceipt').dynoTable5();
     $('#tabIncome').dynoTable6();
     $('#tabCost').dynoTable7();
-    
+
+    $('.RowCal5 td').click(function () {
+        row_index = $(this).parent().index();
+        col_index = $(this).index();
+
+        alert(row_index);
+    });
 });
 
 function BrowseCustomer() {
@@ -554,6 +561,12 @@ function AddRowExpense() {
 }
 
 function AddrowManpower() {
+    $('.RowCal5 td').click(function () {
+        row_index = $(this).parent().index();
+        col_index = $(this).index();
+
+        alert(row_index);
+    });
 
     $(".dtDate").removeClass('hasDatepicker').datepicker();
     var dates = new Date();
@@ -587,9 +600,9 @@ function AddrowManpower() {
             minLength: 3,
             select: function (event, ui) {
                 $(this).val(ui.item.label);
-                $('.CardID:last').val(dataitem.Table[0].IDCard);
-                $('.TechnicianType:last').val(dataitem.Table[0].TechnicianTypeName);
-                $('.TechnicianID:last').val(dataitem.Table[0].ID);
+                $('.CardID').eq(row_index).val(dataitem.Table[0].IDCard);
+                $('.TechnicianType').eq(row_index).val(dataitem.Table[0].TechnicianTypeName);
+                $('.TechnicianID').eq(row_index).val(dataitem.Table[0].ID);
                 return false;
             }
         });
