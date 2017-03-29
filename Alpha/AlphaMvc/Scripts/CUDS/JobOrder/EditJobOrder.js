@@ -355,7 +355,7 @@ function GetData(val) {
                    $(this).find('.ManpowerID').val(data.Table9[i].ID);
                    $(this).find('.TechnicianID').val(data.Table9[i].TechnicianID);
                    $(this).find('.JobID').val(data.Table9[i].JobID);
-                   $(this).find('.FName').val(data.Table9[i].TechnicianID);
+                   $(this).find('.FName').val(data.Table9[i].TechnicianName);
                    $(this).find('.dtDate').val(dtDate);
                    $(this).find('.ManpowerTime').val(data.Table9[i].ManpowerTime);
                    $(this).find('.WorkingFrom').val(data.Table9[i].WorkingFrom);
@@ -424,6 +424,55 @@ function GetData(val) {
        }
    });
     localStorage['flagAddRow'] = 1;
+}
+
+function AddrowManpower() {
+    $('.RowCal5 td').click(function () {
+        row_index = $(this).parent().index();
+        col_index = $(this).index();
+
+        alert(row_index);
+    });
+
+    $(".dtDate").removeClass('hasDatepicker').datepicker();
+    var dates = new Date();
+    $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
+
+    $('.FName').each(function () {
+        $(this).autocomplete({
+            source: function (request, response) {
+                //alert('inside');
+                $.ajax({
+                    url: 'http://localhost:13131/api/Technician',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { name: request.term },
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        dataitem = data;
+                        response($.map(data.Table, function (item) {
+                            return {
+                                label: item.FirstName,
+                                value: item.ID
+                            }
+                        }));
+                    },
+                    error: function (xmlHttpRequest, textStatus, errorThrown) {
+                        console.log('some error occured', textStatus, errorThrown);
+                        alert('Error');
+                    }
+                });
+            },
+            minLength: 3,
+            select: function (event, ui) {
+                $(this).val(ui.item.label);
+                $('.CardID').eq(row_index).val(dataitem.Table[0].IDCard);
+                $('.TechnicianType').eq(row_index).val(dataitem.Table[0].TechnicianTypeName);
+                $('.TechnicianID').eq(row_index).val(dataitem.Table[0].ID);
+                return false;
+            }
+        });
+    });
 }
 function SetIncomeMaster()
 {

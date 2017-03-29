@@ -26,8 +26,10 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@ManpowerDate", jobOrderManpower.ManpowerDate);
                     cmd.Parameters.AddWithValue("@ManpowerDay", jobOrderManpower.ManpowerDay);
                     cmd.Parameters.AddWithValue("@ManpowerTime", jobOrderManpower.ManpowerTime);
-                    cmd.Parameters.AddWithValue("@WorkingFrom", jobOrderManpower.WorkingFrom);
-                    cmd.Parameters.AddWithValue("@WorkingTo", jobOrderManpower.WorkingTo);
+                    cmd.Parameters.AddWithValue("@WorkingFromHour", jobOrderManpower.WorkingFromHour);
+                    cmd.Parameters.AddWithValue("@WorkingFromSecond", jobOrderManpower.WorkingFromSecond);
+                    cmd.Parameters.AddWithValue("@WorkingToHour", jobOrderManpower.WorkingToHour);
+                    cmd.Parameters.AddWithValue("@WorkingToSecond", jobOrderManpower.WorkingToSecond);
                     cmd.Parameters.AddWithValue("@ManpowerTotalHours", jobOrderManpower.ManpowerTotalHours);
                     cmd.Parameters.AddWithValue("@ManpowerNormal", jobOrderManpower.ManpowerNormal);
                     cmd.Parameters.AddWithValue("@ManpowerPremium", jobOrderManpower.ManpowerPremium);

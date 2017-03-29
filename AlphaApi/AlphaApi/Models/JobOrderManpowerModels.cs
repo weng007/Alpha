@@ -27,9 +27,13 @@ namespace AlphaApi.Models
 
         public int ManpowerTime { get; set; }
 
-        public DateTime WorkingFrom { get; set; }
+        public int WorkingFromHour { get; set; }
 
-        public DateTime WorkingTo { get; set; }
+        public int WorkingFromSecond { get; set; }
+
+        public int WorkingToHour { get; set; }
+
+        public int WorkingToSecond { get; set; }
 
         public double ManpowerTotalHours { get; set; }
 

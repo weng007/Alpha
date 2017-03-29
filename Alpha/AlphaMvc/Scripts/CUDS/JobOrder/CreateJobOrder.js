@@ -181,13 +181,15 @@ $(document).ready(function () {
             $info.show();
         }
     });
+
 });
 var row_index;
 var col_index;
 $(function () {
     $('.dtDate').datepicker();
     var dates = new Date();
-    $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
+    $('.WorkingFrom').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
+    $('.WorkingTo').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 
     $("#dtJobDate").datepicker();
     $("#dtSWorking").datepicker();
@@ -203,7 +205,7 @@ $(function () {
         row_index = $(this).parent().index();
         col_index = $(this).index();
 
-        alert(row_index);
+        ////alert(row_index);
     });
 });
 
@@ -318,22 +320,33 @@ function CreateData() {
             }
         });
     //===================Insert JobOrderManpower
+        var WorkingFrom = $('.WorkingFrom').val();
+        var FromHours = WorkingFrom.split(':')[0]
+        var FromSecond = WorkingFrom.split(':')[1]
+
+        var WorkingTo = $('.WorkingTo').val();
+        var ToHours = WorkingTo.split(':')[0]
+        var ToSecond = WorkingTo.split(':')[1]
+
         var dataObject = {};
         $(".RowCal5").each(function () {
             dataObject.JobID = ID;
             dataObject.TechnicianID = $(this).find('.TechnicianID').val();
             dataObject.TechnicianType = $(this).find('.TechnicianType').val();
             dataObject.ManpowerDate = $(this).find(".dtDate").val();
-            dataObject.ManpowerDay = $(this).find(".ManpowerDay").val();
+            dataObject.ManpowerDay = $(this).find('.ManpowerDay').find(":selected").val();
             dataObject.ManpowerTime = $(this).find(".ManpowerTime").val();
-            dataObject.WorkingFrom = $(this).find(".WorkingFrom").val();
-            dataObject.WorkingTo = $(this).find(".WorkingTo").val();
+            dataObject.WorkingFromHour = FromHours;
+            dataObject.WorkingFromSecond = FromSecond;
+            dataObject.WorkingToHour = ToHours;
+            dataObject.WorkingToSecond = ToSecond;
             dataObject.ManpowerTotalHours = $(this).find(".ManpowerTotalHours").val();
             dataObject.ManpowerNormal = $(this).find(".ManpowerNormal").val();
             dataObject.ManpowerPremium = $(this).find(".ManpowerPremium").val();
             dataObject.ManpowerSpecial = $(this).find(".ManpowerSpecial").val();
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
+            alert($(this).find('.ManpowerDay').find(":selected").val());
             if ($(this).find(".TechnicianID").val() != '') {
                 $.ajax(
                 {
@@ -481,27 +494,9 @@ function CalSumExpense() {
     }
 }
 function CalTotalHour() {
-    var total = 0;
-    var SubTotal = 0;
-    var Discount = 0;
-    $(".RowCal").each(function () {
-        var qty = $(this).find(".Quantity").val();
-        var price = $(this).find(".Price").val();
-        var amount = qty * price;
-
-        $(this).find('.Amount').val(amount).number(true, 2);
-        $(this).find('.Price').val(price).number(true, 2);
-        $(this).find('.Quantity').val(qty).number(true, 2);
-    });
-    for (var i = 0; i < $(".RowCal").length; i++) {
-        total = total + parseFloat($('.Amount:eq(' + i + ')').val());
-    }
-    Discount = $('#txtDiscount').val();
-    SubTotal = total - Discount;
-    $('#txtTotal').val(total).number(true, 2);
-    $('#txtSubTotal').val(SubTotal).number(true, 2);
-    $('#txtNoCompound').val(SubTotal).number(true, 2);
-    return SubTotal;
+    var WorkingFrom = $('.WorkingFrom').val();
+    var FromHours = WorkingFrom.split(':')[0]
+    var FromSecond = WorkingFrom.split(':')[1]
 }
 function AddRowIncome() {
     $.ajax({
@@ -565,7 +560,7 @@ function AddrowManpower() {
         row_index = $(this).parent().index();
         col_index = $(this).index();
 
-        alert(row_index);
+        //alert(row_index);
     });
 
     $(".dtDate").removeClass('hasDatepicker').datepicker();
