@@ -334,8 +334,39 @@ function GetData(val) {
                 else {
                     $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
                 }
-            }
-           
+           }
+
+           //Binding Data Manpower
+           if (data.Table9.length > 0) {
+               $('.RowCal5').remove();
+                   ////Binding Data Expense
+               for (var j = 0; j < data.Table9.length; j++) {
+                   $("#add-row2").trigger("click");
+               }
+               $('.RowCal5:eq(' + data.Table9.length + ')').remove();
+               //SetExpenseType();
+               //SetUnitWeight();
+
+               $(".RowCal5").each(function (i) {
+                   var dtDate = new Date(data.Table9[i].ManpowerDate);
+                   dtDate = (dtDate.getDate() + '/' + (dtDate.getMonth() + 1) + '/' + dtDate.getFullYear());
+
+                   $(this).find('.tdno').val(data.Table9[i].RowNum);
+                   $(this).find('.ManpowerID').val(data.Table9[i].ID);
+                   $(this).find('.TechnicianID').val(data.Table9[i].TechnicianID);
+                   $(this).find('.JobID').val(data.Table9[i].JobID);
+                   $(this).find('.FName').val(data.Table9[i].TechnicianID);
+                   $(this).find('.dtDate').val(dtDate);
+                   $(this).find('.ManpowerTime').val(data.Table9[i].ManpowerTime);
+                   $(this).find('.WorkingFrom').val(data.Table9[i].WorkingFrom);
+                   $(this).find('.WorkingTo').val(data.Table9[i].WorkingTo);
+                   $(this).find('.ManpowerTotalHours').val(data.Table9[i].ManpowerTotalHours);
+                   $(this).find('.ManpowerNormal').val(data.Table9[i].ManpowerNormal);
+                   $(this).find('.ManpowerPremium').val(data.Table9[i].ManpowerPremium);
+                   $(this).find('.ManpowerSpecial').val(data.Table9[i].ManpowerSpecial);
+                   });
+               //CalSumExpense();
+           }
 
            ////Binding Data SaleOrder
            if (data.Table3.length > 0) {
