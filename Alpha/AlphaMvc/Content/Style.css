@@ -107,6 +107,24 @@
     margin-left: 10px;
     z-index: 1;
 }
+.btnnewversionCreate{
+    float: left;
+    position: absolute;
+    padding-top: 5px;
+    margin-left: 5px;
+    left: 85%;
+    cursor: pointer;
+    background-color: darkgray;
+}
+.btnnewversionUpdate{
+    float: left;
+    position: absolute;
+    padding-top: 5px;
+    margin-left: 5px;
+    left: 85%;
+    cursor: pointer;
+    background-color: chocolate;
+}
 .text-floatleft{
     float:left;
     margin-right:5px !important;
@@ -140,6 +158,26 @@
         margin-left: 5px;
         left: 70%;
         margin-top: 0px;
+    }
+    .btnnewversionCreate{
+        float: left;
+        position: absolute;
+        padding-top: 5px;
+        margin-left: 5px;
+        left: 70%;
+        margin-top: 0px;
+        cursor: pointer;
+        background-color: darkgray;
+    }
+    .btnnewversionUpdate{
+        float: left;
+        position: absolute;
+        padding-top: 5px;
+        margin-left: 5px;
+        left: 70%;
+        margin-top: 0px;
+        cursor: pointer;
+        background-color: chocolate;
     }
 }
 .alink{
@@ -847,7 +885,8 @@ select{
 .barattach{
     margin-top: 0px;
     /*width: 48.10%;*/
-    background-color: #96788f;
+    /*background-color: #96788f;*/
+    background-color: #cd300c;
 }
 .barattach-2 {
     margin-top: 0px;

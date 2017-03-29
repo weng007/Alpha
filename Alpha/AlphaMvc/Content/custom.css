@@ -5719,7 +5719,8 @@ body.modal-open,
   min-height: 16.428571429px;
   padding: 10px;
   border-bottom: 1px solid #e5e5e5;
-  background-color: #76c0a4;
+  /*background-color: #76c0a4;*/
+  background-color: #e06144;
 }
 
 .modal-header .close {

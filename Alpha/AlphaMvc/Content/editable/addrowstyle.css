@@ -86,7 +86,8 @@
 
     .theader {
         /*background: #fbfbf1;*/
-        background: #91b6b4;
+        /*background: #91b6b4;*/
+        background: #e89a89;
         color: white;
         text-align: center;
         font-size: small;
@@ -151,7 +152,8 @@
     .tdno {
         width: 50px;
         margin: 0;
-        background: #eaebff;
+        /*background: #eaebff;*/
+        background: #ffe2dc;
         height: 29px;
         border: none;
     }
