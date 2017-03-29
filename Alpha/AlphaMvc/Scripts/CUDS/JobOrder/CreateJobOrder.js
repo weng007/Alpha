@@ -588,8 +588,8 @@ function AddrowManpower() {
             select: function (event, ui) {
                 $(this).val(ui.item.label);
                 $('.CardID:last').val(dataitem.Table[0].IDCard);
-                $('.TechnicianType').val(dataitem.Table[0].TechnicianTypeName);
-                $('.TechnicianID').val(dataitem.Table[0].ID);
+                $('.TechnicianType:last').val(dataitem.Table[0].TechnicianTypeName);
+                $('.TechnicianID:last').val(dataitem.Table[0].ID);
                 return false;
             }
         });
