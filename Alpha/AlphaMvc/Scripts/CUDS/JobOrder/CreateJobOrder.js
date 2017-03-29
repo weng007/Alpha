@@ -532,9 +532,10 @@ function GetDatetime() {
     $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 }
 function AddrowManpower() {
-    $('.FName').autocomplete({
-        source: function (request, response) {
-            alert('inside');
+    $('.FName').each(function () {
+        $(this).autocomplete({
+            source: function (request, response) {
+                //alert('inside');
                 $.ajax({
                     url: 'http://localhost:13131/api/Technician',
                     type: 'GET',
@@ -558,14 +559,16 @@ function AddrowManpower() {
             },
             minLength: 3,
             select: function (event, ui) {
-                $('#txtName').val(ui.item.label);
-                //$('#txtCardID').val(dataitem.Table[0].IDCard);
+                $(this).val(ui.item.label);
+                $('.txtCardID:last').val(dataitem.Table[0].IDCard);
                 //$('#txtEmployeeType').val(dataitem.Table[0].TechnicianType);
                 //$('#txtTechnicianID').val(dataitem.Table[0].ID);
                 return false;
             }
         });
-    }
+    });
+   }
+    
 function DateWorking()
 {
     if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {
