@@ -18,6 +18,53 @@ namespace AlphaApi.Controllers
     [EnableCorsAttribute("*", "*", "*")]
     public class JobOrderManPowerController : ApiController
     {
-        public JobOrderExpenseDAL jobOrderExpense = new JobOrderExpenseDAL();
+        public JobOrderManpowerDAL jobOrderManpower = new JobOrderManpowerDAL();
+
+        [EnableCorsAttribute("*", "*", "*")]
+        [HttpPost]
+        public int Post(JobOrderManpowerModels jobOrderManpowerModel)
+        {
+            var response = 0;
+            response = jobOrderManpower.InsertData(jobOrderManpowerModel);
+            return response;
+        }
+
+        [HttpGet]
+        public string Get()
+        {
+            var response = jobOrderManpower.SelectData();
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [HttpGet]
+        public string Get(int id)
+        {
+            var response = jobOrderManpower.SelectByID(id);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [EnableCorsAttribute("*", "*", "*")]
+        [HttpPut]
+        public int Put(JobOrderManpowerModels jobOrderManpowerModel)
+        {
+            var response = 0;
+            if (jobOrderManpowerModel.ID > 0)
+            {
+                response = jobOrderManpower.UpdateData(jobOrderManpowerModel);
+            }
+            else
+            {
+                response = jobOrderManpower.InsertData(jobOrderManpowerModel);
+            }
+            return response;
+
+        }
+        [HttpDelete]
+        public string Delete(JobOrderManpowerModels jobOrderManpowerModel)
+        {
+            var response = jobOrderManpower.DeleteData(jobOrderManpowerModel);
+            return response;
+
+        }
     }
 }

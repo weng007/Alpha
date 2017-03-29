@@ -19,7 +19,7 @@ namespace AlphaApi.Models
 
         public int TechnicianID { get; set; }
 
-        public int EmpoyeeType { get; set; }
+        public int TechnicianType { get; set; }
 
         public DateTime ManpowerDate { get; set; }
 

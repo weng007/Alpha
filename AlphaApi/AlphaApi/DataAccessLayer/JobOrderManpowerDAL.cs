@@ -18,11 +18,11 @@ namespace AlphaApi.DataAccessLayer
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_JobOrderIncome_Ins", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_JobOrderManpower_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@JobID", jobOrderManpower.JobID);
                     cmd.Parameters.AddWithValue("@TechnicianID", jobOrderManpower.TechnicianID);
-                    cmd.Parameters.AddWithValue("@EmpoyeeType", jobOrderManpower.EmpoyeeType);
+                    cmd.Parameters.AddWithValue("@TechnicianType", jobOrderManpower.TechnicianType);
                     cmd.Parameters.AddWithValue("@ManpowerDate", jobOrderManpower.ManpowerDate);
                     cmd.Parameters.AddWithValue("@ManpowerDay", jobOrderManpower.ManpowerDay);
                     cmd.Parameters.AddWithValue("@ManpowerTime", jobOrderManpower.ManpowerTime);
@@ -50,22 +50,28 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public int UpdateData(JobOrderIncomeModels jobOrderIncome)
+        public int UpdateData(JobOrderManpowerModels jobOrderManpower)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_JobOrderIncome_Upd", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_JobOrderManpower_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", jobOrderIncome.ID);
-                    cmd.Parameters.AddWithValue("@JobID", jobOrderIncome.JobID);
-                    cmd.Parameters.AddWithValue("@IncomeType", jobOrderIncome.IncomeType);
-                    cmd.Parameters.AddWithValue("@UnitWeight", jobOrderIncome.UnitWeight);
-                    cmd.Parameters.AddWithValue("@Qty", jobOrderIncome.Qty);
-                    cmd.Parameters.AddWithValue("@UnitPrice", jobOrderIncome.UnitPrice);
-                    cmd.Parameters.AddWithValue("@Amount", jobOrderIncome.Amount);
-                    cmd.Parameters.AddWithValue("@EditBy", jobOrderIncome.EditBy);
+                    cmd.Parameters.AddWithValue("@ID", jobOrderManpower.ID);
+                    cmd.Parameters.AddWithValue("@JobID", jobOrderManpower.JobID);
+                    cmd.Parameters.AddWithValue("@TechnicianID", jobOrderManpower.TechnicianID);
+                    cmd.Parameters.AddWithValue("@TechnicianType", jobOrderManpower.TechnicianType);
+                    cmd.Parameters.AddWithValue("@ManpowerDate", jobOrderManpower.ManpowerDate);
+                    cmd.Parameters.AddWithValue("@ManpowerDay", jobOrderManpower.ManpowerDay);
+                    cmd.Parameters.AddWithValue("@ManpowerTime", jobOrderManpower.ManpowerTime);
+                    cmd.Parameters.AddWithValue("@WorkingFrom", jobOrderManpower.WorkingFrom);
+                    cmd.Parameters.AddWithValue("@WorkingTo", jobOrderManpower.WorkingTo);
+                    cmd.Parameters.AddWithValue("@ManpowerTotalHours", jobOrderManpower.ManpowerTotalHours);
+                    cmd.Parameters.AddWithValue("@ManpowerNormal", jobOrderManpower.ManpowerNormal);
+                    cmd.Parameters.AddWithValue("@ManpowerPremium", jobOrderManpower.ManpowerPremium);
+                    cmd.Parameters.AddWithValue("@ManpowerSpecial", jobOrderManpower.ManpowerSpecial);
+                    cmd.Parameters.AddWithValue("@EditBy", jobOrderManpower.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
                     return result;
@@ -81,16 +87,16 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string DeleteData(JobOrderIncomeModels jobOrderIncome)
+        public string DeleteData(JobOrderManpowerModels jobOrderManpower)
         {
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_JobOrderDetail_Del", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_JobOrderManpower_Del", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", jobOrderIncome.JobID);
+                    cmd.Parameters.AddWithValue("@ID", jobOrderManpower.JobID);
                     conObj.Open();
                     result = cmd.ExecuteScalar().ToString();
                     return result;
@@ -113,7 +119,7 @@ namespace AlphaApi.DataAccessLayer
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_JobOrderIncome_SelByID", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_JobOrderManpower_SelByID", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
                     conObj.Open();
@@ -142,7 +148,7 @@ namespace AlphaApi.DataAccessLayer
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_JobOrderIncome_Sel", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_JobOrderManpower_Sel", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
