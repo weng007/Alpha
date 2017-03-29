@@ -54,7 +54,7 @@
 
     $.ajax({
 
-        url: 'http://localhost:13132/api/ExpenseMaster',
+        url: 'http://localhost:13131/api/ExpenseMaster',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -71,7 +71,7 @@
 
     var dataObject = { typeID: '010' };
     $.ajax({
-        url: 'http://localhost:13132/api/MasterService/',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -89,7 +89,7 @@
 
     var dataObject = { typeID: '001' };
     $.ajax({
-        url: 'http://localhost:13132/api/MasterService/',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -107,7 +107,7 @@
 
     var dataObject = { typeID: '002' };
     $.ajax({
-        url: 'http://localhost:13132/api/MasterService/',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -125,7 +125,7 @@
 
     $.ajax(
         {
-            url: 'http://localhost:13132/api/Customer',
+            url: 'http://localhost:13131/api/Customer',
             type: 'GET',
             datatype: 'json',
             success: function (data) {
@@ -168,7 +168,7 @@
 });
 function ControlEnable(Isview) {
     //var Isview = val;
-    if (Isview) {
+    if (Isview === true) {
         document.getElementById("imgCustomer").disabled = true;
         document.getElementById("txtJobNo").disabled = true;
         document.getElementById("dtJobDate").disabled = true;
@@ -242,11 +242,12 @@ $(function () {
 });
 
 function GetData(val) {
-    //alert(val);
+    alert(val);
     var dataObject = { ID: val }
+    console.log(dataObject);
     $.ajax(
    {
-       url: 'http://localhost:13132/api/JobOrder',
+       url: 'http://localhost:13131/api/JobOrder',
        type: 'GET',
        async: false,
        data: dataObject,
@@ -258,6 +259,7 @@ function GetData(val) {
            JobDate = $.datepicker.formatDate('mm/dd/yy', JobDate);
            var SWorking = new Date(data.Table[0].SWorking);
            SWorking = $.datepicker.formatDate('mm/dd/yy', SWorking);
+           alert(data.Table[0].EWorking);
            var EWorking = new Date(data.Table[0].EWorking);
            EWorking =  $.datepicker.formatDate('mm/dd/yy', EWorking);
 
@@ -395,7 +397,7 @@ function GetData(val) {
 function SetIncomeMaster()
 {
     $.ajax({
-        url: 'http://localhost:13132/api/IncomeMaster',
+        url: 'http://localhost:13131/api/IncomeMaster',
         type: 'GET',
         async:false,
         dataType: 'json',
@@ -414,7 +416,7 @@ function SetIncomeMaster()
 }
 function SetExpenseType() {
     $.ajax({
-        url: 'http://localhost:13132/api/ExpenseMaster',
+        url: 'http://localhost:13131/api/ExpenseMaster',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -436,7 +438,7 @@ function SetUnitWeight() {
 
     var dataObject = { typeID: '010' };
     $.ajax({
-        url: 'http://localhost:13132/api/MasterService/',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -465,7 +467,7 @@ function Update(val) {
     var JobID;
     $.ajax(
     {
-        url: 'http://localhost:13132/api/JobOrder',
+        url: 'http://localhost:13131/api/JobOrder',
         type: 'PUT',
         async: false,
         data: dataObject,
@@ -483,7 +485,7 @@ function Update(val) {
     var dataObject = { JobID: JobID};
     $.ajax(
             {
-                url: 'http://localhost:13132/api/JobOrderIncome',
+                url: 'http://localhost:13131/api/JobOrderIncome',
                 type: 'DELETE',
                 async: false,
                 data: dataObject,
@@ -508,7 +510,7 @@ function Update(val) {
         if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
             {
-                url: 'http://localhost:13132/api/JobOrderIncome',
+                url: 'http://localhost:13131/api/JobOrderIncome',
                 type: 'POST',
                 async: false,
                 data: dataObject,
@@ -535,7 +537,7 @@ function Update(val) {
         if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
             $.ajax(
             {
-                url: 'http://localhost:13132/api/JobOrderExpense',
+                url: 'http://localhost:13131/api/JobOrderExpense',
                 type: 'POST',
                 async: false,
                 data: dataObject,
@@ -559,7 +561,7 @@ function Update(val) {
         if (JobID != 0 && $(this).find(".SaleOrderNo").val() != '') {
             $.ajax(
             {
-                url: 'http://localhost:13132/api/JobOrderSaleOrder',
+                url: 'http://localhost:13131/api/JobOrderSaleOrder',
                 type: 'POST',
                 async: false,
                 data: dataObject,
@@ -584,7 +586,7 @@ function Update(val) {
         if (JobID != 0 && $(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
             {
-                url: 'http://localhost:13132/api/JobOrderInvoice',
+                url: 'http://localhost:13131/api/JobOrderInvoice',
                 type: 'POST',
                 async: false,
                 data: dataObject,
@@ -609,7 +611,7 @@ function Update(val) {
         if (JobID != 0 && $(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '') {
             $.ajax(
             {
-                url: 'http://localhost:13132/api/JobOrderReceipt',
+                url: 'http://localhost:13131/api/JobOrderReceipt',
                 type: 'POST',
                 async: false,
                 data: dataObject,
@@ -694,7 +696,7 @@ function CalSumExpense() {
 function AddRowIncome() {
     if (localStorage['flagAddRow'] == 1) {
         $.ajax({
-            url: 'http://localhost:13132/api/IncomeMaster',
+            url: 'http://localhost:13131/api/IncomeMaster',
             type: 'GET',
             dataType: 'json',
             success: function (data) {          
@@ -715,7 +717,7 @@ function AddRowIncome() {
 function AddRowExpense() {
     if (localStorage['flagAddRow'] == 0) {
         $.ajax({
-            url: 'http://localhost:13132/api/ExpenseMaster',
+            url: 'http://localhost:13131/api/ExpenseMaster',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -734,7 +736,7 @@ function AddRowExpense() {
         });
         var dataObject = { typeID: '010' };
         $.ajax({
-            url: 'http://localhost:13132/api/MasterService/',
+            url: 'http://localhost:13131/api/MasterService/',
             type: 'GET',
             dataType: 'json',
             data: dataObject,
