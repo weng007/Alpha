@@ -48,6 +48,7 @@ $(document).ready(function () {
         $("#txtAddress").val($(this).find("td:eq(8)").text());
     });
 
+    var dataitem;
     $('#txtName').autocomplete({
         source: function (request, response) {
             $.ajax({
@@ -57,6 +58,7 @@ $(document).ready(function () {
                 data: { name:request.term },
                 success: function (data) {
                     data = JSON.parse(data);
+                    dataitem = data;
                     response($.map(data.Table, function (item) {
                         return {
                             label: item.FirstName,
@@ -73,6 +75,9 @@ $(document).ready(function () {
         minLength: 3,
         select: function (event, ui) {     
             $('#txtName:last').val(ui.item.label);
+            $('#txtCardID').val(dataitem.Table[0].IDCard);
+            $('#txtEmployeeType').val(dataitem.Table[0].TechnicianTypeName);
+            $('#txtTechnicianID').val(dataitem.Table[0].ID);
             return false;
         }
     });
@@ -178,21 +183,17 @@ $(document).ready(function () {
     });
 });
 $(function () {
-
+    GetDatetime();
     $("#dtJobDate").datepicker();
     $("#dtSWorking").datepicker();
     $("#dtEWorking").datepicker();
-    $("#datepicker4").datepicker();
-    $("#datepicker5").datepicker();
     $('#tabManpower').dynoTable2();
     $('#tabSaleOrder').dynoTable3();
     $('#tabInvoice').dynoTable4();
     $('#tabReceipt').dynoTable5();
     $('#tabIncome').dynoTable6();
     $('#tabCost').dynoTable7();
-
-    var dates = new Date();
-    $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
+    
 });
 
 function BrowseCustomer() {
@@ -305,6 +306,39 @@ function CreateData() {
                 });
             }
         });
+    //===================Insert JobOrderManpower
+        //var dataObject = {};
+        //$(".RowCal5").each(function () {
+        //    dataObject.JobID = ID;
+        //    dataObject.TechnicianID = $(this).find('.TechnicianID').find(":selected").val();
+        //    dataObject.EmpoyeeType = $(this).find('.EmpoyeeType').find(":selected").val();
+        //    dataObject.ManpowerDate = $(this).find(".ManpowerDate").val();
+        //    dataObject.ManpowerDay = $(this).find(".ManpowerDay").val();
+        //    dataObject.ManpowerTime = $(this).find(".ManpowerTime").val();
+        //    dataObject.WorkingFrom = $(this).find(".WorkingFrom").val();
+        //    dataObject.WorkingTo = $(this).find(".WorkingTo").val();
+        //    dataObject.ManpowerTotalHours = $(this).find(".ManpowerTotalHours").val();
+        //    dataObject.ManpowerNormal = $(this).find(".ManpowerNormal").val();
+        //    dataObject.ManpowerPremium = $(this).find(".ManpowerPremium").val();
+        //    dataObject.ManpowerSpecial = $(this).find(".ManpowerSpecial").val();
+        //    dataObject.CreateBy = localStorage['UserID'];
+        //    dataObject.EditBy = localStorage['UserID'];
+        //    if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
+        //        $.ajax(
+        //        {
+        //            url: 'http://localhost:13131/api/JobOrderExpense',
+        //            type: 'POST',
+        //            async: false,
+        //            data: dataObject,
+        //            datatype: 'json',
+        //            success: function (data) {
+        //            },
+        //            error: function (msg) {
+        //                alert(msg)
+        //            }
+        //        });
+        //    }
+        //});
     ////===================Insert JobOrderSaleOrder 
         var dataObject = {};
         $(".RowCal2").each(function () {
@@ -491,6 +525,47 @@ function AddRowExpense() {
         }
     });
 }
+function GetDatetime() {
+
+    $(".dtDate").datepicker();
+    var dates = new Date();
+    $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
+}
+function AddrowManpower() {
+    $('.FName').autocomplete({
+        source: function (request, response) {
+            alert('inside');
+                $.ajax({
+                    url: 'http://localhost:13131/api/Technician',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { name: request.term },
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        dataitem = data;
+                        response($.map(data.Table, function (item) {
+                            return {
+                                label: item.FirstName,
+                                value: item.ID
+                            }
+                        }));
+                    },
+                    error: function (xmlHttpRequest, textStatus, errorThrown) {
+                        console.log('some error occured', textStatus, errorThrown);
+                        alert('Error');
+                    }
+                });
+            },
+            minLength: 3,
+            select: function (event, ui) {
+                $('#txtName').val(ui.item.label);
+                //$('#txtCardID').val(dataitem.Table[0].IDCard);
+                //$('#txtEmployeeType').val(dataitem.Table[0].TechnicianType);
+                //$('#txtTechnicianID').val(dataitem.Table[0].ID);
+                return false;
+            }
+        });
+    }
 function DateWorking()
 {
     if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {

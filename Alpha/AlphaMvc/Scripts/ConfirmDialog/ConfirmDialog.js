@@ -237,7 +237,6 @@ function ConfirmDialog(val, topic, id) {
             html += '<button type="button" class="btn btn-info" data-dismiss="modal">No</button>';
             html += '</div></div></div>';
             document.getElementById("ShowDialog").innerHTML = html;
-
     }
     else if (val == "Update") {
             $('#ShowDialog').modal('show');

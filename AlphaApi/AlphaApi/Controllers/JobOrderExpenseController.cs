@@ -19,12 +19,10 @@ namespace AlphaApi.Controllers
         [EnableCorsAttribute("*", "*", "*")]
     public class JobOrderExpenseController : ApiController
     {
-        
         public JobOrderExpenseDAL jobOrderExpense = new JobOrderExpenseDAL();
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPost]
-
         public int Post(JobOrderExpenseModels jobOrderExpenseModel)
         {
             var response = 0;

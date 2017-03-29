@@ -441,6 +441,7 @@
                                                             <tr>
                                                                 <th rowspan="3"></th>
                                                                 <th rowspan="3">No.</th>
+                                                                <th rowspan="3" @*class="hidecolumn"*@>ID</th>
                                                                 <th rowspan="3">ชื่อ</th>
                                                                 <th rowspan="3">เลขบัตรประชาชน</th>
                                                                 <th rowspan="3">ประเภทพนักงาน</th>
@@ -464,23 +465,26 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
+                                                            <tr class="RowCal5">
                                                                 <td>
                                                                     <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                                 </td>
                                                                 <td>
                                                                     <input id="No" type="text" value="" class="tdno" disabled />
                                                                 </td>
-                                                                <td><input type="text" id="txtName" />
+                                                                <td @*class="hidecolumn"*@>
+                                                                    <input id="txtTechnicianID" type="text" value="" class="txtTechnicianID" disabled />
+                                                                </td>
+                                                                <td><input type="text" id="txtName" name="FName" class="FName" />
                                                                 </td>
                                                                 <td>
-                                                                    <input id="CardID" type="text" value="" class="text-size140 txtdisablerow" disabled />
+                                                                    <input id="txtCardID" type="text" value="" class="text-size140 txtdisablerow" disabled />
                                                                 </td>
                                                                 <td>
                                                                     <input id="txtEmployeeType" type="text" value="" class="text-size140 txtdisablerow" disabled />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="datepicker4" class="text-size100" />
+                                                                    <input type="text" id="datepicker4" class="dtDate text-size100" />
                                                                 </td>
                                                                 <td>
                                                                     <select class="select-size50">
@@ -521,24 +525,27 @@
                                                                     <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
                                                                 </td>
                                                             </tr>
-                                                            <tr id="add-template2">
+                                                            <tr class="RowCal5" id="add-template2">
                                                                 <td>
                                                                     <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
                                                                 </td>
                                                                 <td>
                                                                     <input id="No" type="text" value="" class="tdno" disabled />
                                                                 </td>
-                                                                <td>
-                                                                    <input type="text" id="txtName" />
+                                                                <td @*class="hidecolumn"*@>
+                                                                    <input id="txtTechnicianID" type="text" value="" class="txtTechnicianID" disabled />
                                                                 </td>
                                                                 <td>
-                                                                    <input id="CardID" type="text" value="" class="text-size140 txtdisablerow" disabled />
+                                                                    <input type="text" id="txtName" name="txtName" class="FName"/>
                                                                 </td>
                                                                 <td>
-                                                                    <input id="txtEmployeeType" type="text" value="" class="text-size140 txtdisablerow" disabled />
+                                                                    <input id="txtCardID" type="text" value="" class="CardID text-size140 txtdisablerow" disabled />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="datepicker5" class="text-size100" />
+                                                                    <input id="txtEmployeeType" type="text" value="" class="EmployeeType text-size140 txtdisablerow" disabled />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="datepicker5" class="dtDate text-size100" />
                                                                 </td>
                                                                 <td>
                                                                     <select class="select-size50">
@@ -552,13 +559,13 @@
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="Time" name="CreateDate" class="text-size50 textcenter">
+                                                                    <input type="text" id="Time" name="CreateDate" class="txtTime text-size50 textcenter">
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtFrom" name="timepicker" class="timepicker text-size50 textcenter">
+                                                                    <input type="text" id="txtFrom" name="timepicker" class="txtFrom timepicker text-size50 textcenter">
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtTo" name="timepicker" class="timepicker text-size50 textcenter">
+                                                                    <input type="text" id="txtTo" name="timepicker" class="txtTo timepicker text-size50 textcenter">
                                                                 </td>
                                                                 <td>
                                                                     <input id="Hours" type="text" value="" class="text-size50 textcenter" />
@@ -582,7 +589,7 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <button id="add-row2" class="btn btn-primary">Add Row</button><br /><br />
+                                                <button id="add-row2" class="btn btn-primary" onclick="AddrowManpower()">Add Row</button><br /><br />
                                                 <table>
                                                     <tr>
                                                         <td>
