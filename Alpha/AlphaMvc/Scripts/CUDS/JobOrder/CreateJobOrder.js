@@ -183,13 +183,16 @@ $(document).ready(function () {
     });
 
 });
-var row_index;
-var col_index;
+var row_index = 0;
+var col_index = 0;
 $(function () {
-    $('.dtDate').datepicker();
-    var dates = new Date();
-    $('.WorkingFrom').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
-    $('.WorkingTo').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
+    $('.ManDate').datepicker();
+    $('.WorkingFrom').timepicker();
+    $('.WorkingTo').timepicker();
+
+    //var dates = new Date();
+    //$('.WorkingFrom').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
+    //$('.WorkingTo').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 
     $("#dtJobDate").datepicker();
     $("#dtSWorking").datepicker();
@@ -204,8 +207,6 @@ $(function () {
     $('.RowCal5 td').click(function () {
         row_index = $(this).parent().index();
         col_index = $(this).index();
-
-        ////alert(row_index);
     });
 });
 
@@ -240,12 +241,33 @@ function BrowseCustomer() {
                }
            });
 }
+function pad(str, max) {
+    str = str.toString();
+    return str.length < max ? pad("0" + str, max) : str;
+}
+function CalTotalHour() {
+    var workingFrom = $('.WorkingFrom').eq(row_index).val();
+    var fromHours = workingFrom.split(':')[0]
+    var fromMinute = workingFrom.split(':')[1]
 
+    var workingTo = $('.WorkingTo').eq(row_index).val();
+    var toHours = workingTo.split(':')[0]
+    var toMinute = workingTo.split(':')[1]
+
+    var wfminute = (fromHours * 60) + parseInt(fromMinute);
+    var wtminute = (toHours * 60) + parseInt(toMinute);    
+    var tminute = wtminute - wfminute;
+
+    var totalHours = tminute / 60;
+    //var totalMinutes = tminute - 60 ;
+    var totalMinutes = (totalHours * 60) - tminute;
+    var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
+    $('.TotalHours').eq(row_index).val(total);
+}
 function CreateData() {
       var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
     console.log(dataObject);
         var ID;
-
         $.ajax(
         {
             url: 'http://localhost:13131/api/JobOrder',
@@ -320,33 +342,35 @@ function CreateData() {
             }
         });
     //===================Insert JobOrderManpower
-        var WorkingFrom = $('.WorkingFrom').val();
-        var FromHours = WorkingFrom.split(':')[0]
-        var FromSecond = WorkingFrom.split(':')[1]
-
-        var WorkingTo = $('.WorkingTo').val();
-        var ToHours = WorkingTo.split(':')[0]
-        var ToSecond = WorkingTo.split(':')[1]
+        
 
         var dataObject = {};
         $(".RowCal5").each(function () {
+            var workingFrom = $(this).find('.WorkingFrom').val();
+            var fromHours = workingFrom.split(':')[0]
+            var fromMinute = workingFrom.split(':')[1]
+            var fromMinute = fromMinute.substring(0, 2);
+
+            var workingTo = $(this).find('.WorkingTo').val();
+            var toHours = workingTo.split(':')[0]
+            var toMinute = workingTo.split(':')[1]
+            var toMinute = toMinute.substring(0, 2);
+
             dataObject.JobID = ID;
             dataObject.TechnicianID = $(this).find('.TechnicianID').val();
-            dataObject.TechnicianType = $(this).find('.TechnicianType').val();
-            dataObject.ManpowerDate = $(this).find(".dtDate").val();
-            dataObject.ManpowerDay = $(this).find('.ManpowerDay').find(":selected").val();
-            dataObject.ManpowerTime = $(this).find(".ManpowerTime").val();
-            dataObject.WorkingFromHour = FromHours;
-            dataObject.WorkingFromSecond = FromSecond;
-            dataObject.WorkingToHour = ToHours;
-            dataObject.WorkingToSecond = ToSecond;
-            dataObject.ManpowerTotalHours = $(this).find(".ManpowerTotalHours").val();
-            dataObject.ManpowerNormal = $(this).find(".ManpowerNormal").val();
-            dataObject.ManpowerPremium = $(this).find(".ManpowerPremium").val();
-            dataObject.ManpowerSpecial = $(this).find(".ManpowerSpecial").val();
+            dataObject.ManDate = $(this).find(".ManDate").val();
+            dataObject.ManDay = $(this).find('.ManDay').find(":selected").val();
+            dataObject.ManTime = $(this).find(".ManTime").val();
+            dataObject.FromHour = fromHours;
+            dataObject.FromMinute = fromMinute;
+            dataObject.ToHour = toHours;
+            dataObject.ToMinute = toMinute;
+            dataObject.TotalHours = $(this).find(".TotalHours").val();
+            dataObject.ManNormal = $(this).find(".ManNormal").val();
+            dataObject.ManPremium = $(this).find(".ManPremium").val();
+            dataObject.ManSpecial = $(this).find(".ManSpecial").val();
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
-            alert($(this).find('.ManpowerDay').find(":selected").val());
             if ($(this).find(".TechnicianID").val() != '') {
                 $.ajax(
                 {
@@ -493,11 +517,7 @@ function CalSumExpense() {
         $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
     }
 }
-function CalTotalHour() {
-    var WorkingFrom = $('.WorkingFrom').val();
-    var FromHours = WorkingFrom.split(':')[0]
-    var FromSecond = WorkingFrom.split(':')[1]
-}
+
 function AddRowIncome() {
     $.ajax({
         url: 'http://localhost:13131/api/IncomeMaster',
@@ -559,14 +579,11 @@ function AddrowManpower() {
     $('.RowCal5 td').click(function () {
         row_index = $(this).parent().index();
         col_index = $(this).index();
-
-        $('.WorkingFrom').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
-        $('.WorkingTo').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
     });
 
-    $(".dtDate").removeClass('hasDatepicker').datepicker();
-    var dates = new Date();
-    $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
+    $(".ManDate").removeClass('hasDatepicker').datepicker();
+    $('.WorkingFrom').timepicker();
+    $('.WorkingTo').timepicker();
 
     $('.FName').each(function () {
         $(this).autocomplete({

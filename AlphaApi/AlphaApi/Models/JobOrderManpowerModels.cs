@@ -19,29 +19,27 @@ namespace AlphaApi.Models
 
         public int TechnicianID { get; set; }
 
-        public int TechnicianType { get; set; }
+        public DateTime ManDate { get; set; }
 
-        public DateTime ManpowerDate { get; set; }
+        public int ManDay { get; set; }
 
-        public int ManpowerDay { get; set; }
+        public int ManTime { get; set; }
 
-        public int ManpowerTime { get; set; }
+        public int FromHour { get; set; }
 
-        public int WorkingFromHour { get; set; }
+        public int FromMinute { get; set; }
 
-        public int WorkingFromSecond { get; set; }
+        public int ToHour { get; set; }
 
-        public int WorkingToHour { get; set; }
+        public int ToMinute { get; set; }
 
-        public int WorkingToSecond { get; set; }
+        public string TotalHours { get; set; }
 
-        public double ManpowerTotalHours { get; set; }
+        public double ManNormal { get; set; }
 
-        public double ManpowerNormal { get; set; }
+        public double ManPremium { get; set; }
 
-        public double ManpowerPremium { get; set; }
-
-        public double ManpowerSpecial { get; set; }
+        public double ManSpecial { get; set; }
 
         public int CreateBy { get; set; }
 

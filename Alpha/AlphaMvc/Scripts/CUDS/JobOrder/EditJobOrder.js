@@ -4,6 +4,8 @@
 
     $('.Number').number(true, 2);
 
+    
+
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
         $("#hidCustID").val($(this).find("td:eq(1)").text());
@@ -14,7 +16,7 @@
         $("#txtAddress").val($(this).find("td:eq(8)").text());
     })
 
-    $(window).load(function () {
+    $(window).load(function () {      
          //Income
         $('.cloneRowIncome').click(function () {
             $('.RowCal:last').find('td input[type=text]').eq(0).val('');
@@ -165,6 +167,42 @@
             $info.show();
         }
     });
+
+   
+    $("#dtJobDate").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+.datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+
+    $("#dtSWorking").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+
+    $("#dtEWorking").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+
+
+    $("#dtJobDate").datepicker();
+    $("#dtSWorking").datepicker();
+    $("#dtEWorking").datepicker();
+    $('#tabManpower').dynoTable2();
+    $('#tabSaleOrder').dynoTable3();
+    $('#tabInvoice').dynoTable4();
+    $('#tabReceipt').dynoTable5();
+    $('#tabIncome').dynoTable6();
+    $('#tabCost').dynoTable7();
+
+    $('.ManDate').datepicker();
+    $('.WorkingFrom').timepicker();
+    $('.WorkingTo').timepicker();
+
+
 });
 function ControlEnable(Isview) {
     //var Isview = val;
@@ -205,44 +243,10 @@ function ControlEnable(Isview) {
     }
     
 }
-$(function () {
 
-    $("#dtJobDate").datepicker({
-        inline: true,
-        showOtherMonths: true
-    })
-    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
-
-    $("#dtSWorking").datepicker({
-        inline: true,
-        showOtherMonths: true
-    })
-    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
-
-    $("#dtEWorking").datepicker({
-        inline: true,
-        showOtherMonths: true
-    })
-    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
-
-    $("#dtJobDate").datepicker();
-    $("#dtSWorking").datepicker();
-    $("#dtEWorking").datepicker();
-    $("#datepicker4").datepicker();
-    $("#datepicker5").datepicker();
-    $('#tabManpower').dynoTable2();
-    $('#tabSaleOrder').dynoTable3();
-    $('#tabInvoice').dynoTable4();
-    $('#tabReceipt').dynoTable5();
-    $('#tabIncome').dynoTable6();
-    $('#tabCost').dynoTable7();
-
-    var dates = new Date();
-    $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
-});
 
 function GetData(val) {
-    alert(val);
+    
     var dataObject = { ID: val }
     console.log(dataObject);
     $.ajax(
@@ -259,7 +263,7 @@ function GetData(val) {
            JobDate = $.datepicker.formatDate('mm/dd/yy', JobDate);
            var SWorking = new Date(data.Table[0].SWorking);
            SWorking = $.datepicker.formatDate('mm/dd/yy', SWorking);
-           alert(data.Table[0].EWorking);
+   
            var EWorking = new Date(data.Table[0].EWorking);
            EWorking =  $.datepicker.formatDate('mm/dd/yy', EWorking);
 
@@ -294,7 +298,7 @@ function GetData(val) {
                });
                 CalSum();
            }
-
+           
            if (data.Table2.length > 0) {
                $('.RowCal1').remove();
                ////Binding Data Expense
@@ -335,35 +339,41 @@ function GetData(val) {
                     $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
                 }
            }
-
+           
            //Binding Data Manpower
            if (data.Table9.length > 0) {
                $('.RowCal5').remove();
                    ////Binding Data Expense
                for (var j = 0; j < data.Table9.length; j++) {
                    $("#add-row2").trigger("click");
+                   AddrowManpower();
                }
                $('.RowCal5:eq(' + data.Table9.length + ')').remove();
-               //SetExpenseType();
-               //SetUnitWeight();
 
                $(".RowCal5").each(function (i) {
-                   var dtDate = new Date(data.Table9[i].ManpowerDate);
-                   dtDate = (dtDate.getDate() + '/' + (dtDate.getMonth() + 1) + '/' + dtDate.getFullYear());
+                   var setFDate = new Date();
+                   var setTDate = new Date();
+                   setFDate.setHours(data.Table9[i].FromHour, data.Table9[i].FromMinute, 00);
+                   setTDate.setHours(data.Table9[i].ToHour, data.Table9[i].ToMinute, 00);
+
+                   var ManDate = new Date(data.Table9[i].ManDate);
+                   ManDate = $.datepicker.formatDate('mm/dd/yy', ManDate);
 
                    $(this).find('.tdno').val(data.Table9[i].RowNum);
                    $(this).find('.ManpowerID').val(data.Table9[i].ID);
                    $(this).find('.TechnicianID').val(data.Table9[i].TechnicianID);
                    $(this).find('.JobID').val(data.Table9[i].JobID);
                    $(this).find('.FName').val(data.Table9[i].TechnicianName);
-                   $(this).find('.dtDate').val(dtDate);
-                   $(this).find('.ManpowerTime').val(data.Table9[i].ManpowerTime);
-                   $(this).find('.WorkingFrom').val(data.Table9[i].WorkingFrom);
-                   $(this).find('.WorkingTo').val(data.Table9[i].WorkingTo);
-                   $(this).find('.ManpowerTotalHours').val(data.Table9[i].ManpowerTotalHours);
-                   $(this).find('.ManpowerNormal').val(data.Table9[i].ManpowerNormal);
-                   $(this).find('.ManpowerPremium').val(data.Table9[i].ManpowerPremium);
-                   $(this).find('.ManpowerSpecial').val(data.Table9[i].ManpowerSpecial);
+                   $(this).find('.CardID').val(data.Table9[i].IDCard);
+                   $(this).find('.TechnicianType').val(data.Table9[i].TechnicianTypeName);
+                   $(this).find('.ManDate').val(ManDate);
+                   $(this).find('.ManTime').val(data.Table9[i].ManTime);
+                   $(this).find('.WorkingFrom').timepicker('setTime', setFDate);
+                   $(this).find('.WorkingTo').timepicker('setTime', setTDate);
+                   $(this).find('.TotalHours').val(data.Table9[i].TotalHours);
+                   $(this).find('.ManNormal').val(data.Table9[i].ManNormal);
+                   $(this).find('.ManPremium').val(data.Table9[i].ManPremium);
+                   $(this).find('.ManSpecial').val(data.Table9[i].ManSpecial);
                    });
                //CalSumExpense();
            }
@@ -418,6 +428,8 @@ function GetData(val) {
                    $(this).find('.Amount4').val(data.Table5[i].Amount).number(true, 2);
                });
            }
+
+           
        },
        error: function (msg) {
            alert(msg);
@@ -426,54 +438,7 @@ function GetData(val) {
     localStorage['flagAddRow'] = 1;
 }
 
-function AddrowManpower() {
-    $('.RowCal5 td').click(function () {
-        row_index = $(this).parent().index();
-        col_index = $(this).index();
 
-        alert(row_index);
-    });
-
-    $(".dtDate").removeClass('hasDatepicker').datepicker();
-    var dates = new Date();
-    $('.timepicker').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
-
-    $('.FName').each(function () {
-        $(this).autocomplete({
-            source: function (request, response) {
-                //alert('inside');
-                $.ajax({
-                    url: 'http://localhost:13131/api/Technician',
-                    type: 'GET',
-                    dataType: 'json',
-                    data: { name: request.term },
-                    success: function (data) {
-                        data = JSON.parse(data);
-                        dataitem = data;
-                        response($.map(data.Table, function (item) {
-                            return {
-                                label: item.FirstName,
-                                value: item.ID
-                            }
-                        }));
-                    },
-                    error: function (xmlHttpRequest, textStatus, errorThrown) {
-                        console.log('some error occured', textStatus, errorThrown);
-                        alert('Error');
-                    }
-                });
-            },
-            minLength: 3,
-            select: function (event, ui) {
-                $(this).val(ui.item.label);
-                $('.CardID').eq(row_index).val(dataitem.Table[0].IDCard);
-                $('.TechnicianType').eq(row_index).val(dataitem.Table[0].TechnicianTypeName);
-                $('.TechnicianID').eq(row_index).val(dataitem.Table[0].ID);
-                return false;
-            }
-        });
-    });
-}
 function SetIncomeMaster()
 {
     $.ajax({
@@ -494,6 +459,7 @@ function SetIncomeMaster()
         }
     });
 }
+
 function SetExpenseType() {
     $.ajax({
         url: 'http://localhost:13131/api/ExpenseMaster',
@@ -618,6 +584,49 @@ function Update(val) {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderExpense',
+                type: 'POST',
+                async: false,
+                data: dataObject,
+                datatype: 'json',
+                success: function (data) {
+                },
+                error: function (msg) {
+                    alert(msg)
+                }
+            });
+        }
+    });
+    //===================Insert JobOrderManpower
+    var dataObject = {};
+    $(".RowCal5").each(function () {
+        var workingFrom = $(this).find('.WorkingFrom').val();
+        var fromHours = workingFrom.split(':')[0]
+        var fromMinute = workingFrom.split(':')[1]
+        var fromMinute = fromMinute.substring(0, 2);
+
+        var workingTo = $(this).find('.WorkingTo').val();
+        var toHours = workingTo.split(':')[0]
+        var toMinute = workingTo.split(':')[1]
+        var toMinute = toMinute.substring(0, 2);
+
+        dataObject.JobID = ID;
+        dataObject.TechnicianID = $(this).find('.TechnicianID').val();
+        dataObject.ManDate = $(this).find(".ManDate").val();
+        dataObject.ManDay = $(this).find('.ManDay').find(":selected").val();
+        dataObject.ManTime = $(this).find(".ManTime").val();
+        dataObject.FromHour = fromHours;
+        dataObject.FromMinute = fromMinute;
+        dataObject.ToHour = toHours;
+        dataObject.ToMinute = toMinute;
+        dataObject.TotalHours = $(this).find(".TotalHours").val();
+        dataObject.ManNormal = $(this).find(".ManNormal").val();
+        dataObject.ManPremium = $(this).find(".ManPremium").val();
+        dataObject.ManSpecial = $(this).find(".ManSpecial").val();
+        dataObject.EditBy = localStorage['UserID'];
+        if ($(this).find(".TechnicianID").val() != '') {
+            $.ajax(
+            {
+                url: 'http://localhost:13131/api/JobOrderManpower',
                 type: 'POST',
                 async: false,
                 data: dataObject,
@@ -833,6 +842,83 @@ function AddRowExpense() {
             }
         });
     }
+}
+var row_index = 0;
+var col_index = 0;
+function SetRowCal5() {
+    $('.RowCal5 td').click(function () {
+        row_index = $(this).parent().index();
+        col_index = $(this).index();
+    });
+}
+function AddrowManpower() {
+    $('.RowCal5 td').click(function () {
+        row_index = $(this).parent().index();
+        col_index = $(this).index();
+    });
+
+    $('.ManDate').datepicker();
+    $('.WorkingFrom').timepicker();
+    $('.WorkingTo').timepicker();
+
+    $('.FName').each(function () {
+        $(this).autocomplete({
+            source: function (request, response) {
+                //alert('inside');
+                $.ajax({
+                    url: 'http://localhost:13131/api/Technician',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { name: request.term },
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        dataitem = data;
+                        response($.map(data.Table, function (item) {
+                            return {
+                                label: item.FirstName,
+                                value: item.ID
+                            }
+                        }));
+                    },
+                    error: function (xmlHttpRequest, textStatus, errorThrown) {
+                        console.log('some error occured', textStatus, errorThrown);
+                        alert('Error');
+                    }
+                });
+            },
+            minLength: 3,
+            select: function (event, ui) {
+                $(this).val(ui.item.label);
+                $('.CardID').eq(row_index).val(dataitem.Table[0].IDCard);
+                $('.TechnicianType').eq(row_index).val(dataitem.Table[0].TechnicianTypeName);
+                $('.TechnicianID').eq(row_index).val(dataitem.Table[0].ID);
+                return false;
+            }
+        });
+    });
+}
+function pad(str, max) {
+    str = str.toString();
+    return str.length < max ? pad("0" + str, max) : str;
+}
+function CalTotalHour() {
+    var workingFrom = $('.WorkingFrom').eq(row_index).val();
+    var fromHours = workingFrom.split(':')[0]
+    var fromMinute = workingFrom.split(':')[1]
+
+    var workingTo = $('.WorkingTo').eq(row_index).val();
+    var toHours = workingTo.split(':')[0]
+    var toMinute = workingTo.split(':')[1]
+
+    var wfminute = (fromHours * 60) + parseInt(fromMinute);
+    var wtminute = (toHours * 60) + parseInt(toMinute);
+    var tminute = wtminute - wfminute;
+
+    var totalHours = tminute / 60;
+    //var totalMinutes = tminute - 60 ;
+    var totalMinutes = (totalHours * 60) - tminute;
+    var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
+    $('.TotalHours').eq(row_index).val(total);
 }
 function Redirect() {
     window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();

@@ -48,14 +48,14 @@ namespace AlphaApi.Controllers
         public int Put(JobOrderManpowerModels jobOrderManpowerModel)
         {
             var response = 0;
-            //if (jobOrderManpowerModel.ID > 0)
-            //{
-            //    response = jobOrderManpower.UpdateData(jobOrderManpowerModel);
-            //}
-            //else
-            //{
+            if (jobOrderManpowerModel.ID > 0)
+            {
+                response = jobOrderManpower.UpdateData(jobOrderManpowerModel);
+            }
+            else
+            {
                 response = jobOrderManpower.InsertData(jobOrderManpowerModel);
-            //}
+            }
             return response;
 
         }
