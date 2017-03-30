@@ -52,42 +52,42 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public int UpdateData(JobOrderManpowerModels jobOrderManpower)
-        {
-            using (SqlConnection conObj = new SqlConnection(conStr))
-            {
-                try
-                {
-                    SqlCommand cmd = new SqlCommand("SP_JobOrderManpower_Upd", conObj);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", jobOrderManpower.ID);
-                    cmd.Parameters.AddWithValue("@JobID", jobOrderManpower.JobID);
-                    cmd.Parameters.AddWithValue("@TechnicianID", jobOrderManpower.TechnicianID);
-                    cmd.Parameters.AddWithValue("@TechnicianType", jobOrderManpower.TechnicianType);
-                    cmd.Parameters.AddWithValue("@ManpowerDate", jobOrderManpower.ManpowerDate);
-                    cmd.Parameters.AddWithValue("@ManpowerDay", jobOrderManpower.ManpowerDay);
-                    cmd.Parameters.AddWithValue("@ManpowerTime", jobOrderManpower.ManpowerTime);
-                    cmd.Parameters.AddWithValue("@WorkingFrom", jobOrderManpower.WorkingFrom);
-                    cmd.Parameters.AddWithValue("@WorkingTo", jobOrderManpower.WorkingTo);
-                    cmd.Parameters.AddWithValue("@ManpowerTotalHours", jobOrderManpower.ManpowerTotalHours);
-                    cmd.Parameters.AddWithValue("@ManpowerNormal", jobOrderManpower.ManpowerNormal);
-                    cmd.Parameters.AddWithValue("@ManpowerPremium", jobOrderManpower.ManpowerPremium);
-                    cmd.Parameters.AddWithValue("@ManpowerSpecial", jobOrderManpower.ManpowerSpecial);
-                    cmd.Parameters.AddWithValue("@EditBy", jobOrderManpower.EditBy);
-                    conObj.Open();
-                    result = cmd.ExecuteNonQuery();
-                    return result;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                finally
-                {
-                    conObj.Close();
-                }
-            }
-        }
+        //public int UpdateData(JobOrderManpowerModels jobOrderManpower)
+        //{
+        //    using (SqlConnection conObj = new SqlConnection(conStr))
+        //    {
+        //        try
+        //        {
+        //            SqlCommand cmd = new SqlCommand("SP_JobOrderManpower_Upd", conObj);
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddWithValue("@ID", jobOrderManpower.ID);
+        //            cmd.Parameters.AddWithValue("@JobID", jobOrderManpower.JobID);
+        //            cmd.Parameters.AddWithValue("@TechnicianID", jobOrderManpower.TechnicianID);
+        //            cmd.Parameters.AddWithValue("@TechnicianType", jobOrderManpower.TechnicianType);
+        //            cmd.Parameters.AddWithValue("@ManpowerDate", jobOrderManpower.ManpowerDate);
+        //            cmd.Parameters.AddWithValue("@ManpowerDay", jobOrderManpower.ManpowerDay);
+        //            cmd.Parameters.AddWithValue("@ManpowerTime", jobOrderManpower.ManpowerTime);
+        //            cmd.Parameters.AddWithValue("@WorkingFrom", jobOrderManpower.WorkingFrom);
+        //            cmd.Parameters.AddWithValue("@WorkingTo", jobOrderManpower.WorkingTo);
+        //            cmd.Parameters.AddWithValue("@ManpowerTotalHours", jobOrderManpower.ManpowerTotalHours);
+        //            cmd.Parameters.AddWithValue("@ManpowerNormal", jobOrderManpower.ManpowerNormal);
+        //            cmd.Parameters.AddWithValue("@ManpowerPremium", jobOrderManpower.ManpowerPremium);
+        //            cmd.Parameters.AddWithValue("@ManpowerSpecial", jobOrderManpower.ManpowerSpecial);
+        //            cmd.Parameters.AddWithValue("@EditBy", jobOrderManpower.EditBy);
+        //            conObj.Open();
+        //            result = cmd.ExecuteNonQuery();
+        //            return result;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw ex;
+        //        }
+        //        finally
+        //        {
+        //            conObj.Close();
+        //        }
+        //    }
+        //}
 
         public string DeleteData(JobOrderManpowerModels jobOrderManpower)
         {
