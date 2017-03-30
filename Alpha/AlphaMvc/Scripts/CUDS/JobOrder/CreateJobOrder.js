@@ -560,7 +560,8 @@ function AddrowManpower() {
         row_index = $(this).parent().index();
         col_index = $(this).index();
 
-        //alert(row_index);
+        $('.WorkingFrom').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
+        $('.WorkingTo').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
     });
 
     $(".dtDate").removeClass('hasDatepicker').datepicker();
