@@ -1,20 +1,13 @@
 ﻿function Isvalidate(val, topic, id) {
-    var validatehtml;
+    var validatehtml = '';
     if (topic == "IncomeMaster") {
         if ($("#txtDetail").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input Detail.</div>';
-        }
-        if (validatehtml == '') {
-            ConfirmDialog(val, topic, id);
         }
     }
     if (topic == "ExpenseMaster") {
         if ($("#txtDetail").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input Detail.</div>';
-        }
-        if (validatehtml == '')
-        {
-            ConfirmDialog(val, topic, id);
         }
     }
     if (topic == "Products") {
@@ -36,125 +29,73 @@
         if ($("#txtRemain").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input คงเหลือ.</div>';
         }
-        if (validatehtml == '')
-        {
-            ConfirmDialog(val, topic, id);
-        }
     }
     if (topic == "BDC") {
-        if ($("#hidQuoID").val() == '') {
+        if ($("#hidQuoID").val() == '' && $("#txtQuoNo").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input QuotationNo.</div>';
-        }
-        if (validatehtml == '')
-        {
-            ConfirmDialog(val, topic, id);
         }
     }
     if (topic == "JobOrder") {
+        $(".RowCal5").each(function () {
+            var fName = $(this).find('.FName').val();
+            var manDate = $(this).find('.ManDate').val();
+            var workingFrom = $(this).find('.WorkingFrom').val();
+            var WorkingTo = $(this).find('.WorkingTo').val();
+
+            if (fName != '') {
+                if (manDate == '') {
+                    validatehtml += '<div class="modal-body modal-body-Warning">Please input Date.</div>';
+                }
+                if (workingFrom == '') {
+                    validatehtml += '<div class="modal-body modal-body-Warning">Please input FROM.</div>';
+                }
+                if (WorkingTo == '') {
+                    validatehtml += '<div class="modal-body modal-body-Warning">Please input TO.</div>';
+                }
+            }
+        });
         if ($("#dtJobDate").val() == '') {
-            $('#ShowDialog').modal('show');
-            var html = '<div class="modal-dialog modal-dialog-warning">';
-            html += '<div class="modal-content">';
-            html += '<div class="modal-header modal-header-warning">';
-            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-            html += '<h4 class="modal-title">' + topic + '</h4>';
-            html += '</div>';
-            html += '<div class="modal-body modal-body-Warning">Please input วันที่.</div>';
-            html += '</div></div>';
-            document.getElementById("ShowDialog").innerHTML = html;
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input วันที่.</div>';
         }
-        else if ($("#dtSWorking").val() == '') {
-            $('#ShowDialog').modal('show');
-            var html = '<div class="modal-dialog modal-dialog-warning">';
-            html += '<div class="modal-content">';
-            html += '<div class="modal-header modal-header-warning">';
-            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-            html += '<h4 class="modal-title">' + topic + '</h4>';
-            html += '</div>';
-            html += '<div class="modal-body modal-body-Warning">Please input วันเริ่มทำงาน.</div>';
-            html += '</div></div>';
-            document.getElementById("ShowDialog").innerHTML = html;
+        if ($("#dtSWorking").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input วันเริ่มทำงาน.</div>';
         }
-        else if ($("#dtEWorking").val() == '') {
-            $('#ShowDialog').modal('show');
-            var html = '<div class="modal-dialog modal-dialog-warning">';
-            html += '<div class="modal-content">';
-            html += '<div class="modal-header modal-header-warning">';
-            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-            html += '<h4 class="modal-title">' + topic + '</h4>';
-            html += '</div>';
-            html += '<div class="modal-body modal-body-Warning">Please input วันจบงาน.</div>';
-            html += '</div></div>';
-            document.getElementById("ShowDialog").innerHTML = html;
+        if ($("#dtEWorking").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input วันจบงาน.</div>';
         }
-        else if ($("#txtJobBy").val() == '') {
-            $('#ShowDialog').modal('show');
-            var html = '<div class="modal-dialog modal-dialog-warning">';
-            html += '<div class="modal-content">';
-            html += '<div class="modal-header modal-header-warning">';
-            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-            html += '<h4 class="modal-title modal-body-Warning">' + topic + '</h4>';
-            html += '</div>';
-            html += '<div class="modal-body">Please input รับงานโดย.</div>';
-            html += '</div></div>';
-            document.getElementById("ShowDialog").innerHTML = html;
+        if ($("#txtJobBy").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input รับงานโดย.</div>';
         }
-        else if ($("#txtIssuedBy").val() == '') {
-            $('#ShowDialog').modal('show');
-            var html = '<div class="modal-dialog modal-dialog-warning">';
-            html += '<div class="modal-content">';
-            html += '<div class="modal-header modal-header-warning">';
-            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-            html += '<h4 class="modal-title">' + topic + '</h4>';
-            html += '</div>';
-            html += '<div class="modal-body modal-body-Warning">Please input ออกโดย.</div>';
-            html += '</div></div>';
-            document.getElementById("ShowDialog").innerHTML = html;
+        if ($("#txtIssuedBy").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input ออกโดย.</div>';
         }
-        else if ($("#hidCustID").val() == '') {
-            $('#ShowDialog').modal('show');
-            var html = '<div class="modal-dialog modal-dialog-warning">';
-            html += '<div class="modal-content">';
-            html += '<div class="modal-header modal-header-warning">';
-            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-            html += '<h4 class="modal-title">' + topic + '</h4>';
-            html += '</div>';
-            html += '<div class="modal-body modal-body-Warning">Please input ลูกค้า.</div>';
-            html += '</div></div>';
-            document.getElementById("ShowDialog").innerHTML = html;
-        }
-        else {
-            ConfirmDialog(val, topic, id);
+        if ($("#hidCustID").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input ลูกค้า.</div>';
         }
     }
     if (topic == "SecurityProfile") {
         if ($("#txtProfile").val() == '') {
-            $('#ShowDialog').modal('show');
-            var html = '<div class="modal-dialog modal-dialog-warning">';
-            html += '<div class="modal-content">';
-            html += '<div class="modal-header modal-header-warning">';
-            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-            html += '<h4 class="modal-title">' + topic + '</h4>';
-            html += '</div>';
-            html += '<div class="modal-body modal-body-Warning">Please input Profile.</div>';
-            html += '</div></div>';
-            document.getElementById("ShowDialog").innerHTML = html;
-        }
-        else {
-            ConfirmDialog(val, topic, id);
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input Profile.</div>';
         }
     }
-
-    $('#ShowDialog').modal('show');
-    var html = '<div class="modal-dialog modal-dialog-warning">';
-    html += '<div class="modal-content">';
-    html += '<div class="modal-header modal-header-warning">';
-    html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-    html += '<h4 class="modal-title">' + topic + '</h4>';
-    html += '</div>';
-    html += validatehtml;
-    html += '</div></div>';
-    document.getElementById("ShowDialog").innerHTML = html;
+    if (validatehtml != '')
+    {
+        $('#ShowDialog').modal('show');
+        var html = '<div class="modal-dialog modal-dialog-warning">';
+        html += '<div class="modal-content">';
+        html += '<div class="modal-header modal-header-warning">';
+        html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+        html += '<h4 class="modal-title">' + topic + '</h4>';
+        html += '</div>';
+        html += validatehtml;
+        html += '</div></div>';
+        document.getElementById("ShowDialog").innerHTML = html;
+    }
+    else
+    {
+        alert(val + ',' + topic + ',' + id)
+        ConfirmDialog(val, topic, id);
+    }
 }
 function ConfirmDialog(val, topic, id) {
     if (val == "Create") {

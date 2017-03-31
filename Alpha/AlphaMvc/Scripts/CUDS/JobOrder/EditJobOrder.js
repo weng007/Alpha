@@ -1,9 +1,4 @@
-﻿var tSup = ($('#txtManSup').val() > 0 ? $('#txtManSup').val() : 1);
-var tFM = ($('#txtManFM').val() > 0 ? $('#txtManFM').val() : 1);
-var tTech = ($('#txtManTech').val() > 0 ? $('#txtManTech').val() : 1);
-var tSafety = ($('#txtManSafety').val() > 0 ? $('#txtManSafety').val() : 1);
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
@@ -31,6 +26,13 @@ $(document).ready(function () {
         $('.cloneRowExpense').click(function () {
             $('.RowCal1:last').find('td input[type=text]').eq(0).val('');
             $('.RowCal1:last').find('td input[type=text]').eq(1).val('');
+            CalSumExpense();
+        });
+
+        //Manpower
+        $('.cloneRowManpower').click(function () {
+            $('.RowCal5:last').find('td input[type=text]').eq(0).val('');
+            $('.RowCal5:last').find('td input[type=text]').eq(1).val('');
             CalSumExpense();
         });
 
@@ -362,7 +364,6 @@ function GetData(val) {
                    var day = ("0" + ManDate.getDate()).slice(-2);
                    var month = ("0" + (ManDate.getMonth() + 1)).slice(-2);
                    var today = ManDate.getFullYear() + "-" + (month) + "-" + (day);
-                   alert(today);
 
                    $(this).find('.tdno').val(data.Table9[i].RowNum);
                    $(this).find('.ManpowerID').val(data.Table9[i].ID);
@@ -383,12 +384,12 @@ function GetData(val) {
                //CalSumExpense();
            }
 
-           //if (data.Table10[0].Sup > 0 || data.Table10[0].FM > 0 || data.Table10[0].Tech > 0 || data.Table10[0].TSafety > 0) {
-           //    $("#txtManSup").val(data.Table10[0].Sup),
-           //    $("#txtManFM").val(data.Table10[0].FM),
-           //    $("#txtManTech").val(data.Table10[0].Tech),
-           //    $("#txtManSafety").val(data.Table10[0].TSafety);
-           //}
+           if (data.Table10[0].Sup > 0 || data.Table10[0].FM > 0 || data.Table10[0].Tech > 0 || data.Table10[0].TSafety > 0) {
+               $("#txtManSup").val(data.Table10[0].Sup),
+               $("#txtManFM").val(data.Table10[0].FM),
+               $("#txtManTech").val(data.Table10[0].Tech),
+               $("#txtManSafety").val(data.Table10[0].tSafety);
+           }
 
            ////Binding Data SaleOrder
            if (data.Table3.length > 0) {
@@ -612,12 +613,12 @@ function Update(val) {
 
     var dataObject = {};
     $(".RowCal5").each(function () {
-        alert('Rowcal5 f');
+
         var workingFrom = $(this).find('.WorkingFrom').val();
         var workingTo = $(this).find('.WorkingTo').val();
         var totalH = $(this).find(".TotalHours").val();
         var manDate = $(this).find(".ManDate").val();
-        alert(manDate);
+
         if (workingFrom != '' & workingTo != '')
         {  
             var fromHours = workingFrom.split(':')[0]
@@ -643,7 +644,6 @@ function Update(val) {
         dataObject.ManPremium = $(this).find(".ManPremium").val();
         dataObject.ManSpecial = $(this).find(".ManSpecial").val();
         dataObject.EditBy = localStorage['UserID'];
-        alert('rowcal5');
         if ($(this).find(".TechnicianID").val() != '') {
             $.ajax(
             {
@@ -928,32 +928,34 @@ function AddrowManpower() {
         });
     });
 }
-function countPosition() {
-    var totalSup = 0;
-    var totalFM = 0;
-    var totalTech = 0;
-    var totalSafety = 0;
-    //alert(tSup)
-    for (var i = 0; i < $(".RowCal5").length; i++) {
 
-        if ($('.PositionID:eq(' + i + ')').val() == 1) {
-            totalSup = totalSup + 1;
-            $('#txtManSup').val(totalSup);
-        }
-        if ($('.PositionID:eq(' + i + ')').val() == 2) {
-            totalFM = totalFM + 1;
-            $('#txtManFM').val(totalFM);
-        }
-        if ($('.PositionID:eq(' + i + ')').val() == 3) {
-            totalTech = totalTech + 1;
-            $('#txtManTech').val(totalTech);
-        }
-        if ($('.PositionID:eq(' + i + ')').val() == 4) {
-            totalSafety = totalSafety + 1;
-            $('#txtManSafety').val(totalSafety);
-        }
-    }
-}
+//function countPosition() {
+
+//    var totalSup = 0;
+//    var totalFM = 0;
+//    var totalTech = 0;
+//    var totalSafety = 0;
+//    //alert(tSup)
+//    for (var i = 0; i < $(".RowCal5").length; i++) {
+
+//        if ($('.PositionID:eq(' + i + ')').val() == 11) {
+//            totalSup = totalSup + 1;
+//            $('#txtManSup').val(totalSup);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 22) {
+//            totalFM = totalFM + tFM;
+//            $('#txtManFM').val(totalFM);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 33) {
+//            totalTech = totalTech + tTech;
+//            $('#txtManTech').val(totalTech);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 44) {
+//            totalSafety = totalSafety + tSafety;
+//            $('#txtManSafety').val(totalSafety);
+//        }
+//    }
+//}
 function pad(str, max) {
     str = str.toString();
     return str.length < max ? pad("0" + str, max) : str;
@@ -971,9 +973,8 @@ function CalTotalHour() {
     var wtminute = (toHours * 60) + parseInt(toMinute);
     var tminute = wtminute - wfminute;
 
-    var totalHours = tminute / 60;
-    //var totalMinutes = tminute - 60 ;
-    var totalMinutes = (totalHours * 60) - tminute;
+    var totalHours = Math.floor(tminute / 60);
+    var totalMinutes = tminute - (totalHours * 60);
     var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
     $('.TotalHours').eq(row_index).val(total);
 }

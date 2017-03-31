@@ -196,32 +196,32 @@ $(document).ready(function () {
 });
 var row_index = 0;
 var col_index = 0;
-function countPosition()
-{
-    var totalSup = 0;
-    var totalFM = 0;
-    var totalTech = 0;
-    var totalSafety = 0;
-    for (var i = 0; i < $(".RowCal5").length; i++) {
+//function countPosition()
+//{
+//    var totalSup = 0;
+//    var totalFM = 0;
+//    var totalTech = 0;
+//    var totalSafety = 0;
+//    for (var i = 0; i < $(".RowCal5").length; i++) {
 
-        if ($('.PositionID:eq(' + i + ')').val() == 11) {
-            totalSup = totalSup + 1;
-            $('#txtManSup').val(totalSup);
-        }
-        if ($('.PositionID:eq(' + i + ')').val() == 22) {
-            totalFM = totalFM + 1
-            $('#txtManFM').val(totalFM);
-        }
-        if ($('.PositionID:eq(' + i + ')').val() == 33) {
-            totalTech = totalTech + 1
-            $('#txtManTech').val(totalTech);
-        }
-        if ($('.PositionID:eq(' + i + ')').val() == 44) {
-            totalSafety = totalSafety + 1
-            $('#txtManSafety').val(totalSafety);
-        }
-    }
-}
+//        if ($('.PositionID:eq(' + i + ')').val() == 11) {
+//            totalSup = totalSup + 1;
+//            $('#txtManSup').val(totalSup);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 22) {
+//            totalFM = totalFM + 1
+//            $('#txtManFM').val(totalFM);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 33) {
+//            totalTech = totalTech + 1
+//            $('#txtManTech').val(totalTech);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 44) {
+//            totalSafety = totalSafety + 1
+//            $('#txtManSafety').val(totalSafety);
+//        }
+//    }
+//}
 $(function () {
     $('.ManDate').datepicker();
     $('.WorkingFrom').timepicker();
@@ -295,9 +295,8 @@ function CalTotalHour() {
     var wtminute = (toHours * 60) + parseInt(toMinute);    
     var tminute = wtminute - wfminute;
 
-    var totalHours = tminute / 60;
-    //var totalMinutes = tminute - 60 ;
-    var totalMinutes = (totalHours * 60) - tminute;
+    var totalHours = Math.floor(tminute / 60);
+    var totalMinutes = tminute - (totalHours * 60);
     var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
     $('.TotalHours').eq(row_index).val(total);
 }
@@ -379,8 +378,6 @@ function CreateData() {
             }
         });
     //===================Insert JobOrderManpower
-        
-
         var dataObject = {};
         $(".RowCal5").each(function () {
             var workingFrom = $(this).find('.WorkingFrom').val();
