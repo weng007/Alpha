@@ -48,6 +48,10 @@ $(document).ready(function () {
         $("#txtAddress").val($(this).find("td:eq(8)").text());
     });
 
+    var IDCard;
+    var TechnicianType;
+    var TechnicianID;
+    var PositionID;
     var dataitem;
     $('.FName').autocomplete({
         source: function (request, response) {
@@ -61,6 +65,10 @@ $(document).ready(function () {
                     dataitem = data;
                     response($.map(data.Table, function (item) {
                         return {
+                            IDCard: item.IDCard,
+                            TechnicianType: item.TechnicianTypeName,
+                            TechnicianID: item.ID,
+                            PositionID: item.PositionID,
                             label: item.FirstName,
                             value: item.ID
                         }
@@ -73,11 +81,14 @@ $(document).ready(function () {
             });
         },
         minLength: 3,
-        select: function (event, ui) {     
+        select: function (event, ui) {
+            //var totalPosition = 0;
             $(this).val(ui.item.label);
-            $('.CardID:last').val(dataitem.Table[0].IDCard);
-            $('.TechnicianType').val(dataitem.Table[0].TechnicianTypeName);
-            $('.TechnicianID').val(dataitem.Table[0].ID);
+            $('.CardID:last').val(ui.item.IDCard);
+            $('.TechnicianType').val(ui.item.TechnicianType);
+            $('.TechnicianID').val(ui.item.TechnicianID);
+            $('.PositionID').val(ui.item.PositionID);
+            
             return false;
         }
     });
@@ -185,6 +196,32 @@ $(document).ready(function () {
 });
 var row_index = 0;
 var col_index = 0;
+function countPosition()
+{
+    var totalSup = 0;
+    var totalFM = 0;
+    var totalTech = 0;
+    var totalSafety = 0;
+    for (var i = 0; i < $(".RowCal5").length; i++) {
+
+        if ($('.PositionID:eq(' + i + ')').val() == 11) {
+            totalSup = totalSup + 1;
+            $('#txtManSup').val(totalSup);
+        }
+        if ($('.PositionID:eq(' + i + ')').val() == 22) {
+            totalFM = totalFM + 1
+            $('#txtManFM').val(totalFM);
+        }
+        if ($('.PositionID:eq(' + i + ')').val() == 33) {
+            totalTech = totalTech + 1
+            $('#txtManTech').val(totalTech);
+        }
+        if ($('.PositionID:eq(' + i + ')').val() == 44) {
+            totalSafety = totalSafety + 1
+            $('#txtManSafety').val(totalSafety);
+        }
+    }
+}
 $(function () {
     $('.ManDate').datepicker();
     $('.WorkingFrom').timepicker();
@@ -585,6 +622,10 @@ function AddrowManpower() {
     $('.WorkingFrom').timepicker();
     $('.WorkingTo').timepicker();
 
+    var IDCard;
+    var TechnicianType;
+    var TechnicianID;
+    var PositionID;
     $('.FName').each(function () {
         $(this).autocomplete({
             source: function (request, response) {
@@ -599,6 +640,10 @@ function AddrowManpower() {
                         dataitem = data;
                         response($.map(data.Table, function (item) {
                             return {
+                                IDCard: item.IDCard,
+                                TechnicianType: item.TechnicianTypeName,
+                                TechnicianID: item.ID,
+                                PositionID: item.PositionID,
                                 label: item.FirstName,
                                 value: item.ID
                             }
@@ -613,9 +658,10 @@ function AddrowManpower() {
             minLength: 3,
             select: function (event, ui) {
                 $(this).val(ui.item.label);
-                $('.CardID').eq(row_index).val(dataitem.Table[0].IDCard);
-                $('.TechnicianType').eq(row_index).val(dataitem.Table[0].TechnicianTypeName);
-                $('.TechnicianID').eq(row_index).val(dataitem.Table[0].ID);
+                $('.CardID').eq(row_index).val(ui.item.IDCard);
+                $('.TechnicianType').eq(row_index).val(ui.item.TechnicianType);
+                $('.TechnicianID').eq(row_index).val(ui.item.TechnicianID);
+                $('.PositionID').eq(row_index).val(ui.item.PositionID);
                 return false;
             }
         });

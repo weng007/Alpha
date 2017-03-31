@@ -443,6 +443,7 @@
                                                                 <th rowspan="3"></th>
                                                                 <th rowspan="3">No.</th>
                                                                 <th rowspan="3" @*class="hidecolumn"*@>ID</th>
+                                                                <th rowspan="3" @*class="hidecolumn"*@>Position</th>
                                                                 <th rowspan="3">ชื่อ</th>
                                                                 <th rowspan="3">เลขบัตรประชาชน</th>
                                                                 <th rowspan="3">ประเภทพนักงาน</th>
@@ -476,7 +477,10 @@
                                                                 <td @*class="hidecolumn"*@>
                                                                     <input id="txtTechnicianID" type="text" value="" class="TechnicianID" disabled />
                                                                 </td>
-                                                                <td><input type="text" id="txtFName" name="txtFName" class="FName" />
+                                                                <td @*class="hidecolumn"*@>
+                                                                    <input id="txtPositionID" type="text" value="" class="PositionID" disabled />
+                                                                </td>
+                                                                <td><input type="text" id="txtFName" name="txtFName" class="FName" onchange="countPosition()" />
                                                                 </td>
                                                                 <td>
                                                                     <input id="txtCardID" type="text" value="" class="CardID text-size140 txtdisablerow" disabled />
@@ -536,8 +540,11 @@
                                                                 <td @*class="hidecolumn"*@>
                                                                     <input id="txtTechnicianID" type="text" value="" class="TechnicianID" disabled />
                                                                 </td>
+                                                                <td @*class="hidecolumn"*@>
+                                                                    <input id="txtPositionID" type="text" value="" class="PositionID" disabled />
+                                                                </td>
                                                                 <td>
-                                                                    <input type="text" id="txtFName" name="txtFName" class="FName"/>
+                                                                    <input type="text" id="txtFName" name="txtFName" class="FName" onchange="countPosition()" />
                                                                 </td>
                                                                 <td>
                                                                     <input id="txtCardID" type="text" value="" class="CardID text-size140 txtdisablerow" disabled />
@@ -599,7 +606,7 @@
                                                                     <label class="label-small-5">Sup</label>&nbsp;<label class="label-small-5">F/M</label>&nbsp;<label class="label-small-5">Tech</label>&nbsp;<label class="label-small-5">Safety</label>
                                                                 </li>
                                                                 <li>
-                                                                    <input type="text" name="field6" class="text-size80 textleft" placeholder="Sup" />&nbsp;<input type="text" name="field7" class="text-size80 textleft" placeholder="F/M" />&nbsp;<input type="text" name="field8" class="text-size80 textleft" placeholder="Tech" />&nbsp;<input type="text" name="field8" class="field-select-small" placeholder="Safety" />
+                                                                    <input type="text" id="txtManSup" name="ManSup" class="ManSup text-size80 textleft" placeholder="Sup" />&nbsp;<input type="text" id="txtManFM" name="ManFM" class="ManFM text-size80 textleft" placeholder="F/M" />&nbsp;<input type="text" id="txtManTech" name="ManTech" class="ManTech text-size80 textleft" placeholder="Tech" />&nbsp;<input type="text" id="txtManSafety" name="ManSafety" class="ManSafety field-select-small" placeholder="Safety" />
                                                                 </li>
                                                             </ul>
                                                         </td>

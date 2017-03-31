@@ -421,6 +421,7 @@
                                                         <th rowspan="3" @*class="hidecolumn"*@>ManpowerID</th>
                                                         <th rowspan="3" @*class="hidecolumn"*@>TechnicianID</th>
                                                         <th rowspan="3" @*class="hidecolumn"*@>JobID</th>
+                                                        <th rowspan="3" @*class="hidecolumn"*@>Position</th>
                                                         <th rowspan="3">ชื่อ</th>
                                                         <th rowspan="3">เลขบัตรประชาชน</th>
                                                         <th rowspan="3">ประเภทพนักงาน</th>
@@ -452,7 +453,7 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtName" name="txtName" class="FName" />
+                                                            <input type="text" id="txtName" name="txtName" class="FName" onchange="countPosition()" />
                                                         </td>
                                                         <td @*class="hidecolumn"*@>
                                                             <input id="ManpowerID" type="text" value="" class="ManpowerID" disabled />
@@ -463,6 +464,9 @@
                                                         <td  @*class="hidecolumn"*@>
                                                             <input id="JobID" type="text" value="" class="JobID" disabled />
                                                         </td>
+                                                        <td @*class="hidecolumn"*@>
+                                                            <input id="txtPositionID" type="text" value="" class="PositionID" disabled />
+                                                        </td>
                                                         <td>
                                                             <input id="txtCardID" type="text" value="" class="CardID text-size140 txtdisablerow" disabled />
                                                         </td>
@@ -470,7 +474,7 @@
                                                             <input id="txtTechnicianType" type="text" value="" class="TechnicianType text-size140 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="date" id="txtManDate" class="ManDate text-size100" />
+                                                            <input type="date" id="txtManDate" class="ManDate text-size110" />
                                                         </td>
                                                         <td>
                                                             <select class="ManDay select-size50">
@@ -484,7 +488,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtManTime" name="txtManTime" class="ManTime text-size50 textcenter">
+                                                            <input type="text" id="txtManTime" name="txtManTime" class="ManTime text-size60 textcenter">
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtWorkingFrom" name="txtWorkingFrom" class="WorkingFrom timepicker text-size50 textcenter" onchange="CalTotalHour()">
@@ -527,8 +531,11 @@
                                                         <td @*class="hidecolumn"*@>
                                                             <input id="JobID" type="text" value="" class="JobID" disabled />
                                                         </td>
+                                                        <td @*class="hidecolumn"*@>
+                                                            <input id="txtPositionID" type="text" value="" class="PositionID" disabled />
+                                                        </td>
                                                         <td>
-                                                            <input type="text" id="txtName" name="txtName" class="FName" />
+                                                            <input type="text" id="txtName" name="txtName" class="FName" onchange="countPosition()"/>
                                                         </td>
                                                         <td>
                                                             <input id="txtCardID" type="text" value="" class="CardID text-size140 txtdisablerow" disabled />
@@ -537,7 +544,7 @@
                                                             <input id="txtTechnicianType" type="text" value="" class="TechnicianType text-size140 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="date" id="txtManDate" class="ManDate text-size100" />
+                                                            <input type="date" id="txtManDate"  class="ManDate text-size110" />
                                                         </td>
                                                         <td>
                                                             <select class="ManDay select-size50">
@@ -551,7 +558,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtManTime" name="txtManTime" class="ManTime text-size50 textcenter">
+                                                            <input type="text" id="txtManTime" name="txtManTime" class="ManTime text-size60 textcenter">
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtWorkingFrom" name="txtWorkingFrom" class="WorkingFrom timepicker text-size50 textcenter" onchange="CalTotalHour()">
@@ -590,7 +597,7 @@
                                                             <label class="label-small-5">Sup</label>&nbsp;<label class="label-small-5">F/M</label>&nbsp;<label class="label-small-5">Tech</label>&nbsp;<label class="label-small-5">Safety</label>
                                                         </li>
                                                         <li>
-                                                            <input type="text" name="field6" class="text-size80 textleft" placeholder="Sup" />&nbsp;<input type="text" name="field7" class="text-size80 textleft" placeholder="F/M" />&nbsp;<input type="text" name="field8" class="text-size80 textleft" placeholder="Tech" />&nbsp;<input type="text" name="field8" class="field-select-small" placeholder="Safety" />
+                                                            <input type="text" id="txtManSup" name="ManSup" class="ManSup text-size80 textleft" placeholder="Sup" />&nbsp;<input type="text" id="txtManFM" name="ManFM" class="ManFM text-size80 textleft" placeholder="F/M" />&nbsp;<input type="text" id="txtManTech" name="ManTech" class="ManTech text-size80 textleft" placeholder="Tech" />&nbsp;<input type="text" id="txtManSafety" name="ManSafety" class="ManSafety field-select-small" placeholder="Safety" />
                                                         </li>
                                                     </ul>
                                                 </td>
