@@ -63,8 +63,8 @@ function CreateData() {
         datatype: 'json',
 
         success: function (data) {
-                alert('Create is completed');
-                window.location.href = "../BDC/EditBDC?id=" + data;
+            alert('Create is completed');
+            window.location.href = "../BDC/EditBDC?id=" + data;
         }
         ,
         error: function (msg) {

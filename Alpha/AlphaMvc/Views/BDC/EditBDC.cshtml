@@ -60,6 +60,10 @@
                     <input type="text" id="txtDocver" name="field1" class="field-select-small-2" placeholder="V1" disabled />
                 </li>
                 <li>
+                    <input type="text" id="txtBDCNo" name="field1" class="field-select-small-2" disabled />
+                    <input type="hidden" id="hidBDCNo" />
+                </li>
+                <li>
                     <label>ใบเสนอราคา<span class="required">*</span></label>
                     <input type="text" id="txtQuoNo" name="txtQuoNo" class="field-select-big" placeholder="ใบเสนอราคา" />&nbsp;<a href="#" id="imgQuotation" data-toggle="modal" data-target="#quotationDialog" onclick="BrowseQuotation">
                         <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
@@ -97,7 +101,8 @@
                                 <div class="resp-tabs-container hor_1">
                                     <div>
                                         <div class="barattach-2">
-                                   <a href="@Url.Action("CreateJobOrder", "JobOrder")?@Request.Params["id"]" class="alink"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" /></a>
+                                   @*<a href="@Url.Action("CreateJobOrder", "JobOrder")?@Request.Params["id"]" class="alink"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" /></a>*@
+                                            <button type="button" id="btnSave" class="btnCreate" onclick="OpenJobOrder(@Request.Params["id"])"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" /></button>
                                         </div>
                                         <div class="grigbar">
                                             <div class="myDIV">
@@ -144,7 +149,6 @@
         var after = input.split('?')[1]
         var val = after.split('=');
         var Isview = val[2];
-
         GetData(@Request.Params["id"]);
         GetJobOrder(@Request.Params["id"]);
         ControlEnable(Isview);

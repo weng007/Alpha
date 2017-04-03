@@ -18,6 +18,8 @@ namespace AlphaApi.DataAccessLayer
             {
                 try
                 {
+                    DataSet ds = new DataSet();
+
                     SqlCommand cmd = new SqlCommand("SP_BDC_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Docver", BDC.Docver);
@@ -26,8 +28,11 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@CreateBy", BDC.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", BDC.EditBy);
                     conObj.Open();
-                    result = Convert.ToInt32(cmd.ExecuteScalar().ToString());
-                    return result;
+                    SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                    adap.Fill(ds);
+                    conObj.Close();
+                    cmd.Parameters.Clear();
+                    return Convert.ToInt32(ds.Tables[1].Rows[0][0]);
                 }
                 catch (Exception ex)
                 {

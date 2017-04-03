@@ -48,6 +48,7 @@ function ControlEnable(Isview) {
     }
 }
 function GetData(val) {
+    alert(val);
     var dataObject = { ID: val }
     //alert('test val '+val);
     $.ajax(
@@ -59,12 +60,11 @@ function GetData(val) {
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
-               var SubTotal = data.Table1[0].SubTotelIncome;
-               var TotalExpense = data.Table2[0].TotelExpense;
-               var Profit = SubTotal - TotalExpense;
-
-               $("#txtDocver").val(data.Table[0].Docver), $("#txtQuoNo").val(data.Table[0].QuoNo), $("#hidQuoID").val(data.Table[0].QuotationNo), $("#txtRemark").val(data.Table[0].Remark),
-               $("#txtPrice").val(data.Table1[0].SubTotelIncome).number(true, 2), $("#txtCost").val(data.Table2[0].TotelExpense).number(true, 2);
+               var Price = data.Table1[0].Price;
+               var Cost = data.Table1[0].Cost;
+               var Profit = Price - Cost;
+               $("#txtDocver").val(data.Table[0].Docver), $("#txtQuoNo").val(data.Table[0].QuoNo), $("#txtBDCNo").val(data.Table[0].BDCNo), $("#hidQuoID").val(data.Table[0].QuotationNo), $("#txtRemark").val(data.Table[0].Remark),
+               $("#txtPrice").val(data.Table1[0].Price).number(true, 2), $("#txtCost").val(data.Table1[0].Cost).number(true, 2);
                if (Profit < 0) {
                    $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
                }
@@ -100,4 +100,7 @@ function Update(val) {
 }
 function Redirect() {
     window.location = "IndexBDC";
+}
+function OpenJobOrder(val) {
+    window.location.href = "../JobOrder/CreateJobOrder?id=" + val + '&' + $("#txtBDCNo").val();
 }

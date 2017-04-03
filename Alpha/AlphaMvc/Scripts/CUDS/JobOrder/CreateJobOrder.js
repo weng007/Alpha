@@ -1,14 +1,17 @@
 $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
-
     $('.Number').number(true, 2);
 
     var input = window.location.href;
     var after = input.split('?')[1]
-    var res = after.split('#');
-    var BDCID = res[0];
-    $('#txtJobReference').val(BDCID);
+    var res = after.split('=');
+    var res2 = res[1];
+    var res3 = after.split('&');
+    var res4 = res3[0].split('=');
+    var BDCID = res4[1];
+    var BDCNo = res3[1];
+    $('#txtJobReference').val(BDCNo);
     $('#hidBDCID').val(BDCID);
     
     $("#dtJobDate").datepicker({
@@ -380,45 +383,48 @@ function CreateData() {
     //===================Insert JobOrderManpower
         var dataObject = {};
         $(".RowCal5").each(function () {
-            var workingFrom = $(this).find('.WorkingFrom').val();
-            var fromHours = workingFrom.split(':')[0]
-            var fromMinute = workingFrom.split(':')[1]
-            var fromMinute = fromMinute.substring(0, 2);
+            if ($(this).find('.FName').val() != '')
+            {
+                var workingFrom = $(this).find('.WorkingFrom').val();
+                var fromHours = workingFrom.split(':')[0]
+                var fromMinute = workingFrom.split(':')[1]
+                var fromMinute = fromMinute.substring(0, 2);
 
-            var workingTo = $(this).find('.WorkingTo').val();
-            var toHours = workingTo.split(':')[0]
-            var toMinute = workingTo.split(':')[1]
-            var toMinute = toMinute.substring(0, 2);
+                var workingTo = $(this).find('.WorkingTo').val();
+                var toHours = workingTo.split(':')[0]
+                var toMinute = workingTo.split(':')[1]
+                var toMinute = toMinute.substring(0, 2);
 
-            dataObject.JobID = ID;
-            dataObject.TechnicianID = $(this).find('.TechnicianID').val();
-            dataObject.ManDate = $(this).find(".ManDate").val();
-            dataObject.ManDay = $(this).find('.ManDay').find(":selected").val();
-            dataObject.ManTime = $(this).find(".ManTime").val();
-            dataObject.FromHour = fromHours;
-            dataObject.FromMinute = fromMinute;
-            dataObject.ToHour = toHours;
-            dataObject.ToMinute = toMinute;
-            dataObject.TotalHours = $(this).find(".TotalHours").val();
-            dataObject.ManNormal = $(this).find(".ManNormal").val();
-            dataObject.ManPremium = $(this).find(".ManPremium").val();
-            dataObject.ManSpecial = $(this).find(".ManSpecial").val();
-            dataObject.CreateBy = localStorage['UserID'];
-            dataObject.EditBy = localStorage['UserID'];
-            if ($(this).find(".TechnicianID").val() != '') {
-                $.ajax(
-                {
-                    url: 'http://localhost:13131/api/JobOrderManpower',
-                    type: 'POST',
-                    async: false,
-                    data: dataObject,
-                    datatype: 'json',
-                    success: function (data) {
-                    },
-                    error: function (msg) {
-                        alert(msg)
-                    }
-                });
+                dataObject.JobID = ID;
+                dataObject.TechnicianID = $(this).find('.TechnicianID').val();
+                dataObject.ManDate = $(this).find(".ManDate").val();
+                dataObject.ManDay = $(this).find('.ManDay').find(":selected").val();
+                dataObject.ManTime = $(this).find(".ManTime").val();
+                dataObject.FromHour = fromHours;
+                dataObject.FromMinute = fromMinute;
+                dataObject.ToHour = toHours;
+                dataObject.ToMinute = toMinute;
+                dataObject.TotalHours = $(this).find(".TotalHours").val();
+                dataObject.ManNormal = $(this).find(".ManNormal").val();
+                dataObject.ManPremium = $(this).find(".ManPremium").val();
+                dataObject.ManSpecial = $(this).find(".ManSpecial").val();
+                dataObject.CreateBy = localStorage['UserID'];
+                dataObject.EditBy = localStorage['UserID'];
+                if ($(this).find(".TechnicianID").val() != '') {
+                    $.ajax(
+                    {
+                        url: 'http://localhost:13131/api/JobOrderManpower',
+                        type: 'POST',
+                        async: false,
+                        data: dataObject,
+                        datatype: 'json',
+                        success: function (data) {
+                        },
+                        error: function (msg) {
+                            alert(msg)
+                        }
+                    });
+                }
             }
         });
     ////===================Insert JobOrderSaleOrder 

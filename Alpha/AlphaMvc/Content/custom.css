@@ -6914,3 +6914,11 @@ td.visible-print {
      border-top-left-radius: 5px;
      border-top-right-radius: 5px;
 }
+.btn-info-Search {
+  color: #ffffff;
+  background-color: #ffcabe;
+  border-color: #db6144;
+  height: 35px;
+  width: 85px;
+  margin-top: 20px;
+}

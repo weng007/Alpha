@@ -1,7 +1,51 @@
 $(document).ready(function () {
-    $('.imgadd').attr("style", "margin-left: 60%; margin-top: -2px;");
-    var ShowAll = false;
-    GetData(ShowAll);
+    $("#dtFJobDate").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+    $("#dtFJobDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    $('#dtFJobDate').datepicker().datepicker('setDate', 'today');
+
+    $("#dtTJobDate").datepicker({
+        inline: true,
+        showOtherMonths: true
+    })
+    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+    $("#dtTJobDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    $('#dtTJobDate').datepicker().datepicker('setDate', 'today');
+
+    var TechnicianID;
+    $('#txtTechName').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: 'http://localhost:13131/api/Technician',
+                type: 'GET',
+                dataType: 'json',
+                data: { name: request.term },
+                success: function (data) {
+                    data = JSON.parse(data);
+                    response($.map(data.Table, function (item) {
+                        return {
+                            TechnicianID: item.ID,
+                            label: item.FirstName,
+                            value: item.ID
+                        }
+                    }));
+                },
+                error: function (xmlHttpRequest, textStatus, errorThrown) {
+                    console.log('some error occured', textStatus, errorThrown);
+                    alert('Error');
+                }
+            });
+        },
+        minLength: 3,
+        select: function (event, ui) {
+            $(this).val(ui.item.label);
+            $('#hidTechID').val(ui.item.TechnicianID);
+            return false;
+        }
+    });
 });
 function GetChecked(isCheck)
 {
@@ -67,7 +111,6 @@ function GetData(val)
             data = JSON.parse(data);
             var html = '<tbody>';
             for (var i = 0; i < data.Table.length; i++) {
-
                 html += '<tr>';
                 html += '<td>' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
