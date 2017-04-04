@@ -887,7 +887,7 @@
         <ul class="form-style-1">
             <li>
                 <button type="button" id="btnSave"  class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button>
-                @*<a href="@Url.Action("IndexRptJobOrder", "RptJobOrder")" class="alink"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-4" /></a>*@
+                <a href="@Url.Action("IndexRptJobOrder", "RptJobOrder")" class="alink"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-4" /></a>
             </li>
         </ul>
     </form>
@@ -904,8 +904,6 @@
         SetRowCal5();
              
         GetData(@Request.Params["id"]);
-        GetJobOrderBorrow(@Request.Params["id"]);
-        
+        GetJobOrderBorrow(@Request.Params["id"]);       
     });
-
 </script>
