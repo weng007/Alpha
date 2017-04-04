@@ -40,24 +40,27 @@ $(document).ready(function () {
     {
         url: 'http://localhost:13131/api/IncomeMaster',
         type: 'GET',
+        async: false,
         datatype: 'json',
         success: function (data) {
             data = JSON.parse(data);
             var html = '';
             for (var i = 0; i < data.Table.length; i++) {
+                //$(".rowdisable").each(function () {
                 html += '<tr>';
                 html += '<td>' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td>' + data.Table[i].Detail + '</td>';
                 html += '<td>';
-                html += '<a href="/IncomeMaster/EditIncomeMaster?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'IncomeMaster'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png"/></a>';
-                html += '<a href="/IncomeMaster/EditIncomeMaster?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png"/></a>';
+                html += '<a href="/IncomeMaster/EditIncomeMaster?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="adminupdateDisable"/></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'IncomeMaster'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="admindeleteDisable"/></a>';
+                html += '<a href="/IncomeMaster/EditIncomeMaster?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="adminviewDisable" /></a>';
                 html += '</td>';
                 html += '</tr>';
+                //});
             }
             document.getElementById("result").innerHTML = html;
-
+            CheckAuthorization();
         },
         error: function (msg) {
             alert(msg)

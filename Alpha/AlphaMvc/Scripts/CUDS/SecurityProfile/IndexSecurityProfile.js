@@ -50,13 +50,13 @@ $(document).ready(function () {
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td>' + data.Table[i].Profile + '</td>';
                 html += '<td>';
-                html += '<a href="/SecurityProfile/EditSecurityProfile?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'IncomeMaster'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png"/></a>';
+                html += '<a href="/SecurityProfile/EditSecurityProfile?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="adminupdateDisable"/></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'IncomeMaster'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="admindeleteDisable"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
             document.getElementById("result").innerHTML = html;
-
+            CheckAuthorization();
         },
         error: function (msg) {
             alert(msg)

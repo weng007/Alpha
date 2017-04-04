@@ -9,7 +9,7 @@
     color: white;
 }
 .imgadd{
-    margin-left: 69%; 
+    margin-left: 68%; 
     margin-top: -2px;
 }
 .topicText{
@@ -25,7 +25,8 @@
 }
 .hideANDseek
 {
-    display: grid;
+    /*display: grid;*/
+    display: contents;
 }
  .hidecolumn
 {

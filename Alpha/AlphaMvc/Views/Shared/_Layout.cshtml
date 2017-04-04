@@ -29,11 +29,12 @@
         <script src="@Url.Content("~/Scripts/EditableGrid/jquery.dynotable.js")" type="text/javascript"></script>
         @* ---------------------------- DatePicker -------------------------- *@
         <link href="@Url.Content("~/Content/datepicker/santiago.datepicker.css")" rel="stylesheet" type="text/css" />
-
+        <script src="@Url.Content("~/Scripts/CUDS/UserLogin/CheckAuthorization.js")" type="text/javascript"></script>
         <script language="javascript" type="text/javascript">
             $(document).ready(function () {
                 //$('.dropdown-toggle').addClass('sf-js-enabled');
                 document.getElementById("lblUserName").innerHTML = localStorage['UserName'];
+                
             });
             
         //$(function () {
@@ -89,7 +90,7 @@
                     <input type="checkbox" id="show-menu" role="button" class="Hidecheckbox">
                     <ul id="menu" class="menuul">
                         <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Dashboard", "ExpiredTechnician", "Technician")</div></div></li>
-                        <li class="menuli">
+                        <li id="admindisable" class="menuli">
                             <div class="menua">
                                 <div class="menutext">
                                     @Html.ActionLink("Administration", "IndexIncomeMaster", "IncomeMaster")
@@ -115,9 +116,9 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "IndexTechnician", "Technician")</div></div></li>
-                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Products", "IndexProducts", "Products")</div></div></li>
-                        <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Break Down Cost", "IndexBDC", "BDC")</div></div></li>
+                        <li id="TechcreateDisable" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "IndexTechnician", "Technician")</div></div></li>
+                        <li id="productsdisable" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Products", "IndexProducts", "Products")</div></div></li>
+                        <li id="BDCdisable" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Break Down Cost", "IndexBDC", "BDC")</div></div></li>
                         <li class="menuli">
                             <div class="menua">
                                 <div class="menutext">

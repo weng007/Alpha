@@ -74,6 +74,7 @@ $(document).ready(function () {
             }
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
+            CheckAuthorization();
         },
         error: function (result) {
             alert(result)

@@ -4,6 +4,7 @@ $(document).ready(function () {
     $.ajax({
         url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
+        async: false,
         dataType: 'json',
         data: dataObject,
         success: function (data) {
@@ -21,6 +22,7 @@ $(document).ready(function () {
     $.ajax({
         url: 'http://localhost:13131/api/SecurityProfile/',
         type: 'GET',
+        async: false,
         dataType: 'json',
         success: function (data) {
             data = JSON.parse(data);

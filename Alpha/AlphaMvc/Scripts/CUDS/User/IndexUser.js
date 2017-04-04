@@ -50,13 +50,13 @@ $(document).ready(function () {
                 html += '<td>' + data.Table[i].UserStatus + '</td>';
                 html += '<td>' + data.Table[i].SecurityProfile + '</td>';
                 html += '<td>';
-                html += '<a href="/User/EditUser?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'User'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png"/></a>';
+                html += '<a href="/User/EditUser?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png" class="adminupdateDisable" /></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'User'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png" class="admindeleteDisable"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
             document.getElementById("result").innerHTML = html;
-
+            CheckAuthorization();
         },
         error: function (msg) {
             alert(msg)

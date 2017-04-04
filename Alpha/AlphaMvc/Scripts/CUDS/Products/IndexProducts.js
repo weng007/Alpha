@@ -65,14 +65,15 @@ $(document).ready(function () {
                 html += '<td>' + data.Table[i].Remain + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].Detail + '</td>';
                 html += '<td>';
-                html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'Product'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png"/></a>';
-                html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '&IsView=' + true + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/view.png"/></a>';
+                html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="productsupdateDisable"/></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'Product'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="productsdeleteDisable"/></a>';
+                html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '&IsView=' + true + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="productsviewDisable"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
+            CheckAuthorization();
         },
         error: function (result) {
             alert(result)
