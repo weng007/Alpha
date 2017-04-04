@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.UI;
+using AlphaMVC.DataAccessLayer;
 using System.Web.UI.WebControls;
 
 namespace AlphaMvc.Reports.FormReport
@@ -17,41 +18,21 @@ namespace AlphaMvc.Reports.FormReport
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                RenderReport();
-            }
+            RenderReport();
         }
         private void RenderReport()
         {
             DataSet ds = new DataSet();
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:13131/");
+            DBdata dal = new DBdata();
 
-            // Add an Accept header for JSON format.
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
+            ds = dal.GetRptJobOrder(Request.QueryString["id"].ToString());
 
-            HttpResponseMessage response = client.GetAsync("api/RptJobOrder?id="+18).Result;
-            //var yourcustomobjects = response.Content.ReadAsAsync<IEnumerable<YourCustomObject>>().Result;
-            //foreach (var x in yourcustomobjects)
-            //{
-            //    //Call your store method and pass in your own object
-            //    SaveCustomObjectToDB(x);
-            //}
+            ReportDataSource datasource = new ReportDataSource("SP_Rpt_Delivery_Inventory", ds.Tables[1]);
+            ReportDataSource datasource1 = new ReportDataSource("Detail", ds.Tables[0]);
+            this.RptViewer1.LocalReport.ReportPath = "..\\Report\\DeliverOrderInventory.rdlc";
 
-            if (response.IsSuccessStatusCode)
-            {
-                
-                RptViewer1.Reset();
-                RptViewer1.LocalReport.EnableExternalImages = true;
-                RptViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/RptJobOrder.rdlc");
-                //DataTable dt = (DataTable)JsonConvert.DeserializeObject(json, (typeof(DataTable)));
-
-                //RptViewer1.localReport.Datasource.Add(new Microsoft.Reporting.WebForms.ReportDataSource("dsJobOrder", new Object()));
-                //ReportDataSource datasource = new ReportDataSource("dsJobOrder", ds.Tables[1]);
-                //RptViewer1.LocalReport.DataSources.Add(datasource);
-            }
+            this.RptViewer1.LocalReport.DataSources.Add(datasource);
+            this.RptViewer1.LocalReport.DataSources.Add(datasource1);
         }
     }
 }
