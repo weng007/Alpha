@@ -991,3 +991,6 @@ function DateWorking() {
         alert("Please Input Endworking more than Startworking");
     }
 }
+function OpenRptJobOrder(val) {
+    window.location.href = "../Reports/FormReport/RptReportViewer.aspx?id=" + val;
+}

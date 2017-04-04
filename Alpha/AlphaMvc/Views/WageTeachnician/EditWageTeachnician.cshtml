@@ -2,74 +2,192 @@
     ViewBag.Title = "EditWageTeachnician";
 }
 
-@*<h2>WageTeachnician Edit</h2>*@
+<h2>WageTeachnician Edit</h2>
 <script src="@Url.Content("~/Scripts/EditableGrid/paging.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/CUDS/WageTechnician/EditWageTechnician.js")" type="text/javascript"></script>
+<table>
+    <tr>
+        <td>
+            @Html.ActionLink("WageTeachnician List", "IndexWageTeachnician")
+        </td>
+    </tr>
+</table>
 <div id="myModal">
-
     @using (Html.BeginForm())
     {
         <form>
-            <div class="barattach-3">
-                <ul class="form-style-1">
-                    <li>
-                        <label class="topictable">Technician</label>
-                        <input type="text" id="txtTechName" name="txtTechName" class="TechName text-size140" />
-                        <input type="hidden" id="hidTechID" />
-                    </li>
-                </ul>
-                <ul class="form-style-1">
-                    <li>
-                        <label class="topictable">Position</label>
-                        @*<select id="cmbPosition" name="cmbPosition" class="field-select-small-2"></select>*@
-                        <select class="cmbPosition select-size50">
-                            <option value="0">Sup</option>
-                            <option value="1">F/M</option>
-                            <option value="2">Tech</option>
-                            <option value="3">Safety</option>
-                        </select>
-                    </li>
-                </ul>
-                <ul class="form-style-1">
-                    <li>
-                        <label class="topictable">JobDate</label>
-                        <input type="text" id="dtFJobDate" class="field-divided" placeholder="วันที่รับเข้า" required />&nbsp;<input type="text" id="dtTJobDate" class="field-divided" placeholder="วันที่รับเข้า" required />
-                    </li>
-                </ul>
-                <ul class="form-style-1">
-                    <li>
-                        <label class="topictable"></label>
-                        <button type="button" class="btn btn-info-Search"><span class="glyphicon glyphicon-search"></span> Search</button>
-                    </li>
-                </ul>
+            <ul class="form-style-1">
+                <li>
+                    <label>Name<span class="required">*</span></label>
+                </li>
+                <li>
+                    <input type="text" name="field1" class="field-divided" placeholder="Pipattra" disabled/>&nbsp;<input type="text" name="field2" class="field-divided" placeholder="Kumnuch" disabled/>
+                </li>
+                <br />
+            </ul>
+
+            <div class="grigbar">
+                <table class="table table-striped">
+                    <thead class="bgthead">
+                        <tr>
+                            <th rowspan="3">Customer</th>
+                            <th rowspan="3">Job site</th>
+                            <th rowspan="3">DATE</th>
+                            <th rowspan="3">DAY</th>
+                            <th colspan="2">WORKING TIME</th>
+                            <th colspan="5">NUMBER OF HOURS</th>
+                            <th rowspan="3">Additionnal Wages (Baht)</th>
+                            <th rowspan="3">Deduction(-)(Baht)</th>
+                            <th rowspan="3">Remark</th>
+                            <th rowspan="3">Location</th>
+                            @*<th rowspan="3"></th>*@
+                        </tr>
+                        <tr>
+                            <th rowspan="2">FROM</th>
+                            <th rowspan="2">TO</th>
+                            <th rowspan="2">TOTAL HOURS</th>
+                            <th rowspan="2">Normal Hours</th>
+                            <th colspan="3">Overtime</th>
+                        </tr>
+                        <tr>
+                            <th>Normal(1.5)</th>
+                            <th>Premium(2)</th>
+                            <th>Special(3)</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>TOTAL</td>
+                            <td>(WH3%)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">TOTAL (HRS)</td>
+                            <td></td>
+                            <td>24.00</td>
+                            <td>2.00</td>
+                            <td>8.00</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">RATE (BAHT)</td>
+                            <td></td>
+                            <td>75.00</td>
+                            <td>112.50</td>
+                            <td>150.00</td>
+                            <td>225.00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">AMOUNTS (BAHT)</td>
+                            <td></td>
+                            <td>3,600.00</td>
+                            <td>225.50</td>
+                            <td>1,200.00</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>5,025.00</td>
+                            <td>(150.75)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">TOTAL WAGES(BAHT)</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>4,874.25</td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>Customer1</td>
+                            <td>Job Site1</td>
+                            <td>17 ธ.ค.59</td>
+                            <td>จ</td>
+                            <td>8.00</td>
+                            <td>17.00</td>
+                            <td>10</td>
+                            <td>8</td>
+                            <td>2</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Remark1</td>
+                            <td>Location1</td>
+                        </tr>
+                        <tr>
+                            <td>Customer2</td>
+                            <td>Job Site2</td>
+                            <td>17 ธ.ค.59</td>
+                            <td>อ</td>
+                            <td>8.00</td>
+                            <td>17.00</td>
+                            <td>8</td>
+                            <td>8</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Remark2</td>
+                            <td>Location2</td>
+                        </tr>
+                        <tr>
+                            <td>Customer3</td>
+                            <td>Job Site3</td>
+                            <td>17 ธ.ค.59</td>
+                            <td>ศ</td>
+                            <td>8.00</td>
+                            <td>17.00</td>
+                            <td>8</td>
+                            <td>8</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Remark3</td>
+                            <td>Location3</td>
+                        </tr>
+                        <tr>
+                            <td>Customer4</td>
+                            <td>Job Site4</td>
+                            <td>17 ธ.ค.59</td>
+                            <td>อา</td>
+                            <td>8.00</td>
+                            <td>17.00</td>
+                            <td>8</td>
+                            <td></td>
+                            <td></td>
+                            <td>8</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Remark4</td>
+                            <td>Location4</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            
         </form>
     }
-    </div>
-<iframe id="iframeViewer" frameborder="0" height="600" width="600"></iframe>
-@section ShowRptViewer
-{
-                <script>
-                    $(document).ready(function () {
-                        ReportValidationCheck();
-                    });
-
-                    function ReportValidationCheck() {
-                        url = "../Reports/FormReport/RptWageTechnicianViewer.aspx";
-                        var Rptiframe = document.getElementById("iframeViewer");
-                        if (Rptiframe !== null) {
-                            if (Rptiframe.src) {
-                                Rptiframe.src = url;
-                            }
-                            else if (Rptiframe.contentWindow !== null && Rptiframe.contentWindow.location !== null) {
-                                Rptiframe.contentWindow.location = url;
-                            }
-                            else {
-                                Rptiframe.setAttribute('src', url);
-                            }
-                        }
-                        return false;
-                    }
-                </script>
-            }
+</div>
