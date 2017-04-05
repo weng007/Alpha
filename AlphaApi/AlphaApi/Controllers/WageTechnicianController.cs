@@ -15,6 +15,30 @@ namespace AlphaApi.Controllers
 {
     public class WageTechnicianController : ApiController
     {
-        static WageTechnicianDAL Techniciandb = new WageTechnicianDAL();
+        static WageTechnicianDAL WageTechniciandb = new WageTechnicianDAL();
+
+        [HttpPost]
+        public int Post(WageTechnicianModels wageTechnicianModel)
+        {
+            var response = WageTechniciandb.InsertData(wageTechnicianModel);
+            return response;
+        }
+
+        [EnableCorsAttribute("*", "*", "*")]
+        [HttpGet]
+        public string Get(int id)
+        {
+            var response = WageTechniciandb.SelectByID(id);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [HttpPut]
+        public int Put(WageTechnicianModels wageTechnicianModel)
+        {
+            //calling DBData Class Method and storing Repsonse   
+            var response = WageTechniciandb.UpdateData(wageTechnicianModel);
+            return response;
+
+        }
     }
 }
