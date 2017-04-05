@@ -11,7 +11,7 @@ namespace AlphaMVC.DataAccessLayer
 {
     public class DBdata
     {
-        string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
+        string conStr = ConfigurationManager.ConnectionStrings["AlphaConnectionString"].ConnectionString;
 
         public DataSet GetRptJobOrder(string jobID)
         {
@@ -21,9 +21,9 @@ namespace AlphaMVC.DataAccessLayer
                 {
                     DataSet ds = new DataSet();
 
-                    SqlCommand cmd = new SqlCommand("SP_Mobile_Ins", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_RptJobOrder", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@JobID", jobID);
+                    cmd.Parameters.AddWithValue("@ID", jobID);
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

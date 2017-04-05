@@ -27,12 +27,10 @@ namespace AlphaMvc.Reports.FormReport
 
             ds = dal.GetRptJobOrder(Request.QueryString["id"].ToString());
 
-            ReportDataSource datasource = new ReportDataSource("SP_Rpt_Delivery_Inventory", ds.Tables[1]);
-            ReportDataSource datasource1 = new ReportDataSource("Detail", ds.Tables[0]);
-            this.RptViewer1.LocalReport.ReportPath = "..\\Report\\DeliverOrderInventory.rdlc";
+            ReportDataSource datasource = new ReportDataSource("SP_RptJobOrder", ds.Tables[0]);
+            this.RptViewer1.LocalReport.ReportPath = Server.MapPath("~/Reports/RptJobOrder.rdlc");
 
             this.RptViewer1.LocalReport.DataSources.Add(datasource);
-            this.RptViewer1.LocalReport.DataSources.Add(datasource1);
         }
     }
 }
