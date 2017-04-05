@@ -1,7 +1,7 @@
 $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
-    $('.Number').number(true, 2);
+    //$('.Number').number(true, 2);
 
     var input = window.location.href;
     var after = input.split('?')[1]
@@ -517,8 +517,8 @@ function CalSum() {
         var amount = qty * price;
         
         $(this).find('.Amount').val(amount).number(true, 2);
-        $(this).find('.Price').val(price).number(true, 2);
-        $(this).find('.Quantity').val(qty).number(true, 2);
+        $(this).find('.Price').val(price).number(true, 0);
+        $(this).find('.Quantity').val(qty).number(true, 0);
     });
     for (var i = 0; i < $(".RowCal").length; i++) {
         total = total + parseFloat($('.Amount:eq(' + i + ')').val());
