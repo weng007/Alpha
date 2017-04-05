@@ -61,8 +61,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@CreateBy", wageTechnician.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", wageTechnician.EditBy);
                     conObj.Open();
-                    object obj = cmd.ExecuteScalar();
-                    result = Convert.ToInt32(obj);
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
                 catch (Exception ex)
