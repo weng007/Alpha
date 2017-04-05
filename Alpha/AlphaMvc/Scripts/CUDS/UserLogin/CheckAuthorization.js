@@ -22,7 +22,7 @@ function CheckAuthorization() {
                             $('img.adminupdateDisable').attr("style", "display:none");
                         }
                         if (data.Table[i].Role == 5) {
-                            $('.admindeleteDisable').attr('style', 'display:none');
+                            $('img.admindeleteDisable').attr('style', 'display:none');
                         }
                         if (data.Table[i].Role == 4) {
                             $('#admincreateDisable').attr("style", "display:none");
