@@ -58,6 +58,51 @@
         });
     });
 
+    var IDCard;
+    var TechnicianType;
+    var TechnicianID;
+    var PositionID;
+    var dataitem;
+    $('.FName').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: 'http://localhost:13131/api/Technician',
+                type: 'GET',
+                dataType: 'json',
+                data: { name: request.term },
+                success: function (data) {
+                    data = JSON.parse(data);
+                    dataitem = data;
+                    response($.map(data.Table, function (item) {
+                        return {
+                            IDCard: item.IDCard,
+                            TechnicianType: item.TechnicianTypeName,
+                            TechnicianID: item.ID,
+                            PositionID: item.PositionID,
+                            label: item.FirstName,
+                            value: item.ID
+                        }
+                    }));
+                },
+                error: function (xmlHttpRequest, textStatus, errorThrown) {
+                    console.log('some error occured', textStatus, errorThrown);
+                    alert('Error');
+                }
+            });
+        },
+        minLength: 3,
+        select: function (event, ui) {
+            //var totalPosition = 0;
+            $(this).val(ui.item.label);
+            $('.CardID:last').val(ui.item.IDCard);
+            $('.TechnicianType').val(ui.item.TechnicianType);
+            $('.TechnicianID').val(ui.item.TechnicianID);
+            $('.PositionID').val(ui.item.PositionID);
+
+            return false;
+        }
+    });
+
 
     $.ajax({
 
