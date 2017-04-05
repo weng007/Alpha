@@ -1,7 +1,32 @@
+function ReplaceNumberWithCommas(yourNumber) {
+    //Seperates the components of the number
+    var n = yourNumber.toString().split(".");
+    //Comma-fies the first part
+    n[0] = n[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    //Combines the two sections
+    return n.join(".");
+}
+
 $(document).ready(function () {
+    $(".Number").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+            // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+            // Allow: home, end, left, right, down, up
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+            // let it happen, don't do anything
+            return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
-    $('.Number').number(true, 2);
+    //ReplaceNumberWithCommas($('.Number').val());
 
     var input = window.location.href;
     var after = input.split('?')[1]
@@ -512,22 +537,28 @@ function CalSum() {
     var SubTotal = 0;
     var Discount = 0;
     $(".RowCal").each(function () {
-        var qty = $(this).find(".Quantity").val();
-        var price = $(this).find(".Price").val();
+        var qty = $(this).find(".Quantity").val().replace(',','');
+        var price = $(this).find(".Price").val().replace(',', '');
         var amount = qty * price;
         
-        $(this).find('.Amount').val(amount).number(true, 2);
-        $(this).find('.Price').val(price).number(true, 2);
-        $(this).find('.Quantity').val(qty).number(true, 2);
+        $(this).find('.Amount').val(amount).number(true,2);
+        $(this).find('.Price').val(ReplaceNumberWithCommas(price));
+        $(this).find('.Quantity').val(ReplaceNumberWithCommas(qty));
     });
     for (var i = 0; i < $(".RowCal").length; i++) {
         total = total + parseFloat($('.Amount:eq(' + i + ')').val());
     }
-    Discount = $('#txtDiscount').val();
+
+    Discount = $('#txtDiscount').val().replace(',', '');
     SubTotal = total - Discount;
+
+    $('#txtDiscount').val(ReplaceNumberWithCommas(Discount));
+
     $('#txtTotal').val(total).number(true, 2);
     $('#txtSubTotal').val(SubTotal).number(true, 2);
     $('#txtNoCompound').val(SubTotal).number(true, 2);
+
+    
     return SubTotal;
 }
 function CalSumExpense() {
