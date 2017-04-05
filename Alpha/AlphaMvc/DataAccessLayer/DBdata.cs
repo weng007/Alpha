@@ -12,7 +12,7 @@ namespace AlphaMVC.DataAccessLayer
     public class DBdata
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
-        public string GetRptJobOrder(string jobID)
+        public DataSet GetRptJobOrder(string jobID)
         {
             string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))

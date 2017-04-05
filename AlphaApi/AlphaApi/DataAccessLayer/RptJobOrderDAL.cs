@@ -11,7 +11,6 @@ namespace AlphaApi.DataAccessLayer
     public class RptJobOrderDAL
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
-        int result = 0;
 
         public DataSet SelectByID(int id)
         {
