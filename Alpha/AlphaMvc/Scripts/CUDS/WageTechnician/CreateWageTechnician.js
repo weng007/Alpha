@@ -39,7 +39,7 @@ function GetData(val)
                     html += '<td class="hidecolumn"><input type="hidden" class="hidJobID" value="' + data.Table1[i].JobID + '" /></td>';
                     html += '<td class="hidecolumn"><input type="hidden" Class="hidTechnicianID" value="' + data.Table1[i].TechnicianID + '" /></td>';
                     html += '<td class="nopointer">' + data.Table1[i].RowNum + '</td>';
-                    html += '<td class="nopointer"><input type="text" id="txtAdditionnal" name="field1" class="Additionnal rowjobno" value="' + data.Table1[i].JobNo + '"/></td>';
+                    html += '<td class="nopointer"><input type="text" id="txtJobNo" name="field1" class="rowjobno" value="' + data.Table1[i].JobNo + '"/></td>';
                     html += '<td class="nopointer">' + data.Table1[i].CustomerName + '</td>';
                     html += '<td class="nopointer">' + '' + '</td>';
                     html += '<td class="nopointer">' + ManDate + '</td>';
@@ -69,27 +69,14 @@ function GetData(val)
     });
 }
 function ControlEnable(Isview) {
-    //var Isview = val;
-    alert(Isview);
     if (Isview) {
-        alert('test');
-        //document.getElementByClass("Additionnal").disabled = true;
-        $('.Additionnal').disabled = true;
-        //document.getElementById("btnSave").disabled = true;
+        $(".RowCal").each(function () {
+            $('.Additionnal').attr('disabled', 'disabled');
+            $('.Deduction').attr('disabled', 'disabled');
+            $('.Additionnal').attr('Style', 'background: rgb(235, 235, 228); border: none;');
+            $('.Deduction').attr('Style', 'background: rgb(235, 235, 228); border: none;');
+        });
     }
-}
-function RowcalSum()
-{
-    $(".RowCal").each(function () {
-        var normalHours = $(this).find(".Quantity").val();
-        var price = $(this).find(".Price").val();
-        var amount = qty * price;
-
-
-        $(this).find('.Amount').val(amount).number(true, 2);
-        $(this).find('.Price').val(price).number(true, 2);
-        $(this).find('.Quantity').val(qty).number(true, 2);
-    });
 }
 function CreateData() {
 

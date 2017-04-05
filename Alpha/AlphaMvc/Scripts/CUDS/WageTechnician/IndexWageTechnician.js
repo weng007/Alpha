@@ -68,7 +68,7 @@ $(document).ready(function () {
                 html += '<td>' + data.Table[i].Position + '</td>';
                 html += '<td>' + data.Table[i].GradeName + '</td>';
                 html += '<td>';
-                html += '<a href="/WageTeachnician/CreateWageTeachnician?id=' + data.Table[i].ID + '&IsView=' + false + '" id="Create' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="adminupdateDisable"/></a>';
+                html += '<a href="/WageTeachnician/CreateWageTeachnician?id=' + data.Table[i].ID + '" id="Create' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="adminupdateDisable"/></a>';
                 html += '<a href="/WageTeachnician/CreateWageTeachnician?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="adminviewDisable" /></a>';
                 html += '</td>';
                 html += '</tr>';
