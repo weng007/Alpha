@@ -283,8 +283,6 @@ namespace MymobilewalaMvc.Reports.DS {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnJobRef;
-            
             private global::System.Data.DataColumn columnJobNo;
             
             private global::System.Data.DataColumn columnJobDate;
@@ -305,8 +303,6 @@ namespace MymobilewalaMvc.Reports.DS {
             
             private global::System.Data.DataColumn columnDetail;
             
-            private global::System.Data.DataColumn columnCustID;
-            
             private global::System.Data.DataColumn columnName;
             
             private global::System.Data.DataColumn columnTel;
@@ -320,18 +316,6 @@ namespace MymobilewalaMvc.Reports.DS {
             private global::System.Data.DataColumn columnAddress;
             
             private global::System.Data.DataColumn columnRemark;
-            
-            private global::System.Data.DataColumn columnDiscount;
-            
-            private global::System.Data.DataColumn columnIsDeleted;
-            
-            private global::System.Data.DataColumn columnCreateDate;
-            
-            private global::System.Data.DataColumn columnCreateBy;
-            
-            private global::System.Data.DataColumn columnEditDate;
-            
-            private global::System.Data.DataColumn columnEditBy;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -379,14 +363,6 @@ namespace MymobilewalaMvc.Reports.DS {
             public global::System.Data.DataColumn IDColumn {
                 get {
                     return this.columnID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn JobRefColumn {
-                get {
-                    return this.columnJobRef;
                 }
             }
             
@@ -472,14 +448,6 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CustIDColumn {
-                get {
-                    return this.columnCustID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn NameColumn {
                 get {
                     return this.columnName;
@@ -536,54 +504,6 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DiscountColumn {
-                get {
-                    return this.columnDiscount;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IsDeletedColumn {
-                get {
-                    return this.columnIsDeleted;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CreateDateColumn {
-                get {
-                    return this.columnCreateDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CreateByColumn {
-                get {
-                    return this.columnCreateBy;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EditDateColumn {
-                get {
-                    return this.columnEditDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EditByColumn {
-                get {
-                    return this.columnEditBy;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -621,7 +541,6 @@ namespace MymobilewalaMvc.Reports.DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SP_RptJobOrderRow AddSP_RptJobOrderRow(
                         long RowNum, 
-                        int JobRef, 
                         string JobNo, 
                         System.DateTime JobDate, 
                         string Car, 
@@ -632,25 +551,17 @@ namespace MymobilewalaMvc.Reports.DS {
                         int TypeWorking, 
                         int JobStatus, 
                         string Detail, 
-                        int CustID, 
                         string Name, 
                         string Tel, 
                         string Fax, 
                         string Contact, 
                         string CoWorker, 
                         string Address, 
-                        string Remark, 
-                        decimal Discount, 
-                        string IsDeleted, 
-                        System.DateTime CreateDate, 
-                        int CreateBy, 
-                        System.DateTime EditDate, 
-                        int EditBy) {
+                        string Remark) {
                 SP_RptJobOrderRow rowSP_RptJobOrderRow = ((SP_RptJobOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         RowNum,
                         null,
-                        JobRef,
                         JobNo,
                         JobDate,
                         Car,
@@ -661,20 +572,13 @@ namespace MymobilewalaMvc.Reports.DS {
                         TypeWorking,
                         JobStatus,
                         Detail,
-                        CustID,
                         Name,
                         Tel,
                         Fax,
                         Contact,
                         CoWorker,
                         Address,
-                        Remark,
-                        Discount,
-                        IsDeleted,
-                        CreateDate,
-                        CreateBy,
-                        EditDate,
-                        EditBy};
+                        Remark};
                 rowSP_RptJobOrderRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_RptJobOrderRow);
                 return rowSP_RptJobOrderRow;
@@ -706,7 +610,6 @@ namespace MymobilewalaMvc.Reports.DS {
             internal void InitVars() {
                 this.columnRowNum = base.Columns["RowNum"];
                 this.columnID = base.Columns["ID"];
-                this.columnJobRef = base.Columns["JobRef"];
                 this.columnJobNo = base.Columns["JobNo"];
                 this.columnJobDate = base.Columns["JobDate"];
                 this.columnCar = base.Columns["Car"];
@@ -717,7 +620,6 @@ namespace MymobilewalaMvc.Reports.DS {
                 this.columnTypeWorking = base.Columns["TypeWorking"];
                 this.columnJobStatus = base.Columns["JobStatus"];
                 this.columnDetail = base.Columns["Detail"];
-                this.columnCustID = base.Columns["CustID"];
                 this.columnName = base.Columns["Name"];
                 this.columnTel = base.Columns["Tel"];
                 this.columnFax = base.Columns["Fax"];
@@ -725,12 +627,6 @@ namespace MymobilewalaMvc.Reports.DS {
                 this.columnCoWorker = base.Columns["CoWorker"];
                 this.columnAddress = base.Columns["Address"];
                 this.columnRemark = base.Columns["Remark"];
-                this.columnDiscount = base.Columns["Discount"];
-                this.columnIsDeleted = base.Columns["IsDeleted"];
-                this.columnCreateDate = base.Columns["CreateDate"];
-                this.columnCreateBy = base.Columns["CreateBy"];
-                this.columnEditDate = base.Columns["EditDate"];
-                this.columnEditBy = base.Columns["EditBy"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -740,8 +636,6 @@ namespace MymobilewalaMvc.Reports.DS {
                 base.Columns.Add(this.columnRowNum);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnJobRef = new global::System.Data.DataColumn("JobRef", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnJobRef);
                 this.columnJobNo = new global::System.Data.DataColumn("JobNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnJobNo);
                 this.columnJobDate = new global::System.Data.DataColumn("JobDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -762,8 +656,6 @@ namespace MymobilewalaMvc.Reports.DS {
                 base.Columns.Add(this.columnJobStatus);
                 this.columnDetail = new global::System.Data.DataColumn("Detail", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDetail);
-                this.columnCustID = new global::System.Data.DataColumn("CustID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCustID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.columnTel = new global::System.Data.DataColumn("Tel", typeof(string), null, global::System.Data.MappingType.Element);
@@ -778,18 +670,6 @@ namespace MymobilewalaMvc.Reports.DS {
                 base.Columns.Add(this.columnAddress);
                 this.columnRemark = new global::System.Data.DataColumn("Remark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRemark);
-                this.columnDiscount = new global::System.Data.DataColumn("Discount", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDiscount);
-                this.columnIsDeleted = new global::System.Data.DataColumn("IsDeleted", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIsDeleted);
-                this.columnCreateDate = new global::System.Data.DataColumn("CreateDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCreateDate);
-                this.columnCreateBy = new global::System.Data.DataColumn("CreateBy", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCreateBy);
-                this.columnEditDate = new global::System.Data.DataColumn("EditDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEditDate);
-                this.columnEditBy = new global::System.Data.DataColumn("EditBy", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEditBy);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnRowNum.ReadOnly = true;
@@ -811,7 +691,6 @@ namespace MymobilewalaMvc.Reports.DS {
                 this.columnCoWorker.MaxLength = 100;
                 this.columnAddress.MaxLength = 200;
                 this.columnRemark.MaxLength = 100;
-                this.columnIsDeleted.MaxLength = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -981,22 +860,6 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int JobRef {
-                get {
-                    try {
-                        return ((int)(this[this.tableSP_RptJobOrder.JobRefColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'JobRef\' in table \'SP_RptJobOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_RptJobOrder.JobRefColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string JobNo {
                 get {
                     try {
@@ -1157,22 +1020,6 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int CustID {
-                get {
-                    try {
-                        return ((int)(this[this.tableSP_RptJobOrder.CustIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CustID\' in table \'SP_RptJobOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_RptJobOrder.CustIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Name {
                 get {
                     try {
@@ -1285,102 +1132,6 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Discount {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableSP_RptJobOrder.DiscountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Discount\' in table \'SP_RptJobOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_RptJobOrder.DiscountColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string IsDeleted {
-                get {
-                    try {
-                        return ((string)(this[this.tableSP_RptJobOrder.IsDeletedColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'IsDeleted\' in table \'SP_RptJobOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_RptJobOrder.IsDeletedColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime CreateDate {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableSP_RptJobOrder.CreateDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CreateDate\' in table \'SP_RptJobOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_RptJobOrder.CreateDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int CreateBy {
-                get {
-                    try {
-                        return ((int)(this[this.tableSP_RptJobOrder.CreateByColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CreateBy\' in table \'SP_RptJobOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_RptJobOrder.CreateByColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime EditDate {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableSP_RptJobOrder.EditDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'EditDate\' in table \'SP_RptJobOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_RptJobOrder.EditDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int EditBy {
-                get {
-                    try {
-                        return ((int)(this[this.tableSP_RptJobOrder.EditByColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'EditBy\' in table \'SP_RptJobOrder\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_RptJobOrder.EditByColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsRowNumNull() {
                 return this.IsNull(this.tableSP_RptJobOrder.RowNumColumn);
             }
@@ -1389,18 +1140,6 @@ namespace MymobilewalaMvc.Reports.DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRowNumNull() {
                 this[this.tableSP_RptJobOrder.RowNumColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsJobRefNull() {
-                return this.IsNull(this.tableSP_RptJobOrder.JobRefColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetJobRefNull() {
-                this[this.tableSP_RptJobOrder.JobRefColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1525,18 +1264,6 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCustIDNull() {
-                return this.IsNull(this.tableSP_RptJobOrder.CustIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCustIDNull() {
-                this[this.tableSP_RptJobOrder.CustIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableSP_RptJobOrder.NameColumn);
             }
@@ -1617,78 +1344,6 @@ namespace MymobilewalaMvc.Reports.DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRemarkNull() {
                 this[this.tableSP_RptJobOrder.RemarkColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDiscountNull() {
-                return this.IsNull(this.tableSP_RptJobOrder.DiscountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDiscountNull() {
-                this[this.tableSP_RptJobOrder.DiscountColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIsDeletedNull() {
-                return this.IsNull(this.tableSP_RptJobOrder.IsDeletedColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIsDeletedNull() {
-                this[this.tableSP_RptJobOrder.IsDeletedColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCreateDateNull() {
-                return this.IsNull(this.tableSP_RptJobOrder.CreateDateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCreateDateNull() {
-                this[this.tableSP_RptJobOrder.CreateDateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCreateByNull() {
-                return this.IsNull(this.tableSP_RptJobOrder.CreateByColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCreateByNull() {
-                this[this.tableSP_RptJobOrder.CreateByColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsEditDateNull() {
-                return this.IsNull(this.tableSP_RptJobOrder.EditDateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetEditDateNull() {
-                this[this.tableSP_RptJobOrder.EditDateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsEditByNull() {
-                return this.IsNull(this.tableSP_RptJobOrder.EditByColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetEditByNull() {
-                this[this.tableSP_RptJobOrder.EditByColumn] = global::System.Convert.DBNull;
             }
         }
         

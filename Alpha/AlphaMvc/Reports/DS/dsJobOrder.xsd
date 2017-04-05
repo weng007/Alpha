@@ -19,7 +19,6 @@
             <xs:sequence>
               <xs:element name="RowNum" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnRowNum" msprop:Generator_ColumnPropNameInRow="RowNum" msprop:Generator_ColumnPropNameInTable="RowNumColumn" msprop:Generator_UserColumnName="RowNum" type="xs:long" minOccurs="0" />
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
-              <xs:element name="JobRef" msprop:Generator_ColumnVarNameInTable="columnJobRef" msprop:Generator_ColumnPropNameInRow="JobRef" msprop:Generator_ColumnPropNameInTable="JobRefColumn" msprop:Generator_UserColumnName="JobRef" type="xs:int" minOccurs="0" />
               <xs:element name="JobNo" msprop:Generator_ColumnVarNameInTable="columnJobNo" msprop:Generator_ColumnPropNameInRow="JobNo" msprop:Generator_ColumnPropNameInTable="JobNoColumn" msprop:Generator_UserColumnName="JobNo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -60,7 +59,6 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CustID" msprop:Generator_ColumnVarNameInTable="columnCustID" msprop:Generator_ColumnPropNameInRow="CustID" msprop:Generator_ColumnPropNameInTable="CustIDColumn" msprop:Generator_UserColumnName="CustID" type="xs:int" minOccurs="0" />
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -110,18 +108,6 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Discount" msprop:Generator_ColumnVarNameInTable="columnDiscount" msprop:Generator_ColumnPropNameInRow="Discount" msprop:Generator_ColumnPropNameInTable="DiscountColumn" msprop:Generator_UserColumnName="Discount" type="xs:decimal" minOccurs="0" />
-              <xs:element name="IsDeleted" msprop:Generator_ColumnVarNameInTable="columnIsDeleted" msprop:Generator_ColumnPropNameInRow="IsDeleted" msprop:Generator_ColumnPropNameInTable="IsDeletedColumn" msprop:Generator_UserColumnName="IsDeleted" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="1" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="CreateDate" msprop:Generator_ColumnVarNameInTable="columnCreateDate" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" msprop:Generator_UserColumnName="CreateDate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="CreateBy" msprop:Generator_ColumnVarNameInTable="columnCreateBy" msprop:Generator_ColumnPropNameInRow="CreateBy" msprop:Generator_ColumnPropNameInTable="CreateByColumn" msprop:Generator_UserColumnName="CreateBy" type="xs:int" minOccurs="0" />
-              <xs:element name="EditDate" msprop:Generator_ColumnVarNameInTable="columnEditDate" msprop:Generator_ColumnPropNameInRow="EditDate" msprop:Generator_ColumnPropNameInTable="EditDateColumn" msprop:Generator_UserColumnName="EditDate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="EditBy" msprop:Generator_ColumnVarNameInTable="columnEditBy" msprop:Generator_ColumnPropNameInRow="EditBy" msprop:Generator_ColumnPropNameInTable="EditByColumn" msprop:Generator_UserColumnName="EditBy" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

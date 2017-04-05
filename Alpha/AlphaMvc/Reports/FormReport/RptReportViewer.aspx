@@ -10,8 +10,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <rsweb:ReportViewer ID="RptViewer1" runat="server"></rsweb:ReportViewer>
+    <div style="width: 709px; height: 723px">
+        <rsweb:ReportViewer ID="RptViewer1" runat="server" Height="694px" Width="703px"></rsweb:ReportViewer>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
 </asp:ScriptManager>
     </div>
