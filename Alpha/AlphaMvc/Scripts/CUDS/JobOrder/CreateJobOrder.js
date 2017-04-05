@@ -1,7 +1,7 @@
 $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
-    //ReplaceNumberWithCommas($('.Number').val());
+    $('.Number').number(true, 2);
 
     var input = window.location.href;
     var after = input.split('?')[1]
@@ -199,7 +199,32 @@ $(document).ready(function () {
 });
 var row_index = 0;
 var col_index = 0;
+//function countPosition()
+//{
+//    var totalSup = 0;
+//    var totalFM = 0;
+//    var totalTech = 0;
+//    var totalSafety = 0;
+//    for (var i = 0; i < $(".RowCal5").length; i++) {
 
+//        if ($('.PositionID:eq(' + i + ')').val() == 11) {
+//            totalSup = totalSup + 1;
+//            $('#txtManSup').val(totalSup);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 22) {
+//            totalFM = totalFM + 1
+//            $('#txtManFM').val(totalFM);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 33) {
+//            totalTech = totalTech + 1
+//            $('#txtManTech').val(totalTech);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 44) {
+//            totalSafety = totalSafety + 1
+//            $('#txtManSafety').val(totalSafety);
+//        }
+//    }
+//}
 $(function () {
     $('.ManDate').datepicker();
     $('.WorkingFrom').timepicker();
@@ -487,28 +512,22 @@ function CalSum() {
     var SubTotal = 0;
     var Discount = 0;
     $(".RowCal").each(function () {
-        var qty = $(this).find(".Quantity").val().replace(',','');
-        var price = $(this).find(".Price").val().replace(',', '');
+        var qty = $(this).find(".Quantity").val();
+        var price = $(this).find(".Price").val();
         var amount = qty * price;
         
-        $(this).find('.Amount').val(amount).number(true,2);
-        $(this).find('.Price').val(ReplaceNumberWithCommas(price));
-        $(this).find('.Quantity').val(ReplaceNumberWithCommas(qty));
+        $(this).find('.Amount').val(amount).number(true, 2);
+        $(this).find('.Price').val(price).number(true, 2);
+        $(this).find('.Quantity').val(qty).number(true, 2);
     });
     for (var i = 0; i < $(".RowCal").length; i++) {
         total = total + parseFloat($('.Amount:eq(' + i + ')').val());
     }
-
-    Discount = $('#txtDiscount').val().replace(',', '');
+    Discount = $('#txtDiscount').val();
     SubTotal = total - Discount;
-
-    $('#txtDiscount').val(ReplaceNumberWithCommas(Discount));
-
     $('#txtTotal').val(total).number(true, 2);
     $('#txtSubTotal').val(SubTotal).number(true, 2);
     $('#txtNoCompound').val(SubTotal).number(true, 2);
-
-    
     return SubTotal;
 }
 function CalSumExpense() {
@@ -517,13 +536,13 @@ function CalSumExpense() {
     var Profit = 0;
     SubTotal = CalSum();
     $(".RowCal1").each(function () {
-        var qty = $(this).find(".Quantity").val().replace(',','');
-        var price = $(this).find(".Price").val().replace(',', '');
+        var qty = $(this).find(".Quantity").val();
+        var price = $(this).find(".Price").val();
         var amount = qty * price;
 
         $(this).find('.Amount1').val(amount).number(true, 2);
-        $(this).find('.Price').val(ReplaceNumberWithCommas(price));
-        $(this).find('.Quantity').val(ReplaceNumberWithCommas(qty));
+        $(this).find('.Price').val(price).number(true, 2);
+        $(this).find('.Quantity').val(qty).number(true, 2);
     });
     for (var i = 0; i < $(".RowCal1").length; i++) {
         totalExpense = totalExpense + parseFloat($('.Amount1:eq(' + i + ')').val());
