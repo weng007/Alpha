@@ -21,7 +21,7 @@
                     <label>Name<span class="required">*</span></label>
                 </li>
                 <li>
-                    <input type="text" id="txtFullName" name="field1" class="field-divided" disabled />
+                    <input type="text" id="txtFullName" name="field1" class="text-size170" disabled />
                 </li>
                 <br />
             </ul>
@@ -33,14 +33,14 @@
                             <th rowspan="3" class="hidecolumn">ID</th>
                             <th rowspan="3" class="hidecolumn">JobID</th>
                             <th rowspan="3" class="hidecolumn">TechnicianID</th>
-                            <th rowspan="3">RowNum</th>
+                            <th rowspan="3">No.</th>
                             <th rowspan="3">JobNo</th>
                             <th rowspan="3">Customer</th>
                             <th rowspan="3">Job site</th>
                             <th rowspan="3">DATE</th>
                             <th rowspan="3">DAY</th>
                             <th colspan="2">WORKING TIME</th>
-                            <th colspan="5">NUMBER OF HOURS</th>
+                            <th colspan="4">NUMBER OF HOURS</th>
                             <th rowspan="3">Additionnal Wages (Baht)</th>
                             <th rowspan="3">Deduction(-)(Baht)</th>
                             <th rowspan="3">Remark</th>
@@ -51,7 +51,7 @@
                             <th rowspan="2">FROM</th>
                             <th rowspan="2">TO</th>
                             <th rowspan="2">TOTAL HOURS</th>
-                            <th rowspan="2">Normal Hours</th>
+                            @*<th rowspan="2">Normal Hours</th>*@
                             <th colspan="3">Overtime</th>
                         </tr>
                         <tr>
@@ -62,7 +62,7 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <td colspan="8"></td>
+                            <td colspan="7"></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -74,11 +74,11 @@
                             <td>(WH3%)</td>
                         </tr>
                         <tr>
-                            <td colspan="8">TOTAL (HRS)</td>
+                            <td colspan="7">TOTAL (HRS)</td>
                             <td></td>
-                            <td>24.00</td>
-                            <td>2.00</td>
-                            <td>8.00</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
                             <td>-</td>
                             <td>-</td>
                             <td></td>
@@ -86,31 +86,31 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td colspan="8">RATE (BAHT)</td>
+                            <td colspan="7">RATE (BAHT)</td>
                             <td></td>
-                            <td>75.00</td>
-                            <td>112.50</td>
-                            <td>150.00</td>
-                            <td>225.00</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td colspan="8">AMOUNTS (BAHT)</td>
+                            <td colspan="7">AMOUNTS (BAHT)</td>
                             <td></td>
-                            <td>3,600.00</td>
-                            <td>225.50</td>
-                            <td>1,200.00</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
-                            <td>5,025.00</td>
-                            <td>(150.75)</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
                         </tr>
                         <tr>
-                            <td colspan="8">TOTAL WAGES(BAHT)</td>
+                            <td colspan="7">TOTAL WAGES(BAHT)</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -119,7 +119,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>4,874.25</td>
+                            <td>-</td>
                         </tr>
                     </tfoot>
                     <tbody id="result"></tbody>
@@ -140,9 +140,8 @@
         var after = input.split('?')[1]
         var val = after.split('=');
         var Isview = val[2];
-
-        //ControlEnable(Isview);
-
         GetData(@Request.Params["id"]);
+        ControlEnable(Isview);
+
     });
 </script>

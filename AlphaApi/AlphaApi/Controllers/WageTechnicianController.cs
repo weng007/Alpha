@@ -20,7 +20,16 @@ namespace AlphaApi.Controllers
         [HttpPost]
         public int Post(WageTechnicianModels wageTechnicianModel)
         {
-            var response = WageTechniciandb.InsertData(wageTechnicianModel);
+            
+            var response = 0;
+            if (wageTechnicianModel.ID > 0)
+            {
+                response = WageTechniciandb.UpdateData(wageTechnicianModel);
+            }
+            else
+            {
+                response = WageTechniciandb.InsertData(wageTechnicianModel);
+            }
             return response;
         }
 
@@ -29,14 +38,6 @@ namespace AlphaApi.Controllers
         public string Get(int id)
         {
             var response = WageTechniciandb.SelectByTechnicianID(id);
-            return JsonConvert.SerializeObject(response, Formatting.Indented);
-        }
-
-        [EnableCorsAttribute("*", "*", "*")]
-        [HttpGet]
-        public string Get(string TechnicianID)
-        {
-            var response = WageTechniciandb.SelectByID(TechnicianID);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 

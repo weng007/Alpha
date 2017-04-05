@@ -68,9 +68,8 @@ $(document).ready(function () {
                 html += '<td>' + data.Table[i].Position + '</td>';
                 html += '<td>' + data.Table[i].GradeName + '</td>';
                 html += '<td>';
-                html += '<a href="/WageTeachnician/CreateWageTeachnician?id=' + data.Table[i].ID + '" id="Create' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/btnAdd.png" class="adminupdateDisable"/></a>';
-                html += '<a href="/WageTeachnician/EditWageTeachnician?id=' + data.Table[i].ID + '" id="Create' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="adminupdateDisable"/></a>';
-                html += '<a href="/WageTeachnician/EditWageTeachnician?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/view.png"/></a>';
+                html += '<a href="/WageTeachnician/CreateWageTeachnician?id=' + data.Table[i].ID + '&IsView=' + false + '" id="Create' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="adminupdateDisable"/></a>';
+                html += '<a href="/WageTeachnician/CreateWageTeachnician?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="adminviewDisable" /></a>';
                 html += '</td>';
                 html += '</tr>';
             }
@@ -79,7 +78,7 @@ $(document).ready(function () {
             CheckAuthorization();
         },
         error: function (result) {
-            alert(result)
+            //alert(result)
         }
     });
 });

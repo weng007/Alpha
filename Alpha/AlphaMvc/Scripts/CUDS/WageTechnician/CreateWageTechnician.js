@@ -1,9 +1,4 @@
 
-//function GetChecked(isCheck)
-//{
-//    var ShowAll = isCheck.checked;
-//    GetData(ShowAll);
-//}
 function GetData(val)
 {
     //------------------------- Sorting ------------------------
@@ -36,27 +31,33 @@ function GetData(val)
             $('#txtFullName').val(data.Table[0].FullName);
             var html = '<tbody>';
             for (var i = 0; i < data.Table1.length; i++) {
+                var ManDate = new Date(data.Table1[i].ManDate);
+                ManDate = $.datepicker.formatDate('mm/dd/yy', ManDate);
+
                     html += '<tr class="RowCal">';
-                    html += '<td class="hidecolumn"><input type="hidden" class="hidID" value="' + data.Table1[i].ManID + '" /></td>';
+                    html += '<td class="hidecolumn"><input type="hidden" class="hidID" value="' + data.Table1[i].WageTechnicianID + '" /></td>';
                     html += '<td class="hidecolumn"><input type="hidden" class="hidJobID" value="' + data.Table1[i].JobID + '" /></td>';
-                    html += '<td class="hidecolumn"><input type="hidden" Class="hidTechnicianID" value="' + val + '" /></td>';
-                    html += '<td>' + data.Table1[i].RowNum + '</td>';
-                    html += '<td>' + data.Table1[i].JobNo + '</td>';
-                    html += '<td>' + data.Table1[i].CustomerName + '</td>';
-                    html += '<td>' + '' + '</td>';
-                    html += '<td>' + data.Table1[i].ManDate + '</td>';
-                    html += '<td>' + data.Table1[i].ManDay + '</td>';
-                    html += '<td>' + data.Table1[i].WorkingFrom + '</td>';
-                    html += '<td>' + data.Table1[i].WorkingTo + '</td>';
-                    html += '<td>' + data.Table1[i].TotalHours + '</td>';
-                    html += '<td>' + '' + '</td>';
-                    html += '<td>' + data.Table1[i].ManNormal + '</td>';
-                    html += '<td>' + data.Table1[i].ManPremium + '</td>';
-                    html += '<td>' + data.Table1[i].ManSpecial + '</td>';
-                    html += '<td><input type="text" id="txtAdditionnal" name="field1" class="Additionnal field-divided"/></td>';
-                    html += '<td><input type="text" id="txtDeduction" name="field1" class="Deduction field-divided"/></td>';
-                    html += '<td>' + '' + '</td>';
-                    html += '<td>' + '' + '</td>';
+                    html += '<td class="hidecolumn"><input type="hidden" Class="hidTechnicianID" value="' + data.Table1[i].TechnicianID + '" /></td>';
+                    html += '<td class="nopointer">' + data.Table1[i].RowNum + '</td>';
+                    html += '<td class="nopointer"><input type="text" id="txtAdditionnal" name="field1" class="Additionnal rowjobno" value="' + data.Table1[i].JobNo + '"/></td>';
+                    html += '<td class="nopointer">' + data.Table1[i].CustomerName + '</td>';
+                    html += '<td class="nopointer">' + '' + '</td>';
+                    html += '<td class="nopointer">' + ManDate + '</td>';
+                    html += '<td class="nopointer">' + data.Table1[i].ManDay + '</td>';
+                    html += '<td class="nopointer">' + data.Table1[i].WorkingFrom + '</td>';
+                    html += '<td class="nopointer">' + data.Table1[i].WorkingTo + '</td>';
+                    html += '<td class="nopointer">' + data.Table1[i].TotalHours + '</td>';
+                    //html += '<td>' + data.Table1[i].NormalHours + '</td>';
+                    //html += '<td class="hidecolumn"><input type="hidden" Class="hidNormalHours" value="' + data.Table1[i].NormalHours + '" /></td>';
+                    html += '<td class="hidecolumn"><input type="hidden" Class="hidOverNormal" value="' + data.Table1[i].ManNormal + '" /></td>';
+                    html += '<td class="hidecolumn"><input type="hidden" Class="hidOverSpecial" value="' + data.Table1[i].ManSpecial + '" /></td>';
+                    html += '<td class="nopointer">' + data.Table1[i].ManNormal + '</td>';
+                    html += '<td class="nopointer">' + data.Table1[i].ManPremium + '</td>';
+                    html += '<td class="nopointer">' + data.Table1[i].ManSpecial + '</td>';
+                    html += '<td class="nopointer"><input type="text" id="txtAdditionnal" name="field1" class="Additionnal text-size100" value="' + data.Table1[i].Additionnal + '"/></td>';
+                    html += '<td class="nopointer"><input type="text" id="txtDeduction" name="field1" class="Deduction text-size100" value="' + data.Table1[i].Deduction + '"/></td>';
+                    html += '<td class="nopointer">' + '' + '</td>';
+                    html += '<td class="nopointer">' + '' + '</td>';
                     html += '</tr>';
             }
             html += '</tbody>';
@@ -67,10 +68,34 @@ function GetData(val)
         }
     });
 }
+function ControlEnable(Isview) {
+    //var Isview = val;
+    alert(Isview);
+    if (Isview) {
+        alert('test');
+        //document.getElementByClass("Additionnal").disabled = true;
+        $('.Additionnal').disabled = true;
+        //document.getElementById("btnSave").disabled = true;
+    }
+}
+function RowcalSum()
+{
+    $(".RowCal").each(function () {
+        var normalHours = $(this).find(".Quantity").val();
+        var price = $(this).find(".Price").val();
+        var amount = qty * price;
+
+
+        $(this).find('.Amount').val(amount).number(true, 2);
+        $(this).find('.Price').val(price).number(true, 2);
+        $(this).find('.Quantity').val(qty).number(true, 2);
+    });
+}
 function CreateData() {
 
     var dataObject = {};
     $(".RowCal").each(function () {
+        dataObject.ID = $(this).find(".hidID").val();
         dataObject.JobID = $(this).find(".hidJobID").val();
         dataObject.TechnicianID = $(this).find(".hidTechnicianID").val();
         dataObject.Additionnal = $(this).find('.Additionnal').val();
@@ -93,8 +118,6 @@ function CreateData() {
         });
         
     });
-    alert('test');
     alert('Create is completed')
-    alert($('.hidTechnicianID').val());
     window.location.href = "../WageTeachnician/CreateWageTeachnician?id=" + $('.hidTechnicianID').val();
 }

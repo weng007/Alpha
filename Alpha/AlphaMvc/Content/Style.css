@@ -2,7 +2,16 @@
     -webkit-appearance: none;
     display: none;
 }
-
+.nopointer{
+    cursor: default !important;
+}
+.rowjobno{
+    width: 120px;
+    background: rgba(0, 128, 128, 0);
+    border: none;
+    cursor:default;
+    text-align: center;
+}
 .topictable{
     margin-top: 10px;
     margin-left: 10px;
