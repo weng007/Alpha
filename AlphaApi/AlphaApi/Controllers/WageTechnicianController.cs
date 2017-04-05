@@ -28,10 +28,19 @@ namespace AlphaApi.Controllers
         [HttpGet]
         public string Get(int id)
         {
-            var response = WageTechniciandb.SelectByID(id);
+            var response = WageTechniciandb.SelectByTechnicianID(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [EnableCorsAttribute("*", "*", "*")]
+        [HttpGet]
+        public string Get(string TechnicianID)
+        {
+            var response = WageTechniciandb.SelectByID(TechnicianID);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(WageTechnicianModels wageTechnicianModel)
         {

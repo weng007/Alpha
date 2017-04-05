@@ -1,10 +1,9 @@
 ﻿@{
-    ViewBag.Title = "EditWageTeachnician";
+    ViewBag.Title = "CreateWageTeachnician";
 }
 
-<h2>WageTeachnician Edit</h2>
 <script src="@Url.Content("~/Scripts/EditableGrid/paging.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/CUDS/WageTechnician/EditWageTechnician.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CUDS/WageTechnician/CreateWageTechnician.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <table>
     <tr>
@@ -22,7 +21,7 @@
                     <label>Name<span class="required">*</span></label>
                 </li>
                 <li>
-                    <input type="text" id="txtFullName" name="field1" class="field-divided" disabled/>
+                    <input type="text" id="txtFullName" name="field1" class="field-divided" disabled />
                 </li>
                 <br />
             </ul>
@@ -128,7 +127,7 @@
             </div>
             <ul class="form-style-1">
                 <li>
-                    <button type="button" id="btnSave" class="btn btn-primary" onclick="ConfirmDialog('Update', 'WageTechnician', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnSave" class="btn btn-primary" onclick="ConfirmDialog('Create', 'WageTechnician', @Request.Params["id"])">Save</button>
                 </li>
             </ul>
         </form>

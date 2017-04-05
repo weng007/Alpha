@@ -13,6 +13,10 @@ namespace AlphaApi.Models
     {
         public int ID { get; set; }
 
+        public int ManID { get; set; }
+
+        public int WageTectnicianID { get; set; }
+
         public int JobID { get; set; }
 
         public int TechnicianID { get; set; }

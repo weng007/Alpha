@@ -25,16 +25,14 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@JobID", wageTechnician.JobID);
                     cmd.Parameters.AddWithValue("@TechnicianID", wageTechnician.TechnicianID);
-                    cmd.Parameters.AddWithValue("@Additionnal", wageTechnician.Additionnal);
-                    cmd.Parameters.AddWithValue("@Deduction", wageTechnician.Deduction);
+                    cmd.Parameters.AddWithValue("@Additionnal", wageTechnician.Additionnal != null ? wageTechnician.Additionnal : 0);
+                    cmd.Parameters.AddWithValue("@Deduction", wageTechnician.Deduction != null ? wageTechnician.Deduction : 0);
                     cmd.Parameters.AddWithValue("@CreateBy", wageTechnician.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", wageTechnician.EditBy);
                     conObj.Open();
-                    SqlDataAdapter adap = new SqlDataAdapter(cmd);
-                    adap.Fill(ds);
-                    conObj.Close();
-                    cmd.Parameters.Clear();
-                    return Convert.ToInt32(ds.Tables[1].Rows[0][0]);
+                    object obj = cmd.ExecuteScalar();
+                    result = Convert.ToInt32(obj);
+                    return result;
                 }
                 catch (Exception ex)
                 {
@@ -78,16 +76,47 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public DataSet SelectByID(int id)
+        public DataSet SelectByTechnicianID(int id)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_WageTechnician_Sel", conObj);
+                    
+                        //Create
+                        SqlCommand cmd = new SqlCommand("SP_WageTechnician_SelByTechnicianID", conObj);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
+                        conObj.Open();
+                        SqlDataAdapter da = new SqlDataAdapter();
+                        da.SelectCommand = cmd;
+                        ds = new DataSet();
+                        da.Fill(ds);
+
+                    return ds;
+                }
+                catch
+                {
+                    return ds;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
+
+        public DataSet SelectByID(string TechnicianID)
+        {
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_WageTechnician_SelByID", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
+                    cmd.Parameters.AddWithValue("@TechnicianID", TechnicianID); // i will pass zero to MobileID beacause its Primary .
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

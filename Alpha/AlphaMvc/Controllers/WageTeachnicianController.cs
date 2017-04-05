@@ -15,6 +15,10 @@ namespace AlphaMvc.Controllers
         {
             return View();
         }
+        public ActionResult CreateWageTeachnician()
+        {
+            return View();
+        }
         public ActionResult EditWageTeachnician()
         {
             return View();
