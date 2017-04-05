@@ -295,8 +295,8 @@ function GetData(val) {
                    $(this).find('.IncomeID').val(data.Table1[i].ID);
                    $(this).find('.Select1').val(data.Table1[i].IncomeType).change();
                    $(this).find('.UnitWeight').val(data.Table1[i].UnitWeight);
-                   $(this).find('.Quantity').val(data.Table1[i].Qty).number(true, 2);
-                   $(this).find('.Price').val(data.Table1[i].UnitPrice).number(true, 2);
+                   $(this).find('.Quantity').val(data.Table1[i].Qty).number(true, 0);
+                   $(this).find('.Price').val(data.Table1[i].UnitPrice).number(true, 0);
                    $(this).find('.Amount').val(data.Table1[i].Amount).number(true, 2);
                });
                CalSum();
@@ -318,8 +318,8 @@ function GetData(val) {
                    $(this).find('.JobID').val(data.Table2[i].JobID);
                    $(this).find('.ExpenseSelect').val(data.Table2[i].ExpenseType).change();
                    $(this).find('.unitSelect').val(data.Table2[i].UnitWeight).change();
-                   $(this).find('.Quantity').val(data.Table2[i].Qty).number(true, 2);
-                   $(this).find('.Price').val(data.Table2[i].UnitPrice).number(true, 2);
+                   $(this).find('.Quantity').val(data.Table2[i].Qty).number(true, 0);
+                   $(this).find('.Price').val(data.Table2[i].UnitPrice).number(true, 0);
                    $(this).find('.Amount1').val(data.Table2[i].Amount).number(true, 2);
                });
                CalSumExpense();
@@ -762,8 +762,8 @@ function CalSum() {
 
 
         $(this).find('.Amount').val(amount).number(true, 2);
-        $(this).find('.Price').val(price).number(true, 2);
-        $(this).find('.Quantity').val(qty).number(true, 2);
+        $(this).find('.Price').val(price).number(true, 0);
+        $(this).find('.Quantity').val(qty).number(true, 0);
     });
     for (var i = 0; i < $(".RowCal").length; i++) {
         total = total + parseFloat($('.Amount:eq(' + i + ')').val());
@@ -787,8 +787,8 @@ function CalSumExpense() {
         var amount = qty * price;
 
         $(this).find('.Amount1').val(amount).number(true, 2);
-        $(this).find('.Price').val(price).number(true, 2);
-        $(this).find('.Quantity').val(qty).number(true, 2);
+        $(this).find('.Price').val(price).number(true, 0);
+        $(this).find('.Quantity').val(qty).number(true, 0);
     });
     for (var i = 0; i < $(".RowCal1").length; i++) {
         totalExpense = totalExpense + parseFloat($('.Amount1:eq(' + i + ')').val());
