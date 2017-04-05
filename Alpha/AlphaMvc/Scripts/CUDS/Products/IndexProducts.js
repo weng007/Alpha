@@ -52,19 +52,19 @@ $(document).ready(function () {
             var html = '<tbody>';
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
-                html += '<td>' + data.Table[i].RowNum + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 var date = new Date(data.Table[i].ReceiveDate);
-                html += '<td>' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + '</td>';
-                html += '<td>' + data.Table[i].SerialNo + '</td>';
+                html += '<td class="nopointer">' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].SerialNo + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].MachineNo + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].ProductType + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].Brand + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].Model + '</td>';
-                html += '<td>' + data.Table[i].Size + '</td>';
-                html += '<td>' + data.Table[i].Remain + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Size + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Remain + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].Detail + '</td>';
-                html += '<td>';
+                html += '<td class="nopointer">';
                 html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="productsupdateDisable"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'Product'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="productsdeleteDisable"/></a>';
                 html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '&IsView=' + true + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="productsviewDisable"/></a>';

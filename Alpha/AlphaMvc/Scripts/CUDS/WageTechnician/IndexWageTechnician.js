@@ -59,15 +59,15 @@ $(document).ready(function () {
             var html = '<tbody>';
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
-                html += '<td>' + data.Table[i].RowNum + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                html += '<td>' + data.Table[i].TechnicianNo + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].TechnicianNo + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].HRCode + '</td>';
-                html += '<td>' + data.Table[i].FirstName + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].FirstName + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].TechnicianTypeName + '</td>';
-                html += '<td>' + data.Table[i].Position + '</td>';
-                html += '<td>' + data.Table[i].GradeName + '</td>';
-                html += '<td>';
+                html += '<td class="nopointer">' + data.Table[i].Position + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].GradeName + '</td>';
+                html += '<td class="nopointer">';
                 html += '<a href="/WageTeachnician/CreateWageTeachnician?id=' + data.Table[i].ID + '" id="Create' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="adminupdateDisable"/></a>';
                 html += '<a href="/WageTeachnician/CreateWageTeachnician?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="adminviewDisable" /></a>';
                 html += '</td>';

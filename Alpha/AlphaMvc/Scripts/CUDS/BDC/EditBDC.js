@@ -48,7 +48,7 @@ function ControlEnable(Isview) {
     }
 }
 function GetData(val) {
-    alert(val);
+   
     var dataObject = { ID: val }
     //alert('test val '+val);
     $.ajax(

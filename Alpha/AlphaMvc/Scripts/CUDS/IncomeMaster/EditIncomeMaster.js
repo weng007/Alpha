@@ -21,14 +21,13 @@ function GetData(val) {
            $("#txtDetail").val(data.Table[0].Detail);
        },
        error: function (msg) {
-           alert(msg);
+           //alert(msg);
        }
 
    });
 }
 function Update(val) {
     var dataObject = { ID: val, Detail: $("#txtDetail").val(), EditBy: localStorage['UserID'] }
-
        $.ajax(
         {
             url: 'http://localhost:13131/api/IncomeMaster',
@@ -40,7 +39,7 @@ function Update(val) {
                 alert('Update is completed');
             },
             error: function (msg) {
-                alert(msg);
+                //alert(msg);
             }           
         })
 };

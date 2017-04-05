@@ -26,8 +26,9 @@ function GetData(val) {
                        //alert(IsView);
                        html += '<tr class="RowCal">';
                        html += '<td>' + data.Table1[i].RowNum + '</td>';
-                       html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table1[i].ID + '"/></td>';
+                       html += '<td class="hidecolumn"><input type="hidden" class="hidID" value="' + data.Table1[i].ID + '"/></td>';
                        html += '<td>' + data.Table1[i].MenuType + '</td>';
+                       html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table1[i].MenuTypeID + '"/></td>';
                        html += '<td><input id="chkIsView" type="checkbox" class="IsView"'+ IsView +' ></td>';
                        html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" ' + IsInsert + '></td>';
                        html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" ' + IsUpdate + '></td>';
@@ -44,8 +45,8 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var dataObject = { Profile: $("#txtProfile").val(), EditBy: localStorage['UserID'] };
-    var SecurityID;
+    var dataObject = { ID: val,Profile: $("#txtProfile").val(), EditBy: localStorage['UserID'] };
+    var SecurityID = val;
     console.log(dataObject);
     $.ajax(
     {
@@ -56,7 +57,7 @@ function Update(val) {
         datatype: 'json',
         success: function (data) {
             //alert('data ' + data);
-            SecurityID = data;
+
         }
         ,
         error: function (msg) {
@@ -66,6 +67,7 @@ function Update(val) {
 
     var dataObject = {};
     $(".RowCal").each(function () {
+        dataObject.ID = $(this).find(".hidID").val();
         dataObject.SecurityID = SecurityID;
         dataObject.MenuTypeID = $(this).find(".hidMenuTypeID").val();
         dataObject.IsView = $(this).find('.IsView').is(":checked") == true ? 1 : 0;

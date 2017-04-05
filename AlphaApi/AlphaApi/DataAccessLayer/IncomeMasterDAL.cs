@@ -47,6 +47,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", incomeMaster.ID);
                     cmd.Parameters.AddWithValue("@Detail", incomeMaster.Detail);
+                    cmd.Parameters.AddWithValue("@EditBy", incomeMaster.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
                     return result;

@@ -52,7 +52,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Profile", securityProfileModel.Profile);
                     cmd.Parameters.AddWithValue("@EditBy", securityProfileModel.EditBy);
                     conObj.Open();
-                    result = cmd.ExecuteNonQuery();
+                    object obj = cmd.ExecuteScalar();
+                    result = Convert.ToInt32(obj);
                     return result;
                 }
                 catch (Exception ex)

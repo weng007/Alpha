@@ -69,10 +69,10 @@ function GetData(val)
             for (var i = 0; i < data.Table.length; i++) {
 
                 html += '<tr>';
-                html += '<td>' + data.Table[i].RowNum + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                html += '<td>' + data.Table[i].Docver + '</td>';
-                html += '<td>' + data.Table[i].QuoNo + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Docver + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].QuoNo + '</td>';
                 html += '<td class="text-right">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Price) + '</td>';
                 html += '<td class="text-right">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Cost) + '</td>';
                 price = data.Table[i].Price;
@@ -80,13 +80,13 @@ function GetData(val)
                 profit = price - cost;
                 if (profit < 0)
                 {
-                    html += '<td style="color:#FF0000" class="text-right"> ' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
+                    html += '<td style="color:#FF0000" class="text-right nopointer"> ' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
                 }
                 else
                 {
-                    html += '<td style="Color: black" class="text-right">' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
+                    html += '<td style="Color: black" class="text-right nopointer">' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
                 }
-                html += '<td>';
+                html += '<td class="nopointer">';
                 html += '<a href="/BDC/EditBDC?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="BDCupdateDisable"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'BDC'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="BDCdeleteDisable"/></a>';
                 html += '<a href="/BDC/EditBDC?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="BDCviewDisable"/></a>';

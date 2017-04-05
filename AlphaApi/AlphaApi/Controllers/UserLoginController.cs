@@ -55,5 +55,11 @@ namespace AlphaApi.Controllers
             var response = Userdb.UpdateData(userLoginModel);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+        [HttpDelete]
+        public string Delete(UserLoginModels userLoginModel)
+        {
+            var response = Userdb.DeleteData(userLoginModel);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
     }
 }

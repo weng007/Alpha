@@ -2,7 +2,6 @@
     ViewBag.Title = "EditSecurityProfile";
 }
 
-<h2>EditSecurityProfile</h2>
 <script src="@Url.Content("~/Scripts/CUDS/SecurityProfile/EditSecurityProfile.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <div id="container">
@@ -40,8 +39,6 @@
         var after = input.split('?')[1]
         var val = after.split('=');
         var ID = val[1];
-        alert(ID);
-        alert(@Request.Params["id"]);
         GetData(@Request.Params["id"]);
 
     });

@@ -46,12 +46,12 @@ $(document).ready(function () {
             var html = '';
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
-                html += '<td>' + data.Table[i].RowNum + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                html += '<td>' + data.Table[i].Profile + '</td>';
-                html += '<td>';
+                html += '<td class="nopointer">' + data.Table[i].Profile + '</td>';
+                html += '<td class="nopointer">';
                 html += '<a href="/SecurityProfile/EditSecurityProfile?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="adminupdateDisable"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'IncomeMaster'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="admindeleteDisable"/></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'SecurityProfile'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="admindeleteDisable"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
@@ -64,23 +64,23 @@ $(document).ready(function () {
     });
 
 });
-//function RowDelete(id) {
-//    var dataObject = { ID: id, EditBy: localStorage['UserID'] };
-//    $.ajax(
-//        {
-//            url: 'http://localhost:13131/api/IncomeMaster',
-//            type: 'DELETE',
-//            data: dataObject,
-//            datatype: 'json',
+function RowDelete(id) {
+    var dataObject = { ID: id, EditBy: localStorage['UserID'] };
+    $.ajax(
+        {
+            url: 'http://localhost:13131/api/SecurityProfile',
+            type: 'DELETE',
+            data: dataObject,
+            datatype: 'json',
 
-//            success: function (result) {
-//                alert('Delete is completed');
-//                window.location.href = "../IncomeMaster/IndexIncomeMaster";
-//            }
-//            ,
-//            error: function (msg) {
-//                alert(msg)
-//            }
+            success: function (result) {
+                alert('Delete is completed');
+                window.location.href = "../SecurityProfile/IndexSecurityProfile";
+            }
+            ,
+            error: function (msg) {
+                alert(msg)
+            }
 
-//        });
-//}
+        });
+}

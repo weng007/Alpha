@@ -152,5 +152,30 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
+        public int DeleteData(UserLoginModels userLoginModels)
+        {
+            int result = 0;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_User_Del", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", userLoginModels.ID);
+                    cmd.Parameters.AddWithValue("@EditBy", userLoginModels.EditBy);
+                    conObj.Open();
+                    result = cmd.ExecuteNonQuery();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
     }
 }

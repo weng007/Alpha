@@ -13,7 +13,7 @@ function CreateData() {
         }
         ,
         error: function (msg) {
-            alert(msg)
+            //alert(msg)
         }
     });
 }

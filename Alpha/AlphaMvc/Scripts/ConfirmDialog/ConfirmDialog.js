@@ -93,7 +93,6 @@
     }
     else
     {
-        alert(val + ',' + topic + ',' + id)
         ConfirmDialog(val, topic, id);
     }
 }
