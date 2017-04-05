@@ -1,29 +1,4 @@
-function ReplaceNumberWithCommas(yourNumber) {
-    //Seperates the components of the number
-    var n = yourNumber.toString().split(".");
-    //Comma-fies the first part
-    n[0] = n[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    //Combines the two sections
-    return n.join(".");
-}
-
 $(document).ready(function () {
-    $(".Number").keydown(function (e) {
-        // Allow: backspace, delete, tab, escape, enter and .
-        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-            // Allow: Ctrl+A, Command+A
-            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
-            // Allow: home, end, left, right, down, up
-            (e.keyCode >= 35 && e.keyCode <= 40)) {
-            // let it happen, don't do anything
-            return;
-        }
-        // Ensure that it is a number and stop the keypress
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-    });
-
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
     //ReplaceNumberWithCommas($('.Number').val());
@@ -224,32 +199,7 @@ $(document).ready(function () {
 });
 var row_index = 0;
 var col_index = 0;
-//function countPosition()
-//{
-//    var totalSup = 0;
-//    var totalFM = 0;
-//    var totalTech = 0;
-//    var totalSafety = 0;
-//    for (var i = 0; i < $(".RowCal5").length; i++) {
 
-//        if ($('.PositionID:eq(' + i + ')').val() == 11) {
-//            totalSup = totalSup + 1;
-//            $('#txtManSup').val(totalSup);
-//        }
-//        if ($('.PositionID:eq(' + i + ')').val() == 22) {
-//            totalFM = totalFM + 1
-//            $('#txtManFM').val(totalFM);
-//        }
-//        if ($('.PositionID:eq(' + i + ')').val() == 33) {
-//            totalTech = totalTech + 1
-//            $('#txtManTech').val(totalTech);
-//        }
-//        if ($('.PositionID:eq(' + i + ')').val() == 44) {
-//            totalSafety = totalSafety + 1
-//            $('#txtManSafety').val(totalSafety);
-//        }
-//    }
-//}
 $(function () {
     $('.ManDate').datepicker();
     $('.WorkingFrom').timepicker();
@@ -567,13 +517,13 @@ function CalSumExpense() {
     var Profit = 0;
     SubTotal = CalSum();
     $(".RowCal1").each(function () {
-        var qty = $(this).find(".Quantity").val();
-        var price = $(this).find(".Price").val();
+        var qty = $(this).find(".Quantity").val().replace(',','');
+        var price = $(this).find(".Price").val().replace(',', '');
         var amount = qty * price;
 
         $(this).find('.Amount1').val(amount).number(true, 2);
-        $(this).find('.Price').val(price).number(true, 2);
-        $(this).find('.Quantity').val(qty).number(true, 2);
+        $(this).find('.Price').val(ReplaceNumberWithCommas(price));
+        $(this).find('.Quantity').val(ReplaceNumberWithCommas(qty));
     });
     for (var i = 0; i < $(".RowCal1").length; i++) {
         totalExpense = totalExpense + parseFloat($('.Amount1:eq(' + i + ')').val());
