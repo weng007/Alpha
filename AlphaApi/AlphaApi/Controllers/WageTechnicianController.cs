@@ -15,6 +15,6 @@ namespace AlphaApi.Controllers
 {
     public class WageTechnicianController : ApiController
     {
-
+        static WageTechnicianDAL Techniciandb = new WageTechnicianDAL();
     }
 }
