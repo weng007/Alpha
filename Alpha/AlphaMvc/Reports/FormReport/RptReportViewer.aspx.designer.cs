@@ -31,6 +31,15 @@ namespace AlphaMvc.Reports.FormReport {
         protected global::Microsoft.Reporting.WebForms.ReportViewer RptViewer1;
         
         /// <summary>
+        /// btnPrint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPrint;
+        
+        /// <summary>
         /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
