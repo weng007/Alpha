@@ -756,23 +756,20 @@ function CalSum() {
     var Discount = 0;
     $('.Number').number(true, 2);
     $(".RowCal").each(function () {
-        var qty = $(this).find(".Quantity").val().replace(',','');
-        var price = $(this).find(".Price").val().replace(',', '');
+        var qty = $(this).find(".Quantity").val();
+        var price = $(this).find(".Price").val();
         var amount = qty * price;
 
 
         $(this).find('.Amount').val(amount).number(true, 2);
-        $(this).find('.Price').val(ReplaceNumberWithCommas(price));
-        $(this).find('.Quantity').val(ReplaceNumberWithCommas(qty));
+        $(this).find('.Price').val(price).number(true, 2);
+        $(this).find('.Quantity').val(qty).number(true, 2);
     });
     for (var i = 0; i < $(".RowCal").length; i++) {
         total = total + parseFloat($('.Amount:eq(' + i + ')').val());
     }
-    Discount = $('#txtDiscount').val().replace(',','');
+    Discount = $('#txtDiscount').val();
     SubTotal = total - Discount;
-
-    $('#txtDiscount').val(ReplaceNumberWithCommas(Discount));
-
     $('#txtTotal').val(total).number(true, 2);
     $('#txtSubTotal').val(SubTotal).number(true, 2);
     $('#txtNoCompound').val(SubTotal).number(true, 2);
@@ -785,13 +782,13 @@ function CalSumExpense() {
     SubTotal = CalSum();
     $('.Number').number(true, 2);
     $(".RowCal1").each(function () {
-        var qty = $(this).find(".Quantity").val().replace(',','');
-        var price = $(this).find(".Price").val().replace(',','');
+        var qty = $(this).find(".Quantity").val();
+        var price = $(this).find(".Price").val();
         var amount = qty * price;
 
         $(this).find('.Amount1').val(amount).number(true, 2);
-        $(this).find('.Price').val(ReplaceNumberWithCommas(price));
-        $(this).find('.Quantity').val(ReplaceNumberWithCommas(qty));
+        $(this).find('.Price').val(price).number(true, 2);
+        $(this).find('.Quantity').val(qty).number(true, 2);
     });
     for (var i = 0; i < $(".RowCal1").length; i++) {
         totalExpense = totalExpense + parseFloat($('.Amount1:eq(' + i + ')').val());
@@ -932,6 +929,33 @@ function AddrowManpower() {
     });
 }
 
+//function countPosition() {
+
+//    var totalSup = 0;
+//    var totalFM = 0;
+//    var totalTech = 0;
+//    var totalSafety = 0;
+//    //alert(tSup)
+//    for (var i = 0; i < $(".RowCal5").length; i++) {
+
+//        if ($('.PositionID:eq(' + i + ')').val() == 11) {
+//            totalSup = totalSup + 1;
+//            $('#txtManSup').val(totalSup);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 22) {
+//            totalFM = totalFM + tFM;
+//            $('#txtManFM').val(totalFM);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 33) {
+//            totalTech = totalTech + tTech;
+//            $('#txtManTech').val(totalTech);
+//        }
+//        if ($('.PositionID:eq(' + i + ')').val() == 44) {
+//            totalSafety = totalSafety + tSafety;
+//            $('#txtManSafety').val(totalSafety);
+//        }
+//    }
+//}
 function pad(str, max) {
     str = str.toString();
     return str.length < max ? pad("0" + str, max) : str;
