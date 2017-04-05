@@ -18,7 +18,10 @@ namespace AlphaMvc.Reports.FormReport
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            RenderReport();
+            if (!Page.IsPostBack)
+            {
+                RenderReport();
+            }
         }
         private void RenderReport()
         {
@@ -27,9 +30,8 @@ namespace AlphaMvc.Reports.FormReport
 
             ds = dal.GetRptJobOrder(Request.QueryString["id"].ToString());
 
-            ReportDataSource datasource = new ReportDataSource("SP_RptJobOrder", ds.Tables[0]);
+            ReportDataSource datasource = new ReportDataSource("dsJobOrder", ds.Tables[0]);
             this.RptViewer1.LocalReport.ReportPath = Server.MapPath("~/Reports/RptJobOrder.rdlc");
-
             this.RptViewer1.LocalReport.DataSources.Add(datasource);
         }
     }
