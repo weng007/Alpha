@@ -771,7 +771,7 @@ function CalSum() {
     Discount = $('#txtDiscount').val().replace(',','');
     SubTotal = total - Discount;
 
-    ('#txtDiscount').val(ReplaceNumberWithCommas(Discount));
+    $('#txtDiscount').val(ReplaceNumberWithCommas(Discount));
 
     $('#txtTotal').val(total).number(true, 2);
     $('#txtSubTotal').val(SubTotal).number(true, 2);
