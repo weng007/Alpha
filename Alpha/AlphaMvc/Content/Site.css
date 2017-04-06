@@ -152,8 +152,8 @@ h5, h6 {
         /*padding-left: 10px;
         padding-top: 30px;*/
         padding-left: 10px;
-        padding-top: 30px;
-        /*padding-top: 10px;*/
+        padding-top: 70px;
+        /*padding-top: 30px;*/
     }
 
     .featured + .main-content {
@@ -653,6 +653,7 @@ ul#social li {
     .content-wrapper {
         padding-right: 10px;
         padding-left: 10px;
+        padding-top: 5px;
     }
 
     .featured .content-wrapper {

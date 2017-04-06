@@ -2,19 +2,26 @@
     ViewBag.Title = "IndexTechnician";
 }
 
-<h2>Teachnician</h2>
 <script src="@Url.Content("~/Scripts/CUDS/Technician/IndexTechnician.js")" type="text/javascript"></script>
+<table class="barattach-2">
+    <tr>
+        <td>
+            <label class="topictable">Teachnician</label>
+            <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+        </td>
+    </tr>
+</table>
 <div class="table-responsive">
     <table class="table table-striped">
         <thead class="bgthead">
             <tr>
-                <th>No.</th>
-                <th>Emp ID</th>
-                <th class="hideANDseek">HR Code</th>
-                <th>Name</th>
-                <th class="hideANDseek">Type</th>
-                <th>ID Card</th>
-                <th>Position</th>
+                <th class="Rowpointer">No.</th>
+                <th class="Rowpointer">Emp ID</th>
+                <th class="hideANDseek Rowpointer">HR Code</th>
+                <th class="Rowpointer">Name</th>
+                <th class="hideANDseek Rowpointer">Type</th>
+                <th class="Rowpointer">ID Card</th>
+                <th class="Rowpointer">Position</th>
                 <th></th>
             </tr>
         </thead>

@@ -13,13 +13,7 @@ namespace AlphaApi.Models
 
         public int JobID { get; set; }
 
-        public string Brand { get; set; }
-
-        public string Serial { get; set; }
-
-        public string Model { get; set; }
-
-        public string Size { get; set; }
+        public int ProductID { get; set; }
 
         public double Amount { get; set; }
 

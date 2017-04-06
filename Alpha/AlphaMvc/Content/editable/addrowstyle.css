@@ -581,6 +581,13 @@ select{
         width: 80px;
         padding: 2px !important;
     }
+    .textleft {
+            margin: 0;
+            background: #fff;
+            height: 25px;
+            text-align: left;
+            width: 120px;
+        }
     .txtbox{
         margin: 0;
         background: #fff;

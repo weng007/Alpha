@@ -21,21 +21,17 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_Borrow_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@JobID", jobOrderBorrow.JobID);
-                    cmd.Parameters.AddWithValue("@Brand", jobOrderBorrow.Brand);
-                    cmd.Parameters.AddWithValue("@Serial", jobOrderBorrow.Serial);
-                    cmd.Parameters.AddWithValue("@Model", jobOrderBorrow.Model);
-                    cmd.Parameters.AddWithValue("@Size", jobOrderBorrow.Size);
+                    cmd.Parameters.AddWithValue("@ProductID", jobOrderBorrow.ProductID);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderBorrow.Amount);
                     cmd.Parameters.AddWithValue("@ReturnGood", jobOrderBorrow.ReturnGood);
                     cmd.Parameters.AddWithValue("@ReturnLost", jobOrderBorrow.ReturnLost);
                     cmd.Parameters.AddWithValue("@ReturnRepair", jobOrderBorrow.ReturnRepair);
                     cmd.Parameters.AddWithValue("@ReturnBad", jobOrderBorrow.ReturnBad);
-                    cmd.Parameters.AddWithValue("@Remark", jobOrderBorrow.Remark);
+                    cmd.Parameters.AddWithValue("@Remark", jobOrderBorrow.Remark != null ? jobOrderBorrow.Remark : "");
                     cmd.Parameters.AddWithValue("@CreateBy", jobOrderBorrow.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", jobOrderBorrow.EditBy);
-                    //cmd.Parameters.AddWithValue("@ReturnGood", BDC.Remark != null ? BDC.Remark : "");
                     conObj.Open();
-                    result = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
                 catch (Exception ex)
@@ -58,15 +54,13 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_Borrow_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", jobOrderBorrow.ID);
-                    cmd.Parameters.AddWithValue("@Brand", jobOrderBorrow.Brand);
-                    cmd.Parameters.AddWithValue("@Serial", jobOrderBorrow.Serial);
-                    cmd.Parameters.AddWithValue("@Model", jobOrderBorrow.Model);
-                    cmd.Parameters.AddWithValue("@Size", jobOrderBorrow.Size);
+                    cmd.Parameters.AddWithValue("@ProductID", jobOrderBorrow.ProductID);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderBorrow.Amount);
                     cmd.Parameters.AddWithValue("@ReturnGood", jobOrderBorrow.ReturnGood);
                     cmd.Parameters.AddWithValue("@ReturnLost", jobOrderBorrow.ReturnLost);
                     cmd.Parameters.AddWithValue("@ReturnRepair", jobOrderBorrow.ReturnRepair);
-                    cmd.Parameters.AddWithValue("@Remark", jobOrderBorrow.Remark);
+                    cmd.Parameters.AddWithValue("@ReturnBad", jobOrderBorrow.ReturnBad);
+                    cmd.Parameters.AddWithValue("@Remark", jobOrderBorrow.Remark != null ? jobOrderBorrow.Remark : "");
                     cmd.Parameters.AddWithValue("@EditBy", jobOrderBorrow.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();

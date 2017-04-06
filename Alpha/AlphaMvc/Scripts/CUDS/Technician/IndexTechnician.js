@@ -62,9 +62,9 @@ $(document).ready(function () {
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].TechnicianNo + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].HRCode + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].FirstName + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].TechnicianTypeName + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].HRCode + '</td>';
+                html += '<td class="nopointer nopointer">' + data.Table[i].FirstName + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].TechnicianTypeName + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].IDCard + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Position + '</td>';
                 html += '<td class="nopointer">';

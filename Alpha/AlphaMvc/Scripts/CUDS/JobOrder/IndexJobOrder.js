@@ -53,16 +53,16 @@ $(document).ready(function () {
             var html = '<tbody>';
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
-                html += '<td>' + data.Table[i].RowNum + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                html += '<td>' + data.Table[i].JobNo + '</td>';
-                html += '<td>' + data.Table[i].JobDate + '</td>';
-                html += '<td>' + data.Table[i].Customer + '</td>';
-                html += '<td>' + data.Table[i].Tel + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].Contact + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].CoWorker + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].Remark + '</td>';
-                html += '<td>';
+                html += '<td class="nopointer">' + data.Table[i].JobNo + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].JobDate + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Customer + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Tel + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].Contact + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].CoWorker + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].Remark + '</td>';
+                html += '<td class="nopointer">';
                 html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'JobOrder'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png"/></a>';
                 html += '</td>';

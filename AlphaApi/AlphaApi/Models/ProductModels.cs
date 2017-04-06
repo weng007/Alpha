@@ -17,7 +17,7 @@ namespace AlphaApi.Models
 
         public int ProductType { get; set; }
 
-        public int Brand { get; set; }
+        public string Brand { get; set; }
 
         public string Size { get; set; }
 

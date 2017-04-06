@@ -3,6 +3,22 @@
  * Docs & License: http://fullcalendar.io/
  * (c) 2016 Adam Shaw
  */
+@media screen and (max-width : 760px) {
+    .fc .fc-button-group > * { 
+	float: left;
+	margin: 0 0 0 -1px;
+    width: 165px;
+}
+    /*.fc .fc-button-group > :first-child {
+	    margin-left: 0;
+        width:120% !important;
+    }
+    .fc .fc-button-group > * {
+	    float: left;
+	    margin: 0 0 0 -1px;
+        width:120% !important;
+    }*/
+}
 #calendar
 {
     margin: 0 auto;

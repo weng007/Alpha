@@ -47,10 +47,10 @@ function GetJobOrderBorrow(val)
                 html += '<tr>';
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].Serial + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].SerialNo + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Remark + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].Brand + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].Model + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].Brand + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].Model + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Size + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Amount + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].ReturnGood + '</td>';

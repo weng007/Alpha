@@ -73,8 +73,8 @@ function GetData(val)
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Docver + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].QuoNo + '</td>';
-                html += '<td class="text-right">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Price) + '</td>';
-                html += '<td class="text-right">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Cost) + '</td>';
+                html += '<td class="text-right nopointer">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Price) + '</td>';
+                html += '<td class="text-right nopointer">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Cost) + '</td>';
                 price = data.Table[i].Price;
                 cost = data.Table[i].Cost;
                 profit = price - cost;

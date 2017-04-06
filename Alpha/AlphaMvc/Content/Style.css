@@ -5,6 +5,9 @@
 .nopointer{
     cursor: default !important;
 }
+.Rowpointer{
+    cursor: pointer !important;
+}
 .rowjobno{
     width: 120px;
     background: rgba(0, 128, 128, 0);
@@ -17,6 +20,31 @@
     margin-left: 10px;
     color: white;
 }
+.topicmargin-size60{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    margin-right: 60%;
+}
+.topicmargin-size60-2{
+        margin-top: 10px;
+        margin-left: 10px;
+        color: white;
+        margin-right: 60%;
+    }
+.topicmargin-size67{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    margin-right: 67%;
+}
+.topicmargin-size70{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    margin-right: 70%;
+}
+
 .imgadd{
     margin-left: 68%; 
     margin-top: -2px;
@@ -42,6 +70,52 @@
     display: none;
 }
  @media screen and (max-width:680px) {
+     .form-style-1 {
+        /*margin:10px auto;
+        max-width: 400px;
+        padding: 20px 12px 10px 20px;
+        font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
+        max-width: 400px;
+        font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        float: left;
+        margin-right: 10px !important;
+    }
+     .rowjobno{
+        width: 120px;
+        background: rgba(0, 128, 128, 0);
+        border: none;
+        cursor:default;
+        text-align: center;
+    }
+    .topictable{
+        margin-top: 10px;
+        margin-left: 10px;
+        color: white;
+    }
+    .topicmargin-size60{
+        margin-top: 10px;
+        margin-left: 10px;
+        color: white;
+        margin-right: 35%;
+    }
+    .topicmargin-size60-2{
+        margin-top: 10px;
+        margin-left: 10px;
+        color: white;
+        margin-right: 28% !important;
+    }
+    .topicmargin-size67{
+        margin-top: 10px;
+        margin-left: 10px;
+        color: white;
+        margin-right: 47%;
+    }
+    .topicmargin-size70{
+        margin-top: 10px;
+        margin-left: 10px;
+        color: white;
+        margin-right: 12% !important;
+    }
      .imgadd{
         margin-left: 55%; 
         margin-top: -2px;
@@ -792,6 +866,7 @@ select{
     padding-top: 15px;
     margin-left: 15px;
     top: 3%;
+    /*left: 85%;*/
     left: 87.6%;
 }
 .logonname{
@@ -804,6 +879,7 @@ select{
     float: left;
     position: absolute;
     top: 1.5%;
+    /*left: 87%;*/
     left: 89%;
 }
 .loginname a{
@@ -817,11 +893,12 @@ select{
          background-color:#f6c1b5 !important;
  }
  @media screen and (max-width:680px) {
+
      .imglogon {
         float: left;
         position: absolute;
         /*top: 2%;*/
-        left: 65%;
+        left: 65% !important;
     }
     .logonname{
         color:white;
@@ -833,7 +910,7 @@ select{
         float: left;
         position: absolute;
         top: 2%;
-        left: 69.5%;
+        left: 69.5% !important;
     }
     .loginname a{
         color:white;
@@ -944,7 +1021,8 @@ select{
     .barattach-2{
         margin-top: 0px;
         width: 100%;
-        background-color: #5baa8c;
+        background-color: #db6144;
+        /*background-color: #5baa8c;*/
     }
 }
 .topicdetail{
@@ -1357,3 +1435,44 @@ ul.topnav, li.dropdown {
     }*/
 }
 /*------- submenu --------*/
+@media screen and (max-width : 930px) {
+    .nopointer{
+    cursor: default !important;
+}
+.rowjobno{
+    width: 120px;
+    background: rgba(0, 128, 128, 0);
+    border: none;
+    cursor:default;
+    text-align: center;
+}
+.topictable{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+}
+.topicmargin-size60{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    margin-right: 35%;
+}
+.topicmargin-size60-2{
+        margin-top: 10px;
+        margin-left: 10px;
+        color: white;
+        margin-right: 35%;
+ }
+.topicmargin-size67{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    margin-right: 47%;
+}
+.topicmargin-size70{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    margin-right: 53%;
+}
+}

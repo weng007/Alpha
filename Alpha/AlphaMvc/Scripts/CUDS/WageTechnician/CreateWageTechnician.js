@@ -70,7 +70,6 @@ function GetData(val)
 }
 function ControlEnable(Isview) {
     if (Isview) {
-        alert('test');
         $(".RowCal").each(function () {
             $('.Additionnal').attr('disabled', 'disabled');
             $('.Deduction').attr('disabled', 'disabled');

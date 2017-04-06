@@ -49,7 +49,7 @@ $(document).ready(function () {
                 //$(".rowdisable").each(function () {
                 html += '<tr>';
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
-                html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
+                html += '<td class="hidecolumn nopointer">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Detail + '</td>';
                 html += '<td class="nopointer">';
                 html += '<a href="/IncomeMaster/EditIncomeMaster?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="adminupdateDisable"/></a>';
