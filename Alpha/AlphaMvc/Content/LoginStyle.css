@@ -1,4 +1,10 @@
-﻿#bodyLogin
+﻿.copyright-1 {
+    color:white;
+    font-size:smaller;
+    margin-bottom:5px;
+    margin-left:5px;
+}
+#bodyLogin
 {
     background-color: #efeeef; 
     clear: both; 
