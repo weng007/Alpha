@@ -53,10 +53,10 @@ function GetJobOrderBorrow(val)
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].Model + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Size + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Amount + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].ReturnGood + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].ReturnLost + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].ReturnRepair + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].ReturnBad + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnGood + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnLost + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnRepair + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnBad + '</td>';
                 html += '<td class="nopointer">';
                 html += '<a href="/Borrow/EditBorrow?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'JobOrderBorrow'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png"/></a>';
