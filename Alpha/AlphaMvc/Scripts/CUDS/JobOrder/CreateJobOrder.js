@@ -304,7 +304,7 @@ function CalTotalHour() {
     $('.TotalHours').eq(row_index).val(total);
 }
 function CreateData() {
-      var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
+    var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
     console.log(dataObject);
         var ID;
         $.ajax(
@@ -316,6 +316,7 @@ function CreateData() {
             datatype: 'json',
             success: function (data) {
                 ID = data;
+                $('#hidJobID').val(ID);
             }
             ,
             error: function (msg) {
@@ -677,6 +678,11 @@ function DateWorking()
         $("#dtEWorking").val("")
         alert("Please Input Endworking more than Startworking");
     }
+}
+function CreateJobOrderBorrow()
+{
+    //alert($('#hidJobID').val());
+    window.location.href = "../Borrow/CreateBorrow?id=" + $('#hidJobID').val();
 }
 
 

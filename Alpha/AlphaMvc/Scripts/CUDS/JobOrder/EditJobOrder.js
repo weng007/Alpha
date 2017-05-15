@@ -319,7 +319,7 @@ function GetData(val) {
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
              $("#txtContact").val(data.Table[0].Contact), $("#txtCoWorker").val(data.Table[0].CoWorker), $("#txtAddress").val(data.Table[0].Address),
              $("#txtJobReference").val(data.Table[0].BDCNo), $("#hidBDCID").val(data.Table[0].JobRef), $("#txtRemark").val(data.Table[0].Remark),
-             $("#txtDiscount").val(data.Table[0].Discount).number(true, 2);
+             $("#txtDiscount").val(data.Table[0].Discount).number(true, 2), $("#txtJobSite").val(data.Table[0].JobSite), $("#txtLocation").val(data.Table[0].Location);
 
            SetIncomeMaster();
            ////Binding Data Income
@@ -565,7 +565,7 @@ function Update(val) {
         ID: val, JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(),
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
         JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(),
-        Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), EditBy: localStorage['UserID']
+        Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), JobSite:$("#txtJobSite").val(), Location: $("#txtLocation").val(), EditBy: localStorage['UserID']
     };
     console.log(dataObject);
     var JobID;

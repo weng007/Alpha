@@ -43,7 +43,7 @@ function GetData(val)
                     html += '<td class="nopointer">' + data.Table1[i].CustomerName + '</td>';
                     html += '<td class="nopointer">' + '' + '</td>';
                     html += '<td class="nopointer">' + ManDate + '</td>';
-                    html += '<td class="nopointer">' + data.Table1[i].ManDay + '</td>';
+                    html += '<td class="nopointer">' + data.Table1[i].ManDayName + '</td>';
                     html += '<td class="nopointer">' + data.Table1[i].WorkingFrom + '</td>';
                     html += '<td class="nopointer">' + data.Table1[i].WorkingTo + '</td>';
                     html += '<td class="nopointer">' + data.Table1[i].TotalHours + '</td>';

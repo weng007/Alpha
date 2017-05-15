@@ -49,7 +49,7 @@ function GetData(val)
                 html += '<td>' + data.Table1[i].CustomerName + '</td>';
                 html += '<td>' + '' + '</td>';
                 html += '<td>' + data.Table1[i].ManDate + '</td>';
-                html += '<td>' + data.Table1[i].ManDay + '</td>';
+                html += '<td>' + data.Table1[i].ManDayName + '</td>';
                 html += '<td>' + data.Table1[i].WorkingFrom + '</td>';
                 html += '<td>' + data.Table1[i].WorkingTo + '</td>';
                 html += '<td>' + data.Table1[i].TotalHours + '</td>';

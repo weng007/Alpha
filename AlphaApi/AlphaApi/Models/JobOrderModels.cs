@@ -45,6 +45,10 @@ namespace AlphaApi.Models
 
         public double Cost { get; set; }
 
+        public string JobSite { get; set; }
+
+        public string Location { get; set; }
+
         public int CreateBy { get; set; }
 
         public int EditBy { get; set; }

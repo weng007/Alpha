@@ -41,7 +41,7 @@ function CreateData() {
     var after = input.split('?')[1]
     var ID = after.split('-');
     //alert(ID);
-    alert($("#hidProductID").val());
+    //alert($("#hidProductID").val());
     var dataObject = {
         JobID: ID, ProductID: $("#hidProductID").val(), Amount: $("#txtAmount").val(), Remark: $("#txtRemark").val(), ReturnGood: $("#txtReturnGood").val(), ReturnLost: $("#txtReturnLost").val(), ReturnRepair: $("#txtReturnRepair").val(), ReturnBad: $("#txtReturnBad").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
