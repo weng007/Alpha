@@ -184,10 +184,10 @@
                                     <ul class="resp-tabs-list hor_1">
                                         <li>Expense</li>
                                         <li>ManPower</li>
+                                        <li>Borrow</li>
                                         <li>Sale Order</li>
                                         <li>Invoice</li>
-                                        <li>Receipt</li>
-                                        <li>Borrow</li>
+                                        <li>Receipt</li>                                   
                                         @*<li>Attach File</li>*@
                                     </ul>
                                     <div class="resp-tabs-container hor_1">
@@ -439,7 +439,7 @@
                                                 </table>
                                                 @*</div>*@
                                             </div>
-                                        </div>
+                                        </div>                                     
                                         <div >
                                             @* ManPower *@
                                             <div class="wrapper">
@@ -620,6 +620,37 @@
                                                     </tr>
                                                 </table>
 
+                                            </div>
+                                        </div>
+                                        @*Borrow*@
+                                        <div>
+                                            <div class="barattach-2">
+                                                <a onclick="CreateJobOrderBorrow()" class="alink"><img style="cursor:hand" src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
+                                            </div>
+                                            <div class="grigbar">
+                                                <table class="table table-striped">
+                                                    <thead class="bgthead">
+                                                        <tr>
+                                                            <th rowspan="2">ลำดับ</th>
+                                                            <th class="hidecolumn">ID</th>
+                                                            <th rowspan="2">Serial</th>
+                                                            <th rowspan="2">รายละเอียด</th>
+                                                            <th rowspan="2" class="hideANDseek">ยี่ห้อ</th>
+                                                            <th rowspan="2" class="hideANDseek">รุ่น</th>
+                                                            <th rowspan="2">ขนาด</th>
+                                                            <th rowspan="2">จำนวน</th>
+                                                            <th colspan="4" class="hideANDseek">คืน</th>
+                                                            <th rowspan="2"></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="hideANDseek">ดี</th>
+                                                            <th class="hideANDseek">หาย</th>
+                                                            <th class="hideANDseek">ซ่อม</th>
+                                                            <th class="hideANDseek">ชำรุด</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="result"></tbody>
+                                                </table>
                                             </div>
                                         </div>
                                         <div>
@@ -845,37 +876,7 @@
                                             <p></p>
 
                                             <div class="clr"></div>
-                                        </div>
-                                        <div>
-                                            <div class="barattach-2">
-                                                <a onclick="CreateJobOrderBorrow()" class="alink"><img style="cursor:hand" src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
-                                            </div>
-                                            <div class="grigbar">
-                                                <table class="table table-striped">
-                                                    <thead class="bgthead">
-                                                        <tr>
-                                                            <th rowspan="2">ลำดับ</th>
-                                                            <th class="hidecolumn">ID</th>
-                                                            <th rowspan="2">Serial</th>
-                                                            <th rowspan="2">รายละเอียด</th>
-                                                            <th rowspan="2" class="hideANDseek">ยี่ห้อ</th>
-                                                            <th rowspan="2" class="hideANDseek">รุ่น</th>
-                                                            <th rowspan="2">ขนาด</th>
-                                                            <th rowspan="2">จำนวน</th>
-                                                            <th colspan="4" class="hideANDseek">คืน</th>
-                                                            <th rowspan="2"></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th class="hideANDseek">ดี</th>
-                                                            <th class="hideANDseek">หาย</th>
-                                                            <th class="hideANDseek">ซ่อม</th>
-                                                            <th class="hideANDseek">ชำรุด</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="result"></tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                        </div>                                     
                                     </div>
                                 </div>
                             </div>
