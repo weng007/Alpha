@@ -68,7 +68,7 @@ $(document).ready(function () {
                 html += '<td class="nopointer">' + data.Table[i].IDCard + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Position + '</td>';
                 html += '<td class="nopointer">';
-                html += '<a href="/Technician/EditTechnician?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/view.png"/></a>';
+                html += '<a href="/Technician/EditTechnician?id=' + data.Table[i].ID + '"  id="edit' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="TechcreateDisable" /></a>';
                 html += '</td>';
                 html += '</tr>';
             }

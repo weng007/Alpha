@@ -127,5 +127,6 @@ function CreateData() {
             });
     });
     alert('Create is completed')
-    window.location.href = "../SecurityProfile/EditSecurityProfile?id="+SecurityID;
+    //window.location.href = "../SecurityProfile/EditSecurityProfile?id="+SecurityID;
+    window.location.href = "../SecurityProfile/IndexSecurityProfile";
 }

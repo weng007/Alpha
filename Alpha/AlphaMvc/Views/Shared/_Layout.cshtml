@@ -69,7 +69,7 @@
                     <input type="checkbox" id="show-menu" role="button" class="Hidecheckbox">
                     
                         <ul id="menu" class="menuul">
-                            <li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Dashboard", "ExpiredTechnician", "Technician")</div></div></li>
+                            <li id="dashboarddisable" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Dashboard", "ExpiredTechnician", "Technician")</div></div></li>
                             <li id="admindisable" class="menuli">
                                 <div class="menua">
                                     <div class="menutext">
@@ -85,7 +85,7 @@
                                 </div>
                             </li>
                             @*<li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Warning", "ExpiredTechnician", "Technician")</div></div></li>*@
-                            <li class="menuli">
+                            <li id="carlendardisable" class="menuli">
                                 <div class="menua">
                                     <div class="menutext">
                                         @Html.ActionLink("Calendar", "IndexCalendarJob", "CalendarJob")
@@ -96,10 +96,10 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="TechcreateDisable" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "IndexTechnician", "Technician")</div></div></li>
+                            <li id="techniciandisable" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "IndexTechnician", "Technician")</div></div></li>
                             <li id="productsdisable" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Products", "IndexProducts", "Products")</div></div></li>
                             <li id="BDCdisable" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Break Down Cost", "IndexBDC", "BDC")</div></div></li>
-                            <li class="menuli">
+                            <li id="Paymentdisable" class="menuli">
                                 <div class="menua">
                                     <div class="menutext">
                                         @Html.ActionLink("Payment", "IndexWageTeachnician", "WageTeachnician")
