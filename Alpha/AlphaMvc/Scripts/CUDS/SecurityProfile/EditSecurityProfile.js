@@ -1,5 +1,15 @@
+function ControlEnable(Isview) {
+    //var Isview = val;
+    alert(Isview);
+    if (Isview) {
+        document.getElementById("txtProfile").disabled = true;
+        document.getElementById("btnSave").disabled = true;
+        $('input:checkbox').attr("disabled", 'disabled');
+    }
+}
 function GetData(val) {
     //alert('test');
+    CheckAuthorization();
     var dataObject = { ID: val}
     $.ajax(
    {

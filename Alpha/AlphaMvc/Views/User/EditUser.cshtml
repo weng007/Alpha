@@ -48,7 +48,7 @@
                     <select id="cmbSecurityProfile" name="cmbSecurityProfile" class="field-divided"></select>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-primary" onclick="ConfirmDialog('Update', 'User', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnSave" class="btn btn-primary" onclick="ConfirmDialog('Update', 'User', @Request.Params["id"])">Save</button>
                 </li>
             </ul>
         </form>
@@ -57,6 +57,11 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        var input = window.location.href;
+        var after = input.split('?')[1]
+        var val = after.split('=');
+        var Isview = val[2];
         GetData(@Request.Params["id"]);
+        ControlEnable(Isview);
     });
 </script>

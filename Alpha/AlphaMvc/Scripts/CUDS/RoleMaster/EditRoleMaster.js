@@ -2,7 +2,7 @@
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
 
-
+    CheckAuthorization();
     var dataObject = { typeID: '009' };
     $.ajax({
         url: 'http://localhost:13132/api/MasterService/',

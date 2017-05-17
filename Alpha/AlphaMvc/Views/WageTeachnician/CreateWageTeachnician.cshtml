@@ -142,6 +142,7 @@
         var val = after.split('=');
         var Isview = val[2];
         GetData(@Request.Params["id"]);
+        CheckAuthorization();
         ControlEnable(Isview);
 
     });

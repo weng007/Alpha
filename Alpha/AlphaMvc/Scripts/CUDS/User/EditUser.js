@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    CheckAuthorization();
     var dataObject = { typeID: '012' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService/',
@@ -36,6 +36,14 @@ $(document).ready(function () {
         }
     });
 });
+function ControlEnable(Isview) {
+    //var Isview = val;
+    if (Isview) {
+        document.getElementById("cmbStatus").disabled = true;
+        document.getElementById("cmbSecurityProfile").disabled = true;
+        document.getElementById("btnSave").disabled = true;
+    }
+}
 function GetData(val) {
     var dataObject = { ID: val}
     $.ajax(

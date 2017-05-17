@@ -1,7 +1,7 @@
 $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
-
+    CheckAuthorization();
     $('#parentHorizontalTab').easyResponsiveTabs({
         type: 'default', //Types: default, vertical, accordion
         width: 'auto', //auto or any width like 600px
@@ -24,6 +24,7 @@ $(document).ready(function () {
     });
 });
 $(function () {
+
     $('#arwAuthorization').dynoTable8();
 });
 function ControlEnable(Isview) {

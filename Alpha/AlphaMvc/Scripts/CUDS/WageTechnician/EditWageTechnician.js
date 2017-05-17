@@ -66,6 +66,7 @@ function GetData(val)
             }
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
+            CheckAuthorization();
         },
         error: function (msg) {
             alert(msg)

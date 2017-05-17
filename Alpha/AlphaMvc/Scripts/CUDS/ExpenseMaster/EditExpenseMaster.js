@@ -17,6 +17,7 @@ function GetData(val) {
        success: function (data) {
            data = JSON.parse(data);
            $("#txtDetail").val(data.Table[0].Detail);
+           CheckAuthorization();
        },
        error: function (msg) {
            alert(msg);

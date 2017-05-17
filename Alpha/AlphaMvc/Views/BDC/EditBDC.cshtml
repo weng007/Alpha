@@ -54,7 +54,7 @@
         <form>
             <ul class="form-style-1">
                 <li>
-                    <label class="btnnew">Doc Version</label>&nbsp;<img src="@Url.Content("~/images/btnNewVersion.png")" alt="IMAGES" class="btnnewversionUpdate" onclick="GetDocversion()" />
+                    <label class="btnnew">Doc Version</label>&nbsp;<img src="@Url.Content("~/images/btnNewVersion.png")" alt="IMAGES" id="btnversionUpdate" class="btnnewversionUpdate" onclick="GetDocversion()" />
                 </li>
                 <li>
                     <input type="text" id="txtDocver" name="field1" class="field-select-small-2" placeholder="V1" disabled />
@@ -102,7 +102,7 @@
                                     <div>
                                         <div class="barattach-2">
                                    @*<a href="@Url.Action("CreateJobOrder", "JobOrder")?@Request.Params["id"]" class="alink"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" /></a>*@
-                                            <button type="button" id="btnSave" class="btnCreate" onclick="OpenJobOrder(@Request.Params["id"])"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" id="BDCcreateDisable"/></button>
+                                            <button type="button" id="btnSave" class="btnCreate" onclick="OpenJobOrder(@Request.Params["id"])"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" id="BDCCreate"/></button>
                                         </div>
                                         <div class="grigbar">
                                             <div class="myDIV">
@@ -135,7 +135,7 @@
             </table>
             <ul class="form-style-1">
                 <li>
-                    <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'BDC', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnSave1" class="btn btn-primary" onclick="Isvalidate('Update', 'BDC', @Request.Params["id"])">Save</button>
                 </li>
             </ul>
         </form>

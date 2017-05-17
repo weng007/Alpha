@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
-
+    CheckAuthorization();
     $('.Number').number(true, 2);
 
     $("#customerBody").on("click", "tr", function (e) {

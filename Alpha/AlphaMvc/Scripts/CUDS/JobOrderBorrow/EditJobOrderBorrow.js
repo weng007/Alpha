@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    CheckAuthorization();
     $("#productBody").on("click", "tr", function (e) {
         $("#hidProductID").val($(this).find("td:eq(1)").text());
         $("#txtSerial").val($(this).find("td:eq(2)").text());

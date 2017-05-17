@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    CheckAuthorization();
     $("#quotationBody").on("click", "tr", function (e) {
         $("#txtQuoNo").val($(this).find("td:eq(2)").text());
         $("#hidQuoID").val($(this).find("td:eq(1)").text());
@@ -43,8 +44,11 @@ function ControlEnable(Isview) {
         document.getElementById("txtDocver").disabled = true;
         document.getElementById("txtQuoNo").disabled = true;
         document.getElementById("txtRemark").disabled = true;
-        document.getElementById("btnSave").disabled = true;
+        document.getElementById("btnSave1").disabled = true;
         document.getElementById("imgQuotation").disabled = true;
+        $('#btnversionUpdate').removeClass('btnnewversionUpdate');
+        $('#btnversionUpdate').addClass('btnnewversionCreate');
+        $('[id="btnversionUpdate"]').prop('onclick', null).off('click');
     }
 }
 function GetData(val) {

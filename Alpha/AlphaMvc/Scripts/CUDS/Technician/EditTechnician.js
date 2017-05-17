@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    CheckAuthorization();
     var dataObject = { typeID: '005' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService',
