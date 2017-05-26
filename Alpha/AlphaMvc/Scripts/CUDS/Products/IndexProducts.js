@@ -62,7 +62,7 @@ $(document).ready(function () {
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].Brand + '</td>';
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].Model + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Size + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].Remain + '</td>';
+                html += '<td class="nopointer">' + GetRemain(data.Table[i].ID) + '</td>';
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].Detail + '</td>';
                 html += '<td class="nopointer">';
                 html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgProductsUpdate"/></a>';
@@ -80,6 +80,30 @@ $(document).ready(function () {
         }
     });
 });
+
+function GetRemain(val) {
+    var remain;
+    var dataObject = { ProductID: val };
+    $.ajax(
+       {
+           url: 'http://localhost:13131/api/JobOrderBorrow',
+           type: 'GET',
+           async: false,
+           data: dataObject,
+           datatype: 'json',
+           success: function (data) {
+               data = JSON.parse(data);
+               //alert(remain)
+               remain = data.Table[0].Amount;
+           },
+           error: function (msg) {
+               alert(msg);
+           }
+
+       });
+
+    return remain
+}
 function RowDelete(id) {
     var dataObject = { ID: id, EditBy: localStorage['UserID'] };
     $.ajax(

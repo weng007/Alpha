@@ -63,7 +63,7 @@ function BrowseProduct() {
 function CheckBorrow()
 {
     var BorrowAmount = $("#txtAmount").val();
-    var dataObject = { serialNo: $("#txtSerial").val() + '&' + $("#txtBrand").val() + '&' + $("#txtModel").val() + '&' + $("#txtSize").val() };
+    var dataObject = { ProductID: $("#hidProductID").val()};
     $.ajax(
            {
                url: 'http://localhost:13131/api/JobOrderBorrow',
@@ -76,6 +76,7 @@ function CheckBorrow()
                    //alert("Borrow Amount"+BorrowAmount);
                    if (data.Table[0].Amount < BorrowAmount) {
                        alert('จำนวนที่ยืมต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ');
+                       $("#txtAmount").val(0);
                    }
 
                },

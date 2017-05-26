@@ -86,17 +86,9 @@
         }
     }
     if (topic == "ProductAdjust") {
+
         if ($("#txtAdded").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input Added.</div>';
-        }
-        if ($("#txtLost").val() == '') {
-            validatehtml += '<div class="modal-body modal-body-Warning">Please input Lost.</div>';
-        }
-        if ($("#txtRepair").val() == '') {
-            validatehtml += '<div class="modal-body modal-body-Warning">Please input Repair.</div>';
-        }
-        if ($("#txtBreak").val() == '') {
-            validatehtml += '<div class="modal-body modal-body-Warning">Please input Break.</div>';
         }
     }
     if (validatehtml != '')

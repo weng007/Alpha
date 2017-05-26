@@ -34,10 +34,9 @@ namespace AlphaApi.Controllers
         }
 
         [HttpGet]
-        public string Get(string serialNo)
+        public string Get(string ProductID)
         {
-            string[] str = serialNo.Split('&');
-            var response = jobOrderBorrow.SelectProductAmount(str[0], str[1], str[2], str[3]);
+            var response = jobOrderBorrow.SelectProductAmount(ProductID);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 

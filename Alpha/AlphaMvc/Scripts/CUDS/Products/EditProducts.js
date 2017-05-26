@@ -68,7 +68,8 @@ function ControlEnable(Isview) {
     }
 }
 function GetData(val) {
-    var dataObject = { ID: val}
+    var dataObject = { ID: val }
+    alert(val);
         //{ ID : @Request.Params["id"]};
     $.ajax(
    {
@@ -90,14 +91,14 @@ function GetData(val) {
            }
            var str = data.Table[0].Img;
            var res = str.replace("../Picture/", "");
-           //alert(res);
-           //photo.FileName(res);
 
            $("#txtSerialNo").val(data.Table[0].SerialNo),$("#txtMachineNo").val(data.Table[0].MachineNo), $("#cmbProductType").val(data.Table[0].ProductType),
            $("#txtBrand").val(data.Table[0].Brand),$("#txtSize").val(data.Table[0].Size),$("#txtModel").val(data.Table[0].Model),$("#txtLifetime").val(data.Table[0].Lifetime),
            $("#dtReceiveDate").val(ReceiveDate), $("#cmbUnitWeight").val(data.Table[0].UnitWeight), $("#txtBalance").val(data.Table[0].Balance),
-           $("#txtRemain").val(data.Table[0].Remain), $("#txtLost").val(data.Table[0].Lost), $("#txtRepair").val(data.Table[0].Repair),
+           $("#txtLost").val(data.Table[0].Lost), $("#txtRepair").val(data.Table[0].Repair),
            $("#txtBreak").val(data.Table[0].Break), $("#txtRemark").val(data.Table[0].Remark), $('#hidFilePath').val(data.Table[0].Img);
+           GetDetail(val);
+           GetRemain(val);
        },
        error: function (msg) {
            alert(msg);
@@ -105,8 +106,7 @@ function GetData(val) {
 
    });
 }
-function GetRemain(val) {
-    alert(val);
+function GetDetail(val) {
     var dataObject = { ProductID: val };
     $.ajax(
            {
@@ -116,8 +116,6 @@ function GetRemain(val) {
                data: dataObject,
                success: function (data) {
                    data = JSON.parse(data);
-                   var remain = ($("#txtBalance").val() - data.Table[0].Amount) + data.Table[0].ReturnGood
-                   $("#txtRemain").val(remain);
                    $("#txtLost").val(data.Table[0].ReturnLost);
                    $("#txtRepair").val(data.Table[0].ReturnRepair);
                    $("#txtBreak").val(data.Table[0].ReturnBad);
@@ -126,6 +124,26 @@ function GetRemain(val) {
                    alert(msg)
                }
            });
+}
+function GetRemain(val) {
+    var dataObject = { ProductID: val };
+    $.ajax(
+       {
+           url: 'http://localhost:13131/api/JobOrderBorrow',
+           type: 'GET',
+           async: false,
+           data: dataObject,
+           datatype: 'json',
+           success: function (data) {
+               data = JSON.parse(data);
+               //alert(remain)
+               $('#txtRemain').val(data.Table[0].Amount);
+           },
+           error: function (msg) {
+               alert(msg);
+           }
+
+       });
 }
 function Update(val) {
     
