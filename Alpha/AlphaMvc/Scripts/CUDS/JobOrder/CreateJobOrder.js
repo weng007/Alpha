@@ -228,15 +228,9 @@ $(function () {
     $('.ManDate').datepicker({
         dateFormat: 'dd/mm/yy'
     });
-    //$('.WorkingFrom').timepicker();
-    //$('.WorkingTo').timepicker();
+
     $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
-
-
-    //$("#dtJobDate").datepicker();
-    //$("#dtSWorking").datepicker();
-    //$("#dtEWorking").datepicker();
     $('#tabManpower').dynoTable2();
     $('#tabSaleOrder').dynoTable3();
     $('#tabInvoice').dynoTable4();
@@ -315,39 +309,7 @@ function pad(str, max) {
     str = str.toString();
     return str.length < max ? pad("0" + str, max) : str;
 }
-function GetDayofWeek() {
-    var ManDate = $('.ManDate').eq(row_index).val();
 
-    var days = [
-    'SUN',
-    'MON',
-    'TUE',
-    'WED',
-    'THU',
-    'FRI',
-    'SAT'
-    ];
-
-    var dateParts = ManDate.split("/");
-    if (dateParts.length != 3)
-        return null;
-    var year = dateParts[2];
-    var month = dateParts[1];
-    var day = dateParts[0];
-
-    alert('year'+year);
-    alert('month' +month);
-    alert('day'+day);
-
-    var d = new Date();
-    d.setYear = year;
-    d.setMonth = month;
-    d.setDate = day;
-    x = d.getDay();
-    $('.ManDay').eq(row_index).val(days[x]);
-}
-//var row_index = 0;
-//var col_index = 0;
 function SetRowCal5() {
     $('.RowCal5 td').click(function () {
         row_index = $(this).parent().index();
@@ -355,7 +317,6 @@ function SetRowCal5() {
     });
 }
 function GetManpowerHour() {
-    //alert("Manpower Test");
     var TechnicianID = $('.TechnicianID').eq(row_index).val();
     var ManDate = $('.ManDate').eq(row_index).val();
     var FromTime = $('.WorkingFrom').eq(row_index).val();
@@ -363,7 +324,6 @@ function GetManpowerHour() {
     var workingFrom = $('.WorkingFrom').eq(row_index).val();
     var workingTo = $('.WorkingTo').eq(row_index).val();
 
-    //alert(ManDate);
     if (ManDate != '')
     {
         var days = [
@@ -804,12 +764,9 @@ function AddrowManpower() {
         col_index = $(this).index();
     });
 
-    $(".ManDate").removeClass('hasDatepicker').datepicker();
-    
+    $(".ManDate").removeClass('hasDatepicker').datepicker();  
     $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
-    //$('.WorkingFrom').timepicker();
-    //$('.WorkingTo').timepicker();
 
     var IDCard;
     var TechnicianType;
@@ -818,7 +775,6 @@ function AddrowManpower() {
     $('.FName').each(function () {
         $(this).autocomplete({
             source: function (request, response) {
-                //alert('inside');
                 $.ajax({
                     url: 'http://localhost:13131/api/Technician',
                     type: 'GET',
@@ -859,7 +815,6 @@ function AddrowManpower() {
     
 function DateWorking()
 {
-    //($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val())
     if ($("#dtSWorking").datepicker({ dateFormat: "dd/mm/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "dd/mm/yy" }).val()) {
         $("#dtEWorking").val("")
         alert("Please Input Endworking more than Startworking");
