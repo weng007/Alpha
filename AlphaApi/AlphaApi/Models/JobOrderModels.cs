@@ -25,6 +25,10 @@ namespace AlphaApi.Models
 
         public DateTime EWorking { get; set; }
 
+        public string ContactID { get; set; }
+
+        public string CoWorkerID { get; set; }
+
         public string JobBy { get; set; }
 
         public string IssuedBy { get; set; }

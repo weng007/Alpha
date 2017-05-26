@@ -22,7 +22,7 @@
 }
 .textbox-size100
 {
-    width:100%;
+    width:90% !important;
 }
 .rowjobno{
     width: 120px;

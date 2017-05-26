@@ -31,6 +31,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@JobBy", jobOrder.JobBy);
                     cmd.Parameters.AddWithValue("@IssuedBy", jobOrder.IssuedBy);
                     cmd.Parameters.AddWithValue("@TypeWorking", jobOrder.TypeWorking);
+                    cmd.Parameters.AddWithValue("@ContactID", jobOrder.ContactID);
+                    cmd.Parameters.AddWithValue("@CoWorkerID", jobOrder.CoWorkerID);
                     cmd.Parameters.AddWithValue("@JobStatus", jobOrder.JobStatus);
                     cmd.Parameters.AddWithValue("@Detail", jobOrder.Detail != null ? jobOrder.Detail : "");
                     //cmd.Parameters.AddWithValue("@CustID", jobOrder.CustID);
@@ -78,6 +80,9 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@TypeWorking", jobOrder.TypeWorking);
                     cmd.Parameters.AddWithValue("@JobStatus", jobOrder.JobStatus);
                     cmd.Parameters.AddWithValue("@Detail", jobOrder.Detail != null ? jobOrder.Detail : "");
+                    cmd.Parameters.AddWithValue("@ContactID", jobOrder.ContactID);
+                    cmd.Parameters.AddWithValue("@CoWorkerID", jobOrder.CoWorkerID);
+                    cmd.Parameters.AddWithValue("@JobStatus", jobOrder.JobStatus);
                     //cmd.Parameters.AddWithValue("@CustID", jobOrder.CustID);
                     cmd.Parameters.AddWithValue("@Remark", jobOrder.Remark != null ? jobOrder.Remark : "");
                     cmd.Parameters.AddWithValue("@Discount", jobOrder.Discount);
@@ -166,6 +171,63 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_GetCustomer", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
+
+                    return ds;
+                }
+                catch
+                {
+                    return ds;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
+
+        public DataSet SelectContact(string BDCID)
+        {
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_GetContact", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@BDCID", BDCID); // i will pass zero to MobileID beacause its Primary .
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
+
+                    return ds;
+                }
+                catch
+                {
+                    return ds;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
+        public DataSet SelectContactByJobID(string JobID)
+        {
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_GetContactBYJobID", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@JobID", JobID); // i will pass zero to MobileID beacause its Primary .
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

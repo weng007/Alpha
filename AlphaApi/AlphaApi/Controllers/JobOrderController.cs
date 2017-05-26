@@ -56,6 +56,18 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [HttpGet]
+        public string GetContact(string BID)
+        {
+            var response = jobOrder.SelectContact(BID);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+        [HttpGet]
+        public string GetContactByJobID(string JobID)
+        {
+            var response = jobOrder.SelectContactByJobID(JobID);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
         [HttpPut]
         public int Put(JobOrderModels jobOrderModel)
         {

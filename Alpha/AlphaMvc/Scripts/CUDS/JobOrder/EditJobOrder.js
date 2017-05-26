@@ -175,6 +175,8 @@
         }
     });
 
+    //GetContact();
+
     $('#parentHorizontalTab').easyResponsiveTabs({
         type: 'default', //Types: default, vertical, accordion
         width: 'auto', //auto or any width like 600px
@@ -226,6 +228,44 @@
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
 });
+function GetContact(val) {
+    alert(val);
+    var dataObject = { JobID: val };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrder',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('#cmbContact').append($('<option></option>').val(data.Table[i].ContactId).html(data.Table[i].ContactName));
+            });
+            $('#cmbContact').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+
+    var dataObject = { JobID: val };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrder',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('#cmbCoWorker').append($('<option></option>').val(data.Table[i].CoWorkerID).html(data.Table[i].ContactName));
+            });
+            $('#cmbCoWorker').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 function BrowseCustomer(val) {
     //$.ajax(
     //       {
@@ -256,6 +296,7 @@ function BrowseCustomer(val) {
     //           }
     //       });
     alert(val);
+
     var dataObject = { BDCID: val }
     console.log(dataObject);
     $.ajax(
@@ -441,12 +482,14 @@ function GetData(val) {
            data = JSON.parse(data);
            var JobDate = ChangeformatDate(data.Table[0].JobDate, 0);
            var SWorking = ChangeformatDate(data.Table[0].SWorking, 0);
-           var EWorking = ChangeformatDate(data.Table[0].EWorking,0);
+           var EWorking = ChangeformatDate(data.Table[0].EWorking, 0);
+           alert(data.Table[0].ContactID);
 
            $("#hidCustID").val(data.Table[0].CustID), $("#txtJobNo").val(data.Table[0].JobNo), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
+             $("#cmbContact").val(data.Table[0].ContactID), $("#cmbCoWorker").val(data.Table[0].CoWorkerID),
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
-             $("#txtContact").val(data.Table[0].Contact), $("#txtCoWorker").val(data.Table[0].CoWorker), $("#txtAddress").val(data.Table[0].Address),
-             $("#txtJobReference").val(data.Table[0].BDCNo), $("#hidBDCID").val(data.Table[0].JobRef), $("#txtRemark").val(data.Table[0].Remark),
+             $("#txtAddress").val(data.Table[0].Address), $("#txtJobReference").val(data.Table[0].BDCNo),
+             $("#hidBDCID").val(data.Table[0].JobRef), $("#txtRemark").val(data.Table[0].Remark),
              $("#txtDiscount").val(data.Table[0].Discount).number(true, 2), $("#txtJobSite").val(data.Table[0].JobSite), $("#txtLocation").val(data.Table[0].Location);
 
            BrowseCustomer($("#hidBDCID").val());
@@ -715,6 +758,7 @@ function Update(val) {
         ID: val, JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate,
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
         JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(),
+        ContactID: $("#cmbTypeWorking").find(":selected").val(), CoWorkerID: $("#cmbCoWorker").find(":selected").val(),
         Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), JobSite:$("#txtJobSite").val(), Location: $("#txtLocation").val(), EditBy: localStorage['UserID']
     };
     console.log(dataObject);

@@ -13,8 +13,7 @@ $(document).ready(function () {
     var BDCID = res4[1];
     var BDCNo = res5[0];
     $('#txtJobReference').val(BDCNo);
-    $('#hidBDCID').val(BDCID);
-    alert(BDCID);
+    $('#hidBDCID').val(BDCID);;
     BrowseCustomer(BDCID);
     $("#dtJobDate").datepicker({
         inline: true,
@@ -40,15 +39,15 @@ $(document).ready(function () {
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
 
 
-    $("#customerBody").on("click", "tr", function (e) {
-        $("#txtCustomerName").val($(this).find("td:eq(3)").text());
-        $("#hidCustID").val($(this).find("td:eq(1)").text());
-        $("#txtTel").val($(this).find("td:eq(4)").text());
-        $("#txtContact").val($(this).find("td:eq(5)").text());
-        $("#txtCoWorker").val($(this).find("td:eq(6)").text());
-        $("#txtFax").val($(this).find("td:eq(7)").text());
-        $("#txtAddress").val($(this).find("td:eq(8)").text());
-    });
+    //$("#customerBody").on("click", "tr", function (e) {
+    //    $("#txtCustomerName").val($(this).find("td:eq(3)").text());
+    //    $("#hidCustID").val($(this).find("td:eq(1)").text());
+    //    $("#txtTel").val($(this).find("td:eq(4)").text());
+    //    $("#txtContact").val($(this).find("td:eq(5)").text());
+    //    $("#txtCoWorker").val($(this).find("td:eq(6)").text());
+    //    $("#txtFax").val($(this).find("td:eq(7)").text());
+    //    $("#txtAddress").val($(this).find("td:eq(8)").text());
+    //});
 
     var IDCard;
     var TechnicianType;
@@ -175,6 +174,43 @@ $(document).ready(function () {
                 $('#cmbJobStatus').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('#cmbJobStatus').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+
+    var dataObject = { BID: BDCID };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrder',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('#cmbContact').append($('<option></option>').val(data.Table[i].ContactId).html(data.Table[i].ContactName));
+            });
+            $('#cmbContact').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+
+    var dataObject = { BID: BDCID };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrder',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('#cmbCoWorker').append($('<option></option>').val(data.Table[i].ContactId).html(data.Table[i].ContactName));
+            });
+            $('#cmbCoWorker').find('option:first-child').attr('selected', true);
+
         },
         failure: function () {
             alert('Error');
@@ -445,7 +481,11 @@ function CreateData() {
     var SWorkingDate = ChangeformatDate($("#dtSWorking").val(),1);
     var EWorkingDate = ChangeformatDate($("#dtEWorking").val(),1);
 
-    var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate, JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
+    var dataObject = {
+        JobRef: $('#hidBDCID').val(), JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate, JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(),
+        ContactID: $("#cmbContact").find(":selected").val(), CoWorkerID: $("#cmbCoWorker").find(":selected").val(),
+        Detail: $("#txtDetail").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
+    };
     console.log(dataObject);
         var ID;
         $.ajax(
