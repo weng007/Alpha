@@ -175,35 +175,6 @@
         }
     });
 
-    $.ajax(
-        {
-            url: 'http://localhost:13131/api/Customer',
-            type: 'GET',
-            datatype: 'json',
-            success: function (data) {
-                data = JSON.parse(data);
-                var html = '';
-                for (var i = 0; i < data.Table.length; i++) {
-                    html += '<tr>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
-                    html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].CustNo + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
-                    html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
-                    html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
-                    html += '<td class="hidecolumn">' + data.Table[i].Fax + '</td>';
-                    html += '<td class="hidecolumn">' + data.Table[i].Address + '</td>';
-                    html += '</tr>';
-                }
-                document.getElementById("customerBody").innerHTML = html;
-
-            },
-            error: function (msg) {
-                alert(msg)
-            }
-        });
-
     $('#parentHorizontalTab').easyResponsiveTabs({
         type: 'default', //Types: default, vertical, accordion
         width: 'auto', //auto or any width like 600px
@@ -248,10 +219,172 @@
     $('#tabCost').dynoTable7();
 
     //$('.ManDate').datepicker();
-    $('.WorkingFrom').timepicker();
-    $('.WorkingTo').timepicker();
+    //$('.WorkingFrom').timepicker();
+    //$('.WorkingTo').timepicker();
+
+    $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
+    $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
 });
+function BrowseCustomer(val) {
+    //$.ajax(
+    //       {
+    //           url: 'http://localhost:13131/api/Customer',
+    //           type: 'GET',
+    //           datatype: 'json',
+    //           success: function (data) {
+    //               data = JSON.parse(data);
+    //               var html = '';
+    //               for (var i = 0; i < data.Table.length; i++) {
+    //                   //alert(data.Table[i].CustNo);
+    //                   html += '<tr>';
+    //                   html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
+    //                   html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
+    //                   html += '<td data-dismiss="modal">' + data.Table[i].CustNo + '</td>';
+    //                   html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
+    //                   html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
+    //                   html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
+    //                   html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
+    //                   html += '<td class="hidecolumn">' + data.Table[i].Fax + '</td>';
+    //                   html += '<td class="hidecolumn">' + data.Table[i].Address + '</td>';
+    //                   html += '</tr>';
+    //               }
+    //               document.getElementById("customerBody").innerHTML = html;
+    //           },
+    //           error: function (msg) {
+    //               alert(msg)
+    //           }
+    //       });
+    alert(val);
+    var dataObject = { BDCID: val }
+    console.log(dataObject);
+    $.ajax(
+    {
+        url: 'http://localhost:13131/api/JobOrder',
+        type: 'GET',
+        async: false,
+        data: dataObject,
+        datatype: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
+
+            if (data.Table.length > 0) {
+                //$('.RowCal5:eq(' + data.Table.length + ')').remove();
+
+                $('#txtCustomerName').val(data.Table[0].Name)
+                $('#txtTel').val(data.Table[0].Tel)
+                $('#txtFax').val(data.Table[0].Fax)
+                $('#txtContact').val(data.Table[0].Contact)
+                $('#txtCoWorker').val(data.Table[0].CoWorker)
+                $('#txtAddress').val(data.Table[0].Address)
+
+                //CalSumExpense();
+            }
+        },
+        error: function (msg) {
+            alert(msg);
+        }
+
+    });
+}
+function GetManpowerHour() {
+    //alert("Manpower Test");
+    var TechnicianID = $('.TechnicianID').eq(row_index).val();
+    var ManDate = $('.ManDate').eq(row_index).val();
+    var FromTime = $('.WorkingFrom').eq(row_index).val();
+    var ToTime = $('.WorkingTo').eq(row_index).val();
+    var workingFrom = $('.WorkingFrom').eq(row_index).val();
+    var workingTo = $('.WorkingTo').eq(row_index).val();
+
+    if (ManDate != '') {
+        var days = [
+        'SUN',
+        'MON',
+        'TUE',
+        'WED',
+        'THU',
+        'FRI',
+        'SAT'
+        ];
+
+        var dateParts = ManDate.split("-");
+        if (dateParts.length != 3)
+            return null;
+        var year = dateParts[2];
+        var month = dateParts[1];
+        var day = dateParts[0];
+
+        var d = new Date();
+        d.setYear = year;
+        d.setMonth = month;
+        d.setDate = day;
+        x = d.getDay();
+        $('.ManDay').eq(row_index).val(days[x]);
+    }
+
+    if (workingFrom != '') {
+        var fromHours = workingFrom.split(':')[0]
+        var fromMinute = workingFrom.split(':')[1]
+        var toHours;
+        var toMinute;
+        if (workingTo != '') {
+            alert("workingTo");
+            toHours = workingTo.split(':')[0]
+            toMinute = workingTo.split(':')[1]
+        }
+        else {
+            toHours = 0;
+            toMinute = 0;
+        }
+
+
+        var wfminute = (fromHours * 60) + parseInt(fromMinute);
+        var wtminute = (toHours * 60) + parseInt(toMinute);
+        var tminute = (wtminute - wfminute) < 0 ? 0 : wtminute - wfminute;
+        var totalHours = Math.floor(tminute / 60);
+        var totalMinutes = tminute - (totalHours * 60);
+        var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
+
+        if (total == '0:00') {
+            $('.TotalHours').eq(row_index).val('0:00');
+        }
+        else {
+            $('.TotalHours').eq(row_index).val(total);
+        }
+    }
+
+    if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '') {
+        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime }
+        console.log(dataObject);
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/OT',
+            type: 'GET',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
+
+                if (data.Table.length > 0) {
+                    //$('.RowCal5:eq(' + data.Table.length + ')').remove();
+
+                    $(".RowCal5").each(function (i) {
+                        $(this).find('.ManNormal').val(data.Table[i].ManNormal);
+                        $(this).find('.ManPremium').val(data.Table[i].ManPremium);
+                        $(this).find('.ManPremium2').val(data.Table[i].ManPremium2);
+                        $(this).find('.ManSpecial').val(data.Table[i].ManSpecial);
+                    });
+                    //CalSumExpense();
+                }
+            },
+            error: function (msg) {
+                alert(msg);
+            }
+
+        });
+    }
+}
 function ControlEnable(Isview) {
     //var Isview = val;
     if (Isview === true) {
@@ -292,7 +425,6 @@ function ControlEnable(Isview) {
     
 }
 
-
 function GetData(val) {
     
     var dataObject = { ID: val }
@@ -307,19 +439,17 @@ function GetData(val) {
        success: function (data) {
            localStorage['flagAddRow'] = 0;
            data = JSON.parse(data);
-           var JobDate = new Date(data.Table[0].JobDate);
-           JobDate = $.datepicker.formatDate('mm/dd/yy', JobDate);
-           var SWorking = new Date(data.Table[0].SWorking);
-           SWorking = $.datepicker.formatDate('mm/dd/yy', SWorking);
-   
-           var EWorking = new Date(data.Table[0].EWorking);
-           EWorking =  $.datepicker.formatDate('mm/dd/yy', EWorking);
+           var JobDate = ChangeformatDate(data.Table[0].JobDate, 0);
+           var SWorking = ChangeformatDate(data.Table[0].SWorking, 0);
+           var EWorking = ChangeformatDate(data.Table[0].EWorking,0);
 
            $("#hidCustID").val(data.Table[0].CustID), $("#txtJobNo").val(data.Table[0].JobNo), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
              $("#txtContact").val(data.Table[0].Contact), $("#txtCoWorker").val(data.Table[0].CoWorker), $("#txtAddress").val(data.Table[0].Address),
              $("#txtJobReference").val(data.Table[0].BDCNo), $("#hidBDCID").val(data.Table[0].JobRef), $("#txtRemark").val(data.Table[0].Remark),
              $("#txtDiscount").val(data.Table[0].Discount).number(true, 2), $("#txtJobSite").val(data.Table[0].JobSite), $("#txtLocation").val(data.Table[0].Location);
+
+           BrowseCustomer($("#hidBDCID").val());
 
            SetIncomeMaster();
            ////Binding Data Income
@@ -391,7 +521,9 @@ function GetData(val) {
            //Binding Data Manpower
            if (data.Table9.length > 0) {
                $('.RowCal5').remove();
-               ////Binding Data Expense
+               ////Binding Data Expense                   
+               //setFDate.setHours(data.Table9[i].FromHour, data.Table9[i].FromMinute, 00);
+               //setTDate.setHours(data.Table9[i].ToHour, data.Table9[i].ToMinute, 00);
                
                for (var j = 0; j < data.Table9.length; j++) {
                    $("#add-row2").trigger("click");
@@ -400,10 +532,23 @@ function GetData(val) {
                $('.RowCal5:eq(' + data.Table9.length + ')').remove();
 
                $(".RowCal5").each(function (i) {
-                   var setFDate = new Date();
-                   var setTDate = new Date();
-                   setFDate.setHours(data.Table9[i].FromHour, data.Table9[i].FromMinute, 00);
-                   setTDate.setHours(data.Table9[i].ToHour, data.Table9[i].ToMinute, 00);
+                   var setFTime = data.Table9[i].FromHour;
+                   var setTTime = data.Table9[i].ToHour;
+
+                   var fDate = setFTime.split(":");
+                   var tDate = setTTime.split(":");
+                   var fHour = fDate[0];
+                   var fMinute = fDate[1];
+                   var tHour = tDate[0];
+                   var tMinute = tDate[1];
+
+                   var setDate = new Date();
+                   var FTime = setDate.setHours(fHour, fMinute, 00);
+                   var setDate1 = new Date();
+                   var TTime = setDate1.setHours(tHour, tMinute, 00);
+                
+                   //t.setHours = fHour;
+                   //t.setMinutes = fMinute;
 
                    var ManDate = new Date(data.Table9[i].ManDate);
                    var day = ("0" + ManDate.getDate()).slice(-2);
@@ -419,13 +564,14 @@ function GetData(val) {
                    $(this).find('.TechnicianType').val(data.Table9[i].TechnicianTypeName);
                    $(this).find('.ManDate').val(today == '1900-01-01' ? '' : today);
                    $(this).find('.ManTime').val(data.Table9[i].ManTime);
-                   $(this).find('.WorkingFrom').timepicker('setTime', setFDate);
-                   $(this).find('.WorkingTo').timepicker('setTime', setTDate);
+                   $(this).find('.WorkingFrom').timepicker('setTime', FTime);
+                   $(this).find('.WorkingTo').timepicker('setTime', TTime);
                    $(this).find('.TotalHours').val(data.Table9[i].TotalHours);
                    $(this).find('.ManNormal').val(data.Table9[i].ManNormal);
                    $(this).find('.ManPremium').val(data.Table9[i].ManPremium);
                    $(this).find('.ManSpecial').val(data.Table9[i].ManSpecial);
                });
+               GetManpowerHour();
                //CalSumExpense();
            }
 
@@ -561,8 +707,12 @@ function SetUnitWeight() {
     });
 }
 function Update(val) {
+    var JDate = ChangeformatDate($("#dtJobDate").val(),1);
+    var SWorkingDate = ChangeformatDate($("#dtSWorking").val(),1);
+    var EWorkingDate = ChangeformatDate($("#dtEWorking").val(),1);
+
     var dataObject = {
-        ID: val, JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(),
+        ID: val, JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate,
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
         JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(),
         Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), JobSite:$("#txtJobSite").val(), Location: $("#txtLocation").val(), EditBy: localStorage['UserID']
@@ -664,26 +814,25 @@ function Update(val) {
         var totalH = $(this).find(".TotalHours").val();
         var manDate = $(this).find(".ManDate").val();
 
-        if (workingFrom != '' & workingTo != '')
-        {  
-            var fromHours = workingFrom.split(':')[0]
-            var fromMinute = workingFrom.split(':')[1]
-            var fromMinute = fromMinute.substring(0, 2);
+        //if (workingFrom != '' & workingTo != '')
+        //{  
+        //    var fromHours = workingFrom.split(':')[0]
+        //    var fromMinute = workingFrom.split(':')[1]
+        //    var fromMinute = fromMinute.substring(0, 2);
 
-            var toHours = workingTo.split(':')[0]
-            var toMinute = workingTo.split(':')[1]
-            var toMinute = toMinute.substring(0, 2);
-        }
+        //    var toHours = workingTo.split(':')[0]
+        //    var toMinute = workingTo.split(':')[1]
+        //    var toMinute = toMinute.substring(0, 2);
+        //}
 
         dataObject.JobID = JobID;
         dataObject.TechnicianID = $(this).find('.TechnicianID').val();
         dataObject.ManDate = (manDate != '' ? manDate : '1900-01-01');
         dataObject.ManDay = $(this).find('.ManDay').find(":selected").val();
         dataObject.ManTime = $(this).find(".ManTime").val();
-        dataObject.FromHour = (workingFrom != '' ? fromHours : 0);
-        dataObject.FromMinute = (workingFrom != '' ? fromMinute : 0);
-        dataObject.ToHour = (workingTo != '' ? toHours : 0);
-        dataObject.ToMinute = (workingTo != '' ? toMinute : 0);
+        dataObject.FromHour = workingFrom;
+        dataObject.ToHour = workingTo;
+        //dataObject.FromMinute = (workingFrom != '' ? fromMinute : 0);
         dataObject.TotalHours = (totalH != '' ? totalH : '0:00');
         dataObject.ManNormal = $(this).find(".ManNormal").val();
         dataObject.ManPremium = $(this).find(".ManPremium").val();
@@ -924,9 +1073,12 @@ function AddrowManpower() {
         col_index = $(this).index();
     });
    
-    //$('.ManDate').removeClass('hasDatepicker').datepicker();
-    $('.WorkingFrom').timepicker();
-    $('.WorkingTo').timepicker();
+    ////$('.ManDate').removeClass('hasDatepicker').datepicker();
+
+    //$('.WorkingFrom').timepicker();
+    //$('.WorkingTo').timepicker();
+    $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
+    $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
     var IDCard;
     var TechnicianType;

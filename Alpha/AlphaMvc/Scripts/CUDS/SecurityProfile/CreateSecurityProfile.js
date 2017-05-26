@@ -51,9 +51,19 @@ $(document).ready(function () {
                 html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table[i].ID + '"/></td>';
                 html += '<td>' + data.Table[i].Detail + '</td>';
                 html += '<td><input id="chkIsView" type="checkbox" class="IsView"></td>';
-                html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()"></td>';
-                html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()"></td>';
-                html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete"></td>';
+                if (data.Table[i].Detail != 'Price/Cost')
+                {
+                    html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()"></td>';
+                    html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()"></td>';
+                    html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete"></td>';
+                }
+                else
+                {
+                    html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
+                    html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" style="display:none"></td>';
+                    html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
+                }
+                
                 html += '</tr>';
             }
             document.getElementById("result").innerHTML = html;

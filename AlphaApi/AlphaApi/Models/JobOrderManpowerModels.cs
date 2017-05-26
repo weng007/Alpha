@@ -25,11 +25,11 @@ namespace AlphaApi.Models
 
         public int ManTime { get; set; }
 
-        public int FromHour { get; set; }
+        public string FromHour { get; set; }
 
         public int FromMinute { get; set; }
 
-        public int ToHour { get; set; }
+        public string ToHour { get; set; }
 
         public int ToMinute { get; set; }
 

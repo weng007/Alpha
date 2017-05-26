@@ -6,35 +6,42 @@
 <script src="@Url.Content("~/Scripts/CUDS/JobOrderBorrow/EditJobOrderBorrow.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <div class="modal fade" id="productDialog" role="dialog">
-    <div class="modal-dialog" style="margin-top: -300px;">
-
+    <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Product</h4>
+                <h4 class="modal-title">Serial</h4>
             </div>
             <div class="modal-body">
-                <div class="table-responsive">
-                    <table id="tblCustomer" class="table table-striped table-hover">
-                        <thead class="bgthead">
+                <div class="table-overflow">
+                    <table class="barattach-5">
+                        <tr>
+                            <td>
+                                <div class="topicText-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+                            </td>
+                        </tr>
+                    </table>
+                    @*<table id="tblQuotation" class="table table-striped table-hover table-responsive tdborrow">*@
+                    <table id="tblBorrow" class="table-striped table-hover table-responsive tdborrow">
+                        <thead class="bgthead bgfont-12">
                             <tr>
-                                <th class="Rowpointer">No.</th>
+                                <th class="Rowpointer bodypadding-10">No.</th>
                                 <th class="hidecolumn">ID</th>
-                                <th class="Rowpointer">Serial</th>
-                                <th class="Rowpointer">หมายเลขเครื่อง</th>
-                                <th class="Rowpointer">ยี่ห้อ</th>
-                                <th class="Rowpointer">ขนาด</th>
-                                <th class="Rowpointer">รุ่น</th>
+                                <th class="Rowpointer bodypadding-10">Serial</th>
+                                <th class="Rowpointer bodypadding-10">หมายเลขเครื่อง</th>
+                                <th class="Rowpointer bodypadding-10">ยี่ห้อ</th>
+                                <th class="Rowpointer bodypadding-10">ขนาด</th>
+                                <th class="Rowpointer bodypadding-10">รุ่น</th>
                             </tr>
                         </thead>
-                        <tbody id="productBody"></tbody>
+                        <tbody id="productBody" class="bgfont-12"></tbody>
                     </table>
                 </div>
+                @*</div>*@
                 @*<ul class="pagination pagination-lg pager" id="myPager"></ul>*@
             </div>
         </div>
-
     </div>
 </div>
 <style>
@@ -67,7 +74,7 @@
                     <label class="label-small">ขนาด</label>&nbsp;<label class="label-small-3">จำนวนที่ยืม</label>
                 </li>
                 <li>
-                    <input type="text" id="txtSize" name="field1" class="field-select-small" placeholder="" />&nbsp;<input type="text" name="field2" id="txtAmount" class="field-select-small" placeholder="" />
+                    <input type="text" id="txtSize" name="field1" class="field-select-small" placeholder="" />&nbsp;<input type="text" name="field2" id="txtAmount" class="field-select-small" placeholder="" onblur="CheckBorrow()" />
                 </li>
 
                 <li>
@@ -87,7 +94,7 @@
                     <input type="text" id="txtReturnGood" name="field6" class="field-select-small" placeholder="" />&nbsp;<input type="text" name="field6" id="txtReturnLost" class="field-select-small" placeholder="" />&nbsp;<input type="text" id="txtReturnRepair" name="field7" class="field-select-small" placeholder="" />&nbsp;<input type="text" id="txtReturnBad" name="field8" class="field-select-small" placeholder="" />
                 </li>
                 <li>
-                    <button type="button" class="btn btn-primary" onclick="ConfirmDialog('Update', 'JobOrderBorrow', @Request.Params["id"])">Save</button>
+                    <button type="button" class="btn btn-primary" onclick="CheckReturnAmount()">Save</button>
                 </li>
             </ul>
         </form>
@@ -100,5 +107,14 @@
         GetData(@Request.Params["id"]);
 
     });
+
+    function CheckReturnAmount() {
+        //var returnStatus = $('#hidReturn').val();
+        CheckReturn();
+        //if(returnStatus == 1)
+        //{
+        Isvalidate('Update', 'JobOrderBorrow', @Request.Params["id"])
+        //}
+    }
 
 </script>

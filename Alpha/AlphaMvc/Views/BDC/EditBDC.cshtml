@@ -19,7 +19,6 @@
 @*//===================================================================Bootstrap*@
 <div class="modal fade" id="quotationDialog" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -27,22 +26,33 @@
                 <h4 class="modal-title">Quotation</h4>
             </div>
             <div class="modal-body">
-                <table id="tblQuotation" class="table table-striped table-hover">
-                    <thead class="bgthead">
+                <div class="table-overflow">
+                    <table class="barattach-4">
                         <tr>
-                            <th>No.</th>
-                            <th>เลขที่ Quotation</th>
-                            <th>รายละเอียด</th>
-                            <th>ลูกค้า</th>
-                            <th>ราคา</th>
+                            <td>
+                                <div class="topicText-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody id="quotationBody"></tbody>
-                </table>
+                    </table>
+                    @*<table id="tblQuotation" class="table table-striped table-hover table-responsive">*@
+                    <table id="tblQuotation" class="table-striped table-hover table-responsive">
+                        <thead class="bgthead bgfont-12">
+                            <tr>
+                                <th class="bodypadding-10">No.</th>
+                                <th class="bodypadding-10">Quote Id</th>
+                                <th class="bodypadding-10">Potential Customer</th>
+                                <th class="bodypadding-10">Amount</th>
+                                <th class="bodypadding-10">Revision</th>
+                                <th class="bodypadding-10">Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quotationBody" class="bgfont-12"></tbody>
+                    </table>
+                </div>
+                @*</div>*@
                 @*<ul class="pagination pagination-lg pager" id="myPager"></ul>*@
             </div>
         </div>
-
     </div>
 </div>
 
@@ -65,7 +75,7 @@
                 </li>
                 <li>
                     <label>ใบเสนอราคา<span class="required">*</span></label>
-                    <input type="text" id="txtQuoNo" name="txtQuoNo" class="field-select-big" placeholder="ใบเสนอราคา" />&nbsp;<a href="#" id="imgQuotation" data-toggle="modal" data-target="#quotationDialog" onclick="BrowseQuotation">
+                    <input type="text" id="txtQuoNo" name="txtQuoNo" class="field-select-big" placeholder="ใบเสนอราคา" />&nbsp;<a href="#" id="imgQuotation" data-toggle="modal" data-target="#quotationDialog" onclick="BrowseQuotation()">
                         <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
                     </a>
                     <input type="hidden" id="hidQuoID" />
@@ -73,11 +83,11 @@
             </ul>
             <ul class="form-style-1">
                 <li>
-                    <label class="label-big">ราคาขาย<span class="required">*</span></label>&nbsp;<label class="label-small">ราคาทุน<span class="required">*</span></label>
+                    <label class="label-big" id="lblPrice">ราคาขาย<span class="required">*</span></label>&nbsp;<label class="label-small" id="lblCost">ราคาทุน<span class="required">*</span></label>
                     <input type="text" id="txtPrice" name="field1" class="text-size130 text-right" placeholder="ราคาขาย" disabled />&nbsp;<input type="text" id="txtCost" name="field2" class="text-size130 text-right" placeholder="ราคาทุน" disabled/>
                 </li>
                 <li>
-                    <label>กำไร<span class="required">*</span></label>
+                    <label id="lblProfit">กำไร<span class="required">*</span></label>
                     <input type="text" id="txtProfit" name="field1" class="text-size130 text-right" placeholder="กำไร"disabled />
                 </li>
             </ul>
@@ -136,6 +146,7 @@
             <ul class="form-style-1">
                 <li>
                     <button type="button" id="btnSave1" class="btn btn-primary" onclick="Isvalidate('Update', 'BDC', @Request.Params["id"])">Save</button>
+                    <a onclick="OpenRptBDC(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>
                 </li>
             </ul>
         </form>

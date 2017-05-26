@@ -1,4 +1,4 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
     CheckAuthorization();
     $("#productBody").on("click", "tr", function (e) {
         $("#hidProductID").val($(this).find("td:eq(1)").text());
@@ -8,6 +8,38 @@ $(document).ready(function () {
         $("#txtSize").val($(this).find("td:eq(5)").text());
     });
 });
+function CheckBorrow() {
+    var BorrowAmount = $("#txtAmount").val();
+    var dataObject = { serialNo: $("#txtSerial").val() + '&' + $("#txtBrand").val() + '&' + $("#txtModel").val() + '&' + $("#txtSize").val() };
+    $.ajax(
+           {
+               url: 'http://localhost:13131/api/JobOrderBorrow',
+               type: 'GET',
+               datatype: 'json',
+               data: dataObject,
+               success: function (data) {
+                   data = JSON.parse(data);
+                   if (data.Table[0].Amount < BorrowAmount) {
+                       alert('จำนวนที่ยืมต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ');
+                   }
+
+               },
+               error: function (msg) {
+                   alert(msg)
+               }
+           });
+}
+function CheckReturn() {
+    var borrowAmount = $('#txtAmount').val();
+    var returnAmount = ($('#txtReturnGood').val() + $('#txtReturnLost').val() + $('#txtReturnRepair').val() + $('#txtReturnBad').val())
+    if (borrowAmount != returnAmount) {
+        alert('จำนวนที่คืนจะต้องเท่ากับจำนวนที่ยืม กรุณาใส่ข้อมูลให้ถูกต้อง');
+    }
+    //else if(borrowAmount == returnAmount)
+    //{
+    //    $('#hidReturn').val(1);
+    //}
+}
 function BrowseProduct() {
     $.ajax(
            {

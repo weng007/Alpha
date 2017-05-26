@@ -77,7 +77,8 @@
         border: 1px solid #c0c0c0;
         width: 520px;*/
         background: #fbfbf1;
-        width: 520px;
+        /*width: 520px;*/
+        width: 560px;
     }
     .tableexpense {
      background: #ffffff; 
@@ -213,6 +214,12 @@
     table td .select-size50 {
         background: #fff;
         height: 29px;
+        width: 50px;
+        padding: 2px !important;
+    }
+    table td .select-size50-height23 {
+        background: #fff;
+        height: 23px;
         width: 50px;
         padding: 2px !important;
     }

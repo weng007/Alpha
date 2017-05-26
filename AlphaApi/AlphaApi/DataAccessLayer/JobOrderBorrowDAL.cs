@@ -31,7 +31,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@CreateBy", jobOrderBorrow.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", jobOrderBorrow.EditBy);
                     conObj.Open();
-                    result = cmd.ExecuteNonQuery();
+                    object obj = cmd.ExecuteScalar();
+                    result = Convert.ToInt32(obj);
                     return result;
                 }
                 catch (Exception ex)
@@ -63,7 +64,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Remark", jobOrderBorrow.Remark != null ? jobOrderBorrow.Remark : "");
                     cmd.Parameters.AddWithValue("@EditBy", jobOrderBorrow.EditBy);
                     conObj.Open();
-                    result = cmd.ExecuteNonQuery();
+                    object obj = cmd.ExecuteScalar();
+                    result = Convert.ToInt32(obj);
                     return result;
                 }
                 catch (Exception ex)
@@ -115,6 +117,40 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_Borrow_SelByID", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
+
+                    return ds;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
+
+        
+
+        public DataSet SelectProductAmount(string serialNo, string brand, string model, string size)
+        {
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_GetProductAmount", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@serialNo", serialNo); // i will pass zero to MobileID beacause its Primary .
+                    cmd.Parameters.AddWithValue("@brand", brand);
+                    cmd.Parameters.AddWithValue("@model", model);
+                    cmd.Parameters.AddWithValue("@size", size);
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

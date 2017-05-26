@@ -59,6 +59,13 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [HttpGet]
+        public string Get(string ProductID)
+        {
+            var response = Productdb.SelectByProductID(ProductID);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(ProductModels PD)

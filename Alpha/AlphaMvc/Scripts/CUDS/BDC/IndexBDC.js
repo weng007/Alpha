@@ -72,19 +72,19 @@ function GetData(val)
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Docver + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].QuoNo + '</td>';
-                html += '<td class="text-right nopointer">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Price) + '</td>';
-                html += '<td class="text-right nopointer">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Cost) + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].QuotationNo + '</td>';
+                html += '<td class="gvPrice text-right nopointer">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Price) + '</td>';
+                html += '<td class="gvCost text-right nopointer">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Cost) + '</td>';
                 price = data.Table[i].Price;
                 cost = data.Table[i].Cost;
                 profit = price - cost;
                 if (profit < 0)
                 {
-                    html += '<td style="color:#FF0000" class="text-right nopointer"> ' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
+                    html += '<td style="color:#FF0000" class="gvProfit text-right nopointer"> ' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
                 }
                 else
                 {
-                    html += '<td style="Color: black" class="text-right nopointer">' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
+                    html += '<td style="Color: black" class="gvProfit text-right nopointer">' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
                 }
                 html += '<td class="nopointer">';
                 html += '<a href="/BDC/EditBDC?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgBDCUpdate"/></a>';

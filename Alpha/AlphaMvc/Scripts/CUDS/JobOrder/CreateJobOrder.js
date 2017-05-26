@@ -2,43 +2,42 @@ $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
     //$('.Number').number(true, 2);
-
+    CheckAuthorization();
     var input = window.location.href;
     var after = input.split('?')[1]
     var res = after.split('=');
     var res2 = res[1];
     var res3 = after.split('&');
     var res4 = res3[0].split('=');
+    var res5 = res3[1].split('#');
     var BDCID = res4[1];
-    var BDCNo = res3[1];
+    var BDCNo = res5[0];
     $('#txtJobReference').val(BDCNo);
     $('#hidBDCID').val(BDCID);
-    
+    alert(BDCID);
+    BrowseCustomer(BDCID);
     $("#dtJobDate").datepicker({
         inline: true,
-        showOtherMonths: true
+        showOtherMonths: true,
+        dateFormat: "dd/mm/yy"
     })
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+    $('#dtJobDate').datepicker().datepicker('setDate', 'today');
 
     $("#dtSWorking").datepicker({
         inline: true,
-        showOtherMonths: true
+        showOtherMonths: true,
+        dateFormat: "dd/mm/yy"
     })
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+    $('#dtSWorking').datepicker().datepicker('setDate', 'today');
 
     $("#dtEWorking").datepicker({
         inline: true,
-        showOtherMonths: true
+        showOtherMonths: true,
+        dateFormat: "dd/mm/yy"
     })
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
-
-    $("#dtJobDate").datepicker({ dateFormat: "mm/dd/yy" }).val();
-    $('#dtJobDate').datepicker().datepicker('setDate', 'today');
-
-    $("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val();
-    $('#dtSWorking').datepicker().datepicker('setDate', 'today');
-    
-    $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val();
 
 
     $("#customerBody").on("click", "tr", function (e) {
@@ -226,17 +225,18 @@ var col_index = 0;
 //    }
 //}
 $(function () {
-    $('.ManDate').datepicker();
-    $('.WorkingFrom').timepicker();
-    $('.WorkingTo').timepicker();
+    $('.ManDate').datepicker({
+        dateFormat: 'dd/mm/yy'
+    });
+    //$('.WorkingFrom').timepicker();
+    //$('.WorkingTo').timepicker();
+    $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
+    $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
-    //var dates = new Date();
-    //$('.WorkingFrom').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
-    //$('.WorkingTo').wickedpicker({ defaultValue: dates.getTime(), twentyFour: true, showSeconds: false });
 
-    $("#dtJobDate").datepicker();
-    $("#dtSWorking").datepicker();
-    $("#dtEWorking").datepicker();
+    //$("#dtJobDate").datepicker();
+    //$("#dtSWorking").datepicker();
+    //$("#dtEWorking").datepicker();
     $('#tabManpower').dynoTable2();
     $('#tabSaleOrder').dynoTable3();
     $('#tabInvoice').dynoTable4();
@@ -250,43 +250,218 @@ $(function () {
     });
 });
 
-function BrowseCustomer() {
+function BrowseCustomer(val) {
+    //$.ajax(
+    //       {
+    //           url: 'http://localhost:13131/api/Customer',
+    //           type: 'GET',
+    //           datatype: 'json',
+    //           success: function (data) {
+    //               data = JSON.parse(data);
+    //               var html = '';
+    //               for (var i = 0; i < data.Table.length; i++) {
+    //                   //alert(data.Table[i].CustNo);
+    //                   html += '<tr>';
+    //                   html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
+    //                   html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
+    //                   html += '<td data-dismiss="modal">' + data.Table[i].CustNo + '</td>';
+    //                   html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
+    //                   html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
+    //                   html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
+    //                   html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
+    //                   html += '<td class="hidecolumn">' + data.Table[i].Fax + '</td>';
+    //                   html += '<td class="hidecolumn">' + data.Table[i].Address + '</td>';
+    //                   html += '</tr>';
+    //               }
+    //               document.getElementById("customerBody").innerHTML = html;
+    //           },
+    //           error: function (msg) {
+    //               alert(msg)
+    //           }
+    //       });
+    alert(val);
+    var dataObject = { BDCID: val}
+    console.log(dataObject);
     $.ajax(
-           {
-               url: 'http://localhost:13131/api/Customer',
-               type: 'GET',
-               datatype: 'json',
-               success: function (data) {
-                   data = JSON.parse(data);
-                   var html = '';
-                   for (var i = 0; i < data.Table.length; i++) {
-                       //alert(data.Table[i].CustNo);
-                       html += '<tr>';
-                       html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
-                       html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
-                       html += '<td data-dismiss="modal">' + data.Table[i].CustNo + '</td>';
-                       html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
-                       html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
-                       html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
-                       html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
-                       html += '<td class="hidecolumn">' + data.Table[i].Fax + '</td>';
-                       html += '<td class="hidecolumn">' + data.Table[i].Address + '</td>';
-                       html += '</tr>';
-                   }
-                   document.getElementById("customerBody").innerHTML = html;
+    {
+        url: 'http://localhost:13131/api/JobOrder',
+        type: 'GET',
+        async: false,
+        data: dataObject,
+        datatype: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
+            
+            if (data.Table.length > 0) {
+                //$('.RowCal5:eq(' + data.Table.length + ')').remove();
+                
+                $('#txtCustomerName').val(data.Table[0].Name)
+                $('#txtTel').val(data.Table[0].Tel)
+                $('#txtFax').val(data.Table[0].Fax)
+                $('#txtContact').val(data.Table[0].Contact)
+                $('#txtCoWorker').val(data.Table[0].CoWorker)
+                $('#txtAddress').val(data.Table[0].Address)
 
-               },
-               error: function (msg) {
-                   alert(msg)
-               }
-           });
+                //CalSumExpense();
+            }
+        },
+        error: function (msg) {
+            alert(msg);
+        }
+
+    });
 }
 function pad(str, max) {
     str = str.toString();
     return str.length < max ? pad("0" + str, max) : str;
 }
+function GetDayofWeek() {
+    var ManDate = $('.ManDate').eq(row_index).val();
+
+    var days = [
+    'SUN',
+    'MON',
+    'TUE',
+    'WED',
+    'THU',
+    'FRI',
+    'SAT'
+    ];
+
+    var dateParts = ManDate.split("/");
+    if (dateParts.length != 3)
+        return null;
+    var year = dateParts[2];
+    var month = dateParts[1];
+    var day = dateParts[0];
+
+    alert('year'+year);
+    alert('month' +month);
+    alert('day'+day);
+
+    var d = new Date();
+    d.setYear = year;
+    d.setMonth = month;
+    d.setDate = day;
+    x = d.getDay();
+    $('.ManDay').eq(row_index).val(days[x]);
+}
+//var row_index = 0;
+//var col_index = 0;
+function SetRowCal5() {
+    $('.RowCal5 td').click(function () {
+        row_index = $(this).parent().index();
+        col_index = $(this).index();
+    });
+}
+function GetManpowerHour() {
+    //alert("Manpower Test");
+    var TechnicianID = $('.TechnicianID').eq(row_index).val();
+    var ManDate = $('.ManDate').eq(row_index).val();
+    var FromTime = $('.WorkingFrom').eq(row_index).val();
+    var ToTime = $('.WorkingTo').eq(row_index).val();
+    var workingFrom = $('.WorkingFrom').eq(row_index).val();
+    var workingTo = $('.WorkingTo').eq(row_index).val();
+
+    //alert(ManDate);
+    if (ManDate != '')
+    {
+        var days = [
+        'SUN',
+        'MON',
+        'TUE',
+        'WED',
+        'THU',
+        'FRI',
+        'SAT'
+        ];
+
+        var dateParts = ManDate.split("/");
+        if (dateParts.length != 3)
+            return null;
+        var year = dateParts[2];
+        var month = dateParts[1];
+        var day = dateParts[0];
+
+        var d = new Date();
+        d.setYear = year;
+        d.setMonth = month;
+        d.setDate = day;
+        x = d.getDay();
+        $('.ManDay').eq(row_index).val(days[x]);
+    }
+
+    if (workingFrom != '')
+    {
+        var fromHours = workingFrom.split(':')[0]
+        var fromMinute = workingFrom.split(':')[1]
+        var toHours;
+        var toMinute;
+        if (workingTo != '')
+        {
+            alert("workingTo");
+            toHours = workingTo.split(':')[0]
+            toMinute = workingTo.split(':')[1]
+        }
+        else {
+            toHours = 0;
+            toMinute = 0;
+        }
+        
+
+        var wfminute = (fromHours * 60) + parseInt(fromMinute);
+        var wtminute = (toHours * 60) + parseInt(toMinute);
+        var tminute = (wtminute - wfminute) < 0 ? 0 : wtminute - wfminute;
+        var totalHours = Math.floor(tminute / 60);
+        var totalMinutes = tminute - (totalHours * 60);
+        var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
+
+        if (total == '0:00')
+        {
+            $('.TotalHours').eq(row_index).val('0:00');
+        }
+        else
+        {
+            $('.TotalHours').eq(row_index).val(total);
+        }
+    }
+
+    if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '')
+    {
+        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime }
+        console.log(dataObject);
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/OT',
+            type: 'GET',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
+
+                if (data.Table.length > 0) {
+                    //$('.RowCal5:eq(' + data.Table.length + ')').remove();
+
+                    $(".RowCal5").each(function (i) {
+                        $(this).find('.ManNormal').val(data.Table[i].ManNormal);
+                        $(this).find('.ManPremium').val(data.Table[i].ManPremium);
+                        $(this).find('.ManPremium2').val(data.Table[i].ManPremium2);
+                        $(this).find('.ManSpecial').val(data.Table[i].ManSpecial);
+                    });
+                    //CalSumExpense();
+                }
+            },
+            error: function (msg) {
+                alert(msg);
+            }
+
+        });
+    }
+}
 function CalTotalHour() {
     var workingFrom = $('.WorkingFrom').eq(row_index).val();
+    alert(workingFrom);
     var fromHours = workingFrom.split(':')[0]
     var fromMinute = workingFrom.split(':')[1]
 
@@ -303,8 +478,14 @@ function CalTotalHour() {
     var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
     $('.TotalHours').eq(row_index).val(total);
 }
+
 function CreateData() {
-    var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: $("#dtJobDate").val(), Car: $("#txtCar").val(), SWorking: $("#dtSWorking").val(), EWorking: $("#dtEWorking").val(), JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
+    //, CustID: $("#hidCustID").val()
+    var JDate = ChangeformatDate($("#dtJobDate").val(),1);
+    var SWorkingDate = ChangeformatDate($("#dtSWorking").val(),1);
+    var EWorkingDate = ChangeformatDate($("#dtEWorking").val(),1);
+
+    var dataObject = { JobRef: $('#hidBDCID').val(), JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate, JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
     console.log(dataObject);
         var ID;
         $.ajax(
@@ -387,24 +568,24 @@ function CreateData() {
             if ($(this).find('.FName').val() != '')
             {
                 var workingFrom = $(this).find('.WorkingFrom').val();
-                var fromHours = workingFrom.split(':')[0]
-                var fromMinute = workingFrom.split(':')[1]
-                var fromMinute = fromMinute.substring(0, 2);
+                //var fromHours = workingFrom.split(':')[0]
+                //var fromMinute = workingFrom.split(':')[1]
+                //var fromMinute = fromMinute.substring(0, 2);
 
                 var workingTo = $(this).find('.WorkingTo').val();
-                var toHours = workingTo.split(':')[0]
-                var toMinute = workingTo.split(':')[1]
-                var toMinute = toMinute.substring(0, 2);
+                //var toHours = workingTo.split(':')[0]
+                //var toMinute = workingTo.split(':')[1]
+                //var toMinute = toMinute.substring(0, 2);
+
+                var mDate = ChangeformatDate($(this).find(".ManDate").val());
 
                 dataObject.JobID = ID;
                 dataObject.TechnicianID = $(this).find('.TechnicianID').val();
-                dataObject.ManDate = $(this).find(".ManDate").val();
+                dataObject.ManDate = mDate;
                 dataObject.ManDay = $(this).find('.ManDay').find(":selected").val();
                 dataObject.ManTime = $(this).find(".ManTime").val();
-                dataObject.FromHour = fromHours;
-                dataObject.FromMinute = fromMinute;
-                dataObject.ToHour = toHours;
-                dataObject.ToMinute = toMinute;
+                dataObject.FromHour = workingFrom;
+                dataObject.ToHour = workingTo;
                 dataObject.TotalHours = $(this).find(".TotalHours").val();
                 dataObject.ManNormal = $(this).find(".ManNormal").val();
                 dataObject.ManPremium = $(this).find(".ManPremium").val();
@@ -506,7 +687,8 @@ function CreateData() {
             }
         });
         alert('Create is completed');
-        window.location.href = "../JobOrder/EditJobOrder?id=" + ID;
+        RedirectJobOrderBorrow(ID);
+        //window.location.href = "../JobOrder/EditJobOrder?id=" + ID;
 }
 function CalSum() {
     var total = 0;
@@ -623,8 +805,11 @@ function AddrowManpower() {
     });
 
     $(".ManDate").removeClass('hasDatepicker').datepicker();
-    $('.WorkingFrom').timepicker();
-    $('.WorkingTo').timepicker();
+    
+    $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
+    $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
+    //$('.WorkingFrom').timepicker();
+    //$('.WorkingTo').timepicker();
 
     var IDCard;
     var TechnicianType;
@@ -674,15 +859,23 @@ function AddrowManpower() {
     
 function DateWorking()
 {
-    if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {
+    //($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val())
+    if ($("#dtSWorking").datepicker({ dateFormat: "dd/mm/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "dd/mm/yy" }).val()) {
         $("#dtEWorking").val("")
         alert("Please Input Endworking more than Startworking");
     }
 }
-function CreateJobOrderBorrow()
+function RedirectJobOrderBorrow(val)
 {
-    //alert($('#hidJobID').val());
-    window.location.href = "../Borrow/CreateBorrow?id=" + $('#hidJobID').val();
+    var IsNewBorrow = $('#hidIsNewBorrow').val();
+    if (IsNewBorrow == 1)
+    {
+        window.location.href = "../Borrow/CreateBorrow?id=" + val;
+    }
+    else
+    {
+        window.location.href = "../JobOrder/EditJobOrder?id=" + val;
+    }
 }
 
 

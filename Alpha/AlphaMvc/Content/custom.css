@@ -5684,7 +5684,6 @@ body.modal-open,
   margin-right: auto;
   margin-left: auto;
 }
-
 .modal-content {
   position: relative;
   background-color: #fbfbf0;
@@ -5695,6 +5694,20 @@ body.modal-open,
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
           box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
+  
+}
+.modal-content-Quo {
+  position: relative;
+  background-color: #fbfbf0;
+  border: 1px solid #999999;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  outline: none;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+  /*bow*/
+  height: 470px;
 }
 
 .modal-backdrop {
@@ -5736,9 +5749,100 @@ body.modal-open,
 }
 
 .modal-body {
+  /*bow*/
+  /*width: 135%;*/ 
   position: relative;
   padding: 10px;
 }
+.table-overflow{
+    /*width: 100%;*/
+    height: 400px;
+    margin-left: 1px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+/*====== tblQuotation ======*/
+/*collum1(No)*/
+#tblQuotation tr td:nth-child(1){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum2(Quote Id)*/
+#tblQuotation tr td:nth-child(2){
+    /*width:30%;*/
+    width: 25%;
+    padding: 5px;
+}
+/*collum3(Potential Customer)*/
+#tblQuotation tr td:nth-child(3){
+    width: 30%;
+    padding: 5px;
+}
+/*collum4(Amount)*/
+#tblQuotation tr td:nth-child(4){
+    width: 10%;
+    padding: 5px;
+    text-align:right;
+}
+/*collum5(Revision)*/
+#tblQuotation tr td:nth-child(5){
+    width: 10%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum6(Owner)*/
+#tblQuotation tr td:nth-child(6){
+    width: 20%;
+    padding: 5px;
+}
+
+/*====== tblBorrow ======*/
+/*collum1(No)*/
+#tblBorrow tr td:nth-child(1){
+    width: 10%;
+    padding: 5px;
+    text-align:center;
+}
+/*ID (visible)*/
+#tblBorrow tr td:nth-child(2){
+    width: 10%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum2(Serial)*/
+#tblBorrow tr td:nth-child(3){
+    /*width:30%;*/
+    width: 30%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum3(หมายเลขเครื่อง)*/
+#tblBorrow tr td:nth-child(4){
+    width: 30%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum4(ยี่ห้อ)*/
+#tblBorrow tr td:nth-child(5){
+    width: 20%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum5(ขนาด)*/
+#tblBorrow tr td:nth-child(6){
+    width: 10%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum6(รุ่น)*/
+#tblBorrow tr td:nth-child(7){
+    width: 10%;
+    padding: 5px;
+    text-align:center;
+}
+
+
 
 .modal-body-info {
   position: relative;
@@ -5803,6 +5907,8 @@ body.modal-open,
     right: auto;
     left: 50%;
     width: 600px;
+    /*bow*/
+    height: 50px;
     padding-top: 30px;
     padding-bottom: 30px;
   }

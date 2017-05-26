@@ -49,6 +49,13 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [HttpGet]
+        public string Get(string BDCID)
+        {
+            var response = jobOrder.SelectCustomer(BDCID);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
         [HttpPut]
         public int Put(JobOrderModels jobOrderModel)
         {

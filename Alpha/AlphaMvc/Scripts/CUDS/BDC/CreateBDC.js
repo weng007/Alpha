@@ -1,6 +1,7 @@
 $(document).ready(function () {
+    CheckAuthorization();
     $("#quotationBody").on("click", "tr", function (e) {
-        $("#txtQuoNo").val($(this).find("td:eq(2)").text());
+        $("#txtQuoNo").val($(this).find("td:eq(1)").text());
         $("#hidQuoID").val($(this).find("td:eq(1)").text());
     })
 
@@ -21,6 +22,30 @@ $(document).ready(function () {
 });
 
 function BrowseQuotation() {
+    //-------------------------filter------------------------
+    $("#searchInput").keyup(function () {
+        //hide all the rows
+        $("#quotationBody").find("tr").hide();
+
+        //split the current value of searchInput
+        var data = this.value.split(" ");
+        //create a jquery object of the rows
+        var jo = $("#quotationBody").find("tr");
+
+        //Recusively filter the jquery object to get results.
+        $.each(data, function (i, v) {
+            jo = jo.filter("*:contains('" + v + "')");
+        });
+        //show the rows that match.
+        jo.show();
+        //Removes the placeholder text
+
+    }).focus(function () {
+        this.value = "";
+        $(this).css({ "color": "black" });
+        $(this).unbind('focus');
+    }).css({ "color": "#C0C0C0" });
+    //-------------------------filter------------------------
     $.ajax(
       {
           url: 'http://localhost:13131/api/Quotation',
@@ -32,11 +57,11 @@ function BrowseQuotation() {
               for (var i = 0; i < data.Table.length; i++) {
                   html += '<tr>';
                   html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
-                  html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].QuoNo + '</td>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].Detail + '</td>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].Price + '</td>';
+                  html += '<td data-dismiss="modal">' + data.Table[i].QuoteId + '</td>';
+                  html += '<td data-dismiss="modal">' + data.Table[i].PotentialCustomer + '</td>';
+                  html += '<td data-dismiss="modal">' + new Intl.NumberFormat('en-IN').format(data.Table[i].TotalAmount) + '</td>';
+                  html += '<td data-dismiss="modal">' + data.Table[i].RevisionNumber + '</td>';
+                  html += '<td data-dismiss="modal">' + data.Table[i].Owner + '</td>';
                   html += '</tr>';
               }
               document.getElementById("quotationBody").innerHTML = html;

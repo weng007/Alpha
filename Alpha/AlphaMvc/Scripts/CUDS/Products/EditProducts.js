@@ -79,8 +79,9 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
-           var ReceiveDate = new Date(data.Table[0].ReceiveDate);
-           ReceiveDate = (ReceiveDate.getDate() + '/' + (ReceiveDate.getMonth() + 1) + '/' + ReceiveDate.getFullYear());
+           var ReceiveDate = ChangeformatDate(data.Table[0].ReceiveDate, 0);
+           //var ReceiveDate = new Date(data.Table[0].ReceiveDate);
+           //ReceiveDate = (ReceiveDate.getDate() + '/' + (ReceiveDate.getMonth() + 1) + '/' + ReceiveDate.getFullYear());
 
            var baseStr64 = data.Table[0].ImgBase;
            if (baseStr64 != '')
@@ -104,6 +105,28 @@ function GetData(val) {
 
    });
 }
+function GetRemain(val) {
+    alert(val);
+    var dataObject = { ProductID: val };
+    $.ajax(
+           {
+               url: 'http://localhost:13131/api/Product',
+               type: 'GET',
+               datatype: 'json',
+               data: dataObject,
+               success: function (data) {
+                   data = JSON.parse(data);
+                   var remain = ($("#txtBalance").val() - data.Table[0].Amount) + data.Table[0].ReturnGood
+                   $("#txtRemain").val(remain);
+                   $("#txtLost").val(data.Table[0].ReturnLost);
+                   $("#txtRepair").val(data.Table[0].ReturnRepair);
+                   $("#txtBreak").val(data.Table[0].ReturnBad);
+               },
+               error: function (msg) {
+                   alert(msg)
+               }
+           });
+}
 function Update(val) {
     
     var imgElem = document.getElementById('imgPreview');
@@ -125,8 +148,10 @@ function Update(val) {
         //alert(imgPath)
         $('#hidFilePath').val(imgPath); 
     }
+    var ReceiveDate = ChangeformatDate($("#dtReceiveDate").val(), 1);
+
     var dataObject = {ID: val, SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
-        Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
+        Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: ReceiveDate,
         UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(),
         Remain: $("#txtRemain").val(), Remark: $("#txtRemark").val(), EditBy: localStorage['UserID'],
         Img: $('#hidFilePath').val(), ImgData: imgData

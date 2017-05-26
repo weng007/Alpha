@@ -46,12 +46,18 @@ $(document).ready(function () {
 
     $("#dtReceiveDate").datepicker({
         inline: true,
-        showOtherMonths: true
+        showOtherMonths: true,
+        dateFormat: "dd/mm/yy"
     })
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
-    $("#dtReceiveDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    $("#dtReceiveDate").datepicker({ dateFormat: "dd/mm/yy" }).val()
     $('#dtReceiveDate').datepicker().datepicker('setDate', 'today');
 });
+function GetRemain()
+{
+    var balance = $("#txtBalance").val();
+    $("#txtRemain").val(balance);
+}
 function CreateData() {  
     var imgElem = document.getElementById('imgPreview');
     var photo = document.getElementById("photo");
@@ -69,9 +75,10 @@ function CreateData() {
         var imgData = getBase64Image(imgElem);
         var imgPath = ("../Picture/" + FileName);
     }
+    var RDate = ChangeformatDate($("#dtReceiveDate").val(), 1);
     var dataObject = {
         SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
-        Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: $("#dtReceiveDate").val(),
+        Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: RDate,
         UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(),Remark: $("#txtRemark").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'],
         Img: imgPath, ImgData: imgData,
         

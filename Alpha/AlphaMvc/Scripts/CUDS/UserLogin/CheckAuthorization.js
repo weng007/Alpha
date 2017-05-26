@@ -211,6 +211,52 @@ function CheckAuthorization() {
                             $('#imgPayment').attr("style", "display:none");
                         }
                     }
+                    //alert(data.Table[i].MenuName);
+                    if (data.Table[i].MenuName == "Price/Cost") {
+                        //alert("Test");
+                        if (data.Table[i].Role == 0) {
+                            //alert("Role 0");
+                            $('#txtPrice').attr("style", "display:none");
+                            $('#txtProfit').attr("style", "display:none");
+                            $('#txtCost').attr("style", "display:none");
+                            $('#lblPrice').attr("style", "display:none");
+                            $('#lblProfit').attr("style", "display:none");
+                            $('#lblCost').attr("style", "display:none");
+                            $('.gvPrice').attr("style", "display:none");
+                            $('.gvProfit').attr("style", "display:none");
+                            $('.gvCost').attr("style", "display:none");
+
+                            //footer JobOrderIncome
+                            $('#txtTotal').attr("style", "display:none");
+                            $('#txtDiscount').attr("style", "display:none");
+                            $('#txtSubTotal').attr("style", "display:none");
+                            $('.ftTotal').attr("style", "display:none");
+                            $('.ftDiscount').attr("style", "display:none");
+                            $('.ftSubTotal').attr("style", "display:none");
+                            //table JobOrderIncome
+                            $('.Price').attr("style", "display:none");
+                            $('.Amount').attr("style", "display:none");
+
+                            //footer JobOrderExpense
+                            $('#txtTotalExpense').attr("style", "display:none");
+                            $('#txtNoCompound').attr("style", "display:none");
+                            $('#txtExpense').attr("style", "display:none");
+                            $('#txtProfit').attr("style", "display:none");
+                            $('.lblNoCompound').attr("style", "display:none");
+                            $('.lblExpense').attr("style", "display:none");
+                            $('.lblProfit').attr("style", "display:none");
+                            
+                            //table JobOrderExpense
+                            $('.Amount1').attr("style", "display:none");
+
+                            //JobOrderSaleOrder, Invoice, Receipt
+                            $('.gvAmount').attr("style", "display:none");
+                            $('.Amount2').attr("style", "display:none");
+                            $('.Amount3').attr("style", "display:none");
+                            $('.Amount4').attr("style", "display:none");
+                        }
+                    }
+
                 }
         },
         error: function (msg) {

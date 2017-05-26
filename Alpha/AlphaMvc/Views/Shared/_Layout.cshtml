@@ -31,6 +31,7 @@
         @* ---------------------------- DatePicker -------------------------- *@
         <link href="@Url.Content("~/Content/datepicker/santiago.datepicker.css")" rel="stylesheet" type="text/css" />
         <script src="@Url.Content("~/Scripts/CUDS/UserLogin/CheckAuthorization.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/CUDS/ChangeFomatDate.js")" type="text/javascript"></script>
         <script language="javascript" type="text/javascript">
             $(document).ready(function () {
                 //$('.dropdown-toggle').addClass('sf-js-enabled');
@@ -97,7 +98,17 @@
                                 </div>
                             </li>
                             <li id="mnTechnician" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "IndexTechnician", "Technician")</div></div></li>
-                            <li id="productsdisable" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Products", "IndexProducts", "Products")</div></div></li>
+                            <li id="mnCarlendar" class="menuli">
+                                <div class="menua">
+                                    <div class="menutext">
+                                        @Html.ActionLink("Products", "IndexProducts", "Products")
+                                        <ul class="hidden">
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Products", "IndexProducts", "Products")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Adjustment", "IndexProductAdjust", "ProductAdjust")</div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
                             <li id="mnBDC" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Break Down Cost", "IndexBDC", "BDC")</div></div></li>
                             <li id="imgPayment" class="menuli">
                                 <div class="menua">
@@ -106,6 +117,18 @@
                                         <ul class="hidden">
                                             <li class="menuli"><div class="submenua">@Html.ActionLink("Technician", "IndexWageTeachnician", "WageTeachnician")</div></li>
                                             @*<li class="menuli"><div class="submenua">@Html.ActionLink("Vendor", "IndexWageVendor", "WageVendor")</div></li>*@
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="mnReport" class="menuli">
+                                <div class="menua">
+                                    <div class="menutext">
+                                        @Html.ActionLink("Report", "IndexReportBreakDownCost", "ReportBreakdownCost")
+                                        <ul class="hidden">
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("ReportBDC", "IndexReportBreakDownCost", "ReportBreakdownCost")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("ReportJobOrder", "IndexReportJobOrder", "ReportJobOrder")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("ReportBorrow", "IndexRptBorrow", "ReportBorrow")</div></li>
                                         </ul>
                                     </div>
                                 </div>

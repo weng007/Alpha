@@ -33,6 +33,14 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [HttpGet]
+        public string Get(string serialNo)
+        {
+            string[] str = serialNo.Split('&');
+            var response = jobOrderBorrow.SelectProductAmount(str[0], str[1], str[2], str[3]);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(JobOrderBorrowModels jobOrderBorrowModel)
