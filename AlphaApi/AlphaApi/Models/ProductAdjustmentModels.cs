@@ -17,11 +17,7 @@ namespace AlphaApi.Models
 
         public double Added { get; set; }
 
-        public double Lost { get; set; }
-
-        public double Repair { get; set; }
-
-        public double Break { get; set; }
+        public double Deduction { get; set; }
 
         public int CreateBy { get; set; }
 

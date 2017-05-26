@@ -138,7 +138,7 @@ namespace AlphaApi.DataAccessLayer
 
         
 
-        public DataSet SelectProductAmount(string serialNo, string brand, string model, string size)
+        public DataSet SelectProductAmount(string ProductID)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -147,10 +147,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     SqlCommand cmd = new SqlCommand("SP_GetProductAmount", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@serialNo", serialNo); // i will pass zero to MobileID beacause its Primary .
-                    cmd.Parameters.AddWithValue("@brand", brand);
-                    cmd.Parameters.AddWithValue("@model", model);
-                    cmd.Parameters.AddWithValue("@size", size);
+                    cmd.Parameters.AddWithValue("@ProductID", ProductID); // i will pass zero to MobileID beacause its Primary .
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

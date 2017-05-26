@@ -3,7 +3,7 @@
 }
 
 <script src="@Url.Content("~/Scripts/CUDS/ProductAdjustment/EditProductAdjustment.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/CUDS/Products/IndexProducts.js")" type="text/javascript"></script>
+@*<script src="@Url.Content("~/Scripts/CUDS/Products/IndexProducts.js")" type="text/javascript"></script>*@
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <style>
     table {
@@ -76,7 +76,8 @@
                     <input type="text" id="txtSerialNo" name="field_1" class="field-divided" placeholder="Serial" autofocus required />&nbsp;<a href="#" data-toggle="modal" data-target="#productsDialog" onclick="BrowseProducts()">
                         <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
                     </a>
-                    <input type="hidden" id="hidSerialID" />
+                    <input type="hidden" id="hidProductID" />
+                    <input type="hidden" id="hidID" />
                 </li>
                 
                 <li>
@@ -101,14 +102,14 @@
                     <input type="number" id="txtRemain" name="field2" class="field-select-small" placeholder="" required disabled />
                 </li>
                 <li>
-                    <label class="label-small-2">เพิ่ม</label>&nbsp;<label class="label-small-2">หาย</label>&nbsp;<label class="label-small-2">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>
+                    <label class="label-small-2">เพิ่ม</label>&nbsp;<label class="label-small-2">ลด</label>
                 </li>
                 <li>
-                    <input type="text" id="txtAdded" name="field6" class="Number field-select-small" placeholder="" />&nbsp;
-                    <input type="text" id="txtLost" name="field6" class="Number field-select-small" placeholder="" />&nbsp;<input type="text" id="txtRepair" name="field7" class="Number field-select-small" placeholder="" />&nbsp;<input type="text" id="txtBreak" name="field8" class="Number field-select-small" placeholder=""/>
+                    <input type="text" id="txtAdded" name="field6" class="Number field-select-small" placeholder="" value="0"/>&nbsp;
+                    <input type="text" id="txtDeduction" name="field6" class="Number field-select-small" placeholder="" value="0"/>&nbsp;
                 </li>
                 <li>
-                    <button type="button" class="btn btn-primary" onclick="Isvalidate('Create', 'ProductAdjust', 0)">Save</button>
+                    <button type="button" class="btn btn-primary" onclick="Isvalidate('Update', 'ProductAdjust', @Request.Params["id"])">Save</button>
                 </li>
             </ul>
         </form>

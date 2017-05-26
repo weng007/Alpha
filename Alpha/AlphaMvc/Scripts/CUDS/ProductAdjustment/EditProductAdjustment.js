@@ -40,6 +40,29 @@ function CheckReturn() {
     //    $('#hidReturn').val(1);
     //}
 }
+function GetRemain(val) {
+    var remain;
+    var dataObject = { ProductID: val };
+    $.ajax(
+       {
+           url: 'http://localhost:13131/api/JobOrderBorrow',
+           type: 'GET',
+           async: false,
+           data: dataObject,
+           datatype: 'json',
+           success: function (data) {
+               data = JSON.parse(data);
+               //alert(remain)
+               remain = data.Table[0].Amount;
+           },
+           error: function (msg) {
+               alert(msg);
+           }
+
+       });
+
+    return remain
+}
 function BrowseProduct() {
     $.ajax(
            {
@@ -59,6 +82,7 @@ function BrowseProduct() {
                        html += '<td data-dismiss="modal">' + data.Table[i].Brand + '</td>';
                        html += '<td data-dismiss="modal">' + data.Table[i].Size + '</td>';
                        html += '<td data-dismiss="modal">' + data.Table[i].Model + '</td>';
+                       html += '<td data-dismiss="modal">' + GetRemain(data.Table[i].ID) + '</td>';
                        html += '</tr>';
                    }
                    document.getElementById("productBody").innerHTML = html;
@@ -69,14 +93,12 @@ function BrowseProduct() {
                }
            });
 }
-function GetDetail(val)
+function GetDetail()
 {
-    var remain = $('#txtRemain').val();
-    var totalremain;
-    var dataObject = { adjustID: val};
+    var dataObject = { ProductID: $("#hidProductID").val() };
     $.ajax(
        {
-           url: 'http://localhost:13131/api/ProductAdjustment',
+           url: 'http://localhost:13131/api/JobOrderBorrow',
            type: 'GET',
            async: false,
            data: dataObject,
@@ -84,8 +106,7 @@ function GetDetail(val)
            success: function (data) {
                data = JSON.parse(data);
                //alert(remain)
-               totalremain = (parseFloat(remain) + parseFloat(data.Table[0].Added) + parseFloat(data.Table[0].Lost) + parseFloat(data.Table[0].Repair) + parseFloat(data.Table[0].Break))
-               $('#txtRemain').val(totalremain);
+               $('#txtRemain').val(data.Table[0].Amount);
            },
            error: function (msg) {
                alert(msg);
@@ -107,9 +128,9 @@ function GetData(val) {
            data = JSON.parse(data);
            //totalremain = remain+
            
-           $("#txtSerialNo").val(data.Table[0].SerialNo), $("#txtBrand").val(data.Table[0].Brand), $("#txtModel").val(data.Table[0].Model), $("#txtSize").val(data.Table[0].Size), $("#txtRemain").val(data.Table[0].remain),
-           $("#hidSerialID").val(data.Table[0].ProductID), $("#txtDocRef").val(data.Table[0].DocRef), $("#txtAdded").val(data.Table[0].Added), $("#txtLost").val(data.Table[0].Lost), $("#txtRepair").val(data.Table[0].Repair), $("#txtBreak").val(data.Table[0].Break)
-           GetDetail(val);
+           $("#txtSerialNo").val(data.Table[0].SerialNo), $("#txtBrand").val(data.Table[0].Brand), $("#txtModel").val(data.Table[0].Model), $("#txtSize").val(data.Table[0].Size),
+           $("#hidProductID").val(data.Table[0].ProductID), $("#txtDocRef").val(data.Table[0].DocRef), $("#txtAdded").val(data.Table[0].Added), $("#txtDeduction").val(data.Table[0].Deduction)
+           GetDetail();
        },
        error: function (msg) {
            alert(msg);
@@ -119,13 +140,17 @@ function GetData(val) {
 }
 
 function Update(val) {
+    $("#hidID").val(val);
     var dataObject = {
-        ID: val, ProductID: $("#hidSerialID").val(), DocRef: $("#txtDocRef").val(), Added: $("#txtAdded").val(), Lost: $("#txtLost").val(), Repair: $("#txtRepair").val(), Break: $("#txtBreak").val(), EditBy: localStorage['UserID']
+        ID:val, ProductID: $("#hidProductID").val(), DocRef: $("#txtDocRef").val(), Added: $("#txtAdded").val(),
+        Deduction: $("#txtDeduction").val(),
+        CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
+    console.log(dataObject);
 
        $.ajax(
         {
-            url: 'http://localhost:13131/api/JobOrderBorrow',
+            url: 'http://localhost:13131/api/ProductAdjustment',
             type: 'PUT',
             async: false,
             data: dataObject,
@@ -140,7 +165,7 @@ function Update(val) {
 };
 function Redirect() {
 
-    var hidJobID = $('#hidJobID').val();
-    window.location.href = "../ProductAdjust/EditProductAdjust?id=" + hidJobID;
+    var hidAdjustID = $('#hidID').val();
+    window.location.href = "../ProductAdjust/EditProductAdjust?id=" + hidAdjustID;
 }
 

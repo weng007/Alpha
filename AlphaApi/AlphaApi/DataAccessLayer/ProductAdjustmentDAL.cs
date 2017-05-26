@@ -27,9 +27,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@ProductID", AdjustmentModel.ProductID);
                     cmd.Parameters.AddWithValue("@DocRef", AdjustmentModel.DocRef != null ? AdjustmentModel.DocRef : "");
                     cmd.Parameters.AddWithValue("@Added", AdjustmentModel.Added);
-                    cmd.Parameters.AddWithValue("@Lost", AdjustmentModel.Lost);
-                    cmd.Parameters.AddWithValue("@Repair", AdjustmentModel.Repair);
-                    cmd.Parameters.AddWithValue("@Break", AdjustmentModel.Break);
+                    cmd.Parameters.AddWithValue("@Deduction", AdjustmentModel.Deduction);
                     cmd.Parameters.AddWithValue("@CreateBy", AdjustmentModel.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", AdjustmentModel.EditBy);
                     conObj.Open();
@@ -60,12 +58,9 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", AdjustmentModel.ID);
                     cmd.Parameters.AddWithValue("@ProductID", AdjustmentModel.ProductID);
-                    cmd.Parameters.AddWithValue("@DocRef", AdjustmentModel.DocRef);
+                    cmd.Parameters.AddWithValue("@DocRef", AdjustmentModel.DocRef != null ? AdjustmentModel.DocRef : "");
                     cmd.Parameters.AddWithValue("@Added", AdjustmentModel.Added);
-                    cmd.Parameters.AddWithValue("@Lost", AdjustmentModel.Lost);
-                    cmd.Parameters.AddWithValue("@Repair", AdjustmentModel.Repair);
-                    cmd.Parameters.AddWithValue("@Break", AdjustmentModel.Break);
-                    cmd.Parameters.AddWithValue("@CreateBy", AdjustmentModel.CreateBy);
+                    cmd.Parameters.AddWithValue("@Deduction", AdjustmentModel.Deduction);
                     cmd.Parameters.AddWithValue("@EditBy", AdjustmentModel.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();

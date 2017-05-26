@@ -66,7 +66,7 @@ function BrowseProducts() {
                   html += '<td data-dismiss="modal">' + data.Table[i].Brand + '</td>';
                   html += '<td data-dismiss="modal">' + data.Table[i].Model + '</td>';
                   html += '<td data-dismiss="modal">' + data.Table[i].Size + '</td>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].Remain + '</td>';
+                  html += '<td data-dismiss="modal">' + GetRemain(data.Table[i].ID) + '</td>';
                   //html += '<td data-dismiss="modal class="hideANDseek">' + data.Table[i].Detail + '</td>';
                   html += '</tr>';
               }
@@ -77,13 +77,32 @@ function BrowseProducts() {
           }
       });
 }
+function GetRemain(val) {
+    var dataObject = { ProductID: val };
+    $.ajax(
+       {
+           url: 'http://localhost:13131/api/JobOrderBorrow',
+           type: 'GET',
+           async: false,
+           data: dataObject,
+           datatype: 'json',
+           success: function (data) {
+               data = JSON.parse(data);
+               //alert(remain)
+               $('#txtRemain').val(data.Table[0].Amount);
+           },
+           error: function (msg) {
+               alert(msg);
+           }
 
+       });
+}
 function CreateData() {
     //var x = new Userlogin()
     //alert(x.UserID);
     var dataObject = {
         ProductID: $("#hidSerialID").val(), DocRef: $("#txtDocRef").val(), Added: $("#txtAdded").val(),
-        Lost: $("#txtLost").val(), Repair: $("#txtRepair").val(), Break: $("#txtBreak").val(),
+        Deduction: $("#txtDeduction").val(),
         CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
     console.log(dataObject);
