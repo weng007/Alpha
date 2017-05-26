@@ -20,6 +20,10 @@
 .float-none{
     float:none !important;
 }
+.textbox-size100
+{
+    width:100%;
+}
 .rowjobno{
     width: 120px;
     background: rgba(0, 128, 128, 0);
