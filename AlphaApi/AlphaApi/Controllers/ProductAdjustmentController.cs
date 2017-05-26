@@ -40,6 +40,12 @@ namespace AlphaApi.Controllers
             var response = ProductAdjustdb.SelectByID(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+        [HttpGet]
+        public string Get(string adjustID)
+        {
+            var response = ProductAdjustdb.SelectProductAdjust(adjustID);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
 
         [HttpPut]
         public int Put(ProductAdjustmentModels AdjustmentModel)

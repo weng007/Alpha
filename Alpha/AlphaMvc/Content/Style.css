@@ -17,6 +17,9 @@
 .Rowpointer{
     cursor: pointer !important;
 }
+.float-none{
+    float:none !important;
+}
 .rowjobno{
     width: 120px;
     background: rgba(0, 128, 128, 0);

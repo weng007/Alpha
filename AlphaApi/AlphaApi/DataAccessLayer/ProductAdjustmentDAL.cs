@@ -25,7 +25,7 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_ProductAdjustment_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ProductID", AdjustmentModel.ProductID);
-                    cmd.Parameters.AddWithValue("@DocRef", AdjustmentModel.DocRef);
+                    cmd.Parameters.AddWithValue("@DocRef", AdjustmentModel.DocRef != null ? AdjustmentModel.DocRef : "");
                     cmd.Parameters.AddWithValue("@Added", AdjustmentModel.Added);
                     cmd.Parameters.AddWithValue("@Lost", AdjustmentModel.Lost);
                     cmd.Parameters.AddWithValue("@Repair", AdjustmentModel.Repair);
@@ -136,34 +136,35 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        //public DataSet SelectByProductID(string productID)
-        //{
-        //    DataSet ds = null;
-        //    using (SqlConnection conObj = new SqlConnection(conStr))
-        //    {
-        //        try
-        //        {
-        //            SqlCommand cmd = new SqlCommand("SP_GetBorrowAmount", conObj);
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.Parameters.AddWithValue("@ProductID", productID);
-        //            conObj.Open();
-        //            SqlDataAdapter da = new SqlDataAdapter();
-        //            da.SelectCommand = cmd;
-        //            ds = new DataSet();
-        //            da.Fill(ds);
+        public DataSet SelectProductAdjust(string adjustID)
+        {
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_GetProductAdjustAmount", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", adjustID);
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
 
-        //            return ds;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw ex;
-        //        }
-        //        finally
-        //        {
-        //            conObj.Close();
-        //        }
-        //    }
-        //}
+                    return ds;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
+
         public DataSet SelectData()
         {
             DataSet ds = null;
