@@ -1,7 +1,7 @@
 $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
-    //$('.Number').number(true, 2);
+    $('.Number').number(true, 2);
     CheckAuthorization();
     var input = window.location.href;
     var after = input.split('?')[1]
