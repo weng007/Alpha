@@ -82,7 +82,6 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Detail", jobOrder.Detail != null ? jobOrder.Detail : "");
                     cmd.Parameters.AddWithValue("@ContactID", jobOrder.ContactID);
                     cmd.Parameters.AddWithValue("@CoWorkerID", jobOrder.CoWorkerID);
-                    cmd.Parameters.AddWithValue("@JobStatus", jobOrder.JobStatus);
                     //cmd.Parameters.AddWithValue("@CustID", jobOrder.CustID);
                     cmd.Parameters.AddWithValue("@Remark", jobOrder.Remark != null ? jobOrder.Remark : "");
                     cmd.Parameters.AddWithValue("@Discount", jobOrder.Discount);

@@ -77,10 +77,10 @@
                         return {
                             IDCard: item.IDCard,
                             TechnicianType: item.TechnicianTypeName,
-                            TechnicianID: item.ID,
-                            PositionID: item.PositionID,
+                            TechnicianID: item.TechnicianNo,
+                            PositionID: item.Position,
                             label: item.FirstName,
-                            value: item.ID
+                            value: item.TechnicianNo
                         }
                     }));
                 },
@@ -191,7 +191,15 @@
         }
     });
 
-   
+    $('.ManDate').eq(row_index).datepicker({
+        dateFormat: 'dd/mm/yy'
+    });
+
+    $('.RowCal5 td:first').click(function () {
+        row_index = $(this).parent().index();
+        col_index = $(this).index();
+    });
+
     $("#dtJobDate").datepicker({
         inline: true,
         showOtherMonths: true
@@ -229,11 +237,12 @@
 
 });
 function GetContact(val) {
-    alert(val);
+    //alert(val);
     var dataObject = { JobID: val };
     $.ajax({
         url: 'http://localhost:13131/api/JobOrder',
         type: 'GET',
+        async:false,
         dataType: 'json',
         data: dataObject,
         success: function (data) {
@@ -252,12 +261,13 @@ function GetContact(val) {
     $.ajax({
         url: 'http://localhost:13131/api/JobOrder',
         type: 'GET',
+        async: false,
         dataType: 'json',
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
             $.each(data.Table, function (i) {
-                $('#cmbCoWorker').append($('<option></option>').val(data.Table[i].CoWorkerID).html(data.Table[i].ContactName));
+                $('#cmbCoWorker').append($('<option></option>').val(data.Table[i].ContactId).html(data.Table[i].ContactName));
             });
             $('#cmbCoWorker').find('option:first-child').attr('selected', true);
         },
@@ -295,7 +305,7 @@ function BrowseCustomer(val) {
     //               alert(msg)
     //           }
     //       });
-    alert(val);
+    //alert(val);
 
     var dataObject = { BDCID: val }
     console.log(dataObject);
@@ -328,8 +338,32 @@ function BrowseCustomer(val) {
 
     });
 }
+function GetManDay(val) {
+    var ManDate = val;
+    var days = [
+        'SUN',
+        'MON',
+        'TUE',
+        'WED',
+        'THU',
+        'FRI',
+        'SAT'
+    ];
+
+    var dateParts = ManDate.split("/");
+    if (dateParts.length != 3)
+        return null;
+    var year = dateParts[2];
+    var month = dateParts[1];
+    var day = dateParts[0];
+
+    var d = new Date(year, month - 1, day);
+
+    x = d.getDay();
+    return days[x];
+    //$('.ManDay').eq(row_index).val(days[x]);
+}
 function GetManpowerHour() {
-    //alert("Manpower Test");
     var TechnicianID = $('.TechnicianID').eq(row_index).val();
     var ManDate = $('.ManDate').eq(row_index).val();
     var FromTime = $('.WorkingFrom').eq(row_index).val();
@@ -348,17 +382,15 @@ function GetManpowerHour() {
         'SAT'
         ];
 
-        var dateParts = ManDate.split("-");
+        var dateParts = ManDate.split("/");
         if (dateParts.length != 3)
             return null;
         var year = dateParts[2];
         var month = dateParts[1];
         var day = dateParts[0];
 
-        var d = new Date();
-        d.setYear = year;
-        d.setMonth = month;
-        d.setDate = day;
+        var d = new Date(year, month - 1, day);
+
         x = d.getDay();
         $('.ManDay').eq(row_index).val(days[x]);
     }
@@ -369,7 +401,6 @@ function GetManpowerHour() {
         var toHours;
         var toMinute;
         if (workingTo != '') {
-            alert("workingTo");
             toHours = workingTo.split(':')[0]
             toMinute = workingTo.split(':')[1]
         }
@@ -377,7 +408,6 @@ function GetManpowerHour() {
             toHours = 0;
             toMinute = 0;
         }
-
 
         var wfminute = (fromHours * 60) + parseInt(fromMinute);
         var wtminute = (toHours * 60) + parseInt(toMinute);
@@ -406,17 +436,12 @@ function GetManpowerHour() {
             datatype: 'json',
             success: function (data) {
                 data = JSON.parse(data);
-
                 if (data.Table.length > 0) {
-                    //$('.RowCal5:eq(' + data.Table.length + ')').remove();
 
-                    $(".RowCal5").each(function (i) {
-                        $(this).find('.ManNormal').val(data.Table[i].ManNormal);
-                        $(this).find('.ManPremium').val(data.Table[i].ManPremium);
-                        $(this).find('.ManPremium2').val(data.Table[i].ManPremium2);
-                        $(this).find('.ManSpecial').val(data.Table[i].ManSpecial);
-                    });
-                    //CalSumExpense();
+                    $('.ManNormal').eq(row_index).val(data.Table[0].ManNormal);
+                    $('.ManPremium').eq(row_index).val(data.Table[0].ManPremium);
+                    $('.ManPremium2').eq(row_index).val(data.Table[0].ManPremium2);
+                    $('.ManSpecial').eq(row_index).val(data.Table[0].ManSpecial);
                 }
             },
             error: function (msg) {
@@ -426,6 +451,7 @@ function GetManpowerHour() {
         });
     }
 }
+
 function ControlEnable(Isview) {
     //var Isview = val;
     if (Isview === true) {
@@ -467,7 +493,6 @@ function ControlEnable(Isview) {
 }
 
 function GetData(val) {
-    
     var dataObject = { ID: val }
     console.log(dataObject);
     $.ajax(
@@ -483,7 +508,6 @@ function GetData(val) {
            var JobDate = ChangeformatDate(data.Table[0].JobDate, 0);
            var SWorking = ChangeformatDate(data.Table[0].SWorking, 0);
            var EWorking = ChangeformatDate(data.Table[0].EWorking, 0);
-           alert(data.Table[0].ContactID);
 
            $("#hidCustID").val(data.Table[0].CustID), $("#txtJobNo").val(data.Table[0].JobNo), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
              $("#cmbContact").val(data.Table[0].ContactID), $("#cmbCoWorker").val(data.Table[0].CoWorkerID),
@@ -571,6 +595,7 @@ function GetData(val) {
                for (var j = 0; j < data.Table9.length; j++) {
                    $("#add-row2").trigger("click");
                    AddrowManpower();
+                   //GetManpowerHour();
                }
                $('.RowCal5:eq(' + data.Table9.length + ')').remove();
 
@@ -586,18 +611,20 @@ function GetData(val) {
                    var tMinute = tDate[1];
 
                    var setDate = new Date();
-                   var FTime = setDate.setHours(fHour, fMinute, 00);
-                   var setDate1 = new Date();
-                   var TTime = setDate1.setHours(tHour, tMinute, 00);
+                   setDate.setHours(fHour, fMinute, 0);
+
+                   var setDate2 = new Date();
+                   setDate2.setHours(tHour, tMinute, 0);
                 
                    //t.setHours = fHour;
                    //t.setMinutes = fMinute;
 
-                   var ManDate = new Date(data.Table9[i].ManDate);
-                   var day = ("0" + ManDate.getDate()).slice(-2);
-                   var month = ("0" + (ManDate.getMonth() + 1)).slice(-2);
-                   var today = ManDate.getFullYear() + "-" + (month) + "-" + (day);
-
+                   //var ManDate = new Date(data.Table9[i].ManDate);
+                   //var day = ("0" + ManDate.getDate()).slice(-2);
+                   //var month = ("0" + (ManDate.getMonth() + 1)).slice(-2);
+                   //var today = ManDate.getFullYear() + "-" + (month) + "-" + (day);
+                   var ManDate = ChangeformatDate(data.Table9[i].ManDate, 0)
+                   //var manDay = GetManDay(ChangeformatDate(data.Table9[i].ManDate, 1));
                    $(this).find('.tdno').val(data.Table9[i].RowNum);
                    $(this).find('.ManpowerID').val(data.Table9[i].ID);
                    $(this).find('.TechnicianID').val(data.Table9[i].TechnicianID);
@@ -605,16 +632,25 @@ function GetData(val) {
                    $(this).find('.FName').val(data.Table9[i].TechnicianName);
                    $(this).find('.CardID').val(data.Table9[i].IDCard);
                    $(this).find('.TechnicianType').val(data.Table9[i].TechnicianTypeName);
-                   $(this).find('.ManDate').val(today == '1900-01-01' ? '' : today);
+                   $(this).find('.ManDate').val(ManDate == '1900-01-01' ? '' : ManDate);
+                   //$(this).find('.ManDay').val(manDay);
                    $(this).find('.ManTime').val(data.Table9[i].ManTime);
-                   $(this).find('.WorkingFrom').timepicker('setTime', FTime);
-                   $(this).find('.WorkingTo').timepicker('setTime', TTime);
+
+                   //$(this).find('.WorkingFrom').timepicker('setTime', FTime, { 'timeFormat': 'H:i' });
+                   $(this).find('.WorkingFrom').timepicker('setTime', setDate);
+
+                   $(this).find('.WorkingTo').timepicker('setTime', setDate2);
+                   //$(this).find('.WorkingTo').timepicker('setTime', TTime, { 'timeFormat': 'H:i' });
                    $(this).find('.TotalHours').val(data.Table9[i].TotalHours);
                    $(this).find('.ManNormal').val(data.Table9[i].ManNormal);
                    $(this).find('.ManPremium').val(data.Table9[i].ManPremium);
+                   $(this).find('.ManPremium2').val(data.Table9[i].ManPremium2);
                    $(this).find('.ManSpecial').val(data.Table9[i].ManSpecial);
+
+                   
                });
-               GetManpowerHour();
+               
+               //GetManpowerHour();
                //CalSumExpense();
            }
 
@@ -750,15 +786,16 @@ function SetUnitWeight() {
     });
 }
 function Update(val) {
+    alert("test");
     var JDate = ChangeformatDate($("#dtJobDate").val(),1);
     var SWorkingDate = ChangeformatDate($("#dtSWorking").val(),1);
-    var EWorkingDate = ChangeformatDate($("#dtEWorking").val(),1);
+    var EWorkingDate = ChangeformatDate($("#dtEWorking").val(), 1);
 
     var dataObject = {
         ID: val, JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate,
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
         JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(),
-        ContactID: $("#cmbTypeWorking").find(":selected").val(), CoWorkerID: $("#cmbCoWorker").find(":selected").val(),
+        ContactID: $("#cmbContact").find(":selected").val(), CoWorkerID: $("#cmbCoWorker").find(":selected").val(),
         Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), JobSite:$("#txtJobSite").val(), Location: $("#txtLocation").val(), EditBy: localStorage['UserID']
     };
     console.log(dataObject);
@@ -773,13 +810,14 @@ function Update(val) {
 
         success: function (data) {
             JobID = data;
+            alert("Success JobOrder"+JobID);
             $("#hidJobID").val(data)
         },
         error: function (msg) {
             alert(msg);
         }
     });
-   
+    alert("Test" + JobID);
     var dataObject = { JobID: JobID};
     $.ajax(
             {
@@ -850,53 +888,50 @@ function Update(val) {
     });
     //===================UpdateJobOrderManpower
 
+    alert("TestManpower");
     var dataObject = {};
     $(".RowCal5").each(function () {
+        //alert($(this).find('.FName').val());
+        //if ($(this).find('.FName').val() != '') {
+        alert("test Row5");
+            var workingFrom = $(this).find('.WorkingFrom').val();
+            var workingTo = $(this).find('.WorkingTo').val();
 
-        var workingFrom = $(this).find('.WorkingFrom').val();
-        var workingTo = $(this).find('.WorkingTo').val();
-        var totalH = $(this).find(".TotalHours").val();
-        var manDate = $(this).find(".ManDate").val();
+            var mDate = ChangeformatDate($(this).find(".ManDate").val(), 1);
 
-        //if (workingFrom != '' & workingTo != '')
-        //{  
-        //    var fromHours = workingFrom.split(':')[0]
-        //    var fromMinute = workingFrom.split(':')[1]
-        //    var fromMinute = fromMinute.substring(0, 2);
+            dataObject.JobID = JobID;
+            dataObject.TechnicianID = $(this).find('.TechnicianID').val();
+            dataObject.ManDate = mDate;
+            dataObject.ManDay = $(this).find('.ManDay').val();
+            dataObject.ManTime = $(this).find(".ManTime").val();
+            dataObject.FromHour = workingFrom;
+            dataObject.ToHour = workingTo;
+            dataObject.TotalHours = $(this).find(".TotalHours").val();
+            dataObject.ManNormal = $(this).find(".ManNormal").val();
+            dataObject.ManPremium = $(this).find(".ManPremium").val();
+            dataObject.ManPremium2 = $(this).find(".ManPremium2").val();
+            dataObject.ManSpecial = $(this).find(".ManSpecial").val();
+            dataObject.EditBy = localStorage['UserID'];
 
-        //    var toHours = workingTo.split(':')[0]
-        //    var toMinute = workingTo.split(':')[1]
-        //    var toMinute = toMinute.substring(0, 2);
+            
+            
+        alert("test JobMan")
+            if ($(this).find(".TechnicianID").val() != '') {
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/JobOrderManpower',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
         //}
-
-        dataObject.JobID = JobID;
-        dataObject.TechnicianID = $(this).find('.TechnicianID').val();
-        dataObject.ManDate = (manDate != '' ? manDate : '1900-01-01');
-        dataObject.ManDay = $(this).find('.ManDay').find(":selected").val();
-        dataObject.ManTime = $(this).find(".ManTime").val();
-        dataObject.FromHour = workingFrom;
-        dataObject.ToHour = workingTo;
-        //dataObject.FromMinute = (workingFrom != '' ? fromMinute : 0);
-        dataObject.TotalHours = (totalH != '' ? totalH : '0:00');
-        dataObject.ManNormal = $(this).find(".ManNormal").val();
-        dataObject.ManPremium = $(this).find(".ManPremium").val();
-        dataObject.ManSpecial = $(this).find(".ManSpecial").val();
-        dataObject.EditBy = localStorage['UserID'];
-        if ($(this).find(".TechnicianID").val() != '') {
-            $.ajax(
-            {
-                url: 'http://localhost:13131/api/JobOrderManPower',
-                type: 'POST',
-                async: false,
-                data: dataObject,
-                datatype: 'json',
-                success: function (data) {
-                },
-                error: function (msg) {
-                    alert(msg)
-                }
-            });
-        }
     });
     ////===================Insert JobOrderSaleOrder 
     var dataObject = {};
@@ -1104,19 +1139,33 @@ function AddRowExpense() {
 }
 var row_index = 0;
 var col_index = 0;
-function SetRowCal5() {
+//function SetRowCal5() {
+//    $('.RowCal5 td').click(function () {
+//        row_index = $(this).parent().index();
+//        col_index = $(this).index();
+//    });
+//}
+function SetRowIndex() {
     $('.RowCal5 td').click(function () {
         row_index = $(this).parent().index();
         col_index = $(this).index();
     });
 }
-
 function AddrowManpower() {
-    $('.RowCal5 td').click(function () {
-        row_index = $(this).parent().index();
-        col_index = $(this).index();
+    alert("Addrow");
+    var i = 0;
+    $('.ManDate').each(function () {
+        $(this).attr("id", 'date' + i).datepicker({
+            dateFormat: 'dd/mm/yy'
+        });
+        i++;
     });
-   
+
+    //$('.RowCal5 td').click(function () {
+    //    row_index = $(this).parent().index();
+    //    col_index = $(this).index();
+    //});
+
     ////$('.ManDate').removeClass('hasDatepicker').datepicker();
 
     //$('.WorkingFrom').timepicker();
@@ -1131,7 +1180,6 @@ function AddrowManpower() {
     $('.FName').each(function () {
         $(this).autocomplete({
             source: function (request, response) {
-                //alert('inside');
                 $.ajax({
                     url: 'http://localhost:13131/api/Technician',
                     type: 'GET',
@@ -1144,10 +1192,10 @@ function AddrowManpower() {
                             return {
                                 IDCard: item.IDCard,
                                 TechnicianType: item.TechnicianTypeName,
-                                TechnicianID: item.ID,
-                                PositionID: item.PositionID,
+                                TechnicianID: item.TechnicianNo,
+                                PositionID: item.Position,
                                 label: item.FirstName,
-                                value: item.ID
+                                value: item.TechnicianNo
                             }
                         }));
                     },

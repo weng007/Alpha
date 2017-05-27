@@ -39,6 +39,8 @@ namespace AlphaApi.Models
 
         public double ManPremium { get; set; }
 
+        public double ManPremium2 { get; set; }
+
         public double ManSpecial { get; set; }
 
         public int CreateBy { get; set; }

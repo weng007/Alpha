@@ -57,10 +57,10 @@ $(document).ready(function () {
                         return {
                             IDCard: item.IDCard,
                             TechnicianType: item.TechnicianTypeName,
-                            TechnicianID: item.ID,
-                            PositionID: item.PositionID,
+                            TechnicianID: item.TechnicianNo,
+                            PositionID: item.Position,
                             label: item.FirstName,
-                            value: item.ID
+                            value: item.TechnicianNo
                         }
                     }));
                 },
@@ -412,17 +412,12 @@ function GetManpowerHour() {
             datatype: 'json',
             success: function (data) {
                 data = JSON.parse(data);
-
                 if (data.Table.length > 0) {
-                    //$('.RowCal5:eq(' + data.Table.length + ')').remove();
 
-                    $(".RowCal5").each(function (i) {
-                        $(this).find('.ManNormal').val(data.Table[i].ManNormal);
-                        $(this).find('.ManPremium').val(data.Table[i].ManPremium);
-                        $(this).find('.ManPremium2').val(data.Table[i].ManPremium2);
-                        $(this).find('.ManSpecial').val(data.Table[i].ManSpecial);
-                    });
-                    //CalSumExpense();
+                    $('.ManNormal').eq(row_index).val(data.Table[0].ManNormal);
+                    $('.ManPremium').eq(row_index).val(data.Table[0].ManPremium);
+                    $('.ManPremium2').eq(row_index).val(data.Table[0].ManPremium2);
+                    $('.ManSpecial').eq(row_index).val(data.Table[0].ManSpecial);
                 }
             },
             error: function (msg) {
@@ -539,24 +534,38 @@ function CreateData() {
             }
         });
     //===================Insert JobOrderManpower
+        alert("TestManpower");
         var dataObject = {};
         $(".RowCal5").each(function () {
+            alert($(this).find('.FName').val());
             if ($(this).find('.FName').val() != '')
             {
                 var workingFrom = $(this).find('.WorkingFrom').val();
                 var workingTo = $(this).find('.WorkingTo').val();
-                var mDate = ChangeformatDate($(this).find(".ManDate").val());
+                var mDate = ChangeformatDate($(this).find(".ManDate").val(),1);
+
+
+                alert($(this).find('.TechnicianID').val());
+                alert("mDate" + mDate);
+                alert($(this).find('.ManDay').val());
+                alert("Working Form" + workingFrom);
+                alert("To" + workingTo);
+                alert("Total" + $(this).find(".TotalHours").val());
+                alert("ManNormal" + $(this).find(".ManNormal").val());
+                alert("ManPremium" + $(this).find(".ManPremium").val());
+                alert("ManSpecial" + $(this).find(".ManSpecial").val());
 
                 dataObject.JobID = ID;
                 dataObject.TechnicianID = $(this).find('.TechnicianID').val();
                 dataObject.ManDate = mDate;
-                dataObject.ManDay = $(this).find('.ManDay').find(":selected").val();
+                dataObject.ManDay = $(this).find('.ManDay').val();
                 dataObject.ManTime = $(this).find(".ManTime").val();
                 dataObject.FromHour = workingFrom;
                 dataObject.ToHour = workingTo;
                 dataObject.TotalHours = $(this).find(".TotalHours").val();
                 dataObject.ManNormal = $(this).find(".ManNormal").val();
                 dataObject.ManPremium = $(this).find(".ManPremium").val();
+                dataObject.ManPremium2 = $(this).find(".ManPremium2").val();
                 dataObject.ManSpecial = $(this).find(".ManSpecial").val();
                 dataObject.CreateBy = localStorage['UserID'];
                 dataObject.EditBy = localStorage['UserID'];
@@ -813,10 +822,10 @@ function AddrowManpower() {
                             return {
                                 IDCard: item.IDCard,
                                 TechnicianType: item.TechnicianTypeName,
-                                TechnicianID: item.ID,
-                                PositionID: item.PositionID,
+                                TechnicianID: item.TechnicianNo,
+                                PositionID: item.Position,
                                 label: item.FirstName,
-                                value: item.ID
+                                value: item.TechnicianNo
                             }
                         }));
                     },
