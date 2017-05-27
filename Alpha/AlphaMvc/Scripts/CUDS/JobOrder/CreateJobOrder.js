@@ -38,17 +38,6 @@ $(document).ready(function () {
     })
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
 
-
-    //$("#customerBody").on("click", "tr", function (e) {
-    //    $("#txtCustomerName").val($(this).find("td:eq(3)").text());
-    //    $("#hidCustID").val($(this).find("td:eq(1)").text());
-    //    $("#txtTel").val($(this).find("td:eq(4)").text());
-    //    $("#txtContact").val($(this).find("td:eq(5)").text());
-    //    $("#txtCoWorker").val($(this).find("td:eq(6)").text());
-    //    $("#txtFax").val($(this).find("td:eq(7)").text());
-    //    $("#txtAddress").val($(this).find("td:eq(8)").text());
-    //});
-
     var IDCard;
     var TechnicianType;
     var TechnicianID;
@@ -83,7 +72,6 @@ $(document).ready(function () {
         },
         minLength: 3,
         select: function (event, ui) {
-            //var totalPosition = 0;
             $(this).val(ui.item.label);
             $('.CardID:last').val(ui.item.IDCard);
             $('.TechnicianType').val(ui.item.TechnicianType);
@@ -346,12 +334,6 @@ function pad(str, max) {
     return str.length < max ? pad("0" + str, max) : str;
 }
 
-function SetRowCal5() {
-    $('.RowCal5 td').click(function () {
-        row_index = $(this).parent().index();
-        col_index = $(this).index();
-    });
-}
 function GetManpowerHour() {
     var TechnicianID = $('.TechnicianID').eq(row_index).val();
     var ManDate = $('.ManDate').eq(row_index).val();
@@ -360,6 +342,7 @@ function GetManpowerHour() {
     var workingFrom = $('.WorkingFrom').eq(row_index).val();
     var workingTo = $('.WorkingTo').eq(row_index).val();
 
+    alert(ManDate);
     if (ManDate != '')
     {
         var days = [
