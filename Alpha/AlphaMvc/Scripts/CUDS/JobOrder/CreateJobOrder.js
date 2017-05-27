@@ -249,8 +249,13 @@ var col_index = 0;
 //    }
 //}
 $(function () {
-    $('.ManDate').datepicker({
+    $('.ManDate').eq(row_index).datepicker({
         dateFormat: 'dd/mm/yy'
+    });
+
+    $('.RowCal5 td:first').click(function () {
+        row_index = $(this).parent().index();
+        col_index = $(this).index();
     });
 
     $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
@@ -261,11 +266,6 @@ $(function () {
     $('#tabReceipt').dynoTable5();
     $('#tabIncome').dynoTable6();
     $('#tabCost').dynoTable7();
-
-    $('.RowCal5 td').click(function () {
-        row_index = $(this).parent().index();
-        col_index = $(this).index();
-    });
 });
 
 function BrowseCustomer(val) {
@@ -342,7 +342,6 @@ function GetManpowerHour() {
     var workingFrom = $('.WorkingFrom').eq(row_index).val();
     var workingTo = $('.WorkingTo').eq(row_index).val();
 
-    alert(ManDate);
     if (ManDate != '')
     {
         var days = [
@@ -362,10 +361,8 @@ function GetManpowerHour() {
         var month = dateParts[1];
         var day = dateParts[0];
 
-        var d = new Date();
-        d.setYear = year;
-        d.setMonth = month;
-        d.setDate = day;
+        var d = new Date(year,month-1,day);
+
         x = d.getDay();
         $('.ManDay').eq(row_index).val(days[x]);
     }
@@ -378,15 +375,13 @@ function GetManpowerHour() {
         var toMinute;
         if (workingTo != '')
         {
-            alert("workingTo");
             toHours = workingTo.split(':')[0]
             toMinute = workingTo.split(':')[1]
         }
         else {
             toHours = 0;
             toMinute = 0;
-        }
-        
+        }      
 
         var wfminute = (fromHours * 60) + parseInt(fromMinute);
         var wtminute = (toHours * 60) + parseInt(toMinute);
@@ -551,15 +546,7 @@ function CreateData() {
             if ($(this).find('.FName').val() != '')
             {
                 var workingFrom = $(this).find('.WorkingFrom').val();
-                //var fromHours = workingFrom.split(':')[0]
-                //var fromMinute = workingFrom.split(':')[1]
-                //var fromMinute = fromMinute.substring(0, 2);
-
                 var workingTo = $(this).find('.WorkingTo').val();
-                //var toHours = workingTo.split(':')[0]
-                //var toMinute = workingTo.split(':')[1]
-                //var toMinute = toMinute.substring(0, 2);
-
                 var mDate = ChangeformatDate($(this).find(".ManDate").val());
 
                 dataObject.JobID = ID;
@@ -780,14 +767,27 @@ function AddRowExpense() {
         }
     });
 }
-
-function AddrowManpower() {
+function SetRowIndex()
+{
     $('.RowCal5 td').click(function () {
         row_index = $(this).parent().index();
         col_index = $(this).index();
     });
+}
 
-    $(".ManDate").removeClass('hasDatepicker').datepicker();  
+function AddrowManpower() {     
+    
+    var i = 0;
+    $('.ManDate').each(function () {
+        $(this).attr("id", 'date' + i).datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+        i++;
+    });
+    //$(".ManDate").removeClass('hasDatePicker').datepicker({
+    //    dateFormat: 'dd/mm/yy'
+    //});
+
     $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
