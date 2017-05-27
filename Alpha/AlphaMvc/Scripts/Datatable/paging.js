@@ -1,6 +1,6 @@
 (function($) {
     $(function() {
-        $.widget(".paging", {
+        $.widget("zpd.paging", {
             options: {
                 limit: 5,
                 rowDisplayStyle: 'block',
