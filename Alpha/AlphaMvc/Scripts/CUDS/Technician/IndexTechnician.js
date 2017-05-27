@@ -60,7 +60,7 @@ $(document).ready(function () {
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
-                html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
+                //html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].TechnicianNo + '</td>';
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].HRCode + '</td>';
                 html += '<td class="nopointer nopointer">' + data.Table[i].FirstName + '</td>';
@@ -68,7 +68,7 @@ $(document).ready(function () {
                 html += '<td class="nopointer">' + data.Table[i].IDCard + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Position + '</td>';
                 html += '<td class="nopointer">';
-                html += '<a href="/Technician/EditTechnician?id=' + data.Table[i].ID + '"  id="edit' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgTechCreate" /></a>';
+                html += '<a href="/Technician/EditTechnician?id=' + data.Table[i].TechnicianNo + '"  id="edit' + data.Table[i].TechnicianNo + '">' + '<img src="/Images/view.png" class="imgTechCreate" /></a>';
                 html += '</td>';
                 html += '</tr>';
             }
