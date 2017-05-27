@@ -93,7 +93,6 @@ function GetRemain(val) {
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
-               //alert(remain)
                remain = data.Table[0].Amount;
            },
            error: function (msg) {
@@ -124,3 +123,5 @@ function RowDelete(id) {
 
         });
 }
+
+
