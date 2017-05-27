@@ -700,8 +700,8 @@ function CalSumExpense() {
         var amount = qty * price;
 
         $(this).find('.Amount1').val(amount).number(true, 2);
-        $(this).find('.Price').val(price).number(true, 2);
-        $(this).find('.Quantity').val(qty).number(true, 2);
+        //$(this).find('.Price').val(price).number(true, 2);
+        //$(this).find('.Quantity').val(qty).number(true, 2);
     });
     for (var i = 0; i < $(".RowCal1").length; i++) {
         totalExpense = totalExpense + parseFloat($('.Amount1:eq(' + i + ')').val());
