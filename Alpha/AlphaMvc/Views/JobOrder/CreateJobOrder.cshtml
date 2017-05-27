@@ -157,7 +157,7 @@
                     <textarea name="field5" id="txtAddress" class="field-long field-textarea" placeholder="" disabled></textarea>
                 </li>
                 <li>
-                    <label class="label-2">JobReference</label>
+                    <label class="label-2">Job Reference</label>
                 </li>
                <li>
                    <input type="text" id="txtJobReference" name="field1" class="field-divided" placeholder="" disabled />
@@ -184,7 +184,7 @@
                             <div id="container">
                                 <div id="parentHorizontalTab">
                                     <ul class="resp-tabs-list hor_1">
-                                        <li>Expense</li>
+                                        <li>Income / Expense</li>
                                         <li>ManPower</li>
                                         <li>Borrow</li>
                                         <li>Sale Order</li>
@@ -254,10 +254,10 @@
                                                                     <input type="text" id="txtUnitWeight" class="UnitWeight text-size80 textright">
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtQty" class="Quantity Number text-size80 textright" placeholder="0" onchange="CalSum()" />
+                                                                    <input type="text" id="txtQty" class="Quantity Number text-size80 textright" placeholder="0" onblur="addCommas()" onchange="CalSum()" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice" class="Price Number text-size130 textright" placeholder="0" onchange="CalSum()" />
+                                                                    <input type="text" id="txtUnitPrice" class="Price Number text-size130 textright" placeholder="0" onblur="addCommas()" onchange="CalSum()" />
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtAmount" disabled class="Amount Number text-size165 txtdisablerow">
@@ -287,10 +287,10 @@
                                                                     <input type="text" id="txtUnitWeight" class="UnitWeight text-size80 textright" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtQty" class="Quantity Number text-size80 textright" onchange="CalSum()" />
+                                                                    <input type="text" id="txtQty" class="Quantity Number text-size80 textright" onblur="addCommas()" onchange="CalSum()" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice" class="Price Number text-size130 textright" onchange="CalSum()" />
+                                                                    <input type="text" id="txtUnitPrice" class="Price Number text-size130 textright" onblur="addCommas()" onchange="CalSum()" />
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtAmount" disabled class="Amount Number text-size165 txtdisablerow">

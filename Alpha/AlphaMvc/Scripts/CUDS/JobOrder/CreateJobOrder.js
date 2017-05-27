@@ -297,7 +297,6 @@ function BrowseCustomer(val) {
     //               alert(msg)
     //           }
     //       });
-    alert(val);
     var dataObject = { BDCID: val}
     console.log(dataObject);
     $.ajax(
@@ -435,7 +434,6 @@ function GetManpowerHour() {
 }
 function CalTotalHour() {
     var workingFrom = $('.WorkingFrom').eq(row_index).val();
-    alert(workingFrom);
     var fromHours = workingFrom.split(':')[0]
     var fromMinute = workingFrom.split(':')[1]
 
@@ -668,10 +666,13 @@ function CalSum() {
         var qty = $(this).find(".Quantity").val();
         var price = $(this).find(".Price").val();
         var amount = qty * price;
-        
+
         $(this).find('.Amount').val(amount).number(true, 2);
-        $(this).find('.Price').val(price).number(true, 0);
-        $(this).find('.Quantity').val(qty).number(true, 0);
+        $(this).find('.Price').val(price);
+        $(this).find('.Quantity').val(qty);
+        //$(this).find('.Amount').val(amount).number(true, 2);
+        //$(this).find('.Price').val(price).number(true, 0);
+        //$(this).find('.Quantity').val(qty).number(true, 0);;
     });
     for (var i = 0; i < $(".RowCal").length; i++) {
         total = total + parseFloat($('.Amount:eq(' + i + ')').val());
@@ -683,6 +684,11 @@ function CalSum() {
     $('#txtNoCompound').val(SubTotal).number(true, 2);
     return SubTotal;
 }
+
+function addCommas() {
+    
+}
+
 function CalSumExpense() {
     var totalExpense = 0;
     var SubTotal = 0;
@@ -784,9 +790,6 @@ function AddrowManpower() {
             });
         i++;
     });
-    //$(".ManDate").removeClass('hasDatePicker').datepicker({
-    //    dateFormat: 'dd/mm/yy'
-    //});
 
     $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
