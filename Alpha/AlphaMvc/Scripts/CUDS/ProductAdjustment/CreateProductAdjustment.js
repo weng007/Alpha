@@ -60,13 +60,13 @@ function BrowseProducts() {
               var html = '';
               for (var i = 0; i < data.Table.length; i++) {
                   html += '<tr>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].RowNum + '</td>';
                   html += '<td data-dismiss="modal" Class="hidecolumn">' + data.Table[i].ID + '</td>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].SerialNo + '</td>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].Brand + '</td>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].Model + '</td>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].Size + '</td>';
-                  html += '<td data-dismiss="modal">' + GetRemain(data.Table[i].ID) + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].SerialNo + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Brand + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Model + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Size + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + GetRemain(data.Table[i].ID) + '</td>';
                   //html += '<td data-dismiss="modal class="hideANDseek">' + data.Table[i].Detail + '</td>';
                   html += '</tr>';
               }

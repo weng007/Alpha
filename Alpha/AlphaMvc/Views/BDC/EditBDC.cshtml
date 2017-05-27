@@ -20,30 +20,33 @@
 <div class="modal fade" id="quotationDialog" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content">
+        <div class="modal-content-Quo">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Quotation</h4>
             </div>
             <div class="modal-body">
                 <div class="table-overflow">
-                    <table class="barattach-4">
+                    @*<table class="barattach-4">
                         <tr>
                             <td>
                                 <div class="topicText-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
                             </td>
                         </tr>
-                    </table>
+                    </table>*@
                     @*<table id="tblQuotation" class="table table-striped table-hover table-responsive">*@
                     <table id="tblQuotation" class="table-striped table-hover table-responsive">
                         <thead class="bgthead bgfont-12">
                             <tr>
+                                <th class="bodypadding-5" colspan="6"><div class="topicText-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div></th>
+                            </tr>
+                            <tr>
                                 <th class="bodypadding-10">No.</th>
                                 <th class="bodypadding-10">Quote Id</th>
                                 <th class="bodypadding-10">Potential Customer</th>
-                                <th class="bodypadding-10">Amount</th>
-                                <th class="bodypadding-10">Revision</th>
-                                <th class="bodypadding-10">Owner</th>
+                                <th class="bodypadding-10 hideANDseek">Amount</th>
+                                <th class="bodypadding-10 hideANDseek">Revision</th>
+                                <th class="bodypadding-10 hideANDseek">Owner</th>
                             </tr>
                         </thead>
                         <tbody id="quotationBody" class="bgfont-12"></tbody>
