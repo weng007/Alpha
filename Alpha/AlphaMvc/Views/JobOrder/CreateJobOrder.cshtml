@@ -558,7 +558,7 @@
                                                                     <input id="txtTechnicianType" type="text" value="" class="TechnicianType text-size120 txtdisablerow" disabled />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtManDate" class="ManDate text-size100" onchange="GetManpowerHour()" />
+                                                                    <input type="text" id="txtManDate" class="ManDate text-size100 " onchange="GetManpowerHour()" />
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtManDay" class="ManDay select-size50-height23 txtdisablerow" disabled/>
@@ -606,7 +606,7 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <button id="add-row2" class="btn btn-primary" onblur="AddrowManpower()">Add Row</button><br /><br />
+                                                <button id="add-row2" class="btn btn-primary" onblur="SetRowIndex()" onmouseout="AddrowManpower()">Add Row</button><br /><br />
                                                 <table>
                                                     <tr>
                                                         <td>
