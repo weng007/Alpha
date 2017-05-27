@@ -483,7 +483,7 @@
                                                             <input id="txtTechnicianType" type="text" value="" class="TechnicianType text-size140 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="date" id="txtManDate" class="ManDate text-size110" />
+                                                            <input type="text" id="txtManDate" class="ManDate text-size110" onchange="GetManpowerHour()"/>
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtManDay" class="ManDay select-size50-height23 txtdisablerow" disabled />
@@ -557,7 +557,7 @@
                                                             <input id="txtTechnicianType" type="text" value="" class="TechnicianType text-size120 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="date" id="txtManDate"  class="ManDate text-size110" onblur="GetManpowerHour()" />
+                                                            <input type="text" id="txtManDate"  class="ManDate text-size110" onchange="GetManpowerHour()" />
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtManDay" class="ManDay select-size50-height23 txtdisablerow" disabled />
@@ -605,7 +605,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <button id="add-row2" class="btn btn-primary" onblur="AddrowManpower()">Add Row</button><br /><br />
+                                        <button id="add-row2" class="btn btn-primary" onblur="SetRowIndex()" onmouseout="AddrowManpower()">Add Row</button><br /><br />
                                         <table>
                                             <tr>
                                                 <td>
@@ -948,7 +948,7 @@
         var Isview = val[2];
 
         ControlEnable(Isview);
-        SetRowCal5();
+        //SetRowCal5();
         GetContact(@Request.Params["id"]);
         GetData(@Request.Params["id"]);
         GetJobOrderBorrow(@Request.Params["id"]); 
