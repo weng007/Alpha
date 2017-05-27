@@ -5708,6 +5708,8 @@ body.modal-open,
   background-clip: padding-box;
   /*bow*/
   height: 470px;
+  width: 700px;
+  margin-left: -60px;
 }
 
 .modal-backdrop {
@@ -5761,7 +5763,7 @@ body.modal-open,
     overflow-x: auto;
     overflow-y: auto;
 }
-/*====== tblQuotation ======*/
+/*============================ tblQuotation =========================*/
 /*collum1(No)*/
 #tblQuotation tr td:nth-child(1){
     width: 5%;
@@ -5771,7 +5773,7 @@ body.modal-open,
 /*collum2(Quote Id)*/
 #tblQuotation tr td:nth-child(2){
     /*width:30%;*/
-    width: 25%;
+    width: 45%;
     padding: 5px;
 }
 /*collum3(Potential Customer)*/
@@ -5781,13 +5783,13 @@ body.modal-open,
 }
 /*collum4(Amount)*/
 #tblQuotation tr td:nth-child(4){
-    width: 10%;
+    width: 5%;
     padding: 5px;
     text-align:right;
 }
 /*collum5(Revision)*/
 #tblQuotation tr td:nth-child(5){
-    width: 10%;
+    width: 5%;
     padding: 5px;
     text-align:center;
 }
@@ -5797,7 +5799,7 @@ body.modal-open,
     padding: 5px;
 }
 
-/*====== tblBorrow ======*/
+/*======================== tblBorrow =============================*/
 /*collum1(No)*/
 #tblBorrow tr td:nth-child(1){
     width: 10%;
@@ -5838,6 +5840,50 @@ body.modal-open,
 /*collum6(รุ่น)*/
 #tblBorrow tr td:nth-child(7){
     width: 10%;
+    padding: 5px;
+    text-align:center;
+}
+/*======================== tblProduct =============================*/
+/*collum1(No)*/
+#tblProduct tr td:nth-child(1){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*ID (visible)*/
+#tblProduct tr td:nth-child(2){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum2(SerailNo)*/
+#tblProduct tr td:nth-child(3){
+    /*width:30%;*/
+    width: 10%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum4(ยี่ห้อ)*/
+#tblProduct tr td:nth-child(4){
+    width: 20%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum5(รุ่น)*/
+#tblProduct tr td:nth-child(5){
+    width: 50%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum6(ขนาด)*/
+#tblProduct tr td:nth-child(7){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum6(คงเหลือ)*/
+#tblProduct tr td:nth-child(8){
+    width: 5%;
     padding: 5px;
     text-align:center;
 }
@@ -6433,6 +6479,21 @@ body.modal-open,
   @-ms-viewport {
     width: 320px;
   }
+  .modal-content-Quo {
+      position: relative;
+      background-color: #fbfbf0;
+      border: 1px solid #999999;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      outline: none;
+      -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+              box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+      background-clip: padding-box;
+      /*bow*/
+      height: 470px;
+      width: 400px;
+      margin-left: 10px;
+    }
 }
 
 .hidden {
@@ -6595,6 +6656,22 @@ td.visible-md {
   td.visible-md.visible-xs {
     display: table-cell !important;
   }
+  .modal-content-Quo {
+      position: relative;
+      background-color: #fbfbf0;
+      border: 1px solid #999999;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      outline: none;
+      -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+              box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+      background-clip: padding-box;
+      /*bow*/
+      height: 470px;
+      width: 400px;
+      margin-left: 10px;
+      margin-top: -130px;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

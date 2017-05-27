@@ -44,9 +44,9 @@ function BrowseQuotation() {
                   html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
                   html += '<td data-dismiss="modal">' + data.Table[i].QuoteId + '</td>';
                   html += '<td data-dismiss="modal">' + data.Table[i].PotentialCustomer + '</td>';
-                  html += '<td data-dismiss="modal">' + new Intl.NumberFormat('en-IN').format(data.Table[i].TotalAmount) + '</td>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].RevisionNumber + '</td>';
-                  html += '<td data-dismiss="modal">' + data.Table[i].Owner + '</td>';
+                  html += '<td data-dismiss="modal" class="hideANDseek">' + new Intl.NumberFormat('en-IN').format(data.Table[i].TotalAmount) + '</td>';
+                  html += '<td data-dismiss="modal" class="hideANDseek">' + data.Table[i].RevisionNumber + '</td>';
+                  html += '<td data-dismiss="modal" class="hideANDseek">' + data.Table[i].Owner + '</td>';
                   html += '</tr>';
               }
               document.getElementById("quotationBody").innerHTML = html;

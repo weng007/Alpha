@@ -942,6 +942,11 @@ select{
 .bodypadding-10{
     padding:10px;
 }
+.bodypadding-5 {
+    padding: 5px;
+    text-align: left;
+    background-color: #f39985;
+}
  @media screen and (max-width:680px) {
 
      .imglogon {
