@@ -204,7 +204,6 @@ namespace AlphaApi.DataAccessLayer
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand("SP_Product_Sel", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     conObj.Open();

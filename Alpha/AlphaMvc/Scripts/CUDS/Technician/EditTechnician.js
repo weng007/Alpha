@@ -9,9 +9,9 @@ $(document).ready(function () {
         success: function (data) {
             data = JSON.parse(data);
             $.each(data.Table, function (i) {
-                $('#cmbTechnicianType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                $('#txtTechnicianType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
-            $('#cmbTechnicianType').find('option:first-child').attr('selected', true);
+            $('#txtTechnicianType').find('option:first-child').attr('selected', true);
                 
         },
         failure: function () {
@@ -67,7 +67,7 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
-           $("#txtTechnicianID").val(data.Table[0].TechnicianNo), $("#txtHRCode").val(data.Table[0].HRCode), $("#txtFirstName").val(data.Table[0].FirstName), $("#txtLastName").val(data.Table[0].LastName), $("#cmbTechnicianType").val(data.Table[0].TechnicianType),
+           $("#txtTechnicianID").val(data.Table[0].TechnicianNo), $("#txtHRCode").val(data.Table[0].HRCode), $("#txtFirstName").val(data.Table[0].FirstName), $("#txtLastName").val(data.Table[0].LastName), $("#txtTechnicianType").val(data.Table[0].TechnicianTypeName),
             $("#txtIDcard").val(data.Table[0].IDCard), $("#txtPosition").val(data.Table[0].Position), $("#cmbGrade").val(data.Table[0].Grade);
        },
        error: function (msg) {

@@ -37,12 +37,15 @@
                     <label class="label-2" style="margin-right: 19%;">ประเภทพนักงาน</label>&nbsp;<label class="label-2" style="margin-right: 10%;">เลขบัตรประชาชน</label>
                 </li>
                 <li>
-                    <select name="field4" id="cmbTechnicianType" class="field-select-medium" disabled></select>
+                    <input type="text" id="txtTechnicianType" name="field2" class="field-select-medium" placeholder="Position" disabled />
+                    @*<select name="field4" id="cmbTechnicianType" class="field-select-medium" disabled></select>*@
                     &nbsp;<input type="text" id="txtIDcard" name="field2" class="field-divided" placeholder="เลขบัตรประชาชน" disabled />
                 </li>
-                <li><label class="label-big-2">Position</label>&nbsp;<label class="label-small">เกรด</label></li>
+                <li><label class="label-big-2">Position</label>
+                &nbsp;<label class="label-small"></label></li>
                 <li>
-                    <input type="text" id="txtPosition" name="field2" class="field-divided" placeholder="Position" disabled />&nbsp;<select name="field4" id="cmbGrade" class="field-select-small-2" disabled></select>
+                    <input type="text" id="txtPosition" name="field2" class="field-divided" placeholder="Position" disabled />
+                    @*&nbsp;<select name="field4" id="cmbGrade" class="field-select-small-2" disabled></select>*@
                 </li>
                 <br />
             </ul>
@@ -65,6 +68,7 @@
                                                     <tr>
                                                         <th>No.</th>
                                                         <th>บริษัท</th>
+                                                        <th>CerNo</th>
                                                         <th>ประเภทบัตร</th>
                                                         <th>วันออกบัตร</th>
                                                         <th>วันหมดอายุ</th>

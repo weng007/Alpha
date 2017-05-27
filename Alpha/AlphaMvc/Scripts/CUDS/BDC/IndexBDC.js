@@ -67,12 +67,12 @@ function GetData(val)
             data = JSON.parse(data);
             var html = '<tbody>';
             for (var i = 0; i < data.Table.length; i++) {
-
                 html += '<tr>';
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Docver + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].QuotationNo + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Customer + '</td>';
                 html += '<td class="gvPrice text-right nopointer">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Price) + '</td>';
                 html += '<td class="gvCost text-right nopointer">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Cost) + '</td>';
                 price = data.Table[i].Price;
