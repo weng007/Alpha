@@ -49,7 +49,7 @@ function GetCalendarlist(val) {
         success: function (data) {
             data = JSON.parse(data);
             var html = '';
-            alert(data.Table.length);
+            //alert(data.Table.length);
             for (var i = 0; i < data.Table.length; i++) {
                 //$(".rowdisable").each(function () {
                 html += '<tr>';

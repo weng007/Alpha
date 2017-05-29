@@ -5,34 +5,7 @@
 @*<script src="@Url.Content("~/Scripts/EditableGrid/paging.js")" type="text/javascript"></script>*@
 <script src="@Url.Content("~/Scripts/CUDS/ProductAdjustment/IndexProductAdjustment.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-<style>
-    .paging-nav {
-        text-align: right;
-        padding-top: 2px;
-    }
 
-        .paging-nav a {
-            margin: auto 1px;
-            text-decoration: none;
-            display: inline-block;
-            padding: 1px 7px;
-            background: #91b9e6;
-            color: white;
-            border-radius: 3px;
-        }
-
-        .paging-nav .selected-page {
-            background: #187ed5;
-            font-weight: bold;
-        }
-
-    .paging-nav,
-    #tableData {
-        /*width: 400px;*/
-        margin: 0 auto;
-        font-family: Arial, sans-serif;
-    }
-</style>
 <table class="barattach-2">
     <tr>
         <td>
@@ -43,7 +16,7 @@
     </tr>
 </table>
 <div class="table-responsive">
-    <table id="tblProductAdjust" class="table table-striped scrolling" onended="SetPaging()">
+    <table id="tblProductAdjust" class="table table-striped scrolling">
         <thead class="bgthead">
             <tr>
                 <th class="Rowpointer">No.</th>
