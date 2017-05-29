@@ -544,17 +544,6 @@ function CreateData() {
                 var workingTo = $(this).find('.WorkingTo').val();
                 var mDate = ChangeformatDate($(this).find(".ManDate").val(),1);
 
-
-                alert($(this).find('.TechnicianID').val());
-                alert("mDate" + mDate);
-                alert($(this).find('.ManDay').val());
-                alert("Working Form" + workingFrom);
-                alert("To" + workingTo);
-                alert("Total" + $(this).find(".TotalHours").val());
-                alert("ManNormal" + $(this).find(".ManNormal").val());
-                alert("ManPremium" + $(this).find(".ManPremium").val());
-                alert("ManSpecial" + $(this).find(".ManSpecial").val());
-
                 dataObject.JobID = ID;
                 dataObject.TechnicianID = $(this).find('.TechnicianID').val();
                 dataObject.ManDate = mDate;

@@ -70,6 +70,12 @@ function GetCalendarlist(val) {
             }
             document.getElementById("result").innerHTML = html;
             CheckAuthorization();
+            $('#tblcalenJob').paging({
+                limit: 16,
+                rowDisplayStyle: 'block',
+                activePage: 0,
+                rows: []
+            });
         },
         error: function (msg) {
             alert(msg)

@@ -25,12 +25,12 @@ $(document).ready(function () {
     //-------------------------filter------------------------
     $("#searchInput").keyup(function () {
         //hide all the rows
-        $("#Card").find("tr").hide();
+        $("#ExpiredCard").find("tr").hide();
 
         //split the current value of searchInput
         var data = this.value.split(" ");
         //create a jquery object of the rows
-        var jo = $("#Card").find("tr");
+        var jo = $("#ExpiredCard").find("tr");
 
         //Recusively filter the jquery object to get results.
         $.each(data, function (i, v) {
@@ -46,48 +46,48 @@ $(document).ready(function () {
         $(this).unbind('focus');
     }).css({ "color": "#C0C0C0" });
     //-------------------------filter------------------------
-    GetDataCard();
-});
-
-function GetDataCard() {
-    //var dataObject = { ID: val }
+    //GetDataCard();
     $.ajax(
-    {
-        url: 'http://localhost:13131/api/TechnicianExpiredCard',
-        type: 'GET',
-        //async: false,
-        //data: dataObject,
-        datatype: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-            console.log(data);
-            var html = '<tbody>';
-            for (var i = 0; i < data.Table.length; i++) {
-                html += '<tr>';
-                html += '<td>' + data.Table[i].RowNum + '</td>';
-                html += '<td  class="hidecolumn">' + data.Table[i].TechnicianID + '</td>';
-                html += '<td>' + data.Table[i].FullName + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].PositionName + '</td>';
-                html += '<td>' + data.Table[i].EmpGroup + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].CerNo + '</td>';
-                var ExpiryDate = new Date(data.Table[i].ExpiryDate);
-                html += '<td>' + ExpiryDate.getDate() + '/' + (ExpiryDate.getMonth() + 1) + '/' + ExpiryDate.getFullYear() + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].CardType + '</td>';
-                html += '<td>' + data.Table[i].CompanyName + '</td>';
-                html += '</tr>';
-            }
-            html += '</tbody>';
-            document.getElementById("ExpiredCard").innerHTML = html;
-            alert("testExprie");
-            $('#tblExpiredTechnician').paging({
-                limit: 30,
-                rowDisplayStyle: 'block',
-                activePage: 0,
-                rows: []
-            });
+{
+    url: 'http://localhost:13131/api/TechnicianExpiredCard',
+    type: 'GET',
+    async: false,
+    //data: dataObject,
+    datatype: 'json',
+    success: function (data) {
+        data = JSON.parse(data);
+        console.log(data);
+        var html = '<tbody>';
+        for (var i = 0; i < data.Table.length; i++) {
+            html += '<tr>';
+            html += '<td>' + data.Table[i].RowNum + '</td>';
+            html += '<td  class="hidecolumn">' + data.Table[i].TechnicianID + '</td>';
+            html += '<td>' + data.Table[i].FullName + '</td>';
+            html += '<td class="hideANDseek">' + data.Table[i].PositionName + '</td>';
+            html += '<td>' + data.Table[i].EmpGroup + '</td>';
+            html += '<td class="hideANDseek">' + data.Table[i].CerNo + '</td>';
+            var ExpiryDate = new Date(data.Table[i].ExpiryDate);
+            html += '<td>' + ExpiryDate.getDate() + '/' + (ExpiryDate.getMonth() + 1) + '/' + ExpiryDate.getFullYear() + '</td>';
+            html += '<td class="hideANDseek">' + data.Table[i].CardType + '</td>';
+            html += '<td>' + data.Table[i].CompanyName + '</td>';
+            html += '</tr>';
+        }
+        html += '</tbody>';
+        document.getElementById("ExpiredCard").innerHTML = html;
+        $('#tblExpiredTechnician').paging({
+            limit: 16,
+            rowDisplayStyle: 'block',
+            activePage: 0,
+            rows: []
+        });
         },
         error: function (msg) {
             alert(msg)
         }
     });
-}
+});
+
+//function GetDataCard() {
+//    //var dataObject = { ID: val }
+
+//}
