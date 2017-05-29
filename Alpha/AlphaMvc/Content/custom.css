@@ -5843,7 +5843,51 @@ body.modal-open,
     padding: 5px;
     text-align:center;
 }
-/*======================== tblProduct =============================*/
+/*======================== tblProduct (Dialog ProductAdjust)=============================*/
+/*collum1(No)*/
+#tblProduct tr td:nth-child(1){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*ID (visible)*/
+#tblProduct tr td:nth-child(2){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum2(SerailNo)*/
+#tblProduct tr td:nth-child(3){
+    /*width:30%;*/
+    width: 10%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum4(ยี่ห้อ)*/
+#tblProduct tr td:nth-child(4){
+    width: 20%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum5(รุ่น)*/
+#tblProduct tr td:nth-child(5){
+    width: 50%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum6(ขนาด)*/
+#tblProduct tr td:nth-child(7){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum6(คงเหลือ)*/
+#tblProduct tr td:nth-child(8){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*======================== tblProduct (Dialog Produc)=============================*/
 /*collum1(No)*/
 #tblProduct tr td:nth-child(1){
     width: 5%;

@@ -59,12 +59,13 @@ $(document).ready(function () {
                 html += '<td class="nopointer">' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].SerialNo + '</td>';
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].MachineNo + '</td>';
-                html += '<td class="hideANDseek nopointer">' + data.Table[i].ProductType + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].Description + '</td>';
+                //html += '<td class="hideANDseek nopointer">' + data.Table[i].ProductType + '</td>';
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].Brand + '</td>';
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].Model + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Size + '</td>';
                 html += '<td class="nopointer">' + GetRemain(data.Table[i].ID) + '</td>';
-                html += '<td class="hideANDseek nopointer">' + data.Table[i].Detail + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].UnitWeightName + '</td>';
                 html += '<td class="nopointer">';
                 html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgProductsUpdate"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'Product'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgProductsDelete"/></a>';

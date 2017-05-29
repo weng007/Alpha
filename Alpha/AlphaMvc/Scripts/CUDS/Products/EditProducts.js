@@ -92,8 +92,8 @@ function GetData(val) {
            var str = data.Table[0].Img;
            var res = str.replace("../Picture/", "");
 
-           $("#txtSerialNo").val(data.Table[0].SerialNo),$("#txtMachineNo").val(data.Table[0].MachineNo), $("#cmbProductType").val(data.Table[0].ProductType),
-           $("#txtBrand").val(data.Table[0].Brand),$("#txtSize").val(data.Table[0].Size),$("#txtModel").val(data.Table[0].Model),$("#txtLifetime").val(data.Table[0].Lifetime),
+           $("#txtSerialNo").val(data.Table[0].SerialNo), $("#txtMachineNo").val(data.Table[0].MachineNo), $("#cmbProductType").val(data.Table[0].ProductType),
+           $("#txtDiscription").val(data.Table[0].Description), $("#txtBrand").val(data.Table[0].Brand), $("#txtSize").val(data.Table[0].Size), $("#txtModel").val(data.Table[0].Model), $("#txtLifetime").val(data.Table[0].Lifetime),
            $("#dtReceiveDate").val(ReceiveDate), $("#cmbUnitWeight").val(data.Table[0].UnitWeight), $("#txtBalance").val(data.Table[0].Balance),
            $("#txtLost").val(data.Table[0].Lost), $("#txtRepair").val(data.Table[0].Repair),
            $("#txtBreak").val(data.Table[0].Break), $("#txtRemark").val(data.Table[0].Remark), $('#hidFilePath').val(data.Table[0].Img);
@@ -168,7 +168,9 @@ function Update(val) {
     }
     var ReceiveDate = ChangeformatDate($("#dtReceiveDate").val(), 1);
 
-    var dataObject = {ID: val, SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(), Brand: $("#txtBrand").val(),
+    var dataObject = {
+        ID: val, SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(),
+        Description: $("#txtDiscription").val(), Brand: $("#txtBrand").val(),
         Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: ReceiveDate,
         UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(),
         Remain: $("#txtRemain").val(), Remark: $("#txtRemark").val(), EditBy: localStorage['UserID'],

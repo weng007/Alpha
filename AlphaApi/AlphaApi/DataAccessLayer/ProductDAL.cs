@@ -27,6 +27,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@SerialNo", Product.SerialNo);
                     cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo);
                     cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
+                    cmd.Parameters.AddWithValue("@Description", Product.Description);
                     cmd.Parameters.AddWithValue("@Brand", Product.Brand);
                     cmd.Parameters.AddWithValue("@Size", Product.Size != null ? Product.Size : "");
                     cmd.Parameters.AddWithValue("@Model", Product.Model != null? Product.Model : "");
@@ -69,6 +70,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@SerialNo", Product.SerialNo);
                     cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo);
                     cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
+                    cmd.Parameters.AddWithValue("@Description", Product.Description);
                     cmd.Parameters.AddWithValue("@Brand", Product.Brand);
                     cmd.Parameters.AddWithValue("@Size", Product.Size != null ? Product.Size : "");
                     cmd.Parameters.AddWithValue("@Model", Product.Model != null ? Product.Model : "");
