@@ -44,14 +44,14 @@
     </tr>
 </table>
 @*//===================================================================CSS w3school*@
-    <table class="table table-striped">
-        <thead class="bgthead">
-            <tr>
-                <th class="Rowpointer">No.</th>
-                <th class="hidecolumn Rowpointer">ID</th>
-                <th class="Rowpointer">รายละเอียด</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody id="result"></tbody>
-    </table>
+    <table id="tblIncomeMaster" class="table table-striped scrolling" onended="SetPaging()">
+    <thead class="bgthead">
+        <tr>
+            <th class="Rowpointer">No.</th>
+            <th class="hidecolumn Rowpointer">ID</th>
+            <th class="Rowpointer">รายละเอียด</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="result"></tbody>
+</table>

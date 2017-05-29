@@ -78,6 +78,13 @@ function GetDataCard() {
             }
             html += '</tbody>';
             document.getElementById("ExpiredCard").innerHTML = html;
+            alert("testExprie");
+            $('#tblExpiredTechnician').paging({
+                limit: 30,
+                rowDisplayStyle: 'block',
+                activePage: 0,
+                rows: []
+            });
         },
         error: function (msg) {
             alert(msg)

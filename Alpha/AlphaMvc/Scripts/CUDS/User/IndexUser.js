@@ -58,6 +58,12 @@ $(document).ready(function () {
             }
             document.getElementById("result").innerHTML = html;
             CheckAuthorization();
+            $('#tblUser').paging({
+                limit: 30,
+                rowDisplayStyle: 'block',
+                activePage: 0,
+                rows: []
+            });
         },
         error: function (msg) {
             //alert(msg)

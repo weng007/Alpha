@@ -81,6 +81,12 @@ function GetJobOrder(val)
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
             CheckAuthorization();
+            $('#tblBDCJOb').paging({
+                limit: 30,
+                rowDisplayStyle: 'block',
+                activePage: 0,
+                rows: []
+            });
         },
         error: function (result) {
             alert(result)
