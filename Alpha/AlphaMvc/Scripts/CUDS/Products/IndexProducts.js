@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     $('.imgadd').attr("style", "margin-left: 72%; margin-top: -2px;");
     //------------------------- Sorting ------------------------
     $('th').click(function () {
@@ -74,6 +75,13 @@ $(document).ready(function () {
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
             CheckAuthorization();
+            $('#tblProduct').paging({
+            limit: 30,
+            rowDisplayStyle: 'block',
+            activePage: 0,
+            rows: []
+            });
+
         },
         error: function (result) {
             alert(result)
