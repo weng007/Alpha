@@ -75,6 +75,12 @@ $(document).ready(function () {
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
             CheckAuthorization();
+            $('#tblTechnician').paging({
+                limit: 30,
+                rowDisplayStyle: 'block',
+                activePage: 0,
+                rows: []
+            });
         },
         error: function (result) {
             alert(result)
