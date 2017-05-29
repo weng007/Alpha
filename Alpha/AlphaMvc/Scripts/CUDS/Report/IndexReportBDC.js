@@ -94,6 +94,12 @@ function GetData(val)
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
             CheckAuthorization();
+            $('#tblRptBDC').paging({
+                limit: 30,
+                rowDisplayStyle: 'block',
+                activePage: 0,
+                rows: []
+            });
         },
         error: function (msg) {
             alert(msg)

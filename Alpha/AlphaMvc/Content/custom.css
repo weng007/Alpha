@@ -5973,7 +5973,8 @@ body.modal-open,
       text-decoration: none;
       display: inline-block;
       padding: 1px 7px;
-      background: #91b9e6;
+      background: #db6144;
+      /*background: #91b9e6;*/
       color: white;
       border-radius: 3px;
     }

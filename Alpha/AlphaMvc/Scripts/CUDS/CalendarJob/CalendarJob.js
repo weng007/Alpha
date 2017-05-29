@@ -49,7 +49,7 @@ function GetCalendarlist(val) {
         success: function (data) {
             data = JSON.parse(data);
             var html = '';
-            alert(data.Table.length);
+            //alert(data.Table.length);
             for (var i = 0; i < data.Table.length; i++) {
                 //$(".rowdisable").each(function () {
                 html += '<tr>';
@@ -70,6 +70,12 @@ function GetCalendarlist(val) {
             }
             document.getElementById("result").innerHTML = html;
             CheckAuthorization();
+            $('#tblcalenJob').paging({
+                limit: 16,
+                rowDisplayStyle: 'block',
+                activePage: 0,
+                rows: []
+            });
         },
         error: function (msg) {
             alert(msg)
