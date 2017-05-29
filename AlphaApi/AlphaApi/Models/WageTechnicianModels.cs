@@ -17,7 +17,7 @@ namespace AlphaApi.Models
 
         public int WageTectnicianID { get; set; }
 
-        public int JobID { get; set; }
+        public int ManpowerID { get; set; }
 
         public int TechnicianID { get; set; }
 

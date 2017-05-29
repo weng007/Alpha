@@ -2,7 +2,6 @@
     ViewBag.Title = "IndexWageTeachnician";
 }
 
-<script src="@Url.Content("~/Scripts/EditableGrid/paging.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/CUDS/WageTechnician/IndexWageTechnician.js")" type="text/javascript"></script>
 <table class="barattach-2">
     <tr>
@@ -12,7 +11,7 @@
         </td>
     </tr>
 </table>
-<table id="tblWageTechnician" class="table table-striped scrolling" onended="SetPaging()">
+<table id="tblWageTechnician" class="table table-striped scrolling">
     <thead class="bgthead">
         <tr>
             <th>No.</th>
@@ -21,7 +20,7 @@
             <th class="Rowpointer">FullName</th>
             <th class="hideANDseek Rowpointer">Type</th>
             <th class="Rowpointer">Position</th>
-            <th class="hideANDseek Rowpointer">Grade</th>
+            @*<th class="hideANDseek Rowpointer">Grade</th>*@
             <th></th>
         </tr>
     </thead>

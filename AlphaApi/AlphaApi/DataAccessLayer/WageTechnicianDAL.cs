@@ -23,7 +23,7 @@ namespace AlphaApi.DataAccessLayer
 
                     SqlCommand cmd = new SqlCommand("SP_WageTechnician_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@JobID", wageTechnician.JobID);
+                    cmd.Parameters.AddWithValue("@ManpowerID", wageTechnician.ManpowerID);
                     cmd.Parameters.AddWithValue("@TechnicianID", wageTechnician.TechnicianID);
                     cmd.Parameters.AddWithValue("@Additionnal", wageTechnician.Additionnal != null ? wageTechnician.Additionnal : 0);
                     cmd.Parameters.AddWithValue("@Deduction", wageTechnician.Deduction != null ? wageTechnician.Deduction : 0);
@@ -54,7 +54,7 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_WageTechnician_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", wageTechnician.ID);
-                    cmd.Parameters.AddWithValue("@JobID", wageTechnician.JobID);
+                    cmd.Parameters.AddWithValue("@ManpowerID", wageTechnician.ManpowerID);
                     cmd.Parameters.AddWithValue("@TechnicianID", wageTechnician.TechnicianID);
                     cmd.Parameters.AddWithValue("@Additionnal", wageTechnician.Additionnal);
                     cmd.Parameters.AddWithValue("@Deduction", wageTechnician.Deduction);
