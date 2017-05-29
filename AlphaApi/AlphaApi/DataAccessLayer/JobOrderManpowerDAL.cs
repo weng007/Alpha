@@ -32,6 +32,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@TotalHours", jobOrderManpower.TotalHours);
                     cmd.Parameters.AddWithValue("@ManNormal", jobOrderManpower.ManNormal);
                     cmd.Parameters.AddWithValue("@ManPremium", jobOrderManpower.ManPremium);
+                    cmd.Parameters.AddWithValue("@ManPremium2", jobOrderManpower.ManPremium2);
                     cmd.Parameters.AddWithValue("@ManSpecial", jobOrderManpower.ManSpecial);
                     cmd.Parameters.AddWithValue("@CreateBy", jobOrderManpower.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", jobOrderManpower.EditBy);
@@ -72,6 +73,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@TotalHours", jobOrderManpower.TotalHours);
                     cmd.Parameters.AddWithValue("@ManNormal", jobOrderManpower.ManNormal);
                     cmd.Parameters.AddWithValue("@ManPremium", jobOrderManpower.ManPremium);
+                    cmd.Parameters.AddWithValue("@ManPremium2", jobOrderManpower.ManPremium2);
                     cmd.Parameters.AddWithValue("@ManSpecial", jobOrderManpower.ManSpecial);
                     cmd.Parameters.AddWithValue("@EditBy", jobOrderManpower.EditBy);
                     conObj.Open();

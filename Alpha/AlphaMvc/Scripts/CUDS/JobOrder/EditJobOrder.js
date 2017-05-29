@@ -633,7 +633,7 @@ function GetData(val) {
                    $(this).find('.CardID').val(data.Table9[i].IDCard);
                    $(this).find('.TechnicianType').val(data.Table9[i].TechnicianTypeName);
                    $(this).find('.ManDate').val(ManDate == '1900-01-01' ? '' : ManDate);
-                   //$(this).find('.ManDay').val(manDay);
+                   $(this).find('.ManDay').val(GetManDay(ManDate));
                    $(this).find('.ManTime').val(data.Table9[i].ManTime);
 
                    //$(this).find('.WorkingFrom').timepicker('setTime', FTime, { 'timeFormat': 'H:i' });
