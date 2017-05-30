@@ -20,7 +20,7 @@ $(document).ready(function () {
             //fileData.append('username', 'Manas');
             alert(fileData);
             $.ajax({
-                url: 'http://localhost:13131/api/Home/UploadFiles',
+                url: 'http://localhost:13131/api/ProductFiles/UploadFiles',
                 type: "POST",
                 contentType: false, // Not to set any content header  
                 processData: false, // Not to process data  
@@ -134,7 +134,6 @@ function CreateData() {
         datatype: 'json',
 
         success: function (data) {
-            alert('Created Successfully');
             window.location.href = "../Products/IndexProducts";
         },
         error: function (msg) {

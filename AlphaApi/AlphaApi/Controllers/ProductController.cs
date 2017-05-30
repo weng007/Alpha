@@ -18,7 +18,7 @@ namespace AlphaApi.Controllers
     public class ProductController : ApiController
     {
         public ProductDAL Productdb = new ProductDAL();
-
+        
         [HttpPost]
         public string Post(ProductModels PD)
         {
