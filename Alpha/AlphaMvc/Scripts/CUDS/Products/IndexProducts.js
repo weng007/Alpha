@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    
     $('.imgadd').attr("style", "margin-left: 72%; margin-top: -2px;");
     //------------------------- Sorting ------------------------
     $('th').click(function () {
@@ -41,9 +40,8 @@ $(document).ready(function () {
         $(this).unbind('focus');
     }).css({ "color": "#C0C0C0" });
     //-------------------------filter------------------------
-
     $.ajax(
-    {
+    {     
         url: 'http://localhost:13131/api/Product',
         type: 'GET',
         datatype: 'json',
@@ -82,7 +80,6 @@ $(document).ready(function () {
             activePage: 0,
             rows: []
             });
-
         },
         error: function (result) {
             alert(result)
@@ -132,5 +129,4 @@ function RowDelete(id) {
 
         });
 }
-
 
