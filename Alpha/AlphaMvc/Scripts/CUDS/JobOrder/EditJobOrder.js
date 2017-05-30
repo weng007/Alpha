@@ -513,7 +513,7 @@ function GetData(val) {
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
              $("#txtAddress").val(data.Table[0].Address), $("#txtJobReference").val(data.Table[0].BDCNo),
              $("#hidBDCID").val(data.Table[0].JobRef), $("#txtRemark").val(data.Table[0].Remark),
-             $("#txtDiscount").val(data.Table[0].Discount).number(true, 2), $("#txtJobSite").val(data.Table[0].JobSite), $("#txtLocation").val(data.Table[0].Location);
+             $("#txtDiscount").val(data.Table[0].Discount), $("#txtJobSite").val(data.Table[0].JobSite), $("#txtLocation").val(data.Table[0].Location);
 
            BrowseCustomer($("#hidBDCID").val());
 
@@ -1055,7 +1055,6 @@ function CalSumExpense() {
     var SubTotal = 0;
     var Profit = 0;
 
-    $('.Number').number(true, 2);
     $(".RowCal1").each(function () {
         var qty = $(this).find(".Quantity").val().replace(',','');
         var price = $(this).find(".Price").val().replace(',', '');
