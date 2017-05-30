@@ -3,6 +3,18 @@ $(document).ready(function () {
         $("#txtUserName").val("")
         $("#txtPassword").val("")
     });
+
+
+    $('#txtUserName').keypress(function (e) {
+        if (e.keyCode == 13) {  // detect the enter key
+            $('#btnLogin').click();
+        }
+    });
+    $('#txtPassword').keypress(function (e) {
+        if (e.keyCode == 13) {  // detect the enter key
+            $('#btnLogin').click();
+        }
+    });
 });
 function UserLogin() {
     var dataObject = { Password: $("#txtUserName").val()+'&'+ $("#txtPassword").val() };
