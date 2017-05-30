@@ -534,10 +534,10 @@ function CreateData() {
             }
         });
     //===================Insert JobOrderManpower
-        alert("TestManpower");
+        //alert("TestManpower");
         var dataObject = {};
         $(".RowCal5").each(function () {
-            alert($(this).find('.FName').val());
+            //alert($(this).find('.FName').val());
             if ($(this).find('.FName').val() != '')
             {
                 var workingFrom = $(this).find('.WorkingFrom').val();
@@ -652,7 +652,7 @@ function CreateData() {
                 });
             }
         });
-        alert('Create is completed');
+        //alert('Create is completed');
         RedirectJobOrderBorrow(ID);
         //window.location.href = "../JobOrder/EditJobOrder?id=" + ID;
 }

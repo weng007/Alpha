@@ -42,7 +42,7 @@
         }
     }
     if (topic == "JobOrder") {
-        alert("Isvalidate");
+        //alert("Isvalidate");
         $(".RowCal5").each(function () {
             var fName = $(this).find('.FName').val();
             var manDate = $(this).find('.ManDate').val();
