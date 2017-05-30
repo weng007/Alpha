@@ -118,7 +118,6 @@ function Update(val) {
         datatype: 'json',
 
         success: function (data) {
-            alert('Update is completed');
         }
         ,
         error: function (msg) {
