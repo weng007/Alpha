@@ -63,34 +63,57 @@ function GetRemain(val) {
 
     return remain
 }
-function BrowseProduct() {
-    $.ajax(
-           {
-               url: 'http://localhost:13131/api/Product',
-               type: 'GET',
-               datatype: 'json',
-               success: function (data) {
-                   data = JSON.parse(data);
-                   var html = '';
-                   for (var i = 0; i < data.Table.length; i++) {
-                       //alert(data.Table[i].CustNo);
-                       html += '<tr>';
-                       html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].RowNum + '</td>';
-                       html += '<td data-dismiss="modal" Class="hidecolumn">' + data.Table[i].ID + '</td>';
-                       html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].SerialNo + '</td>';
-                       html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Brand + '</td>';
-                       html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Model + '</td>';
-                       html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Size + '</td>';
-                       html += '<td data-dismiss="modal" class="bodypadding-10">' + GetRemain(data.Table[i].ID) + '</td>';
-                       html += '</tr>';
-                   }
-                   document.getElementById("productBody").innerHTML = html;
+function BrowseProducts() {
+    //-------------------------filter------------------------
+    $("#searchInput").keyup(function () {
+        //hide all the rows
+        $("#quotationBody").find("tr").hide();
 
-               },
-               error: function (msg) {
-                   alert(msg)
-               }
-           });
+        //split the current value of searchInput
+        var data = this.value.split(" ");
+        //create a jquery object of the rows
+        var jo = $("#quotationBody").find("tr");
+
+        //Recusively filter the jquery object to get results.
+        $.each(data, function (i, v) {
+            jo = jo.filter("*:contains('" + v + "')");
+        });
+        //show the rows that match.
+        jo.show();
+        //Removes the placeholder text
+
+    }).focus(function () {
+        this.value = "";
+        $(this).css({ "color": "black" });
+        $(this).unbind('focus');
+    }).css({ "color": "#C0C0C0" });
+    //-------------------------filter------------------------
+    $.ajax(
+      {
+          url: 'http://localhost:13131/api/Product',
+          type: 'GET',
+          datatype: 'json',
+          success: function (data) {
+              data = JSON.parse(data);
+              var html = '';
+              for (var i = 0; i < data.Table.length; i++) {
+                  html += '<tr>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].RowNum + '</td>';
+                  html += '<td data-dismiss="modal" Class="hidecolumn">' + data.Table[i].ID + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].SerialNo + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Brand + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Model + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Size + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + GetRemain(data.Table[i].ID) + '</td>';
+                  //html += '<td data-dismiss="modal class="hideANDseek">' + data.Table[i].Detail + '</td>';
+                  html += '</tr>';
+              }
+              document.getElementById("quotationBody").innerHTML = html;
+          },
+          error: function (msg) {
+              alert(msg)
+          }
+      });
 }
 function GetDetail()
 {

@@ -9,7 +9,7 @@
 <table class="barattach-2">
     <tr>
         <td>
-            <label class="topicmargin-size70">Products</label>
+            <label class="topicmargin-size70">Stock Adjust</label>
             <a href="/ProductAdjust/CreateProductAdjust"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="ProductsCreate" /></a>
             <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
         </td>
@@ -21,11 +21,16 @@
             <tr>
                 <th class="Rowpointer">No.</th>
                 <th class="hidecolumn">ID</th>
-                <th class="Rowpointer">หมายเลขเครื่อง</th>
-                <th class="Rowpointer">ยี่ห้อ</th>
-                <th class="Rowpointer">รุ่น</th>
+                <th class="Rowpointer">วันที่รับเข้า</th>
+                <th class="Rowpointer">Code</th>
+                <th class="hideANDseek Rowpointer">หมายเลขเครื่อง</th>
+                @*<th class="hideANDseek Rowpointer">ประเภทสินค้า</th>*@
+                <th class="hideANDseek Rowpointer">รายละเอียด</th>
+                <th class="hideANDseek Rowpointer">ยี่ห้อ</th>
+                <th class="hideANDseek Rowpointer">รุ่น</th>
                 <th class="Rowpointer">ขนาด</th>
                 <th class="Rowpointer">คงเหลือ</th>
+                <th class="hideANDseek Rowpointer">หน่วยนับ</th>
                 @*<th class="hideANDseek Rowpointer">หน่วยนับ</th>*@
                 <th></th>
             </tr>

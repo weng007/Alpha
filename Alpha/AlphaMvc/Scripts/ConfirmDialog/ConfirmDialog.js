@@ -90,6 +90,9 @@
         if ($("#txtAdded").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input Added.</div>';
         }
+        if ($("#txtSerialNo").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input SerialNo.</div>';
+        }
     }
     if (validatehtml != '')
     {

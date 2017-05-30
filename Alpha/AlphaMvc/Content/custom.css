@@ -5905,43 +5905,43 @@ body.modal-open,
     /*width:30%;*/
     width: 5%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*collum4(Code)*/
 #tblProduct tr td:nth-child(4){
     width: 5%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*collum5(หมายเลขเครื่อง)*/
 #tblProduct tr td:nth-child(5){
     width: 10%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*รายละเอียด*/
 #tblProduct tr td:nth-child(6){
     width: 30%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*ยี่ห้อ*/
 #tblProduct tr td:nth-child(7){
     width: 5%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*รุ่น*/
 #tblProduct tr td:nth-child(8){
     width: 10%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*ขนาด*/
 #tblProduct tr td:nth-child(9){
     width: 10%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*คงเหลือ*/
 #tblProduct tr td:nth-child(10){
@@ -5953,7 +5953,7 @@ body.modal-open,
 #tblProduct tr td:nth-child(11){
     width: 5%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*button Add Delete View*/
 #tblProduct tr td:nth-child(12){
@@ -5966,7 +5966,7 @@ body.modal-open,
 #tblWageTechnician tr td:nth-child(1){
     width: 5%;
     padding: 5px;
-    text-align:left;
+    text-align:center;
 }
 /*ID (visible)*/
 #tblWageTechnician tr td:nth-child(2){
