@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AlphaApi.Models;
 using System.IO;
 using System.Json;
 using Newtonsoft.Json;
@@ -14,7 +15,7 @@ namespace AlphaApi.Controllers
     public class ProductFilesController : Controller
     {
         [HttpPost]
-        public ActionResult UploadFiles()
+        public ActionResult UploadFiles(ProductFilesModels PF)
         {
             // Checking no of files injected in Request object  
             if (Request.Files.Count > 0)
