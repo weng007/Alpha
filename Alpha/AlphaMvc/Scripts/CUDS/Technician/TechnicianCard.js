@@ -69,7 +69,7 @@ function GetDataCard(val) {
                 html += '<td>' + data.Table[i].CardType + '</td>';
                 var IssueDate = new Date(data.Table[i].IssueDate);
                 html += '<td>' + IssueDate.getDate() + '/' + (IssueDate.getMonth() + 1) + '/' + IssueDate.getFullYear() + '</td>';
-                var ExpiryDate = new Date(data.Table[i].IssueDate);
+                var ExpiryDate = new Date(data.Table[i].ExpiryDate);
                 html += '<td>' + ExpiryDate.getDate() + '/' + (ExpiryDate.getMonth() + 1) + '/' + ExpiryDate.getFullYear() + '</td>';
                 html += '</tr>';
             }

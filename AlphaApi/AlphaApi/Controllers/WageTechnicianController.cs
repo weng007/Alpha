@@ -35,9 +35,9 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpGet]
-        public string Get(int id)
+        public string Get(int id, DateTime FromDate, DateTime ToDate)
         {
-            var response = WageTechniciandb.SelectByTechnicianID(id);
+            var response = WageTechniciandb.SelectByTechnicianID(id, FromDate, ToDate);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 

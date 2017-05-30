@@ -4,6 +4,19 @@
 //    var ShowAll = isCheck.checked;
 //    GetData(ShowAll);
 //}
+$(document).ready(function () {
+    $("#dtDateFrom").datepicker({
+        inline: true,
+        showOtherMonths: true,
+        dateFormat: "dd/mm/yy"
+    })
+    $("#dtDateTo").datepicker({
+        inline: true,
+        showOtherMonths: true,
+        dateFormat: "dd/mm/yy"
+    })
+     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+});
 function GetData(val)
 {
     //------------------------- Sorting ------------------------
@@ -24,7 +37,32 @@ function GetData(val)
     //------------------------- Sorting ------------------------
 
     alert(val);
-    var dataObject = { id: val };
+    //var ChangeformatDate($("#dtDateFrom").val(),1)
+    var fromdate = $("#dtDateFrom").val();
+    var TodayFromDate = new Date();
+    var Fromyear = TodayFromDate.getFullYear();
+    var Frommonth = TodayFromDate.getMonth();
+    var Fromday = TodayFromDate.getDate();
+    TodayFromDate.setYear = Fromyear;
+    TodayFromDate.setMonth = Frommonth;
+    TodayFromDate.setDate = Fromday;
+    var mDate = (Fromyear - 2) + '/' + (Frommonth+1) + '/' + Fromday;
+    var Fdate = fromdate != null && fromdate != '' ? ChangeformatDate(fromdate, 1) : mDate;
+    $("#hidFromDate").val(Fdate);
+
+    var DateTo = $("#dtDateTo").val();
+    var TodayToDate = new Date();
+    var ToYear = TodayToDate.getFullYear();
+    var ToMonth = TodayToDate.getMonth();
+    var ToDay = TodayToDate.getDate();
+    TodayToDate.setYear = ToYear;
+    TodayToDate.setMonth = ToMonth;
+    TodayToDate.setDate = ToDay;
+    var ToDate = ToYear + '/' + (ToMonth + 1) + '/' + (ToDay + 1);
+    var Tdate = DateTo != null && DateTo != '' ? ChangeformatDate(DateTo, 1) : ToDate;
+    $("#hidToDate").val(Tdate);
+
+    var dataObject = { id: val, FromDate: Fdate, ToDate: Tdate };
     console.log(dataObject);
     $.ajax(
     {
@@ -46,6 +84,7 @@ function GetData(val)
                 html += '<td class="hidecolumn"><input type="hidden" class="hidID" value="' + data.Table1[i].ID + '" /></td>';
                 html += '<td class="hidecolumn"><input type="hidden" class="hidJobID" value="' + data.Table1[i].ManpowerID + '" /></td>';
                 html += '<td class="hidecolumn"><input type="hidden" Class="hidTechnicianID" value="' + val + '" /></td>';
+                html += '<td class="hidecolumn EmpGroup">' + data.Table1[i].EmpGroup + '</td>';
                 html += '<td>' + data.Table1[i].RowNum + '</td>';
                 html += '<td>' + data.Table1[i].JobNo + '</td>';
                 html += '<td>' + data.Table1[i].CustomerName + '</td>';
@@ -95,6 +134,7 @@ function GetTotal() {
     var totalVat = 0;
 
     var totalWH = 0;
+    var emGroup;
 
         for (var i = 0; i < $(".RowCal").length; i++) {
             //alert(parseFloat($('.ManNormal:eq(' + i + ')').html() != '' && $('.ManNormal:eq(' + i + ')').html() != null ? $('.ManNormal:eq(' + i + ')').html() : 0));
@@ -105,7 +145,49 @@ function GetTotal() {
             totalManPremium2 = totalManPremium2 + parseFloat(parseFloat($('.ManPremium2:eq(' + i + ')').html() != '' && $('.ManPremium2:eq(' + i + ')').html() != null ? $('.ManPremium2:eq(' + i + ')').html() : 0));
 
             totalManSpecial = totalManSpecial + parseFloat(parseFloat($('.ManSpecial:eq(' + i + ')').html() != '' && $('.ManSpecial:eq(' + i + ')').html() != null ? $('.ManSpecial:eq(' + i + ')').html() : 0));
+
+            //====================================================================================
+
+            totalBathNormal = ((totalManNormal * (20000 / 30 / 8)).toFixed(2) != '' && (totalManNormal * (20000 / 30 / 8)).toFixed(2) != null ? (totalManNormal * (20000 / 30 / 8)).toFixed(2) : 0);
+
+            totalBathPremium = ((totalManPremium * ((20000 / 30 / 8) * 1.5)).toFixed(2) != '' && (totalManPremium * ((20000 / 30 / 8) * 1.5)).toFixed(2) != null ? (totalManPremium * ((20000 / 30 / 8) * 1.5)).toFixed(2) : 0);
+
+            totalBathPremium2 = ((totalManPremium2 * ((20000 / 30 / 8) * 2)).toFixed(2) != '' && (totalManPremium2 * ((20000 / 30 / 8) * 2)).toFixed(2) != null ? (totalManPremium2 * ((20000 / 30 / 8) * 2)).toFixed(2) : 0);
+
+            totalBathSpecial = ((totalManSpecial * ((20000 / 30 / 8) * 3)).toFixed(2) != '' && (totalManSpecial * ((20000 / 30 / 8) * 3)).toFixed(2) != null ? (totalManSpecial * ((20000 / 30 / 8) * 3)).toFixed(2) : 0);
         }
+
+            //====================================================================================
+
+            totalAmountNormal = (totalManNormal * totalBathNormal).toFixed(2);
+
+            totalAmountPremium = (totalManPremium * totalBathPremium).toFixed(2);
+
+            totalAmountPremium2 = (totalManPremium2 * totalBathPremium2).toFixed(2);
+
+            totalAmountSpecial = (totalManSpecial * totalBathSpecial).toFixed(2);
+        
+
+            //====================================================================================
+            var AmountNormal = parseFloat(totalAmountNormal) != '' && parseFloat(totalAmountNormal) != null ? parseFloat(totalAmountNormal) : 0;
+            var AmountPremium = parseFloat(totalAmountPremium) != '' && parseFloat(totalAmountPremium) != null ? parseFloat(totalAmountPremium) : 0;
+            var AmountPremium2 = parseFloat(totalAmountPremium2) != '' && parseFloat(totalAmountPremium2) != null ? parseFloat(totalAmountPremium2) : 0;
+            var totalAmountSpecial = parseFloat(totalAmountSpecial) != '' && parseFloat(totalAmountSpecial) != null ? parseFloat(totalAmountSpecial) : 0;
+
+            totalAmount = (AmountNormal + AmountNormal + AmountNormal + AmountNormal).toFixed(2);
+
+            //emGroup = $('.EmpGroup:eq(' + i + ')').html();
+            //if (emGroup == 'OutSource') {
+
+            //    totalVat = parseFloat((totalAmount * 3) / 100).toFixed(2);
+            //}
+            //else
+            //{
+            //    totalVat = 0;
+            //}
+
+            //totalWH = (parseFloat(totalAmount) - parseFloat(totalVat));
+        
 
         var html = '<td>' + totalManNormal + '</td>';
         document.getElementById("totalNormal").innerHTML = html;
@@ -119,7 +201,43 @@ function GetTotal() {
         var html = '<td>' + totalManSpecial + '</td>';
         document.getElementById("totalSpecial").innerHTML = html;
 
-        
+    //===================================================================
+        var html = '<td>' + totalBathNormal + '</td>';
+        document.getElementById("totalBathNormal").innerHTML = html;
+
+        var html = '<td>' + totalBathPremium + '</td>';
+        document.getElementById("totalBathPremium").innerHTML = html;
+
+        var html = '<td>' + totalBathPremium2 + '</td>';
+        document.getElementById("totalBathPremium2").innerHTML = html;
+
+        var html = '<td>' + totalBathSpecial + '</td>';
+        document.getElementById("totalBathSpecial").innerHTML = html;
+
+    //===================================================================
+
+        var html = '<td>' + totalAmountNormal + '</td>';
+        document.getElementById("totalAmountNormal").innerHTML = html;
+
+        var html = '<td>' + totalAmountPremium + '</td>';
+        document.getElementById("totalAmountPremium").innerHTML = html;
+
+        var html = '<td>' + totalAmountPremium2 + '</td>';
+        document.getElementById("totalAmountPremium2").innerHTML = html;
+
+        var html = '<td>' + totalAmountSpecial + '</td>';
+        document.getElementById("totalAmountSpecial").innerHTML = html;
+
+    //===================================================================
+
+        var html = '<td>' + totalAmount + '</td>';
+        document.getElementById("totalAmount").innerHTML = html;
+
+        //var html = '<td>' + totalVat + '</td>';
+        //document.getElementById("totalVat").innerHTML = html;
+
+        //var html = '<td>' + totalWH + '</td>';
+        //document.getElementById("totalWH").innerHTML = html;
 }
 function GetManDay(val) {
     var ManDate = val;
@@ -177,4 +295,13 @@ function Update(val) {
     });
     alert('Update is completed')
     window.location.href = "../WageTeachnician/EditWageTeachnician?id=" + $('.hidTechnicianID').val();
+}
+function OpenRptWageTechnician(val) {
+    //alert("test");
+    var FromDate = $('#hidFromDate').val();
+    var ToDate = $('#hidToDate').val();
+    //var FromDate = FromDate.replace("/", "-");
+    alert(FromDate);
+    alert(ToDate);
+    window.location.href = "../Reports/FormReport/RptWageTechnicianViewer.aspx?id=" + val + '|' + FromDate + '|' + ToDate;
 }

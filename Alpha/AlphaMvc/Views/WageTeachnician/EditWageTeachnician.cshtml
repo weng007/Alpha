@@ -26,10 +26,18 @@
                     <input type="hidden" id="hidID" />
                     <input type="hidden" id="hidJobID" />
                     <input type="hidden" id="hidTechnicianID" />
+
+                    <input type="hidden" id="hidFromDate" />
+                    <input type="hidden" id="hidToDate" />
+                </li>
+                <li><label class="label-big">DateFrom<span class="required">*</span></label>&nbsp;<label class="label-small">DateTo</label></li>
+                <li><input type="text" id="dtDateFrom" class="field-divided" placeholder="" required />&nbsp;<input type="text" id="dtDateTo" class="field-divided" placeholder="" required />
+                    <a href="#" onclick="GetData(@Request.Params["id"])">
+                        <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
+                    </a>
                 </li>
                 <br />
             </ul>
-
             <div class="grigbar">
                 <table class="table table-striped">
                     <thead class="bgthead">
@@ -106,14 +114,14 @@
                         <tr>
                             <td colspan="8">AMOUNTS (BAHT)</td>
                             <td></td>
-                            <td id="totalAmountNormal">3,600.00</td>
-                            <td id="totalAmountPremium">225.50</td>
-                            <td id="totalAmountPremium2">1,200.00</td>
+                            <td id="totalAmountNormal"></td>
+                            <td id="totalAmountPremium"></td>
+                            <td id="totalAmountPremium2"></td>
                             <td id="totalAmountSpecial">-</td>
                             <td>-</td>
                             <td>-</td>
-                            <td id="totalAmount">5,025.00</td>
-                            <td id="totalVat">(150.75)</td>
+                            <td id="totalAmount"></td>
+                            <td id="totalVat"></td>
                         </tr>
                         <tr>
                             <td colspan="8">TOTAL WAGES(BAHT)</td>
@@ -125,7 +133,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td id="totalWH">4,874.25</td>
+                            <td id="totalWH"></td>
                         </tr>
                     </tfoot>
                     <tbody id="result" class="RowCal"></tbody>
@@ -134,6 +142,7 @@
             <ul class="form-style-1">
                 <li>
                     <button type="button" id="btnSave" class="btn btn-primary" onclick="ConfirmDialog('Update', 'WageTechnician', @Request.Params["id"])">Save</button>
+                    <a onclick="OpenRptWageTechnician(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>
                 </li>
             </ul>
         </form>
