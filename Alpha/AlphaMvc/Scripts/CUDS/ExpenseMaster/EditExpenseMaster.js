@@ -36,7 +36,7 @@ function Update(val) {
             datatype: 'json',
 
             success: function (result) {
-                alert('Update is completed');
+                //alert('Update is completed');
             }
             ,
             error: function (msg) {

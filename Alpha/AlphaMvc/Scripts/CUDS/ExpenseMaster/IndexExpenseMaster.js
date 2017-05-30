@@ -81,7 +81,7 @@ function RowDelete(id) {
             datatype: 'json',
 
             success: function (result) {
-                alert('Delete is completed')
+                //alert('Delete is completed')
                 window.location.href = "../ExpenseMaster/IndexExpenseMaster";
             }
             ,

@@ -8,7 +8,7 @@ function CreateData() {
         datatype: 'json',
 
         success: function (data) {
-            alert('Created Successfully');
+            //alert('Created Successfully');
             window.location.href = "../ExpenseMaster/IndexExpenseMaster";
         },
         error: function (msg) { alert(msg); }

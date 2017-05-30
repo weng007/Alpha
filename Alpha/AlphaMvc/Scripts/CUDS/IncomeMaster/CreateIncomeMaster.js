@@ -9,7 +9,7 @@ function CreateData() {
         datatype: 'json',
 
         success: function (result) {
-            alert('Create is completed')
+            //alert('Create is completed')
             window.location.href = "../IncomeMaster/IndexIncomeMaster";
         }
         ,

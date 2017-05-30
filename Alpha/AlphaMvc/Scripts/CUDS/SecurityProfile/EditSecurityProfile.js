@@ -110,7 +110,7 @@ function Update(val) {
             }
         });
     });
-    alert('Update is completed')
+    //alert('Update is completed')
     window.location.href = "../SecurityProfile/IndexSecurityProfile";
 };
 function Redirect() {
