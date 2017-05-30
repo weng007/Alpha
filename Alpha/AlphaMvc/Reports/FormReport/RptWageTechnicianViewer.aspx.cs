@@ -9,7 +9,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.UI;
+using AlphaMVC.DataAccessLayer;
 using System.Web.UI.WebControls;
+using Microsoft.Reporting;
 
 namespace AlphaMvc.Reports.FormReport
 {
@@ -25,33 +27,35 @@ namespace AlphaMvc.Reports.FormReport
         private void RenderReport()
         {
             DataSet ds = new DataSet();
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:13131/");
+            DBdata dal = new DBdata();
+            //DateTime FromDate = new DateTime();
 
-            // Add an Accept header for JSON format.
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
+            string result =  Request.QueryString["id"].ToString();
+            string[] str = result.Split('|');
+            string[] FDate = str[1].Split('/');
+            int FYear = Convert.ToInt32(FDate[0]);
+            int FMonth = Convert.ToInt32(FDate[1]);
+            int FDay = Convert.ToInt32(FDate[2]);
+            DateTime FromDate = new DateTime(FYear, FMonth, FDay);
 
-            HttpResponseMessage response = client.GetAsync("api/RptJobOrder?id="+18).Result;
-            //var yourcustomobjects = response.Content.ReadAsAsync<IEnumerable<YourCustomObject>>().Result;
-            //foreach (var x in yourcustomobjects)
-            //{
-            //    //Call your store method and pass in your own object
-            //    SaveCustomObjectToDB(x);
-            //}
+            string[] TDate = str[2].Split('/');
+            int TYear = Convert.ToInt32(TDate[0]);
+            int TMonth = Convert.ToInt32(TDate[1]);
+            int TDay = Convert.ToInt32(TDate[2]);
+            DateTime ToDate = new DateTime(TYear, TMonth, TDay);
 
-            if (response.IsSuccessStatusCode)
-            {
+            ds = dal.GetRptWageTechnician(str[0],FromDate,ToDate);
 
-                RptWageTechnician.Reset();
-                RptWageTechnician.LocalReport.EnableExternalImages = true;
-                RptWageTechnician.LocalReport.ReportPath = Server.MapPath("~/Report/RptJobOrder.rdlc");
-                //DataTable dt = (DataTable)JsonConvert.DeserializeObject(json, (typeof(DataTable)));
+            ReportDataSource datasource = new ReportDataSource("dsWageTechnician", ds.Tables[0]);
+            ReportDataSource datasource1 = new ReportDataSource("dsWageTechnicianDetail", ds.Tables[1]);
+            this.RptViewer1.LocalReport.ReportPath = Server.MapPath("~/Reports/RptWageTechnician.rdlc");
+            this.RptViewer1.LocalReport.DataSources.Add(datasource);
+            this.RptViewer1.LocalReport.DataSources.Add(datasource1);
+        }
 
-                //RptViewer1.localReport.Datasource.Add(new Microsoft.Reporting.WebForms.ReportDataSource("dsJobOrder", new Object()));
-                //ReportDataSource datasource = new ReportDataSource("dsJobOrder", ds.Tables[1]);
-                //RptViewer1.LocalReport.DataSources.Add(datasource);
-            }
+        protected void btnPrint_Click(object sender, EventArgs e)
+        {
+            RptViewer1.ShowPrintButton = true;
         }
     }
 }

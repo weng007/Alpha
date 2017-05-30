@@ -75,18 +75,19 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public DataSet SelectByTechnicianID(int id)
+        public DataSet SelectByTechnicianID(int id, DateTime FromDate, DateTime ToDate)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
-                    
                         //Create
                         SqlCommand cmd = new SqlCommand("SP_WageTechnician_SelByTechnicianID", conObj);
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@ID", id); // i will pass zero to MobileID beacause its Primary .
+                        cmd.Parameters.AddWithValue("@ID", id);
+                        cmd.Parameters.AddWithValue("@FromManDate", FromDate != null ? FromDate : DateTime.Now.AddYears(-2));
+                        cmd.Parameters.AddWithValue("@ToManDate", ToDate != null ? ToDate : DateTime.Now.AddDays(1));// i will pass zero to MobileID beacause its Primary .
                         conObj.Open();
                         SqlDataAdapter da = new SqlDataAdapter();
                         da.SelectCommand = cmd;

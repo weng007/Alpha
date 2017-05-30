@@ -9,9 +9,10 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-        <rsweb:ReportViewer ID="RptWageTechnician" runat="server"></rsweb:ReportViewer>
+        <form id="form1" runat="server">
+    <div style="width: 709px; height: 606px">
+        <rsweb:ReportViewer ID="RptViewer1" runat="server" Height="541px" Width="703px"></rsweb:ReportViewer>
+        <asp:Button ID="btnPrint" runat="server" OnClick="btnPrint_Click" Text="Print" />
         <asp:ScriptManager ID="ScriptManager1" runat="server">
 </asp:ScriptManager>
     </div>
