@@ -64,9 +64,9 @@ $(document).ready(function () {
                 html += '<td class="nopointer">' + data.Table[i].TechnicianNo + '</td>';
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].HRCode + '</td>';
                 html += '<td class="nopointer nopointer">' + data.Table[i].FirstName + '</td>';
-                html += '<td class="hideANDseek nopointer">' + data.Table[i].TechnicianTypeName + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].IDCard + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Position + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].IDCard + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].TechnicianTypeName + '</td>';
                 html += '<td class="nopointer">';
                 html += '<a href="/Technician/EditTechnician?id=' + data.Table[i].TechnicianNo + '"  id="edit' + data.Table[i].TechnicianNo + '">' + '<img src="/Images/view.png" class="imgTechCreate" /></a>';
                 html += '</td>';
