@@ -1026,48 +1026,49 @@ function CalSum() {
     var total = 0;
     var SubTotal = 0;
     var Discount = 0;
-    $('.Number').number(true, 2);
+
     $(".RowCal").each(function () {
         var qty = $(this).find(".Quantity").val().replace(',', '');
         var price = $(this).find(".Price").val().replace(',', '');
         var amount = qty * price;
 
-
-        $(this).find('.Amount').val(amount).number(true, 2);
-        $(this).find('.Price').val(price);
-        $(this).find('.Quantity').val(qty);
+        $(this).find('.Amount').val(amount);
+        total = total + parseFloat($(this).find('.Amount').val());
     });
-    for (var i = 0; i < $(".RowCal").length; i++) {
-        total = total + parseFloat($('.Amount:eq(' + i + ')').val());
-    }
+        
     Discount = $('#txtDiscount').val();
     SubTotal = total - Discount;
     $('#txtTotal').val(total).number(true, 2);
     $('#txtSubTotal').val(SubTotal).number(true, 2);
     $('#txtNoCompound').val(SubTotal).number(true, 2);
-    return SubTotal;
+
+    Profit =  SubTotal - parseFloat($('#txtTotalExpense').val());
+    if (Profit < 0) {
+        $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+    }
+    else {
+        $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+    }
 }
 function CalSumExpense() {
     var totalExpense = 0;
     var SubTotal = 0;
     var Profit = 0;
-    SubTotal = CalSum();
+
     $('.Number').number(true, 2);
     $(".RowCal1").each(function () {
         var qty = $(this).find(".Quantity").val().replace(',','');
         var price = $(this).find(".Price").val().replace(',', '');
         var amount = qty * price;
 
-        $(this).find('.Amount1').val(amount).number(true, 2);
-        $(this).find('.Price').val(price);
-        $(this).find('.Quantity').val(qty);
+        $(this).find('.Amount1').val(amount);
+        totalExpense = totalExpense + parseFloat($(this).find('.Amount1').val());
     });
-    for (var i = 0; i < $(".RowCal1").length; i++) {
-        totalExpense = totalExpense + parseFloat($('.Amount1:eq(' + i + ')').val());
-    }
-    Profit = SubTotal - totalExpense;
+
+    Profit = parseFloat($('#txtSubTotal').val()) - totalExpense;
     $('#txtTotalExpense').val(totalExpense).number(true, 2);
     $('#txtExpense').val(totalExpense).number(true, 2);
+
     if (Profit < 0) {
         $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
     }

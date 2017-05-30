@@ -1,7 +1,7 @@
 $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
-
+    $('.Number').number(true, 2);
     CheckAuthorization();
     var input = window.location.href;
     var after = input.split('?')[1]
@@ -661,58 +661,56 @@ function CalSum() {
     var SubTotal = 0;
     var Discount = 0;
     $(".RowCal").each(function () {
-        var qty = $(this).find(".Quantity").val();
-        var price = $(this).find(".Price").val();
+        var qty = $(this).find(".Quantity").val().replace(',', '');
+        var price = $(this).find(".Price").val().replace(',', '');
         var amount = qty * price;
 
-        $(this).find('.Amount').val(amount).number(true, 2);
-        $(this).find('.Price').val(price);
-        $(this).find('.Quantity').val(qty);
-        //$(this).find('.Amount').val(amount).number(true, 2);
-        //$(this).find('.Price').val(price).number(true, 0);
-        //$(this).find('.Quantity').val(qty).number(true, 0);;
+        $(this).find('.Amount').val(amount);
+        total = total + parseFloat($(this).find('.Amount').val());
     });
-    for (var i = 0; i < $(".RowCal").length; i++) {
-        total = total + parseFloat($('.Amount:eq(' + i + ')').val());
-    }
+
     Discount = $('#txtDiscount').val();
     SubTotal = total - Discount;
     $('#txtTotal').val(total).number(true, 2);
     $('#txtSubTotal').val(SubTotal).number(true, 2);
     $('#txtNoCompound').val(SubTotal).number(true, 2);
-    return SubTotal;
-}
 
-function addCommas() {
-    
-}
+    Profit = SubTotal - parseFloat($('#txtTotalExpense').val());
 
-function CalSumExpense() {
-    var totalExpense = 0;
-    var SubTotal = 0;
-    var Profit = 0;
-    SubTotal = CalSum();
-    $(".RowCal1").each(function () {
-        var qty = $(this).find(".Quantity").val();
-        var price = $(this).find(".Price").val();
-        var amount = qty * price;
-
-        $(this).find('.Amount1').val(amount).number(true, 2);
-        //$(this).find('.Price').val(price).number(true, 2);
-        //$(this).find('.Quantity').val(qty).number(true, 2);
-    });
-    for (var i = 0; i < $(".RowCal1").length; i++) {
-        totalExpense = totalExpense + parseFloat($('.Amount1:eq(' + i + ')').val());
-    }
-    Profit = SubTotal - totalExpense;
-    $('#txtTotalExpense').val(totalExpense).number(true, 2);
-    $('#txtExpense').val(totalExpense).number(true, 2);
     if (Profit < 0) {
         $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
     }
     else {
         $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
     }
+}
+
+function CalSumExpense() {
+    var totalExpense = 0;
+    var SubTotal = 0;
+    var Profit = 0;
+
+    $(".RowCal1").each(function () {
+        var qty = $(this).find(".Quantity").val().replace(',','');
+        var price = $(this).find(".Price").val().replace(',', '');
+        var amount = qty * price;
+
+        $(this).find('.Amount1').val(amount).number(true, 2);
+        totalExpense = totalExpense + parseFloat($(this).find('.Amount1').val());
+    });
+
+    Profit = parseFloat($('#txtSubTotal').val()) - totalExpense;
+    $('#txtTotalExpense').val(totalExpense).number(true, 2);
+    $('#txtExpense').val(totalExpense).number(true, 2);
+
+    if (Profit < 0) {
+        $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+    }
+    else {
+        $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+    }
+
+    return totalExpense;
 }
 
 function AddRowIncome() {
