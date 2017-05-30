@@ -115,7 +115,7 @@ function CreateData() {
         datatype: 'json',
 
         success: function (data) {
-            alert('Create is completed');
+            //alert('Create is completed');
             //alert(data);
             window.location.href = "../ProductAdjust/EditProductAdjust?id=" + data;
         }

@@ -1,12 +1,13 @@
 ﻿$(document).ready(function () {
     CheckAuthorization();
-    $("#productBody").on("click", "tr", function (e) {
-        $("#hidProductID").val($(this).find("td:eq(1)").text());
-        $("#txtSerial").val($(this).find("td:eq(2)").text());
-        $("#txtBrand").val($(this).find("td:eq(4)").text());
-        $("#txtModel").val($(this).find("td:eq(3)").text());
+    $("#quotationBody").on("click", "tr", function (e) {
+        $("#hidSerialID").val($(this).find("td:eq(1)").text());
+        $("#txtSerialNo").val($(this).find("td:eq(2)").text());
+        $("#txtBrand").val($(this).find("td:eq(3)").text());
         $("#txtSize").val($(this).find("td:eq(5)").text());
-    });
+        $("#txtModel").val($(this).find("td:eq(4)").text());
+        $("#txtRemain").val($(this).find("td:eq(6)").text());
+    })
 });
 function CheckBorrow() {
     var BorrowAmount = $("#txtAmount").val();
@@ -178,7 +179,7 @@ function Update(val) {
             data: dataObject,
             datatype: 'json',
             success: function (data) {
-                alert('Update is completed');
+                //alert('Update is completed');
             },
             error: function (msg) {
                 alert(msg);

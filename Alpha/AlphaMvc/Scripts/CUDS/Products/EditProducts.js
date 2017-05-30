@@ -187,7 +187,7 @@ function Update(val) {
         datatype: 'json',
 
         success: function (data) {
-            alert('Update is completed');
+            //alert('Update is completed');
             window.location.href = "../Products/IndexProducts";
         }
         ,

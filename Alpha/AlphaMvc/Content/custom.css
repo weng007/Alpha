@@ -5848,44 +5848,44 @@ body.modal-open,
 #tblDiaProductAdjust tr td:nth-child(1){
     width: 5%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*ID (visible)*/
 #tblDiaProductAdjust tr td:nth-child(2){
     width: 5%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*collum2(SerailNo)*/
 #tblDiaProductAdjust tr td:nth-child(3){
     /*width:30%;*/
     width: 10%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*collum4(ยี่ห้อ)*/
 #tblDiaProductAdjust tr td:nth-child(4){
     width: 20%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*collum5(รุ่น)*/
 #tblDiaProductAdjust tr td:nth-child(5){
     width: 50%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*collum6(ขนาด)*/
 #tblDiaProductAdjust tr td:nth-child(7){
     width: 5%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*collum6(คงเหลือ)*/
 #tblDiaProductAdjust tr td:nth-child(8){
     width: 5%;
     padding: 5px;
-    text-align:center;
+    /*text-align:center;*/
 }
 /*======================== tblProduct (Dialog Product)=============================*/
 /*collum1(No)*/
