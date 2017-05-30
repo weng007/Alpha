@@ -5,6 +5,7 @@
 //    GetData(ShowAll);
 //}
 $(document).ready(function () {
+    
     $("#dtDateFrom").datepicker({
         inline: true,
         showOtherMonths: true,
@@ -36,7 +37,6 @@ function GetData(val)
     function getCellValue(row, index) { return $(row).children('td').eq(index).html() }
     //------------------------- Sorting ------------------------
 
-    alert(val);
     //var ChangeformatDate($("#dtDateFrom").val(),1)
     var fromdate = $("#dtDateFrom").val();
     var TodayFromDate = new Date();
@@ -98,8 +98,8 @@ function GetData(val)
                 html += '<td class="ManPremium">' + data.Table1[i].ManPremium + '</td>';
                 html += '<td class="ManPremium2">' + data.Table1[i].ManPremium2 + '</td>';
                 html += '<td class="ManSpecial">' + data.Table1[i].ManSpecial + '</td>';
-                html += '<td><input type="text" id="txtAdditionnal" name="field1" class="Additionnal field-divided" value="' + data.Table1[i].Additionnal + '"/></td>';
-                html += '<td><input type="text" id="txtDeduction" name="field1" class="Deduction field-divided" value="' + data.Table1[i].Deduction + '"/></td>';
+                html += '<td><input type="text" id="txtAdditionnal" name="field1" class="Additionnal Number field-divided text-size80" value="' + data.Table1[i].Additionnal + '"/></td>';
+                html += '<td><input type="text" id="txtDeduction" name="field1" class="Deduction Number field-divided text-size80" value="' + data.Table1[i].Deduction + '"/></td>';
                 html += '<td>' + '' + '</td>';
                 html += '<td>' + '' + '</td>';
                 html += '</tr>';
@@ -172,72 +172,72 @@ function GetTotal() {
             var AmountNormal = parseFloat(totalAmountNormal) != '' && parseFloat(totalAmountNormal) != null ? parseFloat(totalAmountNormal) : 0;
             var AmountPremium = parseFloat(totalAmountPremium) != '' && parseFloat(totalAmountPremium) != null ? parseFloat(totalAmountPremium) : 0;
             var AmountPremium2 = parseFloat(totalAmountPremium2) != '' && parseFloat(totalAmountPremium2) != null ? parseFloat(totalAmountPremium2) : 0;
-            var totalAmountSpecial = parseFloat(totalAmountSpecial) != '' && parseFloat(totalAmountSpecial) != null ? parseFloat(totalAmountSpecial) : 0;
+            var AmountSpecial = parseFloat(totalAmountSpecial) != '' && parseFloat(totalAmountSpecial) != null ? parseFloat(totalAmountSpecial) : 0;
 
-            totalAmount = (AmountNormal + AmountNormal + AmountNormal + AmountNormal).toFixed(2);
+            totalAmount = (AmountNormal + AmountPremium + AmountPremium2 + AmountSpecial).toFixed(2);
 
-            //emGroup = $('.EmpGroup:eq(' + i + ')').html();
-            //if (emGroup == 'OutSource') {
+            emGroup = $('.EmpGroup:eq(' + i + ')').html();
+            if (emGroup == 'OutSource') {
 
-            //    totalVat = parseFloat((totalAmount * 3) / 100).toFixed(2);
-            //}
-            //else
-            //{
-            //    totalVat = 0;
-            //}
+                totalVat = parseFloat((totalAmount * 3) / 100).toFixed(2);
+            }
+            else
+            {
+                totalVat = parseFloat(0).toFixed(2);
+            }
 
-            //totalWH = (parseFloat(totalAmount) - parseFloat(totalVat));
+            totalWH = (parseFloat(totalAmount) - parseFloat(totalVat));
         
 
-        var html = '<td>' + totalManNormal + '</td>';
+            var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalManNormal) + '</td>';
         document.getElementById("totalNormal").innerHTML = html;
 
-        var html = '<td>' + totalManPremium + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalManPremium) + '</td>';
         document.getElementById("totalPremium").innerHTML = html;
 
-        var html = '<td>' + totalManPremium2 + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalManPremium2) + '</td>';
         document.getElementById("totalPremium2").innerHTML = html;
 
-        var html = '<td>' + totalManSpecial + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalManSpecial) + '</td>';
         document.getElementById("totalSpecial").innerHTML = html;
 
     //===================================================================
-        var html = '<td>' + totalBathNormal + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalBathNormal) + '</td>';
         document.getElementById("totalBathNormal").innerHTML = html;
 
-        var html = '<td>' + totalBathPremium + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalBathPremium) + '</td>';
         document.getElementById("totalBathPremium").innerHTML = html;
 
-        var html = '<td>' + totalBathPremium2 + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalBathPremium2) + '</td>';
         document.getElementById("totalBathPremium2").innerHTML = html;
 
-        var html = '<td>' + totalBathSpecial + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalBathSpecial) + '</td>';
         document.getElementById("totalBathSpecial").innerHTML = html;
 
     //===================================================================
 
-        var html = '<td>' + totalAmountNormal + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalAmountNormal) + '</td>';
         document.getElementById("totalAmountNormal").innerHTML = html;
 
-        var html = '<td>' + totalAmountPremium + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalAmountPremium) + '</td>';
         document.getElementById("totalAmountPremium").innerHTML = html;
 
-        var html = '<td>' + totalAmountPremium2 + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalAmountPremium2) + '</td>';
         document.getElementById("totalAmountPremium2").innerHTML = html;
 
-        var html = '<td>' + totalAmountSpecial + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalAmountSpecial) + '</td>';
         document.getElementById("totalAmountSpecial").innerHTML = html;
 
     //===================================================================
 
-        var html = '<td>' + totalAmount + '</td>';
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalAmount) + '</td>';
         document.getElementById("totalAmount").innerHTML = html;
 
-        //var html = '<td>' + totalVat + '</td>';
-        //document.getElementById("totalVat").innerHTML = html;
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalVat) + '</td>';
+        document.getElementById("totalVat").innerHTML = html;
 
-        //var html = '<td>' + totalWH + '</td>';
-        //document.getElementById("totalWH").innerHTML = html;
+        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalWH) + '</td>';
+        document.getElementById("totalWH").innerHTML = html;
 }
 function GetManDay(val) {
     var ManDate = val;

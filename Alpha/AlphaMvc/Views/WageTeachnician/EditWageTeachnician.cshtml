@@ -22,7 +22,7 @@
                     <label>Name<span class="required">*</span></label>
                 </li>
                 <li>
-                    <input type="text" id="txtFullName" name="field1" class="field-divided" disabled/>
+                    <input type="text" id="txtFullName" name="field1" class="field-divided text-size270" disabled/>
                     <input type="hidden" id="hidID" />
                     <input type="hidden" id="hidJobID" />
                     <input type="hidden" id="hidTechnicianID" />
@@ -30,22 +30,23 @@
                     <input type="hidden" id="hidFromDate" />
                     <input type="hidden" id="hidToDate" />
                 </li>
-                <li><label class="label-big">DateFrom<span class="required">*</span></label>&nbsp;<label class="label-small">DateTo</label></li>
-                <li><input type="text" id="dtDateFrom" class="field-divided" placeholder="" required />&nbsp;<input type="text" id="dtDateTo" class="field-divided" placeholder="" required />
+                <li><label class="marginright-22">DateFrom<span class="required">*</span></label>&nbsp;<label class="label-small">DateTo</label></li>
+                <li><input type="text" id="dtDateFrom" class="text-size120" placeholder="" required />&nbsp;
+                <input type="text" id="dtDateTo" class="text-size120" placeholder="" required />
                     <a href="#" onclick="GetData(@Request.Params["id"])">
-                        <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
+                        <img src="@Url.Content("~/Images/btnSearch.png")" class="btnimage" />
                     </a>
                 </li>
                 <br />
             </ul>
             <div class="grigbar">
-                <table class="table table-striped">
+                <table id="tblWageTechnician" class="table table-striped">
                     <thead class="bgthead">
                         <tr>
                             <th rowspan="3" class="hidecolumn">ID</th>
                             <th rowspan="3" class="hidecolumn">JobID</th>
                             <th rowspan="3" class="hidecolumn">TechnicianID</th>
-                            <th rowspan="3">RowNum</th>
+                            <th rowspan="3">No.</th>
                             <th rowspan="3">JobNo</th>
                             <th rowspan="3">Customer</th>
                             <th rowspan="3">Job site</th>
@@ -68,9 +69,9 @@
                         </tr>
                         <tr>
                             <th>Normal Hours</th>
-                            <th>Premium(1.5)</th>
-                            <th>Premium(2)</th>
-                            <th>Special(3)</th>
+                            <th>Premium (1.5)</th>
+                            <th>Premium (2)</th>
+                            <th>Special (3)</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -151,6 +152,7 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+        $('.Number').number(true, 2);
         var input = window.location.href;
         var after = input.split('?')[1]
         var val = after.split('=');

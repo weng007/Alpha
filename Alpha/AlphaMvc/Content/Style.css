@@ -691,6 +691,14 @@ select{
     float: left;
     margin-right: 36.5%;
 }
+.form-style-1 .marginright-22 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: bold;
+    float: left;
+    margin-right: 22%;
+}
 
 .btnnew{
     margin-top: 0px !Important;

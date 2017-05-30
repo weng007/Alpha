@@ -5961,6 +5961,129 @@ body.modal-open,
     padding: 5px;
     text-align:center;
 }
+/*======================== lblWageTechnician=============================*/
+/*collum1(No)*/
+#tblWageTechnician tr td:nth-child(1){
+    width: 5%;
+    padding: 5px;
+    text-align:left;
+}
+/*ID (visible)*/
+#tblWageTechnician tr td:nth-child(2){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*(วันที่รับเข้า)*/
+#tblWageTechnician tr td:nth-child(3){
+    /*width:30%;*/
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum4(Code)*/
+#tblWageTechnician tr td:nth-child(4){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum5(หมายเลขเครื่อง)*/
+#tblWageTechnician tr td:nth-child(5){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*รายละเอียด*/
+#tblWageTechnician tr td:nth-child(6){
+    width: 5%;
+    padding: 5px;
+    text-align:left;
+}
+/*ยี่ห้อ*/
+#tblWageTechnician tr td:nth-child(7){
+    width: 5%;
+    padding: 5px;
+    text-align:left;
+}
+/*รุ่น*/
+#tblWageTechnician tr td:nth-child(8){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*ขนาด*/
+#tblWageTechnician tr td:nth-child(9){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*คงเหลือ*/
+#tblWageTechnician tr td:nth-child(10){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*หน่วยนับ*/
+#tblWageTechnician tr td:nth-child(11){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*button Add Delete View*/
+#tblWageTechnician tr td:nth-child(12){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*collum1(No)*/
+#tblWageTechnician tr td:nth-child(13){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+
+/*button Add Delete View*/
+#tblWageTechnician tr td:nth-child(14){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*button Add Delete View*/
+#tblWageTechnician tr td:nth-child(15){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*button Add Delete View*/
+#tblWageTechnician tr td:nth-child(16){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*button Add Delete View*/
+#tblWageTechnician tr td:nth-child(17){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*button Add Delete View*/
+#tblWageTechnician tr td:nth-child(18){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*button Add Delete View*/
+#tblWageTechnician tr td:nth-child(19){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
+/*button Add Delete View*/
+#tblWageTechnician tr td:nth-child(20){
+    width: 5%;
+    padding: 5px;
+    text-align:center;
+}
 
 /*Style Pageing*/
     .paging-nav {

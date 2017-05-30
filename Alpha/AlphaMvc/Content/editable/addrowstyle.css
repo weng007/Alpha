@@ -286,6 +286,56 @@
     .floatright{
         float:right;
     }
+    .text-size50 {
+            width: 50px !important;
+        }
+    .text-size60 {
+            width: 60px !important;
+        }
+    .text-size80 {
+            width:80px !important;
+        }
+    .text-size90 {
+            width:90px !important;
+        }
+    .text-size100 {
+            width: 100px !important;
+        }
+    .text-size110 {
+            width: 110px !important;
+        }
+    .text-size120 {
+            width: 120px !important;
+        }
+    .text-size130 {
+            width: 130px !important;
+        }
+    .text-size140 {
+            width: 140px !important;
+        }
+    .text-size160 {
+            width: 160px !important;
+        }
+    .text-size165 {
+            width: 165px !important;
+        }
+    .text-size168 {
+            width: 168px !important;
+        }
+    .text-size170 {
+            width: 170px !important;
+        }
+    .text-size180 {
+            width: 180px !important;
+        }
+    .text-size200 {
+            width: 200px !important;
+        }
+    .text-size270 {
+            width: 270px !important;
+        }
+
+
     table td .text-size50 {
             width: 50px;
         }
@@ -337,6 +387,7 @@
             height: 25px;
             width: 130px;
         }
+
     #input-1
     {
             margin: 0;
