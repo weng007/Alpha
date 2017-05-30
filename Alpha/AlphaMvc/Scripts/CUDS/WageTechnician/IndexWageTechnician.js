@@ -64,8 +64,8 @@ $(document).ready(function () {
                 html += '<td class="nopointer">' + data.Table[i].TechnicianNo + '</td>';
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].HRCode + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].FirstName + '</td>';
-                html += '<td class="hideANDseek nopointer">' + data.Table[i].TechnicianTypeName + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Position + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].TechnicianTypeName + '</td>';
                 //html += '<td class="nopointer">' + data.Table[i].GradeName + '</td>';
                 html += '<td class="nopointer">';
                 html += '<a href="/WageTeachnician/EditWageTeachnician?id=' + data.Table[i].TechnicianNo + '" id="Create' + data.Table[i].TechnicianNo + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgPaymentUpdate"/></a>';

@@ -785,7 +785,7 @@ function SetUnitWeight() {
     });
 }
 function Update(val) {
-    alert("test");
+    //alert("test");
     var JDate = ChangeformatDate($("#dtJobDate").val(),1);
     var SWorkingDate = ChangeformatDate($("#dtSWorking").val(),1);
     var EWorkingDate = ChangeformatDate($("#dtEWorking").val(), 1);
