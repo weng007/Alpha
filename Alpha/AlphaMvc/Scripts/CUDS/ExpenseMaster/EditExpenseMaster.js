@@ -45,5 +45,5 @@ function Update(val) {
         });
 }
 function Redirect() {
-    window.location = "IndexExpenseMaster";
+    window.location.href = "../ExpenseMaster/IndexExpenseMaster";
 }
