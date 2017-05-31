@@ -45,6 +45,6 @@ function Update(val) {
         })
 };
 function Redirect() {
-    window.location = "IndexIncomeMaster";
+    window.location.href = "../IncomeMaster/IndexIncomeMaster";
 }
 

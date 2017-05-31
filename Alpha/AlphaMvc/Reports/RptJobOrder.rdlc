@@ -83,9 +83,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>1.85104in</Top>
-        <Left>0.29167in</Left>
+        <Left>0.22917in</Left>
         <Height>0.22917in</Height>
-        <Width>0.86458in</Width>
+        <Width>0.73958in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -99,9 +99,9 @@
       </Textbox>
       <Line Name="Line1">
         <Top>5.13503cm</Top>
-        <Left>3.03953cm</Left>
+        <Left>2.62675cm</Left>
         <Height>0cm</Height>
-        <Width>5.01127cm</Width>
+        <Width>6.55647cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -121,13 +121,13 @@
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Left</TextAlign>
+              <TextAlign>Right</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>1.85104in</Top>
-        <Left>4.12979in</Left>
+        <Left>4.24229in</Left>
         <Height>0.22917in</Height>
         <Width>0.44792in</Width>
         <ZIndex>4</ZIndex>
@@ -143,9 +143,9 @@
       </Textbox>
       <Line Name="Line2">
         <Top>5.13503cm</Top>
-        <Left>11.73004cm</Left>
+        <Left>12.01579cm</Left>
         <Height>0cm</Height>
-        <Width>4.124cm</Width>
+        <Width>4.69551cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -171,9 +171,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>2.52465in</Top>
-        <Left>0.29167in</Left>
+        <Left>0.22917in</Left>
         <Height>0.22917in</Height>
-        <Width>0.86459in</Width>
+        <Width>0.73958in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -187,9 +187,9 @@
       </Textbox>
       <Line Name="Line3">
         <Top>6.84601cm</Top>
-        <Left>3.03954cm</Left>
+        <Left>2.62676cm</Left>
         <Height>0cm</Height>
-        <Width>5.01127cm</Width>
+        <Width>6.55646cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -199,9 +199,9 @@
       </Line>
       <Line Name="Line4">
         <Top>7.68879cm</Top>
-        <Left>3.03953cm</Left>
+        <Left>2.62675cm</Left>
         <Height>0cm</Height>
-        <Width>5.01127cm</Width>
+        <Width>6.55647cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -211,9 +211,9 @@
       </Line>
       <Line Name="Line5">
         <Top>8.53546cm</Top>
-        <Left>3.03954cm</Left>
+        <Left>2.62676cm</Left>
         <Height>0cm</Height>
-        <Width>5.01127cm</Width>
+        <Width>6.55646cm</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <Border>
@@ -239,9 +239,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>3.59812in</Top>
-        <Left>0.29167in</Left>
+        <Left>0.20833in</Left>
         <Height>0.22917in</Height>
-        <Width>0.86459in</Width>
+        <Width>0.76042in</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -255,9 +255,9 @@
       </Textbox>
       <Line Name="Line6">
         <Top>9.57262cm</Top>
-        <Left>3.03955cm</Left>
+        <Left>2.62677cm</Left>
         <Height>0cm</Height>
-        <Width>5.01127cm</Width>
+        <Width>6.55645cm</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <Border>
@@ -283,9 +283,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>4.30055in</Top>
-        <Left>0.29165in</Left>
+        <Left>0.22915in</Left>
         <Height>0.22917in</Height>
-        <Width>0.86459in</Width>
+        <Width>0.7396in</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -299,9 +299,9 @@
       </Textbox>
       <Line Name="Line7">
         <Top>10.59816cm</Top>
-        <Left>3.03956cm</Left>
+        <Left>2.62678cm</Left>
         <Height>0cm</Height>
-        <Width>5.01127cm</Width>
+        <Width>6.55644cm</Width>
         <ZIndex>13</ZIndex>
         <Style>
           <Border>
@@ -327,9 +327,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>5.04007in</Top>
-        <Left>0.29165in</Left>
+        <Left>0.22915in</Left>
         <Height>0.22917in</Height>
-        <Width>0.86459in</Width>
+        <Width>0.7396in</Width>
         <ZIndex>14</ZIndex>
         <Style>
           <Border>
@@ -343,9 +343,9 @@
       </Textbox>
       <Line Name="Line8">
         <Top>13.23517cm</Top>
-        <Left>3.03953cm</Left>
+        <Left>2.62675cm</Left>
         <Height>0cm</Height>
-        <Width>5.01128cm</Width>
+        <Width>6.55647cm</Width>
         <ZIndex>15</ZIndex>
         <Style>
           <Border>
@@ -365,13 +365,13 @@
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Left</TextAlign>
+              <TextAlign>Right</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>2.18715in</Top>
-        <Left>3.61937in</Left>
+        <Left>3.73187in</Left>
         <Height>0.22917in</Height>
         <Width>0.95833in</Width>
         <ZIndex>16</ZIndex>
@@ -387,7 +387,7 @@
       </Textbox>
       <Line Name="Line9">
         <Top>5.98876cm</Top>
-        <Left>11.73003cm</Left>
+        <Left>12.01578cm</Left>
         <Height>0cm</Height>
         <Width>4.6955cm</Width>
         <ZIndex>17</ZIndex>
@@ -501,7 +501,9 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Remark</rd:DefaultName>
@@ -523,7 +525,7 @@
         </ReportItems>
         <KeepTogether>true</KeepTogether>
         <Top>7.48983cm</Top>
-        <Left>9.19321cm</Left>
+        <Left>9.47896cm</Left>
         <Height>4.30601cm</Height>
         <Width>7.48295cm</Width>
         <ZIndex>18</ZIndex>
@@ -2618,9 +2620,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>7.84062in</Top>
-        <Left>0.39583in</Left>
+        <Left>0.27083in</Left>
         <Height>0.22917in</Height>
-        <Width>0.76042in</Width>
+        <Width>0.69792in</Width>
         <ZIndex>20</ZIndex>
         <Style>
           <Border>
@@ -2634,9 +2636,9 @@
       </Textbox>
       <Line Name="Line14">
         <Top>20.34857cm</Top>
-        <Left>3.03958cm</Left>
+        <Left>2.62675cm</Left>
         <Height>0cm</Height>
-        <Width>3.83646cm</Width>
+        <Width>4.24929cm</Width>
         <ZIndex>21</ZIndex>
         <Style>
           <Border>
@@ -2662,9 +2664,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>8.17674in</Top>
-        <Left>0.39583in</Left>
+        <Left>0.27083in</Left>
         <Height>0.22917in</Height>
-        <Width>0.76042in</Width>
+        <Width>0.69792in</Width>
         <ZIndex>22</ZIndex>
         <Style>
           <Border>
@@ -2678,9 +2680,9 @@
       </Textbox>
       <Line Name="Line15">
         <Top>21.20231cm</Top>
-        <Left>3.03959cm</Left>
+        <Left>2.62675cm</Left>
         <Height>0cm</Height>
-        <Width>3.83645cm</Width>
+        <Width>4.24929cm</Width>
         <ZIndex>23</ZIndex>
         <Style>
           <Border>
@@ -2724,7 +2726,7 @@
         <Top>20.34858cm</Top>
         <Left>12.18882cm</Left>
         <Height>0cm</Height>
-        <Width>3.66522cm</Width>
+        <Width>4.48734cm</Width>
         <ZIndex>25</ZIndex>
         <Style>
           <Border>
@@ -2750,9 +2752,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>8.69062in</Top>
-        <Left>0.66667in</Left>
+        <Left>0.27083in</Left>
         <Height>0.22917in</Height>
-        <Width>0.48959in</Width>
+        <Width>0.69792in</Width>
         <ZIndex>26</ZIndex>
         <Style>
           <Border>
@@ -2766,9 +2768,9 @@
       </Textbox>
       <Line Name="Line17">
         <Top>22.50757cm</Top>
-        <Left>3.0396cm</Left>
+        <Left>2.62679cm</Left>
         <Height>0cm</Height>
-        <Width>4.23333cm</Width>
+        <Width>4.24925cm</Width>
         <ZIndex>27</ZIndex>
         <Style>
           <Border>
@@ -2826,9 +2828,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>8.69062in</Top>
-        <Left>4.19458in</Left>
+        <Left>4.09229in</Left>
         <Height>0.22917in</Height>
-        <Width>0.46876in</Width>
+        <Width>0.57105in</Width>
         <ZIndex>29</ZIndex>
         <Style>
           <Border>
@@ -2842,9 +2844,9 @@
       </Textbox>
       <Line Name="Line18">
         <Top>22.50756cm</Top>
-        <Left>11.94758cm</Left>
+        <Left>12.18882cm</Left>
         <Height>0cm</Height>
-        <Width>3.90646cm</Width>
+        <Width>4.48734cm</Width>
         <ZIndex>30</ZIndex>
         <Style>
           <Border>
@@ -2870,9 +2872,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>9.02674in</Top>
-        <Left>4.61625in</Left>
+        <Left>4.89125in</Left>
         <Height>0.22917in</Height>
-        <Width>1.94917in</Width>
+        <Width>1.688in</Width>
         <ZIndex>31</ZIndex>
         <Style>
           <Border>
@@ -2886,9 +2888,9 @@
       </Textbox>
       <Line Name="Line19">
         <Top>5.98876cm</Top>
-        <Left>3.03953cm</Left>
+        <Left>2.62675cm</Left>
         <Height>0cm</Height>
-        <Width>5.01127cm</Width>
+        <Width>6.55647cm</Width>
         <ZIndex>32</ZIndex>
         <Style>
           <Border>
@@ -3024,9 +3026,9 @@
       </Textbox>
       <Line Name="Line21">
         <Top>6.84601cm</Top>
-        <Left>10.92704cm</Left>
+        <Left>12.01579cm</Left>
         <Height>0cm</Height>
-        <Width>5.49851cm</Width>
+        <Width>4.69551cm</Width>
         <ZIndex>38</ZIndex>
         <Style>
           <Border>
@@ -3036,9 +3038,9 @@
       </Line>
       <Line Name="Line23">
         <Top>11.40619cm</Top>
-        <Left>3.03953cm</Left>
+        <Left>2.62675cm</Left>
         <Height>0cm</Height>
-        <Width>5.01127cm</Width>
+        <Width>6.55647cm</Width>
         <ZIndex>39</ZIndex>
         <Style>
           <Border>
@@ -3048,9 +3050,9 @@
       </Line>
       <Line Name="Line24">
         <Top>12.27209cm</Top>
-        <Left>3.03953cm</Left>
+        <Left>2.62675cm</Left>
         <Height>0cm</Height>
-        <Width>5.01127cm</Width>
+        <Width>6.55647cm</Width>
         <ZIndex>40</ZIndex>
         <Style>
           <Border>
@@ -3066,17 +3068,21 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!JobDate.Value, "dsJobOrder")</Value>
-                <Style />
+                <Style>
+                  <Format>d/M/yyyy</Format>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>JobDate</rd:DefaultName>
         <Top>4.6832cm</Top>
-        <Left>11.80377cm</Left>
+        <Left>12.08952cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.92326cm</Width>
+        <Width>4.62178cm</Width>
         <ZIndex>41</ZIndex>
         <Style>
           <Border>
@@ -3099,14 +3105,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Name</rd:DefaultName>
-        <Top>4.84195cm</Top>
-        <Left>3.11327cm</Left>
-        <Height>1.10279cm</Height>
-        <Width>4.97281cm</Width>
+        <Top>4.58795cm</Top>
+        <Left>2.62679cm</Left>
+        <Height>0.94404cm</Height>
+        <Width>6.55642cm</Width>
         <ZIndex>42</ZIndex>
         <Style>
           <Border>
@@ -3129,14 +3137,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Tel</rd:DefaultName>
         <Top>8.94872cm</Top>
-        <Left>3.11327cm</Left>
+        <Left>2.62679cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.93756cm</Width>
+        <Width>6.55642cm</Width>
         <ZIndex>43</ZIndex>
         <Style>
           <Border>
@@ -3166,9 +3176,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>3.97132in</Top>
-        <Left>0.27083in</Left>
+        <Left>0.20833in</Left>
         <Height>0.22917in</Height>
-        <Width>0.86459in</Width>
+        <Width>0.76042in</Width>
         <ZIndex>44</ZIndex>
         <Style>
           <Border>
@@ -3191,14 +3201,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Fax</rd:DefaultName>
         <Top>9.974cm</Top>
-        <Left>3.11327cm</Left>
+        <Left>2.62679cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.93752cm</Width>
+        <Width>6.55642cm</Width>
         <ZIndex>45</ZIndex>
         <Style>
           <Border>
@@ -3221,14 +3233,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Contact</rd:DefaultName>
         <Top>10.79641cm</Top>
-        <Left>3.07795cm</Left>
+        <Left>2.62679cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.97284cm</Width>
+        <Width>6.55642cm</Width>
         <ZIndex>46</ZIndex>
         <Style>
           <Border>
@@ -3251,14 +3265,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>CoWorker</rd:DefaultName>
-        <Top>12.59338cm</Top>
-        <Left>3.11327cm</Left>
+        <Top>12.57167cm</Top>
+        <Left>2.62679cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.93756cm</Width>
+        <Width>6.55642cm</Width>
         <ZIndex>47</ZIndex>
         <Style>
           <Border>
@@ -3281,14 +3297,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Car</rd:DefaultName>
         <Top>19.73853cm</Top>
         <Left>12.18882cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.23672cm</Width>
+        <Width>4.48734cm</Width>
         <ZIndex>48</ZIndex>
         <Style>
           <Border>
@@ -3308,17 +3326,21 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!SWorking.Value, "dsJobOrder")</Value>
-                <Style />
+                <Style>
+                  <Format>d/M/yyyy</Format>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>SWorking</rd:DefaultName>
         <Top>19.73853cm</Top>
-        <Left>3.11327cm</Left>
+        <Left>2.63701cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.76277cm</Width>
+        <Width>4.23903cm</Width>
         <ZIndex>49</ZIndex>
         <Style>
           <Border>
@@ -3338,17 +3360,21 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!EWorking.Value, "dsJobOrder")</Value>
-                <Style />
+                <Style>
+                  <Format>d/M/yyyy</Format>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>EWorking</rd:DefaultName>
         <Top>20.57056cm</Top>
-        <Left>3.03953cm</Left>
+        <Left>2.63701cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.83651cm</Width>
+        <Width>4.23903cm</Width>
         <ZIndex>50</ZIndex>
         <Style>
           <Border>
@@ -3394,9 +3420,9 @@
       </Textbox>
       <Line Name="Line25">
         <Top>25.14547cm</Top>
-        <Left>2.81728cm</Left>
+        <Left>2.62675cm</Left>
         <Height>0cm</Height>
-        <Width>4.23333cm</Width>
+        <Width>4.24929cm</Width>
         <ZIndex>52</ZIndex>
         <Style>
           <Border>
@@ -3422,9 +3448,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>9.30035in</Top>
-        <Left>5.11022in</Left>
+        <Left>5.38522in</Left>
         <Height>0.22917in</Height>
-        <Width>0.73959in</Width>
+        <Width>0.47842in</Width>
         <ZIndex>53</ZIndex>
         <Style>
           <Border>
@@ -3454,9 +3480,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>9.67062in</Top>
-        <Left>0.66316in</Left>
+        <Left>0.27083in</Left>
         <Height>0.22917in</Height>
-        <Width>0.47226in</Width>
+        <Width>0.69792in</Width>
         <ZIndex>54</ZIndex>
         <Style>
           <Border>
@@ -3470,9 +3496,9 @@
       </Textbox>
       <Line Name="Line26">
         <Top>25.14548cm</Top>
-        <Left>12.44283cm</Left>
+        <Left>12.18882cm</Left>
         <Height>0cm</Height>
-        <Width>4.23333cm</Width>
+        <Width>4.48734cm</Width>
         <ZIndex>55</ZIndex>
         <Style>
           <Border>
@@ -3500,7 +3526,7 @@
         <Top>9.67062in</Top>
         <Left>4.45275in</Left>
         <Height>0.22917in</Height>
-        <Width>0.47226in</Width>
+        <Width>0.30556in</Width>
         <ZIndex>56</ZIndex>
         <Style>
           <Border>
@@ -3523,14 +3549,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>IssuedBy</rd:DefaultName>
         <Top>21.90404cm</Top>
-        <Left>11.98599cm</Left>
+        <Left>12.18882cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.43955cm</Width>
+        <Width>4.48734cm</Width>
         <ZIndex>57</ZIndex>
         <Style>
           <Border>
@@ -3553,14 +3581,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>JobBy</rd:DefaultName>
-        <Top>21.90757cm</Top>
-        <Left>2.97216cm</Left>
+        <Top>21.87229cm</Top>
+        <Left>2.63701cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.30077cm</Width>
+        <Width>4.23903cm</Width>
         <ZIndex>58</ZIndex>
         <Style>
           <Border>
@@ -3583,14 +3613,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>JobNo</rd:DefaultName>
         <Top>5.38876cm</Top>
-        <Left>11.8237cm</Left>
+        <Left>12.08952cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.60184cm</Width>
+        <Width>4.62177cm</Width>
         <ZIndex>59</ZIndex>
         <Style>
           <Border>
@@ -3613,14 +3645,16 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Address</rd:DefaultName>
         <Top>6.24601cm</Top>
-        <Left>3.07795cm</Left>
+        <Left>2.62679cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.97284cm</Width>
+        <Width>6.55642cm</Width>
         <ZIndex>60</ZIndex>
         <Style>
           <Border>

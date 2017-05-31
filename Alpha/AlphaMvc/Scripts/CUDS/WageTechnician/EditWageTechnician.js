@@ -20,7 +20,7 @@ $(document).ready(function () {
 });
 function GetData(val)
 {
-    alert(val);
+    //alert(val);
     //------------------------- Sorting ------------------------
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)
@@ -50,7 +50,7 @@ function GetData(val)
     var mDate = (Fromyear - 2) + '/' + (Frommonth+1) + '/' + Fromday;
     var Fdate = fromdate != null && fromdate != '' ? ChangeformatDate(fromdate, 1) : mDate;
     $("#hidFromDate").val(Fdate);
-    alert("test");
+    //alert("test");
     var DateTo = $("#dtDateTo").val();
     var TodayToDate = new Date();
     var ToYear = TodayToDate.getFullYear();
