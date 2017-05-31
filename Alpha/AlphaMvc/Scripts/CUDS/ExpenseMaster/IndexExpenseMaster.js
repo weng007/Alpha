@@ -38,7 +38,7 @@ $(document).ready(function () {
 
     $.ajax(
     {
-        url: 'http://localhost:13131/api/ExpenseMaster/',
+        url: 'http://localhost:8082/api/ExpenseMaster/',
         type: 'GET',
         datatype: 'json',
         success: function (data) {
@@ -75,7 +75,7 @@ function RowDelete(id) {
     var dataObject = { ID: id, EditBy: localStorage['UserID'] };
     $.ajax(
         {
-            url: 'http://localhost:13131/api/ExpenseMaster/Delete',
+            url: 'http://localhost:8082/api/ExpenseMaster/Delete',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',

@@ -2,7 +2,7 @@ $(document).ready(function () {
     CheckAuthorization();
     var dataObject = { typeID: '012' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
+        url: 'http://localhost:8082/api/MasterService/',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -20,7 +20,7 @@ $(document).ready(function () {
     });
 
     $.ajax({
-        url: 'http://localhost:13131/api/SecurityProfile/',
+        url: 'http://localhost:8082/api/SecurityProfile/',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -48,7 +48,7 @@ function GetData(val) {
     var dataObject = { ID: val}
     $.ajax(
    {
-       url: 'http://localhost:13131/api/UserLogin',
+       url: 'http://localhost:8082/api/UserLogin',
        type: 'GET',
        async: false,
        data : dataObject,
@@ -69,7 +69,7 @@ function Update(val) {
     console.log($("#cmbSecurityProfile").find(":selected").val());
        $.ajax(
         {
-            url: 'http://localhost:13131/api/UserLogin',
+            url: 'http://localhost:8082/api/UserLogin',
             type: 'PUT',
             async: false,
             data: dataObject,
