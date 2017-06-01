@@ -13,7 +13,7 @@ function CheckBorrow() {
     var dataObject = { serialNo: $("#txtSerial").val() + '&' + $("#txtBrand").val() + '&' + $("#txtModel").val() + '&' + $("#txtSize").val() };
     $.ajax(
            {
-               url: 'http://localhost:13131/api/JobOrderBorrow',
+               url: 'http://localhost:8082/api/JobOrderBorrow',
                type: 'GET',
                datatype: 'json',
                data: dataObject,
@@ -43,7 +43,7 @@ function CheckReturn() {
 function BrowseProduct() {
     $.ajax(
            {
-               url: 'http://localhost:13131/api/Product',
+               url: 'http://localhost:8082/api/Product',
                type: 'GET',
                datatype: 'json',
                success: function (data) {
@@ -74,7 +74,7 @@ function GetData(val) {
     alert(val);
     $.ajax(
    {
-       url: 'http://localhost:13131/api/JobOrderBorrow',
+       url: 'http://localhost:8082/api/JobOrderBorrow',
        type: 'GET',
        async: false,
        data : dataObject,
@@ -98,7 +98,7 @@ function Update(val) {
 
        $.ajax(
         {
-            url: 'http://localhost:13131/api/JobOrderBorrow',
+            url: 'http://localhost:8082/api/JobOrderBorrow',
             type: 'PUT',
             async: false,
             data: dataObject,

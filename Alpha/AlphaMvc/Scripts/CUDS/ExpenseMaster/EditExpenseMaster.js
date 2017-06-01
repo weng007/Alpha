@@ -9,7 +9,7 @@ function GetData(val) {
     var dataObject = { ID: val}
     $.ajax(
    {
-       url: 'http://localhost:13131/api/ExpenseMaster',
+       url: 'http://localhost:8082/api/ExpenseMaster',
        type: 'GET',
        async: false,
        data: dataObject,
@@ -29,7 +29,7 @@ function Update(val) {
     var dataObject = { ID: val, Detail: $("#txtDetail").val(), EditBy: localStorage['UserID'] }
         $.ajax(
         {
-            url: 'http://localhost:13131/api/ExpenseMaster',
+            url: 'http://localhost:8082/api/ExpenseMaster',
             type: 'PUT',
             async: false,
             data: dataObject,

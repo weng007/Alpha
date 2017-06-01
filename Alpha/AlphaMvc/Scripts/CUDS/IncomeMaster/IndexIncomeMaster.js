@@ -38,7 +38,7 @@ $(document).ready(function () {
 
     $.ajax(
     {
-        url: 'http://localhost:13131/api/IncomeMaster',
+        url: 'http://localhost:8082/api/IncomeMaster',
         type: 'GET',
         async: false,
         datatype: 'json',
@@ -78,7 +78,7 @@ function RowDelete(id) {
     var dataObject = { ID: id, EditBy: localStorage['UserID'] };
     $.ajax(
         {
-            url: 'http://localhost:13131/api/IncomeMaster',
+            url: 'http://localhost:8082/api/IncomeMaster',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',

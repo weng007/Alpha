@@ -36,7 +36,7 @@ $(document).ready(function () {
     var dataObject = {ID: 5};
     $.ajax(
     {
-        url: 'http://localhost:13131/api/CalendarManPower',
+        url: 'http://localhost:8082/api/CalendarManPower',
         type: 'GET',
         async: false,
         data: dataObject,

@@ -52,7 +52,7 @@ function BrowseProducts() {
     //-------------------------filter------------------------
     $.ajax(
       {
-          url: 'http://localhost:13131/api/Product',
+          url: 'http://localhost:8082/api/Product',
           type: 'GET',
           datatype: 'json',
           success: function (data) {
@@ -81,7 +81,7 @@ function GetRemain(val) {
     var dataObject = { ProductID: val };
     $.ajax(
        {
-           url: 'http://localhost:13131/api/JobOrderBorrow',
+           url: 'http://localhost:8082/api/JobOrderBorrow',
            type: 'GET',
            async: false,
            data: dataObject,
@@ -108,7 +108,7 @@ function CreateData() {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/ProductAdjustment',
+        url: 'http://localhost:8082/api/ProductAdjustment',
         type: 'POST',
         async: false,
         data: dataObject,

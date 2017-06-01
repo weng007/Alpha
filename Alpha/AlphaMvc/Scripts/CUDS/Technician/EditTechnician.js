@@ -2,7 +2,7 @@ $(document).ready(function () {
     CheckAuthorization();
     var dataObject = { typeID: '005' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService',
+        url: 'http://localhost:8082/api/MasterService',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     var dataObject = { typeID: '006' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService',
+        url: 'http://localhost:8082/api/MasterService',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -60,7 +60,7 @@ function GetData(val) {
         //{ ID : @Request.Params["id"]};
     $.ajax(
    {
-       url: 'http://localhost:13131/api/Technician',
+       url: 'http://localhost:8082/api/Technician',
        type: 'GET',
        async: false,
        data: dataObject,
