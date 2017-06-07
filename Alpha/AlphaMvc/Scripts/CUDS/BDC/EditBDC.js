@@ -32,7 +32,7 @@ function BrowseQuotation() {
     //-------------------------filter------------------------
     $.ajax(
       {
-          url: 'http://localhost:8082/api/Quotation',
+          url: 'http://localhost:13131/api/Quotation',
           type: 'GET',
           datatype: 'json',
           success: function (data) {
@@ -81,7 +81,7 @@ function GetData(val) {
     //alert('test val '+val);
     $.ajax(
        {
-           url: 'http://localhost:8082/api/BDC',
+           url: 'http://localhost:13131/api/BDC',
            type: 'GET',
            async: false,
            data: dataObject,
@@ -111,13 +111,14 @@ function Update(val) {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:8082/api/BDC',
+        url: 'http://localhost:13131/api/BDC',
         type: 'PUT',
         async: false,
         data: dataObject,
         datatype: 'json',
 
         success: function (data) {
+            Redirect();
         }
         ,
         error: function (msg) {
@@ -126,7 +127,7 @@ function Update(val) {
     });
 }
 function Redirect() {
-    window.location = "IndexBDC";
+    window.location.href = "../BDC/IndexBDC";
 }
 function OpenJobOrder(val) {
     window.location.href = "../JobOrder/CreateJobOrder?id=" + val + '&' + $("#txtBDCNo").val();

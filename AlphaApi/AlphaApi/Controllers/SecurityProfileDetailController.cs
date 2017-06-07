@@ -43,8 +43,17 @@ namespace AlphaApi.Controllers
         [HttpPut]
         public int Put(SecurityProfileDetailModels securityProfileDetailModel)
         {
-            //calling DBData Class Method and storing Repsonse   
-            var response = securityProfileDetail.UpdateData(securityProfileDetailModel);
+            var response = 0;
+
+            if (securityProfileDetailModel.ID > 0)
+            {
+                response = securityProfileDetail.UpdateData(securityProfileDetailModel);
+            }
+            else
+            {
+                response = securityProfileDetail.InsertData(securityProfileDetailModel);
+            }
+
             return response;
 
         }

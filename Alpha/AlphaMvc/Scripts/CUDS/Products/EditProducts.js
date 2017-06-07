@@ -2,7 +2,7 @@ $(document).ready(function () {
     CheckAuthorization();
     var dataObject = { typeID: '003' };
     $.ajax({
-        url: 'http://localhost:8082/api/MasterService',
+        url: 'http://localhost:13131/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     var dataObject = { typeID: '004' };
     $.ajax({
-        url: 'http://localhost:8082/api/MasterService',
+        url: 'http://localhost:13131/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -69,11 +69,11 @@ function ControlEnable(Isview) {
 }
 function GetData(val) {
     var dataObject = { ID: val }
-    alert(val);
+    //alert(val);
         //{ ID : @Request.Params["id"]};
     $.ajax(
    {
-       url: 'http://localhost:8082/api/Product',
+       url: 'http://localhost:13131/api/Product',
        type: 'GET',
        async: false,
        data: dataObject,
@@ -110,7 +110,7 @@ function GetDetail(val) {
     var dataObject = { ProductID: val };
     $.ajax(
            {
-               url: 'http://localhost:8082/api/Product',
+               url: 'http://localhost:13131/api/Product',
                type: 'GET',
                datatype: 'json',
                data: dataObject,
@@ -129,7 +129,7 @@ function GetRemain(val) {
     var dataObject = { ProductID: val };
     $.ajax(
        {
-           url: 'http://localhost:8082/api/JobOrderBorrow',
+           url: 'http://localhost:13131/api/JobOrderBorrow',
            type: 'GET',
            async: false,
            data: dataObject,
@@ -180,7 +180,7 @@ function Update(val) {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:8082/api/Product',
+        url: 'http://localhost:13131/api/Product',
         type: 'PUT',
         async: false,
         data: dataObject,
@@ -228,5 +228,5 @@ function DateWorking() {
     }
 }
 function Redirect() {
-    window.location = "IndexProducts";
+    window.location.href = "../Products/IndexProducts";
 }

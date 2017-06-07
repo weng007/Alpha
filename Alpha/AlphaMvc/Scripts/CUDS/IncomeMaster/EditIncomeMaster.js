@@ -11,7 +11,7 @@ function GetData(val) {
     var dataObject = { ID: val}
     $.ajax(
    {
-       url: 'http://localhost:8082/api/IncomeMaster',
+       url: 'http://localhost:13131/api/IncomeMaster',
        type: 'GET',
        async: false,
        data : dataObject,
@@ -31,20 +31,21 @@ function Update(val) {
     var dataObject = { ID: val, Detail: $("#txtDetail").val(), EditBy: localStorage['UserID'] }
        $.ajax(
         {
-            url: 'http://localhost:8082/api/IncomeMaster',
+            url: 'http://localhost:13131/api/IncomeMaster',
             type: 'PUT',
             async: false,
             data: dataObject,
             datatype: 'json',
             success: function (data) {
                 //alert('Update is completed');
+                window.location.href = "../IncomeMaster/IndexIncomeMaster";
             },
             error: function (msg) {
                 //alert(msg);
             }           
         })
 };
-function Redirect() {
-    window.location.href = "../IncomeMaster/IndexIncomeMaster";
-}
+//function Redirect() {
+   
+//}
 

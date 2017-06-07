@@ -14,7 +14,7 @@ function CheckBorrow() {
     var dataObject = { serialNo: $("#txtSerial").val() + '&' + $("#txtBrand").val() + '&' + $("#txtModel").val() + '&' + $("#txtSize").val() };
     $.ajax(
            {
-               url: 'http://localhost:8082/api/JobOrderBorrow',
+               url: 'http://localhost:13131/api/JobOrderBorrow',
                type: 'GET',
                datatype: 'json',
                data: dataObject,
@@ -46,7 +46,7 @@ function GetRemain(val) {
     var dataObject = { ProductID: val };
     $.ajax(
        {
-           url: 'http://localhost:8082/api/JobOrderBorrow',
+           url: 'http://localhost:13131/api/JobOrderBorrow',
            type: 'GET',
            async: false,
            data: dataObject,
@@ -91,7 +91,7 @@ function BrowseProducts() {
     //-------------------------filter------------------------
     $.ajax(
       {
-          url: 'http://localhost:8082/api/Product',
+          url: 'http://localhost:13131/api/Product',
           type: 'GET',
           datatype: 'json',
           success: function (data) {
@@ -121,7 +121,7 @@ function GetDetail()
     var dataObject = { ProductID: $("#hidProductID").val() };
     $.ajax(
        {
-           url: 'http://localhost:8082/api/JobOrderBorrow',
+           url: 'http://localhost:13131/api/JobOrderBorrow',
            type: 'GET',
            async: false,
            data: dataObject,
@@ -142,7 +142,7 @@ function GetData(val) {
     //alert("Test"+val);
     $.ajax(
    {
-       url: 'http://localhost:8082/api/ProductAdjustment',
+       url: 'http://localhost:13131/api/ProductAdjustment',
        type: 'GET',
        async: false,
        data : dataObject,
@@ -173,13 +173,14 @@ function Update(val) {
 
        $.ajax(
         {
-            url: 'http://localhost:8082/api/ProductAdjustment',
+            url: 'http://localhost:13131/api/ProductAdjustment',
             type: 'PUT',
             async: false,
             data: dataObject,
             datatype: 'json',
             success: function (data) {
                 //alert('Update is completed');
+                Redirect();
             },
             error: function (msg) {
                 alert(msg);
@@ -188,7 +189,8 @@ function Update(val) {
 };
 function Redirect() {
 
-    var hidAdjustID = $('#hidID').val();
-    window.location.href = "../ProductAdjust/EditProductAdjust?id=" + hidAdjustID;
+    //var hidAdjustID = $('#hidID').val();
+    //window.location.href = "../ProductAdjust/EditProductAdjust?id=" + hidAdjustID;
+    window.location.href = "../ProductAdjust/IndexProductAdjust";
 }
 

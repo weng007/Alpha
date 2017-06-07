@@ -14,9 +14,9 @@
         if ($("#txtSerialNo").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input SerialNo.</div>';
         }
-        if ($("#txtMachineNo").val() == '') {
-            validatehtml += '<div class="modal-body modal-body-Warning">Please input MachineNo.</div>';
-        }
+        //if ($("#txtMachineNo").val() == '') {
+        //    validatehtml += '<div class="modal-body modal-body-Warning">Please input MachineNo.</div>';
+        //}
         if ($("#cmbProductType").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input ประเภทสินค้า.</div>';
         }
@@ -138,7 +138,8 @@ function ConfirmDialog(val, topic, id) {
             html += '</div>';
             html += '<div class="modal-body modal-body-info">Do you want to Update?</div>';
             html += '<div class="modal-footer">';
-            html += '<button type="button" class="btn btn-info" onclick="Update(' + id + ')" onblur="Redirect()">Yes</button>';
+        //html += '<button type="button" class="btn btn-info" onclick="Update(' + id + ')" onblur="Redirect()">Yes</button>';
+            html += '<button type="button" class="btn btn-info" onclick="Update(' + id + ')">Yes</button>';
             html += '<button type="button" class="btn btn-info" data-dismiss="modal">No</button>';
             html += '</div></div></div>';
             document.getElementById("ShowDialog").innerHTML = html;

@@ -58,7 +58,7 @@ function GetData(val)
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:8082/api/BDC',
+        url: 'http://localhost:13131/api/BDC',
         type: 'GET',
         async: false,
         data: dataObject,
@@ -109,22 +109,51 @@ function GetData(val)
     });
 }
 function RowDelete(id) {
-    var dataObject = { ID: id };
-    $.ajax(
-        {
-            url: 'http://localhost:8082/api/BDC/Delete',
-            type: 'DELETE',
-            data: dataObject,
-            datatype: 'json',
+    var CountDel;
+    var dataObject = { BDCID: id };
+    $.ajax({
+        url: 'http://localhost:13131/api/BDC',
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            //alert("Test "+id);
+            CountDel = data.Table[0].CountDelete;
+            //alert("CountDelete "+data.Table[0].CountDelete);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+    if (CountDel <= 0)
+    {
+        //alert("testCountDel");
+        var dataObject = { ID: id };
+        $.ajax(
+            {
+                url: 'http://localhost:13131/api/BDC/Delete',
+                type: 'DELETE',
+                async: false,
+                data: dataObject,
+                datatype: 'json',
 
-            success: function (result) {
-                //alert('Delete is completed')
-                window.location.href = "../BDC/IndexBDC";
-            }
-            ,
-            error: function (msg) {
-                alert(msg)
-            }
+                success: function (result) {
+                    //alert('Delete is completed')
+                    window.location.href = "../BDC/IndexBDC";
+                }
+                ,
+                error: function (msg) {
+                    alert(msg)
+                }
 
-        });
+            });
+    }
+    else {
+        //alert("Test Else");
+        alert("Please Delete JobOrder.");
+        window.location.href = "../BDC/IndexBDC";
+    }
+    
 }

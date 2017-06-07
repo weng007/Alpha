@@ -1,9 +1,8 @@
 ﻿@{
-    ViewBag.Title = "EditUser";
+    ViewBag.Title = "CreateUser";
 }
 
-<h2>EditUser</h2>
-<script src="@Url.Content("~/Scripts/CUDS/User/EditUser.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CUDS/User/CreateUser.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <style>
     table {
@@ -29,6 +28,13 @@
         //===================================================================CSS w3school
         <form id="myform">
             <ul class="form-style-1">
+                <li>
+                    <label class="label-2" style="margin-right: 25%;">UserName</label>
+                </li>
+                <li>
+                    <input type="text" id="txtUserName" name="field_1" class="field-divided" disabled />
+                    <button type="button" id="btnCheck" class="btn btn-primary" onclick="CheckAD()">Get ADUser</button>
+                </li>
                 <li>
                     <label class="label-2" style="margin-right: 25%;">ชื่อ</label>&nbsp;<label class="label-2" style="margin-right: 10%;">นามสกุล</label>
                 </li>
@@ -59,7 +65,7 @@
             </ul>
         </form>
     }
-    @*//===================================================================CSS w3school*@
+    @*//=================================================================== CSS w3school*@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {

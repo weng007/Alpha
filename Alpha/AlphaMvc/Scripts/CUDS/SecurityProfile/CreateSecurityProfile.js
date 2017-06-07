@@ -37,7 +37,7 @@ $(document).ready(function () {
     //------------------------------------ Custom ------------------------------------
     var dataObject = { typeID: '011' };
     $.ajax({
-        url: 'http://localhost:8082/api/MasterService',
+        url: 'http://localhost:13131/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -96,7 +96,7 @@ function CreateData() {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:8082/api/SecurityProfile',
+        url: 'http://localhost:13131/api/SecurityProfile',
         type: 'POST',
         async: false,
         data: dataObject,
@@ -114,7 +114,7 @@ function CreateData() {
     var dataObject = {};
     $(".RowCal").each(function () {
         dataObject.SecurityID = SecurityID;
-        dataObject.MenuTypeID = $(this).find(".hidMenuTypeID").val();
+        dataObject.MenuID = $(this).find(".hidMenuTypeID").val();
         dataObject.IsView = $(this).find('.IsView').is(":checked") == true ? 1 : 0;
         dataObject.IsInsert = $(this).find('.IsInsert').is(":checked") == true ? 1 : 0;
         dataObject.IsUpdate = $(this).find(".IsUpdate").is(":checked") == true ? 1 : 0;
@@ -123,7 +123,7 @@ function CreateData() {
         dataObject.EditBy = localStorage['UserID'];
             $.ajax(
             {
-                url: 'http://localhost:8082/api/SecurityProfileDetail',
+                url: 'http://localhost:13131/api/SecurityProfileDetail',
                 type: 'POST',
                 async: false,
                 data: dataObject,

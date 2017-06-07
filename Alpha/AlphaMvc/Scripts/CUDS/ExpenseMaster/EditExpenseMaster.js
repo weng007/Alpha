@@ -9,7 +9,7 @@ function GetData(val) {
     var dataObject = { ID: val}
     $.ajax(
    {
-       url: 'http://localhost:8082/api/ExpenseMaster',
+       url: 'http://localhost:13131/api/ExpenseMaster',
        type: 'GET',
        async: false,
        data: dataObject,
@@ -29,14 +29,15 @@ function Update(val) {
     var dataObject = { ID: val, Detail: $("#txtDetail").val(), EditBy: localStorage['UserID'] }
         $.ajax(
         {
-            url: 'http://localhost:8082/api/ExpenseMaster',
+            url: 'http://localhost:13131/api/ExpenseMaster',
             type: 'PUT',
             async: false,
             data: dataObject,
             datatype: 'json',
 
-            success: function (result) {
+            success: function (data) {
                 //alert('Update is completed');
+                Redirect();
             }
             ,
             error: function (msg) {

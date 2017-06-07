@@ -21,7 +21,7 @@ function UserLogin() {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:8082/api/UserLogin',
+        url: 'http://localhost:13131/api/UserLogin',
         type: 'GET',
         async: false,
         data: dataObject,
@@ -31,21 +31,15 @@ function UserLogin() {
             console.log(data);
             if (data.Table.length > 0)
             {
-                //46 = InActive
-                if (data.Table[0].Status != 46)
-                {
                     localStorage['UserID'] = data.Table[0].ID;
                     localStorage['UserName'] = data.Table[0].UserName;
+                    localStorage['Password'] = $("#txtPassword").val();
                     //location = "../Technician/ExpiredTechnician";
                     CheckAuthorization();
-                }
-                else {
-                    alert("User is InActive");
-                }
             }
             else
             {
-                alert("User is not found");
+                alert("Username is not found or invalid username or password");
             }
         },
         error: function (msg) {
@@ -58,7 +52,7 @@ function CheckAuthorization() {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:8082/api/CheckAuthorization',
+        url: 'http://localhost:13131/api/CheckAuthorization',
         type: 'GET',
         async: false,
         data: dataObject,

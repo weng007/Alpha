@@ -52,7 +52,7 @@ function GetJobOrder(val)
     var dataObject = { ID: val }
     $.ajax(
     {
-        url: 'http://localhost:8082/api/BDCJob',
+        url: 'http://localhost:13131/api/BDCJob',
         type: 'GET',
         data: dataObject,
         datatype: 'json',
@@ -98,16 +98,17 @@ function RowDelete(id) {
     var after = input.split('?')[1]
     var ID = after.split('=');
     var BDCID = ID[1];
+    //alert(id);
     var dataObject = { ID: id };
     $.ajax(
         {
-            url: 'http://localhost:8082/api/JobOrder',
+            url: 'http://localhost:13131/api/JobOrder',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',
 
             success: function (result) {
-                alert('Delete is completed')
+                //alert('Delete is completed')
                 window.location.href = "../BDC/EditBDC?id=" + BDCID;
             }
             ,
