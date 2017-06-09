@@ -1,4 +1,4 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     $.ajax({
         url: 'http://localhost:13131/api/SecurityProfile/',
@@ -28,7 +28,7 @@ $(document).ready(function () {
 function CheckAD()
 {
     var userName = $("#txtUserName").val();
-    var dataObject = { UserName: userName + '&' + localStorage['UserName'] + '&' + localStorage['Password'] }
+    var dataObject = { userName2: userName + '&' + localStorage['UserName'] + '&' + localStorage['Password'] }
     $.ajax(
    {
        url: 'http://localhost:13131/api/UserLogin',
@@ -38,7 +38,17 @@ function CheckAD()
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
-           $("#txtFirstName").val(data.Table[0].FirstName), $("#txtLastName").val(data.Table[0].LastName), $("#txtEmail").val(data.Table[0].Email), $("#txtDepartment").val(data.Table[0].Department), $("#txtCompany").val(data.Table[0].Company);
+           console.log(data);
+           if (data.ADUser.length > 0)
+           {
+               $("#txtFirstName").val(data.ADUser[0].FirstName),
+               $("#txtLastName").val(data.ADUser[0].LastName),
+               $("#txtEmail").val(data.ADUser[0].Email),
+               $("#txtDepartment").val(data.ADUser[0].Department),
+               $("#txtCompany").val(data.ADUser[0].Company),
+               $("#txtTitle").val(data.ADUser[0].Title);
+           }
+           
        },
        error: function (msg) {
            alert(msg);
@@ -49,8 +59,15 @@ function CheckAD()
 }
 
 function CreateData(val) {
-    var dataObject = { UserName: $("#txtUserName").val(), FirstName: $("#txtFirstName").val(), LastName: $("#txtLastName").val(), Email: $("#txtEmail").val(),
-        SecurityID: $("#cmbSecurityProfile").find(":selected").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] }
+    var dataObject = {
+        UserName: $("#txtUserName").val(),
+        //FirstName: $("#txtFirstName").val(),
+        //LastName: $("#txtLastName").val(),
+        //Email: $("#txtEmail").val(),
+        SecurityID: $("#cmbSecurityProfile").find(":selected").val(),
+        CreateBy: localStorage['UserID'],
+        EditBy: localStorage['UserID']
+    }
     console.log($("#cmbSecurityProfile").find(":selected").val());
        $.ajax(
         {
@@ -60,6 +77,11 @@ function CreateData(val) {
             data: dataObject,
             datatype: 'json',
             success: function (data) {
+                console.log(data);
+                if (data > 0)
+                {
+                    alert("User นี้ถูกใช้งานล้ว");
+                }
                 Redirect();
             },
             error: function (msg) {

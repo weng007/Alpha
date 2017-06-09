@@ -35,8 +35,7 @@
             validatehtml += '<div class="modal-body modal-body-Warning">Please input QuotationNo.</div>';
         }
     }
-    if (topic == "JobOrderBorrow")
-    {
+    if (topic == "JobOrderBorrow"){
         if ($("#txtAmount").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input จำนวนที่ยืม.</div>';
         }
@@ -92,6 +91,11 @@
         }
         if ($("#txtSerialNo").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input SerialNo.</div>';
+        }
+    }
+    if (topic == "User") {
+        if ($("#txtUserName").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input UserName.</div>';
         }
     }
     if (validatehtml != '')

@@ -30,13 +30,19 @@
         <form id="myform">
             <ul class="form-style-1">
                 <li>
-                    <label class="label-2" style="margin-right: 25%;">ชื่อ</label>&nbsp;<label class="label-2" style="margin-right: 10%;">นามสกุล</label>
+                    <label class="label-2" style="margin-right: 33%;">UserName<span class="required">*</span></label>&nbsp;<label class="label-2" style="margin-right: 10%;">Title</label>
+                </li>
+                <li>
+                    <input type="text" id="txtUserName" name="field_1" class="field-divided" disabled/>&nbsp;<input type="text" id="txtTitle" name="field1" class="field-divided" disabled />
+                </li>
+                <li>
+                    <label class="label-2" style="margin-right: 45%;">ชื่อ</label>&nbsp;<label class="label-2" style="margin-right: 10%;">นามสกุล</label>
                 </li>
                 <li>
                     <input type="text" id="txtFirstName" name="field_1" class="field-divided" disabled />&nbsp;<input type="text" id="txtLastName" name="field1" class="field-divided" disabled />
                 </li>
                 <li>
-                    <label class="label-2" style="margin-right: 25%;">Department</label>&nbsp;<label class="label-2" style="margin-right: 10%;">Company</label>
+                    <label class="label-2" style="margin-right: 30%;">Department</label>&nbsp;<label class="label-2" style="margin-right: 10%;">Company</label>
                 </li>
                 <li>
                     <input type="text" id="txtDepartment" name="field_1" class="field-divided" disabled />&nbsp;<input type="text" id="txtCompany" name="field1" class="field-divided" disabled />
@@ -48,13 +54,13 @@
                     <input type="text" id="txtEmail" name="field1" class="field-divided" placeholder="E-mail" disabled />
                 </li>
                 <li>
-                    <label class="label-2" style="margin-right: 45%;">SecurityProfile<span class="required">*</span></label>
+                    <label class="label-2" style="margin-right: 45%;">SecurityProfile</label>
                 </li>
                 <li>
                     <select id="cmbSecurityProfile" name="cmbSecurityProfile" class="field-divided"></select>
                 </li>
                 <li>
-                    <button type="button" id="btnSave" class="btn btn-primary" onclick="ConfirmDialog('Update', 'User', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'User', @Request.Params["id"])">Save</button>
                 </li>
             </ul>
         </form>

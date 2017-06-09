@@ -17,7 +17,9 @@ $(document).ready(function () {
     });
 });
 function UserLogin() {
-    var dataObject = { Password: $("#txtUserName").val()+'&'+ $("#txtPassword").val() };
+    var dataObject = { userName: $("#txtUserName").val() + '&' + $("#txtPassword").val() };
+    //alert($("#txtUserName").val());
+    //alert($("#txtPassword").val());
     console.log(dataObject);
     $.ajax(
     {
@@ -29,7 +31,8 @@ function UserLogin() {
         success: function (data) {
             data = JSON.parse(data);
             console.log(data);
-            if (data.Table.length > 0)
+
+            if (data != null && data.Table.length > 0)
             {
                     localStorage['UserID'] = data.Table[0].ID;
                     localStorage['UserName'] = data.Table[0].UserName;

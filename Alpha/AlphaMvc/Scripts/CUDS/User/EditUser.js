@@ -17,16 +17,15 @@ $(document).ready(function () {
         }
     });
 });
-//function ControlEnable(Isview) {
-//    //var Isview = val;
-//    if (Isview) {
-//        document.getElementById("cmbStatus").disabled = true;
-//        document.getElementById("cmbSecurityProfile").disabled = true;
-//        document.getElementById("btnSave").disabled = true;
-//    }
-//}
+function ControlEnable(Isview) {
+    //var Isview = val;
+    if (Isview) {
+        document.getElementById("cmbSecurityProfile").disabled = true;
+        document.getElementById("btnSave").disabled = true;
+    }
+}
 function GetData(val) {
-    var dataObject = { UserID: val + '&' + localStorage['UserName'] + '&' + localStorage['Password'] }
+    var dataObject = { userName1: val + '&' + localStorage['UserName'] + '&' + localStorage['Password'] }
     $.ajax(
    {
        url: 'http://localhost:13131/api/UserLogin',
@@ -36,7 +35,14 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
-           $("#txtUserName").val(data.Table[0].UserName), $("#txtFirstName").val(data.Table[0].FirstName), $("#txtLastName").val(data.Table[0].LastName), $("#txtEmail").val(data.Table[0].Email), $("#cmbSecurityProfile").val(data.Table[0].SecurityID), $("#txtDepartment").val(data.Table[0].Department), $("#txtCompany").val(data.Table[0].Company);
+           $("#txtUserName").val(data.ADUser[0].UserName),
+           $("#txtFirstName").val(data.ADUser[0].FirstName),
+           $("#txtLastName").val(data.ADUser[0].LastName),
+           $("#txtEmail").val(data.ADUser[0].Email),
+           $("#cmbSecurityProfile").val(data.ADUser[0].SecurityID),
+           $("#txtDepartment").val(data.ADUser[0].Department),
+           $("#txtCompany").val(data.ADUser[0].Company),
+           $("#txtTitle").val(data.ADUser[0].Title);
        },
        error: function (msg) {
            alert(msg);
@@ -45,7 +51,11 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var dataObject = { ID: val, Status: $("#cmbStatus").find(":selected").val(), SecurityID: $("#cmbSecurityProfile").find(":selected").val(), EditBy: localStorage['UserID'] }
+    var dataObject = {
+        ID: val,
+        SecurityID: $("#cmbSecurityProfile").find(":selected").val(),
+        EditBy: localStorage['UserID']
+    }
     console.log($("#cmbSecurityProfile").find(":selected").val());
        $.ajax(
         {

@@ -291,6 +291,8 @@ namespace AlphaApi.Dataset {
             
             private global::System.Data.DataColumn columnCompany;
             
+            private global::System.Data.DataColumn columnTitle;
+            
             private global::System.Data.DataColumn columnSecurityID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -376,6 +378,14 @@ namespace AlphaApi.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TitleColumn {
+                get {
+                    return this.columnTitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn SecurityIDColumn {
                 get {
                     return this.columnSecurityID;
@@ -419,7 +429,7 @@ namespace AlphaApi.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ADUserRow AddADUserRow(string ID, string FirstName, string LastName, string Email, string Department, string Company, string SecurityID) {
+            public ADUserRow AddADUserRow(string ID, string FirstName, string LastName, string Email, string Department, string Company, string Title, string SecurityID) {
                 ADUserRow rowADUserRow = ((ADUserRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -428,6 +438,7 @@ namespace AlphaApi.Dataset {
                         Email,
                         Department,
                         Company,
+                        Title,
                         SecurityID};
                 rowADUserRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowADUserRow);
@@ -457,6 +468,7 @@ namespace AlphaApi.Dataset {
                 this.columnEmail = base.Columns["Email"];
                 this.columnDepartment = base.Columns["Department"];
                 this.columnCompany = base.Columns["Company"];
+                this.columnTitle = base.Columns["Title"];
                 this.columnSecurityID = base.Columns["SecurityID"];
             }
             
@@ -475,6 +487,8 @@ namespace AlphaApi.Dataset {
                 base.Columns.Add(this.columnDepartment);
                 this.columnCompany = new global::System.Data.DataColumn("Company", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCompany);
+                this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTitle);
                 this.columnSecurityID = new global::System.Data.DataColumn("SecurityID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSecurityID);
                 this.columnFirstName.MaxLength = 100;
@@ -722,6 +736,22 @@ namespace AlphaApi.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Title {
+                get {
+                    try {
+                        return ((string)(this[this.tableADUser.TitleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Title\' in table \'ADUser\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableADUser.TitleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string SecurityID {
                 get {
                     if (this.IsSecurityIDNull()) {
@@ -806,6 +836,18 @@ namespace AlphaApi.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCompanyNull() {
                 this[this.tableADUser.CompanyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTitleNull() {
+                return this.IsNull(this.tableADUser.TitleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTitleNull() {
+                this[this.tableADUser.TitleColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

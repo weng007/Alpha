@@ -24,9 +24,9 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_User_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@UserName", userLoginModels.UserName);
-                    cmd.Parameters.AddWithValue("@FirstName", userLoginModels.FirstName);
-                    cmd.Parameters.AddWithValue("@LastName", userLoginModels.LastName);
-                    cmd.Parameters.AddWithValue("@Email", userLoginModels.Email);
+                    //cmd.Parameters.AddWithValue("@FirstName", userLoginModels.FirstName != null && userLoginModels.FirstName != "" ? userLoginModels.FirstName : "");
+                    //cmd.Parameters.AddWithValue("@LastName", userLoginModels.LastName != null && userLoginModels.LastName != "" ? userLoginModels.LastName : "");
+                    //cmd.Parameters.AddWithValue("@Email", userLoginModels.Email != null && userLoginModels.Email != "" ? userLoginModels.Email : "");
                     cmd.Parameters.AddWithValue("@SecurityID", userLoginModels.SecurityID);
                     cmd.Parameters.AddWithValue("@CreateBy", userLoginModels.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", userLoginModels.EditBy);
@@ -45,33 +45,28 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-        public dsUser SelectADByUserName(string userName, string LoginUser, string LoginPassword)
+        public dsUser GetInfoByUserName2(string userName, string LoginUser, string LoginPassword)
         {
             //ทำตอนกดปุ่ม CheckUser (หน้า Create)
             //ดึงข้อมูลจาก AD เพื่อ Bind ค่าใน Control
             dsUser userDS = new dsUser();
             string domainName = string.Empty;
             string ADPath = string.Empty;
-            //string ADuserName;
             string strError = string.Empty;
             string domainAndUser;
             string Errmsg = "";
-            //string LdapPath;
-            string FirstName;
-            string LastName;
-            string Email;
-            string Department;
-            string Company;
+
             try
             {
                 ADPath = ConfigurationManager.AppSettings["DirectoryPath"];
                 domainName = ConfigurationManager.AppSettings["DirectoryDomain"];
-                if (!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(ADPath))
+                if (!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(domainName))
                 {
                     domainAndUser = domainName + @"\" + LoginUser;
-                    DirectoryEntry entry = new DirectoryEntry(ADPath, LoginUser, LoginPassword);
+                    DirectoryEntry entry = new DirectoryEntry(ADPath, domainAndUser, LoginPassword);
                     try
                     {
+                        object obj = entry.NativeObject;
                         DirectorySearcher search = new DirectorySearcher(entry);
                         search.Filter = "(SAMAccountName=" + userName + ")";
                         search.PropertiesToLoad.Add("givenname");
@@ -79,25 +74,21 @@ namespace AlphaApi.DataAccessLayer
                         search.PropertiesToLoad.Add("mail");
                         search.PropertiesToLoad.Add("department");
                         search.PropertiesToLoad.Add("company");
+                        search.PropertiesToLoad.Add("title");
                         SearchResult result = search.FindOne();
                         if (result != null)
                         {
-                            FirstName = (String)result.Properties["givenname"][0];
-                            LastName = (String)result.Properties["sn"][0];
-                            Email = (String)result.Properties["mail"][0];
-                            Department = (String)result.Properties["department"][0];
-                            Company = (String)result.Properties["company"][0];
-
                             dsUser.ADUserRow dr = userDS.ADUser.NewADUserRow();
-                            dr["FirstName"] = FirstName;
-                            dr["LastName"] = LastName;
-                            dr["Email"] = Email;
-                            dr["Department"] = Department;
-                            dr["Company"] = Company;
-
+                            dr["FirstName"] = result.Properties["givenname"].Count > 0 ? (String)result.Properties["givenname"][0] : "";
+                            dr["LastName"] = result.Properties["sn"].Count > 0 ? (String)result.Properties["sn"][0] : "";
+                            dr["Email"] = result.Properties["mail"].Count > 0 ? (String)result.Properties["mail"][0] : "";
+                            dr["Department"] = result.Properties["department"].Count > 0 ? (String)result.Properties["department"][0] : "";
+                            dr["Company"] = result.Properties["company"].Count > 0 ? (String)result.Properties["company"][0] : "";
+                            dr["Title"] = result.Properties["title"].Count > 0 ? (String)result.Properties["title"][0] : "";
                             userDS.ADUser.AddADUserRow(dr);
                         }
                         //LdapPath = result.Path;
+                        
                     }
                     catch (Exception ex)
                     {
@@ -117,11 +108,11 @@ namespace AlphaApi.DataAccessLayer
             }
             return userDS;
         }
-        public DataSet SelectByID(int id, string LoginUser, string LoginPassword)
+
+        public DataSet GetInfoByUserName1(int id, string LoginUser, string LoginPassword)
         {
             //ดึงข้อมูลจาก AD เพื่อ Bind ค่าใน Control (page_load หน้า Update)
-            DataSet ds = null;
-            DataSet dsAD = new DataSet("dsUser");
+            dsUser userDS = new dsUser();
             string domainName = string.Empty;
             string ADPath = string.Empty;
             //string ADuserName;
@@ -129,13 +120,13 @@ namespace AlphaApi.DataAccessLayer
             string domainAndUser;
             string Errmsg = "";
             //string LdapPath;
-            string FirstName;
-            string LastName;
-            string Email;
-            string Department;
-            string Company;
+            //string FirstName;
+            //string LastName;
+            //string Email;
+            //string Department;
+            //string Company;
             string userName;
-            int seurityID;
+            //int seurityID;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -147,20 +138,21 @@ namespace AlphaApi.DataAccessLayer
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;
-                    ds = new DataSet();
-                    da.Fill(ds);
-                    userName = ds.Tables[0].Rows[0]["UserName"].ToString(); 
-                    seurityID = Convert.ToInt32(ds.Tables[0].Rows[0]["SecurityID"]);
+                    da.Fill(userDS.ADUser);
+                    userName = userDS.ADUser.Rows[0]["UserName"].ToString();
+                    //seurityID = Convert.ToInt32(ds.Tables[0].Rows[0]["SecurityID"]) 
+
 
                     //ดึงข้อมูลจาก AD 
                     ADPath = ConfigurationManager.AppSettings["DirectoryPath"];
                     domainName = ConfigurationManager.AppSettings["DirectoryDomain"];
-                    if (!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(ADPath))
+                    if (!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(domainName))
                     {
                         domainAndUser = domainName + @"\" + LoginUser;
-                        DirectoryEntry entry = new DirectoryEntry(ADPath, LoginUser, LoginPassword);
+                        DirectoryEntry entry = new DirectoryEntry(ADPath, domainAndUser, LoginPassword);
                         try
                         {
+                            object obj = entry.NativeObject;
                             DirectorySearcher search = new DirectorySearcher(entry);
                             search.Filter = "(SAMAccountName=" + userName + ")";
                             search.PropertiesToLoad.Add("givenname");
@@ -168,26 +160,25 @@ namespace AlphaApi.DataAccessLayer
                             search.PropertiesToLoad.Add("mail");
                             search.PropertiesToLoad.Add("department");
                             search.PropertiesToLoad.Add("company");
+                            search.PropertiesToLoad.Add("title");
                             SearchResult result = search.FindOne();
                             if (result != null)
                             {
-                                FirstName = (String)result.Properties["givenname"][0];
-                                LastName = (String)result.Properties["sn"][0];
-                                Email = (String)result.Properties["mail"][0];
-                                Department = (String)result.Properties["department"][0];
-                                Company = (String)result.Properties["company"][0];
-                                
+                                userDS.ADUser.Rows[0]["FirstName"] = result.Properties["givenname"].Count > 0 ? (String)result.Properties["givenname"][0] : "";
+                                userDS.ADUser.Rows[0]["LastName"] = result.Properties["sn"].Count > 0 ? (String)result.Properties["sn"][0] : "";
+                                userDS.ADUser.Rows[0]["Email"] = result.Properties["mail"].Count > 0 ? (String)result.Properties["mail"][0] : "";
+                                userDS.ADUser.Rows[0]["Department"] = result.Properties["department"].Count > 0 ? (String)result.Properties["department"][0] : "";
+                                userDS.ADUser.Rows[0]["Company"] = result.Properties["company"].Count > 0 ? (String)result.Properties["company"][0] : "";
+                                userDS.ADUser.Rows[0]["Title"] = result.Properties["title"].Count > 0 ? (String)result.Properties["title"][0] : "";
                             }
                             //LdapPath = result.Path;
+                            
                         }
                         catch (Exception ex)
                         {
                             Errmsg = ex.Message;
                         }
-
                     }
-
-                    return ds;
                 }
                 catch (Exception ex)
                 {
@@ -198,15 +189,16 @@ namespace AlphaApi.DataAccessLayer
                     conObj.Close();
                 }
             }
+            return userDS;
         }
         public DataSet SelectData()
         {
             DataSet ds = null;
+
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
-
                     SqlCommand cmd = new SqlCommand("SP_User_Sel", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     conObj.Open();
@@ -214,6 +206,7 @@ namespace AlphaApi.DataAccessLayer
                     da.SelectCommand = cmd;
                     ds = new DataSet();
                     da.Fill(ds);
+
                     return ds;
                 }
                 catch (Exception ex)
@@ -261,20 +254,22 @@ namespace AlphaApi.DataAccessLayer
             string domainAndUser;
             string Errmsg = "";
             string LdapPath;
-            bool isAuthen;
+            bool isAuthen = false;
             try
             {
                 ADPath = ConfigurationManager.AppSettings["DirectoryPath"];
                 domainName = ConfigurationManager.AppSettings["DirectoryDomain"];
-                if(!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(ADPath))
+                if(!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(domainName))
                 {
                     domainAndUser = domainName + @"\" + userName;
-                    DirectoryEntry entry = new DirectoryEntry(ADPath, userName, password);
+                    DirectoryEntry entry = new DirectoryEntry(ADPath, domainAndUser, password);
                     try
                     {
                         //Check ว่า User ที่จะ login เข้ามามีอยู่ใน AD หรือไม่ 
+                        object obj = entry.NativeObject;
                         DirectorySearcher search = new DirectorySearcher(entry);
                         search.Filter = "(SAMAccountName=" + userName + ")";
+                        search.PropertiesToLoad.Add("cn");
                         SearchResult result = search.FindOne();
                         if (result != null)
                         {
@@ -285,13 +280,15 @@ namespace AlphaApi.DataAccessLayer
                             //ถ้าไม่มี
                             isAuthen = false;
                         }
-                        LdapPath = result.Path;
+                        //LdapPath = result.Path;
+                        
                     }
                     catch(Exception ex)
                     {
                         Errmsg = ex.Message;
                         isAuthen = false;
                     }
+
                     //ถ้า มี User ใน AD ให้ Check ต่อว่ามี User ใน Table User หรือไม่ (ถ้ามีก็จะ login ผ่าน และเก็บ UserID, UserName ไว้ใน Session)
                     if(isAuthen)
                     {
@@ -320,8 +317,11 @@ namespace AlphaApi.DataAccessLayer
                     }
 
                 }
+                domainName = string.Empty;
+                ADPath = string.Empty;
 
                 return ds;
+
             }
             catch (Exception ex)
             {
@@ -343,10 +343,9 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_User_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", userLoginModels.ID);
-                    cmd.Parameters.AddWithValue("@UserName", userLoginModels.UserName);
-                    cmd.Parameters.AddWithValue("@FirstName", userLoginModels.FirstName);
-                    cmd.Parameters.AddWithValue("@LastName", userLoginModels.LastName);
-                    cmd.Parameters.AddWithValue("@Email", userLoginModels.Email);
+                    //cmd.Parameters.AddWithValue("@FirstName", userLoginModels.FirstName != null && userLoginModels.FirstName != "" ? userLoginModels.FirstName : "");
+                    //cmd.Parameters.AddWithValue("@LastName", userLoginModels.LastName != null && userLoginModels.LastName != "" ? userLoginModels.LastName : "");
+                    //cmd.Parameters.AddWithValue("@Email", userLoginModels.Email != null && userLoginModels.Email != "" ? userLoginModels.Email : "");
                     cmd.Parameters.AddWithValue("@SecurityID", userLoginModels.SecurityID);
                     cmd.Parameters.AddWithValue("@EditBy", userLoginModels.EditBy);
                     conObj.Open();

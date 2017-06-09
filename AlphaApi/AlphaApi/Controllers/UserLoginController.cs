@@ -26,26 +26,29 @@ namespace AlphaApi.Controllers
         }
 
         [HttpGet]
-        public string Get(string password)
+        public string Get(string userName)
         {
-            string[] str = password.Split('&');
+            string[] str = userName.Split('&');
             var response = Userdb.Authenticate(str[0],str[1]);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
         [HttpGet]
-        public string GetByID(string UserID)
+        //Get AdInfo ตอน Update
+        public string GetInfoByUserName1(string userName1)
         {
-            string[] str = UserID.Split('&');
-            var response = Userdb.SelectByID(Convert.ToInt32(str[0]), str[1], str[2]);
+            
+            string[] str = userName1.Split('&');
+            var response = Userdb.GetInfoByUserName1(Convert.ToInt32(str[0]), str[1], str[2]);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
         [HttpGet]
-        public string GetADByUserName(string UserName)
+        //Get AdInfo ตอน Insert
+        public string GetInfoByUserName2(string UserName2)
         {
-            string[] str = UserName.Split('&');
-            var response = Userdb.SelectADByUserName(str[0], str[1], str[2]);
+            string[] str = UserName2.Split('&');
+            var response = Userdb.GetInfoByUserName2(str[0], str[1], str[2]);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 

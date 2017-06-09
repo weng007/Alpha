@@ -45,9 +45,9 @@ $(document).ready(function () {
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].UserName + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].FirstName + '  ' + data.Table[i].LastName + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].Email + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].UserStatus + '</td>';
+                //html += '<td class="nopointer">' + data.Table[i].FirstName + '  ' + data.Table[i].LastName + '</td>';
+                //html += '<td class="nopointer">' + data.Table[i].Email + '</td>';
+                //html += '<td class="nopointer">' + data.Table[i].UserStatus + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].SecurityProfile + '</td>';
                 html += '<td>';
                 html += '<a href="/User/EditUser?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png" class="imgAdminUpdate" /></a>';

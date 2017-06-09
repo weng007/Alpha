@@ -29,20 +29,26 @@
         <form id="myform">
             <ul class="form-style-1">
                 <li>
-                    <label class="label-2" style="margin-right: 25%;">UserName</label>
+                    <label class="label-2" style="margin-right: 25%;">UserName<span class="required">*</span></label>&nbsp;<label class="label-2" style="margin-right: 10%;"></label>
                 </li>
                 <li>
-                    <input type="text" id="txtUserName" name="field_1" class="field-divided" disabled />
-                    <button type="button" id="btnCheck" class="btn btn-primary" onclick="CheckAD()">Get ADUser</button>
+                    <input type="text" id="txtUserName" name="field_1" class="field-divided float-left" />
+                    <button type="button" id="btnCheck" class="btn btn-primary float-none marginleft btnwidth" onclick="CheckAD()">Get ADUser</button>
                 </li>
                 <li>
-                    <label class="label-2" style="margin-right: 25%;">ชื่อ</label>&nbsp;<label class="label-2" style="margin-right: 10%;">นามสกุล</label>
+                    <label class="label-2" style="margin-right: 10%;">Title</label>&nbsp;<label class="label-2" style="margin-right: 10%;"></label>
+                </li>
+                <li>
+                    <input type="text" id="txtTitle" name="field1" class="field-divided" disabled />
+                </li>
+                <li>
+                    <label class="label-2" style="margin-right: 45%;">ชื่อ</label>&nbsp;<label class="label-2" style="margin-right: 10%;">นามสกุล</label>
                 </li>
                 <li>
                     <input type="text" id="txtFirstName" name="field_1" class="field-divided" disabled />&nbsp;<input type="text" id="txtLastName" name="field1" class="field-divided" disabled />
                 </li>
                 <li>
-                    <label class="label-2" style="margin-right: 25%;">Department</label>&nbsp;<label class="label-2" style="margin-right: 10%;">Company</label>
+                    <label class="label-2" style="margin-right: 30%;">Department</label>&nbsp;<label class="label-2" style="margin-right: 10%;">Company</label>
                 </li>
                 <li>
                     <input type="text" id="txtDepartment" name="field_1" class="field-divided" disabled />&nbsp;<input type="text" id="txtCompany" name="field1" class="field-divided" disabled />
@@ -54,26 +60,16 @@
                     <input type="text" id="txtEmail" name="field1" class="field-divided" placeholder="E-mail" disabled />
                 </li>
                 <li>
-                    <label class="label-2" style="margin-right: 45%;">SecurityProfile<span class="required">*</span></label>
+                    <label class="label-2" style="margin-right: 45%;">SecurityProfile</label>
                 </li>
                 <li>
                     <select id="cmbSecurityProfile" name="cmbSecurityProfile" class="field-divided"></select>
                 </li>
                 <li>
-                    <button type="button" id="btnSave" class="btn btn-primary" onclick="ConfirmDialog('Update', 'User', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Create', 'User', 0)">Save</button>
                 </li>
             </ul>
         </form>
     }
     @*//=================================================================== CSS w3school*@
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var input = window.location.href;
-        var after = input.split('?')[1]
-        var val = after.split('=');
-        var Isview = val[2];
-        GetData(@Request.Params["id"]);
-        ControlEnable(Isview);
-    });
-</script>
