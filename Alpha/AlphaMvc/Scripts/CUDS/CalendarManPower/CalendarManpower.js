@@ -41,7 +41,7 @@ function GetCalendarlist(val) {
     //alert(val);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/CalendarManPower',
+        url: 'http://localhost:8082/api/CalendarManPower',
         type: 'GET',
         data: dataObject,
         async: false,

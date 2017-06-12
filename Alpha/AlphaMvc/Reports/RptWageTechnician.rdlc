@@ -1051,7 +1051,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Additionnal.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>n2</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1081,7 +1083,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Deduction.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>n2</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1528,7 +1532,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1562,7 +1566,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1596,7 +1600,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1630,7 +1634,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1825,7 +1829,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(20000/30/8)</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1859,7 +1863,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*(20000/30/8)*1.5</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1893,7 +1897,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((20000/30/8)*2)</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1927,7 +1931,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((20000/30/8)*3)</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2122,7 +2126,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(20000/30/8))</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2156,7 +2160,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*((20000/30/8)*1.5))</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2190,7 +2194,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((20000/30/8)*2))</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2224,7 +2228,7 @@
                             <TextRun>
                               <Value>=Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((20000/30/8)*3))</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2258,7 +2262,7 @@
                             <TextRun>
                               <Value>=(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(20000/30/8)))+(Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*((20000/30/8)*1.5)))+(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((20000/30/8)*2)))+(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((20000/30/8)*3)))</Value>
                               <Style>
-                                <Format>f2</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2279,6 +2283,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>

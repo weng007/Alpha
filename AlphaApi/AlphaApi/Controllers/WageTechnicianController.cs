@@ -35,9 +35,22 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpGet]
-        public string Get(int id, DateTime FromDate, DateTime ToDate)
+        public string Get(string Datesearh)
         {
-            var response = WageTechniciandb.SelectByTechnicianID(id, FromDate, ToDate);
+            string[] str = Datesearh.Split('|');
+            string[] FDate = str[1].Split('/');
+            int FYear = Convert.ToInt32(FDate[0]);
+            int FMonth = Convert.ToInt32(FDate[1]);
+            int FDay = Convert.ToInt32(FDate[2]);
+            DateTime FromDate = new DateTime(FYear, FMonth, FDay);
+
+            string[] TDate = str[2].Split('/');
+            int TYear = Convert.ToInt32(TDate[0]);
+            int TMonth = Convert.ToInt32(TDate[1]);
+            int TDay = Convert.ToInt32(TDate[2]);
+            DateTime ToDate = new DateTime(TYear, TMonth, TDay);
+
+            var response = WageTechniciandb.SelectByTechnicianID(Convert.ToInt32(str[0]), FromDate, ToDate);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 

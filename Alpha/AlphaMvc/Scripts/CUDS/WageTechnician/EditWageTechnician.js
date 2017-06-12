@@ -20,6 +20,7 @@ $(document).ready(function () {
 });
 function GetData(val)
 {
+    //alert(val);
     //------------------------- Sorting ------------------------
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)
@@ -49,7 +50,7 @@ function GetData(val)
     var mDate = (Fromyear - 2) + '/' + (Frommonth+1) + '/' + Fromday;
     var Fdate = fromdate != null && fromdate != '' ? ChangeformatDate(fromdate, 1) : mDate;
     $("#hidFromDate").val(Fdate);
-
+    //alert("test");
     var DateTo = $("#dtDateTo").val();
     var TodayToDate = new Date();
     var ToYear = TodayToDate.getFullYear();
@@ -58,21 +59,24 @@ function GetData(val)
     TodayToDate.setYear = ToYear;
     TodayToDate.setMonth = ToMonth;
     TodayToDate.setDate = ToDay;
-    var ToDate = ToYear + '/' + (ToMonth + 1) + '/' + (ToDay + 1);
+    var ToDate = (ToYear + 1) + '/' + (ToMonth + 1) + '/' + ToDay;
     var Tdate = DateTo != null && DateTo != '' ? ChangeformatDate(DateTo, 1) : ToDate;
     $("#hidToDate").val(Tdate);
-
-    var dataObject = { id: val, FromDate: Fdate, ToDate: Tdate };
+    //alert("test2");
+    //alert(Fdate);
+    //alert(Tdate);
+    var dataObject = { Datesearh: val+'|'+Fdate+'|'+Tdate };
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/WageTechnician',
+        url: 'http://localhost:8082/api/WageTechnician',
         type: 'GET',
         async: false,
         data: dataObject,
         datatype: 'json',
         success: function (data) {
             data = JSON.parse(data);
+            //alert(data.Table[0].FullName);
 
             $('#txtFullName').val(data.Table[0].FullName);
             var html = '<tbody>';
@@ -268,18 +272,18 @@ function Update(val) {
 
     var dataObject = {};
     $(".RowCal").each(function () {
-        alert('test');
-        alert("hidJobID "+$(this).find(".hidJobID").val());
+        //alert('test');
+        //alert("hidJobID "+$(this).find(".hidJobID").val());
         dataObject.ID = $(this).find(".hidID").val();
         dataObject.ManpowerID = $(this).find(".hidJobID").val();
         dataObject.TechnicianID = $(this).find(".hidTechnicianID").val();
         dataObject.Additionnal = $(this).find('.Additionnal').val();
         dataObject.Deduction = $(this).find('.Deduction').val();
         dataObject.EditBy = localStorage['UserID'];
-        alert('test2');
+        //alert('test2');
         $.ajax(
         {
-            url: 'http://localhost:13131/api/WageTechnician',
+            url: 'http://localhost:8082/api/WageTechnician',
             type: 'PUT',
             async: false,
             data: dataObject,
@@ -293,7 +297,7 @@ function Update(val) {
         });
 
     });
-    alert('Update is completed')
+    //alert('Update is completed')
     window.location.href = "../WageTeachnician/EditWageTeachnician?id=" + $('.hidTechnicianID').val();
 }
 function OpenRptWageTechnician(val) {
@@ -301,7 +305,7 @@ function OpenRptWageTechnician(val) {
     var FromDate = $('#hidFromDate').val();
     var ToDate = $('#hidToDate').val();
     //var FromDate = FromDate.replace("/", "-");
-    alert(FromDate);
-    alert(ToDate);
+    //alert(FromDate);
+    //alert(ToDate);
     window.location.href = "../Reports/FormReport/RptWageTechnicianViewer.aspx?id=" + val + '|' + FromDate + '|' + ToDate;
 }
