@@ -69,7 +69,7 @@ function ControlEnable(Isview) {
 }
 function GetData(val) {
     var dataObject = { ID: val }
-    alert(val);
+    //alert(val);
         //{ ID : @Request.Params["id"]};
     $.ajax(
    {
@@ -228,5 +228,5 @@ function DateWorking() {
     }
 }
 function Redirect() {
-    window.location = "IndexProducts";
+    window.location.href = "../Products/IndexProducts";
 }

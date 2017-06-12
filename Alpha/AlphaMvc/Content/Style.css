@@ -60,6 +60,12 @@
     color: white;
     margin-right: 70%;
 }
+.topicmargin-size74{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    margin-right: 74%;
+}
 
 .imgadd{
     margin-left: 68%; 
@@ -699,7 +705,12 @@ select{
     float: left;
     margin-right: 22%;
 }
-
+.marginleft{
+    margin-left:5px;
+}
+.btnwidth{
+    width:100px !important;
+}
 .btnnew{
     margin-top: 0px !Important;
     float: left;

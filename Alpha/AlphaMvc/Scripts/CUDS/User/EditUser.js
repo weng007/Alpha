@@ -1,24 +1,5 @@
 $(document).ready(function () {
-    CheckAuthorization();
-    var dataObject = { typeID: '012' };
-    $.ajax({
-        url: 'http://localhost:8082/api/MasterService/',
-        type: 'GET',
-        async: false,
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $.each(data.Table, function (i) {
-                $('#cmbStatus').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('#cmbStatus').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-
+    //CheckAuthorization();
     $.ajax({
         url: 'http://localhost:8082/api/SecurityProfile/',
         type: 'GET',
@@ -39,13 +20,12 @@ $(document).ready(function () {
 function ControlEnable(Isview) {
     //var Isview = val;
     if (Isview) {
-        document.getElementById("cmbStatus").disabled = true;
         document.getElementById("cmbSecurityProfile").disabled = true;
         document.getElementById("btnSave").disabled = true;
     }
 }
 function GetData(val) {
-    var dataObject = { ID: val}
+    var dataObject = { userName1: val + '&' + localStorage['UserName'] + '&' + localStorage['Password'] }
     $.ajax(
    {
        url: 'http://localhost:8082/api/UserLogin',
@@ -55,8 +35,14 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
-           $("#txtFirstName").val(data.Table[0].FirstName), $("#txtLastName").val(data.Table[0].LastName), $("#txtEmail").val(data.Table[0].Email)
-           , $("#cmbStatus").val(data.Table[0].Status), $("#cmbSecurityProfile").val(data.Table[0].SecurityID);
+           $("#txtUserName").val(data.ADUser[0].UserName),
+           $("#txtFirstName").val(data.ADUser[0].FirstName),
+           $("#txtLastName").val(data.ADUser[0].LastName),
+           $("#txtEmail").val(data.ADUser[0].Email),
+           $("#cmbSecurityProfile").val(data.ADUser[0].SecurityID),
+           $("#txtDepartment").val(data.ADUser[0].Department),
+           $("#txtCompany").val(data.ADUser[0].Company),
+           $("#txtTitle").val(data.ADUser[0].Title);
        },
        error: function (msg) {
            alert(msg);
@@ -65,7 +51,11 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var dataObject = { ID: val, Status: $("#cmbStatus").find(":selected").val(), SecurityID: $("#cmbSecurityProfile").find(":selected").val(), EditBy: localStorage['UserID'] }
+    var dataObject = {
+        ID: val,
+        SecurityID: $("#cmbSecurityProfile").find(":selected").val(),
+        EditBy: localStorage['UserID']
+    }
     console.log($("#cmbSecurityProfile").find(":selected").val());
        $.ajax(
         {
@@ -75,7 +65,7 @@ function Update(val) {
             data: dataObject,
             datatype: 'json',
             success: function (data) {
-                alert('Update is completed');
+                Redirect();
             },
             error: function (msg) {
                 alert(msg);
@@ -83,6 +73,6 @@ function Update(val) {
         })
 };
 function Redirect() {
-    window.location = "IndexUser";
+    window.location = "../User/IndexUser";
 }
 

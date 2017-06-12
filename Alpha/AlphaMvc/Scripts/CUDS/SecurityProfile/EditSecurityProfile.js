@@ -37,10 +37,10 @@ function GetData(val) {
                        html += '<tr class="RowCal">';
                        html += '<td>' + data.Table1[i].RowNum + '</td>';
                        html += '<td class="hidecolumn"><input type="hidden" class="hidID" value="' + data.Table1[i].ID + '"/></td>';
-                       html += '<td>' + data.Table1[i].MenuType + '</td>';
-                       html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table1[i].MenuTypeID + '"/></td>';
+                       html += '<td>' + data.Table1[i].menu + '</td>';
+                       html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table1[i].menuID + '"/></td>';
                        html += '<td><input id="chkIsView" type="checkbox" class="IsView"' + IsView + ' ></td>';
-                       if (data.Table1[i].MenuTypeID != 57)
+                       if (data.Table1[i].menuID != 57)
                        {
                            html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" ' + IsInsert + '></td>';
                            html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" ' + IsUpdate + '></td>';
@@ -64,6 +64,21 @@ function GetData(val) {
 
    });
 }
+function GetChecked() {
+    $(".RowCal").each(function () {
+        var IsInsert = $(this).find('.IsInsert').is(":checked");
+        var IsUpdate = $(this).find('.IsUpdate').is(":checked");
+
+        if (IsInsert || IsUpdate) {
+            $(this).find('.IsView').prop('checked', true);
+            $(this).find('.IsView').prop('disabled', true);
+        }
+        else if (IsInsert == false && IsUpdate == false) {
+            $(this).find('.IsView').prop('checked', false);
+            $(this).find('.IsView').prop('disabled', false);
+        }
+    });
+}
 function Update(val) {
     var dataObject = { ID: val,Profile: $("#txtProfile").val(), EditBy: localStorage['UserID'] };
     var SecurityID = val;
@@ -77,7 +92,6 @@ function Update(val) {
         datatype: 'json',
         success: function (data) {
             //alert('data ' + data);
-
         }
         ,
         error: function (msg) {
@@ -89,7 +103,7 @@ function Update(val) {
     $(".RowCal").each(function () {
         dataObject.ID = $(this).find(".hidID").val();
         dataObject.SecurityID = SecurityID;
-        dataObject.MenuTypeID = $(this).find(".hidMenuTypeID").val();
+        dataObject.MenuID = $(this).find(".hidMenuTypeID").val();
         dataObject.IsView = $(this).find('.IsView').is(":checked") == true ? 1 : 0;
         dataObject.IsInsert = $(this).find('.IsInsert').is(":checked") == true ? 1 : 0;
         dataObject.IsUpdate = $(this).find(".IsUpdate").is(":checked") == true ? 1 : 0;
@@ -111,9 +125,10 @@ function Update(val) {
         });
     });
     //alert('Update is completed')
-    window.location.href = "../SecurityProfile/IndexSecurityProfile";
+    //window.location.href = "../SecurityProfile/IndexSecurityProfile";
+    Redirect();
 };
 function Redirect() {
-    window.location = "IndexSecurityProfile";
+    window.location.href = "../SecurityProfile/IndexSecurityProfile";
 }
 

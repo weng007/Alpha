@@ -71,7 +71,7 @@ function BrowseProduct() {
 }
 function GetData(val) {
     var dataObject = { ID: val }
-    alert(val);
+    //alert(val);
     $.ajax(
    {
        url: 'http://localhost:8082/api/JobOrderBorrow',
@@ -104,7 +104,8 @@ function Update(val) {
             data: dataObject,
             datatype: 'json',
             success: function (data) {
-                alert('Update is completed');
+                //alert('Update is completed');
+                Redirect();
             },
             error: function (msg) {
                 alert(msg);

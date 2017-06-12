@@ -170,25 +170,32 @@ function Update(val) {
         CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
     console.log(dataObject);
-
-       $.ajax(
-        {
-            url: 'http://localhost:8082/api/ProductAdjustment',
-            type: 'PUT',
-            async: false,
-            data: dataObject,
-            datatype: 'json',
-            success: function (data) {
-                //alert('Update is completed');
-            },
-            error: function (msg) {
-                alert(msg);
-            }           
-        })
+    if ($("#txtDeduction").val() > 0) {
+        $.ajax(
+         {
+             url: 'http://localhost:8082/api/ProductAdjustment',
+             type: 'PUT',
+             async: false,
+             data: dataObject,
+             datatype: 'json',
+             success: function (data) {
+                 //alert('Update is completed');
+                 Redirect();
+             },
+             error: function (msg) {
+                 alert(msg);
+             }
+         })
+    }
+    else
+    {
+        alert("จำนวนสินค้าต้องไม่น้อยกว่า 0");
+    }
 };
 function Redirect() {
 
-    var hidAdjustID = $('#hidID').val();
-    window.location.href = "../ProductAdjust/EditProductAdjust?id=" + hidAdjustID;
+    //var hidAdjustID = $('#hidID').val();
+    //window.location.href = "../ProductAdjust/EditProductAdjust?id=" + hidAdjustID;
+    window.location.href = "../ProductAdjust/IndexProductAdjust";
 }
 

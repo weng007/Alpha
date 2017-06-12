@@ -118,6 +118,7 @@ function Update(val) {
         datatype: 'json',
 
         success: function (data) {
+            Redirect();
         }
         ,
         error: function (msg) {
@@ -126,7 +127,7 @@ function Update(val) {
     });
 }
 function Redirect() {
-    window.location = "IndexBDC";
+    window.location.href = "../BDC/IndexBDC";
 }
 function OpenJobOrder(val) {
     window.location.href = "../JobOrder/CreateJobOrder?id=" + val + '&' + $("#txtBDCNo").val();

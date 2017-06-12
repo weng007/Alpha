@@ -10,7 +10,9 @@
             <TextRuns>
               <TextRun>
                 <Value>Borrow</Value>
-                <Style />
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -19,7 +21,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.09444in</Top>
+        <Top>0.09444in</Top>
         <Left>2.72791in</Left>
         <Height>0.19792in</Height>
         <Width>1.57407in</Width>
@@ -50,149 +52,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.85104in</Top>
-        <Left>3.99437in</Left>
+        <Top>0.47604in</Top>
+        <Left>4.20687in</Left>
         <Height>0.22917in</Height>
         <Width>0.58334in</Width>
         <ZIndex>1</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Line Name="Line2">
-        <Top>5.13503cm</Top>
-        <Left>11.73004cm</Left>
-        <Height>0cm</Height>
-        <Width>4.6955cm</Width>
-        <ZIndex>2</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Line>
-      <Line Name="Line20">
-        <Top>2.38866cm</Top>
-        <Left>0.68792cm</Left>
-        <Height>0cm</Height>
-        <Width>16.23912cm</Width>
-        <ZIndex>3</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-            <Width>2pt</Width>
-          </Border>
-        </Style>
-      </Line>
-      <Image Name="Image1">
-        <Source>Embedded</Source>
-        <Value>radLogo</Value>
-        <Sizing>FitProportional</Sizing>
-        <Top>0.10583cm</Top>
-        <Left>1.38091cm</Left>
-        <Height>1.92333cm</Height>
-        <Width>2.05562cm</Width>
-        <ZIndex>4</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Image>
-      <Textbox Name="Textbox21">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>บริษัท อัลฟ่ากรุ๊ป จำกัด</Value>
-                <Style>
-                  <FontSize>16pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.04167in</Top>
-        <Left>1.72321in</Left>
-        <Height>0.32292in</Height>
-        <Width>3.05121in</Width>
-        <ZIndex>5</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox22">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>ALPHA GROUP CO., LTD.</Value>
-                <Style>
-                  <FontSize>16pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.39653in</Top>
-        <Left>1.72321in</Left>
-        <Height>0.32292in</Height>
-        <Width>3.05121in</Width>
-        <ZIndex>6</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox23">
-        <CanGrow>true</CanGrow>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>10.14583in</Top>
-        <Height>0.125in</Height>
-        <Width>6.98085in</Width>
-        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -207,19 +71,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.38875cm</Width>
+              <Width>1.17613cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>1.89146cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.06423cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.60042cm</Width>
+              <Width>2.42156cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.52473cm</Width>
+              <Width>2.14867cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.4003cm</Width>
@@ -913,11 +777,11 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsJobBorrow</DataSetName>
-        <Top>6.53203cm</Top>
+        <Top>2.24578cm</Top>
         <Left>0.73766cm</Left>
         <Height>1.2cm</Height>
-        <Width>15.68789cm</Width>
-        <ZIndex>8</ZIndex>
+        <Width>16.31182cm</Width>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -939,11 +803,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>JobNo</rd:DefaultName>
-        <Top>4.46447cm</Top>
-        <Left>11.80377cm</Left>
-        <Height>0.6cm</Height>
+        <Top>1.20914cm</Top>
+        <Left>12.34352cm</Left>
+        <Height>0.58209cm</Height>
         <Width>4.62177cm</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -964,12 +828,119 @@
   </Body>
   <Width>17.85983cm</Width>
   <Page>
+    <PageHeader>
+      <Height>2.54cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Line Name="Line20">
+          <Top>2.41142cm</Top>
+          <Left>0.81035cm</Left>
+          <Height>0cm</Height>
+          <Width>16.23912cm</Width>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+              <Width>2pt</Width>
+            </Border>
+          </Style>
+        </Line>
+        <Image Name="Image1">
+          <Source>Embedded</Source>
+          <Value>radLogo</Value>
+          <Sizing>FitProportional</Sizing>
+          <Top>0.12859cm</Top>
+          <Left>1.50334cm</Left>
+          <Height>1.92333cm</Height>
+          <Width>2.05562cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
+        <Textbox Name="Textbox21">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>บริษัท อัลฟ่ากรุ๊ป จำกัด</Value>
+                  <Style>
+                    <FontSize>16pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>0.05063in</Top>
+          <Left>1.77141in</Left>
+          <Height>0.32292in</Height>
+          <Width>3.05121in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox22">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>ALPHA GROUP CO., LTD.</Value>
+                  <Style>
+                    <FontSize>16pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>0.40549in</Top>
+          <Left>1.77141in</Left>
+          <Height>0.32292in</Height>
+          <Width>3.05121in</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
-    <LeftMargin>1.5cm</LeftMargin>
-    <RightMargin>1.5cm</RightMargin>
-    <TopMargin>1.5cm</TopMargin>
-    <BottomMargin>1.5cm</BottomMargin>
+    <LeftMargin>0.2cm</LeftMargin>
+    <RightMargin>0.2cm</RightMargin>
+    <TopMargin>0.2cm</TopMargin>
+    <BottomMargin>0.2cm</BottomMargin>
     <ColumnSpacing>1.27cm</ColumnSpacing>
     <Style />
   </Page>

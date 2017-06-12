@@ -15,6 +15,10 @@ namespace MymobilewalaMvc.Controllers
         {
             return View();
         }
+        public ActionResult CreateUser()
+        {
+            return View();
+        }
         public ActionResult EditUser()
         {
             return View();

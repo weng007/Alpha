@@ -25,7 +25,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@IsInsert", securityProfileDetailModel.IsInsert);
                     cmd.Parameters.AddWithValue("@IsUpdate", securityProfileDetailModel.IsUpdate);
                     cmd.Parameters.AddWithValue("@IsDelete", securityProfileDetailModel.IsDelete);
-                    cmd.Parameters.AddWithValue("@MenuTypeID ", securityProfileDetailModel.MenuTypeID);
+                    cmd.Parameters.AddWithValue("@MenuID ", securityProfileDetailModel.MenuID);
                     cmd.Parameters.AddWithValue("@CreateBy", securityProfileDetailModel.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", securityProfileDetailModel.EditBy);
                     conObj.Open();
@@ -59,7 +59,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@IsInsert", securityProfileDetailModel.IsInsert);
                     cmd.Parameters.AddWithValue("@IsUpdate", securityProfileDetailModel.IsUpdate);
                     cmd.Parameters.AddWithValue("@IsDelete", securityProfileDetailModel.IsDelete);
-                    cmd.Parameters.AddWithValue("@MenuTypeID ", securityProfileDetailModel.MenuTypeID);
+                    cmd.Parameters.AddWithValue("@MenuID ", securityProfileDetailModel.MenuID);
                     cmd.Parameters.AddWithValue("@EditBy", securityProfileDetailModel.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();

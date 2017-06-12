@@ -18,19 +18,37 @@ namespace AlphaApi.Controllers
     public class UserLoginController : ApiController
     {
         static UserLoginDAL Userdb = new UserLoginDAL();
+        [HttpPost]
+        public int Post(UserLoginModels userLoginModel)
+        {
+            var response = Userdb.InsertData(userLoginModel);
+            return response;
+        }
 
         [HttpGet]
-        public string Get(string password)
+        public string Get(string userName)
         {
-            string[] str = password.Split('&');
-            var response = Userdb.SelectByUserName(str[0],str[1]);
+            string[] str = userName.Split('&');
+            var response = Userdb.Authenticate(str[0],str[1]);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
         [HttpGet]
-        public string Get(int id)
+        //Get AdInfo ตอน Update
+        public string GetInfoByUserName1(string userName1)
         {
-            var response = Userdb.SelectByID(id);
+            
+            string[] str = userName1.Split('&');
+            var response = Userdb.GetInfoByUserName1(Convert.ToInt32(str[0]), str[1], str[2]);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [HttpGet]
+        //Get AdInfo ตอน Insert
+        public string GetInfoByUserName2(string UserName2)
+        {
+            string[] str = UserName2.Split('&');
+            var response = Userdb.GetInfoByUserName2(str[0], str[1], str[2]);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 

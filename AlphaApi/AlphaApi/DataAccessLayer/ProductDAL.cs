@@ -25,7 +25,7 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_Product_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@SerialNo", Product.SerialNo);
-                    cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo);
+                    cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo != null && Product.MachineNo != "" ? Product.MachineNo : "");
                     cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
                     cmd.Parameters.AddWithValue("@Description", Product.Description);
                     cmd.Parameters.AddWithValue("@Brand", Product.Brand);
@@ -68,7 +68,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", Product.ID);
                     cmd.Parameters.AddWithValue("@SerialNo", Product.SerialNo);
-                    cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo);
+                    cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo != null && Product.MachineNo != "" ? Product.MachineNo : "");
                     cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
                     cmd.Parameters.AddWithValue("@Description", Product.Description);
                     cmd.Parameters.AddWithValue("@Brand", Product.Brand);

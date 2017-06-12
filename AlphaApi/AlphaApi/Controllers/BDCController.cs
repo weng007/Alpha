@@ -41,6 +41,13 @@ namespace AlphaApi.Controllers
         }
 
         [HttpGet]
+        public string GetCheckDelete(int BDCID)
+        {
+            var response = BDCdb.SelectCheckDelete(BDCID);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [HttpGet]
         public string Get(bool isLastVersion)
         {
             DataSet ds = new DataSet();

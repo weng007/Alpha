@@ -809,14 +809,14 @@ function Update(val) {
 
         success: function (data) {
             JobID = data;
-            alert("Success JobOrder"+JobID);
+            //alert("Success JobOrder"+JobID);
             $("#hidJobID").val(data)
         },
         error: function (msg) {
             alert(msg);
         }
     });
-    alert("Test" + JobID);
+    //alert("Test" + JobID);
     var dataObject = { JobID: JobID};
     $.ajax(
             {
@@ -887,12 +887,12 @@ function Update(val) {
     });
     //===================UpdateJobOrderManpower
 
-    alert("TestManpower");
+    //alert("TestManpower");
     var dataObject = {};
     $(".RowCal5").each(function () {
         //alert($(this).find('.FName').val());
         //if ($(this).find('.FName').val() != '') {
-        alert("test Row5");
+        //alert("test Row5");
             var workingFrom = $(this).find('.WorkingFrom').val();
             var workingTo = $(this).find('.WorkingTo').val();
 
@@ -914,7 +914,7 @@ function Update(val) {
 
             
             
-        alert("test JobMan")
+        //alert("test JobMan")
             if ($(this).find(".TechnicianID").val() != '') {
                 $.ajax(
                 {
@@ -1006,8 +1006,7 @@ function Update(val) {
             });
         }
     });
-    alert('Update is completed');
-    
+    //alert('Update is completed');
     window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();
 }
 function ConvertAmount(val)

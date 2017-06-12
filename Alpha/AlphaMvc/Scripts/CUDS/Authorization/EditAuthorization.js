@@ -144,7 +144,7 @@ function Update(val) {
                 });
             }
         });
-        alert('Update is completed');
+        //alert('Update is completed');
         window.location.href = "../Authorization/EditAuthorization?id=" + UserID;
 }
 function AddRowAuthor() {

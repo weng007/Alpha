@@ -35,8 +35,9 @@ function Update(val) {
             data: dataObject,
             datatype: 'json',
 
-            success: function (result) {
+            success: function (data) {
                 //alert('Update is completed');
+                Redirect();
             }
             ,
             error: function (msg) {

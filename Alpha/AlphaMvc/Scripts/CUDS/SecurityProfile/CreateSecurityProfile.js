@@ -114,7 +114,7 @@ function CreateData() {
     var dataObject = {};
     $(".RowCal").each(function () {
         dataObject.SecurityID = SecurityID;
-        dataObject.MenuTypeID = $(this).find(".hidMenuTypeID").val();
+        dataObject.MenuID = $(this).find(".hidMenuTypeID").val();
         dataObject.IsView = $(this).find('.IsView').is(":checked") == true ? 1 : 0;
         dataObject.IsInsert = $(this).find('.IsInsert').is(":checked") == true ? 1 : 0;
         dataObject.IsUpdate = $(this).find(".IsUpdate").is(":checked") == true ? 1 : 0;

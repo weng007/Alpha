@@ -45,7 +45,7 @@ function Update(val) {
             }           
         })
 };
-function Redirect() {
-    window.location.href = "../IncomeMaster/IndexIncomeMaster";
-}
+//function Redirect() {
+   
+//}
 

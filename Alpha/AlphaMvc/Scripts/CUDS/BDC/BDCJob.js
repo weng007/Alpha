@@ -98,6 +98,7 @@ function RowDelete(id) {
     var after = input.split('?')[1]
     var ID = after.split('=');
     var BDCID = ID[1];
+    //alert(id);
     var dataObject = { ID: id };
     $.ajax(
         {
@@ -107,7 +108,7 @@ function RowDelete(id) {
             datatype: 'json',
 
             success: function (result) {
-                alert('Delete is completed')
+                //alert('Delete is completed')
                 window.location.href = "../BDC/EditBDC?id=" + BDCID;
             }
             ,

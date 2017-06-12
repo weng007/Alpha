@@ -106,23 +106,29 @@ function CreateData() {
         CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
     console.log(dataObject);
-    $.ajax(
+    if ($("#txtDeduction").val() > 0)
     {
-        url: 'http://localhost:8082/api/ProductAdjustment',
-        type: 'POST',
-        async: false,
-        data: dataObject,
-        datatype: 'json',
+        $.ajax(
+        {
+            url: 'http://localhost:8082/api/ProductAdjustment',
+            type: 'POST',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
 
-        success: function (data) {
-            //alert('Create is completed');
-            //alert(data);
-            window.location.href = "../ProductAdjust/EditProductAdjust?id=" + data;
-        }
-        ,
-        error: function (msg) {
-            alert(msg)
-        }
-    });
+            success: function (data) {
+                //alert('Create is completed');
+                //alert(data);
+                window.location.href = "../ProductAdjust/EditProductAdjust?id=" + data;
+            }
+            ,
+            error: function (msg) {
+                alert(msg)
+            }
+        });
+    }
+    else {
+        alert("จำนวนสินค้าต้องไม่น้อยกว่า 0");
+    }
 }
 
