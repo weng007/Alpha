@@ -34,7 +34,7 @@ $(document).ready(function () {
     //------------------------------------ Custom ------------------------------------
     $.ajax(
     {
-        url: 'http://localhost:13131/api/UserLogin',
+        url: 'http://localhost:8082/api/UserLogin',
         type: 'GET',
         datatype: 'json',
         success: function (data) {
@@ -75,7 +75,7 @@ function RowDelete(id) {
     var dataObject = { ID: id, EditBy: localStorage['UserID'] };
     $.ajax(
         {
-            url: 'http://localhost:13131/api/UserLogin',
+            url: 'http://localhost:8082/api/UserLogin',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',

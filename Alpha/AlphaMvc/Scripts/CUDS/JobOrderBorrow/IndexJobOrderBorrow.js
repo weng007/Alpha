@@ -35,7 +35,7 @@ function GetJobOrderBorrow(val)
     var dataObject = { ID: val }
     $.ajax(
     {
-        url: 'http://localhost:13131/api/JobOrderBorrowRefID',
+        url: 'http://localhost:8082/api/JobOrderBorrowRefID',
         type: 'GET',
         async: false,
         data: dataObject,
@@ -80,7 +80,7 @@ function RowDelete(id) {
     var dataObject = { ID: id };
     $.ajax(
         {
-            url: 'http://localhost:13131/api/IncomeMaster',
+            url: 'http://localhost:8082/api/IncomeMaster',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',

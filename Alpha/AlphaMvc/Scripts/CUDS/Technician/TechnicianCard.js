@@ -52,7 +52,7 @@ function GetDataCard(val) {
     var dataObject = { ID: val }
     $.ajax(
     {
-        url: 'http://localhost:13131/api/TechnicianCard',
+        url: 'http://localhost:8082/api/TechnicianCard',
         type: 'GET',
         //async: false,
         data: dataObject,

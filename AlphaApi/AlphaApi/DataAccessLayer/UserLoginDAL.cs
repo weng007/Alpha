@@ -93,6 +93,7 @@ namespace AlphaApi.DataAccessLayer
                     catch (Exception ex)
                     {
                         Errmsg = ex.Message;
+                        throw(ex);
                     }
 
                 }
@@ -115,18 +116,10 @@ namespace AlphaApi.DataAccessLayer
             dsUser userDS = new dsUser();
             string domainName = string.Empty;
             string ADPath = string.Empty;
-            //string ADuserName;
             string strError = string.Empty;
             string domainAndUser;
             string Errmsg = "";
-            //string LdapPath;
-            //string FirstName;
-            //string LastName;
-            //string Email;
-            //string Department;
-            //string Company;
             string userName;
-            //int seurityID;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -177,6 +170,7 @@ namespace AlphaApi.DataAccessLayer
                         catch (Exception ex)
                         {
                             Errmsg = ex.Message;
+                            throw (ex);
                         }
                     }
                 }
@@ -287,6 +281,7 @@ namespace AlphaApi.DataAccessLayer
                     {
                         Errmsg = ex.Message;
                         isAuthen = false;
+                        throw (ex);                   
                     }
 
                     //ถ้า มี User ใน AD ให้ Check ต่อว่ามี User ใน Table User หรือไม่ (ถ้ามีก็จะ login ผ่าน และเก็บ UserID, UserName ไว้ใน Session)

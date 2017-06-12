@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     $.ajax({
-        url: 'http://localhost:13131/api/SecurityProfile/',
+        url: 'http://localhost:8082/api/SecurityProfile/',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -31,7 +31,7 @@ function CheckAD()
     var dataObject = { userName2: userName + '&' + localStorage['UserName'] + '&' + localStorage['Password'] }
     $.ajax(
    {
-       url: 'http://localhost:13131/api/UserLogin',
+       url: 'http://localhost:8082/api/UserLogin',
        type: 'GET',
        async: false,
        data: dataObject,
@@ -47,6 +47,10 @@ function CheckAD()
                $("#txtDepartment").val(data.ADUser[0].Department),
                $("#txtCompany").val(data.ADUser[0].Company),
                $("#txtTitle").val(data.ADUser[0].Title);
+           }
+           else
+           {
+               alert("User is not found");
            }
            
        },
@@ -71,7 +75,7 @@ function CreateData(val) {
     console.log($("#cmbSecurityProfile").find(":selected").val());
        $.ajax(
         {
-            url: 'http://localhost:13131/api/UserLogin',
+            url: 'http://localhost:8082/api/UserLogin',
             type: 'POST',
             async: false,
             data: dataObject,
