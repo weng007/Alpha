@@ -1,4 +1,4 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
     CheckAuthorization();
     $("#quotationBody").on("click", "tr", function (e) {
         $("#hidSerialID").val($(this).find("td:eq(1)").text());
@@ -6,6 +6,7 @@ $(document).ready(function () {
         $("#txtBrand").val($(this).find("td:eq(3)").text());
         $("#txtSize").val($(this).find("td:eq(5)").text());
         $("#txtModel").val($(this).find("td:eq(4)").text());
+        $("#txtRemain").val($(this).find("td:eq(6)").text());
         $("#txtRemain").val($(this).find("td:eq(6)").text());
     })
 
@@ -97,6 +98,17 @@ function GetRemain(val) {
 
        });
 }
+function GetDeduct() {
+    var result;
+    var remain = $("#txtRemain").val()
+    if (remain <= 0)
+    {
+        alert("จำนวนสินค้าต้องไม่น้อยกว่า 0");
+        $("#txtDeduction").val(0);
+        result = 0;
+    }
+    return result;
+}
 function CreateData() {
     //var x = new Userlogin()
     //alert(x.UserID);
@@ -106,8 +118,6 @@ function CreateData() {
         CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
     console.log(dataObject);
-    if ($("#txtDeduction").val() > 0)
-    {
         $.ajax(
         {
             url: 'http://localhost:8082/api/ProductAdjustment',
@@ -126,9 +136,5 @@ function CreateData() {
                 alert(msg)
             }
         });
-    }
-    else {
-        alert("�ӹǹ�Թ��ҵ�ͧ�����¡��� 0");
-    }
 }
 

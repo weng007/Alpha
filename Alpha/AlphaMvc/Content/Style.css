@@ -11,6 +11,27 @@
     margin-left: 10px;
     z-index: 1;
 }
+.width-190{
+    margin-right: 5px !important;
+    width: 45% !important;
+    /*width: 190px !important;*/
+}
+.width-45per{
+    width: 45% !important;
+    /*width: 190px !important;*/
+}
+.marginright-43
+{
+    margin-right:43% !important;
+}
+.marginright-28
+{
+    margin-right:28% !important;
+}
+.marginright-36
+{
+    margin-right:36% !important;
+}
 .nopointer{
     cursor: default !important;
 }

@@ -154,6 +154,7 @@ span.psw {
         width: 40%;
         height: 30px;
         font-weight: 700;
+        padding: 6px 17px !important;
         margin-left: 56%;
     }
 }

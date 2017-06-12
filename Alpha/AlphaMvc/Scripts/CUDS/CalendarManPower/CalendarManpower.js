@@ -59,11 +59,11 @@ function GetCalendarlist(val) {
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn nopointer">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].TechFullName + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].PositionNameTH + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].EmpGroup + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].PositionNameTH + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].EmpGroup + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].JobNo + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].TypeWorkingName + '</td>';
-                html += '<td class="nopointer">' + JobDate + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].TypeWorkingName + '</td>';
+                html += '<td class="hideANDseek nopointer">' + JobDate + '</td>';
                 html += '<td class="nopointer">' + SWorking + '</td>';
                 html += '<td class="nopointer">' + EWorking + '</td>';
                 html += '<td class="nopointer">';

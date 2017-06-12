@@ -64,11 +64,11 @@ function GetDataCard(val) {
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
                 html += '<td>' + data.Table[i].RowNum + '</td>';
-                html += '<td>' + data.Table[i].CompanyName + '</td>';
+                html += '<td class="hideANDseek">' + data.Table[i].CompanyName + '</td>';
                 html += '<td>' + data.Table[i].CerNo + '</td>';
-                html += '<td>' + data.Table[i].CardType + '</td>';
+                html += '<td class="hideANDseek">' + data.Table[i].CardType + '</td>';
                 var IssueDate = new Date(data.Table[i].IssueDate);
-                html += '<td>' + IssueDate.getDate() + '/' + (IssueDate.getMonth() + 1) + '/' + IssueDate.getFullYear() + '</td>';
+                html += '<td class="hideANDseek">' + IssueDate.getDate() + '/' + (IssueDate.getMonth() + 1) + '/' + IssueDate.getFullYear() + '</td>';
                 var ExpiryDate = new Date(data.Table[i].ExpiryDate);
                 html += '<td>' + ExpiryDate.getDate() + '/' + (ExpiryDate.getMonth() + 1) + '/' + ExpiryDate.getFullYear() + '</td>';
                 html += '</tr>';
