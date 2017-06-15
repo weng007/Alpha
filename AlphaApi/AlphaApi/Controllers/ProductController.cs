@@ -20,7 +20,7 @@ namespace AlphaApi.Controllers
         public ProductDAL Productdb = new ProductDAL();
         
         [HttpPost]
-        public string Post(ProductModels PD)
+        public int Post(ProductModels PD)
         {
             
             //if (!Directory.Exists(yourD)

@@ -1,7 +1,7 @@
 $(document).ready(function () {
     //CheckAuthorization();
     $.ajax({
-        url: 'http://localhost:8082/api/SecurityProfile/',
+        url: 'http://localhost:13131/api/SecurityProfile/',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -28,7 +28,7 @@ function GetData(val) {
     var dataObject = { userName1: val + '&' + localStorage['UserName'] + '&' + localStorage['Password'] }
     $.ajax(
    {
-       url: 'http://localhost:8082/api/UserLogin',
+       url: 'http://localhost:13131/api/UserLogin',
        type: 'GET',
        async: false,
        data : dataObject,
@@ -59,7 +59,7 @@ function Update(val) {
     console.log($("#cmbSecurityProfile").find(":selected").val());
        $.ajax(
         {
-            url: 'http://localhost:8082/api/UserLogin',
+            url: 'http://localhost:13131/api/UserLogin',
             type: 'PUT',
             async: false,
             data: dataObject,

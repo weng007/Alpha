@@ -3,7 +3,7 @@ function CreateData() {
     var dataObject = { Detail: $("#txtDetail").val(),CreateBy: localStorage['UserID'],EditBy:localStorage['UserID'] };
     $.ajax(
     {
-        url: 'http://localhost:8082/api/IncomeMaster',
+        url: 'http://localhost:13131/api/IncomeMaster',
         type: 'POST',
         data: dataObject,
         datatype: 'json',

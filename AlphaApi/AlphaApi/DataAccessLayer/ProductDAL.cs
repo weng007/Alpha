@@ -15,9 +15,9 @@ namespace AlphaApi.DataAccessLayer
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         int result = 0;
-        public string InsertData(ProductModels Product)
+        public int InsertData(ProductModels Product)
         {
-            string result = "";
+            int result = 0;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -27,8 +27,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@SerialNo", Product.SerialNo);
                     cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo != null && Product.MachineNo != "" ? Product.MachineNo : "");
                     cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
-                    cmd.Parameters.AddWithValue("@Description", Product.Description);
-                    cmd.Parameters.AddWithValue("@Brand", Product.Brand);
+                    cmd.Parameters.AddWithValue("@Description", Product.Description != null && Product.Description != "" ? Product.Description : "");
+                    cmd.Parameters.AddWithValue("@Brand", Product.Brand != null ? Product.Brand : "");
                     cmd.Parameters.AddWithValue("@Size", Product.Size != null ? Product.Size : "");
                     cmd.Parameters.AddWithValue("@Model", Product.Model != null? Product.Model : "");
                     cmd.Parameters.AddWithValue("@Lifetime", Product.Lifetime);
@@ -41,8 +41,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@CreateBy", Product.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", Product.EditBy);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
-
+                    object obj = cmd.ExecuteScalar();
+                    result = Convert.ToInt32(obj);
                     return result;
 
                 }
@@ -83,7 +83,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Remark", Product.Remark != null ? Product.Remark : "");
                     cmd.Parameters.AddWithValue("@EditBy", Product.EditBy);
                     conObj.Open();
-                    result = cmd.ExecuteNonQuery();
+                    object obj = cmd.ExecuteScalar();
+                    result = Convert.ToInt32(obj);
                     return result;
                 }
                 catch(Exception ex)

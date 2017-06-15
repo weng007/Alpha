@@ -44,7 +44,7 @@ function GetData(val) {
     var dataObject = { ID: val }
     $.ajax(
    {
-       url: 'http://localhost:8082/api/UserLogin',
+       url: 'http://localhost:13131/api/UserLogin',
        type: 'GET',
        async: false,
        data: dataObject,
@@ -60,7 +60,7 @@ function GetData(val) {
 
     $.ajax(
    {
-       url: 'http://localhost:8082/api/Authorization',
+       url: 'http://localhost:13131/api/Authorization',
        type: 'GET',
        async: false,
        data: dataObject,
@@ -109,7 +109,7 @@ function Update(val) {
     console.log(dataObject);
     $.ajax(
             {
-                url: 'http://localhost:8082/api/Authorization',
+                url: 'http://localhost:13131/api/Authorization',
                 type: 'PUT',
                 async: false,
                 data: dataObject,
@@ -130,7 +130,7 @@ function Update(val) {
             if ($('#hidUserID').val() != '') {
                 $.ajax(
                 {
-                    url: 'http://localhost:8082/api/Authorization',
+                    url: 'http://localhost:13131/api/Authorization',
                     type: 'POST',
                     async: false,
                     data: dataObject,
@@ -151,7 +151,7 @@ function AddRowAuthor() {
     if (localStorage['flagAddRow'] == 0) {
         var dataObject = { typeID: '009' };
         $.ajax({
-            url: 'http://localhost:8082/api/MasterService/',
+            url: 'http://localhost:13131/api/MasterService/',
             type: 'GET',
             dataType: 'json',
             data: dataObject,
@@ -173,7 +173,7 @@ function AddRowAuthor() {
 function SetAuthorization() {
     var dataObject = { typeID: '009' };
     $.ajax({
-        url: 'http://localhost:8082/api/MasterService/',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         async: false,
         dataType: 'json',

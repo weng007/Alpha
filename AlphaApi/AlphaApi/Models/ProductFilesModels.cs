@@ -11,9 +11,13 @@ namespace AlphaApi.Models
     {
         public int ID { get; set; }
 
-        public int ProductID { get; set; }
+        public int RefID { get; set; }
 
-        public string FileAttached { get; set; }
+        public string AttachName { get; set; }
+
+        public string AttachPath { get; set; }
+
+        public string AttachData { get; set; }
 
         public int CreateBy { get; set; }
 

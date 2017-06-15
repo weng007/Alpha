@@ -11,6 +11,7 @@
         }
     }
     if (topic == "Products") {
+        alert("Test ValidateProduct");
         if ($("#txtSerialNo").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input SerialNo.</div>';
         }
@@ -133,6 +134,7 @@ function ConfirmDialog(val, topic, id) {
             document.getElementById("ShowDialog").innerHTML = html;
     }
     else if (val == "Update") {
+        alert("Confirm Update");
             $('#ShowDialog').modal('show');
             var html = '<div class="modal-dialog modal-dialog-info">';
             html += '<div class="modal-content">';

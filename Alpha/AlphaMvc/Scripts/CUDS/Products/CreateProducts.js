@@ -20,7 +20,7 @@ $(document).ready(function () {
             //fileData.append('username', 'Manas');
             alert(fileData);
             $.ajax({
-                url: 'http://localhost:8082/api/ProductFiles/UploadFiles',
+                url: 'http://localhost:13131/api/ProductFiles/UploadFiles',
                 type: "POST",
                 contentType: false, // Not to set any content header  
                 processData: false, // Not to process data  
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
     var dataObject = { typeID: '003' };
     $.ajax({
-        url: 'http://localhost:8082/api/MasterService',
+        url: 'http://localhost:13131/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -65,7 +65,7 @@ $(document).ready(function () {
 
     var dataObject = { typeID: '004' };
     $.ajax({
-        url: 'http://localhost:8082/api/MasterService',
+        url: 'http://localhost:13131/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -99,7 +99,27 @@ function GetRemain()
     var balance = $("#txtBalance").val();
     $("#txtRemain").val(balance);
 }
-function CreateData() {  
+function getBase64(file) {
+    var readresult;
+    var str;
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        console.log(reader.result);
+        readresult = reader.result;
+        var res = readresult.split(",");
+        str = res[1];
+        str = str.toString();
+        alert(str);
+    };
+    reader.onerror = function (error) {
+        console.log('Error: ', error);
+    };
+    return str;
+}
+
+function CreateData() {
+    var ProductID;
     var imgElem = document.getElementById('imgPreview');
     var photo = document.getElementById("photo");
     var photoname = photo.value;
@@ -114,7 +134,7 @@ function CreateData() {
         var date2 = d + "_" + m + "_" + res + "_";
         FileName = date2 + file.name;
         var imgData = getBase64Image(imgElem);
-        var imgPath = ("../Picture/" + FileName);
+        var imgPath = ("../Attach/Product/" + FileName);
     }
     var RDate = ChangeformatDate($("#dtReceiveDate").val(), 1);
     var dataObject = {
@@ -127,19 +147,81 @@ function CreateData() {
     };
     $.ajax(
     {
-        url: 'http://localhost:8082/api/Product',
+        url: 'http://localhost:13131/api/Product',
         type: 'POST',
         async: false,
         data: dataObject,
         datatype: 'json',
 
         success: function (data) {
-            window.location.href = "../Products/IndexProducts";
+            ProductID = data;
+            alert(ProductID);
         },
         error: function (msg) {
             alert(msg);
         }
     });
+        if (ProductID > 0) {
+            if (window.FormData !== undefined) {
+                var fileUpload = document.getElementById('FileUpload1').files;
+                alert('fileUpload' + fileUpload);
+                for (var i = 0; i < fileUpload.length; i++) {
+                    var date = new Date();
+                    var d = date.getDate();
+                    var m = date.getMonth();
+                    var y = date.getYear();
+                    var str = y.toString();
+                    var res = str.substring(1, 3);
+                    var date2 = d + "_" + m + "_" + res + "_";
+                    var AttachFileName = date2 + fileUpload[i].name;
+                    var AttachPath = ("../Attach/Product/" + AttachFileName);
+                    var readresult;
+                    var str;
+
+                    var reader = new FileReader();
+                    reader.readAsDataURL(fileUpload[i]);
+                    reader.onload = function () {
+                        readresult = reader.result;
+                        var res = readresult.split(",");
+                        str = res[1];
+                        str = str.toString();
+                        //var AttahData = str;
+                        alert("AttachFileName " + AttachFileName);
+                        alert("AttachPath " + AttachPath);
+                        alert("ProductID " + ProductID);
+                        alert("AttachData " + str);
+                        var dataObject = { RefID: ProductID, AttachName: AttachFileName, AttachPath: AttachPath, AttachData: str, CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
+                        alert("Test Insert");
+                        //console.log(dataObject);
+                        $.ajax(
+                        {
+                            url: 'http://localhost:13131/api/ProductFiles',
+                            type: 'POST',
+                            async: false,
+                            data: dataObject,
+                            datatype: 'json',
+
+                            success: function (data) {
+                                //alert('Update is completed');
+                            }
+                            ,
+                            error: function (msg) {
+                                alert(msg);
+                            }
+                        });
+
+                    };
+                    reader.onerror = function (error) {
+                        console.log('Error: ', error);
+                    };
+                }
+            } else {
+                alert("FormData is not supported.");
+            }
+
+        }
+    
+    window.location.href = "../Products/IndexProducts";
 }
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -156,7 +238,6 @@ function readURL(input) {
     }
 }
 function getBase64Image(imgElem) {
-    // imgElem must be on the same server otherwise a cross-origin error will be thrown "SECURITY_ERR: DOM Exception 18"
     var canvas = document.createElement("canvas");
     canvas.width = imgElem.clientWidth;
     canvas.height = imgElem.clientHeight;
@@ -165,6 +246,7 @@ function getBase64Image(imgElem) {
     var dataURL = canvas.toDataURL("image/png");
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
+
 
 
 

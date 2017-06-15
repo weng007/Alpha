@@ -52,7 +52,7 @@ function GetDataFile(val) {
     var dataObject = { ID: val }
     $.ajax(
     {
-        url: 'http://localhost:8082/api/TechnicianFile',
+        url: 'http://localhost:13131/api/TechnicianFile',
         type: 'GET',
         //async: false,
         data: dataObject,

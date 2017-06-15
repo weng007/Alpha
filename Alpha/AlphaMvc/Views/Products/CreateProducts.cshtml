@@ -33,6 +33,7 @@
             <ul class="form-style-1">
                 <li>
                     <label class="label-2" style="margin-right: 25%;">Serial Number <span class="required">*</span></label>&nbsp;<label class="label-2" style="margin-right: 10%;">หมายเลขเครื่อง</label>
+                    <input type="hidden" id="hidProductID" />
                 </li>
                 <li>
                     <input type="text" id = "txtSerialNo" name="field_1" class="field-divided" placeholder="Serial" autofocus required />&nbsp;<input type="text" id = "txtMachineNo" name="field1" class="field-divided" placeholder="" required />
@@ -98,14 +99,22 @@
             </ul>
             <ul class="attachgrid">
                 <li>
+                    <table class="barattach">
+                        <tr>
+                            <td>
+                                <div class="topicattach"><a href="#"><img src="@Url.Content("~/Images/attachments2.png")" /></a></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="file" id="FileUpload1" multiple />
                     @*<table class="barattach">
                         <tr>
                             <td>                             
                                 <div class="topicattach"><a href="#"><img src="@Url.Content("~/Images/attachments2.png")" /></a></div>
                             </td>
                         </tr>
-                    </table>*@
-                    @*<input type="file" id="FileUpload1" multiple />
+                    </table>
+                    <input type="file" id="FileUpload1" multiple />
                     <input type="button" id="btnUpload" value="Upload Files" />*@  
                 </li>
             </ul>      

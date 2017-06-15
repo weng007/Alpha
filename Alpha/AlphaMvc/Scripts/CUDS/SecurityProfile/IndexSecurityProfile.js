@@ -38,7 +38,7 @@ $(document).ready(function () {
 
     $.ajax(
     {
-        url: 'http://localhost:8082/api/SecurityProfile',
+        url: 'http://localhost:13131/api/SecurityProfile',
         type: 'GET',
         datatype: 'json',
         success: function (data) {
@@ -75,7 +75,7 @@ function RowDelete(id) {
     var dataObject = { ID: id, EditBy: localStorage['UserID'] };
     $.ajax(
         {
-            url: 'http://localhost:8082/api/SecurityProfile',
+            url: 'http://localhost:13131/api/SecurityProfile',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',
