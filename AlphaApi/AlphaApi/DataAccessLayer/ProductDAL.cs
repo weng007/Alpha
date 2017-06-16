@@ -70,8 +70,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@SerialNo", Product.SerialNo);
                     cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo != null && Product.MachineNo != "" ? Product.MachineNo : "");
                     cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
-                    cmd.Parameters.AddWithValue("@Description", Product.Description);
-                    cmd.Parameters.AddWithValue("@Brand", Product.Brand);
+                    cmd.Parameters.AddWithValue("@Description", Product.Description != null && Product.Description != "" ? Product.Description : "");
+                    cmd.Parameters.AddWithValue("@Brand", Product.Brand != null ? Product.Brand : "");
                     cmd.Parameters.AddWithValue("@Size", Product.Size != null ? Product.Size : "");
                     cmd.Parameters.AddWithValue("@Model", Product.Model != null ? Product.Model : "");
                     cmd.Parameters.AddWithValue("@Lifetime", Product.Lifetime);
@@ -83,8 +83,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@Remark", Product.Remark != null ? Product.Remark : "");
                     cmd.Parameters.AddWithValue("@EditBy", Product.EditBy);
                     conObj.Open();
-                    object obj = cmd.ExecuteScalar();
-                    result = Convert.ToInt32(obj);
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
                 catch(Exception ex)

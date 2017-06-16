@@ -1,43 +1,43 @@
 $(document).ready(function () {
 
 
-    $('#btnUpload').click(function () {
-        // Checking whether FormData is available in browser  
-        if (window.FormData !== undefined) {
+    //$('#btnUpload').click(function () {
+    //    // Checking whether FormData is available in browser  
+    //    if (window.FormData !== undefined) {
 
-            var fileUpload = $("#FileUpload1").get(0);
-            var files = fileUpload.files;
+    //        var fileUpload = $("#FileUpload1").get(0);
+    //        var files = fileUpload.files;
 
-            // Create FormData object  
-            var fileData = new FormData();
+    //        // Create FormData object  
+    //        var fileData = new FormData();
 
-            // Looping over all files and add it to FormData object  
-            for (var i = 0; i < files.length; i++) {
-                fileData.append(files[i].name, files[i]);
-            }
+    //        // Looping over all files and add it to FormData object  
+    //        for (var i = 0; i < files.length; i++) {
+    //            fileData.append(files[i].name, files[i]);
+    //        }
 
-            // Adding one more key to FormData object  
-            //fileData.append('username', 'Manas');
-            alert(fileData);
-            $.ajax({
-                url: 'http://localhost:13131/api/ProductFiles/UploadFiles',
-                type: "POST",
-                contentType: false, // Not to set any content header  
-                processData: false, // Not to process data  
-                data: fileData,
-                success: function (result) {
-                    alert(result);
-                    alert('test');
-                },
-                error: function (err) {
-                    alert(err.statusText);
-                    alert('test1');
-                }
-            });
-        } else {
-            alert("FormData is not supported.");
-        }
-    });
+    //        // Adding one more key to FormData object  
+    //        //fileData.append('username', 'Manas');
+    //        //alert(fileData);
+    //        $.ajax({
+    //            url: 'http://localhost:13131/api/ProductFiles/UploadFiles',
+    //            type: "POST",
+    //            contentType: false, // Not to set any content header  
+    //            processData: false, // Not to process data  
+    //            data: fileData,
+    //            success: function (result) {
+    //                alert(result);
+    //                alert('test');
+    //            },
+    //            error: function (err) {
+    //                alert(err.statusText);
+    //                alert('test1');
+    //            }
+    //        });
+    //    } else {
+    //        alert("FormData is not supported.");
+    //    }
+    //});
 
 
 
@@ -110,7 +110,7 @@ function getBase64(file) {
         var res = readresult.split(",");
         str = res[1];
         str = str.toString();
-        alert(str);
+        //alert(str);
     };
     reader.onerror = function (error) {
         console.log('Error: ', error);
@@ -155,7 +155,7 @@ function CreateData() {
 
         success: function (data) {
             ProductID = data;
-            alert(ProductID);
+            //alert(ProductID);
         },
         error: function (msg) {
             alert(msg);
@@ -164,7 +164,6 @@ function CreateData() {
         if (ProductID > 0) {
             if (window.FormData !== undefined) {
                 var fileUpload = document.getElementById('FileUpload1').files;
-                alert('fileUpload' + fileUpload);
                 for (var i = 0; i < fileUpload.length; i++) {
                     var date = new Date();
                     var d = date.getDate();
@@ -181,32 +180,25 @@ function CreateData() {
                     var reader = new FileReader();
                     reader.readAsDataURL(fileUpload[i]);
                     reader.onload = function () {
-                        readresult = reader.result;
-                        var res = readresult.split(",");
-                        str = res[1];
-                        str = str.toString();
-                        //var AttahData = str;
-                        alert("AttachFileName " + AttachFileName);
-                        alert("AttachPath " + AttachPath);
-                        alert("ProductID " + ProductID);
-                        alert("AttachData " + str);
-                        var dataObject = { RefID: ProductID, AttachName: AttachFileName, AttachPath: AttachPath, AttachData: str, CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
-                        alert("Test Insert");
-                        //console.log(dataObject);
+                    readresult = reader.result;
+                    var res = readresult.split(",");
+                    str = res[1];
+                    str = str.toString();
+                    var dataObject = { RefID: ProductID, AttachName: AttachFileName, AttachPath: AttachPath, AttachData: str, CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
+                    
                         $.ajax(
                         {
                             url: 'http://localhost:13131/api/ProductFiles',
                             type: 'POST',
-                            async: false,
                             data: dataObject,
                             datatype: 'json',
-
+                            async:false,
                             success: function (data) {
                                 //alert('Update is completed');
                             }
                             ,
                             error: function (msg) {
-                                alert(msg);
+                                //alert(msg);
                             }
                         });
 

@@ -123,5 +123,30 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
+
+        public int DeleteData(ProductFilesModels ProductFiles)
+        {
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_ProductFile_Del", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", ProductFiles.ID);
+                    cmd.Parameters.AddWithValue("@EditBy", ProductFiles.EditBy);
+                    conObj.Open();
+                    result = cmd.ExecuteNonQuery();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
     }
 }

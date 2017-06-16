@@ -44,5 +44,25 @@ namespace AlphaApi.Controllers
             var response = ProductFiledb.SelectByRefID(refID);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+
+        [HttpDelete]
+        public int Delete(ProductFilesModels PF)
+        {
+            if (PF.AttachPath != null)
+            {
+
+               
+                string path;
+                //string ImgName;
+                //ImgName = PD.Img;
+                //string[] str = ImgName.Split('/');
+                path = System.Web.HttpContext.Current.Server.MapPath(PF.AttachPath);
+                File.Delete(path);
+            }
+            //calling DBData Class Method and storing Repsonse   
+            var response = ProductFiledb.DeleteData(PF);
+            return response;
+
+        }
     }
 }

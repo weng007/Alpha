@@ -71,6 +71,7 @@
                     <div class="imgpreview"><img id="imgPreview" alt="your image" class="img-center" /></div>
                     <input type="hidden" id="hidFilePath" />
                     <input type="hidden" id="hidProductFileID" />
+                    <input type="hidden" id="hidAttachPath" />
                 </li>
                 <li>
                     <label>รายละเอียด</label>
@@ -86,23 +87,7 @@
             </ul>
             <ul class="attachgrid">
                 <li>
-                    <table class="barattach">
-                        <tr>
-                            <td>
-                                <div class="topicattach"><a href="#"><img src="@Url.Content("~/Images/attachments2.png")" /></a></div>
-                            </td>
-                        </tr>
-                    </table>
                     <input type="file" id="FileUpload1" multiple />
-                    @*<input type="button" id="btnUpload" value="Upload Files" />*@  
-                    @*<table class="barattach">
-                        <tr>
-                            <td>
-
-                                <div class="topicattach"><a href="#"><img src="@Url.Content("~/Images/attachments2.png")" /></a></div>
-                            </td>
-                        </tr>
-                    </table>*@
                     <table class="example-2" cellspacing="0">
                         <thead class="theader">
                             <tr>
@@ -129,10 +114,8 @@
         var Isview = val[2];
 
         GetData(@Request.Params["id"]);
-        alert("Test2");
         GetRemain(@Request.Params["id"]);
         ControlEnable(Isview);
-        alert("Test3");
     });
     function validate() {
         alert("validate");
