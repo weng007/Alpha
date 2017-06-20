@@ -37,6 +37,7 @@ function UserLogin() {
                     localStorage['UserID'] = data.Table[0].ID;
                     localStorage['UserName'] = data.Table[0].UserName;
                     localStorage['Password'] = $("#txtPassword").val();
+                    localStorage['IsTechnician'] = data.Table[0].Technician;
                     //location = "../Technician/ExpiredTechnician";
                     CheckAuthorization();
             }

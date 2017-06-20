@@ -22,9 +22,9 @@ namespace AlphaApi.Controllers
         {
             string[] str = technician.Split('&');
             string[] FDate = str[1].Split('/');
-            int FYear = Convert.ToInt32(FDate[0]);
+            int FDay = Convert.ToInt32(FDate[0]);
             int FMonth = Convert.ToInt32(FDate[1]);
-            int FDay = Convert.ToInt32(FDate[2]);
+            int FYear = Convert.ToInt32(FDate[2]);
             DateTime MDate = new DateTime(FYear, FMonth, FDay);
 
             var response = OT.SelectByID(Convert.ToInt32(str[0]), MDate, str[2], str[3]);

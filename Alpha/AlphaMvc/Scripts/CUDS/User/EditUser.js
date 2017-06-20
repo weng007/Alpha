@@ -51,6 +51,7 @@ function GetData(val) {
    });
 }
 function Update(val) {
+    alert($("#cmbSecurityProfile").find(":selected").val());
     var dataObject = {
         ID: val,
         SecurityID: $("#cmbSecurityProfile").find(":selected").val(),

@@ -241,7 +241,8 @@ namespace AlphaApi.DataAccessLayer
         }
         public DataSet Authenticate(string userName, string password)
         {
-            DataSet ds = null;
+            //DataSet ds = null;
+            dsUser userDS = new dsUser();
             string domainName = string.Empty;
             string ADPath = string.Empty;
             string strError = string.Empty;
@@ -263,10 +264,15 @@ namespace AlphaApi.DataAccessLayer
                         object obj = entry.NativeObject;
                         DirectorySearcher search = new DirectorySearcher(entry);
                         search.Filter = "(SAMAccountName=" + userName + ")";
-                        search.PropertiesToLoad.Add("cn");
+                        search.PropertiesToLoad.Add("givenname");
+                        search.PropertiesToLoad.Add("sn");
                         SearchResult result = search.FindOne();
                         if (result != null)
                         {
+                            dsUser.ADUserRow dr = userDS.ADUser.NewADUserRow();
+                            dr["FirstName"] = result.Properties["givenname"].Count > 0 ? (String)result.Properties["givenname"][0] : "";
+                            dr["LastName"] = result.Properties["sn"].Count > 0 ? (String)result.Properties["sn"][0] : "";
+                            userDS.ADUser.AddADUserRow(dr);
                             isAuthen = true;
                         }
                         else
@@ -297,8 +303,8 @@ namespace AlphaApi.DataAccessLayer
                                 conObj.Open();
                                 SqlDataAdapter da = new SqlDataAdapter();
                                 da.SelectCommand = cmd;
-                                ds = new DataSet();
-                                da.Fill(ds);
+                                da.Fill(userDS.ADUser);
+                                userName = userDS.ADUser.Rows[0]["UserName"].ToString();
                             }
                             catch (Exception ex)
                             {
@@ -315,7 +321,7 @@ namespace AlphaApi.DataAccessLayer
                 domainName = string.Empty;
                 ADPath = string.Empty;
 
-                return ds;
+                return userDS;
 
             }
             catch (Exception ex)
