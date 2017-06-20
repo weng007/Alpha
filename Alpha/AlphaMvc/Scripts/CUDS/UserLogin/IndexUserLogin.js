@@ -23,7 +23,7 @@ function UserLogin() {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/UserLogin',
+        url: 'http://alphagroup.co.th:8082/api/UserLogin',
         type: 'GET',
         async: false,
         data: dataObject,
@@ -32,12 +32,15 @@ function UserLogin() {
             data = JSON.parse(data);
             console.log(data);
 
-            if (data != null && data.Table.length > 0)
+            //alert(data.ADUser.length);
+            if (data != null && data.ADUser.length > 0)
             {
-                    localStorage['UserID'] = data.Table[0].ID;
-                    localStorage['UserName'] = data.Table[0].UserName;
+                localStorage['UserID'] = data.ADUser[1].ID;
+                localStorage['UserName'] = data.ADUser[1].UserName;
                     localStorage['Password'] = $("#txtPassword").val();
-                    localStorage['IsTechnician'] = data.Table[0].Technician;
+                    localStorage['IsTechnician'] = data.ADUser[1].Technician;
+                    localStorage['FirstName'] = data.ADUser[1].FirstName;
+                    localStorage['LastName'] = data.ADUser[1].LastName;
                     //location = "../Technician/ExpiredTechnician";
                     CheckAuthorization();
             }
@@ -56,7 +59,7 @@ function CheckAuthorization() {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/CheckAuthorization',
+        url: 'http://alphagroup.co.th:8082/api/CheckAuthorization',
         type: 'GET',
         async: false,
         data: dataObject,

@@ -4,7 +4,7 @@ function CheckAuthorization() {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/CheckAuthorization',
+        url: 'http://alphagroup.co.th:8082/api/CheckAuthorization',
         type: 'GET',
         async: false,
         data: dataObject,

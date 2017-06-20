@@ -37,11 +37,11 @@ $(document).ready(function () {
     //------------------------------------ Custom ------------------------------------
 });
 function GetCalendarlist(val) {
-    var dataObject = { CalendarMonth: val };
+    var dataObject = { CalendarMonth: val + '&' + localStorage['IsTechnician'] + '&' + localStorage['FirstName'] + '&' + localStorage['LastName'] };
     //alert(val);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/CalendarJobOrder',
+        url: 'http://alphagroup.co.th:8082/api/CalendarJobOrder',
         type: 'GET',
         data: dataObject,
         async: false,

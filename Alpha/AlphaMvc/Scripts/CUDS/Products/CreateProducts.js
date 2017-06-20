@@ -20,7 +20,7 @@ $(document).ready(function () {
     //        //fileData.append('username', 'Manas');
     //        //alert(fileData);
     //        $.ajax({
-    //            url: 'http://localhost:13131/api/ProductFiles/UploadFiles',
+    //            url: 'http://alphagroup.co.th:8082/api/ProductFiles/UploadFiles',
     //            type: "POST",
     //            contentType: false, // Not to set any content header  
     //            processData: false, // Not to process data  
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
     var dataObject = { typeID: '003' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService',
+        url: 'http://alphagroup.co.th:8082/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -65,7 +65,7 @@ $(document).ready(function () {
 
     var dataObject = { typeID: '004' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService',
+        url: 'http://alphagroup.co.th:8082/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -147,7 +147,7 @@ function CreateData() {
     };
     $.ajax(
     {
-        url: 'http://localhost:13131/api/Product',
+        url: 'http://alphagroup.co.th:8082/api/Product',
         type: 'POST',
         async: false,
         data: dataObject,
@@ -188,7 +188,7 @@ function CreateData() {
                     
                         $.ajax(
                         {
-                            url: 'http://localhost:13131/api/ProductFiles',
+                            url: 'http://alphagroup.co.th:8082/api/ProductFiles',
                             type: 'POST',
                             data: dataObject,
                             datatype: 'json',
