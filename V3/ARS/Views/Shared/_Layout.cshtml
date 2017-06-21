@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        @*---------------------------- Default --------------------------*@
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/jquery-ui.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/jquery-1.12.4.js")" type="text/javascript"></script>
+        @*---------------------------- ConfirmDialog --------------------------*@
+        <script src="@Url.Content("~/Scripts/ConfirmDialog/ConfirmDialog.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/CUDS/UserLogin/IndexUserLogin.js")" type="text/javascript"></script>
+        @*---------------------------- Menu,Table --------------------------*@
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+        <link href="@Url.Content("~/Content/menu.css")" rel="stylesheet" type="text/css" />
+        @*---------------------------- Table Paging --------------------------*@
+        @*<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>*@
+        <script src="@Url.Content("~/Scripts/Datatable/paging.js")" type="text/javascript"></script>
+        @* ---------------------------- menu -------------------------- *@
+        <link href="@Url.Content("~/Content/custom.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/bootstrap.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>
+        @* ---------------------------- NumberFormat -------------------------- *@
+        <script src="@Url.Content("~/Scripts/NumberFormat/jquery.number.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/NumberFormat/jquery.number_Custom.js")" type="text/javascript"></script>
+        @* ---------------------------- Tab -------------------------- *@
+        <link href="@Url.Content("~/Content/Tab/easy-responsive-tabs.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/Tab/easyResponsiveTabs.js")" type="text/javascript"></script>
+        @* ---------------------------- Dynamictable -------------------------- *@
+        <link href="@Url.Content("~/Content/editable/addrowstyle.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/EditableGrid/highlight.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/EditableGrid/jquery.dynotable.js")" type="text/javascript"></script>
+        @* ---------------------------- DatePicker -------------------------- *@
+        <link href="@Url.Content("~/Content/datepicker/santiago.datepicker.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/CUDS/UserLogin/CheckAuthorization.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/CUDS/ChangeFomatDate.js")" type="text/javascript"></script>
+        <script language="javascript" type="text/javascript">
+            $(document).ready(function () {
+                document.getElementById("lblUserName").innerHTML = localStorage['UserName'];
+            });
+
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+        </script>
+        @* ---------------------------- menu -------------------------- *@
+        <meta name="viewport" content="width=device-width">
+
+    </head>
+    <body>
+        <header>
+            <div class="menutab"></div>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <a href="@Url.Action("Index", "Home")" class="imagelogo"></a>
+                    <img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" /><label id="lblUserName" class="logonname"></label>
+                    <img src="@Url.Content("~/Images/log-in.png")" alt="IMAGES" class="imgicon" />
+                    <div class="loginname">@Html.ActionLink("Log Out", "IndexLogin", "Login")</div>
+                </div>
+                    <label for="show-menu" class="show-menu">Menu ☰</label>
+                    <input type="checkbox" id="show-menu" role="button" class="Hidecheckbox">
+                    
+                        <ul id="menu" class="menuul">
+                            <li id="mnDashboard" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Dashboard", "ExpiredTechnician", "Technician")</div></div></li>
+                            <li id="mnAdmin" class="menuli">
+                                <div class="menua">
+                                    <div class="menutext">
+                                        @Html.ActionLink("Administration", "IndexIncomeMaster", "IncomeMaster")
+                                        <ul class="hidden">
+                                            @*<img src="~/Images/iconIncomeMaster.png" />*@
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Income", "IndexIncomeMaster", "IncomeMaster")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Expense", "IndexExpenseMaster", "ExpenseMaster")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("SecurityProfile", "IndexSecurityProfile", "SecurityProfile")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("User", "IndexUser", "User")</div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            @*<li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Warning", "ExpiredTechnician", "Technician")</div></div></li>*@
+                            <li id="mnCarlendar" class="menuli">
+                                <div class="menua">
+                                    <div class="menutext">
+                                        @Html.ActionLink("Calendar", "IndexCalendarJob", "CalendarJob")
+                                        <ul class="hidden">
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Job", "IndexCalendarJob", "CalendarJob")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Man Power", "IndexCMP", "CalendarManPower")</div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="mnTechnician" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "IndexTechnician", "Technician")</div></div></li>
+                            <li id="mnCarlendar" class="menuli">
+                                <div class="menua">
+                                    <div class="menutext">
+                                        @Html.ActionLink("Tools & Machines", "IndexProducts", "Products")
+                                        <ul class="hidden">
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Stock", "IndexProducts", "Products")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Stock Adjustment", "IndexProductAdjust", "ProductAdjust")</div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="mnBDC" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("BreakDown Cost", "IndexBDC", "BDC")</div></div></li>
+                            <li id="imgPayment" class="menuli">
+                                <div class="menua">
+                                    <div class="menutext">
+                                        @Html.ActionLink("Payment", "IndexWageTeachnician", "WageTeachnician")
+                                        <ul class="hidden">
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Alpha & Outsource", "IndexWageTeachnician", "WageTeachnician")</div></li>
+                                            @*<li class="menuli"><div class="submenua">@Html.ActionLink("Vendor", "IndexWageVendor", "WageVendor")</div></li>*@
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li id="mnReport" class="menuli">
+                                <div class="menua">
+                                    <div class="menutext">
+                                        @Html.ActionLink("Report", "IndexReportBreakDownCost", "ReportBreakdownCost")
+                                        <ul class="hidden">
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("BreakDown Cost", "IndexReportBreakDownCost", "ReportBreakdownCost")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("JobOrder", "IndexReportJobOrder", "ReportJobOrder")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Borrow & Return", "IndexRptBorrow", "ReportBorrow")</div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                </div>
+            
+        </header>
+        
+        <div id="body">
+            <section class="content-wrapper main-content clear-fix">     
+                @RenderBody()
+                @RenderSection("ShowRptViewer", required: false)
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="footertext">&copy; @DateTime.Now.Year Alpha Group Co., Ltd. All Rights Reserved.</p>
+                </div>
+                <div class="float-right">
+                    <ul id="social">
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

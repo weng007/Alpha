@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "IndexAuthorization";
+}
+<script src="@Url.Content("~/Scripts/CUDS/Authorization/IndexAuthorization.js")" type="text/javascript"></script>
+<h2>IndexAuthorization</h2>
+
+<table class="barattach-2">
+    <tr>
+        <td>
+            <a href="/Authorization/CreateAuthorization"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" class="imgadd" /></a>
+            <div class="topicattach-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+        </td>
+    </tr>
+</table>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="bgthead">
+            <tr>
+                <th class="Rowpointer">No.</th>
+                <th class="hidecolumn">ID</th>
+                <th class="Rowpointer">UserName</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="result"></tbody>
+    </table>
+</div>

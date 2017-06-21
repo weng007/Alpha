@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "EditBorrow";
+}
+
+<h2>Borrow Edit</h2>
+<script src="@Url.Content("~/Scripts/CUDS/JobOrderBorrow/EditJobOrderBorrow.js")" type="text/javascript"></script>
+<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<div class="modal fade" id="productDialog" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Serial</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-overflow">
+                    @*<table id="tblQuotation" class="table table-striped table-hover table-responsive tdborrow">*@
+                    <table id="tblBorrow" class="table-striped table-hover table-responsive tdborrow">
+                        <thead class="bgthead bgfont-12">
+                            <tr>
+                                <th class="bodypadding-5" colspan="7"><div class="topicText-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div></th>
+                            </tr>
+                            <tr>
+                                <th class="Rowpointer bodypadding-10">No.</th>
+                                <th class="hidecolumn">ID</th>
+                                <th class="Rowpointer bodypadding-10">Serial</th>
+                                <th class="Rowpointer bodypadding-10">หมายเลขเครื่อง</th>
+                                <th class="Rowpointer bodypadding-10">ยี่ห้อ</th>
+                                <th class="Rowpointer bodypadding-10">ขนาด</th>
+                                <th class="Rowpointer bodypadding-10">รุ่น</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productBody" class="bgfont-12"></tbody>
+                    </table>
+                </div>
+                @*</div>*@
+                @*<ul class="pagination pagination-lg pager" id="myPager"></ul>*@
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    table {
+        background: #fbfbf1;
+        width: 335px;
+    }
+</style>
+
+<div id="myModal">
+    @using (Html.BeginForm())
+    {
+        <form>
+            <ul class="form-style-1">
+                <li>
+                    <label>Serial <span class="required">*</span></label>
+                    <input type="text" id="txtSerial" class="field-divided" placeholder="Serial" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#productDialog" onclick="BrowseProduct()">
+                        <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
+                    </a>
+                    <input type="hidden" id="hidProductID" />
+                    <input type="hidden" id="hidJobID" />
+                </li>
+                <li>
+                    <label class="label-small">ยี่ห้อ</label>&nbsp;<label class="label-small-3">รุ่น</label>
+                </li>
+                <li>
+                    <input type="text" id="txtBrand" name="field1" class="field-select-small" placeholder="" />&nbsp;<input type="text" name="field2" id="txtModel" class="field-select-small" placeholder="" />
+                </li>
+                <li>
+                    <label class="label-small">ขนาด</label>&nbsp;<label class="label-small-3">จำนวนที่ยืม</label>
+                </li>
+                <li>
+                    <input type="text" id="txtSize" name="field1" class="field-select-small" placeholder="" />&nbsp;<input type="text" name="field2" id="txtAmount" class="field-select-small" placeholder="" onblur="CheckBorrow()" />
+                </li>
+
+                <li>
+                    <label>หมายเหตุ</label>
+                    <textarea name="field5" id="txtRemark" class="field-long field-textarea"></textarea>
+                </li>
+
+            </ul>
+            <ul class="form-style-3">
+                <li>
+                    <label>คืน:</label>
+                </li>
+                <li>
+                    <label class="label-small-2">ดี</label>&nbsp;<label class="label-small-2">หาย</label>&nbsp;<label class="label-small">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>
+                </li>
+                <li>
+                    <input type="text" id="txtReturnGood" name="field6" class="field-select-small" placeholder="" />&nbsp;<input type="text" name="field6" id="txtReturnLost" class="field-select-small" placeholder="" />&nbsp;<input type="text" id="txtReturnRepair" name="field7" class="field-select-small" placeholder="" />&nbsp;<input type="text" id="txtReturnBad" name="field8" class="field-select-small" placeholder="" />
+                </li>
+                <li>
+                    <button type="button" class="btn btn-primary" onclick="CheckReturnAmount()">Save</button>
+                </li>
+            </ul>
+        </form>
+    }
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        GetData(@Request.Params["id"]);
+
+    });
+
+    function CheckReturnAmount() {
+        //var returnStatus = $('#hidReturn').val();
+        CheckReturn();
+        //if(returnStatus == 1)
+        //{
+        Isvalidate('Update', 'JobOrderBorrow', @Request.Params["id"])
+        //}
+    }
+
+</script>
