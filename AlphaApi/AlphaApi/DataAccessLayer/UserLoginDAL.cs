@@ -68,6 +68,7 @@ namespace AlphaApi.DataAccessLayer
                     {
                         object obj = entry.NativeObject;
                         DirectorySearcher search = new DirectorySearcher(entry);
+                        search.SearchScope = SearchScope.Subtree;
                         search.Filter = "(SAMAccountName=" + userName + ")";
                         search.PropertiesToLoad.Add("givenname");
                         search.PropertiesToLoad.Add("sn");

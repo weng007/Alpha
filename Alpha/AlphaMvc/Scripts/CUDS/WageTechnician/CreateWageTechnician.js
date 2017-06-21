@@ -21,7 +21,7 @@ function GetData(val)
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://alphagroup.co.th:8082/api/WageTechnician',
+        url: 'http://localhost:13131/api/WageTechnician',
         type: 'GET',
         async: false,
         data: dataObject,
@@ -95,7 +95,7 @@ function CreateData() {
         dataObject.EditBy = localStorage['UserID'];
         $.ajax(
         {
-            url: 'http://alphagroup.co.th:8082/api/WageTechnician',
+            url: 'http://localhost:13131/api/WageTechnician',
             type: 'POST',
             async: false,
             data: dataObject,

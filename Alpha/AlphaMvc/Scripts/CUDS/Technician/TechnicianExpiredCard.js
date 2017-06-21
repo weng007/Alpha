@@ -49,7 +49,7 @@ $(document).ready(function () {
     //GetDataCard();
     $.ajax(
 {
-    url: 'http://alphagroup.co.th:8082/api/TechnicianExpiredCard',
+    url: 'http://localhost:13131/api/TechnicianExpiredCard',
     type: 'GET',
     async: false,
     //data: dataObject,

@@ -11,7 +11,7 @@ function GetData(val) {
     var dataObject = { ID: val}
     $.ajax(
    {
-       url: 'http://alphagroup.co.th:8082/api/IncomeMaster',
+       url: 'http://localhost:13131/api/IncomeMaster',
        type: 'GET',
        async: false,
        data : dataObject,
@@ -31,7 +31,7 @@ function Update(val) {
     var dataObject = { ID: val, Detail: $("#txtDetail").val(), EditBy: localStorage['UserID'] }
        $.ajax(
         {
-            url: 'http://alphagroup.co.th:8082/api/IncomeMaster',
+            url: 'http://localhost:13131/api/IncomeMaster',
             type: 'PUT',
             async: false,
             data: dataObject,
