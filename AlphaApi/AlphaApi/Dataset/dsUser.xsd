@@ -14,7 +14,7 @@
   <xs:element name="dsUser" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsUser" msprop:Generator_UserDSName="dsUser">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ADUser" msprop:Generator_TableClassName="ADUserDataTable" msprop:Generator_TableVarName="tableADUser" msprop:Generator_TablePropName="ADUser" msprop:Generator_RowDeletingName="ADUserRowDeleting" msprop:Generator_RowChangingName="ADUserRowChanging" msprop:Generator_RowEvHandlerName="ADUserRowChangeEventHandler" msprop:Generator_RowDeletedName="ADUserRowDeleted" msprop:Generator_UserTableName="ADUser" msprop:Generator_RowChangedName="ADUserRowChanged" msprop:Generator_RowEvArgName="ADUserRowChangeEvent" msprop:Generator_RowClassName="ADUserRow">
+        <xs:element name="ADUser" msprop:Generator_TableClassName="ADUserDataTable" msprop:Generator_TableVarName="tableADUser" msprop:Generator_RowChangedName="ADUserRowChanged" msprop:Generator_TablePropName="ADUser" msprop:Generator_RowDeletingName="ADUserRowDeleting" msprop:Generator_RowChangingName="ADUserRowChanging" msprop:Generator_RowEvHandlerName="ADUserRowChangeEventHandler" msprop:Generator_RowDeletedName="ADUserRowDeleted" msprop:Generator_RowClassName="ADUserRow" msprop:Generator_UserTableName="ADUser" msprop:Generator_RowEvArgName="ADUserRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" minOccurs="0" />
@@ -46,10 +46,10 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Company" msdata:Caption="IsDeleted" msprop:Generator_ColumnVarNameInTable="columnCompany" msprop:Generator_ColumnPropNameInRow="Company" msprop:Generator_ColumnPropNameInTable="CompanyColumn" msprop:Generator_UserColumnName="Company" minOccurs="0">
+              <xs:element name="Company" msprop:Generator_ColumnVarNameInTable="columnCompany" msprop:Generator_ColumnPropNameInRow="Company" msprop:Generator_ColumnPropNameInTable="CompanyColumn" msprop:Generator_UserColumnName="Company" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="1" />
+                    <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

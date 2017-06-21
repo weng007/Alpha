@@ -496,8 +496,8 @@ namespace AlphaApi.Dataset {
                 this.columnEmail.MaxLength = 100;
                 this.columnDepartment.Caption = "SecurityProfile";
                 this.columnDepartment.MaxLength = 100;
-                this.columnCompany.Caption = "IsDeleted";
-                this.columnCompany.MaxLength = 1;
+                this.columnCompany.Caption = "Company";
+                this.columnCompany.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
