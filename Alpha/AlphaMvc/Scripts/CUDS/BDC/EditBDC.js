@@ -32,7 +32,7 @@ function BrowseQuotation() {
     //-------------------------filter------------------------
     $.ajax(
       {
-          url: 'http://alphagroup.co.th:8082/api/Quotation',
+          url: 'http://localhost:13131/api/Quotation',
           type: 'GET',
           datatype: 'json',
           success: function (data) {
@@ -81,7 +81,7 @@ function GetData(val) {
     //alert('test val '+val);
     $.ajax(
        {
-           url: 'http://alphagroup.co.th:8082/api/BDC',
+           url: 'http://localhost:13131/api/BDC',
            type: 'GET',
            async: false,
            data: dataObject,
@@ -111,7 +111,7 @@ function Update(val) {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://alphagroup.co.th:8082/api/BDC',
+        url: 'http://localhost:13131/api/BDC',
         type: 'PUT',
         async: false,
         data: dataObject,

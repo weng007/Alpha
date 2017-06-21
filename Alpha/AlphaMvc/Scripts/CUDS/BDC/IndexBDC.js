@@ -58,7 +58,7 @@ function GetData(val)
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://alphagroup.co.th:8082/api/BDC',
+        url: 'http://localhost:13131/api/BDC',
         type: 'GET',
         async: false,
         data: dataObject,
@@ -112,7 +112,7 @@ function RowDelete(id) {
     var CountDel;
     var dataObject = { BDCID: id };
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/BDC',
+        url: 'http://localhost:13131/api/BDC',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -133,7 +133,7 @@ function RowDelete(id) {
         var dataObject = { ID: id };
         $.ajax(
             {
-                url: 'http://alphagroup.co.th:8082/api/BDC/Delete',
+                url: 'http://localhost:13131/api/BDC/Delete',
                 type: 'DELETE',
                 async: false,
                 data: dataObject,

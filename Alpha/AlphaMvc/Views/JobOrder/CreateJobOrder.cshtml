@@ -627,7 +627,7 @@
                                         @*Borrow*@
                                         <div>
                                             <div class="barattach-2">
-                                                <a onclick="CreateJobOrderBorrow()" class="alink" style="cursor:hand"><img  src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
+                                                <a onclick="CreateJobOrderBorrow()" class="alink" style="cursor:hand;"><img  src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
                                                 <input type="hidden" id="hidIsNewBorrow" />
                                             </div>
                                             <div class="grigbar">
@@ -899,7 +899,7 @@
     });
     function CreateJobOrderBorrow()
     {     
-        Isvalidate('Create', 'JobOrder', 0);
+        ValidateJobOrder();
         $('#hidIsNewBorrow').val(1);
         RedirectJobOrderBorrow(val);
     }

@@ -48,7 +48,7 @@ function BrowseQuotation() {
     //-------------------------filter------------------------
     $.ajax(
       {
-          url: 'http://alphagroup.co.th:8082/api/Quotation',
+          url: 'http://localhost:13131/api/Quotation',
           type: 'GET',
           datatype: 'json',
           success: function (data) {
@@ -81,7 +81,7 @@ function CreateData() {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://alphagroup.co.th:8082/api/BDC',
+        url: 'http://localhost:13131/api/BDC',
         type: 'POST',
         async: false,
         data: dataObject,

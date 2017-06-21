@@ -63,11 +63,13 @@ namespace AlphaApi.DataAccessLayer
                 if (!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(domainName))
                 {
                     domainAndUser = domainName + @"\" + LoginUser;
-                    DirectoryEntry entry = new DirectoryEntry(ADPath, domainAndUser, LoginPassword);
+                    //DirectoryEntry entry = new DirectoryEntry(ADPath);
+                    DirectoryEntry entry = new DirectoryEntry("LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local");
                     try
                     {
                         object obj = entry.NativeObject;
                         DirectorySearcher search = new DirectorySearcher(entry);
+                        search.SearchScope = SearchScope.Subtree;
                         search.Filter = "(SAMAccountName=" + userName + ")";
                         search.PropertiesToLoad.Add("givenname");
                         search.PropertiesToLoad.Add("sn");
@@ -142,7 +144,7 @@ namespace AlphaApi.DataAccessLayer
                     if (!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(domainName))
                     {
                         domainAndUser = domainName + @"\" + LoginUser;
-                        DirectoryEntry entry = new DirectoryEntry(ADPath, domainAndUser, LoginPassword);
+                        DirectoryEntry entry = new DirectoryEntry("LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local");
                         try
                         {
                             object obj = entry.NativeObject;
@@ -252,7 +254,14 @@ namespace AlphaApi.DataAccessLayer
             bool isAuthen = false;
             try
             {
-                ADPath = ConfigurationManager.AppSettings["DirectoryPath"];
+                if (userName == "Administrator")
+                {
+                    ADPath = ConfigurationManager.AppSettings["DirectoryPath"];
+                }
+                else
+                {
+                    ADPath = "LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local";
+                }
                 domainName = ConfigurationManager.AppSettings["DirectoryDomain"];
                 if(!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(domainName))
                 {
