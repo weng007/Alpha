@@ -69,51 +69,50 @@ function CheckAuthorization() {
             console.log(data);
             //alert(data.Table.length);
             for (var i = 0; i < data.Table.length; i++) {
-                if (data.Table[i].MenuName == "Dashboard") {
-
+                if (data.Table[i].MenuID == 41) { //Dashboard
                     if (data.Table[i].Role > 0) {
                         //ถ้าไม่มีสิทธ์ Dashboard ให้ Redirect ไปหน้า IncomeMaster
                         location = "../Technician/ExpiredTechnician";
                         break;
                     }
                 }
-                else if (data.Table[i].MenuName == "Administration") {
-                    if (data.Table[i].Role >= 0) {
+                else if (data.Table[i].MenuID == 42) { //Administration
+                    if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู Administration ให้ Redirect ไปหน้า IndexIncomeMaster (Admin)
                         location = "../IncomeMaster/IndexIncomeMaster";
                         break;
                     }
                 }
-                else if (data.Table[i].MenuName == "Carlendar") {
+                else if (data.Table[i].MenuID == 43) { //Carlendar
                     if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู Carlendar ให้ Redirect ไปหน้า IndexIncomeMaster (Calendar)
                         location = "../CalendarJob/IndexCalendarJob";
                         break;
                     }
                 }
-                else if (data.Table[i].MenuName == "Technician") {
+                else if (data.Table[i].MenuID == 44) { //Technician
                     if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู Technician ให้ Redirect ไปหน้า IndexTechnician (Technician)
                         location = "../Technician/IndexTechnician";
                         break;
                     }
                 }
-                else if (data.Table[i].MenuName == "Products") {
+                else if (data.Table[i].MenuID == 47) { //Products
                     if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู Technician ให้ Redirect ไปหน้า IndexProducts(Products)
                         location = "../Products/IndexProducts";
                         break;
                     }
                 }
-                else if (data.Table[i].MenuName == "BDC") {
+                else if (data.Table[i].MenuID == 53) { //BDC
                     if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู Technician ให้ Redirect ไปหน้า IndexBDC (BDC)
                         location = "../BDC/IndexBDC";
                         break;
                     }
                 }
-                else if (data.Table[i].MenuName == "Payment") {
-                    
+                else if (data.Table[i].MenuID == 56)//Payment 
+                {
                     if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ Technician ให้ Redirect ไปหน้า IndexWageTeachnician (WageTeachnician)
                         location = "../WageTeachnician/IndexWageTeachnician";
