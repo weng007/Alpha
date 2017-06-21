@@ -52,7 +52,7 @@ function GetDataSkill(val) {
     var dataObject = { ID: val}
     $.ajax(
     {
-        url: 'http://localhost:13131/api/TechnicianSkill',
+        url: 'http://alphagroup.co.th:8082/api/TechnicianSkill',
         type: 'GET',
         //async: false,
         data: dataObject,

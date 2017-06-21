@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     $.ajax({
-        url: 'http://localhost:13131/api/SecurityProfile/',
+        url: 'http://alphagroup.co.th:8082/api/SecurityProfile/',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -31,7 +31,7 @@ function CheckAD()
     var dataObject = { userName2: userName + '&' + localStorage['UserName'] + '&' + localStorage['Password'] }
     $.ajax(
    {
-       url: 'http://localhost:13131/api/UserLogin',
+       url: 'http://alphagroup.co.th:8082/api/UserLogin',
        type: 'GET',
        async: false,
        data: dataObject,
@@ -82,7 +82,7 @@ function CreateData(val) {
 
         $.ajax(
         {
-            url: 'http://localhost:13131/api/UserLogin',
+            url: 'http://alphagroup.co.th:8082/api/UserLogin',
             type: 'POST',
             async: false,
             data: dataObject,

@@ -13,7 +13,7 @@ function GetData(val) {
     var dataObject = { ID: val}
     $.ajax(
    {
-       url: 'http://localhost:13131/api/SecurityProfile',
+       url: 'http://alphagroup.co.th:8082/api/SecurityProfile',
        type: 'GET',
        async: false,
        data : dataObject,
@@ -107,7 +107,7 @@ function Update(val) {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/SecurityProfile',
+        url: 'http://alphagroup.co.th:8082/api/SecurityProfile',
         type: 'PUT',
         async: false,
         data: dataObject,
@@ -133,7 +133,7 @@ function Update(val) {
         dataObject.EditBy = localStorage['UserID'];
         $.ajax(
         {
-            url: 'http://localhost:13131/api/SecurityProfileDetail',
+            url: 'http://alphagroup.co.th:8082/api/SecurityProfileDetail',
             type: 'PUT',
             async: false,
             data: dataObject,

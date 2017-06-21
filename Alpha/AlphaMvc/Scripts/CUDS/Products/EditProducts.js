@@ -2,7 +2,7 @@ $(document).ready(function () {
     CheckAuthorization();
     var dataObject = { typeID: '003' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService',
+        url: 'http://alphagroup.co.th:8082/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     var dataObject = { typeID: '004' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService',
+        url: 'http://alphagroup.co.th:8082/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -72,7 +72,7 @@ function GetData(val) {
     var dataObject = { ID: val }
     $.ajax(
    {
-       url: 'http://localhost:13131/api/Product',
+       url: 'http://alphagroup.co.th:8082/api/Product',
        type: 'GET',
        async: false,
        data: dataObject,
@@ -107,7 +107,7 @@ function GetData(val) {
     var dataObject = { refID: val }
     $.ajax(
     {
-        url: 'http://localhost:13131/api/ProductFiles',
+        url: 'http://alphagroup.co.th:8082/api/ProductFiles',
         type: 'GET',
         async: false,
         data: dataObject,
@@ -127,7 +127,7 @@ function GetData(val) {
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn nopointer">' + data.Table[i].ID + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].RefID + '</td>';
-                html += '<td class="nopointer"><a href="http://localhost:13131/Attach/Product/' + data.Table[i].AttachName + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + str + '</a></td>';
+                html += '<td class="nopointer"><a href="http://alphagroup.co.th:8082/Attach/Product/' + data.Table[i].AttachName + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + str + '</a></td>';
                 html += '<td class="hidecolumn">' + data.Table[i].AttachPath + '</td>';
                 html += '<td class="nopointer">';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'ProductFile'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgAdminDelete"/></a>';
@@ -153,7 +153,7 @@ function RowDelete(id) {
     var dataObject = { ID: id, EditBy: localStorage['UserID'], AttachPath: $("#hidAttachPath").val() };
     $.ajax(
         {
-            url: 'http://localhost:13131/api/ProductFiles',
+            url: 'http://alphagroup.co.th:8082/api/ProductFiles',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',
@@ -174,7 +174,7 @@ function GetDetail(val) {
     var dataObject = { ProductID: val };
     $.ajax(
            {
-               url: 'http://localhost:13131/api/Product',
+               url: 'http://alphagroup.co.th:8082/api/Product',
                type: 'GET',
                datatype: 'json',
                data: dataObject,
@@ -193,7 +193,7 @@ function GetRemain(val) {
     var dataObject = { ProductID: val };
     $.ajax(
        {
-           url: 'http://localhost:13131/api/JobOrderBorrow',
+           url: 'http://alphagroup.co.th:8082/api/JobOrderBorrow',
            type: 'GET',
            async: false,
            data: dataObject,
@@ -245,7 +245,7 @@ function Update(val) {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/Product',
+        url: 'http://alphagroup.co.th:8082/api/Product',
         type: 'PUT',
         async: false,
         data: dataObject,
@@ -293,7 +293,7 @@ function Update(val) {
                     //console.log(dataObject);
                     $.ajax(
                     {
-                        url: 'http://localhost:13131/api/ProductFiles',
+                        url: 'http://alphagroup.co.th:8082/api/ProductFiles',
                         type: 'POST',
                         async: false,
                         data: dataObject,

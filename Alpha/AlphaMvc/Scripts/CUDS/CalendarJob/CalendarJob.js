@@ -44,7 +44,7 @@ function GetCalendarlist(val) {
     //alert(val);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/CalendarJobOrder',
+        url: 'http://alphagroup.co.th:8082/api/CalendarJobOrder',
         type: 'GET',
         data: dataObject,
         async: false,

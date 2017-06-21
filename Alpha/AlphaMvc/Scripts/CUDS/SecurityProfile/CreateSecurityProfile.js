@@ -37,7 +37,7 @@ $(document).ready(function () {
     //------------------------------------ Custom ------------------------------------
     var dataObject = { typeID: '011' };
     $.ajax({
-        url: 'http://localhost:13131/api/MasterService',
+        url: 'http://alphagroup.co.th:8082/api/MasterService',
         type: 'GET',
         async: false,
         dataType: 'json',
@@ -117,7 +117,7 @@ function CreateData() {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/SecurityProfile',
+        url: 'http://alphagroup.co.th:8082/api/SecurityProfile',
         type: 'POST',
         async: false,
         data: dataObject,
@@ -144,7 +144,7 @@ function CreateData() {
         dataObject.EditBy = localStorage['UserID'];
             $.ajax(
             {
-                url: 'http://localhost:13131/api/SecurityProfileDetail',
+                url: 'http://alphagroup.co.th:8082/api/SecurityProfileDetail',
                 type: 'POST',
                 async: false,
                 data: dataObject,

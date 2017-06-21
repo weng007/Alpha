@@ -49,7 +49,7 @@ $(document).ready(function () {
 
     $.ajax(
     {
-        url: 'http://localhost:13131/api/Technician',
+        url: 'http://alphagroup.co.th:8082/api/Technician',
         type: 'GET',
         datatype: 'json',
         success: function (data) {

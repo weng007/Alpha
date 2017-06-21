@@ -32,7 +32,7 @@
         var dataObject = { CalendarMonth: currentMonth + '&' + localStorage['IsTechnician'] + '&' + localStorage['FirstName'] + '&' + localStorage['LastName'] }
         $.ajax(
            {
-               url: 'http://localhost:13131/api/CalendarManPower',
+               url: 'http://alphagroup.co.th:8082/api/CalendarManPower',
                type: 'GET',
                async: false,
                data: dataObject,
