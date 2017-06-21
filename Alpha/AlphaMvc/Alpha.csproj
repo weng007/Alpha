@@ -118,8 +118,13 @@
     <Compile Include="Controllers\BDCController.cs" />
     <Compile Include="Controllers\CalendarJobController.cs" />
     <Compile Include="Controllers\CalendarManPowerController.cs" />
+    <Compile Include="Controllers\ProductAdjustController.cs" />
+    <Compile Include="Controllers\ReportBorrowController.cs" />
+    <Compile Include="Controllers\ReportBreakdownCostController.cs" />
+    <Compile Include="Controllers\ReportJobOrderController.cs" />
     <Compile Include="Controllers\RoleMasterController.cs" />
     <Compile Include="Controllers\RptJobOrderController.cs" />
+    <Compile Include="Controllers\SecurityProfileController.cs" />
     <Compile Include="Controllers\TechnicianController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobOrderController.cs" />
@@ -128,10 +133,17 @@
     <Compile Include="Controllers\ExpenseMasterController.cs" />
     <Compile Include="Controllers\IncomeMasterController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WageTeachnicianController.cs" />
     <Compile Include="Controllers\WageVendorController.cs" />
     <Compile Include="Controllers\WarningSupportController.cs" />
     <Compile Include="DataAccessLayer\DBdata.cs" />
+    <Compile Include="Reports\DS\dsBDC.Designer.cs" />
+    <Compile Include="Reports\DS\dsBDC1.Designer.cs" />
+    <Compile Include="Reports\DS\dsBDCExpense.Designer.cs" />
+    <Compile Include="Reports\DS\dsBDCIncome.Designer.cs" />
+    <Compile Include="Reports\DS\dsBorrow.Designer.cs" />
+    <Compile Include="Reports\DS\dsJobBorrow.Designer.cs" />
     <Compile Include="Reports\DS\dsJobOrder.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -151,6 +163,16 @@
     <Compile Include="Models\ProductModels.cs" />
     <Compile Include="Models\TechnicianSkillModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\DS\dsWageTechnician.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsWageTechnician.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DS\dsWageTechnicianDetail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsWageTechnicianDetail.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\FormReport\RptReportViewer.aspx.cs">
       <DependentUpon>RptReportViewer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -257,6 +279,72 @@
     <Content Include="Reports\DS\dsJobOrder.xsc">
       <DependentUpon>dsJobOrder.xsd</DependentUpon>
     </Content>
+    <Content Include="Reports\DS\dsBDC.xsc">
+      <DependentUpon>dsBDC.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DS\dsBDC.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBDC2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\DS\dsBDC.xss">
+      <DependentUpon>dsBDC.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\DS\dsBDC1.xsc">
+      <DependentUpon>dsBDC1.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DS\dsBDC1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBDC11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\DS\dsBDC1.xss">
+      <DependentUpon>dsBDC1.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\DS\dsBDCExpense.xsc">
+      <DependentUpon>dsBDCExpense.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DS\dsBDCExpense.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBDCExpense1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\DS\dsBDCExpense.xss">
+      <DependentUpon>dsBDCExpense.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\DS\dsBDCIncome.xsc">
+      <DependentUpon>dsBDCIncome.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DS\dsBDCIncome.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBDCIncome1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\DS\dsBDCIncome.xss">
+      <DependentUpon>dsBDCIncome.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\DS\dsBorrow.xsc">
+      <DependentUpon>dsBorrow.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DS\dsBorrow.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBorrow1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\DS\dsBorrow.xss">
+      <DependentUpon>dsBorrow.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\DS\dsJobBorrow.xsc">
+      <DependentUpon>dsJobBorrow.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DS\dsJobBorrow.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsJobBorrow1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\DS\dsJobBorrow.xss">
+      <DependentUpon>dsJobBorrow.xsd</DependentUpon>
+    </Content>
     <None Include="Reports\DS\dsJobOrder.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsJobOrder.Designer.cs</LastGenOutput>
@@ -264,6 +352,28 @@
     </None>
     <Content Include="Reports\DS\dsJobOrder.xss">
       <DependentUpon>dsJobOrder.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\DS\dsWageTechnician.xsc">
+      <DependentUpon>dsWageTechnician.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DS\dsWageTechnician.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsWageTechnician.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\DS\dsWageTechnician.xss">
+      <DependentUpon>dsWageTechnician.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\DS\dsWageTechnicianDetail.xsc">
+      <DependentUpon>dsWageTechnicianDetail.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DS\dsWageTechnicianDetail.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsWageTechnicianDetail.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\DS\dsWageTechnicianDetail.xss">
+      <DependentUpon>dsWageTechnicianDetail.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\calendar\fullcalendar.js" />
@@ -279,7 +389,10 @@
     <Content Include="Scripts\CUDS\BDC\EditBDC.js" />
     <Content Include="Scripts\CUDS\BDC\IndexBDC.js" />
     <Content Include="Scripts\CUDS\BDC\BDCJob.js" />
+    <Content Include="Scripts\CUDS\CalendarJob\CalendarJob.js" />
+    <Content Include="Scripts\CUDS\CalendarManPower\CalendarManpower.js" />
     <Content Include="Scripts\CUDS\CalendarManPower\IndexCalendarManPower.js" />
+    <Content Include="Scripts\CUDS\ChangeFomatDate.js" />
     <Content Include="Scripts\CUDS\ExpenseMaster\CreateExpenseMaster.js" />
     <Content Include="Scripts\CUDS\ExpenseMaster\EditExpenseMaster.js" />
     <Content Include="Scripts\CUDS\ExpenseMaster\IndexExpenseMaster.js" />
@@ -292,17 +405,34 @@
     <Content Include="Scripts\CUDS\JobOrder\CreateJobOrder.js" />
     <Content Include="Scripts\CUDS\JobOrder\EditJobOrder.js" />
     <Content Include="Scripts\CUDS\JobOrder\IndexJobOrder.js" />
+    <Content Include="Scripts\CUDS\ProductAdjustment\CreateProductAdjustment.js" />
+    <Content Include="Scripts\CUDS\ProductAdjustment\EditProductAdjustment.js" />
+    <Content Include="Scripts\CUDS\ProductAdjustment\IndexProductAdjustment.js" />
     <Content Include="Scripts\CUDS\Products\CreateProducts.js" />
     <Content Include="Scripts\CUDS\Products\EditProducts.js" />
     <Content Include="Scripts\CUDS\Products\IndexProducts.js" />
+    <Content Include="Scripts\CUDS\Report\IndexReportBDC.js" />
+    <Content Include="Scripts\CUDS\Report\IndexReportBorrow.js" />
+    <Content Include="Scripts\CUDS\Report\IndexReportJobOrder.js" />
     <Content Include="Scripts\CUDS\RoleMaster\EditRoleMaster.js" />
     <Content Include="Scripts\CUDS\RoleMaster\IndexRoleMaster.js" />
+    <Content Include="Scripts\CUDS\SecurityProfile\CreateSecurityProfile.js" />
+    <Content Include="Scripts\CUDS\SecurityProfile\EditSecurityProfile.js" />
+    <Content Include="Scripts\CUDS\SecurityProfile\IndexSecurityProfile.js" />
+    <Content Include="Scripts\CUDS\Technician\TechnicianExpiredCard.js" />
     <Content Include="Scripts\CUDS\Technician\TechnicianFile.js" />
     <Content Include="Scripts\CUDS\Technician\TechnicianSkill.js" />
     <Content Include="Scripts\CUDS\Technician\TechnicianCard.js" />
     <Content Include="Scripts\CUDS\Technician\EditTechnician.js" />
     <Content Include="Scripts\CUDS\Technician\IndexTechnician.js" />
+    <Content Include="Scripts\CUDS\UserLogin\CheckAuthorization.js" />
     <Content Include="Scripts\CUDS\UserLogin\IndexUserLogin.js" />
+    <Content Include="Scripts\CUDS\User\CreateUser.js" />
+    <Content Include="Scripts\CUDS\User\EditUser.js" />
+    <Content Include="Scripts\CUDS\User\IndexUser.js" />
+    <Content Include="Scripts\CUDS\WageTechnician\CreateWageTechnician.js" />
+    <Content Include="Scripts\CUDS\WageTechnician\EditWageTechnician.js" />
+    <Content Include="Scripts\CUDS\WageTechnician\IndexWageTechnician.js" />
     <Content Include="Scripts\EditableGrid\highlight.min.js" />
     <Content Include="Scripts\EditableGrid\Pager.js" />
     <Content Include="Scripts\EditableGrid\paging.js" />
@@ -343,11 +473,13 @@
     <Content Include="Scripts\grid.js" />
     <Content Include="Scripts\NumberFormat\jquery.number.js" />
     <Content Include="Scripts\NumberFormat\jquery.number.min.js" />
+    <Content Include="Scripts\NumberFormat\jquery.number_Custom.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\src\gulpfile.js" />
     <Content Include="Scripts\src\js\jquery.slimmenu.js" />
     <Content Include="Scripts\Tab\easyResponsiveTabs.js" />
+    <Content Include="Scripts\timepicker\jquery.timepicker.js" />
     <Content Include="Scripts\timepicker\wickedpicker.js" />
     <Content Include="Scripts\warningsupport\script.js" />
     <Content Include="Scripts\warningsupport\tmStickUp.js" />
@@ -416,6 +548,19 @@
     <Content Include="Views\Authorization\IndexAuthorization.cshtml" />
     <Content Include="Views\Authorization\CreateAuthorization.cshtml" />
     <Content Include="Views\Authorization\EditAuthorization.cshtml" />
+    <Content Include="Views\WageTeachnician\CreateWageTeachnician.cshtml" />
+    <Content Include="Views\User\EditUser.cshtml" />
+    <Content Include="Views\User\IndexUser.cshtml" />
+    <Content Include="Views\SecurityProfile\CreateSecurityProfile.cshtml" />
+    <Content Include="Views\SecurityProfile\EditSecurityProfile.cshtml" />
+    <Content Include="Views\SecurityProfile\IndexSecurityProfile.cshtml" />
+    <Content Include="Views\ReportJobOrder\IndexReportJobOrder.cshtml" />
+    <Content Include="Views\ReportBorrow\IndexRptBorrow.cshtml" />
+    <Content Include="Views\ReportBreakdownCost\IndexReportBreakDownCost.cshtml" />
+    <Content Include="Views\ProductAdjust\CreateProductAdjust.cshtml" />
+    <Content Include="Views\ProductAdjust\EditProductAdjust.cshtml" />
+    <Content Include="Views\ProductAdjust\IndexProductAdjust.cshtml" />
+    <Content Include="Views\User\CreateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -450,7 +595,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\RptBDC.rdlc" />
+    <EmbeddedResource Include="Reports\RptBorrow.rdlc" />
     <EmbeddedResource Include="Reports\RptJobOrder.rdlc" />
+    <EmbeddedResource Include="Reports\RptWageTechnician.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

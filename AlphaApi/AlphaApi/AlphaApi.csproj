@@ -55,6 +55,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Json.4.0.20126.16343\lib\net40\System.Json.dll</HintPath>
@@ -228,6 +230,7 @@
     <Compile Include="Controllers\BDCJobController.cs" />
     <Compile Include="Controllers\CalendarJobOrderController.cs" />
     <Compile Include="Controllers\CalendarManPowerController.cs" />
+    <Compile Include="Controllers\CheckAuthorizationController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -239,24 +242,35 @@
     <Compile Include="Controllers\JobOrderExpenseController.cs" />
     <Compile Include="Controllers\JobOrderIncomeController.cs" />
     <Compile Include="Controllers\JobOrderInvoiceController.cs" />
+    <Compile Include="Controllers\JobOrderManPowerController.cs" />
     <Compile Include="Controllers\JobOrderReceiptController.cs" />
     <Compile Include="Controllers\JobOrderSaleOrderController.cs" />
     <Compile Include="Controllers\MasterServiceController.cs" />
+    <Compile Include="Controllers\OTController.cs" />
+    <Compile Include="Controllers\ProductAdjustmentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductFilesController.cs" />
     <Compile Include="Controllers\QuotationController.cs" />
-    <Compile Include="Controllers\RoleMasterController.cs" />
+    <Compile Include="Controllers\RptBDCController.cs" />
+    <Compile Include="Controllers\RptBorrowController.cs" />
     <Compile Include="Controllers\RptJobOrderController.cs" />
+    <Compile Include="Controllers\RptWageTechnicianController.cs" />
+    <Compile Include="Controllers\SecurityProfileController.cs" />
+    <Compile Include="Controllers\SecurityProfileDetailController.cs" />
     <Compile Include="Controllers\TechnicianCardController.cs" />
     <Compile Include="Controllers\TechnicianController.cs" />
+    <Compile Include="Controllers\TechnicianExpiredCardController.cs" />
     <Compile Include="Controllers\TechnicianFileController.cs" />
     <Compile Include="Controllers\TechnicianSkillController.cs" />
     <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WageTechnicianController.cs" />
     <Compile Include="DataAccessLayer\AuthorizationDAL.cs" />
     <Compile Include="DataAccessLayer\BDCDAL.cs" />
     <Compile Include="DataAccessLayer\BDCJobOrderDAL.cs" />
     <Compile Include="DataAccessLayer\CalendarJobOrderDAL.cs" />
     <Compile Include="DataAccessLayer\CalendarManPowerDAL.cs" />
+    <Compile Include="DataAccessLayer\CheckAuthorizationDAL.cs" />
     <Compile Include="DataAccessLayer\CustomerDAL.cs" />
     <Compile Include="DataAccessLayer\ExpenseMasterDAL.cs" />
     <Compile Include="DataAccessLayer\IncomeMasterDAL.cs" />
@@ -265,18 +279,29 @@
     <Compile Include="DataAccessLayer\JobOrderExpenseDAL.cs" />
     <Compile Include="DataAccessLayer\JobOrderIncomeDAL.cs" />
     <Compile Include="DataAccessLayer\JobOrderInvoiceDAL.cs" />
+    <Compile Include="DataAccessLayer\JobOrderManpowerDAL.cs" />
     <Compile Include="DataAccessLayer\JobOrderReceiptDAL.cs" />
     <Compile Include="DataAccessLayer\JobOrderSaleOrderDAL.cs" />
     <Compile Include="DataAccessLayer\MasterServiceDAL.cs" />
+    <Compile Include="DataAccessLayer\OTDAL.cs" />
+    <Compile Include="DataAccessLayer\ProductAdjustmentDAL.cs" />
     <Compile Include="DataAccessLayer\ProductDAL.cs" />
+    <Compile Include="DataAccessLayer\ProductFileDAL.cs" />
     <Compile Include="DataAccessLayer\QuotationDAL.cs" />
-    <Compile Include="DataAccessLayer\RoleMasterDAL.cs" />
+    <Compile Include="DataAccessLayer\RptBDCDAL.cs" />
+    <Compile Include="DataAccessLayer\RptBorrowDAL.cs" />
     <Compile Include="DataAccessLayer\RptJobOrderDAL.cs" />
+    <Compile Include="DataAccessLayer\RptWageTechnicianDAL.cs" />
+    <Compile Include="DataAccessLayer\SecurityProfileDAL.cs" />
+    <Compile Include="DataAccessLayer\SecurityProfileDetailDAL.cs" />
+    <Compile Include="DataAccessLayer\TechnicianExpiredCardDAL.cs" />
     <Compile Include="DataAccessLayer\TechnicianSkillDAL.cs" />
     <Compile Include="DataAccessLayer\TechnicianFileDAL.cs" />
     <Compile Include="DataAccessLayer\TechnicianCardDAL.cs" />
     <Compile Include="DataAccessLayer\TechnicianDAL.cs" />
     <Compile Include="DataAccessLayer\UserLoginDAL.cs" />
+    <Compile Include="DataAccessLayer\WageTechnicianDAL.cs" />
+    <Compile Include="Dataset\dsUser.Designer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -295,16 +320,21 @@
     <Compile Include="Models\JobOrderExpenseModels.cs" />
     <Compile Include="Models\JobOrderIncomeModels.cs" />
     <Compile Include="Models\JobOrderInvoiceModels.cs" />
+    <Compile Include="Models\JobOrderManpowerModels.cs" />
     <Compile Include="Models\JobOrderModels.cs" />
     <Compile Include="Models\JobOrderReceiptModels.cs" />
     <Compile Include="Models\JobOrderSaleOrderModels.cs" />
+    <Compile Include="Models\ProductAdjustmentModels.cs" />
+    <Compile Include="Models\ProductFilesModels.cs" />
     <Compile Include="Models\ProductModels.cs" />
-    <Compile Include="Models\RoleMasterModels.cs" />
+    <Compile Include="Models\SecurityProfileDetailModels.cs" />
+    <Compile Include="Models\SecurityProfileModels.cs" />
     <Compile Include="Models\TechnicianCardModels.cs" />
     <Compile Include="Models\TechnicianFileModels.cs" />
     <Compile Include="Models\TechnicianModels.cs" />
     <Compile Include="Models\TechnicianSkillModels.cs" />
     <Compile Include="Models\UserLoginModels.cs" />
+    <Compile Include="Models\WageTechnicianModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -337,6 +367,17 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Dataset\dsUser.xsc">
+      <DependentUpon>dsUser.xsd</DependentUpon>
+    </Content>
+    <None Include="Dataset\dsUser.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsUser1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Dataset\dsUser.xss">
+      <DependentUpon>dsUser.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
