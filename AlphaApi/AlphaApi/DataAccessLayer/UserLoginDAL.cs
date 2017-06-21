@@ -64,7 +64,7 @@ namespace AlphaApi.DataAccessLayer
                 {
                     domainAndUser = domainName + @"\" + LoginUser;
                     //DirectoryEntry entry = new DirectoryEntry(ADPath);
-                    DirectoryEntry entry = new DirectoryEntry("LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local");
+                    DirectoryEntry entry = new DirectoryEntry("LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local","JPS","fastpink46");
                     try
                     {
                         object obj = entry.NativeObject;
@@ -144,7 +144,7 @@ namespace AlphaApi.DataAccessLayer
                     if (!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(domainName))
                     {
                         domainAndUser = domainName + @"\" + LoginUser;
-                        DirectoryEntry entry = new DirectoryEntry("LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local");
+                        DirectoryEntry entry = new DirectoryEntry("LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local", "JPS", "fastpink46");
                         try
                         {
                             object obj = entry.NativeObject;
