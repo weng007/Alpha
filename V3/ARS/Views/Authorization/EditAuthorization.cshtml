@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "EditAuthorization";
+}
+
+<h2>EditAuthorization</h2>
+<script src="@Url.Content("~/Scripts/CUDS/Authorization/EditAuthorization.js")" type="text/javascript"></script>
+<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<ul class="form-style-1">
+
+    <li>
+        <label>User</label>
+        <input type="text" id="txtUser" class="field-divided" placeholder="User" disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#userDialog">
+            <img id="imgUser" src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
+        </a>
+        <input type="hidden" id="hidUserID" />
+        
+    </li>
+</ul>
+<table class="tabbar">
+    <tr>
+        <td>
+            <div id="container">
+
+                <div id="parentHorizontalTab">
+                    <ul class="resp-tabs-list hor_1">
+                        <li>Authorization</li>
+                    </ul>
+                    <div class="resp-tabs-container hor_1">
+                        <div>
+                            <div class="myDIV">
+                                <table id="arwAuthorization" class="example">
+                                    <thead class="theader">
+                                        <tr>
+                                            <th></th>
+                                            <th>Item</th>
+                                            <th class="hidecolumn">ID</th>
+                                            <th class="hidecolumn">UserID</th>
+                                            <th class="hidecolumn">RoleID</th>
+                                            <th>Authorization</th>
+                                            <th colspan="2"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tBodyRowAuthorization">
+                                        <tr class="RowCal">
+                                            <td>
+                                                <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                            </td>
+                                            <td>
+                                                <input id="No" type="text" value="" class="tdno" disabled />
+                                            </td>
+                                            <td class="hidecolumn">
+                                                <input id="AuthorID" type="text" value="" class="AuthorID" disabled />
+                                                <input type="hidden" id="hidAuthorID" />
+                                            </td>
+                                            <td class="hidecolumn">
+                                                <input id="UserID" type="text" value="" class="UserID" disabled />
+                                                <input type="hidden" id="hidUserID" />
+                                            </td>
+                                            <td class="hidecolumn">
+                                                <input id="RoleID" type="text" value="" class="RoleID" disabled />
+                                            </td>
+                                            <td>
+                                                <select id="cmbAuthor" class="Author"></select>
+                                            </td>
+                                            <td>
+                                                <div class="clone-1"><img class="cloneRowAuthor row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                            </td>
+                                            <td style="padding-right: 5px;">
+                                                <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                            </td>
+                                        </tr>
+                                        <tr class="RowCal" id="add-template8">
+                                            <td>
+                                                <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                            </td>
+                                            <td>
+                                                <input id="No" type="text" value="" class="tdno" disabled />
+                                            </td>
+                                            <td class="hidecolumn">
+                                                <input id="AuthorID" type="text" value="" class="AuthorID" disabled />
+                                            </td>
+                                            <td class="hidecolumn">
+                                                <input id="UserID" type="text" value="" class="UserID" disabled />
+                                            </td>
+                                            <td class="hidecolumn">
+                                                <input id="RoleID" type="text" value="" class="RoleID" disabled />
+                                            </td>
+                                            <td>
+                                                <select id="cmbAuthor" class="Author"></select>
+                                            </td>
+                                            <td>
+                                                <div class="clone-1"><img class="cloneRowAuthor row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                            </td>
+                                            <td style="padding-right: 5px;">
+                                                <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <a id="add-row8" href="#" onclick="AddRowAuthor()">+ Add Row</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<ul class="form-style-1">
+    <li>
+        <button type="button" id="btnSave" class="btn btn-primary" onclick="ConfirmDialog('Update', 'Authorization', 0)">Save</button>
+    </li>
+</ul>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var input = window.location.href;
+        var after = input.split('?')[1]
+        var val = after.split('=');
+        var Isview = val[2];
+        GetData(@Request.Params["id"]);
+        ControlEnable(Isview);
+    });
+
+</script>

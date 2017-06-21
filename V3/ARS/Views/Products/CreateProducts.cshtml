@@ -1,0 +1,120 @@
+﻿@model AlphaMvc.Models.Product
+@{
+    ViewBag.Title = "CreateProducts";
+}
+
+<script src="@Url.Content("~/Scripts/CUDS/Products/CreateProducts.js")" type="text/javascript"></script>
+<link href="http://hayageek.github.io/jQuery-Upload-File/4.0.10/uploadfile.css" rel="stylesheet">
+@*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>*@
+<script src="http://hayageek.github.io/jQuery-Upload-File/4.0.10/jquery.uploadfile.min.js"></script>
+<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<style>
+    table {
+        background: #fbfbf1;
+        width: 335px;
+    }
+    .btn-xs{
+        padding: 1px 1px;
+        width: 20px;
+    }
+</style>
+<table>
+    <tr>
+        <td>
+            <div class="linkstyle">@Html.ActionLink("Products List", "IndexProducts")</div>
+        </td>
+    </tr>
+</table>
+<div id="myModal">
+    @using (Html.BeginForm())
+    {
+        //===================================================================CSS w3school
+        <form id="myform">
+            <ul class="form-style-1">
+                <li>
+                    <label class="label-2" style="margin-right: 25%;">Serial Number <span class="required">*</span></label>&nbsp;<label class="label-2" style="margin-right: 10%;">หมายเลขเครื่อง<span class="required">*</span></label>
+                </li>
+                <li>
+                    <input type="text" id = "txtSerialNo" name="field_1" class="field-divided" placeholder="Serial" autofocus required />&nbsp;<input type="text" id = "txtMachineNo" name="field1" class="field-divided" placeholder="" required />
+                </li>
+                <li>
+                    <label>ประเภทสินค้า<span class="required">*</span></label>
+                    <select id="cmbProductType" name="cmbProductType" class="field-divided" >
+                    </select>
+                    @*onchange="cmbProductType_Change()"*@
+                </li>
+                <li>
+                    <label class="label-2" style="margin-right: 42%;">ยี่ห้อ</label>&nbsp;<label class="label-2">ขนาด</label>
+                </li>
+                <li>
+                    <input type="text" id = "txtBrand" name="field1" class="field-divided" placeholder="" />&nbsp;<input type="text" id = "txtSize" name="field2" class="field-select-small text-size160" placeholder="" />
+                </li>
+                <li>
+                    <label class="label-2" style="margin-right: 45%;">รุ่น</label>&nbsp;<label class="label-2">อายุใช้งาน</label>
+                </li>
+                <li>
+                    <input type="text" id = "txtModel" name="field2" class="field-divided" placeholder="" />&nbsp;<input type="text" id = "txtLifetime" name="field2" class="field-select-small" placeholder="" />&nbsp;<label class="label-3">ปี</label>
+                </li>
+                <li>
+                    <label class="label-big">รับเข้า</label>&nbsp;<label class="label-small">หน่วยนับ</label>
+                </li>
+                <li>
+                    <input type="text" id = "dtReceiveDate" class="field-divided" placeholder="" required />&nbsp;
+                    <select id="cmbUnitWeight" name="cmbUnitWeight" class="field-select-small-2" >
+                    </select>
+                    @*onchange="cmbUnitWeight_Change()"*@
+                </li>
+                <li>
+                    <label class="label-small">ยกมา<span class="required">*</span></label>&nbsp;<label class="label-small-3">คงเหลือ<span class="required">*</span></label>
+                </li>
+                <li>
+                    <input type="number" id = "txtBalance" name="field1" class="field-select-small" placeholder="" onblur="GetRemain()" required />&nbsp;<input type="number" id = "txtRemain" name="field2" class="field-select-small" placeholder="" required disabled/>
+                </li>
+                <li>
+                    <label class="label-small-2">หาย</label>&nbsp;<label class="label-small-2">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>
+                </li>
+                <li>
+                    <input type="text" id = "txtLost" name="field6" class="field-select-small" placeholder="" disabled />&nbsp;<input type="text" id = "txtRepair" name="field7" class="field-select-small" placeholder="" disabled />&nbsp;<input type="text" id = "txtBreak" name="field8" class="field-select-small" placeholder="" disabled />
+                </li>
+            </ul>
+            <ul class="form-style-1">
+                <li>
+
+                    <input type="file" name="photo" id="photo" onchange="readURL(this);" style="color:transparent;">
+                    <div class="imgpreview"><img id="imgPreview" alt="your image" class="img-center"/></div>
+                    
+                </li>
+                <li>
+                    <label>รายละเอียด</label>
+                    <textarea name="field5" id="txtDiscription" class="field-long field-textarea"></textarea>
+                </li>
+                <li>
+                    <label>หมายเหตุ<span class="required">*</span></label>
+                    <textarea name="field5" id = "txtRemark" class="field-long field-textarea"></textarea>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-primary" onclick="Isvalidate('Create', 'Products', 0)">Save</button>
+                </li>
+            </ul>
+            <ul class="attachgrid">
+                <li>
+                    @*<table class="barattach">
+                        <tr>
+                            <td>                             
+                                <div class="topicattach"><a href="#"><img src="@Url.Content("~/Images/attachments2.png")" /></a></div>
+                            </td>
+                        </tr>
+                    </table>*@
+                    @*<input type="file" id="FileUpload1" multiple />
+                    <input type="button" id="btnUpload" value="Upload Files" />*@  
+                </li>
+            </ul>      
+</form>
+    }
+    @*//===================================================================CSS w3school*@
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        CheckAuthorization();       
+    });
+</script>

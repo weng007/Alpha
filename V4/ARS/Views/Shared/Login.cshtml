@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        @*<meta http-equiv="Refresh" content="0; url=myurl">*@
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+        @*<link href="@Url.Content("~/Content/hidegrid.css")" rel="stylesheet" type="text/css" />*@
+        <link href="@Url.Content("~/Content/menu.css")" rel="stylesheet" type="text/css" />
+
+
+        <script src="@Url.Content("~/Scripts/jquery-1.12.4.js")" type="text/javascript"></script>
+        @*<script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/AjaxLogin.js")" type="text/javascript"></script>*@
+        @*<script src="@Url.Content("~/Scripts/modernizr-2.0.6-development-only.js")" type="text/javascript"></script>*@
+
+        <meta name="viewport" content="width=device-width">
+        
+
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                </div>
+            
+        </header>
+        <div id="bodyLogin">
+
+            @*<div id="leftmenu">Accordion</div>*@
+            @*<section class="content-wrapper main-content clear-fix">*@    
+            <section class="content-wrapper main-content clear-fix">  
+                @RenderBody()
+            </section>
+        </div>
+    </body>
+</html>

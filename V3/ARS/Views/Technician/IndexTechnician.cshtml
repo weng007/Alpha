@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "IndexTechnician";
+}
+
+<script src="@Url.Content("~/Scripts/CUDS/Technician/IndexTechnician.js")" type="text/javascript"></script>
+<table class="barattach-2">
+    <tr>
+        <td>
+            <label class="topictable">Teachnician</label>
+            <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+        </td>
+    </tr>
+</table>
+<div class="table-responsive paginated">
+    <table id="tblTechnician" class="table table-striped scrolling" onended="SetPaging()">
+        <thead class="bgthead">
+            <tr>
+                <th class="Rowpointer">No.</th>
+                <th class="Rowpointer">TechnicianID</th>
+                <th class="hideANDseek Rowpointer">HRID</th>
+                <th class="Rowpointer">Name</th>
+                <th class="Rowpointer">Position</th>
+                <th class="Rowpointer">ID Card</th>
+                <th class="hideANDseek Rowpointer">Type</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="result"></tbody>
+    </table>
+</div>

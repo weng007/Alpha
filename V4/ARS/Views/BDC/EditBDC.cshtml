@@ -1,0 +1,171 @@
+﻿@model AlphaMvc.Models.BDCModels
+@{
+    ViewBag.Title = "EditBDC";
+}
+
+
+<script src="@Url.Content("~/Scripts/CUDS/BDC/EditBDC.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CUDS/BDC/BDCJob.js")" type="text/javascript"></script>
+<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<table>
+    <tr>
+        <td>
+            @Html.ActionLink("Break Down Cost List", "IndexBDC")
+        </td>
+    </tr>
+</table>
+@*<br />*@
+
+@*//===================================================================Bootstrap*@
+<div class="modal fade" id="quotationDialog" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content-Quo">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Quotation</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-overflow">
+                    @*<table class="barattach-4">
+                        <tr>
+                            <td>
+                                <div class="topicText-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+                            </td>
+                        </tr>
+                    </table>*@
+                    @*<table id="tblQuotation" class="table table-striped table-hover table-responsive">*@
+                    <table id="tblQuotation" class="table-striped table-hover table-responsive">
+                        <thead class="bgthead bgfont-12">
+                            <tr>
+                                <th class="bodypadding-5" colspan="6"><div class="topicText-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div></th>
+                            </tr>
+                            <tr>
+                                <th class="bodypadding-10">No.</th>
+                                <th class="bodypadding-10">Quote Id</th>
+                                <th class="bodypadding-10">Potential Customer</th>
+                                <th class="bodypadding-10 hideANDseek">Amount</th>
+                                <th class="bodypadding-10 hideANDseek">Revision</th>
+                                <th class="bodypadding-10 hideANDseek">Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quotationBody" class="bgfont-12"></tbody>
+                    </table>
+                </div>
+                @*</div>*@
+                @*<ul class="pagination pagination-lg pager" id="myPager"></ul>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+@*//===================================================================CSS w3school*@
+<div id="myModal">
+
+    @using (Html.BeginForm())
+    {
+        <form>
+            <ul class="form-style-1">
+                <li>
+                    <label class="btnnew">Doc Version</label>&nbsp;<img src="@Url.Content("~/images/btnNewVersion.png")" alt="IMAGES" id="btnversionUpdate" class="btnnewversionUpdate" onclick="GetDocversion()" />
+                </li>
+                <li>
+                    <input type="text" id="txtDocver" name="field1" class="field-select-small-2" placeholder="V1" disabled />
+                </li>
+                <li>
+                    <input type="text" id="txtBDCNo" name="field1" class="text-size160" disabled />
+                    <input type="hidden" id="hidBDCNo" />
+                </li>
+                <li>
+                    <label>ใบเสนอราคา<span class="required">*</span></label>
+                    <input type="text" id="txtQuoNo" name="txtQuoNo" class="field-select-big" placeholder="ใบเสนอราคา" />&nbsp;<a href="#" id="imgQuotation" data-toggle="modal" data-target="#quotationDialog" onclick="BrowseQuotation()">
+                        <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
+                    </a>
+                    <input type="hidden" id="hidQuoID" />
+                </li>
+            </ul>
+            <ul class="form-style-1">
+                <li>
+                    <label class="label-big" id="lblPrice">ราคาขาย<span class="required">*</span></label>&nbsp;<label class="label-small" id="lblCost">ราคาทุน<span class="required">*</span></label>
+                    <input type="text" id="txtPrice" name="field1" class="text-size130 text-right" placeholder="ราคาขาย" disabled />&nbsp;<input type="text" id="txtCost" name="field2" class="text-size130 text-right" placeholder="ราคาทุน" disabled/>
+                </li>
+                <li>
+                    <label id="lblProfit">กำไร<span class="required">*</span></label>
+                    <input type="text" id="txtProfit" name="field1" class="text-size130 text-right" placeholder="กำไร"disabled />
+                </li>
+            </ul>
+            <ul class="form-style-1">
+                <li>
+                    <label>หมายเหตุ<span class="required">*</span></label>
+                    <textarea name="field5" id="txtRemark" class="field-long field-textarea"></textarea>
+                </li>
+                <br />
+            </ul>
+            @*//===================================================================CSS w3school*@
+            <table class="tabbar">
+                <tr>
+                    <td>
+                        <div id="container">
+
+                            <div id="parentHorizontalTab">
+                                <ul class="resp-tabs-list hor_1">
+                                    <li>Job Order</li>
+                                </ul>
+                                <div class="resp-tabs-container hor_1">
+                                    <div>
+                                        <div class="barattach-2">
+                                   @*<a href="@Url.Action("CreateJobOrder", "JobOrder")?@Request.Params["id"]" class="alink"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" /></a>*@
+                                            <button type="button" id="btnSave" class="btnCreate" onclick="OpenJobOrder(@Request.Params["id"])"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" id="BDCCreate"/></button>
+                                        </div>
+                                        <div class="grigbar">
+                                            <div class="myDIV">
+                                                <table id="tblBDCJOb" class="table table-striped scrolling" onended="SetPaging()">
+                                                    <thead class="bgthead">
+                                                        <tr>
+                                                            <th>No.</th>
+                                                            <th>Job No.</th>
+                                                            <th>วันที่</th>
+                                                            <th>ลูกค้า</th>
+                                                            <th>เบอร์โทร</th>
+                                                            <th class="hideANDseek">บุคคลติดต่อ</th>
+                                                            <th class="hideANDseek">ผู้ประสานงาน</th>
+                                                            <th class="hideANDseek">หมายเหตุ</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="result"></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <ul class="form-style-1">
+                <li>
+                    <button type="button" id="btnSave1" class="btn btn-primary" onclick="Isvalidate('Update', 'BDC', @Request.Params["id"])">Save</button>
+                    <a onclick="OpenRptBDC(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand;" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>
+                </li>
+            </ul>
+        </form>
+    }
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var input = window.location.href;
+        var after = input.split('?')[1]
+        var val = after.split('=');
+        var Isview = val[2];
+        GetData(@Request.Params["id"]);
+        GetJobOrder(@Request.Params["id"]);
+        ControlEnable(Isview);
+    });
+
+</script>

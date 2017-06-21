@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "IndexSecurityProfile";
+}
+
+<script src="@Url.Content("~/Scripts/CUDS/SecurityProfile/IndexSecurityProfile.js")" type="text/javascript"></script>
+<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+@* ------------------------------- Header -------------------------------*@
+
+<table class="barattach-2">
+    <tr>
+        <td>
+            <label class="topicmargin-size67">Security Profile</label>
+            <a href="/SecurityProfile/CreateSecurityProfile"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="imgAdminCreate" /></a>
+            <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+        </td>
+    </tr>
+</table>
+@*//===================================================================CSS w3school*@
+<table id="tblSecurityProfile" class="table table-striped scrolling" onended="SetPaging()">
+    <thead class="bgthead">
+        <tr>
+            <th class="Rowpointer">No.</th>
+            <th class="hidecolumn">ID</th>
+            <th class="Rowpointer">รายละเอียด</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="result"></tbody>
+</table>

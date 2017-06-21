@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "IndexProducts";
+}
+@*<h2>
+    Products
+</h2>*@
+@* ------------------------------- grid  -------------------------------*@
+<script src="@Url.Content("~/Scripts/CUDS/Products/IndexProducts.js")" type="text/javascript"></script>
+<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+<table class="barattach-2">
+    <tr>
+        <td>
+            <label class="topicmargin-size70">Stock</label>
+            <a href="/Products/CreateProducts"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="ProductsCreate" /></a>
+            <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+        </td>
+    </tr>
+</table>
+<div class="table-responsive paginated">
+    <table id="tblProduct" class="table table-striped scrolling">
+        <thead class="bgthead">
+            <tr>
+                <th class="Rowpointer">No.</th>
+                <th class="hidecolumn">ID</th>
+                <th class="Rowpointer">วันที่รับเข้า</th>
+                <th class="Rowpointer">Code</th>
+                <th class="hideANDseek Rowpointer">หมายเลขเครื่อง</th>
+                @*<th class="hideANDseek Rowpointer">ประเภทสินค้า</th>*@
+                <th class="hideANDseek Rowpointer">รายละเอียด</th>
+                <th class="hideANDseek Rowpointer">ยี่ห้อ</th>
+                <th class="hideANDseek Rowpointer">รุ่น</th>
+                <th class="Rowpointer">ขนาด</th>
+                <th class="Rowpointer">คงเหลือ</th>
+                <th class="hideANDseek Rowpointer">หน่วยนับ</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="result"></tbody>
+    </table>
+</div>
+

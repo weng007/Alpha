@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "IndexIncomeMaster";
+}
+
+@*<h2>Master Income</h2>*@
+<script src="@Url.Content("~/Scripts/CUDS/IncomeMaster/IndexIncomeMaster.js")" type="text/javascript"></script>
+<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+@* ------------------------------- Header -------------------------------*@
+<style>
+    /*.paging-nav {
+        text-align: right;
+        padding-top: 2px;
+    }
+
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #91b9e6;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .paging-nav .selected-page {
+            background: #187ed5;
+            font-weight: bold;
+        }
+
+    .paging-nav,
+    #tableData {
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+    }*/
+</style>
+<table class="barattach-2">
+    <tr>
+        <td>
+            <label class="topicmargin-size67">Master Income</label>
+            <a href="/IncomeMaster/CreateIncomeMaster"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="imgAdminCreate" /></a>
+            <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+        </td>
+    </tr>
+</table>
+@*//===================================================================CSS w3school*@
+    <table id="tblIncomeMaster" class="table table-striped scrolling" onended="SetPaging()">
+    <thead class="bgthead">
+        <tr>
+            <th class="Rowpointer">No.</th>
+            <th class="hidecolumn Rowpointer">ID</th>
+            <th class="Rowpointer">รายละเอียด</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="result"></tbody>
+</table>

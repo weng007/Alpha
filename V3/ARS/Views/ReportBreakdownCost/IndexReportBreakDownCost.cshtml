@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "IndexReportBreakDownCost";
+}
+
+@*<h2>IndexReportBreakDownCost</h2>*@
+<script src="@Url.Content("~/Scripts/EditableGrid/paging.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CUDS/Report/IndexReportBDC.js")" type="text/javascript"></script>
+<div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<table class="barattach-2">
+    <tr>
+        <td>
+            <label class="topicmargin-size60-2">BreakDownCost</label>
+            @*<a href="/BDC/CreateBDC"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="BDCCreate" /></a>*@
+            <input id="chkShowAll" type="checkbox" class="chkShowAllinput" onchange="GetChecked(this)">
+            <label for="chkShowAll" class="chkShowAll">Show All</label>
+            <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+        </td>
+    </tr>
+</table>
+
+<div class="table-responsive">
+    <table id="tblRptBDC" class="table table-striped scrolling" onended="SetPaging()">
+        <thead class="bgthead">
+            <tr>
+                <th class="Rowpointer">No.</th>
+                <th class="hidecolumn">ID</th>
+                <th class="Rowpointer">Doc Version</th>
+                <th class="Rowpointer">ใบเสนอราคา</th>
+                <th class="gvPrice Rowpointer">ราคาขาย</th>
+                <th class="gvCost Rowpointer">ราคาทุน</th>
+                <th class="gvProfit Rowpointer">กำไร</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="result"></tbody>
+    </table>
+</div>
