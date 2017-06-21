@@ -36,6 +36,9 @@ $(document).ready(function () {
 
     //------------------------------------ Custom ------------------------------------
 });
+//alert(localStorage['IsTechnician']);
+//alert(localStorage['FirstName']);
+//alert(localStorage['LastName']);
 function GetCalendarlist(val) {
     var dataObject = { CalendarMonth: val + '&' + localStorage['IsTechnician'] + '&' + localStorage['FirstName'] + '&' + localStorage['LastName'] };
     //alert(val);

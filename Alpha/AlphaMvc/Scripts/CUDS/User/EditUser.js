@@ -51,12 +51,14 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    alert($("#cmbSecurityProfile").find(":selected").val());
+    alert("TestUpdateUser");
+    alert("Value " + val);
+    alert("Profile "+$("#cmbSecurityProfile").find(":selected").val());
     var dataObject = {
         ID: val,
         SecurityID: $("#cmbSecurityProfile").find(":selected").val(),
         EditBy: localStorage['UserID']
-    }
+    };
     console.log($("#cmbSecurityProfile").find(":selected").val());
        $.ajax(
         {

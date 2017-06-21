@@ -26,7 +26,9 @@
         }
         today = yyyy + '-' + mm + '-' + dd;
 
-        
+        //alert(localStorage['IsTechnician']);
+        //alert(localStorage['FirstName']);
+        //alert(localStorage['LastName']);
         var dataObject = { CalendarMonth: currentMonth + '&' + localStorage['IsTechnician'] + '&' + localStorage['FirstName'] + '&' + localStorage['LastName'] }
         $.ajax(
            {

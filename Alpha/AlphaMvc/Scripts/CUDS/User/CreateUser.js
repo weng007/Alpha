@@ -47,10 +47,12 @@ function CheckAD()
                $("#txtDepartment").val(data.ADUser[0].Department),
                $("#txtCompany").val(data.ADUser[0].Company),
                $("#txtTitle").val(data.ADUser[0].Title);
+               $("#hidIsADUser").val(1);
            }
            else
            {
                alert("User is not found");
+               $("#hidIsADUser").val(0);
            }
            
        },
@@ -63,17 +65,22 @@ function CheckAD()
 }
 
 function CreateData(val) {
-    var dataObject = {
+    var IsADUser = $("#hidIsADUser").val();
+    alert(IsADUser);
+    if (IsADUser == 1)
+    {
+        alert("Profile " + $("#cmbSecurityProfile").find(":selected").val());
+        var dataObject = {
         UserName: $("#txtUserName").val(),
         //FirstName: $("#txtFirstName").val(),
         //LastName: $("#txtLastName").val(),
-        //Email: $("#txtEmail").val(),
+            //Email: $("#txtEmail").val(),
         SecurityID: $("#cmbSecurityProfile").find(":selected").val(),
         CreateBy: localStorage['UserID'],
-        EditBy: localStorage['UserID']
-    }
-    console.log($("#cmbSecurityProfile").find(":selected").val());
-       $.ajax(
+        EditBy: localStorage['UserID']}
+        console.log($("#cmbSecurityProfile").find(":selected").val());
+
+        $.ajax(
         {
             url: 'http://alphagroup.co.th:8082/api/UserLogin',
             type: 'POST',
@@ -82,16 +89,16 @@ function CreateData(val) {
             datatype: 'json',
             success: function (data) {
                 console.log(data);
-                if (data > 0)
-                {
-                    alert("User นี้ถูกใช้งานล้ว");
+                if (data > 0) {
+                    alert("User นี้ถูกใช้งานแล้ว");
                 }
                 Redirect();
             },
             error: function (msg) {
                 alert(msg);
-            }           
+            }
         })
+    }
 };
 function Redirect() {
     window.location = "../User/IndexUser";

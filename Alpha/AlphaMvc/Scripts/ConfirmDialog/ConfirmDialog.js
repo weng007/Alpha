@@ -11,7 +11,7 @@
         }
     }
     if (topic == "Products") {
-        alert("Test ValidateProduct");
+        //alert("Test ValidateProduct");
         if ($("#txtSerialNo").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input SerialNo.</div>';
         }
@@ -101,16 +101,16 @@
     }
     if (validatehtml != '')
     {
-        $('#ShowDialog').modal('show');
-        var html = '<div class="modal-dialog modal-dialog-warning">';
-        html += '<div class="modal-content">';
-        html += '<div class="modal-header modal-header-warning">';
-        html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-        html += '<h4 class="modal-title">' + topic + '</h4>';
-        html += '</div>';
-        html += validatehtml;
-        html += '</div></div>';
-        document.getElementById("ShowDialog").innerHTML = html;
+            $('#ShowDialog').modal('show');
+            var html = '<div class="modal-dialog modal-dialog-warning">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header modal-header-warning">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">' + topic + '</h4>';
+            html += '</div>';
+            html += validatehtml;
+            html += '</div></div>';
+            document.getElementById("ShowDialog").innerHTML = html;
     }
     else
     {
