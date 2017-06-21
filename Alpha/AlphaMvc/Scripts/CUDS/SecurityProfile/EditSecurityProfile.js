@@ -40,19 +40,41 @@ function GetData(val) {
                        html += '<td>' + data.Table1[i].menu + '</td>';
                        html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table1[i].menuID + '"/></td>';
                        html += '<td><input id="chkIsView" type="checkbox" class="IsView"' + IsView + ' ></td>';
-                       if (data.Table1[i].menuID != 57)
-                       {
-                           html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" ' + IsInsert + '></td>';
-                           html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" ' + IsUpdate + '></td>';
-                           html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" ' + IsDelete + '></td>';
-                       }
-                       else
+                       if (data.Table1[i].menuID == 57)//Price/Cost
                        {
                            html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" style="display:none" onchange="GetChecked()" ' + IsInsert + '></td>';
                            html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" style="display:none" onchange="GetChecked()" ' + IsUpdate + '></td>';
                            html += '<td><input id="chkIsDelete" type="checkbox" style="display:none" class="IsDelete" ' + IsDelete + '></td>';
                        }
-                       
+                       else if (data.Table1[i].menuID == 41)//Dashboard
+                       {
+                           html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" style="display:none" onchange="GetChecked()" ' + IsInsert + '></td>';
+                           html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" style="display:none" onchange="GetChecked()" ' + IsUpdate + '></td>';
+                           html += '<td><input id="chkIsDelete" type="checkbox" style="display:none" class="IsDelete" ' + IsDelete + '></td>';
+                       }
+                       else if (data.Table1[i].menuID == 43)//Carlendar
+                       {
+                           html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" style="display:none" onchange="GetChecked()" ' + IsInsert + '></td>';
+                           html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" ' + IsUpdate + '></td>';
+                           html += '<td><input id="chkIsDelete" type="checkbox" style="display:none" class="IsDelete" ' + IsDelete + '></td>';
+                       }
+                       else if (data.Table1[i].menuID == 44) //Technician
+                       {
+                           html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" style="display:none" onchange="GetChecked()" ' + IsInsert + '></td>';
+                           html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" style="display:none" onchange="GetChecked()" ' + IsUpdate + '></td>';
+                           html += '<td><input id="chkIsDelete" type="checkbox" style="display:none" class="IsDelete" ' + IsDelete + '></td>';
+                       }
+                       else if (data.Table1[i].menuID == 56)//Payment
+                       {
+                           html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" style="display:none" onchange="GetChecked()" ' + IsInsert + '></td>';
+                           html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate"  onchange="GetChecked()" ' + IsUpdate + '></td>';
+                           html += '<td><input id="chkIsDelete" type="checkbox" style="display:none" class="IsDelete" ' + IsDelete + '></td>';
+                       }
+                       else {
+                           html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" ' + IsInsert + '></td>';
+                           html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" ' + IsUpdate + '></td>';
+                           html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" ' + IsDelete + '></td>';
+                       }          
                        html += '</tr>';
                    }
                    document.getElementById("result").innerHTML = html;
