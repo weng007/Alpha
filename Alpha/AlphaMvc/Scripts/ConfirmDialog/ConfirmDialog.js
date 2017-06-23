@@ -42,7 +42,6 @@
         }
     }
     if (topic == "JobOrder") {
-        //alert("Isvalidate");
         $(".RowCal5").each(function () {
             var fName = $(this).find('.FName').val();
             var manDate = $(this).find('.ManDate').val();
@@ -134,7 +133,7 @@ function ConfirmDialog(val, topic, id) {
             document.getElementById("ShowDialog").innerHTML = html;
     }
     else if (val == "Update") {
-        alert("Confirm Update");
+        //alert("Confirm Update");
             $('#ShowDialog').modal('show');
             var html = '<div class="modal-dialog modal-dialog-info">';
             html += '<div class="modal-content">';
