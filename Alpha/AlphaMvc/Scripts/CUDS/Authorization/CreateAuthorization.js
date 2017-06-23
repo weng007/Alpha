@@ -102,7 +102,7 @@ function CreateData() {
                 });
             }
         });
-        alert('Create is completed');
+        //alert('Create is completed');
         window.location.href = "../Authorization/EditAuthorization?id=" + $('#hidUserID').val();
 }
 function AddRowAuthor() {

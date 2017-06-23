@@ -33,6 +33,7 @@ function GetJobOrderBorrow(val)
 
     //------------------------------------ Custom ------------------------------------
     var dataObject = { ID: val }
+    $("#hidBorroeeJobID").val(val);
     $.ajax(
     {
         url: 'http://alphagroup.co.th:8082/api/JobOrderBorrowRefID',
@@ -77,16 +78,18 @@ function GetJobOrderBorrow(val)
     });
 }
 function RowDelete(id) {
+    var JobID = $("#hidBorroeeJobID").val();
     var dataObject = { ID: id };
     $.ajax(
         {
-            url: 'http://alphagroup.co.th:8082/api/IncomeMaster',
+            url: 'http://alphagroup.co.th:8082/api/JobOrderBorrow',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',
 
             success: function (result) {
-                alert('Delete is completed');
+                alert(JobID);
+                window.location.href = "../JobOrder/EditJobOrder?id=" + JobID;
             }
             ,
             error: function (msg) {

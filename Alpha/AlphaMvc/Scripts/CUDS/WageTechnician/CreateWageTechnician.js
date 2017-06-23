@@ -109,6 +109,6 @@ function CreateData() {
         });
         
     });
-    alert('Create is completed')
+    //alert('Create is completed')
     window.location.href = "../WageTeachnician/CreateWageTeachnician?id=" + $('.hidTechnicianID').val();
 }

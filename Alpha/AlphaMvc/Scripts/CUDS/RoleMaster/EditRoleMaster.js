@@ -149,7 +149,6 @@ function Update(val) {
         }
     });
     
-    alert('Update is completed');
     window.location.href = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
 }
 

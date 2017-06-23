@@ -161,7 +161,16 @@ function GetData(val) {
 
    });
 }
-
+function GetDeduct() {
+    var result;
+    var remain = $("#txtRemain").val()
+    if (remain <= 0) {
+        alert("จำนวนสินค้าต้องไม่น้อยกว่า 0");
+        $("#txtDeduction").val(0);
+        result = 0;
+    }
+    return result;
+}
 function Update(val) {
     $("#hidID").val(val);
     var dataObject = {
@@ -170,7 +179,6 @@ function Update(val) {
         CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
     console.log(dataObject);
-    if ($("#txtDeduction").val() > 0) {
         $.ajax(
          {
              url: 'http://alphagroup.co.th:8082/api/ProductAdjustment',
@@ -186,11 +194,6 @@ function Update(val) {
                  alert(msg);
              }
          })
-    }
-    else
-    {
-        alert("จำนวนสินค้าต้องไม่น้อยกว่า 0");
-    }
 };
 function Redirect() {
 

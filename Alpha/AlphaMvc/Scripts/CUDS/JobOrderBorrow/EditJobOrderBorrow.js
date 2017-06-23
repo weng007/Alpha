@@ -81,7 +81,7 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
-           alert(data.Table[0].ProductID);
+           //alert(data.Table[0].ProductID);
            $("#hidProductID").val(data.Table[0].ProductID), $("#txtBrand").val(data.Table[0].Brand), $("#txtSerial").val(data.Table[0].SerialNo), $("#txtModel").val(data.Table[0].Model), $("#txtSize").val(data.Table[0].Size), $("#txtAmount").val(data.Table[0].Amount), $("#txtRemark").val(data.Table[0].Remark), $("#txtReturnGood").val(data.Table[0].ReturnGood), $("#txtReturnLost").val(data.Table[0].ReturnLost),
             $("#txtReturnRepair").val(data.Table[0].ReturnRepair), $("#txtReturnBad").val(data.Table[0].ReturnBad), $('#hidJobID').val(data.Table[0].JobID)
        },

@@ -109,7 +109,7 @@
                 </li>
                 <li>
                     <input type="text" id="txtAdded" name="field6" class="Number field-select-small" placeholder="" value="0"/>&nbsp;
-                    <input type="text" id="txtDeduction" name="field6" class="Number field-select-small" placeholder="" value="0"/>&nbsp;
+                    <input type="text" id="txtDeduction" name="field6" class="Number field-select-small" placeholder="" value="0" onblur="GetDeduct()"/>&nbsp;
                 </li>
                 <li>
                     <button type="button" class="btn btn-primary" onclick="Isvalidate('Update', 'ProductAdjust', @Request.Params["id"])">Save</button>

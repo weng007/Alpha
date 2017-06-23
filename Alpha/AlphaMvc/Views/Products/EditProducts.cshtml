@@ -56,7 +56,7 @@
                     <label class="label-small">ยกมา<span class="required">*</span></label>&nbsp;<label class="label-small-3">คงเหลือ<span class="required">*</span></label>
                 </li>
                 <li>
-                    <input type="text" id="txtBalance" name="field1" class="field-select-small"  required/>&nbsp;<input type="text" id="txtRemain" name="field2" class="field-select-small"  required />
+                    <input type="text" id="txtBalance" name="field1" class="field-select-small"  required/>&nbsp;<input type="text" id="txtRemain" name="field2" class="field-select-small"  required disabled />
                 </li>
                 <li>
                     <label class="label-small-2">หาย</label>&nbsp;<label class="label-small-2">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>
@@ -118,7 +118,6 @@
         ControlEnable(Isview);
     });
     function validate() {
-        alert("validate");
         Isvalidate('Update', 'Products', @Request.Params["id"])
     }
 </script>

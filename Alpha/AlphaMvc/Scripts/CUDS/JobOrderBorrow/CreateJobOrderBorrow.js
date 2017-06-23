@@ -72,8 +72,6 @@ function CheckBorrow()
                data: dataObject,
                success: function (data) {
                    data = JSON.parse(data);
-                   //alert("Product Amount"+data.Table[0].Amount);
-                   //alert("Borrow Amount"+BorrowAmount);
                    if (data.Table[0].Amount < BorrowAmount) {
                        alert('จำนวนที่ยืมต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ');
                        $("#txtAmount").val(0);
@@ -92,17 +90,11 @@ function CheckReturn() {
     {
         alert('จำนวนที่คืนจะต้องเท่ากับจำนวนที่ยืม กรุณาใส่ข้อมูลให้ถูกต้อง');
     }
-    //else if(borrowAmount == returnAmount)
-    //{
-    //    $('#hidReturn').val(1);
-    //}
 }
 function CreateData() {
     var input = window.location.href;
     var after = input.split('?')[1]
     var ID = after.split('-');
-    alert(ID);
-    //alert($("#hidProductID").val());
     var dataObject = {
         JobID: ID, ProductID: $("#hidProductID").val(), Amount: $("#txtAmount").val(), Remark: $("#txtRemark").val(), ReturnGood: $("#txtReturnGood").val(), ReturnLost: $("#txtReturnLost").val(), ReturnRepair: $("#txtReturnRepair").val(), ReturnBad: $("#txtReturnBad").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
@@ -115,8 +107,8 @@ function CreateData() {
         datatype: 'json',
 
         success: function (data) {
-            alert(data);
-            alert('Create is completed')
+            //alert(data);
+            //alert('Create is completed')
             window.location.href = "../Borrow/EditBorrow?id=" + data;
         }
         ,

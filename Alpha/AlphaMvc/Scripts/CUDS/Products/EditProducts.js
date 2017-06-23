@@ -68,7 +68,7 @@ function ControlEnable(Isview) {
     }
 }
 function GetData(val) {
-    alert("TestGetData")
+    //alert("TestGetData")
     var dataObject = { ID: val }
     $.ajax(
    {
@@ -103,7 +103,7 @@ function GetData(val) {
 
    });
 
-    alert("refID " + val);
+    //alert("refID " + val);
     var dataObject = { refID: val }
     $.ajax(
     {
@@ -114,7 +114,7 @@ function GetData(val) {
         datatype: 'json',
         success: function (data) {
             data = JSON.parse(data);
-            alert("Attah " + data.Table.length);
+            //alert("Attah " + data.Table.length);
             var html = '';
             for (var i = 0; i < data.Table.length; i++) {
                 var AttName = data.Table[i].AttachName;
@@ -264,7 +264,7 @@ function Update(val) {
     if (val > 0) {
         if (window.FormData !== undefined) {
             var fileUpload = document.getElementById('FileUpload1').files;
-            alert('fileUpload' + fileUpload.length);
+            //alert('fileUpload' + fileUpload.length);
             for (var i = 0; i < fileUpload.length; i++) {
                 var date = new Date();
                 var d = date.getDate();
@@ -285,11 +285,8 @@ function Update(val) {
                     var res = readresult.split(",");
                     str = res[1];
                     str = str.toString();
-                    alert(str);
-                    alert(AttachPath);
-                    //var AttahData = str;
                     var dataObject = { RefID: val, AttachName: AttachFileName, AttachPath: AttachPath, AttachData: str, CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
-                    alert("Test Insert");
+                    //alert("Test Insert");
                     //console.log(dataObject);
                     $.ajax(
                     {

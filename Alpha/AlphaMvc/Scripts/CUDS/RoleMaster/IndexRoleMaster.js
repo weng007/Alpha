@@ -90,7 +90,7 @@ function CreateData() {
                 }
             });
     });
-    alert('Update is completed');
+    
     window.location.href = "../RoleMaster/IndexRoleMaster";
 }
 function GetData() {
