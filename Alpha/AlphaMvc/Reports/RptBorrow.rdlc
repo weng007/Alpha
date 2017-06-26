@@ -9,7 +9,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Borrow</Value>
+                <Value>Requisition</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>

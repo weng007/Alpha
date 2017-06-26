@@ -22,6 +22,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@JobID", jobOrderExpense.JobID);
                     cmd.Parameters.AddWithValue("@ExpenseType", jobOrderExpense.ExpenseType);
+                    cmd.Parameters.AddWithValue("@ExpenseDetail", jobOrderExpense.ExpenseDetail);
                     cmd.Parameters.AddWithValue("@UnitWeight", jobOrderExpense.UnitWeight);
                     cmd.Parameters.AddWithValue("@Qty", jobOrderExpense.Qty);
                     cmd.Parameters.AddWithValue("@UnitPrice", jobOrderExpense.UnitPrice);
@@ -55,6 +56,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@ID", jobOrderExpense.ID);
                     cmd.Parameters.AddWithValue("@JobID", jobOrderExpense.JobID);
                     cmd.Parameters.AddWithValue("@ExpenseType", jobOrderExpense.ExpenseType);
+                    cmd.Parameters.AddWithValue("@ExpenseDetail", jobOrderExpense.ExpenseDetail);
                     cmd.Parameters.AddWithValue("@UnitWeight", jobOrderExpense.UnitWeight);
                     cmd.Parameters.AddWithValue("@Qty", jobOrderExpense.Qty);
                     cmd.Parameters.AddWithValue("@UnitPrice", jobOrderExpense.UnitPrice);

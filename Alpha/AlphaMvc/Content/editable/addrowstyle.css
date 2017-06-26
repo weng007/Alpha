@@ -184,7 +184,8 @@
         background: #fff;
         height: 29px;
         font-size: small;
-        width: 150px;
+        width: 200px;
+        /*width: 150px;*/
         padding: 2px !important;
     }
     table td .unitSelect {

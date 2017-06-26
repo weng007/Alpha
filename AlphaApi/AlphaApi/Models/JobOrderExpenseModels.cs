@@ -20,6 +20,8 @@ namespace AlphaApi.Models
 
         public int ExpenseType { get; set; }
 
+        public string ExpenseDetail { get; set; }
+
         public string UnitWeight { get; set; }
 
         public double Qty { get; set; }

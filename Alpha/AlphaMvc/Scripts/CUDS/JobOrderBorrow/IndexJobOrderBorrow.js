@@ -36,7 +36,7 @@ function GetJobOrderBorrow(val)
     $("#hidBorroeeJobID").val(val);
     $.ajax(
     {
-        url: 'http://alphagroup.co.th:8082/api/JobOrderBorrowRefID',
+        url: 'http://localhost:13131/api/JobOrderBorrowRefID',
         type: 'GET',
         async: false,
         data: dataObject,
@@ -82,7 +82,7 @@ function RowDelete(id) {
     var dataObject = { ID: id };
     $.ajax(
         {
-            url: 'http://alphagroup.co.th:8082/api/JobOrderBorrow',
+            url: 'http://localhost:13131/api/JobOrderBorrow',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',

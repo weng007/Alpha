@@ -24,6 +24,7 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_JobOrder_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@JobRef", jobOrder.JobRef);
+                    cmd.Parameters.AddWithValue("@JobNo", jobOrder.JobNo);
                     cmd.Parameters.AddWithValue("@JobDate", jobOrder.JobDate);
                     cmd.Parameters.AddWithValue("@Car", jobOrder.Car != null ? jobOrder.Car : "");
                     cmd.Parameters.AddWithValue("@SWorking", jobOrder.SWorking);
@@ -45,11 +46,15 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@CreateBy", jobOrder.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", jobOrder.EditBy);
                     conObj.Open();
-                    SqlDataAdapter adap = new SqlDataAdapter(cmd);
-                    adap.Fill(ds);
-                    conObj.Close();
-                    cmd.Parameters.Clear();
-                    return Convert.ToInt32(ds.Tables[1].Rows[0][0]);
+                    object obj = cmd.ExecuteScalar();
+                    result = Convert.ToInt32(obj);
+                    return result;
+                    //conObj.Open();
+                    //SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                    //adap.Fill(ds);
+                    //conObj.Close();
+                    //cmd.Parameters.Clear();
+                    //return Convert.ToInt32(ds.Tables[1].Rows[0][0]);
                 }
                 catch (Exception ex)
                 {

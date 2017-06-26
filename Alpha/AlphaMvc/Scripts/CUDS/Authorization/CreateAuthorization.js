@@ -18,7 +18,7 @@ $(document).ready(function () {
     var dataObject = { Mode: false};
     $.ajax(
        {
-           url: 'http://alphagroup.co.th:8082/api/UserLogin',
+           url: 'http://localhost:13131/api/UserLogin',
            type: 'GET',
            async: false,
            datatype: 'json',
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
     var dataObject = { typeID: '009' };
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/MasterService/',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -88,7 +88,7 @@ function CreateData() {
             {
                 $.ajax(
                 {
-                    url: 'http://alphagroup.co.th:8082/api/Authorization',
+                    url: 'http://localhost:13131/api/Authorization',
                     type: 'POST',
                     async: false,
                     data: dataObject,
@@ -108,7 +108,7 @@ function CreateData() {
 function AddRowAuthor() {
     var dataObject = { typeID: '009' };
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/MasterService/',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,

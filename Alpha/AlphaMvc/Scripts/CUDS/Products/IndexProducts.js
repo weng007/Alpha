@@ -42,7 +42,7 @@ $(document).ready(function () {
     //-------------------------filter------------------------
     $.ajax(
     {     
-        url: 'http://alphagroup.co.th:8082/api/Product',
+        url: 'http://localhost:13131/api/Product',
         type: 'GET',
         datatype: 'json',
         success: function (data) {
@@ -92,7 +92,7 @@ function GetRemain(val) {
     var dataObject = { ProductID: val };
     $.ajax(
        {
-           url: 'http://alphagroup.co.th:8082/api/JobOrderBorrow',
+           url: 'http://localhost:13131/api/JobOrderBorrow',
            type: 'GET',
            async: false,
            data: dataObject,
@@ -113,7 +113,7 @@ function RowDelete(id) {
     var dataObject = { ID: id, EditBy: localStorage['UserID'] };
     $.ajax(
         {
-            url: 'http://alphagroup.co.th:8082/api/Product',
+            url: 'http://localhost:13131/api/Product',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',

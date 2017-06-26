@@ -46,7 +46,7 @@
     $('.FName').autocomplete({
         source: function (request, response) {
             $.ajax({
-                url: 'http://alphagroup.co.th:8082/api/Technician',
+                url: 'http://localhost:13131/api/Technician',
                 type: 'GET',
                 dataType: 'json',
                 data: { name:request.term },
@@ -83,7 +83,7 @@
     });
 
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/IncomeMaster',
+        url: 'http://localhost:13131/api/IncomeMaster',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -99,7 +99,7 @@
     });
     $.ajax({
 
-        url: 'http://alphagroup.co.th:8082/api/ExpenseMaster',
+        url: 'http://localhost:13131/api/ExpenseMaster',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -116,7 +116,7 @@
 
     var dataObject = { typeID: '010' };
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/MasterService/',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -134,7 +134,7 @@
 
     var dataObject = { typeID: '001' };
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/MasterService/',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -152,7 +152,7 @@
 
     var dataObject = { typeID: '002' };
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/MasterService/',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -170,7 +170,7 @@
 
     var dataObject = { BID: BDCID };
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/JobOrder',
+        url: 'http://localhost:13131/api/JobOrder',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -188,7 +188,7 @@
 
     var dataObject = { BID: BDCID };
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/JobOrder',
+        url: 'http://localhost:13131/api/JobOrder',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -271,7 +271,7 @@ $(function () {
 function BrowseCustomer(val) {
     //$.ajax(
     //       {
-    //           url: 'http://alphagroup.co.th:8082/api/Customer',
+    //           url: 'http://localhost:13131/api/Customer',
     //           type: 'GET',
     //           datatype: 'json',
     //           success: function (data) {
@@ -301,7 +301,7 @@ function BrowseCustomer(val) {
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://alphagroup.co.th:8082/api/JobOrder',
+        url: 'http://localhost:13131/api/JobOrder',
         type: 'GET',
         async: false,
         data: dataObject,
@@ -311,7 +311,7 @@ function BrowseCustomer(val) {
             
             if (data.Table.length > 0) {
                 //$('.RowCal5:eq(' + data.Table.length + ')').remove();
-                
+                $('#txtJobNo').val(data.Table[0].CustID);
                 $('#txtCustomerName').val(data.Table[0].Name)
                 $('#txtTel').val(data.Table[0].Tel)
                 $('#txtFax').val(data.Table[0].Fax)
@@ -405,7 +405,7 @@ function GetManpowerHour() {
         console.log(dataObject);
         $.ajax(
         {
-            url: 'http://alphagroup.co.th:8082/api/OT',
+            url: 'http://localhost:13131/api/OT',
             type: 'GET',
             async: false,
             data: dataObject,
@@ -453,7 +453,7 @@ function CreateData() {
     var EWorkingDate = ChangeformatDate($("#dtEWorking").val(),1);
 
     var dataObject = {
-        JobRef: $('#hidBDCID').val(), JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate, JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(),
+        JobRef: $('#hidBDCID').val(), JobNo: $('#txtJobNo').val(), JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate, JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(),
         ContactID: $("#cmbContact").find(":selected").val(), CoWorkerID: $("#cmbCoWorker").find(":selected").val(),
         Detail: $("#txtDetail").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
@@ -461,7 +461,7 @@ function CreateData() {
         var ID;
         $.ajax(
         {
-            url: 'http://alphagroup.co.th:8082/api/JobOrder',
+            url: 'http://localhost:13131/api/JobOrder',
             type: 'POST',
             async: false,
             data: dataObject,
@@ -480,6 +480,7 @@ function CreateData() {
         $(".RowCal").each(function () {
             dataObject.JobID = ID;
             dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
+            dataObject.Detail = $(this).find(".Detail").val();
             dataObject.UnitWeight = $(this).find(".UnitWeight").val();
             dataObject.Qty = $(this).find(".Quantity").val();
             dataObject.UnitPrice = $(this).find(".Price").val();
@@ -490,7 +491,7 @@ function CreateData() {
             {
                 $.ajax(
                 {
-                    url: 'http://alphagroup.co.th:8082/api/JobOrderIncome',
+                    url: 'http://localhost:13131/api/JobOrderIncome',
                     type: 'POST',
                     async: false,
                     data: dataObject,
@@ -510,6 +511,7 @@ function CreateData() {
         $(".RowCal1").each(function () {
             dataObject.JobID = ID;
             dataObject.ExpenseType = $(this).find('.ExpenseSelect').find(":selected").val();
+            dataObject.ExpenseDetail = $(this).find(".ExpenseDetail").val();
             dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
             dataObject.Qty = $(this).find(".Quantity").val();
             dataObject.UnitPrice = $(this).find(".Price").val();
@@ -520,7 +522,7 @@ function CreateData() {
             {
                 $.ajax(
                 {
-                    url: 'http://alphagroup.co.th:8082/api/JobOrderExpense',
+                    url: 'http://localhost:13131/api/JobOrderExpense',
                     type: 'POST',
                     async: false,
                     data: dataObject,
@@ -561,7 +563,7 @@ function CreateData() {
                 if ($(this).find(".TechnicianID").val() != '') {
                     $.ajax(
                     {
-                        url: 'http://alphagroup.co.th:8082/api/JobOrderManpower',
+                        url: 'http://localhost:13131/api/JobOrderManpower',
                         type: 'POST',
                         async: false,
                         data: dataObject,
@@ -587,7 +589,7 @@ function CreateData() {
             { 
                 $.ajax(
                 {
-                    url: 'http://alphagroup.co.th:8082/api/JobOrderSaleOrder',
+                    url: 'http://localhost:13131/api/JobOrderSaleOrder',
                     type: 'POST',
                     async: false,
                     data: dataObject,
@@ -613,7 +615,7 @@ function CreateData() {
             { 
                 $.ajax(
                 {
-                    url: 'http://alphagroup.co.th:8082/api/JobOrderInvoice',
+                    url: 'http://localhost:13131/api/JobOrderInvoice',
                     type: 'POST',
                     async: false,
                     data: dataObject,
@@ -639,7 +641,7 @@ function CreateData() {
             {
                 $.ajax(
                 {
-                    url: 'http://alphagroup.co.th:8082/api/JobOrderReceipt',
+                    url: 'http://localhost:13131/api/JobOrderReceipt',
                     type: 'POST',
                     async: false,
                     data: dataObject,
@@ -715,7 +717,7 @@ function CalSumExpense() {
 
 function AddRowIncome() {
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/IncomeMaster',
+        url: 'http://localhost:13131/api/IncomeMaster',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -733,7 +735,7 @@ function AddRowIncome() {
 }
 function AddRowExpense() {
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/ExpenseMaster',
+        url: 'http://localhost:13131/api/ExpenseMaster',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -752,7 +754,7 @@ function AddRowExpense() {
     });
     var dataObject = { typeID: '010' };
     $.ajax({
-        url: 'http://alphagroup.co.th:8082/api/MasterService/',
+        url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
@@ -798,7 +800,7 @@ function AddrowManpower() {
         $(this).autocomplete({
             source: function (request, response) {
                 $.ajax({
-                    url: 'http://alphagroup.co.th:8082/api/Technician',
+                    url: 'http://localhost:13131/api/Technician',
                     type: 'GET',
                     dataType: 'json',
                     data: { name: request.term },

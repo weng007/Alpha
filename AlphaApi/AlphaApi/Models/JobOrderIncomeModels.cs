@@ -19,6 +19,8 @@ namespace AlphaApi.Models
 
         public int IncomeType { get; set; }
 
+        public string Detail { get; set; }
+
         public string UnitWeight { get; set; }
 
         public double Qty { get; set; }

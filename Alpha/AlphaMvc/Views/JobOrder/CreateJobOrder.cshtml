@@ -214,7 +214,8 @@
                                                                 <th></th>
                                                                 <th>Item</th>
                                                                 <th class="hidecolumn">ID</th>
-                                                                <th>Description</th>
+                                                                <th>Type</th>
+                                                                <th>Detail</th>
                                                                 <th>Unit</th>
                                                                 <th>Qty</th>
                                                                 <th class="Price wraptext">Unit Price</th>
@@ -224,15 +225,15 @@
                                                         </thead>
                                                         <tfoot>
                                                             <tr>
-                                                                <td colspan="6" class="ftTotal textalign">Total</td>
+                                                                <td colspan="7" class="ftTotal textalign">Total</td>
                                                                 <td colspan="3"><input id="txtTotal" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="6" class="ftDiscount textalign">Discount</td>
+                                                                <td colspan="7" class="ftDiscount textalign">Discount</td>
                                                                 <td colspan="3"><input id="txtDiscount" type="text" value="" class="text-size168 textright" onchange="CalSum()" /></td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="6" class="ftSubTotal textalign">Sub Total</td>
+                                                                <td colspan="7" class="ftSubTotal textalign">Sub Total</td>
                                                                 <td colspan="3"><input id="txtSubTotal" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
                                                             </tr>
                                                         </tfoot>
@@ -251,7 +252,10 @@
                                                                     <select id="cmbIncomeType" class="Select1"></select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitWeight" class="UnitWeight text-size80 textright" />
+                                                                    <input type="text" id="txtDetail" class="UnitWeight text-size80 textleft" />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="txtUnitWeight" class="Detail text-size200 textright" />
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtQty" class="Quantity text-size80 textright" onchange="CalSum()" />
@@ -282,6 +286,9 @@
                                                                 </td>
                                                                 <td>
                                                                     <select class="Select1"></select>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="txtDetail" class="Detail text-size200 textleft" />
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtUnitWeight" class="UnitWeight text-size80 textright" />
@@ -327,7 +334,8 @@
                                                                 <th></th>
                                                                 <th>Item</th>
                                                                 <th class="hidecolumn">ID</th>
-                                                                <th>Description</th>
+                                                                <th>Type</th>
+                                                                <th>Detail</th>
                                                                 <th>Unit</th>
                                                                 <th>Qty</th>
                                                                 <th class="Price wraptext">Unit Price</th>
@@ -337,7 +345,7 @@
                                                         </thead>
                                                         <tfoot>
                                                             <tr>
-                                                                <td colspan="6" class="ftTotal textalign">Total</td>
+                                                                <td colspan="7" class="ftTotal textalign">Total</td>
                                                                 <td colspan="3"><input id="txtTotalExpense" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
                                                             </tr>
                                                         </tfoot>
@@ -354,6 +362,9 @@
                                                                 </td>
                                                                 <td>
                                                                     <select id="cmbExpenseType" class="ExpenseSelect"></select>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="txtExpenseDetail" class="ExpenseDetail text-size180 textleft" />
                                                                 </td>
                                                                 <td>
                                                                     <select class="unitSelect"></select>
@@ -387,6 +398,9 @@
                                                                 </td>
                                                                 <td>
                                                                     <select id="cmbExpenseType" class="ExpenseSelect"></select>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="txtExpenseDetail" class="ExpenseDetail text-size180 textleft" />
                                                                 </td>
                                                                 <td>
                                                                     <select class="unitSelect"></select>
@@ -641,7 +655,7 @@
                                                             <th rowspan="2" class="hideANDseek">ยี่ห้อ</th>
                                                             <th rowspan="2" class="hideANDseek">รุ่น</th>
                                                             <th rowspan="2">ขนาด</th>
-                                                            <th rowspan="2">จำนวน</th>
+                                                            <th rowspan="2">จำนวนที่เบิก</th>
                                                             <th colspan="4" class="hideANDseek">คืน</th>
                                                             <th rowspan="2"></th>
                                                         </tr>

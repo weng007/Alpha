@@ -69,7 +69,7 @@ function GetData(val)
     console.log(dataObject);
     $.ajax(
     {
-        url: 'http://alphagroup.co.th:8082/api/WageTechnician',
+        url: 'http://localhost:13131/api/WageTechnician',
         type: 'GET',
         async: false,
         data: dataObject,
@@ -283,7 +283,7 @@ function Update(val) {
         //alert('test2');
         $.ajax(
         {
-            url: 'http://alphagroup.co.th:8082/api/WageTechnician',
+            url: 'http://localhost:13131/api/WageTechnician',
             type: 'PUT',
             async: false,
             data: dataObject,

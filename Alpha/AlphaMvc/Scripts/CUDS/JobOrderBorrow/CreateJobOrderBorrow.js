@@ -34,7 +34,7 @@ function BrowseProduct() {
     //-------------------------filter------------------------
     $.ajax(
            {
-               url: 'http://alphagroup.co.th:8082/api/Product',
+               url: 'http://localhost:13131/api/Product',
                type: 'GET',
                datatype: 'json',
                success: function (data) {
@@ -66,7 +66,7 @@ function CheckBorrow()
     var dataObject = { ProductID: $("#hidProductID").val()};
     $.ajax(
            {
-               url: 'http://alphagroup.co.th:8082/api/JobOrderBorrow',
+               url: 'http://localhost:13131/api/JobOrderBorrow',
                type: 'GET',
                datatype: 'json',
                data: dataObject,
@@ -100,7 +100,7 @@ function CreateData() {
     };
     $.ajax(
     {
-        url: 'http://alphagroup.co.th:8082/api/JobOrderBorrow',
+        url: 'http://localhost:13131/api/JobOrderBorrow',
         type: 'POST',
         async: false,
         data: dataObject,
