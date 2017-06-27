@@ -223,7 +223,8 @@
                                                             <input type="text" id="txtDetail" class="Detail text-size180 textleft" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtUnitWeight" class="UnitWeight text-size80 textright">
+                                                            @*<input type="text" id="txtUnitWeight" class="UnitWeight text-size80 textright">*@
+                                                            <select class="UnitWeight text-size80"></select>
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtQty" class="Quantity text-size80 textright" onchange="CalSum()" />
@@ -262,7 +263,8 @@
                                                             <input type="text" id="txtDetail" class="Detail text-size200 textleft" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtUnitWeight" class="UnitWeight text-size80 textright"/>
+                                                            @*<input type="text" id="txtUnitWeight" class="UnitWeight text-size80 textright"/>*@
+                                                            <select class="UnitWeight text-size80"></select>
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtQty" class="Quantity text-size80 textright" onchange="CalSum()" />
@@ -452,6 +454,8 @@
                                                         <th rowspan="3">Day</th>
                                                         <th rowspan="3">Time</th>
                                                         <th colspan="2">WORKING TIME</th>
+                                                        <th rowspan="3">BREAK1</th>
+                                                        <th rowspan="3">BREAK2</th>
                                                         <th colspan="5">NUMBER OF HOUSE</th>
                                                         <th rowspan="3" colspan="2"></th>
                                                     </tr>
@@ -520,6 +524,12 @@
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtWorkingTo" name="txtWorkingTo" class="WorkingTo timepicker text-size60 textcenter" onchange="GetManpowerHour()">
+                                                        </td>
+                                                        <td>
+                                                            <input id="chkBreak1" class="chkBreak1" type="checkbox" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="chkBreak2" class="chkBreak2" type="checkbox" />
                                                         </td>
                                                         <td>
                                                             <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled/>
@@ -594,6 +604,12 @@
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtWorkingTo" name="txtWorkingTo" class="WorkingTo timepicker text-size60 textcenter" onchange="GetManpowerHour()">
+                                                        </td>
+                                                        <td>
+                                                            <input id="chkBreak1" class="chkBreak1" type="checkbox" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="chkBreak2" class="chkBreak2" type="checkbox" />
                                                         </td>
                                                         <td>
                                                             <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled/>

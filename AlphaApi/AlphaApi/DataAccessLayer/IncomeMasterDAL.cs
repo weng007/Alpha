@@ -21,6 +21,7 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_IncomeMaster_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Detail", incomeMaster.Detail);
+                    cmd.Parameters.AddWithValue("@Price", incomeMaster.Price);
                     cmd.Parameters.AddWithValue("@CreateBy", incomeMaster.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", incomeMaster.EditBy);
                     conObj.Open();
@@ -47,6 +48,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", incomeMaster.ID);
                     cmd.Parameters.AddWithValue("@Detail", incomeMaster.Detail);
+                    cmd.Parameters.AddWithValue("@Price", incomeMaster.Price);
                     cmd.Parameters.AddWithValue("@EditBy", incomeMaster.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();

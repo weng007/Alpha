@@ -132,6 +132,24 @@
         }
     });
 
+    var dataObject = { typeID: '010' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('.UnitWeight').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.UnitWeight').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+
     var dataObject = { typeID: '001' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService/',
@@ -481,7 +499,7 @@ function CreateData() {
             dataObject.JobID = ID;
             dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
             dataObject.Detail = $(this).find(".Detail").val();
-            dataObject.UnitWeight = $(this).find(".UnitWeight").val();
+            dataObject.UnitWeight = $(this).find('.UnitWeight').find(":selected").val();
             dataObject.Qty = $(this).find(".Quantity").val();
             dataObject.UnitPrice = $(this).find(".Price").val();
             dataObject.Amount = $(this).find(".Amount").val();
@@ -553,6 +571,8 @@ function CreateData() {
                 dataObject.ManTime = $(this).find(".ManTime").val();
                 dataObject.FromHour = workingFrom;
                 dataObject.ToHour = workingTo;
+                dataObject.Break1 = $(this).find('.chkBreak1').is(":checked") == true ? 1 : 0;
+                dataObject.Break2 = $(this).find('.chkBreak2').is(":checked") == true ? 1 : 0;
                 dataObject.TotalHours = $(this).find(".TotalHours").val();
                 dataObject.ManNormal = $(this).find(".ManNormal").val();
                 dataObject.ManPremium = $(this).find(".ManPremium").val();
@@ -727,6 +747,24 @@ function AddRowIncome() {
                 $('.Select1:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('.Select1:last').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+
+    var dataObject = { typeID: '010' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('.UnitWeight:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.UnitWeight:last').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');

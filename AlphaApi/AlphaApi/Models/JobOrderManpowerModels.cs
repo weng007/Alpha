@@ -33,6 +33,10 @@ namespace AlphaApi.Models
 
         public int ToMinute { get; set; }
 
+        public string Break1 { get; set; }
+
+        public string Break2 { get; set; }
+
         public string TotalHours { get; set; }
 
         public double ManNormal { get; set; }

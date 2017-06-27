@@ -29,6 +29,8 @@ namespace AlphaApi.DataAccessLayer
                     //cmd.Parameters.AddWithValue("@FromMinute", jobOrderManpower.FromMinute);
                     cmd.Parameters.AddWithValue("@ToHour", jobOrderManpower.ToHour);
                     //cmd.Parameters.AddWithValue("@ToMinute", jobOrderManpower.ToMinute);
+                    cmd.Parameters.AddWithValue("@Break1", jobOrderManpower.Break1);
+                    cmd.Parameters.AddWithValue("@Break2", jobOrderManpower.Break2);
                     cmd.Parameters.AddWithValue("@TotalHours", jobOrderManpower.TotalHours);
                     cmd.Parameters.AddWithValue("@ManNormal", jobOrderManpower.ManNormal);
                     cmd.Parameters.AddWithValue("@ManPremium", jobOrderManpower.ManPremium);
@@ -69,6 +71,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@FromHour", jobOrderManpower.FromHour);
                     //cmd.Parameters.AddWithValue("@FromMinute", jobOrderManpower.FromMinute);
                     cmd.Parameters.AddWithValue("@ToHour", jobOrderManpower.ToHour);
+                    cmd.Parameters.AddWithValue("@Break1", jobOrderManpower.Break1);
+                    cmd.Parameters.AddWithValue("@Break2", jobOrderManpower.Break2);
                     //cmd.Parameters.AddWithValue("@ToMinute", jobOrderManpower.ToMinute);
                     cmd.Parameters.AddWithValue("@TotalHours", jobOrderManpower.TotalHours);
                     cmd.Parameters.AddWithValue("@ManNormal", jobOrderManpower.ManNormal);

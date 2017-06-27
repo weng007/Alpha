@@ -31,8 +31,8 @@ namespace AlphaMvc.Reports.FormReport
 
             ds = dal.GetRptBorrow(Request.QueryString["id"].ToString());
 
-            ReportDataSource datasource = new ReportDataSource("dsBorrow", ds.Tables[0]);
-            ReportDataSource datasource1 = new ReportDataSource("dsJobBorrow", ds.Tables[1]);
+            ReportDataSource datasource = new ReportDataSource("dsRptJobBorrow", ds.Tables[0]);
+            ReportDataSource datasource1 = new ReportDataSource("dsRptJobBorrow2", ds.Tables[1]);
             this.RptViewer1.LocalReport.ReportPath = Server.MapPath("~/Reports/RptBorrow.rdlc");
             this.RptViewer1.LocalReport.DataSources.Add(datasource);
             this.RptViewer1.LocalReport.DataSources.Add(datasource1);

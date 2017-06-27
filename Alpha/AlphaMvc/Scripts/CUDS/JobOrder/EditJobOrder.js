@@ -520,6 +520,7 @@ function GetData(val) {
            SetIncomeMaster();
            SetExpenseType();
            SetUnitWeight();
+           SetUnitWeightExpense();
 
            ////Binding Data Income
            if (data.Table1.length > 0) {          
@@ -531,6 +532,7 @@ function GetData(val) {
                $('.RowCal:eq('+ data.Table1.length +')').remove();
                
                SetIncomeMaster();
+               SetUnitWeightExpense();
                 
                $(".RowCal").each(function (i) {
                    $(this).find('.tdno').val(data.Table1[i].RowNum);
@@ -538,7 +540,7 @@ function GetData(val) {
                    $(this).find('.IncomeID').val(data.Table1[i].ID);
                    $(this).find('.Select1').val(data.Table1[i].IncomeType).change();
                    $(this).find('.Detail').val(data.Table1[i].Detail);
-                   $(this).find('.UnitWeight').val(data.Table1[i].UnitWeight);
+                   $(this).find('.UnitWeight').val(data.Table1[i].UnitWeight).change();
                    $(this).find('.Quantity').val(data.Table1[i].Qty);
                    $(this).find('.Price').val(data.Table1[i].UnitPrice);
                    $(this).find('.Amount').val(data.Table1[i].Amount).number(true, 2);
@@ -618,14 +620,9 @@ function GetData(val) {
 
                    var setDate2 = new Date();
                    setDate2.setHours(tHour, tMinute, 0);
-                
-                   //t.setHours = fHour;
-                   //t.setMinutes = fMinute;
+                   var Break1 = data.Table9[i].Break1 == '1' ? true : false;
+                   var Break2 = data.Table9[i].Break2 == '1' ? true : false;
 
-                   //var ManDate = new Date(data.Table9[i].ManDate);
-                   //var day = ("0" + ManDate.getDate()).slice(-2);
-                   //var month = ("0" + (ManDate.getMonth() + 1)).slice(-2);
-                   //var today = ManDate.getFullYear() + "-" + (month) + "-" + (day);
                    var ManDate = ChangeformatDate(data.Table9[i].ManDate, 0)
                    //var manDay = GetManDay(ChangeformatDate(data.Table9[i].ManDate, 1));
                    $(this).find('.tdno').val(data.Table9[i].RowNum);
@@ -641,8 +638,10 @@ function GetData(val) {
 
                    //$(this).find('.WorkingFrom').timepicker('setTime', FTime, { 'timeFormat': 'H:i' });
                    $(this).find('.WorkingFrom').timepicker('setTime', setDate);
-
                    $(this).find('.WorkingTo').timepicker('setTime', setDate2);
+                   $(this).find('.chkBreak1').prop('checked', Break1);
+                   $(this).find('.chkBreak2').prop('checked', Break2);
+
                    //$(this).find('.WorkingTo').timepicker('setTime', TTime, { 'timeFormat': 'H:i' });
                    $(this).find('.TotalHours').val(data.Table9[i].TotalHours);
                    $(this).find('.ManNormal').val(data.Table9[i].ManNormal);
@@ -790,6 +789,28 @@ function SetUnitWeight() {
         }
     });
 }
+function SetUnitWeightExpense() {
+
+    var dataObject = { typeID: '010' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+
+            $.each(data.Table, function (i) {
+                $(".UnitWeight").append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.UnitWeight').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 function Update(val) {
     //alert("test");
     var JDate = ChangeformatDate($("#dtJobDate").val(),1);
@@ -843,7 +864,7 @@ function Update(val) {
         dataObject.JobID = JobID;
         dataObject.IncomeType = $(this).find('.Select1').find(":selected").val();
         dataObject.Detail = $(this).find(".Detail").val();
-        dataObject.UnitWeight = $(this).find(".UnitWeight").val();
+        dataObject.UnitWeight = $(this).find('.UnitWeight').find(":selected").val();
         dataObject.Qty = $(this).find(".Quantity").val();
         dataObject.UnitPrice = $(this).find(".Price").val();
         dataObject.Amount = ConvertAmount($(this).find(".Amount").val());
@@ -913,6 +934,8 @@ function Update(val) {
             dataObject.ManTime = $(this).find(".ManTime").val();
             dataObject.FromHour = workingFrom;
             dataObject.ToHour = workingTo;
+            dataObject.Break1 = $(this).find('.chkBreak1').is(":checked") == true ? 1 : 0;
+            dataObject.Break2 = $(this).find('.chkBreak2').is(":checked") == true ? 1 : 0;
             dataObject.TotalHours = $(this).find(".TotalHours").val();
             dataObject.ManNormal = $(this).find(".ManNormal").val();
             dataObject.ManPremium = $(this).find(".ManPremium").val();
@@ -1096,6 +1119,25 @@ function AddRowIncome() {
                     $('.Select1:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
                 });
                 $('.Select1:last').find('option:first-child').attr('selected', true);
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+
+        var dataObject = { typeID: '010' };
+        $.ajax({
+            url: 'http://localhost:13131/api/MasterService/',
+            type: 'GET',
+            dataType: 'json',
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $('.UnitWeight:last').find("option").remove();
+                $.each(data.Table, function (i) {
+                    $('.UnitWeight:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+                $('.UnitWeight:last').find('option:first-child').attr('selected', true);
             },
             failure: function () {
                 alert('Error');

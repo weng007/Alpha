@@ -60,7 +60,10 @@
         margin-bottom: 10px;
         padding-bottom: 10px;
     }
-
+    .text-right{
+        text-align:right;
+        padding-right:2px;
+    }
     .example-2 thead th{
         border: 1px solid #ffffff;
     }
