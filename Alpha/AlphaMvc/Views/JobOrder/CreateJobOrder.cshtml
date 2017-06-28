@@ -218,6 +218,7 @@
                                                                 <th>Detail</th>
                                                                 <th>Unit</th>
                                                                 <th>Qty</th>
+                                                                <th class="hidecolumn">PriceList</th>
                                                                 <th class="Price wraptext">Unit Price</th>
                                                                 <th class="Amount">Amount</th>
                                                                 <th colspan="5"></th>
@@ -249,7 +250,7 @@
                                                                     <input id="IncomeID" type="text" value="" class="IncomeID" disabled />
                                                                 </td>
                                                                 <td>
-                                                                    <select id="cmbIncomeType" class="Select1"></select>
+                                                                    <select id="cmbIncomeType" class="Select1" onchange="GetPriceList()"></select>
                                                                 </td>
                                                                 <td>
                                                                     @*<input type="text" id="txtDetail" class="UnitWeight text-size80 textleft" />*@
@@ -261,8 +262,11 @@
                                                                 <td>
                                                                     <input type="text" id="txtQty" class="Quantity text-size80 textright" onchange="CalSum()" />
                                                                 </td>
+                                                                <td class="hidecolumn">
+                                                                    <input type="text" id="txtPriceList" class="PriceList text-size80 textright" />
+                                                                </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice" class="Price text-size130 textright" onchange="CalSum()" />
+                                                                    <input type="text" id="txtUnitPrice" class="UnitPrice text-size130 textright" onchange="CalSum()" />
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtAmount" disabled class="Amount Number text-size165 txtdisablerow" />
@@ -286,7 +290,7 @@
                                                                     <input id="IncomeID" type="text" value="" class="IncomeID" disabled />
                                                                 </td>
                                                                 <td>
-                                                                    <select class="Select1"></select>
+                                                                    <select class="Select1" onchange="GetPriceList()"></select>
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtDetail" class="Detail text-size200 textleft" />
@@ -298,8 +302,11 @@
                                                                 <td>
                                                                     <input type="text" id="txtQty" class="Quantity text-size80 textright" onchange="CalSum()" />
                                                                 </td>
+                                                                <td class="hidecolumn">
+                                                                    <input type="text" id="txtPriceList" class="PriceList text-size80 textright" />
+                                                                </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice" class="Price text-size130 textright" onchange="CalSum()" />
+                                                                    <input type="text" id="txtUnitPrice" class="UnitPrice text-size130 textright" onchange="CalSum()" />
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtAmount" disabled class="Amount Number text-size165 txtdisablerow">
@@ -314,7 +321,7 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <a id="add-row6" href="#" onclick="AddRowIncome()">+ Add Row</a>
+                                                <a id="add-row6" href="#" onblur="SetRowIndex()" onmouseout="AddRowIncome()">+ Add Row</a>
                                                 @*<button id="add-row6" onclick="AddRowIncome()" class="btn btn-primary">Add Row</button>*@
                                                 @* Expense *@
                                                 <table class="tableexpense">
@@ -340,6 +347,7 @@
                                                                 <th>Detail</th>
                                                                 <th>Unit</th>
                                                                 <th>Qty</th>
+                                                                <th class="hidecolumn">PriceList</th>
                                                                 <th class="Price wraptext">Unit Price</th>
                                                                 <th class="Amount1">Amount</th>
                                                                 <th colspan="5"></th>
@@ -363,19 +371,22 @@
                                                                     <input id="ExpenseID" type="text" value="" class="ExpenseID" disabled />
                                                                 </td>
                                                                 <td>
-                                                                    <select id="cmbExpenseType" class="ExpenseSelect"></select>
+                                                                    <select id="cmbExpenseType" class="ExpenseSelect" onchange="GetExpensePriceList()"></select>
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtExpenseDetail" class="ExpenseDetail text-size180 textleft" />
                                                                 </td>
                                                                 <td>
-                                                                    <select class="unitSelect"></select>
+                                                                    <select class="unitSelect" ></select>
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtQty" name="Qty" class="Quantity text-size80" onchange="CalSumExpense()">
                                                                 </td>
+                                                                <td  class="hidecolumn">
+                                                                    <input type="text" id="txtPriceList1" class="PriceList1 text-size80 textright" />
+                                                                </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice" name="UnitPrice" class="Price text-size130" onchange="CalSumExpense()">
+                                                                    <input type="text" id="txtUnitPrice1" name="UnitPrice1" class="UnitPrice1 text-size130" onchange="CalSumExpense()">
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtAmount" name="Amount" class="Amount1 Number text-size165 txtdisablerow" disabled>
@@ -399,7 +410,7 @@
                                                                     <input id="ExpenseID" type="text" value="" class="ExpenseID" disabled />
                                                                 </td>
                                                                 <td>
-                                                                    <select id="cmbExpenseType" class="ExpenseSelect"></select>
+                                                                    <select id="cmbExpenseType" class="ExpenseSelect" onchange="GetExpensePriceList()"></select>
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtExpenseDetail" class="ExpenseDetail text-size180 textleft" />
@@ -410,8 +421,11 @@
                                                                 <td>
                                                                     <input type="text" id="txtQty" name="Qty" class="Quantity text-size80" onchange="CalSumExpense()">
                                                                 </td>
+                                                                <td  class="hidecolumn">
+                                                                    <input type="text" id="txtPriceList1" class="PriceList1 text-size80 textright" />
+                                                                </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice" name="UnitPrice" class="Price text-size130" onchange="CalSumExpense()">
+                                                                    <input type="text" id="txtUnitPrice1" name="UnitPrice1" class="UnitPrice1 text-size130" onchange="CalSumExpense()">
                                                                 </td>
                                                                 <td>
                                                                     <input type="text" id="txtAmount" name="Amount" class="Amount1 Number text-size165 txtdisablerow" disabled>
@@ -426,7 +440,7 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <a id="add-row7" href="#" onclick="AddRowExpense()">+ Add Row</a>
+                                                <a id="add-row7" href="#" onblur="SetRowIndex()" onmouseout="AddRowExpense()">+ Add Row</a>
                                                 @*<button id="add-row7" onclick="AddRowExpense()" class="btn btn-primary">Add Row</button>*@
                                                 @*<div class="myDIV">*@
                                                 <table class="tableexpense">

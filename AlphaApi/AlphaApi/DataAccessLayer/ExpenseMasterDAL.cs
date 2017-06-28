@@ -22,7 +22,8 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_ExpenseMaster_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Detail", ME.Detail);
-                    cmd.Parameters.AddWithValue("@Price", ME.Price);
+                    cmd.Parameters.AddWithValue("@PriceList", ME.PriceList);
+                    cmd.Parameters.AddWithValue("@Seq", ME.Seq);
                     cmd.Parameters.AddWithValue("@CreateBy", ME.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", ME.EditBy);
                     conObj.Open();
@@ -49,7 +50,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", ME.ID);
                     cmd.Parameters.AddWithValue("@Detail", ME.Detail);
-                    cmd.Parameters.AddWithValue("@Price", ME.Price);
+                    cmd.Parameters.AddWithValue("@PriceList", ME.PriceList);
+                    cmd.Parameters.AddWithValue("@Seq", ME.Seq);
                     cmd.Parameters.AddWithValue("@EditBy", ME.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
@@ -137,6 +139,60 @@ namespace AlphaApi.DataAccessLayer
                     return ds;
                 }
                 catch(Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
+        public DataSet GetExpense()
+        {
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_GetExpenseMaster", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    return ds;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
+        public DataSet GetPriceList(int id,string IsIncome)
+        {
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_GetPriceList", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.Parameters.AddWithValue("@IsIncome", IsIncome);
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    return ds;
+                }
+                catch (Exception ex)
                 {
                     throw ex;
                 }

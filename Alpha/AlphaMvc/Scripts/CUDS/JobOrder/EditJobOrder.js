@@ -275,6 +275,57 @@ function GetContact(val) {
         }
     });
 }
+function GetPriceList() {
+    var IsIncome;
+    var IncomeID = $('.Select1').eq(row_index2).val();
+    var dataObject = { IsIncome: IncomeID + '&' + '0' }
+    console.log(dataObject);
+    $.ajax(
+    {
+        url: 'http://localhost:13131/api/ExpenseMaster',
+        type: 'GET',
+        async: false,
+        data: dataObject,
+        datatype: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
+            if (data.Table.length > 0) {
+
+                $('.PriceList').eq(row_index2).val(data.Table[0].PriceList);
+                $('.UnitPrice').eq(row_index2).val(data.Table[0].PriceList);
+            }
+        },
+        error: function (msg) {
+            alert(msg);
+        }
+
+    });
+}
+function GetExpensePriceList() {
+    var ExpenseID = $('.ExpenseSelect').eq(row_index3).val();
+    var dataObject = { IsIncome: ExpenseID + '&' + '1' }
+    console.log(dataObject);
+    $.ajax(
+    {
+        url: 'http://localhost:13131/api/ExpenseMaster',
+        type: 'GET',
+        async: false,
+        data: dataObject,
+        datatype: 'json',
+        success: function (data) {
+            data = JSON.parse(data);
+            if (data.Table.length > 0) {
+
+                $('.PriceList1').eq(row_index3).val(data.Table[0].PriceList);
+                $('.UnitPrice1').eq(row_index3).val(data.Table[0].PriceList);
+            }
+        },
+        error: function (msg) {
+            alert(msg);
+        }
+
+    });
+}
 function BrowseCustomer(val) {
     //$.ajax(
     //       {
@@ -542,7 +593,8 @@ function GetData(val) {
                    $(this).find('.Detail').val(data.Table1[i].Detail);
                    $(this).find('.UnitWeight').val(data.Table1[i].UnitWeight).change();
                    $(this).find('.Quantity').val(data.Table1[i].Qty);
-                   $(this).find('.Price').val(data.Table1[i].UnitPrice);
+                   $(this).find('.PriceList').val(data.Table1[i].PriceList);
+                   $(this).find('.UnitPrice').val(data.Table1[i].UnitPrice);
                    $(this).find('.Amount').val(data.Table1[i].Amount).number(true, 2);
                });
                CalSum();
@@ -566,7 +618,8 @@ function GetData(val) {
                    $(this).find('.ExpenseDetail').val(data.Table2[i].ExpenseDetail);
                    $(this).find('.unitSelect').val(data.Table2[i].UnitWeight).change();
                    $(this).find('.Quantity').val(data.Table2[i].Qty);
-                   $(this).find('.Price').val(data.Table2[i].UnitPrice);
+                   $(this).find('.PriceList1').val(data.Table2[i].PriceList);
+                   $(this).find('.UnitPrice1').val(data.Table2[i].UnitPrice);
                    $(this).find('.Amount1').val(data.Table2[i].Amount).number(true, 2);
                });
                CalSumExpense();
@@ -728,11 +781,13 @@ function GetData(val) {
 
 function SetIncomeMaster()
 {
+    var dataObject = { IsJobOrder: 'true' };
     $.ajax({
         url: 'http://localhost:13131/api/IncomeMaster',
         type: 'GET',
         async:false,
         dataType: 'json',
+        data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
 
@@ -748,11 +803,13 @@ function SetIncomeMaster()
 }
 
 function SetExpenseType() {
+    var dataObject = { IsJobOrder: true };
     $.ajax({
         url: 'http://localhost:13131/api/ExpenseMaster',
         type: 'GET',
         async: false,
         dataType: 'json',
+        data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
 
@@ -866,11 +923,12 @@ function Update(val) {
         dataObject.Detail = $(this).find(".Detail").val();
         dataObject.UnitWeight = $(this).find('.UnitWeight').find(":selected").val();
         dataObject.Qty = $(this).find(".Quantity").val();
-        dataObject.UnitPrice = $(this).find(".Price").val();
+        dataObject.PriceList = $(this).find(".PriceList").val();
+        dataObject.UnitPrice = $(this).find(".UnitPrice").val();
         dataObject.Amount = ConvertAmount($(this).find(".Amount").val());
         dataObject.EditBy = localStorage['UserID'];
 
-        if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
+        if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".UnitPrice").val() != '') {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderIncome',
@@ -887,6 +945,7 @@ function Update(val) {
         }
     });
     //===================Insert JobOrderExpense
+
     var dataObject = {};
     $(".RowCal1").each(function () {
         dataObject.ID = $(this).find(".ExpenseID").val();
@@ -895,10 +954,11 @@ function Update(val) {
         dataObject.ExpenseDetail = $(this).find(".ExpenseDetail").val();
         dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
         dataObject.Qty = $(this).find(".Quantity").val();
-        dataObject.UnitPrice = $(this).find(".Price").val();
+        dataObject.PriceList = $(this).find(".PriceList1").val();
+        dataObject.UnitPrice = $(this).find(".UnitPrice1").val();
         dataObject.Amount = ConvertAmount($(this).find(".Amount1").val());
         dataObject.EditBy = localStorage['UserID'];
-        if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".Price").val() != '') {
+        if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".UnitPrice1").val() != '') {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/JobOrderExpense',
@@ -1059,7 +1119,7 @@ function CalSum() {
 
     $(".RowCal").each(function () {
         var qty = $(this).find(".Quantity").val().replace(',', '');
-        var price = $(this).find(".Price").val().replace(',', '');
+        var price = $(this).find(".UnitPrice").val().replace(',', '');
         var amount = qty * price;
 
         $(this).find('.Amount').val(amount);
@@ -1087,7 +1147,7 @@ function CalSumExpense() {
 
     $(".RowCal1").each(function () {
         var qty = $(this).find(".Quantity").val().replace(',','');
-        var price = $(this).find(".Price").val().replace(',', '');
+        var price = $(this).find(".UnitPrice1").val().replace(',', '');
         var amount = qty * price;
 
         $(this).find('.Amount1').val(amount);
@@ -1107,10 +1167,12 @@ function CalSumExpense() {
 }
 function AddRowIncome() {
     if (localStorage['flagAddRow'] == 1) {
+        var dataObject = { IsJobOrder: 'true' };
         $.ajax({
             url: 'http://localhost:13131/api/IncomeMaster',
             type: 'GET',
             dataType: 'json',
+            data: dataObject,
             success: function (data) {          
                 data = JSON.parse(data);
 
@@ -1147,10 +1209,12 @@ function AddRowIncome() {
 }
 function AddRowExpense() {
     if (localStorage['flagAddRow'] == 1) {
+        var dataObject = { IsJobOrder: true };
         $.ajax({
             url: 'http://localhost:13131/api/ExpenseMaster',
             type: 'GET',
             dataType: 'json',
+            data: dataObject,
             success: function (data) {
                 data = JSON.parse(data);
 
@@ -1184,8 +1248,11 @@ function AddRowExpense() {
         });
     }
 }
-var row_index = 0;
-var col_index = 0;
+var row_index = 0;//RowCal5 Manpower
+var row_index2 = 0;//RowCal Income
+var row_index3 = 0;//RowCal1 Expense
+var col_index = 0;//RowCal5 Manpower
+
 //function SetRowCal5() {
 //    $('.RowCal5 td').click(function () {
 //        row_index = $(this).parent().index();
@@ -1196,6 +1263,12 @@ function SetRowIndex() {
     $('.RowCal5 td').click(function () {
         row_index = $(this).parent().index();
         col_index = $(this).index();
+    });
+    $('.RowCal td').click(function () {
+        row_index2 = $(this).parent().index();
+    });
+    $('.RowCal1 td').click(function () {
+        row_index3 = $(this).parent().index();
     });
 }
 function AddrowManpower() {

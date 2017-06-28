@@ -22,9 +22,10 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@JobID", jobOrderIncome.JobID);
                     cmd.Parameters.AddWithValue("@IncomeType", jobOrderIncome.IncomeType);
-                    cmd.Parameters.AddWithValue("@Detail", jobOrderIncome.Detail);
+                    cmd.Parameters.AddWithValue("@Detail", jobOrderIncome.Detail != null ? jobOrderIncome.Detail : "");
                     cmd.Parameters.AddWithValue("@UnitWeight", jobOrderIncome.UnitWeight);
                     cmd.Parameters.AddWithValue("@Qty", jobOrderIncome.Qty);
+                    cmd.Parameters.AddWithValue("@PriceList", jobOrderIncome.PriceList);
                     cmd.Parameters.AddWithValue("@UnitPrice", jobOrderIncome.UnitPrice);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderIncome.Amount);
                     cmd.Parameters.AddWithValue("@CreateBy", jobOrderIncome.CreateBy);
@@ -56,9 +57,10 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@ID", jobOrderIncome.ID);
                     cmd.Parameters.AddWithValue("@JobID", jobOrderIncome.JobID);
                     cmd.Parameters.AddWithValue("@IncomeType", jobOrderIncome.IncomeType);
-                    cmd.Parameters.AddWithValue("@Detail", jobOrderIncome.Detail);
+                    cmd.Parameters.AddWithValue("@Detail", jobOrderIncome.Detail != null ? jobOrderIncome.Detail : "");
                     cmd.Parameters.AddWithValue("@UnitWeight", jobOrderIncome.UnitWeight);
                     cmd.Parameters.AddWithValue("@Qty", jobOrderIncome.Qty);
+                    cmd.Parameters.AddWithValue("@PriceList", jobOrderIncome.PriceList);
                     cmd.Parameters.AddWithValue("@UnitPrice", jobOrderIncome.UnitPrice);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderIncome.Amount);
                     cmd.Parameters.AddWithValue("@EditBy", jobOrderIncome.EditBy);

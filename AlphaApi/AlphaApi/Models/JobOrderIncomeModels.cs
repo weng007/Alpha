@@ -25,6 +25,8 @@ namespace AlphaApi.Models
 
         public double Qty { get; set; }
 
+        public double PriceList { get; set; }
+
         public double UnitPrice { get; set; }
 
         public double Amount { get; set; }

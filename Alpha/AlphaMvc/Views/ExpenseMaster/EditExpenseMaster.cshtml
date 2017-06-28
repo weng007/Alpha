@@ -16,8 +16,12 @@
                     <input type="text" id="txtDetail" class="field-divided" placeholder="" />
                 </li>
                 <li>
-                    <label>Price</label>
+                    <label>Price List<span class="required">*</span></label>
                     <input type="text" id="txtPrice" class="field-divided text-floatleft text-size120 text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" value="0" />&nbsp;<label>Bath</label>
+                </li>
+                <li>
+                    <label>Sequence<span class="required">*</span></label>
+                    <input type="text" id="txtSeq" class="field-divided text-size40 text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" value="1" />
                 </li>
                 <li>
                     <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'ExpenseMaster', @Request.Params["id"])">Save</button>

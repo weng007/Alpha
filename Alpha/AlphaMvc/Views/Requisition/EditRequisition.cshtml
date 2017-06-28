@@ -1,4 +1,8 @@
 ﻿@{
+    ViewBag.Title = "EditRequisition";
+}
+
+@{
     ViewBag.Title = "EditJobOrder";
 }
 
@@ -61,20 +65,20 @@
                 <label class="label-2" style="margin-right: 43%;">วันที่</label>&nbsp;<label class="label-2">ยานพาหนะ<span class="required">*</span></label>
             </li>
             <li>
-                <input type="text" id="dtJobDate" class="field-divided" placeholder="วันที่" required/>&nbsp;<input type="text" id="txtCar" name="field1" class="field-divided" placeholder="รถปิกอัพ" />
+                <input type="text" id="dtJobDate" class="field-divided" placeholder="วันที่" required />&nbsp;<input type="text" id="txtCar" name="field1" class="field-divided" placeholder="รถปิกอัพ" />
             </li>
             <li>
                 <label class="label-2">วันเริ่มทำงาน</label>&nbsp;<label class="label-2">วันจบงาน<span class="required">*</span></label>
             </li>
             <li>
-                <input type="text" id="dtSWorking" class="field-divided" placeholder="วันเริ่มทำงาน" required/>&nbsp;<input type="text" id="dtEWorking" class="field-divided" placeholder="วันจบงาน" onchange="DateWorking()" required/>
+                <input type="text" id="dtSWorking" class="field-divided" placeholder="วันเริ่มทำงาน" required />&nbsp;<input type="text" id="dtEWorking" class="field-divided" placeholder="วันจบงาน" onchange="DateWorking()" required />
             </li>
             <li>
                 <label class="label-4">รับงานโดย<span class="required">*</span></label>&nbsp;<label class="label-2">ออกโดย<span class="required">*</span></label>
 
             </li>
             <li>
-                <input type="text" id="txtJobBy" name="field1" class="field-divided" placeholder="รับงานโดย" required/>&nbsp;<input type="text" id="txtIssuedBy" name="field1" class="field-divided" placeholder="ออกโดย" required/>
+                <input type="text" id="txtJobBy" name="field1" class="field-divided" placeholder="รับงานโดย" required />&nbsp;<input type="text" id="txtIssuedBy" name="field1" class="field-divided" placeholder="ออกโดย" required />
             </li>
             <li>
                 <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
@@ -95,8 +99,8 @@
                 <label>ลูกค้า</label>
                 <input type="text" id="txtCustomerName" class="field-divided textbox-size100" placeholder="ลูกค้า/บริษัท" disabled />&nbsp;
                 @*<a href="#" id="imgCustomer" data-toggle="modal" data-target="#customerDialog" onclick="BrowseCustomer">
-                    <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
-                </a>*@
+                        <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
+                    </a>*@
                 <input type="hidden" id="hidCustID" />
                 <input type="hidden" id="hidBorroeeJobID" />
             </li>
@@ -152,9 +156,9 @@
                                 <li>Income / Expense</li>
                                 <li>ManPower</li>
                                 <li>Requisition</li>
-                                <li>Sale Order</li>
-                                <li>Invoice</li>
-                                <li>Receipt</li>                            
+                                <li style="display:none;">Sale Order</li>
+                                <li style="display:none;">Invoice</li>
+                                <li style="display:none;">Receipt</li>
                                 @*<li>Attach File</li>*@
                             </ul>
                             <div class="resp-tabs-container hor_1">
@@ -241,7 +245,7 @@
                                                         </td>
 
                                                         <td>
-                                                            <div class="clone-1"><img id="cloneRowIncome"  class="cloneRowIncome row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                                            <div class="clone-1"><img id="cloneRowIncome" class="cloneRowIncome row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
                                                         </td>
                                                         <td style="padding-right: 5px;">
                                                             <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
@@ -354,7 +358,7 @@
                                                         <td>
                                                             <select class="unitSelect"></select>
                                                         </td>
-                                                        <td> 
+                                                        <td>
                                                             <input type="text" id="txtQty" name="Qty" class="Quantity text-size80" onchange="CalSumExpense()">
                                                         </td>
                                                         <td class="hidecolumn">
@@ -495,7 +499,7 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtName" name="txtName" class="FName text-size140"  />
+                                                            <input type="text" id="txtName" name="txtName" class="FName text-size140" />
                                                         </td>
                                                         <td class="hidecolumn">
                                                             <input id="ManpowerID" type="text" value="" class="ManpowerID" disabled />
@@ -503,7 +507,7 @@
                                                         <td class="hidecolumn">
                                                             <input id="txtTechnicianID" type="text" value="" class="TechnicianID" disabled />
                                                         </td>
-                                                        <td  class="hidecolumn">
+                                                        <td class="hidecolumn">
                                                             <input id="JobID" type="text" value="" class="JobID" disabled />
                                                         </td>
                                                         <td class="hidecolumn">
@@ -516,19 +520,19 @@
                                                             <input id="txtTechnicianType" type="text" value="" class="TechnicianType text-size140 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtManDate" class="ManDate text-size110" onchange="GetManpowerHour()" onblur="GetDay()"/>
+                                                            <input type="text" id="txtManDate" class="ManDate text-size110" onchange="GetManpowerHour()" onblur="GetDay()" />
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtManDay" class="ManDay select-size50-height23 txtdisablerow" disabled />
                                                             @*<select class="ManDay select-size50">
-                                                                <option value="1">อา</option>
-                                                                <option value="2">จ</option>
-                                                                <option value="3">อ</option>
-                                                                <option value="3">พ</option>
-                                                                <option value="3">พฤ</option>
-                                                                <option value="3">ศ</option>
-                                                                <option value="3">ส</option>
-                                                            </select>*@
+                                                                    <option value="1">อา</option>
+                                                                    <option value="2">จ</option>
+                                                                    <option value="3">อ</option>
+                                                                    <option value="3">พ</option>
+                                                                    <option value="3">พฤ</option>
+                                                                    <option value="3">ศ</option>
+                                                                    <option value="3">ส</option>
+                                                                </select>*@
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtManTime" name="txtManTime" class="ManTime text-size60 textcenter">
@@ -546,19 +550,19 @@
                                                             <input id="chkBreak2" class="chkBreak2" type="checkbox" />
                                                         </td>
                                                         <td>
-                                                            <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled/>
+                                                            <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtManNormal" type="text" value="" class="ManNormal text-size90 textcenter txtdisablerow" disabled/>
+                                                            <input id="txtManNormal" type="text" value="" class="ManNormal text-size90 textcenter txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtManPremium" type="text" value="" class="ManPremium text-size90 textcenter txtdisablerow" disabled/>
+                                                            <input id="txtManPremium" type="text" value="" class="ManPremium text-size90 textcenter txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtManPremium2" type="text" value="" class="ManPremium2 text-size90 textcenter txtdisablerow" disabled/>
+                                                            <input id="txtManPremium2" type="text" value="" class="ManPremium2 text-size90 textcenter txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtManSpecial" type="text" value="" class="ManSpecial text-size90 textcenter txtdisablerow" disabled/>
+                                                            <input id="txtManSpecial" type="text" value="" class="ManSpecial text-size90 textcenter txtdisablerow" disabled />
                                                         </td>
                                                         <td>
                                                             <div class="clone-1"><img class="cloneRowManpower row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -587,7 +591,7 @@
                                                             <input id="txtPositionID" type="text" value="" class="PositionID" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtName" name="txtName" class="FName text-size140"/>
+                                                            <input type="text" id="txtName" name="txtName" class="FName text-size140" />
                                                         </td>
                                                         <td>
                                                             <input id="txtCardID" type="text" value="" class="CardID text-size120 txtdisablerow" disabled />
@@ -596,19 +600,19 @@
                                                             <input id="txtTechnicianType" type="text" value="" class="TechnicianType text-size120 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtManDate"  class="ManDate text-size110" onchange="GetManpowerHour()" onblur="GetDay()"/>
+                                                            <input type="text" id="txtManDate" class="ManDate text-size110" onchange="GetManpowerHour()" onblur="GetDay()" />
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtManDay" class="ManDay select-size50-height23 txtdisablerow" disabled />
                                                             @*<select class="ManDay select-size50">
-                                                                <option value="0">อา</option>
-                                                                <option value="1">จ</option>
-                                                                <option value="2">อ</option>
-                                                                <option value="3">พ</option>
-                                                                <option value="4">พฤ</option>
-                                                                <option value="5">ศ</option>
-                                                                <option value="6">ส</option>
-                                                            </select>*@
+                                                                    <option value="0">อา</option>
+                                                                    <option value="1">จ</option>
+                                                                    <option value="2">อ</option>
+                                                                    <option value="3">พ</option>
+                                                                    <option value="4">พฤ</option>
+                                                                    <option value="5">ศ</option>
+                                                                    <option value="6">ส</option>
+                                                                </select>*@
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtManTime" name="txtManTime" class="ManTime text-size60 textcenter">
@@ -626,19 +630,19 @@
                                                             <input id="chkBreak2" class="chkBreak2" type="checkbox" />
                                                         </td>
                                                         <td>
-                                                            <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled/>
+                                                            <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtManNormal" type="text" value="" class="ManNormal text-size90 textcenter txtdisablerow" disabled/>
+                                                            <input id="txtManNormal" type="text" value="" class="ManNormal text-size90 textcenter txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtManPremium" type="text" value="" class="ManPremium text-size90 textcenter txtdisablerow" disabled/>
+                                                            <input id="txtManPremium" type="text" value="" class="ManPremium text-size90 textcenter txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtManPremium2" type="text" value="" class="ManPremium2 text-size90 textcenter txtdisablerow" disabled/>
+                                                            <input id="txtManPremium2" type="text" value="" class="ManPremium2 text-size90 textcenter txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtManSpecial" type="text" value="" class="ManSpecial text-size90 textcenter txtdisablerow" disabled/>
+                                                            <input id="txtManSpecial" type="text" value="" class="ManSpecial text-size90 textcenter txtdisablerow" disabled />
                                                         </td>
                                                         <td>
                                                             <div class="clone-1"><img class="cloneRowManpower row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -977,7 +981,7 @@
 
         <ul class="form-style-1">
             <li>
-                <button type="button" id="btnSave"  class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button>
+                <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button>
                 <a onclick="OpenRptJobOrder(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>
                 @*<button type="button" id="btnSave" class="btnCreate" onclick="OpenRptJobOrder(@Request.Params["id"])" formtarget="_blank"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-2" id="BDCCreate" /></button>*@
             </li>
@@ -985,7 +989,7 @@
     </form>
 }
 <script type="text/javascript">
-    
+
     $(document).ready(function () {
         var input = window.location.href;
         var after = input.split('?')[1]
@@ -996,8 +1000,8 @@
         //SetRowCal5();
         GetContact(@Request.Params["id"]);
         GetData(@Request.Params["id"]);
-        GetJobOrderBorrow(@Request.Params["id"]); 
-        
+        GetJobOrderBorrow(@Request.Params["id"]);
+
     });
     function GetDay() {
         var ManDate = $('.ManDate').eq(row_index).val();

@@ -21,7 +21,8 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_IncomeMaster_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Detail", incomeMaster.Detail);
-                    cmd.Parameters.AddWithValue("@Price", incomeMaster.Price);
+                    cmd.Parameters.AddWithValue("@PriceList", incomeMaster.PriceList);
+                    cmd.Parameters.AddWithValue("@Seq", incomeMaster.Seq);
                     cmd.Parameters.AddWithValue("@CreateBy", incomeMaster.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", incomeMaster.EditBy);
                     conObj.Open();
@@ -48,7 +49,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", incomeMaster.ID);
                     cmd.Parameters.AddWithValue("@Detail", incomeMaster.Detail);
-                    cmd.Parameters.AddWithValue("@Price", incomeMaster.Price);
+                    cmd.Parameters.AddWithValue("@PriceList", incomeMaster.PriceList);
+                    cmd.Parameters.AddWithValue("@Seq", incomeMaster.Seq);
                     cmd.Parameters.AddWithValue("@EditBy", incomeMaster.EditBy);
                     conObj.Open();
                     result = cmd.ExecuteNonQuery();
@@ -145,6 +147,32 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-
+        public DataSet GetIncome()
+        {
+            string result = "";
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_GetIncomeMaster", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
+                    return ds;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
     }
 }

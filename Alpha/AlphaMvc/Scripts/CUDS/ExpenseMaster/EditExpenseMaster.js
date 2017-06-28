@@ -18,7 +18,8 @@ function GetData(val) {
        success: function (data) {
            data = JSON.parse(data);
            $("#txtDetail").val(data.Table[0].Detail);
-           $("#txtPrice").val(data.Table[0].Price);
+           $("#txtPrice").val(data.Table[0].PriceList);
+           $("#txtSeq").val(data.Table[0].Seq);
            CheckAuthorization();
        },
        error: function (msg) {
@@ -28,7 +29,7 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var dataObject = { ID: val, Detail: $("#txtDetail").val(), Price: $("#txtPrice").val(), EditBy: localStorage['UserID'] }
+    var dataObject = { ID: val, Detail: $("#txtDetail").val(), PriceList: $("#txtPrice").val(), Seq: $("#txtSqe").val(), EditBy: localStorage['UserID'] }
         $.ajax(
         {
             url: 'http://localhost:13131/api/ExpenseMaster',

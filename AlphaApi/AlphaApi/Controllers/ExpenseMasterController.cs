@@ -39,6 +39,21 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [HttpGet]
+        public string Get(string IsIncome)
+        {
+            string[] str = IsIncome.Split('&');
+            var response = expenseMasterdb.GetPriceList(Convert.ToInt32(str[0]), str[1]);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [HttpGet]
+        public string Get(bool IsJobOrder)
+        {
+            var response = expenseMasterdb.GetExpense();
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(ExpenseMasterModels expenseModel)

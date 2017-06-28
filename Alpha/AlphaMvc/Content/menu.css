@@ -15,13 +15,15 @@
     position: absolute;
 }
 .menuul {
+    width: 1400px;
+    font-size: 13px;
 	list-style-type:none;
 	margin:0;
 	padding:0;
 	position: absolute;
     /*margin-left: 40%;*/
     /*margin-left: 10%;*/
-    margin-left: 6%;
+    margin-left: -4%;
     /*margin-top: 70px;*/
     z-index: 1;
     margin-top: 110px;

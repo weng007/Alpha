@@ -290,6 +290,15 @@
     .floatright{
         float:right;
     }
+    .text-size20 {
+            width: 20px !important;
+        }
+    .text-size30 {
+            width: 30px !important;
+        }
+    .text-size40 {
+            width: 40px !important;
+        }
     .text-size50 {
             width: 50px !important;
         }
@@ -298,6 +307,9 @@
         }
     .text-size80 {
             width:80px !important;
+        }
+    .text-size70 {
+            width:70px !important;
         }
     .text-size90 {
             width:90px !important;

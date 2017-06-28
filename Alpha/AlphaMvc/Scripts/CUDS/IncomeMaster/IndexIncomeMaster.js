@@ -51,7 +51,8 @@ $(document).ready(function () {
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn nopointer">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Detail + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].Price + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].PriceList + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Seq + '</td>';
                 html += '<td class="nopointer">';
                 html += '<a href="/IncomeMaster/EditIncomeMaster?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgAdminUpdate"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'IncomeMaster'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgAdminDelete"/></a>';

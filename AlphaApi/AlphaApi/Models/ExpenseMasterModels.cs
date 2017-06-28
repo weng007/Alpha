@@ -13,7 +13,9 @@ namespace AlphaApi.Models
 
         public string Detail { get; set; }
 
-        public decimal Price { get; set; }
+        public decimal PriceList { get; set; }
+
+        public int Seq { get; set; }
 
         public int CreateBy { get; set; }
 

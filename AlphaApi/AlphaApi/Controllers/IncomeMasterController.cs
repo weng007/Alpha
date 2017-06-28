@@ -38,6 +38,13 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [HttpGet]
+        public string Get(string IsJobOrder)
+        {
+            var response = incomeMaster.GetIncome();
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(IncomeMasterModels incomeModel)
