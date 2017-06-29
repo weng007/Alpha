@@ -89,7 +89,7 @@
                 }
             });
         },
-        minLength: 2,
+        minLength: 0,
         select: function (event, ui) {
             //var totalPosition = 0;
             $(this).val(ui.item.label);
@@ -1326,7 +1326,7 @@ function AddrowManpower() {
                     }
                 });
             },
-            minLength: 3,
+            minLength: 0,
             select: function (event, ui) {
                 $(this).val(ui.item.label);
                 $('.CardID').eq(row_index).val(ui.item.IDCard);
