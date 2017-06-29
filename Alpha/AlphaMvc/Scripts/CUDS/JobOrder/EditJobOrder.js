@@ -594,7 +594,7 @@ function GetData(val) {
                    $(this).find('.UnitWeight').val(data.Table1[i].UnitWeight).change();
                    $(this).find('.Quantity').val(data.Table1[i].Qty);
                    $(this).find('.PriceList').val(data.Table1[i].PriceList);
-                   $(this).find('.UnitPrice').val(data.Table1[i].UnitPrice);
+                   $(this).find('.UnitPrice').val(data.Table1[i].UnitPrice).number(true,0);
                    $(this).find('.Amount').val(data.Table1[i].Amount).number(true, 2);
                });
                CalSum();
@@ -619,7 +619,7 @@ function GetData(val) {
                    $(this).find('.unitSelect').val(data.Table2[i].UnitWeight).change();
                    $(this).find('.Quantity').val(data.Table2[i].Qty);
                    $(this).find('.PriceList1').val(data.Table2[i].PriceList);
-                   $(this).find('.UnitPrice1').val(data.Table2[i].UnitPrice);
+                   $(this).find('.UnitPrice1').val(data.Table2[i].UnitPrice).number(true,0);
                    $(this).find('.Amount1').val(data.Table2[i].Amount).number(true, 2);
                });
                CalSumExpense();
@@ -1122,11 +1122,13 @@ function CalSum() {
         var price = $(this).find(".UnitPrice").val().replace(',', '');
         var amount = qty * price;
 
-        $(this).find('.Amount').val(amount);
+        $(this).find('.Amount').val(amount).number(true,2);
         total = total + parseFloat($(this).find('.Amount').val());
     });
         
     Discount = $('#txtDiscount').val();
+    $('#txtDiscount').val(Discount).number(true, 0);
+
     SubTotal = total - Discount;
     $('#txtTotal').val(total).number(true, 2);
     $('#txtSubTotal').val(SubTotal).number(true, 2);
