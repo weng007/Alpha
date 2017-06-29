@@ -292,7 +292,7 @@ function GetPriceList() {
             if (data.Table.length > 0) {
 
                 $('.PriceList').eq(row_index2).val(data.Table[0].PriceList);
-                $('.UnitPrice').eq(row_index2).val(data.Table[0].PriceList);
+                $('.UnitPrice').eq(row_index2).val(data.Table[0].PriceList).number(true,0);
             }
         },
         error: function (msg) {
@@ -317,7 +317,7 @@ function GetExpensePriceList() {
             if (data.Table.length > 0) {
 
                 $('.PriceList1').eq(row_index3).val(data.Table[0].PriceList);
-                $('.UnitPrice1').eq(row_index3).val(data.Table[0].PriceList);
+                $('.UnitPrice1').eq(row_index3).val(data.Table[0].PriceList).number(true,0);
             }
         },
         error: function (msg) {
@@ -729,7 +729,7 @@ function GetData(val) {
                    $(this).find('.SaleOrderID').val(data.Table3[i].ID);
                    $(this).find('.JobID').val(data.Table3[i].JobID);
                    $(this).find('.SaleOrderNo').val(data.Table3[i].SaleOrderNo);
-                   $(this).find('.Amount2').val(data.Table3[i].Amount);
+                   $(this).find('.Amount2').val(data.Table3[i].Amount).number(true,2);
                });
            }
 
@@ -746,7 +746,7 @@ function GetData(val) {
                    $(this).find('.JobID').val(data.Table4[i].JobID);
                    $(this).find('.SaleOrderNo').val(data.Table4[i].SaleOrderNo);
                    $(this).find('.InvoiceNo').val(data.Table4[i].InvoiceNo);
-                   $(this).find('.Amount3').val(data.Table4[i].Amount);
+                   $(this).find('.Amount3').val(data.Table4[i].Amount).number(true,2);
                });
            }
 
@@ -763,7 +763,7 @@ function GetData(val) {
                    $(this).find('.JobID').val(data.Table5[i].JobID);
                    $(this).find('.ReceiptNo').val(data.Table5[i].ReceiptNo);
                    $(this).find('.InvoiceNo').val(data.Table5[i].InvoiceNo);
-                   $(this).find('.Amount4').val(data.Table5[i].Amount);
+                   $(this).find('.Amount4').val(data.Table5[i].Amount).number(true,2);
                });
            }
 
