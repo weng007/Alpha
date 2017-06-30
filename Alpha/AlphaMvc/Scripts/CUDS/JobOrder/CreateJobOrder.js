@@ -367,7 +367,6 @@ function pad(str, max) {
 }
 function GetPriceList()
 {
-    alert('test1');
     var IncomeID = $('.Select1').eq(row_index2).val();
     var dataObject = { IsIncome: IncomeID + '&' + '0' }
     console.log(dataObject);
@@ -391,6 +390,7 @@ function GetPriceList()
         }
 
     });
+    CalSum();
 }
 function GetExpensePriceList() {
     var ExpenseID = $('.ExpenseSelect').eq(row_index3).val();
@@ -414,8 +414,8 @@ function GetExpensePriceList() {
         error: function (msg) {
             alert(msg);
         }
-
     });
+    CalSumExpense();
 }
 function GetManpowerHour() {
     var TechnicianID = $('.TechnicianID').eq(row_index).val();
@@ -567,8 +567,8 @@ function CreateData() {
             dataObject.Detail = $(this).find(".Detail").val();
             dataObject.UnitWeight = $(this).find('.UnitWeight').find(":selected").val();
             dataObject.Qty = $(this).find(".Quantity").val();
-            alert("PriceList " + $(this).find(".PriceList").val());
-            alert("UnitPrice " + $(this).find(".UnitPrice").val());
+            //alert("PriceList " + $(this).find(".PriceList").val());
+            //alert("UnitPrice " + $(this).find(".UnitPrice").val());
             dataObject.PriceList = $(this).find(".PriceList").val();
             dataObject.UnitPrice = $(this).find(".UnitPrice").val();
             dataObject.Amount = $(this).find(".Amount").val();
@@ -601,8 +601,8 @@ function CreateData() {
             dataObject.ExpenseDetail = $(this).find(".ExpenseDetail").val();
             dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
             dataObject.Qty = $(this).find(".Quantity").val();
-            alert("PriceList1 " + $(this).find(".PriceList1").val());
-            alert("UnitPrice1 " + $(this).find(".UnitPrice1").val());
+            //alert("PriceList1 " + $(this).find(".PriceList1").val());
+            //alert("UnitPrice1 " + $(this).find(".UnitPrice1").val());
             dataObject.PriceList = $(this).find(".PriceList1").val();
             dataObject.UnitPrice = $(this).find(".UnitPrice1").val();
             dataObject.Amount = $(this).find(".Amount1").val();

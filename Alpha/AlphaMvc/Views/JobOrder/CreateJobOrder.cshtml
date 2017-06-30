@@ -123,7 +123,7 @@
                 
                 <li>
                     <label>รายละเอียดงาน</label>
-                    <textarea name="field5" id="txtDetail" class="field-long field-textarea"></textarea>
+                    <textarea name="field5" id="txtDetail" class="field-long field-textarea" style="height: 80px;"></textarea>
                 </li>
 
             </ul>
@@ -131,7 +131,7 @@
 
                 <li>
                     <label>ลูกค้า<span class="required">*</span></label>
-                    <input type="text" id="txtCustomerName" class="field-divided textbox-size100" placeholder="ลูกค้า/บริษัท" disabled />&nbsp;
+                    <input type="text" id="txtCustomerName" class="field-divided textbox-size100" placeholder="ลูกค้า/บริษัท" disabled />
                     @*<a href="#" data-toggle="modal" data-target="#customerDialog" onclick="BrowseCustomer()">
                         <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage"  />
                     </a>*@
@@ -141,11 +141,11 @@
                     <label class="label-2" style="margin-right: 37%;">โทรศัพท์</label>
                 </li>
                 <li>
-                    <input type="text" id="txtTel" name="field2" class="field-divided" placeholder="" disabled />
+                    <input type="text" id="txtTel" name="field2" class="field-divided textbox-size100" placeholder="" disabled />
                 </li>
                 <li>
                     <label class="label-2" style="margin-right: 37%;">แฟกซ์</label>
-                    <input type="text" name="field1" id="txtFax" class="field-divided" placeholder="" disabled />
+                    <input type="text" name="field1" id="txtFax" class="field-divided textbox-size100" placeholder="" disabled />
                 </li>
                 <li>
                     <label class="label-2" style="margin-right: 29%;">บุคคลติดต่อ</label>&nbsp;<label class="label-2" style="margin-right: 2%;">ผู้ประสานงาน</label>
@@ -231,15 +231,15 @@
                                                         <tfoot>
                                                             <tr>
                                                                 <td colspan="7" class="ftTotal textalign">Total</td>
-                                                                <td colspan="3"><input id="txtTotal" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
+                                                                <td colspan="3"><input id="txtTotal" type="text" value="" class="text-size125 txtdisablefooter" disabled /></td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="7" class="ftDiscount textalign">Discount</td>
-                                                                <td colspan="3"><input id="txtDiscount" type="text" value="" class="text-size168 textright" onchange="CalSum()" /></td>
+                                                                <td colspan="3"><input id="txtDiscount" type="text" value="" class="text-size123 textright" onchange="CalSum()" /></td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="7" class="ftSubTotal textalign">Sub Total</td>
-                                                                <td colspan="3"><input id="txtSubTotal" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
+                                                                <td colspan="3"><input id="txtSubTotal" type="text" value="" class="text-size125 txtdisablefooter" disabled /></td>
                                                             </tr>
                                                         </tfoot>
                                                         <tbody id="tBodyRowIncome">
@@ -264,7 +264,7 @@
                                                                     <select class="UnitWeight text-size80"></select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtQty" class="Quantity text-size80 textright" onchange="CalSum()" />
+                                                                    <input type="text" id="txtQty" class="Quantity text-size50 textright" onchange="CalSum()" />
                                                                 </td>
                                                                 <td class="hidecolumn">
                                                                     <input type="text" id="txtPriceList" class="PriceList text-size50 textright" />
@@ -327,7 +327,7 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <a id="add-row6" href="#" onblur="SetRowIndex()" onmouseout="AddRowIncome()">+ Add Row</a>
+                                                <a id="add-row6" href="#" onblur="SetRowIndex()" onclick="AddRowIncome()">+ Add Row</a>
                                                 @*<button id="add-row6" onclick="AddRowIncome()" class="btn btn-primary">Add Row</button>*@
                                                 @* Expense *@
                                                 <table class="tableexpense">
@@ -362,7 +362,7 @@
                                                         <tfoot>
                                                             <tr>
                                                                 <td colspan="7" class="ftTotal textalign">Total</td>
-                                                                <td colspan="3"><input id="txtTotalExpense" type="text" value="" class="text-size170 txtdisablefooter" disabled /></td>
+                                                                <td colspan="3"><input id="txtTotalExpense" type="text" value="" class="text-size125 txtdisablefooter" disabled /></td>
                                                             </tr>
                                                         </tfoot>
                                                         <tbody>
@@ -380,7 +380,7 @@
                                                                     <select id="cmbExpenseType" class="ExpenseSelect" onchange="GetExpensePriceList()"></select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtExpenseDetail" class="ExpenseDetail text-size180 textleft" />
+                                                                    <input type="text" id="txtExpenseDetail" class="ExpenseDetail text-size200 textleft" />
                                                                 </td>
                                                                 <td>
                                                                     <select class="unitSelect" ></select>
@@ -420,7 +420,7 @@
                                                                     <select id="cmbExpenseType" class="ExpenseSelect" onchange="GetExpensePriceList()"></select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtExpenseDetail" class="ExpenseDetail text-size180 textleft" />
+                                                                    <input type="text" id="txtExpenseDetail" class="ExpenseDetail text-size200 textleft" />
                                                                 </td>
                                                                 <td>
                                                                     <select class="unitSelect"></select>
@@ -448,7 +448,7 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <a id="add-row7" href="#" onblur="SetRowIndex()" onmouseout="AddRowExpense()">+ Add Row</a>
+                                                <a id="add-row7" href="#" onblur="SetRowIndex()" onclick="AddRowExpense()">+ Add Row</a>
                                                 @*<button id="add-row7" onclick="AddRowExpense()" class="btn btn-primary">Add Row</button>*@
                                                 @*<div class="myDIV">*@
                                                 <table class="tableexpense">
@@ -553,11 +553,11 @@
                                                                 <td>
                                                                     <input type="text" id="txtWorkingTo" name="txtWorkingTo" class="WorkingTo timepicker text-size60 textcenter" onchange="GetManpowerHour()">
                                                                 </td>
-                                                                <td>
-                                                                    <input id="chkBreak1" class="chkBreak1" type="checkbox" />
+                                                                <td class="text-size100">
+                                                                    <input id="chkBreak1" class="chkBreak1" type="checkbox" style="margin-left: 20px;     margin-right: 20px;"/>
                                                                 </td>
-                                                                <td>
-                                                                    <input id="chkBreak2" class="chkBreak2" type="checkbox" />
+                                                                <td class="text-size100">
+                                                                    <input id="chkBreak2" class="chkBreak2" type="checkbox" style="margin-left: 20px;     margin-right: 20px;"/>
                                                                 </td>
                                                                 <td>
                                                                     <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled />
@@ -627,11 +627,11 @@
                                                                 <td>
                                                                     <input type="text" id="txtWorkingTo" name="txtWorkingTo" class="WorkingTo timepicker text-size60 textcenter" onchange="GetManpowerHour()">
                                                                 </td>
-                                                                <td>
-                                                                    <input id="chkBreak1" class="chkBreak1" type="checkbox" />
+                                                                <td class="text-size100">
+                                                                    <input id="chkBreak1" class="chkBreak1" type="checkbox" style="margin-left: 20px;     margin-right: 20px;"/>
                                                                 </td>
-                                                                <td>
-                                                                    <input id="chkBreak2" class="chkBreak2" type="checkbox" />
+                                                                <td class="text-size100">
+                                                                    <input id="chkBreak2" class="chkBreak2" type="checkbox" style="margin-left: 20px;     margin-right: 20px;"/>
                                                                 </td>
                                                                 <td>
                                                                     <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled/>
