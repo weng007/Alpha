@@ -238,7 +238,7 @@
                                                             <input type="text" id="txtPriceList" class="PriceList text-size80 textright" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtUnitPrice" value="0" class="UnitPrice text-size100 textright" onchange="CalSum()" onblur="convertFloat('.UnitPrice')" />
+                                                            <input type="text" id="txtUnitPrice" value="0" class="UnitPrice text-size100 textright" onchange="CalSum()" onblur="convertFloat('.UnitPrice',2)" />
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtAmount" value="0" disabled class="Amount text-size120 txtdisablerow">
@@ -281,7 +281,7 @@
                                                             <input type="text" id="txtPriceList" class="PriceList text-size80 textright" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtUnitPrice" value="0" class="UnitPrice text-size100 textright" onchange="CalSum()" onblur="convertFloat('.UnitPrice')"/>
+                                                            <input type="text" id="txtUnitPrice" value="0" class="UnitPrice text-size100 textright" onchange="CalSum()" onblur="convertFloat('.UnitPrice',2)"/>
                                                             
                                                         </td>
                                                         <td>
@@ -366,7 +366,7 @@
                                                             <input type="text" id="txtPriceList1" class="PriceList1 text-size80 textright" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtUnitPrice1" value="0" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()" onblur="convertFloat('.UnitPrice1')" />
+                                                            <input type="text" id="txtUnitPrice1" value="0" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()" onblur="convertFloat('.UnitPrice1',3)" />
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtAmount" value="0" name="Amount" class="Amount1 text-size120 txtdisablerow" disabled />
@@ -401,13 +401,13 @@
                                                             <select class="unitSelect"></select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtQty" name="Qty" class="Quantity text-size50" onchange="CalSumExpense()">
+                                                            <input type="text" id="txtQty" name="Qty" value="0" class="Quantity text-size50" onchange="CalSumExpense()">
                                                         </td>
                                                         <td class="hidecolumn">
                                                             <input type="text" id="txtPriceList1" class="PriceList1 text-size80 textright" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtUnitPrice1" value="0" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()" onblur="convertFloat('.UnitPrice1')" />
+                                                            <input type="text" id="txtUnitPrice1" value="0" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()" onblur="convertFloat('.UnitPrice1',3)" />
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtAmount" value="0" name="Amount" class="Amount1 text-size120 txtdisablerow" disabled />
@@ -734,7 +734,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2')">
+                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2',0)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowSaleOrder row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -760,7 +760,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2')">
+                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2',0)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowSaleOrder row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -814,7 +814,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3')">
+                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3',0)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowInvoice row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -843,7 +843,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3')">
+                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3',0)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowInvoice row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -897,7 +897,7 @@
                                                         <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4')">
+                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4',0)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowReceipt row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -926,7 +926,7 @@
                                                         <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4')">
+                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4',0)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowReceipt row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>

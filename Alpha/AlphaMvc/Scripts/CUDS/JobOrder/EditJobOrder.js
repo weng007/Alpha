@@ -242,7 +242,6 @@ $(document).ready(function () {
 
 });
 function GetContact(val) {
-    //alert(val);
     var dataObject = { JobID: val };
     $.ajax({
         url: 'http://localhost:13131/api/JobOrder',
@@ -1122,7 +1121,7 @@ function ConvertAmount(val)
     {
         Amount = parseFloat(Amount, 10);
     }   
-    //alert(Amount);
+
     return Amount;
 }
 function CalSum() {
@@ -1151,10 +1150,10 @@ function CalSum() {
 
     Profit =  SubTotal - parseFloat($('#txtTotalExpense').val());
     if (Profit < 0) {
-        $("#txtProfit").formatNumber({format:"#,###.00", locale:"us"}).val(Profit).css('color', 'red');
+        $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
-        $("#txtProfit").formatNumber({format:"#,###.00", locale:"us"}).val(Profit).css('color', 'black');
+        $("#txtProfit").val(Profit).css('color', 'black').formatNumber({format:"#,###.00", locale:"us"});
     }
 }
 function CalSumExpense() {
@@ -1172,10 +1171,10 @@ function CalSumExpense() {
     });
 
     $('.Amount1').formatNumber({ format: "#,###.00", locale: "us" });
-    Profit = parseFloat($('#txtSubTotal').val()) - parseFloat(totalExpense);
+    SubTotal = ConvertAmount($('#txtSubTotal').val());   
+    Profit = SubTotal - totalExpense;
     $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" })
-    $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
-    
+    $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });  
 
     if (Profit < 0) {
         $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
@@ -1495,9 +1494,17 @@ function GetManpowerHour() {
 function Redirect() {
     window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();
 }
-function convertFloat(str)
+function convertFloat(str, num)
 {
-    $(str).eq(row_Index3).val().formatNumber({format:"#,###,###.00", locale:"us"});
+    if (num == 2) {
+        $(str).eq(row_index2).val($(str).eq(row_index2).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
+    else if (num == 3) {
+        $(str).eq(row_index3).val($(str).eq(row_index3).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
+    else {
+        $(str).val($(str).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
 }
 function DateWorking() {
     if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {
