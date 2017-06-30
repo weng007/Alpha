@@ -2,7 +2,7 @@
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
     CheckAuthorization();
-    $('.Number').number(true, 2);
+
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
         $("#hidCustID").val($(this).find("td:eq(1)").text());
@@ -292,7 +292,7 @@ function GetPriceList() {
             if (data.Table.length > 0) {
 
                 $('.PriceList').eq(row_index2).val(data.Table[0].PriceList);
-                $('.UnitPrice').eq(row_index2).val(data.Table[0].PriceList).number(true,0);
+                $('.UnitPrice').eq(row_index2).val(data.Table[0].PriceList).formatNumber({ format: "#,###.00", locale: "us" });
             }
         },
         error: function (msg) {
@@ -317,7 +317,7 @@ function GetExpensePriceList() {
             if (data.Table.length > 0) {
 
                 $('.PriceList1').eq(row_index3).val(data.Table[0].PriceList);
-                $('.UnitPrice1').eq(row_index3).val(data.Table[0].PriceList).number(true,0);
+                $('.UnitPrice1').eq(row_index3).val(data.Table[0].PriceList).formatNumber({ format: "#,###.00", locale: "us" });
             }
         },
         error: function (msg) {
@@ -594,8 +594,8 @@ function GetData(val) {
                    $(this).find('.UnitWeight').val(data.Table1[i].UnitWeight).change();
                    $(this).find('.Quantity').val(data.Table1[i].Qty);
                    $(this).find('.PriceList').val(data.Table1[i].PriceList);
-                   $(this).find('.UnitPrice').val(data.Table1[i].UnitPrice).number(true,0);
-                   $(this).find('.Amount').val(data.Table1[i].Amount).number(true, 2);
+                   $(this).find('.UnitPrice').val(data.Table1[i].UnitPrice).formatNumber({ format: "#,###.00", locale: "us" });
+                   $(this).find('.Amount').val(data.Table1[i].Amount).formatNumber({ format: "#,###.00", locale: "us" });
                });
                CalSum();
            }
@@ -619,8 +619,8 @@ function GetData(val) {
                    $(this).find('.unitSelect').val(data.Table2[i].UnitWeight).change();
                    $(this).find('.Quantity').val(data.Table2[i].Qty);
                    $(this).find('.PriceList1').val(data.Table2[i].PriceList);
-                   $(this).find('.UnitPrice1').val(data.Table2[i].UnitPrice).number(true,0);
-                   $(this).find('.Amount1').val(data.Table2[i].Amount).number(true, 2);
+                   $(this).find('.UnitPrice1').val(data.Table2[i].UnitPrice).formatNumber({ format: "#,###.00", locale: "us" });
+                   $(this).find('.Amount1').val(data.Table2[i].Amount).formatNumber({ format: "#,###.00", locale: "us" });
                });
                CalSumExpense();
            }
@@ -632,14 +632,16 @@ function GetData(val) {
                var TotalExpense = data.Table8[0].TotalExpense;
                var Profit = SubTotal - TotalExpense;
 
-               $("#txtTotal").val(data.Table6[0].TotalIncome).number(true, 2), $("#txtSubTotal").val(data.Table7[0].SubTotalIncome).number(true, 2),
-               $("#txtNoCompound").val(data.Table7[0].SubTotalIncome).number(true, 2), $("#txtExpense").val(data.Table8[0].TotalExpense).number(true, 2),
-               $("#txtTotalExpense").val(data.Table8[0].TotalExpense).number(true, 2);
+               $("#txtTotal").val(data.Table6[0].TotalIncome).formatNumber({ format: "#,###.00", locale: "us" });;
+               $("#txtSubTotal").val(data.Table7[0].SubTotalIncome).formatNumber({ format: "#,###.00", locale: "us" });;
+               $("#txtNoCompound").val(data.Table7[0].SubTotalIncome).formatNumber({ format: "#,###.00", locale: "us" });;
+               $("#txtExpense").val(data.Table8[0].TotalExpense).formatNumber({ format: "#,###.00", locale: "us" });;
+               $("#txtTotalExpense").val(data.Table8[0].TotalExpense).formatNumber({ format: "#,###.00", locale: "us" });;
                if (Profit < 0) {
-                   $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+                   $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });;
                }
                else {
-                   $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+                   $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });;
                }
            }
            
@@ -729,7 +731,7 @@ function GetData(val) {
                    $(this).find('.SaleOrderID').val(data.Table3[i].ID);
                    $(this).find('.JobID').val(data.Table3[i].JobID);
                    $(this).find('.SaleOrderNo').val(data.Table3[i].SaleOrderNo);
-                   $(this).find('.Amount2').val(data.Table3[i].Amount).number(true,2);
+                   $(this).find('.Amount2').val(data.Table3[i].Amount).formatNumber({ format: "#,###.00", locale: "us" });
                });
            }
 
@@ -746,7 +748,7 @@ function GetData(val) {
                    $(this).find('.JobID').val(data.Table4[i].JobID);
                    $(this).find('.SaleOrderNo').val(data.Table4[i].SaleOrderNo);
                    $(this).find('.InvoiceNo').val(data.Table4[i].InvoiceNo);
-                   $(this).find('.Amount3').val(data.Table4[i].Amount).number(true,2);
+                   $(this).find('.Amount3').val(data.Table4[i].Amount).formatNumber({ format: "#,###.00", locale: "us" });
                });
            }
 
@@ -763,7 +765,7 @@ function GetData(val) {
                    $(this).find('.JobID').val(data.Table5[i].JobID);
                    $(this).find('.ReceiptNo').val(data.Table5[i].ReceiptNo);
                    $(this).find('.InvoiceNo').val(data.Table5[i].InvoiceNo);
-                   $(this).find('.Amount4').val(data.Table5[i].Amount).number(true,2);
+                   $(this).find('.Amount4').val(data.Table5[i].Amount).formatNumber({ format: "#,###.00", locale: "us" });
                });
            }
 
@@ -1122,24 +1124,24 @@ function CalSum() {
         var price = $(this).find(".UnitPrice").val().replace(',', '');
         var amount = qty * price;
 
-        $(this).find('.Amount').val(amount).number(true,2);
+        $(this).find('.Amount').val(amount).formatNumber({ format: "#,###.00", locale: "us" });
         total = total + parseFloat($(this).find('.Amount').val());
     });
         
     Discount = $('#txtDiscount').val();
-    $('#txtDiscount').val(Discount).number(true, 0);
+    $('#txtDiscount').val(Discount).formatNumber({ format: "#,###.00", locale: "us" });
 
     SubTotal = total - Discount;
-    $('#txtTotal').val(total).number(true, 2);
-    $('#txtSubTotal').val(SubTotal).number(true, 2);
-    $('#txtNoCompound').val(SubTotal).number(true, 2);
+    $('#txtTotal').val(total).formatNumber({ format: "#,###.00", locale: "us" });
+    $('#txtSubTotal').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
+    $('#txtNoCompound').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
 
     Profit =  SubTotal - parseFloat($('#txtTotalExpense').val());
     if (Profit < 0) {
-        $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+        $("#txtProfit").formatNumber({format:"#,###.00", locale:"us"}).val(Profit).css('color', 'red');
     }
     else {
-        $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+        $("#txtProfit").formatNumber({format:"#,###.00", locale:"us"}).val(Profit).css('color', 'black');
     }
 }
 function CalSumExpense() {
@@ -1157,14 +1159,14 @@ function CalSumExpense() {
     });
 
     Profit = parseFloat($('#txtSubTotal').val()) - totalExpense;
-    $('#txtTotalExpense').val(totalExpense).number(true, 2);
-    $('#txtExpense').val(totalExpense).number(true, 2);
+    $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
+    $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
 
     if (Profit < 0) {
-        $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+        $("#txtProfit").formatNumber({format:"#,###.00", locale:"us"}).val(Profit).css('color', 'red');
     }
     else {
-        $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+        $("#txtProfit").formatNumber({format:"#,###.00", locale:"us"}).val(Profit).css('color', 'black');
     }
 }
 function AddRowIncome() {
@@ -1482,9 +1484,9 @@ function GetManpowerHour() {
 function Redirect() {
     window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();
 }
-function convertFloat()
+function convertFloat(str)
 {
-    $('.Number').number(true, 2);
+    $(str).formatNumber({format:"#,###.00", locale:"us"});
 }
 function DateWorking() {
     if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {

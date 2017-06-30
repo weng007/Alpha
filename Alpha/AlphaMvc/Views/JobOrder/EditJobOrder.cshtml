@@ -238,10 +238,11 @@
                                                             <input type="text" id="txtPriceList" class="PriceList text-size80 textright" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtUnitPrice" value="0" class="UnitPrice text-size100 textright" onchange="CalSum()" />
+                                                            <input type="text" id="txtUnitPrice" value="0" class="UnitPrice text-size100 textright" onchange="CalSum()" 
+                                                                   onblur="convertfloat('.UnitPrice')" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtAmount" value="0" disabled class="Amount Number text-size120 txtdisablerow">
+                                                            <input type="text" id="txtAmount" value="0" disabled class="Amount text-size120 txtdisablerow">
                                                         </td>
 
                                                         <td>
@@ -281,10 +282,11 @@
                                                             <input type="text" id="txtPriceList" class="PriceList text-size80 textright" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtUnitPrice" value="0" class="UnitPrice text-size100 textright" onchange="CalSum()" />
+                                                            <input type="text" id="txtUnitPrice" value="0" class="UnitPrice text-size100 textright" onchange="CalSum()" 
+                                                                   onblur="convertfloat('.UnitPrice')"/>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtAmount" value="0" disabled class="Amount Number text-size120 txtdisablerow">
+                                                            <input type="text" id="txtAmount" value="0" disabled class="Amount text-size120 txtdisablerow">
                                                         </td>
                                                         <td>
                                                             <div class="clone-1"><img id="cloneRowIncome" class="cloneRowIncome row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -365,10 +367,11 @@
                                                             <input type="text" id="txtPriceList1" class="PriceList1 text-size80 textright" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtUnitPrice1" value="0" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()">
+                                                            <input type="text" id="txtUnitPrice1" value="0" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()"
+                                                                   onblur="convertfloat('.UnitPrice1')" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtAmount" value="0" name="Amount" class="Amount1 Number text-size120 txtdisablerow" disabled>
+                                                            <input type="text" id="txtAmount" value="0" name="Amount" class="Amount1 text-size120 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
                                                             <div class="clone-1"><img class="cloneRowExpense row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -406,10 +409,11 @@
                                                             <input type="text" id="txtPriceList1" class="PriceList1 text-size80 textright" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtUnitPrice1" value="0" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()">
+                                                            <input type="text" id="txtUnitPrice1" value="0" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()" 
+                                                                   onblur="convertfloat('.UnitPrice1')" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtAmount" value="0" name="Amount" class="Amount1 Number text-size120 txtdisablerow" disabled>
+                                                            <input type="text" id="txtAmount" value="0" name="Amount" class="Amount1 text-size120 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
                                                             <div class="clone-1"><img class="cloneRowExpense row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -474,7 +478,7 @@
                                                         <th colspan="2">WORKING TIME</th>
                                                         <th rowspan="3">BREAK1</th>
                                                         <th rowspan="3">BREAK2</th>
-                                                        <th colspan="5">NUMBER OF HOUSE</th>
+                                                        <th colspan="5">NUMBER OF HOURS</th>
                                                         <th rowspan="3" colspan="2"></th>
                                                     </tr>
                                                     <tr>
@@ -733,7 +737,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright Number" onchange="convertFloat()">
+                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2')">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowSaleOrder row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -759,7 +763,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright Number" onchange="convertFloat()">
+                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2')">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowSaleOrder row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -813,7 +817,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright Number">
+                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3')">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowInvoice row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -842,7 +846,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright Number" >
+                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3')">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowInvoice row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -896,7 +900,7 @@
                                                         <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright Number" onchange="convertFloat()">
+                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4')">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowReceipt row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -925,7 +929,7 @@
                                                         <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright Number" onchange="convertFloat()">
+                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4')">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowReceipt row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
