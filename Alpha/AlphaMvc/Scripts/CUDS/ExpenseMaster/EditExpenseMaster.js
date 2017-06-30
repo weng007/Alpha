@@ -29,7 +29,7 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var dataObject = { ID: val, Detail: $("#txtDetail").val(), PriceList: $("#txtPrice").val(), Seq: $("#txtSqe").val(), EditBy: localStorage['UserID'] }
+    var dataObject = { ID: val, Detail: $("#txtDetail").val(), PriceList: $("#txtPrice").val(), Seq: $("#txtSeq").val(), EditBy: localStorage['UserID'] };
         $.ajax(
         {
             url: 'http://localhost:13131/api/ExpenseMaster',

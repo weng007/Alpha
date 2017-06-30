@@ -1,4 +1,10 @@
-﻿$(document).ready(function () {
+﻿var row_index = 0;//RowCal5 Manpower
+var row_index2 = 0;//RowCal Income
+var row_index3 = 0;//RowCal1 Expense
+var row_index4 = 0;//RowCal3 Invoice
+var col_index = 0;//RowCal5 Manpower
+
+$(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
     CheckAuthorization();
@@ -292,6 +298,7 @@ function GetPriceList() {
             if (data.Table.length > 0) {
 
                 $('.PriceList').eq(row_index2).val(data.Table[0].PriceList);
+                
                 $('.UnitPrice').eq(row_index2).val(data.Table[0].PriceList).formatNumber({ format: "#,###.00", locale: "us" });
             }
         },
@@ -300,6 +307,7 @@ function GetPriceList() {
         }
 
     });
+    CalSum();
 }
 function GetExpensePriceList() {
     var ExpenseID = $('.ExpenseSelect').eq(row_index3).val();
@@ -325,6 +333,7 @@ function GetExpensePriceList() {
         }
 
     });
+    CalSumExpense();
 }
 function BrowseCustomer(val) {
     //$.ajax(
@@ -579,6 +588,7 @@ function GetData(val) {
                for(var j=0;j< data.Table1.length;j++)
                {
                    $("#add-row6").trigger("click");
+                   SetRowIndex();
                }
                $('.RowCal:eq('+ data.Table1.length +')').remove();
                
@@ -605,6 +615,7 @@ function GetData(val) {
                ////Binding Data Expense
                for (var j = 0; j < data.Table2.length; j++) {
                    $("#add-row7").trigger("click");
+                   SetRowIndex();
                }
                $('.RowCal1:eq(' + data.Table2.length + ')').remove();
                SetExpenseType();
@@ -902,7 +913,7 @@ function Update(val) {
             alert(msg);
         }
     });
-    //alert("Test" + JobID);
+    //alert("Test JobID" + JobID);
     var dataObject = { JobID: JobID};
     $.ajax(
             {
@@ -925,8 +936,8 @@ function Update(val) {
         dataObject.Detail = $(this).find(".Detail").val();
         dataObject.UnitWeight = $(this).find('.UnitWeight').find(":selected").val();
         dataObject.Qty = $(this).find(".Quantity").val();
-        dataObject.PriceList = $(this).find(".PriceList").val();
-        dataObject.UnitPrice = $(this).find(".UnitPrice").val();
+        dataObject.PriceList = ConvertAmount($(this).find(".PriceList").val());
+        dataObject.UnitPrice = ConvertAmount($(this).find(".UnitPrice").val());
         dataObject.Amount = ConvertAmount($(this).find(".Amount").val());
         dataObject.EditBy = localStorage['UserID'];
 
@@ -956,8 +967,8 @@ function Update(val) {
         dataObject.ExpenseDetail = $(this).find(".ExpenseDetail").val();
         dataObject.UnitWeight = $(this).find('.unitSelect').find(":selected").val();
         dataObject.Qty = $(this).find(".Quantity").val();
-        dataObject.PriceList = $(this).find(".PriceList1").val();
-        dataObject.UnitPrice = $(this).find(".UnitPrice1").val();
+        dataObject.PriceList = ConvertAmount($(this).find(".PriceList1").val());
+        dataObject.UnitPrice = ConvertAmount($(this).find(".UnitPrice1").val());
         dataObject.Amount = ConvertAmount($(this).find(".Amount1").val());
         dataObject.EditBy = localStorage['UserID'];
         if (JobID != 0 && $(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".UnitPrice1").val() != '') {
@@ -1109,7 +1120,7 @@ function ConvertAmount(val)
     Amount = Amount.replace(/,/g, "");
     if (Amount % 1 == 0)
     {
-        Amount = parseInt(Amount, 10);
+        Amount = parseFloat(Amount, 10);
     }   
     //alert(Amount);
     return Amount;
@@ -1124,10 +1135,12 @@ function CalSum() {
         var price = $(this).find(".UnitPrice").val().replace(',', '');
         var amount = qty * price;
 
-        $(this).find('.Amount').val(amount).formatNumber({ format: "#,###.00", locale: "us" });
+        $(this).find('.Amount').val(amount);
         total = total + parseFloat($(this).find('.Amount').val());
+
     });
-        
+    
+    $('.Amount').formatNumber({ format: "#,###.00", locale: "us" });
     Discount = $('#txtDiscount').val();
     $('#txtDiscount').val(Discount).formatNumber({ format: "#,###.00", locale: "us" });
 
@@ -1151,22 +1164,24 @@ function CalSumExpense() {
 
     $(".RowCal1").each(function () {
         var qty = $(this).find(".Quantity").val().replace(',','');
-        var price = $(this).find(".UnitPrice1").val().replace(',', '');
-        var amount = qty * price;
+        var price = $(this).find(".UnitPrice1").val().replace(',','');
+        var amount = parseFloat(qty) * parseFloat(price);
 
         $(this).find('.Amount1').val(amount);
         totalExpense = totalExpense + parseFloat($(this).find('.Amount1').val());
     });
 
-    Profit = parseFloat($('#txtSubTotal').val()) - totalExpense;
-    $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
+    $('.Amount1').formatNumber({ format: "#,###.00", locale: "us" });
+    Profit = parseFloat($('#txtSubTotal').val()) - parseFloat(totalExpense);
+    $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" })
     $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
+    
 
     if (Profit < 0) {
-        $("#txtProfit").formatNumber({format:"#,###.00", locale:"us"}).val(Profit).css('color', 'red');
+        $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
-        $("#txtProfit").formatNumber({format:"#,###.00", locale:"us"}).val(Profit).css('color', 'black');
+        $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
 }
 function AddRowIncome() {
@@ -1252,11 +1267,7 @@ function AddRowExpense() {
         });
     }
 }
-var row_index = 0;//RowCal5 Manpower
-var row_index2 = 0;//RowCal Income
-var row_index3 = 0;//RowCal1 Expense
-var row_index4 = 0;//RowCal3 Invoice
-var col_index = 0;//RowCal5 Manpower
+
 
 //function SetRowCal5() {
 //    $('.RowCal5 td').click(function () {
@@ -1486,7 +1497,7 @@ function Redirect() {
 }
 function convertFloat(str)
 {
-    $(str).formatNumber({format:"#,###.00", locale:"us"});
+    $(str).eq(row_Index3).val().formatNumber({format:"#,###,###.00", locale:"us"});
 }
 function DateWorking() {
     if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {
