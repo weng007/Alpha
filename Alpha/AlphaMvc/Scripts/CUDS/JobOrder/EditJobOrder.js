@@ -2,7 +2,7 @@
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
     CheckAuthorization();
-    //$('.Number').number(true, 2);
+    $('.Number').number(true, 2);
     $("#customerBody").on("click", "tr", function (e) {
         $("#txtCustomerName").val($(this).find("td:eq(3)").text());
         $("#hidCustID").val($(this).find("td:eq(1)").text());
@@ -1253,6 +1253,7 @@ function AddRowExpense() {
 var row_index = 0;//RowCal5 Manpower
 var row_index2 = 0;//RowCal Income
 var row_index3 = 0;//RowCal1 Expense
+var row_index4 = 0;//RowCal3 Invoice
 var col_index = 0;//RowCal5 Manpower
 
 //function SetRowCal5() {
@@ -1271,6 +1272,9 @@ function SetRowIndex() {
     });
     $('.RowCal1 td').click(function () {
         row_index3 = $(this).parent().index();
+    });
+    $('.RowCal3 td').click(function () {
+        row_index4 = $(this).parent().index();
     });
 }
 function AddrowManpower() {

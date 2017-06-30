@@ -43,7 +43,63 @@
 }
 .textbox-size100
 {
+    width:100% !important;
+}
+.textbox-size95
+{
+    width:95% !important;
+}
+.textbox-size90
+{
     width:90% !important;
+}
+.textbox-size85
+{
+    width:85% !important;
+}
+.textbox-size80
+{
+    width:80% !important;
+}
+.textbox-size75
+{
+    width:75% !important;
+}
+.textbox-size70
+{
+    width:70% !important;
+}
+.textbox-size65
+{
+    width:65% !important;
+}
+.textbox-size60
+{
+    width:60% !important;
+}
+.textbox-size55
+{
+    width:55% !important;
+}
+.textbox-size50
+{
+    width:50% !important;
+}
+.textbox-size45
+{
+    width:45% !important;
+}
+.textbox-size40
+{
+    width:40% !important;
+}
+.textbox-size35
+{
+    width:35% !important;
+}
+.textbox-size30
+{
+    width:30% !important;
 }
 .rowjobno{
     width: 120px;

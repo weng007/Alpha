@@ -138,13 +138,17 @@
                     <input type="hidden" id="hidCustID" />
                 </li>
                 <li>
-                    <label class="label-2" style="margin-right: 37%;">โทรศัพท์</label>&nbsp;<label class="label-2">แฟกซ์</label>
+                    <label class="label-2" style="margin-right: 37%;">โทรศัพท์</label>
                 </li>
                 <li>
-                    <input type="text" id="txtTel" name="field2" class="field-divided" placeholder="" disabled />&nbsp;<input type="text" name="field1" id="txtFax" class="field-divided" placeholder="" disabled />
+                    <input type="text" id="txtTel" name="field2" class="field-divided" placeholder="" disabled />
                 </li>
                 <li>
-                    <label class="label-2" style="margin-right: 31.2%;">บุคคลติดต่อ</label>&nbsp;<label class="label-2">ผู้ประสานงาน</label>
+                    <label class="label-2" style="margin-right: 37%;">แฟกซ์</label>
+                    <input type="text" name="field1" id="txtFax" class="field-divided" placeholder="" disabled />
+                </li>
+                <li>
+                    <label class="label-2" style="margin-right: 29%;">บุคคลติดต่อ</label>&nbsp;<label class="label-2" style="margin-right: 2%;">ผู้ประสานงาน</label>
                 </li>
                 <li>
                     <select id="cmbContact" class="field-divided" required></select>&nbsp;<select id="cmbCoWorker" class="field-divided" required></select>
@@ -157,7 +161,7 @@
                     <textarea name="field5" id="txtAddress" class="field-long field-textarea" placeholder="" disabled></textarea>
                 </li>
                 <li>
-                    <label class="label-2">Job Reference</label>
+                    <label class="label-2">EST Reference</label>
                 </li>
                <li>
                    <input type="text" id="txtJobReference" name="field1" class="field-divided" placeholder="" disabled />
@@ -263,13 +267,13 @@
                                                                     <input type="text" id="txtQty" class="Quantity text-size80 textright" onchange="CalSum()" />
                                                                 </td>
                                                                 <td class="hidecolumn">
-                                                                    <input type="text" id="txtPriceList" class="PriceList text-size80 textright" />
+                                                                    <input type="text" id="txtPriceList" class="PriceList text-size50 textright" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice" class="UnitPrice text-size130 textright" onchange="CalSum()" />
+                                                                    <input type="text" id="txtUnitPrice" class="UnitPrice text-size100 textright" onchange="CalSum()" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtAmount" disabled class="Amount Number text-size165 txtdisablerow" />
+                                                                    <input type="text" id="txtAmount" disabled class="Amount Number text-size120 txtdisablerow" />
                                                                 </td>
 
                                                                 <td>
@@ -300,16 +304,16 @@
                                                                     <select class="UnitWeight text-size80"></select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtQty" class="Quantity text-size80 textright" onchange="CalSum()" />
+                                                                    <input type="text" id="txtQty" class="Quantity text-size50 textright" onchange="CalSum()" />
                                                                 </td>
                                                                 <td class="hidecolumn">
                                                                     <input type="text" id="txtPriceList" class="PriceList text-size80 textright" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice" class="UnitPrice text-size130 textright" onchange="CalSum()" />
+                                                                    <input type="text" id="txtUnitPrice" class="UnitPrice text-size100 textright" onchange="CalSum()" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtAmount" disabled class="Amount Number text-size165 txtdisablerow">
+                                                                    <input type="text" id="txtAmount" disabled class="Amount Number text-size120 txtdisablerow">
                                                                 </td>
                                                                 <td>
                                                                     <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -380,16 +384,16 @@
                                                                     <select class="unitSelect" ></select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtQty" name="Qty" class="Quantity text-size80" onchange="CalSumExpense()">
+                                                                    <input type="text" id="txtQty" name="Qty" class="Quantity text-size50" onchange="CalSumExpense()">
                                                                 </td>
                                                                 <td  class="hidecolumn">
                                                                     <input type="text" id="txtPriceList1" class="PriceList1 text-size80 textright" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice1" name="UnitPrice1" class="UnitPrice1 text-size130" onchange="CalSumExpense()">
+                                                                    <input type="text" id="txtUnitPrice1" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()">
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtAmount" name="Amount" class="Amount1 Number text-size165 txtdisablerow" disabled>
+                                                                    <input type="text" id="txtAmount" name="Amount" class="Amount1 Number text-size120 txtdisablerow" disabled>
                                                                 </td>
 
                                                                 <td>
@@ -419,16 +423,16 @@
                                                                     <select class="unitSelect"></select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtQty" name="Qty" class="Quantity text-size80" onchange="CalSumExpense()">
+                                                                    <input type="text" id="txtQty" name="Qty" class="Quantity text-size50" onchange="CalSumExpense()">
                                                                 </td>
                                                                 <td  class="hidecolumn">
                                                                     <input type="text" id="txtPriceList1" class="PriceList1 text-size80 textright" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice1" name="UnitPrice1" class="UnitPrice1 text-size130" onchange="CalSumExpense()">
+                                                                    <input type="text" id="txtUnitPrice1" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()">
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtAmount" name="Amount" class="Amount1 Number text-size165 txtdisablerow" disabled>
+                                                                    <input type="text" id="txtAmount" name="Amount" class="Amount1 Number text-size120 txtdisablerow" disabled>
                                                                 </td>
                                                                 <td>
                                                                     <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -729,7 +733,7 @@
                                                                 <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="txtAmount" class="Amount2 text-size180 textright">
+                                                                <input type="text" id="txtAmount" class="Amount2 text-size120 textright Number">
                                                             </td>
                                                             <td>
                                                                 <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -752,7 +756,7 @@
                                                                 <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="txtAmount" class="Amount2 text-size180 textright">
+                                                                <input type="text" id="txtAmount" class="Amount2 text-size120 textright Number">
                                                             </td>
                                                             <td>
                                                                 <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -803,7 +807,7 @@
                                                                 <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="txtAmount" class="Amount3 text-size165 textright">
+                                                                <input type="text" id="txtAmount" class="Amount3 text-size120 textright Number">
                                                             </td>
                                                             <td>
                                                                 <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -829,7 +833,7 @@
                                                                 <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="txtAmount" class="Amount3 text-size165 textright">
+                                                                <input type="text" id="txtAmount" class="Amount3 text-size120 textright Number">
                                                             </td>
                                                             <td>
                                                                 <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -880,7 +884,7 @@
                                                                 <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="txtAmount" class="Amount4 text-size165 textright">
+                                                                <input type="text" id="txtAmount" class="Amount4 text-size120 textright Number">
                                                             </td>
                                                             <td>
                                                                 <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
@@ -906,7 +910,7 @@
                                                                 <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="txtAmount" class="Amount4 text-size165 textright">
+                                                                <input type="text" id="txtAmount" class="Amount4 text-size120 textright Number">
                                                             </td>
                                                             <td>
                                                                 <img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" />
