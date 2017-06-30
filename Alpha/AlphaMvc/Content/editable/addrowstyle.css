@@ -236,6 +236,7 @@
         border-left: 1px solid #acc;
         border-right: 1px solid #acc;
         border-bottom: 1px solid #acc;
+        border-top: 1px solid #acc;
         padding-right: 5px;
     }
     .txtdisablefooter {
@@ -540,7 +541,7 @@
     display: block;
     font-weight: bold;
     float: left;
-    margin-right: 20%;
+    margin-right: 20.5%;
 }
 .form-style .label-small-6 {
     margin: 0 0 3px 0;

@@ -93,7 +93,7 @@
 
             <li>
                 <label>ลูกค้า</label>
-                <input type="text" id="txtCustomerName" class="field-divided textbox-size100" placeholder="ลูกค้า/บริษัท" disabled />&nbsp;
+                <input type="text" id="txtCustomerName" class="field-divided textbox-size100" placeholder="ลูกค้า/บริษัท" disabled />
                 @*<a href="#" id="imgCustomer" data-toggle="modal" data-target="#customerDialog" onclick="BrowseCustomer">
                     <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
                 </a>*@
@@ -333,7 +333,7 @@
                                                 <tfoot>
                                                     <tr>
                                                         <td colspan="7" class="ftTotal textalign">Total</td>
-                                                        <td colspan="2"><input id="txtTotalExpense" type="text" value="" class="text-size120 txtdisablefooter" disabled /></td>
+                                                        <td colspan="2"><input id="txtTotalExpense" type="text" value="" class="text-size125 txtdisablefooter" disabled /></td>
                                                     </tr>
                                                 </tfoot>
                                                 <tbody id="tBodyRowExpense">
@@ -472,17 +472,17 @@
                                                         <th rowspan="3">Date</th>
                                                         <th rowspan="3">Day</th>
                                                         <th rowspan="3">Time</th>
-                                                        <th colspan="2">WORKING TIME</th>
-                                                        <th rowspan="3">BREAK1</th>
-                                                        <th rowspan="3">BREAK2</th>
-                                                        <th colspan="5">NUMBER OF HOURS</th>
+                                                        <th colspan="2">Working Time</th>
+                                                        <th rowspan="3">Break1</th>
+                                                        <th rowspan="3">Break2</th>
+                                                        <th colspan="5">Number of Hours</th>
                                                         <th rowspan="3" colspan="2"></th>
                                                     </tr>
                                                     <tr>
-                                                        <th rowspan="2">FROM</th>
-                                                        <th rowspan="2">TO</th>
-                                                        <th rowspan="2" class="thwrap">TOTAL HOURS</th>
-                                                        <th colspan="4">OVERTIME</th>
+                                                        <th rowspan="2">From</th>
+                                                        <th rowspan="2">To</th>
+                                                        <th rowspan="2" class="thwrap">Total Hours</th>
+                                                        <th colspan="4">Overtime</th>
                                                     </tr>
                                                     <tr>
                                                         <th>Normal(1)</th>
@@ -544,11 +544,11 @@
                                                         <td>
                                                             <input type="text" id="txtWorkingTo" name="txtWorkingTo" class="WorkingTo timepicker text-size60 textcenter" onchange="GetManpowerHour()">
                                                         </td>
-                                                        <td>
-                                                            <input id="chkBreak1" class="chkBreak1" type="checkbox" />
+                                                        <td class="text-size100">
+                                                            <input id="chkBreak1" class="chkBreak1" type="checkbox" style="margin-left: 20px;     margin-right: 20px;"/>
                                                         </td>
-                                                        <td>
-                                                            <input id="chkBreak2" class="chkBreak2" type="checkbox" />
+                                                        <td class="text-size100">
+                                                            <input id="chkBreak2" class="chkBreak2" type="checkbox" style="margin-left: 20px;     margin-right: 20px;" />
                                                         </td>
                                                         <td>
                                                             <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled/>
@@ -624,11 +624,11 @@
                                                         <td>
                                                             <input type="text" id="txtWorkingTo" name="txtWorkingTo" class="WorkingTo timepicker text-size60 textcenter" onchange="GetManpowerHour()">
                                                         </td>
-                                                        <td>
-                                                            <input id="chkBreak1" class="chkBreak1" type="checkbox" />
+                                                        <td class="text-size100">
+                                                            <input id="chkBreak1" class="chkBreak1" type="checkbox" style="margin-left: 20px;     margin-right: 20px;" />
                                                         </td>
-                                                        <td>
-                                                            <input id="chkBreak2" class="chkBreak2" type="checkbox" />
+                                                        <td class="text-size100">
+                                                            <input id="chkBreak2" class="chkBreak2" type="checkbox" style="margin-left: 20px;     margin-right: 20px;"/>
                                                         </td>
                                                         <td>
                                                             <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled/>
