@@ -2,7 +2,7 @@
 $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
-    $('.Number').number(true, 2);
+
     CheckAuthorization();
     var input = window.location.href;
     var after = input.split('?')[1]
@@ -72,7 +72,7 @@ $(document).ready(function () {
                 }
             });
         },
-        minLength: 3,
+        minLength: 1,
         select: function (event, ui) {
             $(this).val(ui.item.label);
             $('.CardID:last').val(ui.item.IDCard);
@@ -765,17 +765,17 @@ function CalSum() {
 
     Discount = $('#txtDiscount').val();
     SubTotal = total - Discount;
-    $('#txtTotal').val(total).number(true, 2);
-    $('#txtSubTotal').val(SubTotal).number(true, 2);
-    $('#txtNoCompound').val(SubTotal).number(true, 2);
+    $('#txtTotal').val(total).formatNumber({ format: "#,###.00", locale: "us" });;
+    $('#txtSubTotal').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
+    $('#txtNoCompound').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
 
     Profit = SubTotal - parseFloat($('#txtTotalExpense').val());
 
     if (Profit < 0) {
-        $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+        $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
-        $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+        $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
 }
 
@@ -789,19 +789,19 @@ function CalSumExpense() {
         var price = $(this).find(".UnitPrice1").val().replace(',', '');
         var amount = qty * price;
 
-        $(this).find('.Amount1').val(amount).number(true, 2);
+        $(this).find('.Amount1').val(amount).formatNumber({ format: "#,###.00", locale: "us" });
         totalExpense = totalExpense + parseFloat($(this).find('.Amount1').val());
     });
 
     Profit = parseFloat($('#txtSubTotal').val()) - totalExpense;
-    $('#txtTotalExpense').val(totalExpense).number(true, 2);
-    $('#txtExpense').val(totalExpense).number(true, 2);
+    $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
+    $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
 
     if (Profit < 0) {
-        $("#txtProfit").number(true, 2).val(Profit).css('color', 'red');
+        $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
-        $("#txtProfit").number(true, 2).val(Profit).css('color', 'black');
+        $("#txtProfit").css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
 
     return totalExpense;
@@ -944,7 +944,7 @@ function AddrowManpower() {
                     }
                 });
             },
-            minLength: 3,
+            minLength: 1,
             select: function (event, ui) {
                 $(this).val(ui.item.label);
                 $('.CardID').eq(row_index).val(ui.item.IDCard);
@@ -975,6 +975,10 @@ function RedirectJobOrderBorrow(val)
     {
         window.location.href = "../JobOrder/EditJobOrder?id=" + val;
     }
+}
+
+function convertFloat(str) {
+    $(str).formatNumber({ format: "#,###.00", locale: "us" });
 }
 
 function ValidateJobOrder()
