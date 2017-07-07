@@ -22,6 +22,7 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_ExpenseMaster_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Detail", ME.Detail);
+                    cmd.Parameters.AddWithValue("@ExpenseGroup", ME.ExpenseGroup);
                     cmd.Parameters.AddWithValue("@PriceList", ME.PriceList);
                     cmd.Parameters.AddWithValue("@Seq", ME.Seq);
                     cmd.Parameters.AddWithValue("@CreateBy", ME.CreateBy);
@@ -50,6 +51,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", ME.ID);
                     cmd.Parameters.AddWithValue("@Detail", ME.Detail);
+                    cmd.Parameters.AddWithValue("@ExpenseGroup", ME.ExpenseGroup);
                     cmd.Parameters.AddWithValue("@PriceList", ME.PriceList);
                     cmd.Parameters.AddWithValue("@Seq", ME.Seq);
                     cmd.Parameters.AddWithValue("@EditBy", ME.EditBy);

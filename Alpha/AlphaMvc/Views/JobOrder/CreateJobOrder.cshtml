@@ -118,7 +118,8 @@
                     <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
                 </li>
                 <li>
-                    <select id="cmbTypeWorking" class="field-divided-2" required></select><select id="cmbJobStatus" class="field-divided" required></select>
+                    <select id="cmbTypeWorking" class="field-divided-2" onchange="ChangeExpenseGroup()" required></select><select id="cmbJobStatus" class="field-divided" required></select>
+                    <input type="hidden" id="hidTypeWorking" />
                 </li>
                 
                 <li>

@@ -102,24 +102,24 @@ $(document).ready(function () {
         }
     });
 
-    var dataObject = { IsJobOrder: true };
-    $.ajax({
+    //var dataObject = { IsJobOrder: true };
+    //$.ajax({
 
-        url: 'http://localhost:13131/api/ExpenseMaster',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $.each(data.Table, function (i) {
-                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
+    //    url: 'http://localhost:13131/api/ExpenseMaster',
+    //    type: 'GET',
+    //    dataType: 'json',
+    //    data: dataObject,
+    //    success: function (data) {
+    //        data = JSON.parse(data);
+    //        $.each(data.Table, function (i) {
+    //            $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+    //        });
+    //        $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+    //    },
+    //    failure: function () {
+    //        alert('Error');
+    //    }
+    //});
 
     var dataObject = { typeID: '010' };
     $.ajax({
@@ -529,6 +529,33 @@ function CalTotalHour() {
     var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
     $('.TotalHours').eq(row_index).val(total);
 }
+function ChangeExpenseGroup()
+{
+    alert('Test ' + $("#cmbTypeWorking").find(":selected").val());
+
+    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+    $('#hidTypeWorking').val(WorkingType);
+
+    var dataObject = { TypeWorking: WorkingType };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderExpense',
+        type: 'GET',
+        dataType: 'json',
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            //$('.ExpenseSelect:last').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect:last').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 
 function CreateData() {
     //, CustID: $("#hidCustID").val()
@@ -846,15 +873,37 @@ function AddRowIncome() {
     });
 }
 function AddRowExpense() {
-    var dataObject = { IsJobOrder: true };
+    //var dataObject = { IsJobOrder: true };
+    //$.ajax({
+    //    url: 'http://localhost:13131/api/ExpenseMaster',
+    //    type: 'GET',
+    //    dataType: 'json',
+    //    data: dataObject,
+    //    success: function (data) {
+    //        data = JSON.parse(data);
+
+    //        //$('.ExpenseSelect:last').find("option").remove();
+    //        $.each(data.Table, function (i) {
+    //            $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+    //        });
+    //        $('.ExpenseSelect:last').find('option:first-child').attr('selected', true);
+
+    //    },
+    //    failure: function () {
+    //        alert('Error');
+    //    }
+    //});
+
+    var WorkingType = $('#hidTypeWorking').val();
+
+    var dataObject = { TypeWorking: WorkingType };
     $.ajax({
-        url: 'http://localhost:13131/api/ExpenseMaster',
+        url: 'http://localhost:13131/api/JobOrderExpense',
         type: 'GET',
         dataType: 'json',
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
-
             //$('.ExpenseSelect:last').find("option").remove();
             $.each(data.Table, function (i) {
                 $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
@@ -866,6 +915,7 @@ function AddRowExpense() {
             alert('Error');
         }
     });
+
     var dataObject = { typeID: '010' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService/',

@@ -44,6 +44,13 @@ namespace AlphaApi.Controllers
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
+        [HttpGet]
+        public string Get(string TypeWorking)
+        {
+            var response = jobOrderExpense.SelectByTypeWorking(TypeWorking);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(JobOrderExpenseModels jobOrderExpenseModel)

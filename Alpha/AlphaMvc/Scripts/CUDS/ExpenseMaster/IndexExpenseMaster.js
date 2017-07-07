@@ -48,6 +48,7 @@ $(document).ready(function () {
                 html += '<tr>';
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn nopointer">' + data.Table[i].ID + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].ExpenseGroup + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Detail + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].PriceList + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Seq + '</td>';

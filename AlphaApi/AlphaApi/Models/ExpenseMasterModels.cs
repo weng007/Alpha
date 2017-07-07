@@ -13,6 +13,8 @@ namespace AlphaApi.Models
 
         public string Detail { get; set; }
 
+        public int ExpenseGroup { get; set; }
+
         public decimal PriceList { get; set; }
 
         public int Seq { get; set; }

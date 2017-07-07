@@ -132,6 +132,35 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
+
+        public DataSet SelectByTypeWorking(string TypeWorking)
+        {
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_ExpenseMaster_SelByTypeWorking", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TypeWorking", TypeWorking); // i will pass zero to MobileID beacause its Primary .
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
+
+                    return ds;
+                }
+                catch
+                {
+                    return ds;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
         public DataSet SelectData()
         {
             string result = "";
