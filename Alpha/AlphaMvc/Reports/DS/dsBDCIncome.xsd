@@ -39,7 +39,7 @@
   <xs:element name="dsBDCIncome" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dsBDCIncome" msprop:Generator_UserDSName="dsBDCIncome">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SP_Rpt_BDC" msprop:Generator_TableClassName="SP_Rpt_BDCDataTable" msprop:Generator_TableVarName="tableSP_Rpt_BDC" msprop:Generator_RowChangedName="SP_Rpt_BDCRowChanged" msprop:Generator_TablePropName="SP_Rpt_BDC" msprop:Generator_RowDeletingName="SP_Rpt_BDCRowDeleting" msprop:Generator_RowChangingName="SP_Rpt_BDCRowChanging" msprop:Generator_RowEvHandlerName="SP_Rpt_BDCRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_Rpt_BDCRowDeleted" msprop:Generator_RowClassName="SP_Rpt_BDCRow" msprop:Generator_UserTableName="SP_Rpt_BDC" msprop:Generator_RowEvArgName="SP_Rpt_BDCRowChangeEvent">
+        <xs:element name="SP_Rpt_BDC" msprop:Generator_TableClassName="SP_Rpt_BDCDataTable" msprop:Generator_TableVarName="tableSP_Rpt_BDC" msprop:Generator_TablePropName="SP_Rpt_BDC" msprop:Generator_RowDeletingName="SP_Rpt_BDCRowDeleting" msprop:Generator_RowChangingName="SP_Rpt_BDCRowChanging" msprop:Generator_RowEvHandlerName="SP_Rpt_BDCRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_Rpt_BDCRowDeleted" msprop:Generator_UserTableName="SP_Rpt_BDC" msprop:Generator_RowChangedName="SP_Rpt_BDCRowChanged" msprop:Generator_RowEvArgName="SP_Rpt_BDCRowChangeEvent" msprop:Generator_RowClassName="SP_Rpt_BDCRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Detail" msprop:Generator_ColumnVarNameInTable="columnDetail" msprop:Generator_ColumnPropNameInRow="Detail" msprop:Generator_ColumnPropNameInTable="DetailColumn" msprop:Generator_UserColumnName="Detail" minOccurs="0">
@@ -49,6 +49,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
               <xs:element name="IncomeType" msprop:Generator_ColumnVarNameInTable="columnIncomeType" msprop:Generator_ColumnPropNameInRow="IncomeType" msprop:Generator_ColumnPropNameInTable="IncomeTypeColumn" msprop:Generator_UserColumnName="IncomeType" type="xs:int" minOccurs="0" />
               <xs:element name="UnitWeight" msprop:Generator_ColumnVarNameInTable="columnUnitWeight" msprop:Generator_ColumnPropNameInRow="UnitWeight" msprop:Generator_ColumnPropNameInTable="UnitWeightColumn" msprop:Generator_UserColumnName="UnitWeight" minOccurs="0">
                 <xs:simpleType>

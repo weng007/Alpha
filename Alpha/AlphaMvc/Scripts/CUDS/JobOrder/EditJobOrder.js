@@ -494,8 +494,11 @@ function GetManpowerHour() {
             datatype: 'json',
             success: function (data) {
                 data = JSON.parse(data);
+                alert("Test");
                 if (data.Table.length > 0) {
-
+                    alert("Test");
+                    //alert(data.Table[0].NormalDay);
+                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalDay);
                     $('.ManNormal').eq(row_index).val(data.Table[0].ManNormal);
                     $('.ManPremium').eq(row_index).val(data.Table[0].ManPremium);
                     $('.ManPremium2').eq(row_index).val(data.Table[0].ManPremium2);
@@ -709,6 +712,7 @@ function GetData(val) {
 
                    //$(this).find('.WorkingTo').timepicker('setTime', TTime, { 'timeFormat': 'H:i' });
                    $(this).find('.TotalHours').val(data.Table9[i].TotalHours);
+                   $(this).find('.NormalDay').val(data.Table9[i].NormalDay);
                    $(this).find('.ManNormal').val(data.Table9[i].ManNormal);
                    $(this).find('.ManPremium').val(data.Table9[i].ManPremium);
                    $(this).find('.ManPremium2').val(data.Table9[i].ManPremium2);
@@ -1009,6 +1013,7 @@ function Update(val) {
             dataObject.Break1 = $(this).find('.chkBreak1').is(":checked") == true ? 1 : 0;
             dataObject.Break2 = $(this).find('.chkBreak2').is(":checked") == true ? 1 : 0;
             dataObject.TotalHours = $(this).find(".TotalHours").val();
+            dataObject.NormalDay = $(this).find(".NormalDay").val();
             dataObject.ManNormal = $(this).find(".ManNormal").val();
             dataObject.ManPremium = $(this).find(".ManPremium").val();
             dataObject.ManPremium2 = $(this).find(".ManPremium2").val();
@@ -1477,6 +1482,7 @@ function GetManpowerHour() {
             success: function (data) {
                 data = JSON.parse(data);
                 if (data.Table.length > 0) {
+                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalDay);
                     $('.ManNormal').eq(row_index).val(data.Table[0].ManNormal);
                     $('.ManPremium').eq(row_index).val(data.Table[0].ManPremium);
                     $('.ManPremium2').eq(row_index).val(data.Table[0].ManPremium2);

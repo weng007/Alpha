@@ -4,10 +4,22 @@
         if ($("#txtDetail").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input Detail.</div>';
         }
+        if ($("#txtPrice").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input Price list.</div>';
+        }
+        if ($("#txtSeq").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input Sequence.</div>';
+        }
     }
     if (topic == "ExpenseMaster") {
         if ($("#txtDetail").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input Detail.</div>';
+        }
+        if ($("#txtPrice").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input Price list.</div>';
+        }
+        if ($("#txtSeq").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input Sequence.</div>';
         }
     }
     if (topic == "Products") {

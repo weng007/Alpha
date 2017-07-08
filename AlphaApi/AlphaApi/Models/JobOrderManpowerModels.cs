@@ -39,6 +39,8 @@ namespace AlphaApi.Models
 
         public string TotalHours { get; set; }
 
+        public double NormalDay { get; set; }
+
         public double ManNormal { get; set; }
 
         public double ManPremium { get; set; }

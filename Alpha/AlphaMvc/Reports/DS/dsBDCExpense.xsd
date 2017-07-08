@@ -39,9 +39,10 @@
   <xs:element name="dsBDCExpense" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dsBDCExpense" msprop:Generator_UserDSName="dsBDCExpense">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SP_Rpt_BDC" msprop:Generator_TableClassName="SP_Rpt_BDCDataTable" msprop:Generator_TableVarName="tableSP_Rpt_BDC" msprop:Generator_RowChangedName="SP_Rpt_BDCRowChanged" msprop:Generator_TablePropName="SP_Rpt_BDC" msprop:Generator_RowDeletingName="SP_Rpt_BDCRowDeleting" msprop:Generator_RowChangingName="SP_Rpt_BDCRowChanging" msprop:Generator_RowEvHandlerName="SP_Rpt_BDCRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_Rpt_BDCRowDeleted" msprop:Generator_RowClassName="SP_Rpt_BDCRow" msprop:Generator_UserTableName="SP_Rpt_BDC" msprop:Generator_RowEvArgName="SP_Rpt_BDCRowChangeEvent">
+        <xs:element name="SP_Rpt_BDC" msprop:Generator_TableClassName="SP_Rpt_BDCDataTable" msprop:Generator_TableVarName="tableSP_Rpt_BDC" msprop:Generator_TablePropName="SP_Rpt_BDC" msprop:Generator_RowDeletingName="SP_Rpt_BDCRowDeleting" msprop:Generator_RowChangingName="SP_Rpt_BDCRowChanging" msprop:Generator_RowEvHandlerName="SP_Rpt_BDCRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_Rpt_BDCRowDeleted" msprop:Generator_UserTableName="SP_Rpt_BDC" msprop:Generator_RowChangedName="SP_Rpt_BDCRowChanged" msprop:Generator_RowEvArgName="SP_Rpt_BDCRowChangeEvent" msprop:Generator_RowClassName="SP_Rpt_BDCRow">
           <xs:complexType>
             <xs:sequence>
+              <xs:element name="Ord" msprop:Generator_ColumnVarNameInTable="columnOrd" msprop:Generator_ColumnPropNameInRow="Ord" msprop:Generator_ColumnPropNameInTable="OrdColumn" msprop:Generator_UserColumnName="Ord" type="xs:string" minOccurs="0" />
               <xs:element name="Detail" msprop:Generator_ColumnVarNameInTable="columnDetail" msprop:Generator_ColumnPropNameInRow="Detail" msprop:Generator_ColumnPropNameInTable="DetailColumn" msprop:Generator_UserColumnName="Detail" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -60,6 +61,7 @@
               <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:double" minOccurs="0" />
               <xs:element name="UnitPrice" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_UserColumnName="UnitPrice" type="xs:decimal" minOccurs="0" />
               <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Remark" msprop:Generator_ColumnVarNameInTable="columnRemark" msprop:Generator_ColumnPropNameInRow="Remark" msprop:Generator_ColumnPropNameInTable="RemarkColumn" msprop:Generator_UserColumnName="Remark" type="xs:string" minOccurs="0" />
               <xs:element name="RowNum" msprop:Generator_ColumnVarNameInTable="columnRowNum" msprop:Generator_ColumnPropNameInRow="RowNum" msprop:Generator_ColumnPropNameInTable="RowNumColumn" msprop:Generator_UserColumnName="RowNum" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>

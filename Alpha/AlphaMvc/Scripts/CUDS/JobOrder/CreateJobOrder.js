@@ -497,7 +497,9 @@ function GetManpowerHour() {
             success: function (data) {
                 data = JSON.parse(data);
                 if (data.Table.length > 0) {
-
+                    //alert("Test");
+                    //alert(data.Table[0].NormalDay);
+                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalDay);
                     $('.ManNormal').eq(row_index).val(data.Table[0].ManNormal);
                     $('.ManPremium').eq(row_index).val(data.Table[0].ManPremium);
                     $('.ManPremium2').eq(row_index).val(data.Table[0].ManPremium2);
@@ -531,7 +533,7 @@ function CalTotalHour() {
 }
 function ChangeExpenseGroup()
 {
-    alert('Test ' + $("#cmbTypeWorking").find(":selected").val());
+    //alert('Test ' + $("#cmbTypeWorking").find(":selected").val());
 
     var WorkingType = $("#cmbTypeWorking").find(":selected").val();
     $('#hidTypeWorking').val(WorkingType);
@@ -790,9 +792,12 @@ function CalSum() {
         total = total + parseFloat($(this).find('.Amount').val());
     });
 
+    $('.Amount').formatNumber({ format: "#,###.00", locale: "us" });
     Discount = $('#txtDiscount').val();
+    $('#txtDiscount').val(Discount).formatNumber({ format: "#,###.00", locale: "us" });
+
     SubTotal = total - Discount;
-    $('#txtTotal').val(total).formatNumber({ format: "#,###.00", locale: "us" });;
+    $('#txtTotal').val(total).formatNumber({ format: "#,###.00", locale: "us" });
     $('#txtSubTotal').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
     $('#txtNoCompound').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
 
@@ -805,33 +810,44 @@ function CalSum() {
         $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
 }
+function ConvertAmount(val) {
+    var Amount = 0;
+    Amount = val;
+    Amount = Amount.replace(/,/g, "");
+    if (Amount % 1 == 0) {
+        Amount = parseFloat(Amount, 10);
+    }
+
+    return Amount;
+}
 
 function CalSumExpense() {
     var totalExpense = 0;
     var SubTotal = 0;
     var Profit = 0;
-
+    
     $(".RowCal1").each(function () {
-        var qty = $(this).find(".Quantity").val().replace(',','');
+        var qty = $(this).find(".Quantity").val().replace(',', '');
         var price = $(this).find(".UnitPrice1").val().replace(',', '');
-        var amount = qty * price;
+        var amount = parseFloat(qty) * parseFloat(price);
 
-        $(this).find('.Amount1').val(amount).formatNumber({ format: "#,###.00", locale: "us" });
+        $(this).find('.Amount1').val(amount);
         totalExpense = totalExpense + parseFloat($(this).find('.Amount1').val());
     });
 
-    Profit = parseFloat($('#txtSubTotal').val()) - totalExpense;
-    $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
+    $('.Amount1').formatNumber({ format: "#,###.00", locale: "us" });
+    SubTotal = ConvertAmount($('#txtSubTotal').val());
+
+    Profit = SubTotal - totalExpense;
+    $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" })
     $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
 
     if (Profit < 0) {
         $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
-        $("#txtProfit").css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
+        $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
-
-    return totalExpense;
 }
 
 function AddRowIncome() {
@@ -1028,7 +1044,15 @@ function RedirectJobOrderBorrow(val)
 }
 
 function convertFloat(str) {
-    $(str).formatNumber({ format: "#,###.00", locale: "us" });
+    if (num == 2) {
+        $(str).eq(row_index2).val($(str).eq(row_index2).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
+    else if (num == 3) {
+        $(str).eq(row_index3).val($(str).eq(row_index3).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
+    else {
+        $(str).val($(str).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
 }
 
 function ValidateJobOrder()

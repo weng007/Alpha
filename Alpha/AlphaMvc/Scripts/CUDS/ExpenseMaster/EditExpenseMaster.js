@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    GetTypeworking();
+});
+function GetTypeworking() {
     var dataObject = { typeID: '001' };
     $.ajax({
         url: 'http://localhost:13131/api/MasterService/',
@@ -16,8 +19,7 @@ $(document).ready(function () {
             alert('Error');
         }
     });
-});
-
+}
 function ControlEnable(Isview) {
     //var Isview = val;
     if (Isview) {
@@ -26,7 +28,7 @@ function ControlEnable(Isview) {
         document.getElementById("btnSave").disabled = true;
     }
 }
-function GetData(val) {
+function GetData(val) { 
     var dataObject = { ID: val}
     $.ajax(
    {
@@ -37,9 +39,9 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
-           alert(data.Table[0].ExpenseGroup);
+           //alert(data.Table[0].ExpenseGroup);
            $("#txtDetail").val(data.Table[0].Detail);
-           $("#cmbTypeWorking").val(data.Table[0].ExpenseGroup)
+           $("#cmbTypeWorking").val(data.Table[0].ExpenseGroup);
            $("#txtPrice").val(data.Table[0].PriceList);
            $("#txtSeq").val(data.Table[0].Seq);
            CheckAuthorization();

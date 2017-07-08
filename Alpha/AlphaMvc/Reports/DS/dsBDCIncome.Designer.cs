@@ -20,7 +20,7 @@ namespace MymobilewalaMvc.Reports.DS {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dsBDCIncome")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dsBDCExpense")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class dsBDCIncome : global::System.Data.DataSet {
         
