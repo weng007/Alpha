@@ -104,11 +104,11 @@
                     <label class="label-2" style="margin-right: 37%;">โทรศัพท์</label>
                 </li>
                 <li>
-                    <input type="text" id="txtTel" name="field2" class="field-divided textbox-size100" placeholder="" disabled />
+                    <input type="text" id="txtTel" name="field2" class="field-divided textbox-size100" placeholder=""  style="margin-top: 6px;"  disabled />
                 </li>
                 <li>
                     <label class="label-2" style="margin-right: 37%;">แฟกซ์</label>
-                    <input type="text" name="field1" id="txtFax" class="field-divided textbox-size100" placeholder="" disabled />
+                    <input type="text" name="field1" id="txtFax" class="field-divided textbox-size100" placeholder="" style="margin-top: 7px;" disabled />
                 </li>
             <li>
                 <label class="label-2" style="margin-right: 29%;">บุคคลติดต่อ</label>&nbsp;<label class="label-2" style="margin-right: 2%;">ผู้ประสานงาน</label>
@@ -132,7 +132,7 @@
                 <input type="hidden" id="hidJobID" />
             </li>
         </ul>
-        <ul class="form-style-1">
+        <ul class="form-style-1" style="max-width: 340px;">
             <li>
                 <label class="label-7">Job Site</label>&nbsp;<label class="label-8">Job Location</label>
             </li>
@@ -663,15 +663,15 @@
                                             </table>
                                         </div>
                                         <button id="add-row2" class="btn btn-primary" onclick="SetRowIndex()" onblur="SetRowIndex()" onmouseout="AddrowManpower()">Add Row</button><br /><br />
-                                        <table>
+                                        <table >
                                             <tr>
                                                 <td>
-                                                    <ul class="form-style-1">
+                                                    <ul class="form-style-1" style="display:none;">
                                                         <li>
-                                                            <label class="label-small-5">Sup</label>&nbsp;<label class="label-small-5">F/M</label>&nbsp;<label class="label-small-5">Tech</label>&nbsp;<label class="label-small-5">Safety</label>
+                                                            <label class="label-small-5" style="display:none;">Sup</label>&nbsp;<label class="label-small-5" style="display:none;">F/M</label>&nbsp;<label class="label-small-5" style="display:none;">Tech</label>&nbsp;<label class="label-small-5" style="display:none;">Safety</label>
                                                         </li>
                                                         <li>
-                                                            <input type="text" id="txtManSup" name="ManSup" class="ManSup text-size80 textleft" placeholder="Sup" />&nbsp;<input type="text" id="txtManFM" name="ManFM" class="ManFM text-size80 textleft" placeholder="F/M" />&nbsp;<input type="text" id="txtManTech" name="ManTech" class="ManTech text-size80 textleft" placeholder="Tech" />&nbsp;<input type="text" id="txtManSafety" name="ManSafety" class="ManSafety field-select-small" placeholder="Safety" />
+                                                            <input type="text" id="txtManSup" style="display:none;" name="ManSup" class="ManSup text-size80 textleft" placeholder="Sup" />&nbsp;<input type="text" id="txtManFM" style="display:none;" name="ManFM" class="ManFM text-size80 textleft" placeholder="F/M" />&nbsp;<input type="text" id="txtManTech" style="display:none;" name="ManTech" class="ManTech text-size80 textleft" placeholder="Tech" />&nbsp;<input type="text" id="txtManSafety" style="display:none;" name="ManSafety" class="ManSafety field-select-small" placeholder="Safety" />
                                                         </li>
                                                     </ul>
                                                 </td>
@@ -741,7 +741,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2',0)">
+                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2',4)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowSaleOrder row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -767,7 +767,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2',0)">
+                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2',4)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowSaleOrder row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -778,7 +778,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <a id="add-row3" href="#">+ Add Row</a>
+                                        <a id="add-row3" href="#" onblur="SetRowIndex()">+ Add Row</a>
                                         @*<button id="add-row3" class="btn btn-primary">Add Row</button>*@
                                     </div>
                                     <p></p>
@@ -821,7 +821,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3',0)">
+                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3',5)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowInvoice row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -850,7 +850,7 @@
                                                         <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3',0)">
+                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3',5)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowInvoice row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -861,7 +861,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <a id="add-row4" href="#">+ Add Row</a>
+                                        <a id="add-row4" href="#" onblur="SetRowIndex()">+ Add Row</a>
                                         @*<button id="add-row4" class="btn btn-primary">Add Row</button>*@
                                     </div>
                                     <p></p>
@@ -904,7 +904,7 @@
                                                         <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4',0)">
+                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4',6)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowReceipt row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -933,7 +933,7 @@
                                                         <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4',0)">
+                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4',6)">
                                                     </td>
                                                     <td>
                                                         <div class="clone-1"><img class="cloneRowReceipt row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -944,7 +944,7 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <a id="add-row5" href="#">+ Add Row</a>
+                                        <a id="add-row5" href="#" onblur="SetRowIndex()">+ Add Row</a>
                                         @*<button id="add-row5" class="btn btn-primary">Add Row</button>*@
                                     </div>
                                     <p></p>

@@ -73,7 +73,7 @@ function CheckAuthorization() {
 
                     if (data.Table[i].Role > 0) {
                         //ถ้าไม่มีสิทธ์ Dashboard ให้ Redirect ไปหน้า IncomeMaster
-                        location = "../Technician/ExpiredTechnician";
+                        location = "../Home/DashBoard";
                         break;
                     }
                 }

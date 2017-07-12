@@ -59,6 +59,10 @@ function GetJobOrder(val)
         success: function (data) {
             data = JSON.parse(data);
             var html = '<tbody>';
+            if (data.Table.length > 0)
+            {
+                $('#BDCCreate').attr("style", "display:none");
+            }
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
                 html += '<td>' + data.Table[i].RowNum + '</td>';

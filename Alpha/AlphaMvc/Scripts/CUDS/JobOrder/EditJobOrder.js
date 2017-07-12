@@ -1,7 +1,9 @@
 ﻿var row_index = 0;//RowCal5 Manpower
 var row_index2 = 0;//RowCal Income
 var row_index3 = 0;//RowCal1 Expense
-var row_index4 = 0;//RowCal3 Invoice
+var row_index4 = 0;//RowCal2 SaleOrder
+var row_index5 = 0;//RowCal3 Invoice
+var row_index6 = 0;//RowCal4 Receipt
 var col_index = 0;//RowCal5 Manpower
 
 $(document).ready(function () {
@@ -203,6 +205,21 @@ $(document).ready(function () {
     $('.RowCal5 td:first').click(function () {
         row_index = $(this).parent().index();
         col_index = $(this).index();
+    });
+    $('.RowCal td:first').click(function () {
+        row_index2 = $(this).parent().index();
+    });
+    $('.RowCal1 td:first').click(function () {
+        row_index3 = $(this).parent().index();
+    });
+    $('.RowCal2 td:first').click(function () {
+        row_index4 = $(this).parent().index();
+    });
+    $('.RowCal3 td:first').click(function () {
+        row_index5 = $(this).parent().index();
+    });
+    $('.RowCal4 td:first').click(function () {
+        row_index6 = $(this).parent().index();
     });
 
     $("#dtJobDate").datepicker({
@@ -1290,8 +1307,14 @@ function SetRowIndex() {
     $('.RowCal1 td').click(function () {
         row_index3 = $(this).parent().index();
     });
-    $('.RowCal3 td').click(function () {
+    $('.RowCal2 td').click(function () {
         row_index4 = $(this).parent().index();
+    });
+    $('.RowCal3 td').click(function () {
+        row_index5 = $(this).parent().index();
+    });
+    $('.RowCal4 td').click(function () {
+        row_index6 = $(this).parent().index();
     });
 }
 function AddrowManpower() {
@@ -1507,6 +1530,15 @@ function convertFloat(str, num)
     }
     else if (num == 3) {
         $(str).eq(row_index3).val($(str).eq(row_index3).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
+    else if (num == 4) {
+        $(str).eq(row_index4).val($(str).eq(row_index4).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
+    else if (num == 5) {
+        $(str).eq(row_index5).val($(str).eq(row_index5).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
+    else if (num == 6) {
+        $(str).eq(row_index6).val($(str).eq(row_index6).val()).formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
         $(str).val($(str).val()).formatNumber({ format: "#,###.00", locale: "us" });

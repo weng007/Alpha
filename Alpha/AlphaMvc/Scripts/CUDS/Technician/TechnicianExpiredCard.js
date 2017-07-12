@@ -68,7 +68,7 @@ $(document).ready(function () {
             html += '<td class="hideANDseek">' + data.Table[i].CerNo + '</td>';
             var ExpiryDate = new Date(data.Table[i].ExpiryDate);
             html += '<td>' + ExpiryDate.getDate() + '/' + (ExpiryDate.getMonth() + 1) + '/' + ExpiryDate.getFullYear() + '</td>';
-            html += '<td class="hideANDseek">' + data.Table[i].CardType + '</td>';
+            html += '<td class="hidecolumn">' + data.Table[i].CardType + '</td>';
             html += '<td>' + data.Table[i].CompanyName + '</td>';
             html += '</tr>';
         }

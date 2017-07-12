@@ -1,4 +1,11 @@
-﻿
+﻿var row_index = 0;//RowCal5 Manpower
+var row_index2 = 0;//RowCal Income
+var row_index3 = 0;//RowCal1 Expense
+var row_index4 = 0;//RowCal2 SaleOrder
+var row_index5 = 0;//RowCal3 Invoice
+var row_index6 = 0;//RowCal4 Receipt
+var col_index = 0;//RowCal5 Manpower
+
 $(document).ready(function () {
     hljs.tabReplace = '    '; // 4 spaces
     hljs.initHighlightingOnLoad();
@@ -102,19 +109,18 @@ $(document).ready(function () {
         }
     });
 
-    //var dataObject = { IsJobOrder: true };
+    //cmbExpense
     //$.ajax({
-
     //    url: 'http://localhost:13131/api/ExpenseMaster',
     //    type: 'GET',
     //    dataType: 'json',
-    //    data: dataObject,
     //    success: function (data) {
     //        data = JSON.parse(data);
     //        $.each(data.Table, function (i) {
     //            $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
     //        });
     //        $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+    //        alert($(".ExpenseSelect").find(":selected").val());
     //    },
     //    failure: function () {
     //        alert('Error');
@@ -162,6 +168,7 @@ $(document).ready(function () {
         url: 'http://localhost:13131/api/MasterService/',
         type: 'GET',
         dataType: 'json',
+        async: false,
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
@@ -243,11 +250,9 @@ $(document).ready(function () {
             $info.show();
         }
     });
+    GetExpenseGroup();
 });
-var row_index = 0;//RowCal5 Manpower
-var row_index2 = 0;//RowCal Income
-var row_index3 = 0;//RowCal1 Expense
-var col_index = 0;//RowCal5 Manpower
+
 //function countPosition()
 //{
 //    var totalSup = 0;
@@ -288,6 +293,15 @@ $(function () {
     });
     $('.RowCal1 td:first').click(function () {
         row_index3 = $(this).parent().index();
+    });
+    $('.RowCal2 td:first').click(function () {
+        row_index4 = $(this).parent().index();
+    });
+    $('.RowCal3 td:first').click(function () {
+        row_index5 = $(this).parent().index();
+    });
+    $('.RowCal4 td:first').click(function () {
+        row_index6 = $(this).parent().index();
     });
 
     $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
@@ -531,6 +545,31 @@ function CalTotalHour() {
     var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
     $('.TotalHours').eq(row_index).val(total);
 }
+function GetExpenseGroup() {
+    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+    $('#hidTypeWorking').val(WorkingType);
+
+    var dataObject = { TypeWorking: WorkingType };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderExpense',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            //$('.ExpenseSelect:last').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 function ChangeExpenseGroup()
 {
     //alert('Test ' + $("#cmbTypeWorking").find(":selected").val());
@@ -543,6 +582,7 @@ function ChangeExpenseGroup()
         url: 'http://localhost:13131/api/JobOrderExpense',
         type: 'GET',
         dataType: 'json',
+        async: false,
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
@@ -889,29 +929,8 @@ function AddRowIncome() {
     });
 }
 function AddRowExpense() {
-    //var dataObject = { IsJobOrder: true };
-    //$.ajax({
-    //    url: 'http://localhost:13131/api/ExpenseMaster',
-    //    type: 'GET',
-    //    dataType: 'json',
-    //    data: dataObject,
-    //    success: function (data) {
-    //        data = JSON.parse(data);
-
-    //        //$('.ExpenseSelect:last').find("option").remove();
-    //        $.each(data.Table, function (i) {
-    //            $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-    //        });
-    //        $('.ExpenseSelect:last').find('option:first-child').attr('selected', true);
-
-    //    },
-    //    failure: function () {
-    //        alert('Error');
-    //    }
-    //});
 
     var WorkingType = $('#hidTypeWorking').val();
-
     var dataObject = { TypeWorking: WorkingType };
     $.ajax({
         url: 'http://localhost:13131/api/JobOrderExpense',
@@ -920,7 +939,7 @@ function AddRowExpense() {
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
-            //$('.ExpenseSelect:last').find("option").remove();
+            $('.ExpenseSelect:last').find("option").remove();
             $.each(data.Table, function (i) {
                 $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
@@ -962,6 +981,15 @@ function SetRowIndex()
     });
     $('.RowCal1 td').click(function () {
         row_index3 = $(this).parent().index();
+    });
+    $('.RowCal2 td').click(function () {
+        row_index4 = $(this).parent().index();
+    });
+    $('.RowCal3 td').click(function () {
+        row_index5 = $(this).parent().index();
+    });
+    $('.RowCal4 td').click(function () {
+        row_index6 = $(this).parent().index();
     });
 }
 
@@ -1043,12 +1071,21 @@ function RedirectJobOrderBorrow(val)
     }
 }
 
-function convertFloat(str) {
+function convertFloat(str, num) {
     if (num == 2) {
         $(str).eq(row_index2).val($(str).eq(row_index2).val()).formatNumber({ format: "#,###.00", locale: "us" });
     }
     else if (num == 3) {
         $(str).eq(row_index3).val($(str).eq(row_index3).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
+    else if (num == 4) {
+        $(str).eq(row_index4).val($(str).eq(row_index4).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
+    else if (num == 5) {
+        $(str).eq(row_index5).val($(str).eq(row_index5).val()).formatNumber({ format: "#,###.00", locale: "us" });
+    }
+    else if (num == 6) {
+        $(str).eq(row_index6).val($(str).eq(row_index6).val()).formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
         $(str).val($(str).val()).formatNumber({ format: "#,###.00", locale: "us" });
