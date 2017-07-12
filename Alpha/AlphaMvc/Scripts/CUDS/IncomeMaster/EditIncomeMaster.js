@@ -31,7 +31,8 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var dataObject = { ID: val, Detail: $("#txtDetail").val(), PriceList: $("#txtPrice").val(), Seq: $("#txtSeq").val(), EditBy: localStorage['UserID'] };
+    var Price = $("#txtPrice").val().replace(',', '');
+    var dataObject = { ID: val, Detail: $("#txtDetail").val(), PriceList: Price, Seq: $("#txtSeq").val(), EditBy: localStorage['UserID'] };
        $.ajax(
         {
             url: 'http://localhost:13131/api/IncomeMaster',
@@ -48,6 +49,10 @@ function Update(val) {
             }           
         })
 };
+function convertFloat(str) {
+
+    $(str).val($(str).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
+}
 //function Redirect() {
    
 //}

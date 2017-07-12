@@ -18,7 +18,8 @@ $(document).ready(function () {
     });
 });
 function CreateData() {
-    var dataObject = { Detail: $("#txtDetail").val(), ExpenseGroup: $("#cmbTypeWorking").find(":selected").val(), PriceList: parseFloat($("#txtPrice").val()), Seq: $("#txtSeq").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
+    var Price = $("#txtPrice").val().replace(',', '');
+    var dataObject = { Detail: $("#txtDetail").val(), ExpenseGroup: $("#cmbTypeWorking").find(":selected").val(), PriceList: Price, Seq: $("#txtSeq").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
     $.ajax(
     {
         url: 'http://localhost:13131/api/ExpenseMaster',
@@ -32,4 +33,8 @@ function CreateData() {
         },
         error: function (msg) { alert(msg); }
     });
+}
+function convertFloat(str) {
+    
+    $(str).val($(str).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
 }

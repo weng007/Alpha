@@ -50,7 +50,7 @@ $(document).ready(function () {
                 html += '<td class="hidecolumn nopointer">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].ExpenseGroup + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Detail + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].PriceList + '</td>';
+                html += '<td class="nopointer text-right">' + new Intl.NumberFormat('en-IN').format(data.Table[i].PriceList) + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Seq + '</td>';
                 html += '<td class="nopointer">';
                 html += '<a href="/ExpenseMaster/EditExpenseMaster?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgAdminUpdate" /></a>';

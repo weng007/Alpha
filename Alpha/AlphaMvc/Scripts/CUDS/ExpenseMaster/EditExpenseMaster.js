@@ -54,7 +54,8 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var dataObject = { ID: val, Detail: $("#txtDetail").val(), ExpenseGroup: $("#cmbExpenseGroup").find(":selected").val(), PriceList: $("#txtPrice").val(), Seq: $("#txtSeq").val(), EditBy: localStorage['UserID'] };
+    var Price = $("#txtPrice").val().replace(',', '');
+    var dataObject = { ID: val, Detail: $("#txtDetail").val(), ExpenseGroup: $("#cmbExpenseGroup").find(":selected").val(), PriceList: Price, Seq: $("#txtSeq").val(), EditBy: localStorage['UserID'] };
         $.ajax(
         {
             url: 'http://localhost:13131/api/ExpenseMaster',
@@ -75,4 +76,8 @@ function Update(val) {
 }
 function Redirect() {
     window.location.href = "../ExpenseMaster/IndexExpenseMaster";
+}
+function convertFloat(str) {
+
+    $(str).val($(str).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
 }

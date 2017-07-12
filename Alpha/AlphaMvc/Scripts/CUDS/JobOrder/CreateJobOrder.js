@@ -396,7 +396,7 @@ function GetPriceList()
             if (data.Table.length > 0) {
 
                 $('.PriceList').eq(row_index2).val(data.Table[0].PriceList);
-                $('.UnitPrice').eq(row_index2).val(data.Table[0].PriceList);
+                $('.UnitPrice').eq(row_index2).val(data.Table[0].PriceList).formatNumber({ format: "#,###.00", locale: "us" });
             }
         },
         error: function (msg) {
@@ -422,7 +422,7 @@ function GetExpensePriceList() {
             if (data.Table.length > 0) {
 
                 $('.PriceList1').eq(row_index3).val(data.Table[0].PriceList);
-                $('.UnitPrice1').eq(row_index3).val(data.Table[0].PriceList);
+                $('.UnitPrice1').eq(row_index3).val(data.Table[0].PriceList).formatNumber({ format: "#,###.00", locale: "us" });
             }
         },
         error: function (msg) {
@@ -1072,23 +1072,24 @@ function RedirectJobOrderBorrow(val)
 }
 
 function convertFloat(str, num) {
+
     if (num == 2) {
-        $(str).eq(row_index2).val($(str).eq(row_index2).val()).formatNumber({ format: "#,###.00", locale: "us" });
+        $(str).eq(row_index2).val($(str).eq(row_index2).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
     }
     else if (num == 3) {
-        $(str).eq(row_index3).val($(str).eq(row_index3).val()).formatNumber({ format: "#,###.00", locale: "us" });
+        $(str).eq(row_index3).val($(str).eq(row_index3).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
     }
     else if (num == 4) {
-        $(str).eq(row_index4).val($(str).eq(row_index4).val()).formatNumber({ format: "#,###.00", locale: "us" });
+        $(str).eq(row_index4).val($(str).eq(row_index4).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
     }
     else if (num == 5) {
-        $(str).eq(row_index5).val($(str).eq(row_index5).val()).formatNumber({ format: "#,###.00", locale: "us" });
+        $(str).eq(row_index5).val($(str).eq(row_index5).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
     }
     else if (num == 6) {
-        $(str).eq(row_index6).val($(str).eq(row_index6).val()).formatNumber({ format: "#,###.00", locale: "us" });
+        $(str).eq(row_index6).val($(str).eq(row_index6).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
-        $(str).val($(str).val()).formatNumber({ format: "#,###.00", locale: "us" });
+        $(str).val($(str).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
     }
 }
 
