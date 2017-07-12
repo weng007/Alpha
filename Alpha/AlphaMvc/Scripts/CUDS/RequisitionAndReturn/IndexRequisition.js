@@ -63,10 +63,11 @@ function GetJobOrder() {
                 var JobDate = new Date(data.Table[i].JobDate);
                 html += '<td>' + JobDate.getDate() + '/' + (JobDate.getMonth() + 1) + '/' + JobDate.getFullYear() + '</td>';
                 html += '<td>' + data.Table[i].Name + '</td>';
-                html += '<td>' + data.Table[i].Tel + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].Contact + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].CoWorker + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].Remark + '</td>';
+                html += '<td>' + 'Status' + '</td>';
+                html += '<td class="hidecolumn">' + data.Table[i].Tel + '</td>';
+                html += '<td class="hidecolumn">' + data.Table[i].Contact + '</td>';
+                html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
+                html += '<td class="hidecolumn">' + data.Table[i].Remark + '</td>';
                 html += '<td class="nopointer">';
                 html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&IsView=' + false + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgBDCUpdate"/></a>';
                 html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="BDCviewDisable"/></a>';

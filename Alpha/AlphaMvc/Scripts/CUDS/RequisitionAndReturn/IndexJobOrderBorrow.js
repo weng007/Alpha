@@ -1,8 +1,6 @@
-$(document).ready(function () {
-    $('.imgadd').attr("style", "margin-left: 68%; margin-top: -2px;");
-    //------------------------------------ Standard ------------------------------------
+function GetJobOrderBorrow(val)
+{
     //Sorting
-    $('#tableData').paging({ limit: 5 });
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)
         var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
@@ -29,40 +27,45 @@ $(document).ready(function () {
         jo.show();
 
     }).focus(function () {
-        this.value = "";
         $(this).css({ "color": "black" });
         $(this).unbind('focus');
     }).css({ "color": "#C0C0C0" });
 
     //------------------------------------ Custom ------------------------------------
-
+    var dataObject = { ID: val }
+    $("#hidBorroeeJobID").val(val);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/ExpenseMaster/',
+        url: 'http://localhost:13131/api/JobOrderBorrowRefID',
         type: 'GET',
+        async: false,
+        data: dataObject,
         datatype: 'json',
         success: function (data) {
             data = JSON.parse(data);
-            var html = '<tbody>';
+            var html = '';
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
                 html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
-                html += '<td class="hidecolumn nopointer">' + data.Table[i].ID + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].ExpenseGroup + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].Detail + '</td>';
-                html += '<td class="nopointer text-right">' + AddComma(parseFloat(data.Table[i].PriceList).toFixed(2)) + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].Seq + '</td>';
+                html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].SerialNo + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Remark + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].Brand + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].Model + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Size + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Amount + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnGood + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnLost + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnRepair + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnBad + '</td>';
                 html += '<td class="nopointer">';
-                html += '<a href="/ExpenseMaster/EditExpenseMaster?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgAdminUpdate" /></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'ExpenseMaster'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgAdminDelete" /></a>';
-                html += '<a href="/ExpenseMaster/EditExpenseMaster?id=' + data.Table[i].ID + '&IsView=' + true + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgAdminView" /></a>';
+                html += '<a href="/Borrow/EditBorrow?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png"/></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'JobOrderBorrow'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
-            html += '</tbody>';
             document.getElementById("result").innerHTML = html;
-            CheckAuthorization();
-            $('#tblExpenseMaster').paging({
+            $('#tblJobborrow').paging({
                 limit: 30,
                 rowDisplayStyle: 'block',
                 activePage: 0,
@@ -73,25 +76,25 @@ $(document).ready(function () {
             alert(msg)
         }
     });
-});
+}
 function RowDelete(id) {
-    var dataObject = { ID: id, EditBy: localStorage['UserID'] };
+    var JobID = $("#hidBorroeeJobID").val();
+    var dataObject = { ID: id };
     $.ajax(
         {
-            url: 'http://localhost:13131/api/ExpenseMaster/Delete',
+            url: 'http://localhost:13131/api/JobOrderBorrow',
             type: 'DELETE',
             data: dataObject,
             datatype: 'json',
 
             success: function (result) {
-                //alert('Delete is completed')
-                window.location.href = "../ExpenseMaster/IndexExpenseMaster";
+                alert(JobID);
+                window.location.href = "../JobOrder/EditJobOrder?id=" + JobID;
             }
             ,
             error: function (msg) {
                 alert(msg)
             }
-
 
         });
 }

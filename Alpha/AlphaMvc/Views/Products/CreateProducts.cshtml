@@ -54,14 +54,14 @@
                     <label class="label-2" style="margin-right: 45%;">รุ่น</label>&nbsp;<label class="label-2">อายุใช้งาน</label>
                 </li>
                 <li>
-                    <input type="text" id = "txtModel" name="field2" class="field-divided" placeholder="" />&nbsp;<input type="text" id = "txtLifetime" name="field2" class="field-select-small" placeholder="" />&nbsp;<label class="label-3">ปี</label>
+                    <input type="text" id = "txtModel" name="field2" class="field-divided" placeholder="" />&nbsp;<input type="text" id = "txtLifetime" name="field2" class="field-select-small" style="width:10%;" placeholder="" />&nbsp;<label class="label-3">ปี</label>
                 </li>
                 <li>
                     <label class="label-big">รับเข้า</label>&nbsp;<label class="label-small">หน่วยนับ</label>
                 </li>
                 <li>
                     <input type="text" id = "dtReceiveDate" class="field-divided" placeholder="" required />&nbsp;
-                    <select id="cmbUnitWeight" name="cmbUnitWeight" class="field-select-small-2" >
+                    <select id="cmbUnitWeight" name="cmbUnitWeight" class="field-select-small-2" style="margin-left: -3px;">
                     </select>
                     @*onchange="cmbUnitWeight_Change()"*@
                 </li>
@@ -69,7 +69,7 @@
                     <label class="label-small">ยกมา<span class="required">*</span></label>&nbsp;<label class="label-small-3">คงเหลือ<span class="required">*</span></label>
                 </li>
                 <li>
-                    <input type="number" id = "txtBalance" name="field1" class="field-select-small" placeholder="" onblur="GetRemain()" required />&nbsp;<input type="number" id = "txtRemain" name="field2" class="field-select-small" placeholder="" required disabled/>
+                    <input type="number" id = "txtBalance" name="field1" class="field-select-small" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46" placeholder="" onblur="GetRemain()" required />&nbsp;<input type="number" id = "txtRemain" name="field2" class="field-select-small" placeholder="" required disabled/>
                 </li>
                 <li>
                     <label class="label-small-2">หาย</label>&nbsp;<label class="label-small-2">ซ่อม</label>&nbsp;<label class="label-small-2">ชำรุด</label>

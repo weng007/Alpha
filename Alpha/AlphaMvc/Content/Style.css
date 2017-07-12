@@ -286,7 +286,7 @@
     /* padding-top: 5px; */
     /* margin-left: 5px; */
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 1185px;
     z-index: 1;
 }
 .btnimage-3{
@@ -674,7 +674,7 @@ select{
     display: block;
     font-weight: bold;
     float: right;
-    margin-right: 25%;
+    margin-right: 35%;
     margin-top: 2%;
 }
 .form-style-1 .label-4 {
@@ -756,6 +756,14 @@ select{
     font-weight: bold;
     float: left;
     margin-right: 14.5%;
+}
+.form-style-1 .label-small-20 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: bold;
+    float: left;
+    margin-right: 20%;
 }
 
 .form-style-1 .label-big {

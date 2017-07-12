@@ -86,16 +86,27 @@
                             <li id="mnCarlendar" class="menuli">
                                 <div class="menua">
                                     <div class="menutext">
-                                        @Html.ActionLink("Calendar", "IndexCalendarJob", "CalendarJob")
+                                        @Html.ActionLink("Activity", "AllActivity", "AllActivity")
                                         <ul class="hidden">
-                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Job", "IndexCalendarJob", "CalendarJob")</div></li>
-                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Man Power", "IndexCMP", "CalendarManPower")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("All Activity", "AllActivity", "AllActivity")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Calendar Job", "IndexCalendarJob", "CalendarJob")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Calendar ManPower", "IndexCMP", "CalendarManPower")</div></li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-                            <li id="mnTechnician" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Technician", "IndexTechnician", "Technician")</div></div></li>
-                            <li id="mnTechnician" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Expired Card", "ExpiredTechnician1", "ExpiredTechnician1")</div></div></li>
+                            <li id="mnTechnician" class="menuli">
+                                <div class="menua">
+                                    <div class="menutext">
+                                        @Html.ActionLink("Technician & Card", "IndexTechnician", "Technician")
+                                        <ul class="hidden">
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Technician", "IndexTechnician", "Technician")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Expired Card", "ExpiredTechnician1", "ExpiredTechnician1")</div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            @*<li id="mnTechnician" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Expired Card", "ExpiredTechnician1", "ExpiredTechnician1")</div></div></li>*@
                             <li id="mnCarlendar" class="menuli">
                                 <div class="menua">
                                     <div class="menutext">
@@ -103,11 +114,22 @@
                                         <ul class="hidden">
                                             <li class="menuli"><div class="submenua">@Html.ActionLink("Stock", "IndexProducts", "Products")</div></li>
                                             <li class="menuli"><div class="submenua">@Html.ActionLink("Stock Adjustment", "IndexProductAdjust", "ProductAdjust")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Requisition & Return", "IndexRequisition", "Requisition")</div></li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-                            <li id="mnBDC" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Estimate Price", "IndexBDC", "BDC")</div></div></li>
+                            <li id="mnBDC" class="menuli">
+                                <div class="menua">
+                                    <div class="menutext">
+                                    @Html.ActionLink("Estimate & Job Order", "IndexBDC", "BDC")
+                                        <ul class="hidden">
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Estimate Price", "IndexBDC", "BDC")</div></li>
+                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Job Order", "IndexJobOrder", "JobOrder")</div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
                             <li id="imgPayment" class="menuli">
                                 <div class="menua">
                                     <div class="menutext">
@@ -131,7 +153,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li id="mnTechnician" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Requisition & Return", "IndexRequisition", "Requisition")</div></div></li>
+                            @*<li id="mnTechnician" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Requisition & Return", "IndexRequisition", "Requisition")</div></div></li>*@
                         </ul>
                 </div>
             

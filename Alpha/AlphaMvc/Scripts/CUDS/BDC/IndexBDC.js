@@ -73,19 +73,24 @@ function GetData(val)
                 html += '<td class="nopointer">' + data.Table[i].Docver + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].QuotationNo + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Customer + '</td>';
-                html += '<td class="gvPrice text-right nopointer">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Price) + '</td>';
-                html += '<td class="gvCost text-right nopointer">' + new Intl.NumberFormat('en-IN').format(data.Table[i].Cost) + '</td>';
+                html += '<td class="gvPrice text-right nopointer">' + AddComma(parseFloat(data.Table[i].Price).toFixed(2)) + '</td>';
+                html += '<td class="gvCost text-right nopointer">' + AddComma(parseFloat(data.Table[i].Cost).toFixed(2)) + '</td>';
                 price = data.Table[i].Price;
                 cost = data.Table[i].Cost;
                 profit = price - cost;
                 if (profit < 0)
                 {
-                    html += '<td style="color:#FF0000" class="gvProfit text-right nopointer"> ' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
+                    html += '<td style="color:#FF0000" class="gvProfit text-right nopointer"> ' + AddComma(parseFloat(profit).toFixed(2)) + '</td>';
+                    var percentprofit = isNaN((profit / data.Table[i].Cost) * 100) ? 0 : (profit / data.Table[i].Cost) * 100;
+                    html += '<td style="color:#FF0000" class="gvProfit text-right nopointer"> ' + AddComma(parseFloat(percentprofit).toFixed(2)) + '</td>';
                 }
                 else
                 {
-                    html += '<td style="Color: black" class="gvProfit text-right nopointer">' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
+                    html += '<td style="Color: black" class="gvProfit text-right nopointer">' + AddComma(parseFloat(profit).toFixed(2)) + '</td>';
+                    var percentprofit = isNaN((profit / data.Table[i].Cost) * 100) ? 0 : (profit / data.Table[i].Cost) * 100;
+                    html += '<td style="color: black" class="gvProfit text-right nopointer"> ' + AddComma(parseFloat(percentprofit).toFixed(2)) + '</td>';
                 }
+                
                 html += '<td class="nopointer">';
                 html += '<a href="/BDC/EditBDC?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgBDCUpdate"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'BDC'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgBDCDelete"/></a>';

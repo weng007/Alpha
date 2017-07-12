@@ -76,7 +76,7 @@
                     <label class="label-2">Serial Number <span class="required">*</span></label>
                 </li>
                 <li>
-                    <input type="text" id="txtSerialNo" name="field_1" class="field-divided" placeholder="Serial" autofocus required />&nbsp;<a href="#" data-toggle="modal" data-target="#productsDialog" onclick="BrowseProducts()">
+                    <input type="text" id="txtSerialNo" name="field_1" class="field-divided" placeholder="Serial" autofocus required disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#productsDialog" onclick="BrowseProducts()">
                         <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
                     </a>
                     <input type="hidden" id="hidProductID" />
@@ -90,7 +90,7 @@
                     <input type="text" id="txtBrand" name="field1" class="field-divided" placeholder="" disabled/>&nbsp;<input type="text" id="txtSize" name="field2" class="field-select-small text-size160" placeholder="" disabled/>
                 </li>
                 <li>
-                    <label class="label-2" style="margin-right: 45%;">รุ่น</label>&nbsp;<label class="label-2">DocRef</label>
+                    <label class="label-2" style="margin-right: 45%;">รุ่น</label>&nbsp;<label class="label-2">Doc Ref.</label>
                 </li>
                 <li>
                     <input type="text" id="txtModel" name="field2" class="field-divided" placeholder="" disabled/>&nbsp;<input type="text" id="txtDocRef" name="field2" class="field-select-small" placeholder="" />
@@ -108,8 +108,8 @@
                     <label class="label-small-2">เพิ่ม</label>&nbsp;<label class="label-small-2">ลด</label>
                 </li>
                 <li>
-                    <input type="text" id="txtAdded" name="field6" class="Number field-select-small" placeholder="" value="0"/>&nbsp;
-                    <input type="text" id="txtDeduction" name="field6" class="Number field-select-small" placeholder="" value="0" onblur="GetDeduct()"/>&nbsp;
+                    <input type="text" id="txtAdded"  style="text-align:right;" name="field6" class="Number field-select-small" placeholder="" value="0"/>&nbsp;
+                    <input type="text" id="txtDeduction"  style="text-align:right;" name="field6" class="Number field-select-small" placeholder="" value="0" onblur="GetDeduct()"/>&nbsp;
                 </li>
                 <li>
                     <button type="button" class="btn btn-primary" onclick="Isvalidate('Update', 'ProductAdjust', @Request.Params["id"])">Save</button>

@@ -94,10 +94,10 @@ function GetData(val) {
                $("#txtDocver").val(data.Table[0].Docver), $("#txtQuoNo").val(data.Table[0].QuotationNo), $("#txtBDCNo").val(data.Table[0].BDCNo), $("#hidQuoID").val(data.Table[0].QuotationNo), $("#txtRemark").val(data.Table[0].Remark),
                $("#txtPrice").val(data.Table1[0].Price).formatNumber({ format: "#,###.00", locale: "us" }), $("#txtCost").val(data.Table1[0].Cost).formatNumber({ format: "#,###.00", locale: "us" });
                if (Profit < 0) {
-                   $("#txtProfit").formatNumber({ format: "#,###.00", locale: "us" }).val(Profit).css('color', 'red');
+                   $("#txtProfit").val(Profit).formatNumber({ format: "#,###.00", locale: "us" }).css('color', 'red');
                }
                else {
-                   $("#txtProfit").formatNumber({ format: "#,###.00", locale: "us" }).val(Profit).css('color', 'black');
+                   $("#txtProfit").val(Profit).formatNumber({ format: "#,###.00", locale: "us" }).css('color', 'black');
                }
            },
            error: function (msg) {

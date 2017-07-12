@@ -27,6 +27,12 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpGet]
+        public string Get()
+        {
+            var response = jobOrderBorrow.SelectData();
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+        [HttpGet]
         public string Get(int id)
         {
             var response = jobOrderBorrow.SelectByID(id);

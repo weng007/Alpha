@@ -608,7 +608,7 @@ function CreateData() {
     var dataObject = {
         JobRef: $('#hidBDCID').val(), JobNo: $('#txtJobNo').val(), JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate, JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(),
         ContactID: $("#cmbContact").find(":selected").val(), CoWorkerID: $("#cmbCoWorker").find(":selected").val(),
-        Detail: $("#txtDetail").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: $("#txtDiscount").val(), Price: $('#txtSubTotal').val(), Cost: $('#txtExpense').val(), JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
+        Detail: $("#txtDetail").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: ConvertAmount($("#txtDiscount").val()), Price: ConvertAmount($('#txtSubTotal').val()), Cost: ConvertAmount($('#txtExpense').val()), JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
     console.log(dataObject);
         var ID;
@@ -638,9 +638,9 @@ function CreateData() {
             dataObject.Qty = $(this).find(".Quantity").val();
             //alert("PriceList " + $(this).find(".PriceList").val());
             //alert("UnitPrice " + $(this).find(".UnitPrice").val());
-            dataObject.PriceList = $(this).find(".PriceList").val();
-            dataObject.UnitPrice = $(this).find(".UnitPrice").val();
-            dataObject.Amount = $(this).find(".Amount").val();
+            dataObject.PriceList = ConvertAmount($(this).find(".PriceList").val());
+            dataObject.UnitPrice = ConvertAmount($(this).find(".UnitPrice").val());
+            dataObject.Amount = ConvertAmount($(this).find(".Amount").val());
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".UnitPrice").val() != '')
@@ -672,9 +672,9 @@ function CreateData() {
             dataObject.Qty = $(this).find(".Quantity").val();
             //alert("PriceList1 " + $(this).find(".PriceList1").val());
             //alert("UnitPrice1 " + $(this).find(".UnitPrice1").val());
-            dataObject.PriceList = $(this).find(".PriceList1").val();
-            dataObject.UnitPrice = $(this).find(".UnitPrice1").val();
-            dataObject.Amount = $(this).find(".Amount1").val();
+            dataObject.PriceList = ConvertAmount($(this).find(".PriceList1").val());
+            dataObject.UnitPrice = ConvertAmount($(this).find(".UnitPrice1").val());
+            dataObject.Amount = ConvertAmount($(this).find(".Amount1").val());
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".UnitWeight").val() != '' && $(this).find(".Quantity").val() != '' && $(this).find(".UnitPrice1").val() != '')
@@ -743,7 +743,7 @@ function CreateData() {
         $(".RowCal2").each(function () {
             dataObject.JobID = ID;
             dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
-            dataObject.Amount = $(this).find(".Amount2").val();
+            dataObject.Amount = ConvertAmount($(this).find(".Amount2").val());
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".SaleOrderNo").val() != '')
@@ -769,7 +769,7 @@ function CreateData() {
             dataObject.JobID = ID;
             dataObject.SaleOrderNo = $(this).find(".SaleOrderNo").val();
             dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
-            dataObject.Amount = $(this).find(".Amount3").val();
+            dataObject.Amount = ConvertAmount($(this).find(".Amount3").val());
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".SaleOrderNo").val() != '' && $(this).find(".InvoiceNo").val() != '')
@@ -795,7 +795,7 @@ function CreateData() {
             dataObject.JobID = ID;
             dataObject.ReceiptNo = $(this).find(".ReceiptNo").val();
             dataObject.InvoiceNo = $(this).find(".InvoiceNo").val();
-            dataObject.Amount = $(this).find(".Amount4").val();
+            dataObject.Amount = ConvertAmount($(this).find(".Amount4").val());
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
             if ($(this).find(".ReceiptNo").val() != '' && $(this).find(".InvoiceNo").val() != '')

@@ -86,7 +86,7 @@
             </ul>
             <ul class="form-style-1">
                 <li>
-                    <label class="label-big" id="lblPrice">ราคาขาย<span class="required">*</span></label>&nbsp;<label class="label-small" id="lblCost">ราคาทุน<span class="required">*</span></label>
+                    <label class="label-small-20" id="lblPrice">ราคาขาย<span class="required">*</span></label>&nbsp;<label class="label-small-20" id="lblCost">ราคาทุน<span class="required">*</span></label>
                     <input type="text" id="txtPrice" name="field1" class="text-size130 text-right" placeholder="ราคาขาย" disabled />&nbsp;<input type="text" id="txtCost" name="field2" class="text-size130 text-right" placeholder="ราคาทุน" disabled/>
                 </li>
                 <li>
@@ -102,57 +102,40 @@
                 <br />
             </ul>
             @*//===================================================================CSS w3school*@
-            <table class="tabbar">
+            <table class="barattach-2">
                 <tr>
                     <td>
-                        <div id="container">
-
-                            <div id="parentHorizontalTab">
-                                <ul class="resp-tabs-list hor_1">
-                                    <li>Job Order</li>
-                                </ul>
-                                <div class="resp-tabs-container hor_1">
-                                    <div>
-                                        <div class="barattach-2">
-                                   @*<a href="@Url.Action("CreateJobOrder", "JobOrder")?@Request.Params["id"]" class="alink"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" /></a>*@
-                                            <button type="button" id="btnSave" class="btnCreate" onclick="OpenJobOrder(@Request.Params["id"])"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" id="BDCCreate"/></button>
-                                        </div>
-                                        <div class="grigbar">
-                                            <div class="table-responsive">
-                                                <table id="tblBDCJOb" class="table table-striped scrolling" onended="SetPaging()">
-                                                    <thead class="bgthead">
-                                                        <tr>
-                                                            <th>No.</th>
-                                                            <th>Job No.</th>
-                                                            <th>วันที่</th>
-                                                            <th>ลูกค้า</th>
-                                                            <th>เบอร์โทร</th>
-                                                            <th class="hideANDseek">บุคคลติดต่อ</th>
-                                                            <th class="hideANDseek">ผู้ประสานงาน</th>
-                                                            <th class="hideANDseek">หมายเหตุ</th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="result"></tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
+                        <label class="topicmargin-size70">Job Order</label>
+                        <button type="button" id="btnSave" class="btnCreate" onclick="OpenJobOrder(@Request.Params["id"])"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" id="BDCCreate" /></button>
                     </td>
                 </tr>
             </table>
-            <ul class="form-style-1">
-                <li>
-                    <button type="button" id="btnSave1" class="btn btn-primary" onclick="Isvalidate('Update', 'BDC', @Request.Params["id"])">Save</button>
-                    <a onclick="OpenRptBDC(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand;" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>
-                </li>
-            </ul>
-        </form>
+            <div class="table-responsive">
+                <table id="tblBDCJOb" class="table table-striped scrolling" onended="SetPaging()">
+                    <thead class="bgthead">
+                        <tr>
+                            <th>No.</th>
+                            <th>Job No.</th>
+                            <th>วันที่</th>
+                            <th>ลูกค้า</th>
+                            <th>เบอร์โทร</th>
+                            <th class="hideANDseek">บุคคลติดต่อ</th>
+                            <th class="hideANDseek">ผู้ประสานงาน</th>
+                            <th class="hideANDseek">หมายเหตุ</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="result"></tbody>
+                </table>
+            </div>
+                
+                <ul class="form-style-1">
+                    <li>
+                        <button type="button" id="btnSave1" class="btn btn-primary" onclick="Isvalidate('Update', 'BDC', @Request.Params["id"])">Save</button>
+                        <a onclick="OpenRptBDC(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand;" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>
+                    </li>
+                </ul>
+</form>
     }
 </div>
 
