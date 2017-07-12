@@ -11,6 +11,12 @@
     margin-left: 10px;
     z-index: 1;
 }
+.bigtopic
+{
+    width: 200px;
+    float: left;
+    margin-right: 38%;
+}
 .width-190{
     margin-right: 5px !important;
     width: 45% !important;
@@ -136,6 +142,12 @@
     margin-left: 10px;
     color: white;
     margin-right: 70%;
+}
+.topicmargin-size90{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    margin-right: 90%;
 }
 .topicmargin-size74{
     margin-top: 10px;

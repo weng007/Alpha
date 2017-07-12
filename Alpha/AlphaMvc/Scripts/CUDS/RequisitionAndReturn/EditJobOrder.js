@@ -569,7 +569,9 @@ function ControlEnable(Isview) {
     }
     
 }
-
+function GetJobNo(val) {
+    $('#txtJobNo1').val(val);
+}
 function GetData(val) {
     var dataObject = { ID: val }
     console.log(dataObject);

@@ -979,34 +979,41 @@
             </tr>
         </table>
         <div>
-            <div class="barattach-2">
-                <a href="@Url.Action("CreateBorrow", "Borrow")?@Request.Params["id"]" class="alink"><img src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
-            </div>
-            <div class="grigbar">
-                <table id="tblJobborrow" class="table table-striped scrolling" onended="SetPaging()">
-                    <thead class="bgthead">
-                        <tr>
-                            <th rowspan="2">ลำดับ</th>
-                            <th rowspan="2">Serial</th>
-                            <th rowspan="2">รายละเอียด</th>
-                            <th rowspan="2" class="hideANDseek">ยี่ห้อ</th>
-                            <th rowspan="2" class="hideANDseek">รุ่น</th>
-                            <th rowspan="2">ขนาด</th>
-                            <th rowspan="2">จำนวนที่เบิก</th>
-                            <th colspan="4" class="hideANDseek">คืน</th>
-                            <th rowspan="2"></th>
-                        </tr>
-                        <tr>
-                            <th class="hideANDseek">ดี</th>
-                            <th class="hideANDseek">หาย</th>
-                            <th class="hideANDseek">ซ่อม</th>
-                            <th class="hideANDseek">ชำรุด</th>
-                        </tr>
-                    </thead>
-                    <tbody id="result"></tbody>
-                </table>
-            </div>
-        </div>
+            <ul class="form-style">
+                <li>
+                    <label>Job Order No.</label>
+                    <input type="text" id="txtJobNo1" class="field-divided" placeholder="" disabled />
+                </li>
+            </ul>
+                <div class="barattach-2">
+                    <label class="topicmargin-size90">Tools List</label>
+                    <a href="@Url.Action("CreateBorrow", "Borrow")?@Request.Params["id"]" class="alink"><img src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
+                </div>
+                <div class="grigbar">
+                    <table id="tblJobborrow" class="table table-striped scrolling" onended="SetPaging()">
+                        <thead class="bgthead">
+                            <tr>
+                                <th rowspan="2">ลำดับ</th>
+                                <th rowspan="2">Serial</th>
+                                <th rowspan="2">รายละเอียด</th>
+                                <th rowspan="2" class="hideANDseek">ยี่ห้อ</th>
+                                <th rowspan="2" class="hideANDseek">รุ่น</th>
+                                <th rowspan="2">ขนาด</th>
+                                <th rowspan="2">จำนวนที่เบิก</th>
+                                <th colspan="4" class="hideANDseek">คืน</th>
+                                <th rowspan="2"></th>
+                            </tr>
+                            <tr>
+                                <th class="hideANDseek">ดี</th>
+                                <th class="hideANDseek">หาย</th>
+                                <th class="hideANDseek">ซ่อม</th>
+                                <th class="hideANDseek">ชำรุด</th>
+                            </tr>
+                        </thead>
+                        <tbody id="result"></tbody>
+                    </table>
+                </div>
+</div>
         <ul class="form-style-1 hidecolumn">
             <li>
                 <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button>
@@ -1029,9 +1036,11 @@
     $(document).ready(function () {
         var input = window.location.href;
         var after = input.split('?')[1]
-        var val = after.split('=');
-        var Isview = val[2];
-
+        var val = after.split('&');
+        var Isview = val[1];
+        var JobNo = val[2];
+        //alert(Isview);
+        GetJobNo(JobNo);
         ControlEnable(Isview);
         //SetRowCal5();
         GetContact(@Request.Params["id"]);

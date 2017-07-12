@@ -155,7 +155,7 @@
                             <ul class="resp-tabs-list hor_1">
                                 <li>Income / Expense</li>
                                 <li>ManPower</li>
-                                <li class="hidecolumn">Requisition</li>
+                                @*<li class="hidecolumn">Requisition</li>*@
                                 <li>Sale Order</li>
                                 <li>Invoice</li>
                                 <li>Receipt</li>                            
@@ -680,7 +680,7 @@
                                     </div>
                                 </div>
                                 @*Borrow*@
-                                <div class="hidecolumn">
+                                @*<div class="hidecolumn">
                                     <div class="barattach-2">
                                         <a href="@Url.Action("CreateBorrow", "Borrow")?@Request.Params["id"]" class="alink"><img src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
                                     </div>
@@ -708,7 +708,7 @@
                                             <tbody id="result"></tbody>
                                         </table>
                                     </div>
-                                </div>
+                                </div>*@
                                 <div>
                                     <div class="wrapper">
                                         <table id="tabSaleOrder" class="example">

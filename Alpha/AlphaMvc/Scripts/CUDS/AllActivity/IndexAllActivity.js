@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    GetJobOrderBorrow();
+
+    GetJobOrder();
 });
-function GetJobOrderBorrow()
-{
-    //Sorting
+function GetJobOrder() {
+    //------------------------- Sorting ------------------------
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)
         var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
@@ -18,56 +18,65 @@ function GetJobOrderBorrow()
         }
     }
     function getCellValue(row, index) { return $(row).children('td').eq(index).html() }
-
-    //filter
+    //------------------------- Sorting ------------------------
+    //-------------------------filter------------------------
     $("#searchInput").keyup(function () {
+        //hide all the rows
         $("#result").find("tr").hide();
+
+        //split the current value of searchInput
         var data = this.value.split(" ");
+        //create a jquery object of the rows
         var jo = $("#result").find("tr");
+
+        //Recusively filter the jquery object to get results.
         $.each(data, function (i, v) {
             jo = jo.filter("*:contains('" + v + "')");
         });
+        //show the rows that match.
         jo.show();
+        //Removes the placeholder text
 
     }).focus(function () {
+        this.value = "";
         $(this).css({ "color": "black" });
         $(this).unbind('focus');
     }).css({ "color": "#C0C0C0" });
+    //-------------------------filter------------------------
 
-    //------------------------------------ Custom ------------------------------------
+
     //var dataObject = { ID: val }
-    //$("#hidBorroeeJobID").val(val);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/JobOrderBorrow',
+        url: 'http://localhost:13131/api/JobOrder',
         type: 'GET',
-        async: false,
         //data: dataObject,
         datatype: 'json',
         success: function (data) {
             data = JSON.parse(data);
-            var html = '';
+            var html = '<tbody>';
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
-                html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
+                html += '<td>' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].SerialNo + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].Remark + '</td>';
-                html += '<td class="hideANDseek nopointer">' + data.Table[i].Brand + '</td>';
-                html += '<td class="hideANDseek nopointer">' + data.Table[i].Model + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].Size + '</td>';
-                html += '<td class="nopointer">' + data.Table[i].Amount + '</td>';
-                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnGood + '</td>';
-                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnLost + '</td>';
-                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnRepair + '</td>';
-                html += '<td class="hideANDseek nopointer">' + data.Table[i].ReturnBad + '</td>';
+                html += '<td>' + data.Table[i].JobNo + '</td>';
+                var JobDate = new Date(data.Table[i].JobDate);
+                html += '<td>' + JobDate.getDate() + '/' + (JobDate.getMonth() + 1) + '/' + JobDate.getFullYear() + '</td>';
+                html += '<td>' + data.Table[i].Name + '</td>';
+                html += '<td>' + 'Status' + '</td>';
+                html += '<td class="hidecolumn">' + data.Table[i].Tel + '</td>';
+                html += '<td class="hidecolumn">' + data.Table[i].Contact + '</td>';
+                html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
+                html += '<td class="hidecolumn">' + data.Table[i].Remark + '</td>';
                 html += '<td class="nopointer">';
-                html += '<a href="/Borrow/EditBorrow?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png"/></a>';
-                html += '<a href="/JobOrder/EditBorrow?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="carlendarviewDisable" /></a>';
+                html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&' + false + '&' + data.Table[i].JobNo + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgBDCUpdate"/></a>';
+                html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&' + true + '&' + data.Table[i].JobNo + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="BDCviewDisable"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
+            html += '</tbody>';
             document.getElementById("result").innerHTML = html;
+            CheckAuthorization();
             $('#tblRequisition').paging({
                 limit: 30,
                 rowDisplayStyle: 'block',
@@ -75,29 +84,31 @@ function GetJobOrderBorrow()
                 rows: []
             });
         },
-        error: function (msg) {
-            alert(msg)
+        error: function (result) {
+            alert(result)
         }
     });
 }
-//function RowDelete(id) {
-//    var JobID = $("#hidBorroeeJobID").val();
-//    var dataObject = { ID: id };
-//    $.ajax(
-//        {
-//            url: 'http://localhost:13131/api/JobOrderBorrow',
-//            type: 'DELETE',
-//            data: dataObject,
-//            datatype: 'json',
+function RowDelete(id) {
+    var input = window.location.href;
+    var after = input.split('?')[1]
+    var ID = after.split('=');
+    var BDCID = ID[1];
+    var dataObject = { ID: id };
+    $.ajax(
+        {
+            url: 'http://localhost:13131/api/JobOrder',
+            type: 'DELETE',
+            data: dataObject,
+            datatype: 'json',
 
-//            success: function (result) {
-//                alert(JobID);
-//                window.location.href = "../JobOrder/EditJobOrder?id=" + JobID;
-//            }
-//            ,
-//            error: function (msg) {
-//                alert(msg)
-//            }
+            success: function (result) {
 
-//        });
-//}
+                window.location.href = "../BDC/EditBDC?id=" + BDCID;
+            }
+            ,
+            error: function (msg) {
+                alert(msg)
+            }
+        });
+}

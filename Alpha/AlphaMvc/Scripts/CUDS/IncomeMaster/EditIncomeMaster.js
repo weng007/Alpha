@@ -19,8 +19,9 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
+           var price = AddComma(parseFloat(data.Table[0].PriceList).toFixed(2))
            $("#txtDetail").val(data.Table[0].Detail);
-           $("#txtPrice").val(data.Table[0].PriceList);
+           $("#txtPrice").val(price);
            $("#txtSeq").val(data.Table[0].Seq);
            CheckAuthorization();
        },
