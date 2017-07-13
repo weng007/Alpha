@@ -15,9 +15,14 @@ namespace MymobilewalaMvc.Controllers
         {
             return View();
         }
+        public ActionResult CreateRequisition()
+        {
+            return View();
+        }
         public ActionResult EditRequisition()
         {
             return View();
         }
+
     }
 }

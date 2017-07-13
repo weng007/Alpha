@@ -49,9 +49,9 @@
         }
     }
     if (topic == "JobOrderBorrow"){
-        if ($("#txtAmount").val() == '') {
-            validatehtml += '<div class="modal-body modal-body-Warning">Please input จำนวนที่ยืม.</div>';
-        }
+        //if ($("#txtQty").val() == '') {
+        //    validatehtml += '<div class="modal-body modal-body-Warning">Please input จำนวนที่ยืม.</div>';
+        //}
     }
     if (topic == "JobOrder") {
         $(".RowCal5").each(function () {

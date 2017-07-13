@@ -697,7 +697,8 @@
                                                     <th class="hideANDseek">ชำรุด</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="result"></tbody>
+                                            @*<tbody id="result"></tbody>*@
+                                            <tbody></tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -978,42 +979,214 @@
                 </td>
             </tr>
         </table>
+        @*Requisition start*@
         <div>
             <ul class="form-style">
                 <li>
-                    <label>Job Order No.</label>
-                    <input type="text" id="txtJobNo1" class="field-divided" placeholder="" disabled />
+                    <label>ประเภทงาน</label><label>Job Order No.</label>
+                    <input type="text" id="txtProject" class="field-divided" placeholder="" disabled /><input type="text" id="txtJobNo1" class="field-divided" placeholder="" disabled />
                 </li>
             </ul>
-                <div class="barattach-2">
+            <ul class="form-style">
+                <li>
+                    <label>Project No.</label>
+                    <input type="text" id="txtProjecNo" class="field-divided" placeholder="" disabled />
+                </li>
+            </ul>
+            <ul class="form-style">
+                <li>
+                    <label>Date</label><label>Location</label>
+                    <input type="text" id="dtDate" class="field-divided" required disabled /><input type="text" id="txtLocation" class="field-divided" placeholder="" disabled />
+                </li>
+            </ul>
+                @*<div class="barattach-2">
                     <label class="topicmargin-size90">Tools List</label>
                     <a href="@Url.Action("CreateBorrow", "Borrow")?@Request.Params["id"]" class="alink"><img src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
-                </div>
-                <div class="grigbar">
-                    <table id="tblJobborrow" class="table table-striped scrolling" onended="SetPaging()">
-                        <thead class="bgthead">
+                </div>*@
+                <div class="wrapper">
+                    <table id="tabRequisition" class="example">
+                        <thead class="theader">
                             <tr>
-                                <th rowspan="2">ลำดับ</th>
+                                <th rowspan="2"></th>
+                                <th rowspan="2">No.</th>
                                 <th rowspan="2">Serial</th>
                                 <th rowspan="2">รายละเอียด</th>
-                                <th rowspan="2" class="hideANDseek">ยี่ห้อ</th>
-                                <th rowspan="2" class="hideANDseek">รุ่น</th>
                                 <th rowspan="2">ขนาด</th>
+                                <th rowspan="2">หน่วยนับ</th>
+                                <th rowspan="2">รุ่น</th>
+                                <th rowspan="2">ยี่ห้อ</th>
                                 <th rowspan="2">จำนวนที่เบิก</th>
-                                <th colspan="4" class="hideANDseek">คืน</th>
+                                <th colspan="4">คืน</th>
+                                <th rowspan="2">จำนวนที่คืน</th>
+                                <th rowspan="2">หมายเหตุ</th>
                                 <th rowspan="2"></th>
                             </tr>
                             <tr>
-                                <th class="hideANDseek">ดี</th>
-                                <th class="hideANDseek">หาย</th>
-                                <th class="hideANDseek">ซ่อม</th>
-                                <th class="hideANDseek">ชำรุด</th>
+                                <th>ดี</th>
+                                <th>หาย</th>
+                                <th>ซ่อม</th>
+                                <th>ชำรุด</th>
                             </tr>
                         </thead>
-                        <tbody id="result"></tbody>
+                        <tbody id="tBodyRowRequisition">
+                            @*Requisition first Row*@
+                            <tr class="RowCal6">
+                                <td>
+                                    <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                </td>
+                                <td>
+                                    @*ลำดับ*@
+                                    <input id="No" type="text" value="" class="tdno" disabled />
+                                </td>
+                                <td class="hidecolumn">
+                                    <input id="RequisitionID" type="text" value="" class="RequisitionID" disabled />
+                                </td>
+                                <td class="hidecolumn">
+                                    <input id="JobID" type="text" value="" class="JobID" disabled />
+                                </td>
+                                <td>
+                                    @*Serial1*@
+                                    <input type="text" id="txtSerial" name="txtName" class="txtSerial text-size140" />
+                                    <input type="hidden" id="hidProductID" class="hidProductID" />
+                                </td>
+                                <td>
+                                    @*Description1*@
+                                    <input id="txtDescription" type="text" value="" class="txtDescription text-size140" />
+                                </td>
+                                <td>
+                                    @*Size1*@
+                                    <input type="text" id="txtSize" class="txtSize select-size50-height23 txtdisablerow" disabled />
+                                </td>
+                                <td>
+                                    @*Unit Weight1*@
+                                    <input type="text" id="txtUnitWeight" class="txtUnitWeight select-size50-height23 txtdisablerow" disabled />
+                                </td>
+                                <td>
+                                    @*Model1*@
+                                    <input type="text" id="txtModel" class="txtModel select-size50-height23 txtdisablerow" disabled />
+                                </td>
+                                <td>
+                                    @*Brand1*@
+                                    <input type="text" id="txtBrand" class="txtBrand select-size50-height23 txtdisablerow" disabled />
+                                </td>
+                                <td>
+                                    @*Qty1*@
+                                    <input type="text" id="txtQty" class="txtQty select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Return Good1*@
+                                    <input type="text" id="txtGood" class="txtGood select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Return Lost1*@
+                                    <input type="text" id="txtLost" class="txtLost select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Return Repair1*@
+                                    <input type="text" id="txtRepair" class="txtRepair select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Return Bad1*@
+                                    <input type="text" id="txtBad" class="txtBad select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Return Qty1*@
+                                    <input type="text" id="txtQty1" class="txtQty1 select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Remark*@
+                                    <input type="text" id="txtRemark1" class="txtRemark1 text-size110" />
+                                </td>
+                                <td>
+                                    <div class="clone-1"><img class="cloneRowRequisition row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                </td>
+                                <td style="padding-right: 5px;">
+                                    <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                </td>
+                            </tr>
+                            @*Requisition secound Row*@
+                            <tr class="RowCal6" id="add-template10">
+                                <td>
+                                    <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                </td>
+                                <td>
+                                    @*ลำดับ2*@
+                                    <input id="No" type="text" value="" class="tdno" disabled />
+                                </td>
+                                <td class="hidecolumn">
+                                    <input id="RequisitionID" type="text" value="" class="RequisitionID" disabled />
+                                </td>
+                                <td class="hidecolumn">
+                                    <input id="JobID" type="text" value="" class="JobID" disabled />
+                                </td>
+                                <td>
+                                    @*Serial2*@
+                                    <input type="text" id="txtSerial" name="txtName" class="txtSerial text-size140" />
+                                    <input type="hidden" id="hidProductID" class="hidProductID" />
+                                </td>
+                                <td>
+                                    @*Description2*@
+                                    <input id="txtDescription" type="text" value="" class="txtDescription text-size140" />
+                                </td>
+                                <td>
+                                    @*Size2*@
+                                    <input type="text" id="txtSize" class="txtSize select-size50-height23 txtdisablerow" disabled />
+                                </td>
+                                <td>
+                                    @*Unit Weight2*@
+                                    <input type="text" id="txtUnitWeight" class="txtUnitWeight select-size50-height23 txtdisablerow" disabled />
+                                </td>
+                                <td>
+                                    @*Model2*@
+                                    <input type="text" id="txtModel" class="txtModel select-size50-height23 txtdisablerow" disabled />
+                                </td>
+                                <td>
+                                    @*Brand2*@
+                                    <input type="text" id="txtBrand" class="txtBrand select-size50-height23 txtdisablerow" disabled />
+                                </td>
+                                <td>
+                                    @*Qty2*@
+                                    <input type="text" id="txtQty" class="txtQty select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Return Good2*@
+                                    <input type="text" id="txtGood" class="txtGood select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Return Lost2*@
+                                    <input type="text" id="txtLost" class="txtLost select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Return Repair2*@
+                                    <input type="text" id="txtRepair" class="txtRepair select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Return Bad2*@
+                                    <input type="text" id="txtBad" class="txtBad select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Return Qty1*@
+                                    <input type="text" id="txtQty1" class="txtQty1 select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Remark2*@
+                                    <input type="text" id="txtRemark1" class="txtRemark1 text-size110" />
+                                </td>
+                                <td>
+                                    <div class="clone-1"><img class="cloneRowRequisition row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                </td>
+                                <td style="padding-right: 5px;">
+                                    <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
-</div>
+            @*<button id="add-row2" class="btn btn-primary" onclick="SetRowIndex()" onblur="SetRowIndex()" onmouseout="AddrowManpower()">Add Row</button>*@
+                <a id="add-row10" href="#" onclick="SetRowIndex()" onblur="SetRowIndex()" onmouseout="AddrowRequisition()">+ Add Row</a>
+            </div>
+        @*Requisition End*@
+        
         <ul class="form-style-1 hidecolumn">
             <li>
                 <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button>
@@ -1024,7 +1197,7 @@
 
         <ul class="form-style-1">
             <li>
-                <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Approve</button>
+                <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrderBorrow', @Request.Params["id"])">Approve</button>
                 @*<a onclick="OpenRptJobOrder(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>*@
                 @*<button type="button" id="btnSave" class="btnCreate" onclick="OpenRptJobOrder(@Request.Params["id"])" formtarget="_blank"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-2" id="BDCCreate" /></button>*@
             </li>
@@ -1039,13 +1212,14 @@
         var val = after.split('&');
         var Isview = val[1];
         var JobNo = val[2];
-        //alert(Isview);
-        GetJobNo(JobNo);
-        ControlEnable(Isview);
-        //SetRowCal5();
-        GetContact(@Request.Params["id"]);
-        GetData(@Request.Params["id"]);
-        GetJobOrderBorrow(@Request.Params["id"]);
+        ////alert(Isview);
+        ////GetJobNo(JobNo);
+        ////ControlEnable(Isview);
+        GetdataRequisition(@Request.Params["id"]);
+        ////SetRowCal5();
+        @*GetContact(@Request.Params["id"]);*@
+        @*GetData(@Request.Params["id"]);*@
+        @*GetJobOrderBorrow(@Request.Params["id"]);*@
 
     });
     function GetDay() {

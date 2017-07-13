@@ -25,5 +25,12 @@ namespace AlphaApi.Controllers
             var response = jobOrderBorrow.SelectByRefID(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+
+        [HttpGet]
+        public string Get(string Criteria)
+        {
+            var response = jobOrderBorrow.SelectByCriteria(Criteria);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
     }
 }

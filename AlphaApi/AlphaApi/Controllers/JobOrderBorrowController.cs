@@ -21,7 +21,17 @@ namespace AlphaApi.Controllers
         [HttpPost]
         public int Post(JobOrderBorrowModels jobOrderBorrowModel)
         {
-            var response = jobOrderBorrow.InsertData(jobOrderBorrowModel);
+            var response = 0;
+
+            if (jobOrderBorrowModel.ID > 0)
+            {
+                response = jobOrderBorrow.UpdateData(jobOrderBorrowModel);
+            }
+            else
+            {
+                response = jobOrderBorrow.InsertData(jobOrderBorrowModel);
+            }
+
             return response;
         }
 

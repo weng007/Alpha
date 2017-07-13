@@ -4,6 +4,7 @@ var row_index3 = 0;//RowCal1 Expense
 var row_index4 = 0;//RowCal2 SaleOrder
 var row_index5 = 0;//RowCal3 Invoice
 var row_index6 = 0;//RowCal4 Receipt
+var row_index7 = 0;//RowCal6 Requisition
 var col_index = 0;//RowCal5 Manpower
 
 $(document).ready(function () {
@@ -63,8 +64,15 @@ $(document).ready(function () {
             $('.RowCal4:last').find('td input[type=text]').eq(1).val('');
             CalSumExpense();
         });
+
+        //Requisition
+        $('.cloneRowRequisition').click(function () {
+            $('.RowCal6:last').find('td input[type=text]').eq(0).val('');
+            $('.RowCal6:last').find('td input[type=text]').eq(1).val('');
+        });
     });
 
+    //Autocomplete Manpower
     var IDCard;
     var TechnicianType;
     var TechnicianID;
@@ -105,11 +113,108 @@ $(document).ready(function () {
             $('.TechnicianType').val(ui.item.TechnicianType);
             $('.TechnicianID').val(ui.item.TechnicianID);
             $('.PositionID').val(ui.item.PositionID);
-
             return false;
         }
     });
 
+    //Autocomplete Requisition Serial
+    var Description;
+    var Size;
+    var Model;
+    var UnitWeight;
+    var Brand;
+    var dataitem;
+    $('.txtSerial').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: 'http://localhost:13131/api/JobOrderBorrowRefID',
+                type: 'GET',
+                dataType: 'json',
+                data: { Criteria: request.term },
+                success: function (data) {
+                    data = JSON.parse(data);
+                    dataitem = data;
+                    response($.map(data.Table, function (item) {
+                        return {
+                            Description: item.Description,
+                            Size: item.Size,
+                            Model: item.Model,
+                            UnitWeight: item.UnitWeightName,
+                            Brand: item.Brand,
+                            label: item.SerialNo,
+                            value: item.ID
+                        }
+                    }));
+                },
+                error: function (xmlHttpRequest, textStatus, errorThrown) {
+                    console.log('some error occured', textStatus, errorThrown);
+                    alert('Error');
+                }
+            });
+        },
+        minLength: 1,
+        select: function (event, ui) {
+            //var totalPosition = 0;
+            $(this).val(ui.item.label);
+            $('.hidProductID').val(ui.item.value);
+            $('.txtDescription').val(ui.item.Description);
+            $('.txtSize').val(ui.item.Size);
+            $('.txtModel').val(ui.item.Model);
+            $('.txtBrand').val(ui.item.Brand);
+            $('.txtUnitWeight').val(ui.item.UnitWeight);
+            return false;
+        }
+    });
+
+    //Autocomplete Requisition Description
+    var Serial;
+    var Size;
+    var Model;
+    var UnitWeight;
+    var Brand;
+    var dataitem;
+    $('.txtDescription').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: 'http://localhost:13131/api/JobOrderBorrowRefID',
+                type: 'GET',
+                dataType: 'json',
+                data: { Criteria: request.term },
+                success: function (data) {
+                    data = JSON.parse(data);
+                    dataitem = data;
+                    response($.map(data.Table, function (item) {
+                        return {
+                            Serial: item.SerialNo,
+                            Size: item.Size,
+                            Model: item.Model,
+                            UnitWeight: item.UnitWeightName,
+                            Brand: item.Brand,
+                            label: item.Description,
+                            value: item.ID
+                        }
+                    }));
+                },
+                error: function (xmlHttpRequest, textStatus, errorThrown) {
+                    console.log('some error occured', textStatus, errorThrown);
+                    alert('Error');
+                }
+            });
+        },
+        minLength: 1,
+        select: function (event, ui) {
+            //var totalPosition = 0;
+            $(this).val(ui.item.label);
+            $('.hidProductID').val(ui.item.value);
+            $('.txtSerial:last').val(ui.item.Serial);
+            $('.txtSize').val(ui.item.Size);
+            $('.txtModel').val(ui.item.Model);
+            $('.txtBrand').val(ui.item.Brand);
+            $('.txtUnitWeight').val(ui.item.UnitWeight);
+            alert($('.hidProductID').val());
+            return false;
+        }
+    });
 
     //$.ajax({
 
@@ -249,6 +354,7 @@ $(document).ready(function () {
     $('#tabReceipt').dynoTable5();
     $('#tabIncome').dynoTable6();
     $('#tabCost').dynoTable7();
+    $('#tabRequisition').dynoTable10();
 
     //$('.ManDate').datepicker();
     //$('.WorkingFrom').timepicker();
@@ -352,35 +458,6 @@ function GetExpensePriceList() {
     CalSumExpense();
 }
 function BrowseCustomer(val) {
-    //$.ajax(
-    //       {
-    //           url: 'http://localhost:13131/api/Customer',
-    //           type: 'GET',
-    //           datatype: 'json',
-    //           success: function (data) {
-    //               data = JSON.parse(data);
-    //               var html = '';
-    //               for (var i = 0; i < data.Table.length; i++) {
-    //                   //alert(data.Table[i].CustNo);
-    //                   html += '<tr>';
-    //                   html += '<td data-dismiss="modal">' + data.Table[i].RowNum + '</td>';
-    //                   html += '<td class="hidecolumn" data-dismiss="modal">' + data.Table[i].ID + '</td>';
-    //                   html += '<td data-dismiss="modal">' + data.Table[i].CustNo + '</td>';
-    //                   html += '<td data-dismiss="modal">' + data.Table[i].Name + '</td>';
-    //                   html += '<td data-dismiss="modal">' + data.Table[i].Tel + '</td>';
-    //                   html += '<td data-dismiss="modal">' + data.Table[i].Contact + '</td>';
-    //                   html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
-    //                   html += '<td class="hidecolumn">' + data.Table[i].Fax + '</td>';
-    //                   html += '<td class="hidecolumn">' + data.Table[i].Address + '</td>';
-    //                   html += '</tr>';
-    //               }
-    //               document.getElementById("customerBody").innerHTML = html;
-    //           },
-    //           error: function (msg) {
-    //               alert(msg)
-    //           }
-    //       });
-    //alert(val);
 
     var dataObject = { BDCID: val }
     console.log(dataObject);
@@ -559,6 +636,8 @@ function ControlEnable(Isview) {
         document.getElementById("add-row3").style.visibility = "hidden";
         document.getElementById("add-row4").style.visibility = "hidden";
         document.getElementById("add-row5").style.visibility = "hidden";
+        document.getElementById("add-row2").style.visibility = "hidden";
+        document.getElementById("add-row10").style.visibility = "hidden";
     }
     else {
         document.getElementById("add-row6").style.visibility = "show";
@@ -566,6 +645,8 @@ function ControlEnable(Isview) {
         document.getElementById("add-row3").style.visibility = "show";
         document.getElementById("add-row4").style.visibility = "show";
         document.getElementById("add-row5").style.visibility = "show";
+        document.getElementById("add-row2").style.visibility = "show";
+        document.getElementById("add-row10").style.visibility = "show";
     }
     
 }
@@ -813,6 +894,58 @@ function GetData(val) {
     //alert("localStorage "+localStorage['flagAddRow']);
 }
 
+function GetdataRequisition(val)
+{
+    var dataObject = { ID: val }
+    console.log(dataObject);
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderBorrowRefID',
+       type: 'GET',
+       async: false,
+       data: dataObject,
+       datatype: 'json',
+       success: function (data) {
+           localStorage['flagAddRow'] = 0;
+           data = JSON.parse(data);
+           if (data.Table.length > 0) {
+               $('.RowCal6').remove();
+
+               for (var j = 0; j < data.Table.length; j++) {
+                   $("#add-row10").trigger("click");
+                   AddrowRequisition();
+                   //GetManpowerHour();
+               }
+               $('.RowCal6:eq(' + data.Table.length + ')').remove();
+
+               $(".RowCal6").each(function (i) {
+                   $(this).find('.tdno').val(data.Table[i].RowNum);
+                   $(this).find('.RequisitionID').val(data.Table[i].ID);
+                   $(this).find('.hidProductID').val(data.Table[i].ProductID);
+                   $(this).find('.JobID').val(data.Table[i].JobID);
+                   $(this).find('.txtSerial').val(data.Table[i].SerialNo);
+                   $(this).find('.txtDescription').val(data.Table[i].Description);
+                   $(this).find('.txtSize').val(data.Table[i].Size);
+                   $(this).find('.txtUnitWeight').val(data.Table[i].UnitWeightName);
+                   $(this).find('.txtModel').val(data.Table[i].Model);
+                   $(this).find('.txtBrand').val(data.Table[i].Brand);
+
+                   //$(this).find('.WorkingFrom').timepicker('setTime', FTime, { 'timeFormat': 'H:i' });
+                   $(this).find('.txtQty').val(data.Table[i].Amount);
+                   $(this).find('.txtGood').val(data.Table[i].ReturnGood);
+                   $(this).find('.txtLost').val(data.Table[i].ReturnLost);
+                   $(this).find('.txtRepair').val(data.Table[i].ReturnRepair);
+                   $(this).find('.txtBad').val(data.Table[i].ReturnBad);
+                   $(this).find('.txtRemark1').val(data.Table[i].Remark);
+               });
+
+               //GetManpowerHour();
+               //CalSumExpense();
+           }
+       }
+    });
+
+    localStorage['flagAddRow'] = 1;
+}
 
 function SetIncomeMaster()
 {
@@ -903,7 +1036,57 @@ function SetUnitWeightExpense() {
         }
     });
 }
-function Update(val) {
+function Update(val)
+{
+    //===================UpdateJobOrderManpower
+    alert(val);
+    var dataObject = { ID: val };
+    $.ajax({
+                url: 'http://localhost:13131/api/JobOrderBorrow',
+                type: 'DELETE',
+                async: false,
+                data: dataObject,
+                datatype: 'json',
+                success: function (data) {
+                },
+                error: function (msg) {
+                    alert(msg)
+                }
+    });
+
+    var dataObject = {};
+    $(".RowCal6").each(function () {
+
+        dataObject.JobID = val;
+        dataObject.ProductID = $(this).find('.hidProductID').val();
+        dataObject.Amount = $(this).find('.txtQty').val();
+        dataObject.ReturnGood = $(this).find(".txtGood").val();
+        dataObject.ReturnLost = $(this).find(".txtLost").val();
+        dataObject.ReturnRepair = $(this).find(".txtRepair").val();
+        dataObject.ReturnBad = $(this).find(".txtBad").val();
+        dataObject.Remark = $(this).find(".txtRemark").val();
+        dataObject.CreateBy = localStorage['UserID'];
+        dataObject.EditBy = localStorage['UserID'];
+
+        if ($(this).find(".hidProductID").val() != '') {
+            $.ajax(
+            {
+                url: 'http://localhost:13131/api/JobOrderBorrow',
+                type: 'POST',
+                async: false,
+                data: dataObject,
+                datatype: 'json',
+                success: function (data) {
+                },
+                error: function (msg) {
+                    alert(msg)
+                }
+            });
+        }
+    });
+    window.location.href = "../Requisition/EditRequisition?id=" + val;
+}
+function Update1(val) {
     //alert("test");
     var JDate = ChangeformatDate($("#dtJobDate").val(),1);
     var SWorkingDate = ChangeformatDate($("#dtSWorking").val(),1);
@@ -1290,35 +1473,6 @@ function AddRowExpense() {
         });
     }
 }
-
-
-//function SetRowCal5() {
-//    $('.RowCal5 td').click(function () {
-//        row_index = $(this).parent().index();
-//        col_index = $(this).index();
-//    });
-//}
-function SetRowIndex() {
-    $('.RowCal5 td').click(function () {
-        row_index = $(this).parent().index();
-        col_index = $(this).index();
-    });
-    $('.RowCal td').click(function () {
-        row_index2 = $(this).parent().index();
-    });
-    $('.RowCal1 td').click(function () {
-        row_index3 = $(this).parent().index();
-    });
-    $('.RowCal2 td').click(function () {
-        row_index4 = $(this).parent().index();
-    });
-    $('.RowCal3 td').click(function () {
-        row_index5 = $(this).parent().index();
-    });
-    $('.RowCal4 td').click(function () {
-        row_index6 = $(this).parent().index();
-    });
-}
 function AddrowManpower() {
     var i = 0;
     $('.ManDate').each(function () {
@@ -1328,15 +1482,6 @@ function AddrowManpower() {
         i++;
     });
 
-    //$('.RowCal5 td').click(function () {
-    //    row_index = $(this).parent().index();
-    //    col_index = $(this).index();
-    //});
-
-    ////$('.ManDate').removeClass('hasDatepicker').datepicker();
-
-    //$('.WorkingFrom').timepicker();
-    //$('.WorkingTo').timepicker();
     $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
@@ -1384,6 +1529,136 @@ function AddrowManpower() {
         });
     });
 }
+function AddrowRequisition() {
+
+    //Autocomplete Requisition Serial
+    var Description;
+    var Size;
+    var Model;
+    var UnitWeight;
+    var Brand;
+    var dataitem;
+    $('.txtSerial').each(function () {
+        $(this).autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: 'http://localhost:13131/api/JobOrderBorrowRefID',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { Criteria: request.term },
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        dataitem = data;
+                        response($.map(data.Table, function (item) {
+                            return {
+                                Description: item.Description,
+                                Size: item.Size,
+                                Model: item.Model,
+                                UnitWeight: item.UnitWeightName,
+                                Brand: item.Brand,
+                                label: item.SerialNo,
+                                value: item.ID
+                            }
+                        }));
+                    },
+                    error: function (xmlHttpRequest, textStatus, errorThrown) {
+                        console.log('some error occured', textStatus, errorThrown);
+                        alert('Error');
+                    }
+                });
+            },
+            minLength: 1,
+            select: function (event, ui) {
+                //var totalPosition = 0;
+                $(this).val(ui.item.label);
+                $('.hidProductID').eq(row_index7).val(ui.item.value);
+                $('.txtDescription').eq(row_index7).val(ui.item.Description);
+                $('.txtSize').eq(row_index7).val(ui.item.Size);
+                $('.txtModel').eq(row_index7).val(ui.item.Model);
+                $('.txtBrand').eq(row_index7).val(ui.item.Brand);
+                $('.txtUnitWeight').eq(row_index7).val(ui.item.UnitWeight);
+                return false;
+            }
+        });
+    });
+
+    //Autocomplete Requisition Description
+    var Serial;
+    var Size;
+    var Model;
+    var UnitWeight;
+    var Brand;
+    var dataitem;
+    $('.txtDescription').each(function () {
+        $(this).autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: 'http://localhost:13131/api/JobOrderBorrowRefID',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { Criteria: request.term },
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        dataitem = data;
+                        response($.map(data.Table, function (item) {
+                            return {
+                                Serial: item.SerialNo,
+                                Size: item.Size,
+                                Model: item.Model,
+                                UnitWeight: item.UnitWeightName,
+                                Brand: item.Brand,
+                                label: item.Description,
+                                value: item.ID
+                            }
+                        }));
+                    },
+                    error: function (xmlHttpRequest, textStatus, errorThrown) {
+                        console.log('some error occured', textStatus, errorThrown);
+                        alert('Error');
+                    }
+                });
+            },
+            minLength: 1,
+            select: function (event, ui) {
+                //var totalPosition = 0;
+                $(this).val(ui.item.label);
+                $('.hidProductID').eq(row_index7).val(ui.item.value);
+                $('.txtSerial:last').eq(row_index7).val(ui.item.Serial);
+                $('.txtSize').eq(row_index7).val(ui.item.Size);
+                $('.txtModel').eq(row_index7).val(ui.item.Model);
+                $('.txtBrand').eq(row_index7).val(ui.item.Brand);
+                $('.txtUnitWeight').eq(row_index7).val(ui.item.UnitWeight);
+                return false;
+            }
+        });
+    });
+}
+function SetRowIndex() {
+    $('.RowCal5 td').click(function () {
+        row_index = $(this).parent().index();
+        col_index = $(this).index();
+    });
+    $('.RowCal td').click(function () {
+        row_index2 = $(this).parent().index();
+    });
+    $('.RowCal1 td').click(function () {
+        row_index3 = $(this).parent().index();
+    });
+    $('.RowCal2 td').click(function () {
+        row_index4 = $(this).parent().index();
+    });
+    $('.RowCal3 td').click(function () {
+        row_index5 = $(this).parent().index();
+    });
+    $('.RowCal4 td').click(function () {
+        row_index6 = $(this).parent().index();
+    });
+    //Requisition
+    $('.RowCal6 td').click(function () {
+        row_index7 = $(this).parent().index();
+    });
+}
+
 
 //function countPosition() {
 
