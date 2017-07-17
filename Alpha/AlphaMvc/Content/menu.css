@@ -7,9 +7,20 @@
 {
     position:center !important;
 }
+.headerimg{
+    background: url(../Images/mechine.png) no-repeat top center;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333333;
+    /*background-color: #c20a0a;*/
+        background-color: #ece9cd;
+
+}
 .menutab{
     width: 100%;
-    background-color: rgba(228, 117, 117, 0.65);
+    background-color: #ece9cd;
+    /*background-color: rgba(228, 117, 117, 0.65);*/
     height: 40px;
     margin-top: 110px;
     position: absolute;
@@ -36,12 +47,26 @@
 	display:inline-block;
 	float: left;
 	margin-right: 1px;
-    /*background-color: #e47575;*/
-    background: #e47575;
+    /*background: #e47575;*/
+    background: #5c5c5c;
     width:130px;
     /*border-style: solid;
     border-width: 0.5px;
     border-color: #d99696;*/
+}
+.menuliblue {
+	display:inline-block;
+	float: left;
+	margin-right: 1px;
+    /*background-color: #e47575;*/
+    background: #4b7490;
+    width:130px;
+    /*border-style: solid;
+    border-width: 0.5px;
+    border-color: #d99696;*/
+}
+.menublue{
+    background: #4b7490 !important;
 }
 .menua a{
     color: #ffffff !important;
@@ -85,7 +110,7 @@
 
 /*Hover state for top level links*/
 .menuli:hover a {
-	background-color:rgba(224, 221, 196, 0.80);
+	background-color:rgba(224, 221, 196, 0.55);
     color: #454545 !important;
     /*color:white !important;*/
     /*สีแดง*/
@@ -94,6 +119,7 @@
 }
 
 /*Style for dropdown links*/
+/*เมนู hover*/
 .menuli:hover ul a {
 	background: #e0ddc4;
 	color: #2f3036;
@@ -287,6 +313,14 @@ input[type=checkbox]:checked ~ #menu{
 }
 
 @media screen and (max-width : 760px){
+    .headerimg{
+    background-image:none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333333;
+    background-color: #c20a0a;
+    }
 	/*Make dropdown links appear inline*/
     .menutab{
         display:none;

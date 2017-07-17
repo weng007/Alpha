@@ -7,7 +7,7 @@
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 @* ------------------------------- Header -------------------------------*@
 <style>
-    /*.paging-nav {
+    .paging-nav {
         text-align: right;
         padding-top: 2px;
     }
@@ -17,7 +17,7 @@
             text-decoration: none;
             display: inline-block;
             padding: 1px 7px;
-            background: #91b9e6;
+            background: #8ba5b7 !important;
             color: white;
             border-radius: 3px;
         }
@@ -26,14 +26,17 @@
             background: #187ed5;
             font-weight: bold;
         }
+        #result{
+            font-family: serif;
+        }
 
-    .paging-nav,
+    /*.paging-nav,
     #tableData {
         margin: 0 auto;
         font-family: Arial, sans-serif;
     }*/
 </style>
-<table class="barattach-2">
+<table class="barattach-blue">
     <tr>
         <td>
             <label class="topicmargin-size67">Master Income</label>
@@ -43,15 +46,15 @@
     </tr>
 </table>
 @*//===================================================================CSS w3school*@
-    <table id="tblIncomeMaster" class="table table-striped scrolling" onended="SetPaging()">
-    <thead class="bgthead">
+    <table id="tblIncomeMaster" class="table tbblue table-striped-blue scrolling" onended="SetPaging()">
+    <thead class="bgthead-blue">
         <tr>
-            <th class="Rowpointer">No.</th>
-            <th class="hidecolumn Rowpointer">ID</th>
-            <th class="Rowpointer">รายละเอียด</th>
-            <th class="Rowpointer">ราคา</th>
-            <th class="Rowpointer">ลำดับ</th>
-            <th></th>
+            <th class="thblue Rowpointer">No.</th>
+            <th class="thblue hidecolumn Rowpointer ">ID</th>
+            <th class="thblue Rowpointer">รายละเอียด</th>
+            <th class="thblue Rowpointer">ราคา</th>
+            <th class="thblue Rowpointer">ลำดับ</th>
+            <th class="thblue"></th>
         </tr>
     </thead>
     <tbody id="result"></tbody>

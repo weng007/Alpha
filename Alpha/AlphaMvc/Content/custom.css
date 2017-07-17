@@ -1431,10 +1431,17 @@ th {
 .table {
   width: 100%;
   margin-bottom: 5px;
-
     border-style: solid;
     /*border-color: #5baa8c;*/
     border-color: #cd300c;
+    border-width: 1px;
+}
+
+.table.tbblue {
+  width: 100%;
+  margin-bottom: 5px;
+    border-style: solid;
+    border-color: #8ba5b7;
     border-width: 1px;
 }
 
@@ -1456,6 +1463,16 @@ th {
   /*border-bottom: 2px solid #dddddd;*/
   /*border-bottom: 2px solid #5baa8c;*/
     border-bottom: 2px solid #b32b0b;
+}
+
+.thblue {
+  vertical-align: bottom;
+  /*border-bottom: 2px solid #dddddd;*/
+  /*border-bottom: 2px solid #5baa8c;*/
+    border-top: 1px solid #8ba5b7 !important;
+    border-left: 1px solid #8ba5b7 !important;
+    border-right: 1px solid #8ba5b7 !important;
+    border-bottom: 2px solid #8ba5b7 !important;
 }
 
 .table caption + thead tr:first-child th,
@@ -1506,6 +1523,15 @@ th {
 .table-striped > tbody > tr:nth-child(odd) > th {
    /*background-color: #effae6;*/
    background-color: rgb(255, 239, 236);
+   cursor: pointer;
+}
+
+.table-striped-blue > tbody > tr:nth-child(odd) > td,
+.table-striped-blue > tbody > tr:nth-child(odd) > th {
+   /*background-color: #effae6;*/
+   background-color: rgb(241, 241, 241);
+   border-top: 1px solid #e0ddc4 !important;
+   border-bottom: 1px solid #e0ddc4 !important;
    cursor: pointer;
 }
 

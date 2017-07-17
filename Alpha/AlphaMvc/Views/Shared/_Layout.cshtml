@@ -53,7 +53,7 @@
         <meta name="viewport" content="width=device-width">
 
     </head>
-    <body>
+    <body class="headerimg">
         <header>
             <div class="menutab"></div>
             <div class="content-wrapper">
@@ -68,16 +68,16 @@
                     
                         <ul id="menu" class="menuul">
                             <li id="mnDashboard" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Dashboard", "DashBoard", "Home")</div></div></li>
-                            <li id="mnAdmin" class="menuli">
+                            <li id="mnAdmin" class="menuli menublue">
                                 <div class="menua">
                                     <div class="menutext">
                                         @Html.ActionLink("Administration", "IndexIncomeMaster", "IncomeMaster")
                                         <ul class="hidden">
                                             @*<img src="~/Images/iconIncomeMaster.png" />*@
-                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Income", "IndexIncomeMaster", "IncomeMaster")</div></li>
-                                            <li class="menuli"><div class="submenua">@Html.ActionLink("Expense", "IndexExpenseMaster", "ExpenseMaster")</div></li>
-                                            <li class="menuli"><div class="submenua">@Html.ActionLink("SecurityProfile", "IndexSecurityProfile", "SecurityProfile")</div></li>
-                                            <li class="menuli"><div class="submenua">@Html.ActionLink("User", "IndexUser", "User")</div></li>
+                                            <li class="menuliblue"><div class="submenua">@Html.ActionLink("Income", "IndexIncomeMaster", "IncomeMaster")</div></li>
+                                            <li class="menuliblue"><div class="submenua">@Html.ActionLink("Expense", "IndexExpenseMaster", "ExpenseMaster")</div></li>
+                                            <li class="menuliblue"><div class="submenua">@Html.ActionLink("SecurityProfile", "IndexSecurityProfile", "SecurityProfile")</div></li>
+                                            <li class="menuliblue"><div class="submenua">@Html.ActionLink("User", "IndexUser", "User")</div></li>
                                         </ul>
                                     </div>
                                 </div>
