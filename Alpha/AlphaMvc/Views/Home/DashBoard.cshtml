@@ -26,27 +26,35 @@ function GetDetail(currentMonth) {
         mm = '0' + mm
     }
     today = yyyy + '-' + mm + '-' + dd;
-
+    
     var dataObject = { CalendarMonth: currentMonth + '&' + localStorage['IsTechnician'] + '&' + localStorage['FirstName'] + '&' + localStorage['LastName'] }
+    //alert("Test");
     $.ajax(
        {
            url: 'http://localhost:13131/api/CalendarJobOrder',
            type: 'GET',
+           async: false,
            data: dataObject,
            datatype: 'json',
            success: function (data) {
                data = JSON.parse(data);
+               
                var event = [];
-               for (var i = 0; i < data.Table.length; i++) {
-                   var EWorking = data.Table[i].EWorking.replace('T00:00:00', 'T23:59:00');
-                   var TypeWorking = data.Table[i].TypeWorkingName.substr(0, 1);
-                   event.push({
-                       title: data.Table[i].JobNo + '(' + TypeWorking+')',
-                       url: '/JobOrder/EditJobOrder?id=' + data.Table[i].ID,
-                       start: data.Table[i].SWorking,
-                       end: EWorking
-                   });
-               }
+               //alert("dat " + data.Table.length);
+               //if (data.Table.length > 0)
+               //{
+                   for (var i = 0; i < data.Table.length; i++) {
+                       var EWorking = data.Table[i].EWorking.replace('T00:00:00', 'T23:59:00');
+                       var TypeWorking = data.Table[i].TypeWorkingName.substr(0, 1);
+                       event.push({
+                           title: data.Table[i].JobNo + '(' + TypeWorking + ')',
+                           url: '/JobOrder/EditJobOrder?id=' + data.Table[i].ID,
+                           start: data.Table[i].SWorking,
+                           end: EWorking
+                       });
+                   }
+               //}
+              
                $('#calendar').fullCalendar('removeEvents');
                $('#calendar').fullCalendar('addEventSource', event);
                $('#calendar').fullCalendar('rerenderEvents');
@@ -97,15 +105,18 @@ function GetDetailManPower(currentMonth) {
            success: function (data) {
                data = JSON.parse(data);
                var event = [];
-               for (var i = 0; i < data.Table.length; i++) {
-                   var EWorking = data.Table[i].EWorking.replace('T00:00:00', 'T23:59:00');
-                   event.push({
-                       title: data.Table[i].TechFullName + ' (' + data.Table[i].JobNo + ')',
-                       start: data.Table[i].SWorking,
-                       end: EWorking
-                       ////id: data.Table[i].ID
-                   });
-
+               //alert("dat "+data.Table.length);
+               //if (data.Table.length > 0)
+               //{
+                   for (var i = 0; i < data.Table.length; i++) {
+                       var EWorking = data.Table[i].EWorking.replace('T00:00:00', 'T23:59:00');
+                       event.push({
+                           title: data.Table[i].TechFullName + ' (' + data.Table[i].JobNo + ')',
+                           start: data.Table[i].SWorking,
+                           end: EWorking
+                           ////id: data.Table[i].ID
+                       });
+               //}
                    $('#calendarManPower').fullCalendar('removeEvents');
                    $('#calendarManPower').fullCalendar('addEventSource', event);
                    $('#calendarManPower').fullCalendar('rerenderEvents');

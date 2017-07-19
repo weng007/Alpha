@@ -20,7 +20,7 @@ namespace AlphaApi.Controllers
         public string Get(string CalendarMonth)
         {
             string[] str = CalendarMonth.Split('&');
-            var response = calendarJob.SelectByMonth(Convert.ToInt32(str[0]), Convert.ToInt32(str[1]), Convert.ToString(str[2]), Convert.ToString(str[3]));
+            var response = calendarJob.SelectByMonth(Convert.ToInt32(str[0]), str[1] == "null" ? 0 : Convert.ToInt32(str[1]), str[2] == null ? "": Convert.ToString(str[2]), str[3] == null ? "" : Convert.ToString(str[3]));
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
     }
