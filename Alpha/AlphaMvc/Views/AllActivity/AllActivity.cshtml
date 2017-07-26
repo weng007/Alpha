@@ -180,13 +180,36 @@ $(document).ready(function () {
         font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
         font-size: 14px;
     }
+     .paging-nav {
+        text-align: right;
+        padding-top: 2px;
+    }
+
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #9fa694 !important;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .paging-nav .selected-page {
+            background: #7a8775;
+            font-weight: bold;
+        }
+
+    #result {
+        font-family: serif;
+    }
 </style>
 <h2 class="bigtopic">Job Order</h2><h2>Man Power</h2>
 <div id="calendar"></div>
 <div id="calendarManPower"></div>
 <section class="features">
         <div class="table-responsive">
-            <table class="barattach-2">
+            <table class="barattach-gray">
                 <tr>
                     <td>
                         <label class="topicmargin-size67">Requisition & Return</label>
@@ -194,19 +217,19 @@ $(document).ready(function () {
                     </td>
                 </tr>
             </table>
-            <table id="tblRequisition" class="table table-striped scrolling" onended="SetPaging()">
-                <thead class="bgthead">
+            <table id="tblRequisition" class="table tbgray table-striped-gray scrolling" onended="SetPaging()">
+                <thead class="bgthead-gray">
                     <tr>
-                        <th class="Rowpointer">No.</th>
-                        <th class="Rowpointer">Job No.</th>
-                        <th class="Rowpointer">วันที่</th>
-                        <th class="Rowpointer">ลูกค้า</th>
-                        <th class="Rowpointer">สถานะ</th>
-                        <th class="hidecolumn Rowpointer">เบอร์โทร</th>
-                        <th class="hidecolumn Rowpointer">บุคคลติดต่อ</th>
-                        <th class="hidecolumn Rowpointer">ผู้ประสานงาน</th>
-                        <th class="hidecolumn Rowpointer">หมายเหตุ</th>
-                        <th></th>
+                        <th class="thgray Rowpointer">No.</th>
+                        <th class="thgray Rowpointer">Job No.</th>
+                        <th class="thgray Rowpointer">วันที่</th>
+                        <th class="thgray Rowpointer">ลูกค้า</th>
+                        <th class="thgray Rowpointer">สถานะ</th>
+                        <th class="thgray hidecolumn Rowpointer">เบอร์โทร</th>
+                        <th class="thgray hidecolumn Rowpointer">บุคคลติดต่อ</th>
+                        <th class="thgray hidecolumn Rowpointer">ผู้ประสานงาน</th>
+                        <th class="thgray hidecolumn Rowpointer">หมายเหตุ</th>
+                        <th class="thgray"></th>
                     </tr>
                 </thead>
                 <tbody id="result"></tbody>

@@ -190,7 +190,7 @@
                                 <div id="parentHorizontalTab">
                                     <ul class="resp-tabs-list hor_1">
                                         <li>Income / Expense</li>
-                                        <li>ManPower</li>
+                                        <li id="Manpowertab">ManPower</li>
                                         @*<li class="hidecolumn">Borrow</li>*@
                                         <li>Sale Order</li>
                                         <li>Invoice</li>
@@ -232,15 +232,15 @@
                                                         <tfoot>
                                                             <tr>
                                                                 <td colspan="7" class="ftTotal textalign">Total</td>
-                                                                <td colspan="3"><input id="txtTotal" type="text" value="" class="text-size125 txtdisablefooter" disabled /></td>
+                                                                <td colspan="3"><input id="txtTotal" type="text" value="0" class="text-size125 txtdisablefooter" disabled /></td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="7" class="ftDiscount textalign">Discount</td>
-                                                                <td colspan="3"><input id="txtDiscount" type="text" value="" class="text-size123 textright" onchange="CalSum()" /></td>
+                                                                <td colspan="3"><input id="txtDiscount" type="text" value="0" class="text-size123 textright" onchange="CalSum()" /></td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="7" class="ftSubTotal textalign">Sub Total</td>
-                                                                <td colspan="3"><input id="txtSubTotal" type="text" value="" class="text-size125 txtdisablefooter" disabled /></td>
+                                                                <td colspan="3"><input id="txtSubTotal" type="text" value="0" class="text-size125 txtdisablefooter" disabled /></td>
                                                             </tr>
                                                         </tfoot>
                                                         <tbody id="tBodyRowIncome">
@@ -268,13 +268,13 @@
                                                                     <input type="text" id="txtQty" class="Quantity text-size50 textright" onchange="CalSum()" />
                                                                 </td>
                                                                 <td class="hidecolumn">
-                                                                    <input type="text" id="txtPriceList" class="PriceList text-size50 textright" />
+                                                                    <input type="text" id="txtPriceList" value="0" class="PriceList text-size50 textright" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice" class="UnitPrice text-size100 textright" onchange="CalSum()" onblur="convertFloat('.UnitPrice',2)" />
+                                                                    <input type="text" id="txtUnitPrice" value="0" class="UnitPrice text-size100 textright" onchange="CalSum()" onblur="convertFloat('.UnitPrice',2)" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtAmount" disabled class="Amount text-size120 txtdisablerow" onblur="convertFloat('.Amount',0)" />
+                                                                    <input type="text" id="txtAmount" value="0" disabled class="Amount text-size120 txtdisablerow" onblur="convertFloat('.Amount',0)" />
                                                                 </td>
 
                                                                 <td>
@@ -308,13 +308,13 @@
                                                                     <input type="text" id="txtQty" class="Quantity text-size50 textright" onchange="CalSum()" />
                                                                 </td>
                                                                 <td class="hidecolumn">
-                                                                    <input type="text" id="txtPriceList" class="PriceList text-size80 textright" />
+                                                                    <input type="text" id="txtPriceList" value="0" class="PriceList text-size80 textright" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice" class="UnitPrice text-size100 textright" onchange="CalSum()" onblur="convertFloat('.UnitPrice',2)" />
+                                                                    <input type="text" id="txtUnitPrice" value="0" class="UnitPrice text-size100 textright" onchange="CalSum()" onblur="convertFloat('.UnitPrice',2)" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtAmount" disabled class="Amount text-size120 txtdisablerow" onblur="convertFloat('.Amount',0)">
+                                                                    <input type="text" id="txtAmount" value="0" disabled class="Amount text-size120 txtdisablerow" onblur="convertFloat('.Amount',0)">
                                                                 </td>
                                                                 <td>
                                                                     <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
@@ -361,7 +361,7 @@
                                                         <tfoot>
                                                             <tr>
                                                                 <td colspan="7" class="ftTotal textalign">Total</td>
-                                                                <td colspan="3"><input id="txtTotalExpense" type="text" value="" class="text-size125 txtdisablefooter" disabled /></td>
+                                                                <td colspan="3"><input id="txtTotalExpense" type="text" value="0" class="text-size125 txtdisablefooter" disabled /></td>
                                                             </tr>
                                                         </tfoot>
                                                         <tbody id="tBodyRowExpense">
@@ -388,13 +388,13 @@
                                                                     <input type="text" id="txtQty" name="Qty" class="Quantity text-size50" onchange="CalSumExpense()">
                                                                 </td>
                                                                 <td  class="hidecolumn">
-                                                                    <input type="text" id="txtPriceList1" class="PriceList1 text-size80 textright" />
+                                                                    <input type="text" id="txtPriceList1" value="0" class="PriceList1 text-size80 textright" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice1" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()" onblur="convertFloat('.UnitPrice1',3)" />
+                                                                    <input type="text" id="txtUnitPrice1" value="0" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()" onblur="convertFloat('.UnitPrice1',3)" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtAmount" name="Amount" class="Amount1 text-size120 txtdisablerow" onblur="convertFloat('.Amount1',0)" disabled>
+                                                                    <input type="text" id="txtAmount" value="0" name="Amount" class="Amount1 text-size120 txtdisablerow" onblur="convertFloat('.Amount1',0)" disabled>
                                                                 </td>
 
                                                                 <td>
@@ -427,13 +427,13 @@
                                                                     <input type="text" id="txtQty" name="Qty" class="Quantity text-size50" onchange="CalSumExpense()">
                                                                 </td>
                                                                 <td  class="hidecolumn">
-                                                                    <input type="text" id="txtPriceList1" class="PriceList1 text-size80 textright" />
+                                                                    <input type="text" id="txtPriceList1" value="0" class="PriceList1 text-size80 textright" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtUnitPrice1" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()" onblur="convertFloat('.UnitPrice1',3)" />
+                                                                    <input type="text" id="txtUnitPrice1" value="0" name="UnitPrice1" class="UnitPrice1 text-size100" onchange="CalSumExpense()" onblur="convertFloat('.UnitPrice1',3)" />
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtAmount" name="Amount" class="Amount1 text-size120 txtdisablerow" onblur="convertFloat('.Amount1',0)" disabled />
+                                                                    <input type="text" id="txtAmount" value="0" name="Amount" class="Amount1 text-size120 txtdisablerow" onblur="convertFloat('.Amount1',0)" disabled />
                                                                 </td>
                                                                 <td>
                                                                     <div class="clone-1"><img class="row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>

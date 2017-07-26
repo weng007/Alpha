@@ -50,9 +50,9 @@ $(document).ready(function () {
                 //html += '<td class="nopointer">' + data.Table[i].UserStatus + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].SecurityProfile + '</td>';
                 html += '<td>';
-                html += '<a href="/User/EditUser?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png" class="imgAdminUpdate" /></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'User'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png" class="imgAdminDelete"/></a>';
-                html += '<a href="/User/EditUser?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgAdminView" /></a>';
+                html += '<a href="/User/EditUser?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/edit.png" class="imgUserUpdate" /></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'User'" + ',' + data.Table[i].ID + ')" >' + '<img src="/Images/delete.png" class="imgUserDelete"/></a>';
+                html += '<a href="/User/EditUser?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgUserView" /></a>';
                 html += '</td>';
                 html += '</tr>';
             }

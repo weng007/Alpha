@@ -1,4 +1,24 @@
 $(document).ready(function () {
+    var dataObject = { Group: '1' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MenuMaster/',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('#cmbMenuMaster').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('#cmbMenuMaster').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+    GetMenumasterDetail();
+
     //$('.imgadd').attr("style", "margin-left: 69%; margin-top: -2px;");
 
     //$('.topicattach-2').attr("style", "color: #FFFFFF; font-size: 14px; font-weight: bold; float: right; padding-top: 5px; padding-bottom: 5px; padding-right: 5px; margin-left: 0%;  margin-right: 0%;");
@@ -47,49 +67,28 @@ $(document).ready(function () {
             data = JSON.parse(data);
             var html = '';
             for (var i = 0; i < data.Table.length; i++) {
-                html += '<tr class="RowCal">';
+                html += '<tr class="RowCal">';              
                 if (TempMenu != data.Table[i].GroupID)
                 {
                     TempMenu = data.Table[i].GroupID;
+                    html += '<td colspan="5">' + data.Table[i].MasterID + '. ' + data.Table[i].GroupName + '</td>';
+                    html += '<tr class="RowCal">';
+                    html += '<td class="hidecolumn"><input type="hidden" class="hidTempGroupName" value="' + data.Table[i].GroupName + '"/></td>';
                     html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table[i].ID + '"/></td>';
-                    html += '<td colspan="5">' +(i + 1)+'. '+ data.Table[i].GroupName + '</td>';
-                    html += '<tr>';
                     html += '<td>' + '   - ' + data.Table[i].Detail + '</td>';
                     html += '<td><input id="chkIsView" type="checkbox" class="IsView"></td>';
-                    //Cost & Price
-                    if (data.Table[i].MenuID == 'MN016') {
+                    //MN016 Cost & Price, MN001 Dashboard, MN009 Technician, MN010 Expired Technician, MN018 (Report)Job Order, MN019 Requisition
+                    if (data.Table[i].MenuID == 'MN016' || data.Table[i].MenuID == 'MN001' || data.Table[i].MenuID == 'MN009' || data.Table[i].MenuID == 'MN010' || data.Table[i].MenuID == 'MN018' || data.Table[i].MenuID == 'MN019')
+                    {
                         html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
                         html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" style="display:none"></td>';
                         html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
                     }
-                        //Dashboard
-                    else if (data.Table[i].MenuID == 'MN001') {
-                        html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
-                    }
-                        //All Activity,Carlendar
-                    else if (data.Table[i].MenuID == 'MN006' || data.Table[i].MenuID == 'MN007' || data.Table[i].MenuID == 'MN008') {
+                        //MN006 All Activity, MN007 Calendar Job, MN008 Calendar Man Power, MN017 (Payment)Alpha & Outsource
+                    else if (data.Table[i].MenuID == 'MN006' || data.Table[i].MenuID == 'MN007' || data.Table[i].MenuID == 'MN008' || data.Table[i].MenuID == 'MN017')
+                    {
                         html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
                         html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()"></td>';
-                        html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
-                    }
-                        //Technician
-                    else if (data.Table[i].MenuID == 'MN009' || data.Table[i].MenuID == 'MN010') {
-                        html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
-                    }
-                        //Payment
-                    else if (data.Table[i].MenuID == 'MN017') {
-                        html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()"></td>';
-                        html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
-                    }
-                        //Report
-                    else if (data.Table[i].MenuID == 'MN018' || data.Table[i].MenuID == 'MN019') {
-                        html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" style="display:none"></td>';
                         html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
                     }
                     else {
@@ -101,50 +100,30 @@ $(document).ready(function () {
                 }
                 else
                 {
-                    
                     html += '<td>' + '   - ' + data.Table[i].Detail + '</td>';
+                    html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table[i].ID + '"/></td>';
                     html += '<td><input id="chkIsView" type="checkbox" class="IsView"></td>';
-                    //Cost & Price
-                    if (data.Table[i].MenuID == 'MN016') {
+                    //MN016 Cost & Price, MN001 Dashboard, MN009 Technician, MN010 Expired Technician, MN018 (Report)Job Order, MN019 Requisition
+                    if (data.Table[i].MenuID == 'MN016' || data.Table[i].MenuID == 'MN001' || data.Table[i].MenuID == 'MN009' || data.Table[i].MenuID == 'MN010' || data.Table[i].MenuID == 'MN018' || data.Table[i].MenuID == 'MN019')
+                    {
                         html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
                         html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" style="display:none"></td>';
                         html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
                     }
-                        //Dashboard
-                    else if (data.Table[i].MenuID == 'MN001') {
-                        html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
-                    }
-                        //All Activity,Carlendar
-                    else if (data.Table[i].MenuID == 'MN006' || data.Table[i].MenuID == 'MN007' || data.Table[i].MenuID == 'MN008') {
+                        //MN006 All Activity, MN007 Calendar Job, MN008 Calendar Man Power, MN017 (Payment)Alpha & Outsource
+                    else if (data.Table[i].MenuID == 'MN006' || data.Table[i].MenuID == 'MN007' || data.Table[i].MenuID == 'MN008' || data.Table[i].MenuID == 'MN017')
+                    {
                         html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
                         html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()"></td>';
                         html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
                     }
-                        //Technician
-                    else if (data.Table[i].MenuID == 'MN009' || data.Table[i].MenuID == 'MN010') {
-                        html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
-                    }
-                        //Payment
-                    else if (data.Table[i].MenuID == 'MN017') {
-                        html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()"></td>';
-                        html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
-                    }
-                        //Report
-                    else if (data.Table[i].MenuID == 'MN018' || data.Table[i].MenuID == 'MN019') {
-                        html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" style="display:none"></td>';
-                        html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
-                    }
-                    else {
+                    else
+                    {
                         html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()"></td>';
                         html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()"></td>';
                         html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete"></td>';
                     }
+                    html += '<td class="hidecolumn"><input type="hidden" class="hidTempGroupName" value="' + data.Table[i].Detail + '"/></td>';
                     TempMenu = data.Table[i].GroupID;
                 }
                 html += '</tr>';
@@ -158,11 +137,35 @@ $(document).ready(function () {
     });
 
 });
+function GetMenumasterDetail()
+{
+    var val = $('#cmbMenuMaster:last').find(":selected").val();
+    var dataObject = { ID: parseInt(val) };
+    $.ajax({
+        url: 'http://localhost:13131/api/MenuMaster/',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $('#cmbMenuMasterDetail').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('#cmbMenuMasterDetail').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('#cmbMenuMasterDetail').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 function GetChecked() {
+    //alert("test");
     $(".RowCal").each(function () {
         var IsInsert = $(this).find('.IsInsert').is(":checked");
         var IsUpdate = $(this).find('.IsUpdate').is(":checked");
-
+        //alert(IsInsert);
         if (IsInsert || IsUpdate) {
             $(this).find('.IsView').prop('checked', true);
             $(this).find('.IsView').prop('disabled', true);
@@ -174,7 +177,7 @@ function GetChecked() {
     });
 }
 function CreateData() {
-    var dataObject = { Profile: $("#txtProfile").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
+    var dataObject = { Profile: $("#txtProfile").val(), MenuID: $('#cmbMenuMaster').find(":selected").val(), MenuDetailID: $('#cmbMenuMasterDetail').find(":selected").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
     var SecurityID;
     console.log(dataObject);
     $.ajax(
@@ -193,32 +196,42 @@ function CreateData() {
             alert(msg)
         }
     });
-
-    var dataObject = {};
-    $(".RowCal").each(function () {
-        dataObject.SecurityID = SecurityID;
-        dataObject.MenuID = $(this).find(".hidMenuTypeID").val();
-        dataObject.IsView = $(this).find('.IsView').is(":checked") == true ? 1 : 0;
-        dataObject.IsInsert = $(this).find('.IsInsert').is(":checked") == true ? 1 : 0;
-        dataObject.IsUpdate = $(this).find(".IsUpdate").is(":checked") == true ? 1 : 0;
-        dataObject.IsDelete = $(this).find(".IsDelete").is(":checked") == true ? 1 : 0;
-        dataObject.CreateBy = localStorage['UserID'];
-        dataObject.EditBy = localStorage['UserID'];
-            $.ajax(
+    
+        var dataObject = {};
+        $(".RowCal").each(function () {
+            var TempGroupName = $(this).find(".hidTempGroupName").val();
+            if (TempGroupName != 'DashBoard' || TempGroupName != 'Administrator' || TempGroupName != 'Activity' || TempGroupName != 'Technician & Card' || TempGroupName != 'Tools & Machine' || TempGroupName != 'Estimate & Job Order' || TempGroupName != 'Payment' || TempGroupName != 'Report')
             {
-                url: 'http://localhost:13131/api/SecurityProfileDetail',
-                type: 'POST',
-                async: false,
-                data: dataObject,
-                datatype: 'json',
-                success: function (data) {
+                dataObject.SecurityID = SecurityID;
+                dataObject.MenuID = TempGroupName != 'DashBoard' || TempGroupName != 'Administrator' || TempGroupName != 'Activity' || TempGroupName != 'Technician & Card' || TempGroupName != 'Tools & Machine' || TempGroupName != 'Estimate & Job Order' || TempGroupName != 'Payment' || TempGroupName != 'Report'? $(this).find(".hidMenuTypeID").val() : 0;
+                dataObject.IsView = $(this).find('.IsView').is(":checked") == true ? 1 : 0;
+                dataObject.IsInsert = $(this).find('.IsInsert').is(":checked") == true ? 1 : 0;
+                dataObject.IsUpdate = $(this).find(".IsUpdate").is(":checked") == true ? 1 : 0;
+                dataObject.IsDelete = $(this).find(".IsDelete").is(":checked") == true ? 1 : 0;
+                dataObject.CreateBy = localStorage['UserID'];
+                dataObject.EditBy = localStorage['UserID'];
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/SecurityProfileDetail',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
 
-                },
-                error: function (msg) {
-                    alert(msg)
-                }
-            });
-    });
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
+            //alert("IsView Dashboard " + TempGroupName == 'DashBoard' || TempGroupName == 'Administrator' || TempGroupName == 'Activity' || TempGroupName == 'Technician & Card' || TempGroupName == 'Tools & Machine' || TempGroupName == 'Estimate & Job Order' || TempGroupName == 'Payment' || TempGroupName == 'Report' ? 0 : $(this).find('.IsView').is(":checked"));
+            //alert("MenuID " + TempGroupName == 'DashBoard' || TempGroupName == 'Administrator' || TempGroupName == 'Activity' || TempGroupName == 'Technician & Card' || TempGroupName == 'Tools & Machine' || TempGroupName == 'Estimate & Job Order' || TempGroupName == 'Payment' || TempGroupName == 'Report' ? 0 : $(this).find(".hidMenuTypeID").val());
+
+            
+        });
+    
+    
     //alert('Create is completed')
     //window.location.href = "../SecurityProfile/EditSecurityProfile?id="+SecurityID;
     window.location.href = "../SecurityProfile/IndexSecurityProfile";

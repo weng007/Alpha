@@ -69,8 +69,8 @@ function GetJobOrder() {
                 html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].Remark + '</td>';
                 html += '<td class="nopointer">';
-                html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&' + false + '&' + data.Table[i].JobNo + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgBDCUpdate"/></a>';
-                html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&' + true + '&' + data.Table[i].JobNo + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="BDCviewDisable"/></a>';
+                html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&' + false + '&' + data.Table[i].JobNo + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgActivityUpdate"/></a>';
+                html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&' + true + '&' + data.Table[i].JobNo + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgActivityView"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }

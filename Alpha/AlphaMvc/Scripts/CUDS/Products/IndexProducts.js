@@ -67,7 +67,7 @@ $(document).ready(function () {
                 html += '<td class="nopointer">';
                 html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgProductsUpdate"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'Product'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgProductsDelete"/></a>';
-                html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '&IsView=' + true + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="productsviewDisable"/></a>';
+                html += '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '&IsView=' + true + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgProductsView"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }

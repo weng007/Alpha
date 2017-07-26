@@ -13,6 +13,10 @@ namespace AlphaApi.Models
 
         public string Profile { get; set; }
 
+        public int MenuID { get; set; }
+
+        public int MenuDetailID { get; set; }
+
         public int CreateBy { get; set; }
 
         public int EditBy { get; set; }

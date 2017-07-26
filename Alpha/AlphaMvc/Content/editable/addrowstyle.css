@@ -54,8 +54,9 @@
         /*background: #D0E5F5;
         border: 1px solid #c0c0c0;
         width: 520px;*/
-        background: #fbfbf1;
-        border: 1px solid #c0c0c0;
+        /*background: #fbfbf1;*/
+        background: #f6f6de;
+        border: 1px solid #f6f6de;
         width: inherit;
         margin-bottom: 10px;
         padding-bottom: 10px;
@@ -91,8 +92,10 @@
     .theader {
         /*background: #fbfbf1;*/
         /*background: #91b6b4;*/
-        background: #e89a89;
-        color: white;
+        /*background: #e89a89;*/
+        background-color:rgba(187, 160, 192, 0.40) !important;
+        /*color: white;*/
+        color: #5b1675;
         text-align: center;
         font-size: small;
     }
@@ -154,10 +157,12 @@
     }
 
     .tdno {
-        width: 50px;
+        width: 51px;
         margin: 0;
         /*background: #eaebff;*/
-        background: #ffe2dc;
+        /*background: #ffe2dc;*/
+        background: rgb(226, 215, 222);
+        text-align: center;
         height: 29px;
         border: none;
     }
@@ -428,7 +433,8 @@
     table td .textalign{
        text-align:right;
        border-bottom: 1px solid #d7d1bc;
-       background: #f4eed6;
+       /*background: #f4eed6;*/
+       background: #f4f1e7;
        padding-right: 20px;
        font-weight: 700;
     }
@@ -473,6 +479,9 @@
     font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     /*float: left;*/
     margin-right: 30px;
+}
+.marginbuttom-10{
+    margin-bottom: 10px;
 }
 
 .form-style li {

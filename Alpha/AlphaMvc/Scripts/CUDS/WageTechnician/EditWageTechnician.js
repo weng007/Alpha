@@ -65,6 +65,7 @@ function GetData(val)
     //alert("test2");
     //alert(Fdate);
     //alert(Tdate);
+    alert(val);
     var dataObject = { Datesearh: val+'|'+Fdate+'|'+Tdate };
     console.log(dataObject);
     $.ajax(
@@ -88,6 +89,7 @@ function GetData(val)
                 html += '<td class="hidecolumn"><input type="hidden" class="hidID" value="' + data.Table1[i].ID + '" /></td>';
                 html += '<td class="hidecolumn"><input type="hidden" class="hidJobID" value="' + data.Table1[i].ManpowerID + '" /></td>';
                 html += '<td class="hidecolumn"><input type="hidden" Class="hidTechnicianID" value="' + val + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidEmpGroup" value="' + data.Table1[i].EmpGroup + '" /></td>';
                 html += '<td class="hidecolumn EmpGroup">' + data.Table1[i].EmpGroup + '</td>';
                 html += '<td>' + data.Table1[i].RowNum + '</td>';
                 html += '<td>' + data.Table1[i].JobNo + '</td>';
@@ -304,8 +306,17 @@ function OpenRptWageTechnician(val) {
     //alert("test");
     var FromDate = $('#hidFromDate').val();
     var ToDate = $('#hidToDate').val();
+    var EmpGroup = $('.hidEmpGroup').val();
+    alert("Emp" + EmpGroup);
     //var FromDate = FromDate.replace("/", "-");
     //alert(FromDate);
     //alert(ToDate);
-    window.location.href = "../Reports/FormReport/RptWageTechnicianViewer.aspx?id=" + val + '|' + FromDate + '|' + ToDate;
+    if (EmpGroup == 'Alpha')
+    {
+        window.location.href = "../Reports/FormReport/RptWageTechnicianViewer.aspx?id=" + val + '|' + FromDate + '|' + ToDate;
+    }
+    else
+    {
+        window.location.href = "../Reports/FormReport/RptWageTechnicianViewer2.aspx?id=" + val + '|' + FromDate + '|' + ToDate;
+    }
 }

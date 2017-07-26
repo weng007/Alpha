@@ -7,12 +7,36 @@
 @* ------------------------------- grid  -------------------------------*@
 <script src="@Url.Content("~/Scripts/CUDS/Products/IndexProducts.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<style>
+         .paging-nav {
+        text-align: right;
+        padding-top: 2px;
+    }
 
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #9fa694 !important;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .paging-nav .selected-page {
+            background: #7a8775;
+            font-weight: bold;
+        }
+
+    #result {
+        font-family: serif;
+    }
+</style>
 <table class="barattach-2">
     <tr>
         <td>
             <label class="topicmargin-size70">Stock</label>
-            <a href="/Products/CreateProducts"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="ProductsCreate" /></a>
+            <a href="/Products/CreateProducts"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="imgProductsCreate" /></a>
             <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
         </td>
     </tr>
@@ -21,19 +45,19 @@
     <table id="tblProduct" class="table table-striped scrolling">
         <thead class="bgthead">
             <tr>
-                <th class="Rowpointer">No.</th>
-                <th class="hidecolumn">ID</th>
-                <th class="Rowpointer">วันที่รับเข้า</th>
-                <th class="Rowpointer">Serial</th>
-                <th class="hideANDseek Rowpointer">หมายเลขเครื่อง</th>
+                <th class="thgray Rowpointer">No.</th>
+                <th class="thgray hidecolumn">ID</th>
+                <th class="thgray Rowpointer">วันที่รับเข้า</th>
+                <th class="thgray Rowpointer">Serial</th>
+                <th class="thgray hideANDseek Rowpointer">หมายเลขเครื่อง</th>
                 @*<th class="hideANDseek Rowpointer">ประเภทสินค้า</th>*@
-                <th class="hideANDseek Rowpointer">รายละเอียด</th>
-                <th class="hideANDseek Rowpointer">ยี่ห้อ</th>
-                <th class="hideANDseek Rowpointer">รุ่น</th>
-                <th class="Rowpointer">ขนาด</th>
-                <th class="Rowpointer">คงเหลือ</th>
-                <th class="hideANDseek Rowpointer">หน่วยนับ</th>
-                <th></th>
+                <th class="thgray hideANDseek Rowpointer">รายละเอียด</th>
+                <th class="thgray hideANDseek Rowpointer">ยี่ห้อ</th>
+                <th class="thgray hideANDseek Rowpointer">รุ่น</th>
+                <th class="thgray Rowpointer">ขนาด</th>
+                <th class="thgray Rowpointer">คงเหลือ</th>
+                <th class="thgray hideANDseek Rowpointer">หน่วยนับ</th>
+                <th class="thgray"></th>
             </tr>
         </thead>
         <tbody id="result"></tbody>

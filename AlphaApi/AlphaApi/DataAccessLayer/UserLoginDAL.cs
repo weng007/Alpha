@@ -144,7 +144,8 @@ namespace AlphaApi.DataAccessLayer
                     if (!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(domainName))
                     {
                         domainAndUser = domainName + @"\" + LoginUser;
-                        DirectoryEntry entry = new DirectoryEntry("LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local", "JPS", "fastpink46");
+                        //DirectoryEntry entry = new DirectoryEntry("LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local", "JPS", "fastpink46");
+                        DirectoryEntry entry = new DirectoryEntry("LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local", "Administrator", "F.Lampard8");
                         try
                         {
                             object obj = entry.NativeObject;

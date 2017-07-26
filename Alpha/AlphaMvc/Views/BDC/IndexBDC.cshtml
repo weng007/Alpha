@@ -5,13 +5,45 @@
 @*<h2>BreakDownCost</h2>*@
 @*<br />*@
 @* ------------------------------- grid  -------------------------------*@
+<style>
+    body {
+        /*margin: 40px 10px;*/
+        padding: 0;
+        font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+        font-size: 14px;
+    }
+
+    .paging-nav {
+        text-align: right;
+        padding-top: 2px;
+    }
+
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #9e74ae !important;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .paging-nav .selected-page {
+            background: #7a8775;
+            font-weight: bold;
+        }
+
+    #result {
+        font-family: serif;
+    }
+</style>
 <script src="@Url.Content("~/Scripts/CUDS/BDC/IndexBDC.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-<table class="barattach-2">
+<table class="barattach-puple">
     <tr>
         <td>
             <label class="topicmargin-size60-2">Estimate Price</label>
-            <a href="/BDC/CreateBDC"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="BDCCreate"/></a>
+            <a href="/BDC/CreateBDC"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="imgBDCCreate"/></a>
             <input id="chkShowAll" type="checkbox" class="chkShowAllinput" onchange="GetChecked(this)">
             <label for="chkShowAll" class="chkShowAll">Show All</label>
             <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
@@ -20,19 +52,19 @@
 </table>
 
 <div class="table-responsive">
-    <table id="tblBDC" class="table table-striped scrolling" onended="SetPaging()">
-        <thead class="bgthead">
+    <table id="tblBDC" class="table tbpuple table-striped-puple scrolling" onended="SetPaging()">
+        <thead class="bgthead-puple">
             <tr>
-                <th class="Rowpointer">No.</th>
-                <th class="hidecolumn">ID</th>
-                <th class="Rowpointer">Revise</th>
-                <th class="Rowpointer">ใบเสนอราคา</th>
-                <th class="Rowpointer">ลูกค้า</th>
-                <th class="gvPrice Rowpointer">ราคาขาย</th>
-                <th class="gvCost Rowpointer">ราคาทุน</th>
-                <th class="gvProfit Rowpointer">กำไร</th>
-                <th class="gvProfit Rowpointer">กำไร (%)</th>
-                <th></th>
+                <th class="thgray Rowpointer">No.</th>
+                <th class="thgray hidecolumn">ID</th>
+                <th class="thgray Rowpointer">Revise</th>
+                <th class="thgray Rowpointer">ใบเสนอราคา</th>
+                <th class="thgray Rowpointer">ลูกค้า</th>
+                <th class="thgray gvPrice Rowpointer">ราคาขาย</th>
+                <th class="thgray gvCost Rowpointer">ราคาทุน</th>
+                <th class="thgray gvProfit Rowpointer">กำไร</th>
+                <th class="thgray gvProfit Rowpointer">กำไร (%)</th>
+                <th class="thgray"></th>
             </tr>
         </thead>
         <tbody id="result"></tbody>

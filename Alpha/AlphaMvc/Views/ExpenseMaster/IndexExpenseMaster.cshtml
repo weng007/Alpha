@@ -6,29 +6,54 @@
 <script src="@Url.Content("~/Scripts/EditableGrid/paging.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/CUDS/ExpenseMaster/IndexExpenseMaster.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<style>
+    .paging-nav {
+        text-align: right;
+        padding-top: 2px;
+    }
 
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #8ba5b7 !important;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .paging-nav .selected-page {
+            background: #187ed5;
+            font-weight: bold;
+        }
+
+    #result {
+        font-family: serif;
+    }
+
+</style>
 
 @* ------------------------------- Header -------------------------------*@
-<table class="barattach-2">
+<table class="barattach-blue">
     <tr>
         <td>
             <label class="topicmargin-size67">Master Expense</label>
-            <a href="/ExpenseMaster/CreateExpenseMaster"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="imgAdminCreate" /></a>
+            <a href="/ExpenseMaster/CreateExpenseMaster"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="imgExpenseCreate" /></a>
             <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
         </td>
     </tr>
 </table>
 
-<table id="tblExpenseMaster" class="table table-striped scrolling" >
-    <thead class="bgthead">
+<table id="tblExpenseMaster" class="table tbblue table-striped-blue scrolling" >
+    <thead class="bgthead-blue">
         <tr>
-            <th class="Rowpointer">No.</th>
-            <th class="hidecolumn">ID</th>
-            <th class="Rowpointer">Group</th>
-            <th class="Rowpointer">รายละเอียด</th>
-            <th class="Rowpointer">ราคา</th>
-            <th class="Rowpointer">ลำดับ</th>
-            <th></th>
+            <th class="thblue Rowpointer">No.</th>
+            <th class="thblue hidecolumn">ID</th>
+            <th class="thblue Rowpointer">Group</th>
+            <th class="thblue Rowpointer">รายละเอียด</th>
+            <th class="thblue Rowpointer">ราคา</th>
+            <th class="thblue Rowpointer">ลำดับ</th>
+            <th class="thblue"></th>
         </tr>
     </thead>
     <tbody id="result"></tbody>

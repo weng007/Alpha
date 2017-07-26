@@ -12,21 +12,28 @@
             <ul class="form-style">
                 <li>
                     <label>Profile<span class="required">*</span></label>
-                    <input type="text" id="txtProfile" class="field-divided text-floatleft" placeholder="Profile" />&nbsp;<button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'SecurityProfile', @Request.Params["id"])">Save</button>
+                    <input type="text" id="txtProfile" class="field-divided" placeholder="" />
+                </li>
+                <li>
+                    <label>First Page<span class="required">*</span></label>
+                    <select id="cmbMenuMaster" class="field-divided" onchange="GetMenumasterDetail()" required></select>&nbsp;<select id="cmbMenuMasterDetail" class="field-divided" required></select>
+                </li>
+                <li>
+                    <button type="button" id="btnSave" class="btn btn-primary marginbuttom-10" onclick="Isvalidate('Update', 'SecurityProfile', @Request.Params["id"])">Save</button>
                 </li>
             </ul>
             <br />
             <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead class="bgthead">
+                <table class="table tbblue table-striped-blue">
+                    <thead class="bgthead-blue">
                         <tr>
-                            <th>No.</th>
+                            <th class="hidecolumn">No.</th>
                             <th class="hidecolumn">ID</th>
-                            <th>Menu</th>
-                            <th>View</th>
-                            <th>Insert</th>
-                            <th class="wraptext">Update</th>
-                            <th>Delete</th>
+                            <th class="thblue">Menu</th>
+                            <th class="thblue">View</th>
+                            <th class="thblue">Insert</th>
+                            <th class="thblue wraptext">Update</th>
+                            <th class="thblue">Delete</th>
                         </tr>
                     </thead>
                     <tbody id="result"></tbody>
@@ -42,6 +49,7 @@
         var val = after.split('=');
         var ID = val[1];
         var Isview = val[2];
+        GetMenumasterDetail();
         GetData(@Request.Params["id"]);
         ControlEnable(Isview);
 

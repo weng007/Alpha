@@ -87,7 +87,7 @@ function GetData(val)
                     html += '<td style="Color: black" class="gvProfit text-right nopointer">' + new Intl.NumberFormat('en-IN').format(profit) + '</td>';
                 }
                 html += '<td class="nopointer">';
-                html += '<a href="/Reports/FormReport/RptBDCViewer.aspx?id=' + data.Table[i].ID +'" id="read' + data.Table[i].ID + '">' + '<img src="/Images/report.png" style="cursor:hand" class="Reportview"/></a>';
+                html += '<a href="/Reports/FormReport/RptBDCViewer.aspx?id=' + data.Table[i].ID +'" id="read' + data.Table[i].ID + '">' + '<img src="/Images/report.png" style="cursor:hand" id="imgRptBDC" class="Reportview"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }

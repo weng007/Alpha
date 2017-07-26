@@ -2,7 +2,38 @@
 @{
     ViewBag.Title = "EditBDC";
 }
+<style>
+    body {
+        /*margin: 40px 10px;*/
+        padding: 0;
+        font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+        font-size: 14px;
+    }
 
+    .paging-nav {
+        text-align: right;
+        padding-top: 2px;
+    }
+
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #9e74ae !important;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .paging-nav .selected-page {
+            background: #7a8775;
+            font-weight: bold;
+        }
+
+    #result {
+        font-family: serif;
+    }
+</style>
 
 <script src="@Url.Content("~/Scripts/CUDS/BDC/EditBDC.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/CUDS/BDC/BDCJob.js")" type="text/javascript"></script>
@@ -106,23 +137,23 @@
                 <tr>
                     <td>
                         <label class="topicmargin-size70">Job Order</label>
-                        <button type="button" id="btnSave" class="btnCreate" onclick="OpenJobOrder(@Request.Params["id"])"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" id="BDCCreate" /></button>
+                        <button type="button" id="btnSave" class="btnCreate" onclick="OpenJobOrder(@Request.Params["id"])"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" id="imgJobOrderCreate" /></button>
                     </td>
                 </tr>
             </table>
             <div class="table-responsive">
-                <table id="tblBDCJOb" class="table table-striped scrolling" onended="SetPaging()">
-                    <thead class="bgthead">
+                <table id="tblBDCJOb" class="table tbpuple table-striped-puple scrolling" onended="SetPaging()">
+                    <thead class="bgthead-puple">
                         <tr>
-                            <th>No.</th>
-                            <th>Job No.</th>
-                            <th>วันที่</th>
-                            <th>ลูกค้า</th>
-                            <th>เบอร์โทร</th>
-                            <th class="hideANDseek">บุคคลติดต่อ</th>
-                            <th class="hideANDseek">ผู้ประสานงาน</th>
-                            <th class="hideANDseek">หมายเหตุ</th>
-                            <th></th>
+                            <th class="thgray">No.</th>
+                            <th class="thgray">Job No.</th>
+                            <th class="thgray">วันที่</th>
+                            <th class="thgray">ลูกค้า</th>
+                            <th class="thgray">เบอร์โทร</th>
+                            <th class="thgray hideANDseek">บุคคลติดต่อ</th>
+                            <th class="thgray hideANDseek">ผู้ประสานงาน</th>
+                            <th class="thgray hideANDseek">หมายเหตุ</th>
+                            <th class="thgray"></th>
                         </tr>
                     </thead>
                     <tbody id="result"></tbody>

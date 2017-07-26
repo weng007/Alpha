@@ -102,15 +102,32 @@ $(document).ready(function () {
         font-size: 14px;
     }
 
-    /*#calendar {
-        max-width: 0 auto;
-        max-height: auto;
-        margin: 0 auto;
-    }*/
+     .paging-nav {
+        text-align: right;
+        padding-top: 2px;
+    }
 
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #9fa694 !important;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .paging-nav .selected-page {
+            background: #7a8775;
+            font-weight: bold;
+        }
+
+    #result {
+        font-family: serif;
+    }
 </style>
 <div id="calendar"></div>
-<table class="barattach-2">
+<table class="barattach-gray">
     <tr>
         <td>
             <label class="topicmargin-size67">Calendar Job</label>
@@ -119,17 +136,18 @@ $(document).ready(function () {
         </td>
     </tr>
 </table>
-<table id="tblcalenJob" class="table table-striped scrolling">
-    <thead class="bgthead">
+
+<table id="tblcalenJob" class="table tbgray table-striped-gray scrolling">
+    <thead class="bgthead-gray">
         <tr>
-            <th class="Rowpointer">No.</th>
-            <th class="hidecolumn Rowpointer">ID</th>
-            <th class="Rowpointer">JobNo</th>
-            <th class="hideANDseek Rowpointer">Type of Working</th>
-            <th class="hideANDseek Rowpointer">JobDate</th>
-            <th class="Rowpointer">Start Working</th>
-            <th class="Rowpointer">End Working</th>
-            <th></th>
+            <th class="thgray Rowpointer">No.</th>
+            <th class="thgray hidecolumn Rowpointer">ID</th>
+            <th class="thgray Rowpointer">JobNo</th>
+            <th class="thgray hideANDseek Rowpointer">Type of Working</th>
+            <th class="thgray hideANDseek Rowpointer">JobDate</th>
+            <th class="thgray Rowpointer">Start Working</th>
+            <th class="thgray Rowpointer">End Working</th>
+            <th class="thgray"></th>
         </tr>
     </thead>
     <tbody id="result"></tbody>

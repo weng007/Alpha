@@ -24,9 +24,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>0.09444in</Top>
-        <Left>0.05654in</Left>
+        <Left>0.09583in</Left>
         <Height>0.27674in</Height>
-        <Width>7.68988in</Width>
+        <Width>7.82298in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -58,8 +58,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.50312in</Top>
-        <Left>0.04583in</Left>
+        <Top>0.44062in</Top>
+        <Left>0.09583in</Left>
         <Height>0.22917in</Height>
         <Width>0.79514in</Width>
         <ZIndex>1</ZIndex>
@@ -89,9 +89,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>3.89583in</Top>
+        <Top>5.14583in</Top>
         <Height>0.125in</Height>
-        <Width>7.82325in</Width>
+        <Width>6.98085in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -122,10 +122,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>FullName</rd:DefaultName>
-        <Top>1.27794cm</Top>
-        <Left>2.17137cm</Left>
+        <Top>1.11919cm</Top>
+        <Left>2.29837cm</Left>
         <Height>0.58209cm</Height>
-        <Width>5.40462cm</Width>
+        <Width>5.82937cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -144,37 +144,37 @@
               <Width>1.70438cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.93707cm</Width>
+              <Width>1.06273cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.15767cm</Width>
+              <Width>1.28292cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.08344cm</Width>
+              <Width>1.23429cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.39389cm</Width>
+              <Width>1.33676cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.18311cm</Width>
+              <Width>1.26324cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.47888cm</Width>
+              <Width>1.52431cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.3089cm</Width>
+              <Width>1.23215cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.86854cm</Width>
+              <Width>2.00083cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.44358cm</Width>
+              <Width>1.98265cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.20896cm</Width>
+              <Width>3.15651cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.79104cm</Width>
+              <Width>2.08959cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -206,8 +206,13 @@
                       <rd:DefaultName>Textbox41</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <LeftBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -254,10 +259,8 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                        </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -302,10 +305,10 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
-                        <BottomBorder>
+                        <TopBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
-                        </BottomBorder>
+                        </TopBorder>
                         <LeftBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -352,10 +355,10 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
-                        <BottomBorder>
+                        <TopBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
-                        </BottomBorder>
+                        </TopBorder>
                         <LeftBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -404,6 +407,10 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <LeftBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -448,6 +455,10 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <LeftBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -492,6 +503,10 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <LeftBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -536,6 +551,10 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <LeftBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -585,8 +604,13 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                         </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
@@ -625,8 +649,17 @@
                       <rd:DefaultName>Textbox28</rd:DefaultName>
                       <Style>
                         <Border>
+                          <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -667,6 +700,10 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -715,6 +752,10 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -763,6 +804,18 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -803,6 +856,10 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -832,7 +889,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Premium(1.5)</Value>
+                              <Value>Premium(2)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -851,6 +908,10 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -899,6 +960,10 @@
                           <Color>LightGrey</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
@@ -928,7 +993,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Customer</Value>
+                              <Value>Additionnal</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -976,7 +1041,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Job No.</Value>
+                              <Value>Deduction</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -1024,7 +1089,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>รายละเอียดของงาน</Value>
+                              <Value>Remark</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -1072,7 +1137,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Remark</Value>
+                              <Value>Location</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -1142,25 +1207,8 @@
                       <rd:DefaultName>RowNum</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1194,25 +1242,8 @@
                       <rd:DefaultName>Textbox30</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1246,25 +1277,8 @@
                       <rd:DefaultName>WorkingFrom</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1298,25 +1312,8 @@
                       <rd:DefaultName>WorkingTo</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1350,25 +1347,8 @@
                       <rd:DefaultName>Textbox56</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1402,25 +1382,8 @@
                       <rd:DefaultName>ManNormal</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1454,25 +1417,8 @@
                       <rd:DefaultName>ManPremium</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1506,25 +1452,8 @@
                       <rd:DefaultName>ManSpecial</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1542,39 +1471,25 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CustomerName.Value</Value>
+                              <Value>=Fields!Additionnal.Value</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>#,0.00;(#,0.00)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox62</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1592,41 +1507,25 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!JobNo.Value</Value>
+                              <Value>=Fields!Deduction.Value</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>#,0.00;(#,0.00)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Right</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox63</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1658,25 +1557,8 @@
                       <rd:DefaultName>Textbox66</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1708,25 +1590,8 @@
                       <rd:DefaultName>Textbox74</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1751,7 +1616,9 @@
                             <TextRun>
                               <Value />
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1786,7 +1653,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1815,7 +1686,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1844,7 +1719,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1872,9 +1751,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>TOTAL</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1905,9 +1786,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>(WH3%)</Value>
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1940,7 +1823,9 @@
                             <TextRun>
                               <Value />
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1973,7 +1858,9 @@
                             <TextRun>
                               <Value />
                               <Style>
-                                <FontSize>9pt</FontSize>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2287,6 +2174,291 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox142">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>RATE (BAHT)</Value>
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox142</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>5</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox146">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(20000/30/8)</Value>
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Format>n2</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox146</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox147">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*(20000/30/8)*1.5</Value>
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Format>n2</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox147</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox149">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((20000/30/8)*3)</Value>
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Format>n2</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox149</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox150">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox150</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox151">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox151</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox69">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox69</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox77">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox77</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox122">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -2568,6 +2740,280 @@
                 </TablixCell>
               </TablixCells>
             </TablixRow>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox132">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>TOTAL WAGES(BAHT)</Value>
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox132</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>5</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox136">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox136</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox137">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox137</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox139">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox139</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox140">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox140</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox141">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox141</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox71">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox71</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox79">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Cordia New</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox79</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
@@ -2609,17 +3055,23 @@
             <TablixMember>
               <KeepWithGroup>Before</KeepWithGroup>
             </TablixMember>
+            <TablixMember>
+              <KeepWithGroup>Before</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <KeepWithGroup>Before</KeepWithGroup>
+            </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsWageTechnicianDetail</DataSetName>
         <Top>2.34103cm</Top>
-        <Left>0.11642cm</Left>
-        <Height>4.10271cm</Height>
-        <Width>19.55947cm</Width>
+        <Left>0.24342cm</Left>
+        <Height>5.30271cm</Height>
+        <Width>19.87036cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
-            <Style>Solid</Style>
+            <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
@@ -2630,7 +3082,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>ตำแหน่ง:</Value>
+                <Value>Customer</Value>
                 <Style>
                   <FontFamily>Cordia New</FontFamily>
                   <FontSize>12pt</FontSize>
@@ -2644,10 +3096,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.50312in</Top>
-        <Left>3.04226in</Left>
+        <Top>0.43518in</Top>
+        <Left>3.31934in</Left>
         <Height>0.22917in</Height>
-        <Width>0.58796in</Width>
+        <Width>0.67177in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -2666,7 +3118,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!PositionNameTH.Value, "dsWageTechnicianDetail")</Value>
+                <Value>Alpha Group</Value>
                 <Style>
                   <FontFamily>Cordia New</FontFamily>
                   <FontSize>12pt</FontSize>
@@ -2678,10 +3130,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>PositionNameTH</rd:DefaultName>
-        <Top>1.26003cm</Top>
-        <Left>9.27015cm</Left>
+        <Top>1.10127cm</Top>
+        <Left>10.17917cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.48846cm</Width>
+        <Width>6.367cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -2700,7 +3152,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>แผนก/ฝ่าย:</Value>
+                <Value>Job Site:</Value>
                 <Style>
                   <FontFamily>Cordia New</FontFamily>
                   <FontSize>12pt</FontSize>
@@ -2714,10 +3166,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.50312in</Top>
-        <Left>5.49317in</Left>
+        <Top>0.44768in</Top>
+        <Left>6.62001in</Left>
         <Height>0.22917in</Height>
-        <Width>0.6787in</Width>
+        <Width>0.62175in</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -2729,29 +3181,29 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="DepartmentName">
+      <Textbox Name="Textbox15">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!DepartmentName.Value, "dsWageTechnicianDetail")</Value>
+                <Value>ข้าพเจ้า ____________________ รับทราบและยินยอมให้ทางบริษัทฯ หักเงินโดยจำนวนที่มาสายเป็นเวลา ________ นาที รวมเป็นเงิน __________ บาท ตามรายละเอียดที่กล่าวไปข้างต้นทุกประการ</Value>
                 <Style>
                   <FontFamily>Cordia New</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>DepartmentName</rd:DefaultName>
-        <Top>1.27794cm</Top>
-        <Left>15.72241cm</Left>
-        <Height>0.6cm</Height>
-        <Width>3.95348cm</Width>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>3.20379in</Top>
+        <Left>0.09583in</Left>
+        <Height>0.22917in</Height>
+        <Width>7.82298in</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -2763,15 +3215,48 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="JobSite">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!JobSite.Value, "dsWageTechnicianDetail")</Value>
+                <Style>
+                  <FontFamily>Cordia New</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>JobSite</rd:DefaultName>
+        <Top>1.1371cm</Top>
+        <Left>18.39406cm</Left>
+        <Height>0.6cm</Height>
+        <Width>1.71971cm</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>10.3452cm</Height>
+    <Height>13.41437cm</Height>
     <Style>
       <Border>
         <Style>None</Style>
       </Border>
     </Style>
   </Body>
-  <Width>19.87105cm</Width>
+  <Width>20.28909cm</Width>
   <Page>
     <PageHeader>
       <Height>2.54cm</Height>
@@ -2782,7 +3267,7 @@
           <Top>2.41142cm</Top>
           <Left>0.1436cm</Left>
           <Height>0cm</Height>
-          <Width>19.53229cm</Width>
+          <Width>19.97018cm</Width>
           <Style>
             <Border>
               <Style>Solid</Style>
@@ -2881,7 +3366,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>2.69875cm</Height>
+      <Height>2.91042cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -2892,12 +3377,8 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>(__________________________)</Value>
-                  <Style>
-                    <FontFamily>Cordia New</FontFamily>
-                    <FontSize>12pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
+                  <Value>(_____________________)</Value>
+                  <Style />
                 </TextRun>
               </TextRuns>
               <Style>
@@ -2906,8 +3387,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.08402in</Top>
-          <Left>0.07546in</Left>
+          <Top>0.16597in</Top>
+          <Left>0.11133in</Left>
           <Height>0.22917in</Height>
           <Width>1.79809in</Width>
           <Style>
@@ -2928,11 +3409,7 @@
               <TextRuns>
                 <TextRun>
                   <Value>ลงชื่อ / ผู้ทำข้อมูล</Value>
-                  <Style>
-                    <FontFamily>Cordia New</FontFamily>
-                    <FontSize>12pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
+                  <Style />
                 </TextRun>
               </TextRuns>
               <Style>
@@ -2941,8 +3418,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.36874in</Top>
-          <Left>0.07546in</Left>
+          <Top>0.46458in</Top>
+          <Left>0.11133in</Left>
           <Height>0.22917in</Height>
           <Width>1.79809in</Width>
           <ZIndex>1</ZIndex>
@@ -2963,12 +3440,8 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>วันที่ _______________________</Value>
-                  <Style>
-                    <FontFamily>Cordia New</FontFamily>
-                    <FontSize>12pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
+                  <Value>วันที่ __________________</Value>
+                  <Style />
                 </TextRun>
               </TextRuns>
               <Style>
@@ -2977,8 +3450,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.66736in</Top>
-          <Left>0.07546in</Left>
+          <Top>0.7632in</Top>
+          <Left>0.11133in</Left>
           <Height>0.22917in</Height>
           <Width>1.79809in</Width>
           <ZIndex>2</ZIndex>
@@ -2999,12 +3472,8 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>(__________________________)</Value>
-                  <Style>
-                    <FontFamily>Cordia New</FontFamily>
-                    <FontSize>12pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
+                  <Value>(____________________)</Value>
+                  <Style />
                 </TextRun>
               </TextRuns>
               <Style>
@@ -3013,8 +3482,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.07013in</Top>
-          <Left>5.9497in</Left>
+          <Top>0.16597in</Top>
+          <Left>6.09807in</Left>
           <Height>0.22917in</Height>
           <Width>1.79809in</Width>
           <ZIndex>3</ZIndex>
@@ -3036,11 +3505,7 @@
               <TextRuns>
                 <TextRun>
                   <Value>ลงชื่อ</Value>
-                  <Style>
-                    <FontFamily>Cordia New</FontFamily>
-                    <FontSize>12pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
+                  <Style />
                 </TextRun>
               </TextRuns>
               <Style>
@@ -3049,8 +3514,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.36874in</Top>
-          <Left>5.9497in</Left>
+          <Top>0.46458in</Top>
+          <Left>6.09807in</Left>
           <Height>0.22917in</Height>
           <Width>1.79809in</Width>
           <ZIndex>4</ZIndex>
@@ -3071,12 +3536,8 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>วันที่ _______________________</Value>
-                  <Style>
-                    <FontFamily>Cordia New</FontFamily>
-                    <FontSize>12pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
+                  <Value>วันที่ __________________</Value>
+                  <Style />
                 </TextRun>
               </TextRuns>
               <Style>
@@ -3085,8 +3546,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.66736in</Top>
-          <Left>5.9497in</Left>
+          <Top>0.7632in</Top>
+          <Left>6.09807in</Left>
           <Height>0.22917in</Height>
           <Width>1.79809in</Width>
           <ZIndex>5</ZIndex>

@@ -61,7 +61,7 @@ function GetJobOrder(val)
             var html = '<tbody>';
             if (data.Table.length > 0)
             {
-                $('#BDCCreate').attr("style", "display:none");
+                $('#imgJobOrderCreate').attr("style", "display:none");
             }
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';

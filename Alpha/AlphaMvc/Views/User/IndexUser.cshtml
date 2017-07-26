@@ -5,27 +5,53 @@
 
 <script src="@Url.Content("~/Scripts/CUDS/User/IndexUser.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-<table class="barattach-2">
+<style>
+    .paging-nav {
+        text-align: right;
+        padding-top: 2px;
+    }
+
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #8ba5b7 !important;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .paging-nav .selected-page {
+            background: #187ed5;
+            font-weight: bold;
+        }
+
+    #result {
+        font-family: serif;
+    }
+</style>
+
+<table class="barattach-blue">
     <tr>
         <td>
             <label class="topicmargin-size74">User</label>
-            <a href="/User/CreateUser"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="imgAdminCreate" /></a>
+            <a href="/User/CreateUser"><img src="@Url.Content("~/images/btnAdd.png")" alt="IMAGES" id="imgUserCreate" /></a>
             <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
         </td>
     </tr>
 </table>
 <div class="table-responsive">
-    <table id="tblUser" class="table table-striped scrolling" onended="SetPaging()">
-        <thead class="bgthead">
+    <table id="tblUser" class="table tbblue table-striped-blue scrolling" onended="SetPaging()">
+        <thead class="bgthead-blue">
             <tr>
-                <th class="Rowpointer">No.</th>
-                <th class="hidecolumn">ID</th>
-                <th class="Rowpointer">UserName</th>
+                <th class="thblue Rowpointer">No.</th>
+                <th class="thblue hidecolumn">ID</th>
+                <th class="thblue Rowpointer">UserName</th>
                 @*<th class="Rowpointer">Name</th>*@
                 @*<th class="Rowpointer">Email</th>*@
                 @*<th class="Rowpointer">UserStatus</th>*@
-                <th class="Rowpointer">SecurityProfile</th>
-                <th></th>
+                <th class="thblue Rowpointer">SecurityProfile</th>
+                <th class="thblue"></th>
             </tr>
         </thead>
         <tbody id="result"></tbody>

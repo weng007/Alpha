@@ -5,7 +5,39 @@
 <script src="@Url.Content("~/Scripts/CUDS/Report/IndexReportBorrow.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 @* ------------------------------- grid  -------------------------------*@
-<table class="barattach-2">
+<style>
+    body {
+        /*margin: 40px 10px;*/
+        padding: 0;
+        font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+        font-size: 14px;
+    }
+
+    .paging-nav {
+        text-align: right;
+        padding-top: 2px;
+    }
+
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #ce417f !important;
+            color: white;
+            border-radius: 3px;
+        }
+
+        .paging-nav .selected-page {
+            background: #7a8775;
+            font-weight: bold;
+        }
+
+    #result {
+        font-family: serif;
+    }
+</style>
+<table class="barattach-pink">
     <tr>
         <td>
             <div class="topicattach-2">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
@@ -13,18 +45,18 @@
     </tr>
 </table>
 <div class="table-responsive">
-    <table id="tblRptBorrow" class="table table-striped scrolling" onended="SetPaging()">
-        <thead class="bgthead">
+    <table id="tblRptBorrow" class="table tbpink table-striped-pink scrolling" onended="SetPaging()">
+        <thead class="bgthead-pink">
             <tr>
-                <th class="Rowpointer">No.</th>
-                <th class="Rowpointer">Job No.</th>
-                <th class="Rowpointer">วันที่</th>
-                <th class="Rowpointer">ลูกค้า</th>
-                <th class="Rowpointer">เบอร์โทร</th>
-                <th class="hideANDseek Rowpointer">บุคคลติดต่อ</th>
-                <th class="hideANDseek Rowpointer">ผู้ประสานงาน</th>
-                <th class="hideANDseek Rowpointer">หมายเหตุ</th>
-                <th></th>
+                <th class="thpink Rowpointer">No.</th>
+                <th class="thpink Rowpointer">Job No.</th>
+                <th class="thpink Rowpointer">วันที่</th>
+                <th class="thpink Rowpointer">ลูกค้า</th>
+                <th class="thpink Rowpointer">เบอร์โทร</th>
+                <th class="thpink hideANDseek Rowpointer">บุคคลติดต่อ</th>
+                <th class="thpink hideANDseek Rowpointer">ผู้ประสานงาน</th>
+                <th class="thpink hideANDseek Rowpointer">หมายเหตุ</th>
+                <th class="thpink"></th>
             </tr>
         </thead>
         <tbody id="result"></tbody>

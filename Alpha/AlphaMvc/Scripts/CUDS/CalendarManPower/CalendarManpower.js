@@ -67,9 +67,9 @@ function GetCalendarlist(val) {
                 html += '<td class="nopointer">' + SWorking + '</td>';
                 html += '<td class="nopointer">' + EWorking + '</td>';
                 html += '<td class="nopointer">';
-                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgCarlendarUpdate"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'IncomeMaster'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px; Display:none;" >' + '<img src="/Images/delete.png" class="imgCarlendarDelete"/></a>';
-                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="carlendarviewDisable" /></a>';
+                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgManCalendarUpdate"/></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'IncomeMaster'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px; Display:none;" >' + '<img src="/Images/delete.png" class="imgManCalendarDelete"/></a>';
+                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgManCalendarView" /></a>';
                 html += '</td>';
                 html += '</tr>';
                 //});

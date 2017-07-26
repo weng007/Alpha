@@ -603,12 +603,16 @@ function CreateData() {
     //, CustID: $("#hidCustID").val()
     var JDate = ChangeformatDate($("#dtJobDate").val(),1);
     var SWorkingDate = ChangeformatDate($("#dtSWorking").val(),1);
-    var EWorkingDate = ChangeformatDate($("#dtEWorking").val(),1);
+    var EWorkingDate = ChangeformatDate($("#dtEWorking").val(), 1);
+    //parsefloat($("#txtDiscount").val() != '' ? $("#txtDiscount").val() : 0);
+    var discount = $("#txtDiscount").val();
+    var price = $("#txtSubTotal").val();
+    var cost = $('#txtExpense').val();
 
     var dataObject = {
         JobRef: $('#hidBDCID').val(), JobNo: $('#txtJobNo').val(), JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate, JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(),
         ContactID: $("#cmbContact").find(":selected").val(), CoWorkerID: $("#cmbCoWorker").find(":selected").val(),
-        Detail: $("#txtDetail").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: ConvertAmount($("#txtDiscount").val()), Price: ConvertAmount($('#txtSubTotal').val()), Cost: ConvertAmount($('#txtExpense').val()), JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
+        Detail: $("#txtDetail").val(), JobReference: 1, Remark: $("#txtRemark").val(), Discount: discount, Price: price, Cost: cost, JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
     console.log(dataObject);
         var ID;

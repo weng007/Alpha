@@ -175,7 +175,8 @@ footer {
     position: inherit; 
     left:0px;  
     bottom:0px;  
-    background-color:#000000;  
+    background-color: #5c5c5c;
+    /*background-color:#000000;*/  
     width:100%;  
     z-index: 999;
 }

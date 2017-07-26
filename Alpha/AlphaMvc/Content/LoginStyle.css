@@ -1,5 +1,6 @@
 ﻿.copyright-1 {
-    color:white;
+    /*color:white;*/
+    color: #525252;
     font-size:smaller;
     margin-bottom:5px;
     margin-left:5px;
@@ -23,13 +24,15 @@ form {
     /*border: 3px solid #f1f1f1;*/
     /*border: 2px solid #298db2;*/
     /*background-color: #fafae5;*/
-    border: 2px solid #7f1613;
     /*background-color: #c71e1e;*/
-    background: red;   
+    background-image: url('../Images/LoginBg.jpg');
+    border: 2px solid #dcdac5;
+    /*background: #ece9cd;*/
+    /*background: red;   
     background: -webkit-linear-gradient(top,#c71e1e, #c71e1e,#821c1c);
     background: -o-linear-gradient(top,#c71e1e, #c71e1e,#821c1c);
-    background: -moz-linear-gradient(top,#c71e1e, #c71e1e,#821c1c);
-    background: linear-gradient(top,#c71e1e, #c71e1e,#821c1c);
+    background: -moz-linear-gradient(top,#c71e1e, #c71e1e,#821c1c);*/
+    /*background: linear-gradient(top,#c71e1e, #c71e1e,#821c1c);*/
     margin-top: 30px;
     margin-left: 30%;
     width: 40%;
@@ -65,19 +68,21 @@ button {
     cursor: pointer;
     width: 100%;
     font-weight: 700;*/
-    border: 1px solid #fdc9c9;
-    background-color: #de4848;
+    border: 1px solid #8b8975;
+    border-radius: 10px;
+    background-color: #8b8975;
     color: #fff;
     padding: 14px 20px;
     margin: 8px 0;
     cursor: pointer;
     width: 30%;
-    height: 40px;
+    height: 45px;
     font-weight: 700;
     margin-left: 70%;
 }
 a {
     color: white;
+
 }
 
 .cancelbtn {
@@ -90,7 +95,7 @@ a {
     /*text-align: center;
     margin: 24px 0 12px 0;*/
     text-align: right;
-    margin: 10px 10px 0px 0;
+    margin: 15px 25px 0px 0;
 }
 
 img.avatar {

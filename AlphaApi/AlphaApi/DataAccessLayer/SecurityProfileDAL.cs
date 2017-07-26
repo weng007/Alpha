@@ -21,6 +21,8 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_SecurityProfile_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Profile", securityProfileModel.Profile);
+                    cmd.Parameters.AddWithValue("@MenuID", securityProfileModel.MenuID);
+                    cmd.Parameters.AddWithValue("@MenuDetailID", securityProfileModel.MenuDetailID);
                     cmd.Parameters.AddWithValue("@CreateBy", securityProfileModel.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", securityProfileModel.EditBy);
                     conObj.Open();
@@ -50,6 +52,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", securityProfileModel.ID);
                     cmd.Parameters.AddWithValue("@Profile", securityProfileModel.Profile);
+                    cmd.Parameters.AddWithValue("@MenuID", securityProfileModel.MenuID);
+                    cmd.Parameters.AddWithValue("@MenuDetailID", securityProfileModel.MenuDetailID);
                     cmd.Parameters.AddWithValue("@EditBy", securityProfileModel.EditBy);
                     conObj.Open();
                     object obj = cmd.ExecuteScalar();

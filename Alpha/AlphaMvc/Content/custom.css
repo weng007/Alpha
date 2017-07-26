@@ -1424,7 +1424,8 @@ th {
     text-align: center;
     border-style: solid;
     /*border-color: #5baa8c;*/
-    border-color: #cd300c;
+    /*border-color: #cd300c;*/
+    /*background-color: #e5e6da;*/
     border-width: 1px;
 }
 
@@ -1433,7 +1434,8 @@ th {
   margin-bottom: 5px;
     border-style: solid;
     /*border-color: #5baa8c;*/
-    border-color: #cd300c;
+    /*border-color: #cd300c;*/
+    border-color: #aaad9c;
     border-width: 1px;
 }
 
@@ -1444,6 +1446,37 @@ th {
     border-color: #8ba5b7;
     border-width: 1px;
 }
+.table.tbgray {
+  width: 100%;
+  margin-bottom: 5px;
+    border-style: solid;
+    border-color: #aaad9c;
+    border-width: 1px;
+}
+.table.tbnavyblue {
+  width: 100%;
+  margin-bottom: 5px;
+    border-style: solid;
+    border-color: #aaad9c;
+    border-width: 1px;
+}
+
+.table.tbpuple {
+  width: 100%;
+  margin-bottom: 5px;
+    border-style: solid;
+    border-color: #aaad9c;
+    border-width: 1px;
+}
+
+.table.tbpink {
+  width: 100%;
+  margin-bottom: 5px;
+    border-style: solid;
+    border-color: #ab376a;
+    border-width: 1px;
+}
+
 
 .table thead > tr > th,
 .table tbody > tr > th,
@@ -1473,6 +1506,25 @@ th {
     border-left: 1px solid #8ba5b7 !important;
     border-right: 1px solid #8ba5b7 !important;
     border-bottom: 2px solid #8ba5b7 !important;
+}
+
+.thgray {
+  vertical-align: bottom;
+  /*border-bottom: 2px solid #dddddd;*/
+  /*border-bottom: 2px solid #5baa8c;*/
+    border-top: 1px solid #909986 !important;
+    border-left: 1px solid #909986 !important;
+    border-right: 1px solid #909986 !important;
+    border-bottom: 2px solid #909986 !important;
+}
+.thpink {
+  vertical-align: bottom;
+  /*border-bottom: 2px solid #dddddd;*/
+  /*border-bottom: 2px solid #5baa8c;*/
+    border-top: 1px solid #ab376a !important;
+    border-left: 1px solid #ab376a !important;
+    border-right: 1px solid #ab376a !important;
+    border-bottom: 2px solid #ab376a !important;
 }
 
 .table caption + thead tr:first-child th,
@@ -1522,7 +1574,10 @@ th {
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
    /*background-color: #effae6;*/
-   background-color: rgb(255, 239, 236);
+   /*background-color: rgb(255, 239, 236);*/
+   background-color: rgb(241, 242, 229);
+   border-top: 1px solid #e0ddc4 !important;
+   border-bottom: 1px solid #e0ddc4 !important;
    cursor: pointer;
 }
 
@@ -1535,11 +1590,48 @@ th {
    cursor: pointer;
 }
 
+.table-striped-gray > tbody > tr:nth-child(odd) > td,
+.table-striped-gray > tbody > tr:nth-child(odd) > th {
+   /*background-color: #effae6;*/
+   background-color: rgb(241, 242, 229);
+   border-top: 1px solid #e0ddc4 !important;
+   border-bottom: 1px solid #e0ddc4 !important;
+   cursor: pointer;
+}
+.table-striped-navyblue > tbody > tr:nth-child(odd) > td,
+.table-striped-navyblue > tbody > tr:nth-child(odd) > th {
+   /*background-color: #effae6;*/
+   background-color: rgba(217, 205, 175, 0.40);
+   border-top: 1px solid #e0ddc4 !important;
+   border-bottom: 1px solid #e0ddc4 !important;
+   cursor: pointer;
+}
+
+.table-striped-puple > tbody > tr:nth-child(odd) > td,
+.table-striped-puple > tbody > tr:nth-child(odd) > th {
+   /*background-color: #effae6;*/
+   background-color: rgba(226, 215, 222, 0.50);
+   border-top: 1px solid #e0ddc4 !important;
+   border-bottom: 1px solid #e0ddc4 !important;
+   cursor: pointer;
+}
+
+.table-striped-pink > tbody > tr:nth-child(odd) > td,
+.table-striped-pink > tbody > tr:nth-child(odd) > th {
+   /*background-color: #effae6;*/
+   background-color: rgba(235, 212, 214, 0.30);
+   border-top: 1px solid #e0ddc4 !important;
+   border-bottom: 1px solid #e0ddc4 !important;
+   cursor: pointer;
+}
+
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
   /*background-color: #f5f5f5;*/
   /*background-color: #c7dfd3;*/
-  background-color: #fcbdb1;
+  /*background-color: #fcbdb1;*/
+  /*background-color: #c7c7c9;*/
+  background-color: #fdebb0;
   cursor: pointer;
   
 }
@@ -5763,7 +5855,9 @@ body.modal-open,
   padding: 10px;
   border-bottom: 1px solid #e5e5e5;
   /*background-color: #76c0a4;*/
-  background-color: #e06144;
+  /*background-color: #e06144;*/
+  /*background-color: #ec8f7a;*/
+  background-color: #ffd95c;
 }
 
 .modal-header .close {

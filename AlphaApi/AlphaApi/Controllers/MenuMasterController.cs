@@ -24,5 +24,19 @@ namespace AlphaApi.Controllers
             var response = MenuMaster.SelectMenuMaster();
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+
+        [HttpGet]
+        public string Get(string Group)
+        {
+            var response = MenuMaster.SelectMenuMasterAll();
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
+
+        [HttpGet]
+        public string Get(int ID)
+        {
+            var response = MenuMaster.SelectByGroupID(ID);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
     }
 }
