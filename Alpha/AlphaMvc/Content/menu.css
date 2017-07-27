@@ -263,15 +263,27 @@ input[type=checkbox]:checked ~ #menu{
 
 
 /*Responsive Styles*/
+@media screen and (min-width:320px) 
+{
+
+}
 
 @media screen and (max-width : 760px){
+    /*#mnDashboard
+    {
+        width: 23%;
+    }
+    #mnAdministrator
+    {
+        width: 23%;
+    }*/
     .headerimg{
-    background-image:none;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.428571429;
-    color: #333333;
-    background-color: #c20a0a;
+        background-image:none;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.428571429;
+        color: #333333;
+        background-color: #c20a0a;
     }
 	/*Make dropdown links appear inline*/
     .menutab{
@@ -280,6 +292,7 @@ input[type=checkbox]:checked ~ #menu{
 	.menuul {
 		position: static;
 		display: none;
+        width: 174%;
 	}
 	/*Create vertical spacing*/
 	.menuli {
@@ -311,25 +324,25 @@ input[type=checkbox]:checked ~ #menu{
 	/*background: rgba(209, 11, 11, 0);*/
     /*background: #e3557f;*/
     /*background: #6bc8bf;*/
-    background: #e47575;
+    background: #5c5c5c;
 	text-decoration: none;
 }
     .menua a{
     color: #ffffff !important;
     outline: none;
     /*padding-left: 10px !important;*/
-    padding-left: 0px !important;
+    padding-left: 10px !important;
     padding-right: 0px !important;
     text-decoration: none !important;
 }
     .menutext {
         /*padding-left: 0px !important;*/
-          padding-left: 10px !important;
+          padding-left: 0px !important;
     }
     .menuli:hover a {
-    /*background: #c20a0a;*/
-    /*background: #75bab3;*/
-    background: #e47575;
+    /*background: #e47575 !important;*/
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    /*width:100%;*/
 }
 
 /*Style for dropdown links*/
@@ -339,7 +352,7 @@ input[type=checkbox]:checked ~ #menu{
 	height: 35px;
 	line-height: 35px;
     /*width:100%;*/
-    width:98%
+    width:50%
 }
 
 /*Hover state for dropdown links*/
@@ -513,8 +526,6 @@ input[type=checkbox]:checked ~ #menu{
     padding-right: 0px !important;
     text-decoration: none !important;
 }
-    .menutext
-    
     .menuli:hover a {
         /*min-width: 90%;*/
         /*background: #e47575;*/
@@ -537,6 +548,18 @@ input[type=checkbox]:checked ~ #menu{
         padding: 0 7px;
     }
 
+    .menublue{
+        background: #5c5c5c !important;
+    }
+    .menunevyblue{
+        background: #5c5c5c !important;
+    }
+    .menupuple{
+        background: #5c5c5c !important;
+    }
+    .menupink{
+        background: #5c5c5c !important;
+    }
 }
 @media screen and (min-width:1025px)
 {
@@ -621,6 +644,9 @@ input[type=checkbox]:checked ~ #menu{
 }
     .menupink{
     background: #ab376a !important;
+}
+    .menugray{
+    background: #5c5c5c !important;
 }
     .menua a{
     color: #ffffff !important;

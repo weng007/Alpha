@@ -27,7 +27,7 @@ namespace AlphaApi.Controllers
             int FYear = Convert.ToInt32(FDate[2]);
             DateTime MDate = new DateTime(FYear, FMonth, FDay);
 
-            var response = OT.SelectByID(Convert.ToInt32(str[0]), MDate, str[2], str[3]);
+            var response = OT.SelectByID(Convert.ToInt32(str[0]), MDate, str[2], str[3], Convert.ToBoolean(str[4]), Convert.ToBoolean(str[5]));
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
     }

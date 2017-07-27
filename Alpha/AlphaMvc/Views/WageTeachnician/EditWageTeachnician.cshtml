@@ -53,7 +53,7 @@
                             <th rowspan="3">DATE</th>
                             <th rowspan="3">DAY</th>
                             <th colspan="2">WORKING TIME</th>
-                            <th colspan="5">NUMBER OF HOURS</th>
+                            <th colspan="6">NUMBER OF HOURS</th>
                             <th rowspan="3">Additionnal Wages (Baht)</th>
                             <th rowspan="3">Deduction(-)(Baht)</th>
                             <th rowspan="3">Remark</th>
@@ -64,11 +64,12 @@
                             <th rowspan="2">FROM</th>
                             <th rowspan="2">TO</th>
                             <th rowspan="2">TOTAL HOURS</th>
+                            <th rowspan="2">Normal Hour</th>
                             @*<th rowspan="2">Normal Hours</th>*@
                             <th colspan="4">Overtime</th>
                         </tr>
                         <tr>
-                            <th>Normal Hours</th>
+                            <th>Normal (1)</th>
                             <th>Premium (1.5)</th>
                             <th>Premium (2)</th>
                             <th>Special (3)</th>
@@ -84,6 +85,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td></td>
                             <td>TOTAL</td>
                             <td>(WH3%)</td>
                         </tr>
@@ -91,6 +93,7 @@
                             <td colspan="8">TOTAL (HRS)</td>
                             <td></td>
                             @*<td id="totalNormal">24.00</td>*@
+                            <td id="totalNormalDay"></td>
                             <td id="totalNormal"></td>
                             <td id="totalPremium"></td>
                             <td id="totalPremium2"></td>
@@ -103,6 +106,7 @@
                         <tr>
                             <td colspan="8">RATE (BAHT)</td>
                             <td></td>
+                            <td id="totalBathNormalDay"></td>
                             <td id="totalBathNormal"></td>
                             <td id="totalBathPremium"></td>
                             <td id="totalBathPremium2"></td>
@@ -115,6 +119,7 @@
                         <tr>
                             <td colspan="8">AMOUNTS (BAHT)</td>
                             <td></td>
+                            <td id="totalAmountNormalDay"></td>
                             <td id="totalAmountNormal"></td>
                             <td id="totalAmountPremium"></td>
                             <td id="totalAmountPremium2"></td>
@@ -126,6 +131,7 @@
                         </tr>
                         <tr>
                             <td colspan="8">TOTAL WAGES(BAHT)</td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>

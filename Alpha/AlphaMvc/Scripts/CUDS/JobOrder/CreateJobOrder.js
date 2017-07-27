@@ -431,13 +431,38 @@ function GetExpensePriceList() {
     });
     CalSumExpense();
 }
-function GetManpowerHour() {
+function GetManpowerHour(isCheckBreak) {
     var TechnicianID = $('.TechnicianID').eq(row_index).val();
     var ManDate = $('.ManDate').eq(row_index).val();
     var FromTime = $('.WorkingFrom').eq(row_index).val();
     var ToTime = $('.WorkingTo').eq(row_index).val();
     var workingFrom = $('.WorkingFrom').eq(row_index).val();
     var workingTo = $('.WorkingTo').eq(row_index).val();
+    var isBreak1 = $(this).find('.chkBreak1').eq(row_index).is(":checked");
+    var isBreak2 = $(this).find('.chkBreak2').eq(row_index).is(":checked");
+
+    alert(isCheckBreak);
+    if (isCheckBreak == '1')
+    {
+        alert(11);
+        if (isBreak1 = 'false') {
+            isBreak1 = true;
+        }
+        else {
+            isBreak1 = false;
+        }
+    }
+    else
+    {
+        alert(22);
+        if (isBreak2 = 'false') {
+            isBreak2 = true;
+        }
+        else {
+            isBreak2 = false;
+        }
+    }
+    
 
     if (ManDate != '')
     {
@@ -464,42 +489,9 @@ function GetManpowerHour() {
         $('.ManDay').eq(row_index).val(days[x]);
     }
 
-    if (workingFrom != '')
-    {
-        var fromHours = workingFrom.split(':')[0]
-        var fromMinute = workingFrom.split(':')[1]
-        var toHours;
-        var toMinute;
-        if (workingTo != '')
-        {
-            toHours = workingTo.split(':')[0]
-            toMinute = workingTo.split(':')[1]
-        }
-        else {
-            toHours = 0;
-            toMinute = 0;
-        }      
-
-        var wfminute = (fromHours * 60) + parseInt(fromMinute);
-        var wtminute = (toHours * 60) + parseInt(toMinute);
-        var tminute = (wtminute - wfminute) < 0 ? 0 : wtminute - wfminute;
-        var totalHours = Math.floor(tminute / 60);
-        var totalMinutes = tminute - (totalHours * 60);
-        var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
-
-        if (total == '0:00')
-        {
-            $('.TotalHours').eq(row_index).val('0:00');
-        }
-        else
-        {
-            $('.TotalHours').eq(row_index).val(total);
-        }
-    }
-
     if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '')
     {
-        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime }
+        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime + '&' + isBreak1 + '&' + isBreak2 }
         console.log(dataObject);
         $.ajax(
         {
@@ -513,11 +505,12 @@ function GetManpowerHour() {
                 if (data.Table.length > 0) {
                     //alert("Test");
                     //alert(data.Table[0].NormalDay);
-                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalDay);
-                    $('.ManNormal').eq(row_index).val(data.Table[0].ManNormal);
-                    $('.ManPremium').eq(row_index).val(data.Table[0].ManPremium);
-                    $('.ManPremium2').eq(row_index).val(data.Table[0].ManPremium2);
-                    $('.ManSpecial').eq(row_index).val(data.Table[0].ManSpecial);
+                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalHour);
+                    $('.ManNormal').eq(row_index).val(data.Table[0].Normal1);
+                    $('.ManPremium').eq(row_index).val(data.Table[0].Premium1_5);
+                    $('.ManPremium2').eq(row_index).val(data.Table[0].Premium2_0);
+                    $('.ManSpecial').eq(row_index).val(data.Table[0].Premium3_0);
+                    $('.TotalHours').eq(row_index).val(data.Table[0].TotalHours);
                 }
             },
             error: function (msg) {
@@ -719,6 +712,7 @@ function CreateData() {
                 dataObject.Break1 = $(this).find('.chkBreak1').is(":checked") == true ? 1 : 0;
                 dataObject.Break2 = $(this).find('.chkBreak2').is(":checked") == true ? 1 : 0;
                 dataObject.TotalHours = $(this).find(".TotalHours").val();
+                dataObject.NormalDay = $(this).find(".NormalDay").val();
                 dataObject.ManNormal = $(this).find(".ManNormal").val();
                 dataObject.ManPremium = $(this).find(".ManPremium").val();
                 dataObject.ManPremium2 = $(this).find(".ManPremium2").val();

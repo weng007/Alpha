@@ -307,6 +307,8 @@ namespace MymobilewalaMvc.Reports.DS {
             
             private global::System.Data.DataColumn columnTotalHours;
             
+            private global::System.Data.DataColumn columnNormalDay;
+            
             private global::System.Data.DataColumn columnManNormal;
             
             private global::System.Data.DataColumn columnManPremium;
@@ -474,6 +476,14 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NormalDayColumn {
+                get {
+                    return this.columnNormalDay;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn ManNormalColumn {
                 get {
                     return this.columnManNormal;
@@ -603,6 +613,7 @@ namespace MymobilewalaMvc.Reports.DS {
                         string WorkingFrom, 
                         string WorkingTo, 
                         string TotalHours, 
+                        string NormalDay, 
                         double ManNormal, 
                         double ManPremium, 
                         double ManPremium2, 
@@ -629,6 +640,7 @@ namespace MymobilewalaMvc.Reports.DS {
                         WorkingFrom,
                         WorkingTo,
                         TotalHours,
+                        NormalDay,
                         ManNormal,
                         ManPremium,
                         ManPremium2,
@@ -682,6 +694,7 @@ namespace MymobilewalaMvc.Reports.DS {
                 this.columnWorkingFrom = base.Columns["WorkingFrom"];
                 this.columnWorkingTo = base.Columns["WorkingTo"];
                 this.columnTotalHours = base.Columns["TotalHours"];
+                this.columnNormalDay = base.Columns["NormalDay"];
                 this.columnManNormal = base.Columns["ManNormal"];
                 this.columnManPremium = base.Columns["ManPremium"];
                 this.columnManPremium2 = base.Columns["ManPremium2"];
@@ -725,6 +738,8 @@ namespace MymobilewalaMvc.Reports.DS {
                 base.Columns.Add(this.columnWorkingTo);
                 this.columnTotalHours = new global::System.Data.DataColumn("TotalHours", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalHours);
+                this.columnNormalDay = new global::System.Data.DataColumn("NormalDay", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNormalDay);
                 this.columnManNormal = new global::System.Data.DataColumn("ManNormal", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnManNormal);
                 this.columnManPremium = new global::System.Data.DataColumn("ManPremium", typeof(double), null, global::System.Data.MappingType.Element);
@@ -1125,6 +1140,22 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NormalDay {
+                get {
+                    try {
+                        return ((string)(this[this.tableSP_RptWageTechnician.NormalDayColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NormalDay\' in table \'SP_RptWageTechnician\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_RptWageTechnician.NormalDayColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public double ManNormal {
                 get {
                     try {
@@ -1437,6 +1468,18 @@ namespace MymobilewalaMvc.Reports.DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTotalHoursNull() {
                 this[this.tableSP_RptWageTechnician.TotalHoursColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNormalDayNull() {
+                return this.IsNull(this.tableSP_RptWageTechnician.NormalDayColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNormalDayNull() {
+                this[this.tableSP_RptWageTechnician.NormalDayColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

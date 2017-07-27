@@ -65,7 +65,7 @@ function GetData(val)
     //alert("test2");
     //alert(Fdate);
     //alert(Tdate);
-    alert(val);
+    //alert(val);
     var dataObject = { Datesearh: val+'|'+Fdate+'|'+Tdate };
     console.log(dataObject);
     $.ajax(
@@ -100,15 +100,33 @@ function GetData(val)
                 html += '<td>' + data.Table1[i].WorkingFrom + '</td>';
                 html += '<td>' + data.Table1[i].WorkingTo + '</td>';
                 html += '<td>' + data.Table1[i].TotalHours + '</td>';
+                html += '<td>' + data.Table1[i].NormalDay + '</td>';
                 html += '<td class="ManNormal">' + data.Table1[i].ManNormal + '</td>';
                 html += '<td class="ManPremium">' + data.Table1[i].ManPremium + '</td>';
                 html += '<td class="ManPremium2">' + data.Table1[i].ManPremium2 + '</td>';
                 html += '<td class="ManSpecial">' + data.Table1[i].ManSpecial + '</td>';
-                html += '<td><input type="text" id="txtAdditionnal" name="field1" class="Additionnal Number field-divided text-size80" value="' + data.Table1[i].Additionnal + '"/></td>';
-                html += '<td><input type="text" id="txtDeduction" name="field1" class="Deduction Number field-divided text-size80" value="' + data.Table1[i].Deduction + '"/></td>';
+                html += '<td><input type="text" id="txtAdditionnal" name="field1" class="Additionnal Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
+                html += '<td><input type="text" id="txtDeduction" name="field1" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
                 html += '<td>' + '' + '</td>';
                 html += '<td>' + '' + '</td>';
                 html += '</tr>';
+            }
+            for (var i = 0; i < data.Table2.length; i++) {
+                html += '<td class="hidecolumn"><input type="hidden" class="hidSumNormalDay" value="' + data.Table2[i].SumNormalDay + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidSumNormal1" value="' + data.Table2[i].SumNormal1 + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidSumPremium1_5" value="' + data.Table2[i].SumPremium1_5 + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidSumPremium2_0" value="' + data.Table2[i].SumPremium2_0 + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidSumPremium3_0" value="' + data.Table2[i].SumPremium3_0 + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidRateNormalDay" value="' + data.Table2[i].RateNormalDay + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidRateNormal1" value="' + data.Table2[i].RateNormal1 + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidRatePremium1_5" value="' + data.Table2[i].RatePremium1_5 + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidRatePremium2_0" value="' + data.Table2[i].RatePremium2_0 + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidRatePremium3_0" value="' + data.Table2[i].RatePremium3_0 + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidAmountNormalDay" value="' + data.Table2[i].AmountNormalDay + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidAmountNormal1" value="' + data.Table2[i].AmountNormal1 + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidAmountPremium1_5" value="' + data.Table2[i].AmountPremium1_5 + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidAmountPremium2_0" value="' + data.Table2[i].AmountPremium2_0 + '" /></td>';
+                html += '<td class="hidecolumn"><input type="hidden" class="hidAmountPremium3_0" value="' + data.Table2[i].AmountPremium3_0 + '" /></td>';
             }
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
@@ -121,128 +139,99 @@ function GetData(val)
     });
 }
 function GetTotal() {
-    var totalManNormal = 0;
-    var totalManPremium = 0;
-    var totalManPremium2 = 0;
-    var totalManSpecial = 0;
+    var hidSumNormalDay = $('.hidSumNormalDay').val();
+    var hidSumNormal1 = $('.hidSumNormal1').val();
+    var hidSumPremium1_5 = $('.hidSumPremium1_5').val();
+    var hidSumPremium2_0 = $('.hidSumPremium2_0').val();
+    var hidSumPremium3_0 = $('.hidSumPremium3_0').val();
 
-    var totalBathNormal = 0;
-    var totalBathPremium = 0;
-    var totalBathPremium2 = 0;
-    var totalBathSpecial = 0;
+    var hidRateNormalDay = $('.hidRateNormalDay').val();
+    var hidRateNormal1 = $('.hidRateNormalDay').val();
+    var hidRatePremium1_5 = $('.hidRatePremium1_5').val();
+    var hidRatePremium2_0 = $('.hidRatePremium2_0').val();
+    var hidRatePremium3_0 = $('.hidRatePremium3_0').val();
 
-    var totalAmountNormal = 0;
-    var totalAmountPremium = 0;
-    var totalAmountPremium2 = 0;
-    var totalAmountSpecial = 0;
+    var hidAmountNormalDay = $('.hidAmountNormalDay').val();
+    var hidAmountNormal1 = $('.hidAmountNormal1').val();
+    var hidAmountPremium1_5 = $('.hidAmountPremium1_5').val();
+    var hidAmountPremium2_0 = $('.hidAmountPremium2_0').val();
+    var hidAmountPremium3_0 = $('.hidAmountPremium3_0').val();
 
     var totalAmount = 0;
     var totalVat = 0;
 
     var totalWH = 0;
-    var emGroup;
+    var emGroup = $('.hidEmpGroup').val();
 
-        for (var i = 0; i < $(".RowCal").length; i++) {
-            //alert(parseFloat($('.ManNormal:eq(' + i + ')').html() != '' && $('.ManNormal:eq(' + i + ')').html() != null ? $('.ManNormal:eq(' + i + ')').html() : 0));
-            totalManNormal = totalManNormal + parseFloat(parseFloat($('.ManNormal:eq(' + i + ')').html() != '' && $('.ManNormal:eq(' + i + ')').html() != null ? $('.ManNormal:eq(' + i + ')').html() : 0));
-
-            totalManPremium = totalManPremium + parseFloat(parseFloat($('.ManPremium:eq(' + i + ')').html() != '' && $('.ManPremium:eq(' + i + ')').html() != null ? $('.ManPremium:eq(' + i + ')').html() : 0));
-
-            totalManPremium2 = totalManPremium2 + parseFloat(parseFloat($('.ManPremium2:eq(' + i + ')').html() != '' && $('.ManPremium2:eq(' + i + ')').html() != null ? $('.ManPremium2:eq(' + i + ')').html() : 0));
-
-            totalManSpecial = totalManSpecial + parseFloat(parseFloat($('.ManSpecial:eq(' + i + ')').html() != '' && $('.ManSpecial:eq(' + i + ')').html() != null ? $('.ManSpecial:eq(' + i + ')').html() : 0));
-
-            //====================================================================================
-
-            totalBathNormal = ((totalManNormal * (20000 / 30 / 8)).toFixed(2) != '' && (totalManNormal * (20000 / 30 / 8)).toFixed(2) != null ? (totalManNormal * (20000 / 30 / 8)).toFixed(2) : 0);
-
-            totalBathPremium = ((totalManPremium * ((20000 / 30 / 8) * 1.5)).toFixed(2) != '' && (totalManPremium * ((20000 / 30 / 8) * 1.5)).toFixed(2) != null ? (totalManPremium * ((20000 / 30 / 8) * 1.5)).toFixed(2) : 0);
-
-            totalBathPremium2 = ((totalManPremium2 * ((20000 / 30 / 8) * 2)).toFixed(2) != '' && (totalManPremium2 * ((20000 / 30 / 8) * 2)).toFixed(2) != null ? (totalManPremium2 * ((20000 / 30 / 8) * 2)).toFixed(2) : 0);
-
-            totalBathSpecial = ((totalManSpecial * ((20000 / 30 / 8) * 3)).toFixed(2) != '' && (totalManSpecial * ((20000 / 30 / 8) * 3)).toFixed(2) != null ? (totalManSpecial * ((20000 / 30 / 8) * 3)).toFixed(2) : 0);
-        }
-
-            //====================================================================================
-
-            totalAmountNormal = (totalManNormal * totalBathNormal).toFixed(2);
-
-            totalAmountPremium = (totalManPremium * totalBathPremium).toFixed(2);
-
-            totalAmountPremium2 = (totalManPremium2 * totalBathPremium2).toFixed(2);
-
-            totalAmountSpecial = (totalManSpecial * totalBathSpecial).toFixed(2);
+    var html = '<td>' + AddComma(parseFloat(hidSumNormalDay).toFixed(2)) + '</td>';
+        document.getElementById("totalNormalDay").innerHTML = html;
         
-
-            //====================================================================================
-            var AmountNormal = parseFloat(totalAmountNormal) != '' && parseFloat(totalAmountNormal) != null ? parseFloat(totalAmountNormal) : 0;
-            var AmountPremium = parseFloat(totalAmountPremium) != '' && parseFloat(totalAmountPremium) != null ? parseFloat(totalAmountPremium) : 0;
-            var AmountPremium2 = parseFloat(totalAmountPremium2) != '' && parseFloat(totalAmountPremium2) != null ? parseFloat(totalAmountPremium2) : 0;
-            var AmountSpecial = parseFloat(totalAmountSpecial) != '' && parseFloat(totalAmountSpecial) != null ? parseFloat(totalAmountSpecial) : 0;
-
-            totalAmount = (AmountNormal + AmountPremium + AmountPremium2 + AmountSpecial).toFixed(2);
-
-            emGroup = $('.EmpGroup:eq(' + i + ')').html();
-            if (emGroup == 'OutSource') {
-
-                totalVat = parseFloat((totalAmount * 3) / 100).toFixed(2);
-            }
-            else
-            {
-                totalVat = parseFloat(0).toFixed(2);
-            }
-
-            totalWH = (parseFloat(totalAmount) - parseFloat(totalVat));
-        
-
-            var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalManNormal) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidSumNormal1).toFixed(2)) + '</td>';
         document.getElementById("totalNormal").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalManPremium) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidSumPremium1_5).toFixed(2)) + '</td>';
         document.getElementById("totalPremium").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalManPremium2) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidSumPremium2_0).toFixed(2)) + '</td>';
         document.getElementById("totalPremium2").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalManSpecial) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidSumPremium3_0).toFixed(2)) + '</td>';
         document.getElementById("totalSpecial").innerHTML = html;
 
     //===================================================================
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalBathNormal) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidRateNormalDay).toFixed(2)) + '</td>';
+        document.getElementById("totalBathNormalDay").innerHTML = html;
+
+        var html = '<td>' + AddComma(parseFloat(hidRateNormal1).toFixed(2)) + '</td>';
         document.getElementById("totalBathNormal").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalBathPremium) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidRatePremium1_5).toFixed(2)) + '</td>';
         document.getElementById("totalBathPremium").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalBathPremium2) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidRatePremium2_0).toFixed(2)) + '</td>';
         document.getElementById("totalBathPremium2").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalBathSpecial) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidRatePremium3_0).toFixed(2)) + '</td>';
         document.getElementById("totalBathSpecial").innerHTML = html;
 
     //===================================================================
+        
+        var html = '<td>' + AddComma(parseFloat(hidAmountNormalDay).toFixed(2)) + '</td>';
+        document.getElementById("totalAmountNormalDay").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalAmountNormal) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidAmountNormal1).toFixed(2)) + '</td>';
         document.getElementById("totalAmountNormal").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalAmountPremium) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidAmountPremium1_5).toFixed(2)) + '</td>';
         document.getElementById("totalAmountPremium").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalAmountPremium2) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidAmountPremium2_0).toFixed(2)) + '</td>';
         document.getElementById("totalAmountPremium2").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalAmountSpecial) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(hidAmountPremium3_0).toFixed(2)) + '</td>';
         document.getElementById("totalAmountSpecial").innerHTML = html;
 
     //===================================================================
+        totalAmount = parseFloat(hidAmountNormalDay) + parseFloat(hidAmountNormal1) + parseFloat(hidAmountPremium1_5) + parseFloat(hidAmountPremium2_0) + parseFloat(hidAmountPremium3_0)
+        
+        if (emGroup == 'Alpha')
+        {
+            totalVat = 0;
+        }
+        else
+        {
+            totalVat = (totalAmount * 3) / 100
+        }
+        
+        totalWH = parseFloat(totalAmount) - parseFloat(totalVat)
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalAmount) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(totalAmount).toFixed(2)) + '</td>';
         document.getElementById("totalAmount").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalVat) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(totalVat).toFixed(2)) + '</td>';
         document.getElementById("totalVat").innerHTML = html;
 
-        var html = '<td>' + new Intl.NumberFormat('en-IN').format(totalWH) + '</td>';
+        var html = '<td>' + AddComma(parseFloat(totalWH).toFixed(2)) + '</td>';
         document.getElementById("totalWH").innerHTML = html;
 }
 function GetManDay(val) {
@@ -279,8 +268,8 @@ function Update(val) {
         dataObject.ID = $(this).find(".hidID").val();
         dataObject.ManpowerID = $(this).find(".hidJobID").val();
         dataObject.TechnicianID = $(this).find(".hidTechnicianID").val();
-        dataObject.Additionnal = $(this).find('.Additionnal').val();
-        dataObject.Deduction = $(this).find('.Deduction').val();
+        dataObject.Additionnal = $(this).find('.Additionnal').val().replace(',', '');
+        dataObject.Deduction = $(this).find('.Deduction').val().replace(',', '');
         dataObject.EditBy = localStorage['UserID'];
         //alert('test2');
         $.ajax(
@@ -307,7 +296,7 @@ function OpenRptWageTechnician(val) {
     var FromDate = $('#hidFromDate').val();
     var ToDate = $('#hidToDate').val();
     var EmpGroup = $('.hidEmpGroup').val();
-    alert("Emp" + EmpGroup);
+    //alert("Emp" + EmpGroup);
     //var FromDate = FromDate.replace("/", "-");
     //alert(FromDate);
     //alert(ToDate);

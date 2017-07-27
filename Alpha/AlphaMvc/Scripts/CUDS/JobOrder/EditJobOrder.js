@@ -445,6 +445,7 @@ function GetManpowerHour() {
     var ToTime = $('.WorkingTo').eq(row_index).val();
     var workingFrom = $('.WorkingFrom').eq(row_index).val();
     var workingTo = $('.WorkingTo').eq(row_index).val();
+    alert(ToTime);
 
     if (ManDate != '') {
         var days = [
@@ -511,15 +512,15 @@ function GetManpowerHour() {
             datatype: 'json',
             success: function (data) {
                 data = JSON.parse(data);
-                alert("Test");
+                alert(data.Table.length);
                 if (data.Table.length > 0) {
                     alert("Test");
                     //alert(data.Table[0].NormalDay);
-                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalDay);
-                    $('.ManNormal').eq(row_index).val(data.Table[0].ManNormal);
-                    $('.ManPremium').eq(row_index).val(data.Table[0].ManPremium);
-                    $('.ManPremium2').eq(row_index).val(data.Table[0].ManPremium2);
-                    $('.ManSpecial').eq(row_index).val(data.Table[0].ManSpecial);
+                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalHour);
+                    $('.ManNormal').eq(row_index).val(data.Table[0].Normal1);
+                    $('.ManPremium').eq(row_index).val(data.Table[0].Premium1_5);
+                    $('.ManPremium2').eq(row_index).val(data.Table[0].Premium2_0);
+                    $('.ManSpecial').eq(row_index).val(data.Table[0].Premium3_0);
                 }
             },
             error: function (msg) {
@@ -1441,6 +1442,7 @@ function GetManpowerHour() {
     var ToTime = $('.WorkingTo').eq(row_index).val();
     var workingFrom = $('.WorkingFrom').eq(row_index).val();
     var workingTo = $('.WorkingTo').eq(row_index).val();
+    alert(Totime);
 
     if (ManDate != '') {
         var days = [
@@ -1506,12 +1508,13 @@ function GetManpowerHour() {
             datatype: 'json',
             success: function (data) {
                 data = JSON.parse(data);
+                alert(data.Table.length);
                 if (data.Table.length > 0) {
-                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalDay);
-                    $('.ManNormal').eq(row_index).val(data.Table[0].ManNormal);
-                    $('.ManPremium').eq(row_index).val(data.Table[0].ManPremium);
-                    $('.ManPremium2').eq(row_index).val(data.Table[0].ManPremium2);
-                    $('.ManSpecial').eq(row_index).val(data.Table[0].ManSpecial);
+                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalHour);
+                    $('.ManNormal').eq(row_index).val(data.Table[0].Normal1);
+                    $('.ManPremium').eq(row_index).val(data.Table[0].Premium1_5);
+                    $('.ManPremium2').eq(row_index).val(data.Table[0].Premium2_0);
+                    $('.ManSpecial').eq(row_index).val(data.Table[0].Premium3_0);
                 }
             },
             error: function (msg) {
