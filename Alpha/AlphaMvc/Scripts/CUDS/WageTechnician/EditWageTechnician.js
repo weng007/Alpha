@@ -84,6 +84,8 @@ function GetData(val)
             for (var i = 0; i < data.Table1.length; i++) {
                 var MDate = ChangeformatDate(data.Table1[i].ManDate, 0);
                 var ManDate = ChangeformatDate(data.Table1[i].ManDate, 1);
+                var isBreak1 = data.Table1[i].Break1 == '1' ? 'Checked' : '';
+                var isBreak2 = data.Table1[i].Break2 == '1' ? 'Checked' : '';
                 MDate = GetManDay(MDate);
                 html += '<tr class="RowCal">';
                 html += '<td class="hidecolumn"><input type="hidden" class="hidID" value="' + data.Table1[i].ID + '" /></td>';
@@ -99,6 +101,8 @@ function GetData(val)
                 html += '<td>' + MDate + '</td>';
                 html += '<td>' + data.Table1[i].WorkingFrom + '</td>';
                 html += '<td>' + data.Table1[i].WorkingTo + '</td>';
+                html += '<td><input id="isBreak1" type="checkbox" class="isBreak1" ' + isBreak1 + ' disabled></td>';
+                html += '<td><input id="isBreak2" type="checkbox" class="isBreak2" ' + isBreak2 + ' disabled></td>';
                 html += '<td>' + data.Table1[i].TotalHours + '</td>';
                 html += '<td>' + data.Table1[i].NormalDay + '</td>';
                 html += '<td class="ManNormal">' + data.Table1[i].ManNormal + '</td>';

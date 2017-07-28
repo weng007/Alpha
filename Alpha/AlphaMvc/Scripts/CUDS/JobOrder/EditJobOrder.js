@@ -438,98 +438,6 @@ function GetManDay(val) {
     return days[x];
     //$('.ManDay').eq(row_index).val(days[x]);
 }
-function GetManpowerHour() {
-    var TechnicianID = $('.TechnicianID').eq(row_index).val();
-    var ManDate = $('.ManDate').eq(row_index).val();
-    var FromTime = $('.WorkingFrom').eq(row_index).val();
-    var ToTime = $('.WorkingTo').eq(row_index).val();
-    var workingFrom = $('.WorkingFrom').eq(row_index).val();
-    var workingTo = $('.WorkingTo').eq(row_index).val();
-    alert(ToTime);
-
-    if (ManDate != '') {
-        var days = [
-        'SUN',
-        'MON',
-        'TUE',
-        'WED',
-        'THU',
-        'FRI',
-        'SAT'
-        ];
-
-        var dateParts = ManDate.split("/");
-        if (dateParts.length != 3)
-            return null;
-        var year = dateParts[2];
-        var month = dateParts[1];
-        var day = dateParts[0];
-
-        var d = new Date(year, month - 1, day);
-
-        x = d.getDay();
-        $('.ManDay').eq(row_index).val(days[x]);
-    }
-
-    if (workingFrom != '') {
-        var fromHours = workingFrom.split(':')[0]
-        var fromMinute = workingFrom.split(':')[1]
-        var toHours;
-        var toMinute;
-        if (workingTo != '') {
-            toHours = workingTo.split(':')[0]
-            toMinute = workingTo.split(':')[1]
-        }
-        else {
-            toHours = 0;
-            toMinute = 0;
-        }
-
-        var wfminute = (fromHours * 60) + parseInt(fromMinute);
-        var wtminute = (toHours * 60) + parseInt(toMinute);
-        var tminute = (wtminute - wfminute) < 0 ? 0 : wtminute - wfminute;
-        var totalHours = Math.floor(tminute / 60);
-        var totalMinutes = tminute - (totalHours * 60);
-        var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
-
-        if (total == '0:00') {
-            $('.TotalHours').eq(row_index).val('0:00');
-        }
-        else {
-            $('.TotalHours').eq(row_index).val(total);
-        }
-    }
-
-    if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '') {
-        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime }
-        console.log(dataObject);
-        $.ajax(
-        {
-            url: 'http://localhost:13131/api/OT',
-            type: 'GET',
-            async: false,
-            data: dataObject,
-            datatype: 'json',
-            success: function (data) {
-                data = JSON.parse(data);
-                alert(data.Table.length);
-                if (data.Table.length > 0) {
-                    alert("Test");
-                    //alert(data.Table[0].NormalDay);
-                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalHour);
-                    $('.ManNormal').eq(row_index).val(data.Table[0].Normal1);
-                    $('.ManPremium').eq(row_index).val(data.Table[0].Premium1_5);
-                    $('.ManPremium2').eq(row_index).val(data.Table[0].Premium2_0);
-                    $('.ManSpecial').eq(row_index).val(data.Table[0].Premium3_0);
-                }
-            },
-            error: function (msg) {
-                alert(msg);
-            }
-
-        });
-    }
-}
 
 function ControlEnable(Isview) {
     //var Isview = val;
@@ -1435,14 +1343,33 @@ function CalTotalHour() {
     var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
     $('.TotalHours').eq(row_index).val(total);
 }
-function GetManpowerHour() {
+function GetManpowerHour(isCheckBreak) {
     var TechnicianID = $('.TechnicianID').eq(row_index).val();
     var ManDate = $('.ManDate').eq(row_index).val();
     var FromTime = $('.WorkingFrom').eq(row_index).val();
     var ToTime = $('.WorkingTo').eq(row_index).val();
     var workingFrom = $('.WorkingFrom').eq(row_index).val();
     var workingTo = $('.WorkingTo').eq(row_index).val();
-    alert(Totime);
+    var isBreak1 = $(this).find('.chkBreak1').eq(row_index).is(":checked");
+    var isBreak2 = $(this).find('.chkBreak2').eq(row_index).is(":checked");
+
+    if (isCheckBreak == '1') {
+        if (isBreak1 = 'false') {
+            isBreak1 = true;
+        }
+        else {
+            isBreak1 = false;
+        }
+    }
+    else {
+        if (isBreak2 = 'false') {
+            isBreak2 = true;
+        }
+        else {
+            isBreak2 = false;
+        }
+    }
+    
 
     if (ManDate != '') {
         var days = [
@@ -1468,36 +1395,8 @@ function GetManpowerHour() {
         $('.ManDay').eq(row_index).val(days[x]);
     }
 
-    if (workingFrom != '') {
-        var fromHours = workingFrom.split(':')[0]
-        var fromMinute = workingFrom.split(':')[1]
-        var toHours;
-        var toMinute;
-        if (workingTo != '') {
-            toHours = workingTo.split(':')[0]
-            toMinute = workingTo.split(':')[1]
-        }
-        else {
-            toHours = 0;
-            toMinute = 0;
-        }
-
-        var wfminute = (fromHours * 60) + parseInt(fromMinute);
-        var wtminute = (toHours * 60) + parseInt(toMinute);
-        var tminute = (wtminute - wfminute) < 0 ? 0 : wtminute - wfminute;
-        var totalHours = Math.floor(tminute / 60);
-        var totalMinutes = tminute - (totalHours * 60);
-        var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
-
-        if (total == '0:00') {
-            $('.TotalHours').eq(row_index).val('0:00');
-        }
-        else {
-            $('.TotalHours').eq(row_index).val(total);
-        }
-    }
     if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '') {
-        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime }
+        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime + '&' + isBreak1 + '&' + isBreak2 }
         console.log(dataObject);
         $.ajax(
         {
@@ -1515,6 +1414,7 @@ function GetManpowerHour() {
                     $('.ManPremium').eq(row_index).val(data.Table[0].Premium1_5);
                     $('.ManPremium2').eq(row_index).val(data.Table[0].Premium2_0);
                     $('.ManSpecial').eq(row_index).val(data.Table[0].Premium3_0);
+                    $('.TotalHours').eq(row_index).val(data.Table[0].TotalHours);
                 }
             },
             error: function (msg) {
@@ -1524,6 +1424,89 @@ function GetManpowerHour() {
         });
     }
 }
+//function GetManpowerHour() {
+//    var TechnicianID = $('.TechnicianID').eq(row_index).val();
+//    var ManDate = $('.ManDate').eq(row_index).val();
+//    var FromTime = $('.WorkingFrom').eq(row_index).val();
+//    var ToTime = $('.WorkingTo').eq(row_index).val();
+//    var workingFrom = $('.WorkingFrom').eq(row_index).val();
+//    var workingTo = $('.WorkingTo').eq(row_index).val();
+//    alert(ToTime);
+//    if (ManDate != '') {
+//        var days = [
+//        'SUN',
+//        'MON',
+//        'TUE',
+//        'WED',
+//        'THU',
+//        'FRI',
+//        'SAT'
+//        ];
+//        var dateParts = ManDate.split("/");
+//        if (dateParts.length != 3)
+//            return null;
+//        var year = dateParts[2];
+//        var month = dateParts[1];
+//        var day = dateParts[0];
+//        var d = new Date(year, month - 1, day);
+//        x = d.getDay();
+//        $('.ManDay').eq(row_index).val(days[x]);
+//    }
+//    if (workingFrom != '') {
+//        var fromHours = workingFrom.split(':')[0]
+//        var fromMinute = workingFrom.split(':')[1]
+//        var toHours;
+//        var toMinute;
+//        if (workingTo != '') {
+//            toHours = workingTo.split(':')[0]
+//            toMinute = workingTo.split(':')[1]
+//        }
+//        else {
+//            toHours = 0;
+//            toMinute = 0;
+//        }
+//        var wfminute = (fromHours * 60) + parseInt(fromMinute);
+//        var wtminute = (toHours * 60) + parseInt(toMinute);
+//        var tminute = (wtminute - wfminute) < 0 ? 0 : wtminute - wfminute;
+//        var totalHours = Math.floor(tminute / 60);
+//        var totalMinutes = tminute - (totalHours * 60);
+//        var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
+//        if (total == '0:00') {
+//            $('.TotalHours').eq(row_index).val('0:00');
+//        }
+//        else {
+//            $('.TotalHours').eq(row_index).val(total);
+//        }
+//    }
+//    if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '') {
+//        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime }
+//        console.log(dataObject);
+//        $.ajax(
+//        {
+//            url: 'http://localhost:13131/api/OT',
+//            type: 'GET',
+//            async: false,
+//            data: dataObject,
+//            datatype: 'json',
+//            success: function (data) {
+//                data = JSON.parse(data);
+//                alert(data.Table.length);
+//                if (data.Table.length > 0) {
+//                    alert("Test");
+//                    //alert(data.Table[0].NormalDay);
+//                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalHour);
+//                    $('.ManNormal').eq(row_index).val(data.Table[0].Normal1);
+//                    $('.ManPremium').eq(row_index).val(data.Table[0].Premium1_5);
+//                    $('.ManPremium2').eq(row_index).val(data.Table[0].Premium2_0);
+//                    $('.ManSpecial').eq(row_index).val(data.Table[0].Premium3_0);
+//                }
+//            },
+//            error: function (msg) {
+//                alert(msg);
+//            }
+//        });
+//    }
+//}
 
 function Redirect() {
     window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();

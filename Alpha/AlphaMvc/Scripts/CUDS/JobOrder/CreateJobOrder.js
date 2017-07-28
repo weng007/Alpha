@@ -441,10 +441,8 @@ function GetManpowerHour(isCheckBreak) {
     var isBreak1 = $(this).find('.chkBreak1').eq(row_index).is(":checked");
     var isBreak2 = $(this).find('.chkBreak2').eq(row_index).is(":checked");
 
-    alert(isCheckBreak);
     if (isCheckBreak == '1')
     {
-        alert(11);
         if (isBreak1 = 'false') {
             isBreak1 = true;
         }
@@ -454,7 +452,6 @@ function GetManpowerHour(isCheckBreak) {
     }
     else
     {
-        alert(22);
         if (isBreak2 = 'false') {
             isBreak2 = true;
         }

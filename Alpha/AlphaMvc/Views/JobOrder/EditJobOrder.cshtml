@@ -501,7 +501,7 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtName" name="txtName" class="FName text-size140"  />
+                                                            <input type="text" id="txtName" name="txtName" onblur="GetManpowerHour('1')" class="FName text-size140"  />
                                                         </td>
                                                         <td class="hidecolumn">
                                                             <input id="ManpowerID" type="text" value="" class="ManpowerID" disabled />
@@ -522,7 +522,7 @@
                                                             <input id="txtTechnicianType" type="text" value="" class="TechnicianType text-size140 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtManDate" class="ManDate text-size110" onchange="GetManpowerHour()" onblur="GetDay()"/>
+                                                            <input type="text" id="txtManDate" class="ManDate text-size110" onchange="GetManpowerHour('1')" onblur="GetDay()"/>
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtManDay" class="ManDay select-size50-height23 txtdisablerow" disabled />
@@ -540,16 +540,16 @@
                                                             <input type="text" id="txtManTime" name="txtManTime" class="ManTime text-size60 textcenter">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtWorkingFrom" name="txtWorkingFrom" class="WorkingFrom timepicker text-size60 textcenter" onchange="GetManpowerHour()">
+                                                            <input type="text" id="txtWorkingFrom" name="txtWorkingFrom" class="WorkingFrom timepicker text-size60 textcenter" onchange="GetManpowerHour('1')">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtWorkingTo" name="txtWorkingTo" class="WorkingTo timepicker text-size60 textcenter" onchange="GetManpowerHour()">
+                                                            <input type="text" id="txtWorkingTo" name="txtWorkingTo" class="WorkingTo timepicker text-size60 textcenter" onchange="GetManpowerHour('1')">
                                                         </td>
                                                         <td class="text-size100">
-                                                            <input id="chkBreak1" class="chkBreak1" type="checkbox" style="margin-left: 20px;     margin-right: 20px;"/>
+                                                            <input id="chkBreak1" class="chkBreak1" type="checkbox" onchange="GetManpowerHour('1')" style="margin-left: 20px; margin-right: 20px;"/>
                                                         </td>
                                                         <td class="text-size100">
-                                                            <input id="chkBreak2" class="chkBreak2" type="checkbox" style="margin-left: 20px;     margin-right: 20px;" />
+                                                            <input id="chkBreak2" class="chkBreak2" type="checkbox" onchange="GetManpowerHour('2')" style="margin-left: 20px; margin-right: 20px;" />
                                                         </td>
                                                         <td>
                                                             <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled/>
@@ -596,7 +596,7 @@
                                                             <input id="txtPositionID" type="text" value="" class="PositionID" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtName" name="txtName" class="FName text-size140"/>
+                                                            <input type="text" id="txtName" name="txtName" onblur="GetManpowerHour('1')" class="FName text-size140"/>
                                                         </td>
                                                         <td>
                                                             <input id="txtCardID" type="text" value="" class="CardID text-size120 txtdisablerow" disabled />
@@ -605,7 +605,7 @@
                                                             <input id="txtTechnicianType" type="text" value="" class="TechnicianType text-size120 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtManDate"  class="ManDate text-size110" onchange="GetManpowerHour()" onblur="GetDay()"/>
+                                                            <input type="text" id="txtManDate"  class="ManDate text-size110" onchange="GetManpowerHour('1')" onblur="GetDay()"/>
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtManDay" class="ManDay select-size50-height23 txtdisablerow" disabled />
@@ -623,16 +623,16 @@
                                                             <input type="text" id="txtManTime" name="txtManTime" class="ManTime text-size60 textcenter">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtWorkingFrom" name="txtWorkingFrom" class="WorkingFrom timepicker text-size60 textcenter" onchange="GetManpowerHour()">
+                                                            <input type="text" id="txtWorkingFrom" name="txtWorkingFrom" class="WorkingFrom timepicker text-size60 textcenter" onchange="GetManpowerHour('1')">
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtWorkingTo" name="txtWorkingTo" class="WorkingTo timepicker text-size60 textcenter" onchange="GetManpowerHour()">
+                                                            <input type="text" id="txtWorkingTo" name="txtWorkingTo" class="WorkingTo timepicker text-size60 textcenter" onchange="GetManpowerHour('1')">
                                                         </td>
                                                         <td class="text-size100">
-                                                            <input id="chkBreak1" class="chkBreak1" type="checkbox" style="margin-left: 20px;     margin-right: 20px;" />
+                                                            <input id="chkBreak1" class="chkBreak1" type="checkbox" onchange="GetManpowerHour('1')" style="margin-left: 20px; margin-right: 20px;" />
                                                         </td>
                                                         <td class="text-size100">
-                                                            <input id="chkBreak2" class="chkBreak2" type="checkbox" style="margin-left: 20px;     margin-right: 20px;"/>
+                                                            <input id="chkBreak2" class="chkBreak2" type="checkbox" onchange="GetManpowerHour('2')" style="margin-left: 20px; margin-right: 20px;"/>
                                                         </td>
                                                         <td>
                                                             <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled/>
