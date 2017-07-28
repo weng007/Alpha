@@ -56,21 +56,21 @@
     </head>
     <body class="headerimg">
         <header>
-            <div class="float-left">
+            @*<div class="float-left"></div>*@
+            <div>
                 <a href="@Url.Action("Index", "Home")" class="imagelogo"></a>
                 <img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" /><label id="lblUserName" class="logonname"></label>
                 <img src="@Url.Content("~/Images/log-in.png")" alt="IMAGES" class="imgicon" />
                 <div class="loginname">@Html.ActionLink("Log Out", "IndexLogin", "Login")</div>
-
-
-                <table width="1100" border="0" align="center" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td>
-                            <nav class="navbar navbar-default">
-                                @*<div class="container-fluid">*@
+                <div class="menulocation">
+                    <table border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>
+                                <nav class="navbar navbar-default">
+                                    @*<div class="container-fluid">*@
                                     <ul class="nav navbar-nav">
                                         <li>
-                                            <div id="mnDashboard" class="menugray dropdown-toggle disabled" data-toggle="dropdown">@Html.ActionLink("Dashboard", "DashBoard", "Home", new { @class = "colorwhite" })</div>
+                                            <div id="mnDashboard" class="menugray dropdown-toggle disabled" data-toggle="dropdown">@Html.ActionLink("Dashboard", "DashBoard", "Home")</div>
                                         </li>
                                         <li class="dropdown">
                                             <div id="mnAdministrator" class="menublue dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></div>
@@ -129,7 +129,7 @@
                                             </ul>
                                         </li>
                                         <li class="dropdown">
-                                            <div id="mnEstimate" class="menupuple dropdown-toggle" data-toggle="dropdown">@Html.ActionLink("Estimate Price", "IndexBDC", "BDC", new { @class = "colorwhite" })<span class="caret"></span></div>
+                                            <div id="mnEstimate" class="menupuple dropdown-toggle" data-toggle="dropdown">Estimate & Job Order<span class="caret"></span></div>
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     @Html.ActionLink("Estimate Price", "IndexBDC", "BDC")
@@ -159,16 +159,14 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                @*</div>*@
-                            </nav>
-                        </td>
-                    </tr>
-                </table>
+                                    @*</div>*@
+                                </nav>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            
         </header>
-
-        
         <div id="body">
             <section class="content-wrapper main-content clear-fix">     
                 @RenderBody()
