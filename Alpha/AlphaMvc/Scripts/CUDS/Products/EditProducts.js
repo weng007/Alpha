@@ -226,6 +226,7 @@ function Update(val) {
         var date2 = d + "_" + m + "_" + res+"_";
         FileName = date2 + file.name;
         var imgData = getBase64Image(imgElem);
+        alert(imgData);
         //var imgPath = ("./Attach/Product/" + FileName);
         var imgPath = ("../Attach/Product/" + FileName);
         //alert(imgPath)

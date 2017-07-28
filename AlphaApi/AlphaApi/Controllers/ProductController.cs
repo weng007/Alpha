@@ -69,7 +69,18 @@ namespace AlphaApi.Controllers
         [EnableCorsAttribute("*", "*", "*")]
         [HttpPut]
         public int Put(ProductModels PD)
-        { 
+        {
+            if (PD.ImgData != null)
+            {
+
+                byte[] img = Convert.FromBase64String(PD.ImgData);
+                string path;
+                //string ImgName;
+                //ImgName = PD.Img;
+                //string[] str = ImgName.Split('/');
+                path = System.Web.HttpContext.Current.Server.MapPath(PD.Img);
+                File.WriteAllBytes(path, img);
+            }
             var response = Productdb.UpdateData(PD);
             return response;
 
