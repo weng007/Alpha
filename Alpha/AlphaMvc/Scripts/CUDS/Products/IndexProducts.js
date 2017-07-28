@@ -61,7 +61,7 @@ $(document).ready(function () {
                 '<td class="hideANDseek nopointer">' + data.Table[i].Brand + '</td>' +
                 '<td class="hideANDseek nopointer">' + data.Table[i].Model + '</td>' +
                 '<td class="nopointer">' + data.Table[i].Size + '</td>' +
-                //'<td class="nopointer">' + GetRemain(data.Table[i].ID) + '</td>' +
+                '<td class="nopointer">' + data.Table[i].StockRemain + '</td>' +
                 '<td class="hideANDseek nopointer">' + data.Table[i].UnitWeightName + '</td>' +
                 '<td class="nopointer">' +
                 '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgProductsUpdate"/></a>' +

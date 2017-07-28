@@ -105,7 +105,7 @@ function BrowseProducts() {
                   html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Brand + '</td>';
                   html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Model + '</td>';
                   html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].Size + '</td>';
-                  html += '<td data-dismiss="modal" class="bodypadding-10">' + GetRemain(data.Table[i].ID) + '</td>';
+                  html += '<td data-dismiss="modal" class="bodypadding-10">' + data.Table[i].StockRemain + '</td>';
                   //html += '<td data-dismiss="modal class="hideANDseek">' + data.Table[i].Detail + '</td>';
                   html += '</tr>';
               }

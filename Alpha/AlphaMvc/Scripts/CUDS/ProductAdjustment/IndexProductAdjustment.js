@@ -63,7 +63,7 @@ $(document).ready(function () {
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].Brand + '</td>';
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].Model + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Size + '</td>';
-                html += '<td class="nopointer">' + GetRemain(data.Table[i].ID) + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].StockRemain + '</td>';
                 html += '<td class="hideANDseek nopointer">' + data.Table[i].UnitWeightName + '</td>';
                 html += '<td class="nopointer">';
                 html += '<a href="/ProductAdjust/EditProductAdjust?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgStockAdjustUpdate"/></a>';
