@@ -86,6 +86,8 @@ function GetData(val) {
            if (baseStr64 != '')
            {
                imgPreview.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+               imgPreview.setAttribute('width', "250");
+               imgPreview.setAttribute('height', "170");
            }
            var str = data.Table[0].Img;
            var res = str.replace("../Attach/Product/", "");
@@ -226,7 +228,6 @@ function Update(val) {
         var date2 = d + "_" + m + "_" + res+"_";
         FileName = date2 + file.name;
         var imgData = getBase64Image(imgElem);
-        alert(imgData);
         //var imgPath = ("./Attach/Product/" + FileName);
         var imgPath = ("../Attach/Product/" + FileName);
         //alert(imgPath)
@@ -325,8 +326,8 @@ function readURL(input) {
         reader.onload = function (e) {
             $('#imgPreview')
                 .attr('src', e.target.result)
-                //.width(250)
-                //.height(170);
+                .width(250)
+                .height(170);
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -335,10 +336,8 @@ function readURL(input) {
 function getBase64Image(imgElem) {
     // imgElem must be on the same server otherwise a cross-origin error will be thrown "SECURITY_ERR: DOM Exception 18"
     var canvas = document.createElement("canvas");
-    //canvas.width = imgElem.clientWidth;
-    //canvas.height = imgElem.clientHeight;
-    canvas.width = 750;
-    canvas.height = 750;
+    canvas.width = imgElem.clientWidth;
+    canvas.height = imgElem.clientHeight;
     var ctx = canvas.getContext("2d");
     ctx.drawImage(imgElem, 0, 0);
     var dataURL = canvas.toDataURL("image/png");
