@@ -85,7 +85,9 @@ function GetData(val) {
            var baseStr64 = data.Table[0].ImgBase;
            if (baseStr64 != '')
            {
-                imgPreview.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+               imgPreview.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+               imgPreview.setAttribute('width', "250");
+               imgPreview.setAttribute('height', "170");
            }
            var str = data.Table[0].Img;
            var res = str.replace("../Attach/Product/", "");
@@ -226,7 +228,6 @@ function Update(val) {
         var date2 = d + "_" + m + "_" + res+"_";
         FileName = date2 + file.name;
         var imgData = getBase64Image(imgElem);
-        alert(imgData);
         //var imgPath = ("./Attach/Product/" + FileName);
         var imgPath = ("../Attach/Product/" + FileName);
         //alert(imgPath)
