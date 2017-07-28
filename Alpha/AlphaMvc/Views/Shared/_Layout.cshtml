@@ -13,7 +13,8 @@
         <script src="@Url.Content("~/Scripts/CUDS/UserLogin/IndexUserLogin.js")" type="text/javascript"></script>
         @*---------------------------- Menu,Table --------------------------*@
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-        <link href="@Url.Content("~/Content/menu.css")" rel="stylesheet" type="text/css" />
+        @*<link href="@Url.Content("~/Content/custommenu.css")" rel="stylesheet" type="text/css" />*@
+        @*<link href="@Url.Content("~/Content/menu.css")" rel="stylesheet" type="text/css" />*@
         @*---------------------------- Table Paging --------------------------*@
         @*<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>*@
         <script src="@Url.Content("~/Scripts/Datatable/paging.js")" type="text/javascript"></script>
@@ -40,14 +41,14 @@
                 document.getElementById("lblUserName").innerHTML = localStorage['UserName'];
             });
 
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-        }
+        //function myFunction() {
+        //    var x = document.getElementById("myTopnav");
+        //    if (x.className === "topnav") {
+        //        x.className += " responsive";
+        //    } else {
+        //        x.className = "topnav";
+        //    }
+        //}
         </script>
         @* ---------------------------- menu -------------------------- *@
         <meta name="viewport" content="width=device-width">
@@ -55,109 +56,118 @@
     </head>
     <body class="headerimg">
         <header>
-            <div class="menutab"></div>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <a href="@Url.Action("Index", "Home")" class="imagelogo"></a>
-                    <img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" /><label id="lblUserName" class="logonname"></label>
-                    <img src="@Url.Content("~/Images/log-in.png")" alt="IMAGES" class="imgicon" />
-                    <div class="loginname">@Html.ActionLink("Log Out", "IndexLogin", "Login")</div>
-                </div>
-                    <label for="show-menu" class="show-menu">Menu ☰</label>
-                    <input type="checkbox" id="show-menu" role="button" class="Hidecheckbox">
-                    
-                        <ul id="menu" class="menuul">
-                            <li id="mnDashboard" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Dashboard", "DashBoard", "Home")</div></div></li>
-                            <li id="mnAdministrator" class="menuli menublue menuliblue">
-                                <div class="menua">
-                                    <div class="menutext">
-                                        @Html.ActionLink("Administration", "IndexIncomeMaster", "IncomeMaster")
-                                        <ul class="hidden">
-                                            @*<img src="~/Images/iconIncomeMaster.png" />*@
-                                            <li class="menuliblue subIncome"><div class="submenua">@Html.ActionLink("Income", "IndexIncomeMaster", "IncomeMaster")</div></li>
-                                            <li class="menuliblue subExpense"><div class="submenua">@Html.ActionLink("Expense", "IndexExpenseMaster", "ExpenseMaster")</div></li>
-                                            <li class="menuliblue subSecurity"><div class="submenua">@Html.ActionLink("SecurityProfile", "IndexSecurityProfile", "SecurityProfile")</div></li>
-                                            <li class="menuliblue subUser"><div class="submenua">@Html.ActionLink("User", "IndexUser", "User")</div></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            @*<li class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Warning", "ExpiredTechnician", "Technician")</div></div></li>*@
-                            <li id="mnActivity" class="menuli">
-                                <div class="menua">
-                                    <div class="menutext">
-                                        @Html.ActionLink("Activity", "AllActivity", "AllActivity")
-                                        <ul class="hidden">
-                                            <li class="menuli subActivity"><div class="submenua">@Html.ActionLink("All Activity", "AllActivity", "AllActivity")</div></li>
-                                            <li class="menuli subJobCalendar"><div class="submenua">@Html.ActionLink("Calendar Job", "IndexCalendarJob", "CalendarJob")</div></li>
-                                            <li class="menuli subManCalendar"><div class="submenua">@Html.ActionLink("Calendar ManPower", "IndexCMP", "CalendarManPower")</div></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id="mnTechnician" class="menuli menunevyblue menulinevyblue">
-                                <div class="menua">
-                                    <div class="menutext">
-                                        @Html.ActionLink("Technician & Card", "IndexTechnician", "Technician")
-                                        <ul class="hidden">
-                                            <li class="menulinevyblue subTechnician"><div class="submenua">@Html.ActionLink("Technician", "IndexTechnician", "Technician")</div></li>
-                                            <li class="menulinevyblue subExpired"><div class="submenua">@Html.ActionLink("Expired Card", "ExpiredTechnician1", "ExpiredTechnician1")</div></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            @*<li id="mnTechnician" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Expired Card", "ExpiredTechnician1", "ExpiredTechnician1")</div></div></li>*@
-                            <li id="mnTools" class="menuli">
-                                <div class="menua">
-                                    <div class="menutext">
-                                        @Html.ActionLink("Tools & Machines", "IndexProducts", "Products")
-                                        <ul class="hidden">
-                                            <li class="menuli subProducts"><div class="submenua">@Html.ActionLink("Stock", "IndexProducts", "Products")</div></li>
-                                            <li class="menuli subStock"><div class="submenua">@Html.ActionLink("Stock Adjustment", "IndexProductAdjust", "ProductAdjust")</div></li>
-                                            <li class="menuli subReqisition"><div class="submenua">@Html.ActionLink("Requisition & Return", "IndexRequisition", "Requisition")</div></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id="mnEstimate" class="menuli menupuple menulipuple">
-                                <div class="menua">
-                                    <div class="menutext">
-                                    @Html.ActionLink("Estimate & Job Order", "IndexBDC", "BDC")
-                                        <ul class="hidden">
-                                            <li class="menulipuple subBDC"><div class="submenua">@Html.ActionLink("Estimate Price", "IndexBDC", "BDC")</div></li>
-                                            <li class="menulipuple subJobOrder"><div class="submenua">@Html.ActionLink("Job Order", "IndexJobOrder", "JobOrder")</div></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id="mnPayment" class="menuli">
-                                <div class="menua">
-                                    <div class="menutext">
-                                        @Html.ActionLink("Payment", "IndexWageTeachnician", "WageTeachnician")
-                                        <ul class="hidden">
-                                            <li class="menuli subPayment"><div class="submenua">@Html.ActionLink("Alpha & Outsource", "IndexWageTeachnician", "WageTeachnician")</div></li>
-                                            @*<li class="menuli"><div class="submenua">@Html.ActionLink("Vendor", "IndexWageVendor", "WageVendor")</div></li>*@
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id="mnReport" class="menuli menupink menulipink">
-                                <div class="menua">
-                                    <div class="menutext">
-                                        @Html.ActionLink("Report", "IndexReportBreakDownCost", "ReportBreakdownCost")
-                                        <ul class="hidden">
-                                            @*<li class="menuli"><div class="submenua">@Html.ActionLink("BreakDown Cost", "IndexReportBreakDownCost", "ReportBreakdownCost")</div></li>*@
-                                            <li class="menulipink subRptJob"><div class="submenua">@Html.ActionLink("JobOrder", "IndexReportJobOrder", "ReportJobOrder")</div></li>
-                                            <li class="menulipink subRptRequisition"><div class="submenua">@Html.ActionLink("Requisition", "IndexRptBorrow", "ReportBorrow")</div></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            @*<li id="mnTechnician" class="menuli"><div class="menua"><div class="menutext">@Html.ActionLink("Requisition & Return", "IndexRequisition", "Requisition")</div></div></li>*@
-                        </ul>
-                </div>
+            <div class="float-left">
+                <a href="@Url.Action("Index", "Home")" class="imagelogo"></a>
+                <img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" /><label id="lblUserName" class="logonname"></label>
+                <img src="@Url.Content("~/Images/log-in.png")" alt="IMAGES" class="imgicon" />
+                <div class="loginname">@Html.ActionLink("Log Out", "IndexLogin", "Login")</div>
+
+
+                <table width="1100" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <nav class="navbar navbar-default">
+                                @*<div class="container-fluid">*@
+                                    <ul class="nav navbar-nav">
+                                        <li>
+                                            <div id="mnDashboard" class="menugray dropdown-toggle disabled" data-toggle="dropdown">@Html.ActionLink("Dashboard", "DashBoard", "Home", new { @class = "colorwhite" })</div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <div id="mnAdministrator" class="menublue dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></div>
+                                            <ul class="dropdown-menulightblue">
+                                                <li class="subIncome">
+                                                    @Html.ActionLink("Income", "IndexIncomeMaster", "IncomeMaster")
+                                                </li>
+                                                <li class="subExpense">
+                                                    @Html.ActionLink("Expense", "IndexExpenseMaster", "ExpenseMaster")
+                                                </li>
+                                                <li class="subSecurity">
+                                                    @Html.ActionLink("SecurityProfile", "IndexSecurityProfile", "SecurityProfile")
+                                                </li>
+                                                <li class="subUser">
+                                                    @Html.ActionLink("User", "IndexUser", "User")
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <div id="mnActivity" class="menugray dropdown-toggle" data-toggle="dropdown">Activity<span class="caret"></span></div>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    @Html.ActionLink("All Activity", "AllActivity", "AllActivity")
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Calendar Job", "IndexCalendarJob", "CalendarJob")
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Calendar ManPower", "IndexCMP", "CalendarManPower")
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <div id="mnTechnician" class="menunevyblue dropdown-toggle" data-toggle="dropdown">Technician & Card<span class="caret"></span></div>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    @Html.ActionLink("Technician", "IndexTechnician", "Technician")
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Expired Card", "ExpiredTechnician1", "ExpiredTechnician1")
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <div id="mnTools" class="menugray dropdown-toggle" data-toggle="dropdown">Tools & Machines<span class="caret"></span></div>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    @Html.ActionLink("Stock", "IndexProducts", "Products")
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Stock Adjustment", "IndexProductAdjust", "ProductAdjust")
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Requisition & Return", "IndexRequisition", "Requisition")
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <div id="mnEstimate" class="menupuple dropdown-toggle" data-toggle="dropdown">@Html.ActionLink("Estimate Price", "IndexBDC", "BDC", new { @class = "colorwhite" })<span class="caret"></span></div>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    @Html.ActionLink("Estimate Price", "IndexBDC", "BDC")
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Job Order", "IndexJobOrder", "JobOrder")
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <div id="mnPayment" class="menugray dropdown-toggle" data-toggle="dropdown">Payment<span class="caret"></span></div>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    @Html.ActionLink("Alpha & Outsource", "IndexWageTeachnician", "WageTeachnician")
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <div id="mnReport" class="menupink dropdown-toggle" data-toggle="dropdown">Report<span class="caret"></span></div>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    @Html.ActionLink("JobOrder", "IndexReportJobOrder", "ReportJobOrder")
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Requisition", "IndexRptBorrow", "ReportBorrow")
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                @*</div>*@
+                            </nav>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             
         </header>
+
         
         <div id="body">
             <section class="content-wrapper main-content clear-fix">     
