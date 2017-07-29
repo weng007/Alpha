@@ -69,15 +69,13 @@ function CreateData(val) {
     alert(IsADUser);
     if (IsADUser == 1)
     {
-        alert("Profile " + $("#cmbSecurityProfile").find(":selected").val());
+        //alert("Profile " + $("#cmbSecurityProfile").find(":selected").val());
         var dataObject = {
-        UserName: $("#txtUserName").val(),
-        //FirstName: $("#txtFirstName").val(),
-        //LastName: $("#txtLastName").val(),
-            //Email: $("#txtEmail").val(),
-        SecurityID: $("#cmbSecurityProfile").find(":selected").val(),
-        CreateBy: localStorage['UserID'],
-        EditBy: localStorage['UserID']}
+            UserName: $("#txtUserName").val(),
+            SecurityID: $("#cmbSecurityProfile").find(":selected").val(),
+            CreateBy: localStorage['UserID'],
+            EditBy: localStorage['UserID']
+        };
         console.log($("#cmbSecurityProfile").find(":selected").val());
 
         $.ajax(

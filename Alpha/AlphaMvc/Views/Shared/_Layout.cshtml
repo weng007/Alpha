@@ -75,16 +75,16 @@
                                         <li class="dropdown">
                                             <div id="mnAdministrator" class="menublue dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></div>
                                             <ul class="dropdown-menulightblue">
-                                                <li class="subIncome">
+                                                <li id="subIncome">
                                                     @Html.ActionLink("Income", "IndexIncomeMaster", "IncomeMaster")
                                                 </li>
-                                                <li class="subExpense">
+                                                <li id="subExpense">
                                                     @Html.ActionLink("Expense", "IndexExpenseMaster", "ExpenseMaster")
                                                 </li>
-                                                <li class="subSecurity">
+                                                <li id="subSecurity">
                                                     @Html.ActionLink("SecurityProfile", "IndexSecurityProfile", "SecurityProfile")
                                                 </li>
-                                                <li class="subUser">
+                                                <li id="subUser">
                                                     @Html.ActionLink("User", "IndexUser", "User")
                                                 </li>
                                             </ul>
@@ -92,13 +92,13 @@
                                         <li class="dropdown">
                                             <div id="mnActivity" class="menugray dropdown-toggle" data-toggle="dropdown">Activity<span class="caret"></span></div>
                                             <ul class="dropdown-menu">
-                                                <li>
+                                                <li id="subActivity">
                                                     @Html.ActionLink("All Activity", "AllActivity", "AllActivity")
                                                 </li>
-                                                <li>
+                                                <li id="subJobCalendar">
                                                     @Html.ActionLink("Calendar Job", "IndexCalendarJob", "CalendarJob")
                                                 </li>
-                                                <li>
+                                                <li id="subManCalendar">
                                                     @Html.ActionLink("Calendar ManPower", "IndexCMP", "CalendarManPower")
                                                 </li>
                                             </ul>
@@ -106,10 +106,10 @@
                                         <li class="dropdown">
                                             <div id="mnTechnician" class="menunevyblue dropdown-toggle" data-toggle="dropdown">Technician & Card<span class="caret"></span></div>
                                             <ul class="dropdown-menu">
-                                                <li>
+                                                <li id="subTechnician">
                                                     @Html.ActionLink("Technician", "IndexTechnician", "Technician")
                                                 </li>
-                                                <li>
+                                                <li id="subExpired">
                                                     @Html.ActionLink("Expired Card", "ExpiredTechnician1", "ExpiredTechnician1")
                                                 </li>
                                             </ul>
@@ -117,13 +117,13 @@
                                         <li class="dropdown">
                                             <div id="mnTools" class="menugray dropdown-toggle" data-toggle="dropdown">Tools & Machines<span class="caret"></span></div>
                                             <ul class="dropdown-menu">
-                                                <li>
+                                                <li id="subProducts">
                                                     @Html.ActionLink("Stock", "IndexProducts", "Products")
                                                 </li>
-                                                <li>
+                                                <li id="subStockAdjust">
                                                     @Html.ActionLink("Stock Adjustment", "IndexProductAdjust", "ProductAdjust")
                                                 </li>
-                                                <li>
+                                                <li id="subReqisition">
                                                     @Html.ActionLink("Requisition & Return", "IndexRequisition", "Requisition")
                                                 </li>
                                             </ul>
@@ -131,10 +131,10 @@
                                         <li class="dropdown">
                                             <div id="mnEstimate" class="menupuple dropdown-toggle" data-toggle="dropdown">Estimate & Job Order<span class="caret"></span></div>
                                             <ul class="dropdown-menu">
-                                                <li>
+                                                <li id="subBDC">
                                                     @Html.ActionLink("Estimate Price", "IndexBDC", "BDC")
                                                 </li>
-                                                <li>
+                                                <li id="subJobOrder">
                                                     @Html.ActionLink("Job Order", "IndexJobOrder", "JobOrder")
                                                 </li>
                                             </ul>
@@ -142,7 +142,7 @@
                                         <li class="dropdown">
                                             <div id="mnPayment" class="menugray dropdown-toggle" data-toggle="dropdown">Payment<span class="caret"></span></div>
                                             <ul class="dropdown-menu">
-                                                <li>
+                                                <li id="subPayment">
                                                     @Html.ActionLink("Alpha & Outsource", "IndexWageTeachnician", "WageTeachnician")
                                                 </li>
                                             </ul>
@@ -150,10 +150,10 @@
                                         <li class="dropdown">
                                             <div id="mnReport" class="menupink dropdown-toggle" data-toggle="dropdown">Report<span class="caret"></span></div>
                                             <ul class="dropdown-menu">
-                                                <li>
+                                                <li id="subRptJob">
                                                     @Html.ActionLink("JobOrder", "IndexReportJobOrder", "ReportJobOrder")
                                                 </li>
-                                                <li>
+                                                <li id="subRptRequisition">
                                                     @Html.ActionLink("Requisition", "IndexRptBorrow", "ReportBorrow")
                                                 </li>
                                             </ul>

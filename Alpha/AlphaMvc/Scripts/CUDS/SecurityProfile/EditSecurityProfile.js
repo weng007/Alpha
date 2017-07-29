@@ -151,16 +151,19 @@ function GetData(val) {
 }
 function GetChecked() {
     $(".RowCal").each(function () {
-        var IsInsert = $(this).find('.IsInsert').is(":checked");
-        var IsUpdate = $(this).find('.IsUpdate').is(":checked");
+        if ($(this).find('.IsInsert').css('display') != 'none' || $(this).find('.IsUpdate').css('display') != 'none')
+        {
+            var IsInsert = $(this).find('.IsInsert').is(":checked");
+            var IsUpdate = $(this).find('.IsUpdate').is(":checked");
 
-        if (IsInsert || IsUpdate) {
-            $(this).find('.IsView').prop('checked', true);
-            $(this).find('.IsView').prop('disabled', true);
-        }
-        else if (IsInsert == false && IsUpdate == false) {
-            $(this).find('.IsView').prop('checked', false);
-            $(this).find('.IsView').prop('disabled', false);
+            if (IsInsert || IsUpdate) {
+                $(this).find('.IsView').prop('checked', true);
+                $(this).find('.IsView').prop('disabled', true);
+            }
+            else if (IsInsert == false && IsUpdate == false) {
+                $(this).find('.IsView').prop('checked', false);
+                $(this).find('.IsView').prop('disabled', false);
+            }
         }
     });
 }
@@ -174,6 +177,23 @@ function Update(val) {
     {
         url: 'http://localhost:13131/api/SecurityProfile',
         type: 'PUT',
+        async: false,
+        data: dataObject,
+        datatype: 'json',
+        success: function (data) {
+            //alert('data ' + data);
+        }
+        ,
+        error: function (msg) {
+            alert(msg)
+        }
+    });
+
+    var dataObject = { ID: val};
+    $.ajax(
+    {
+        url: 'http://localhost:13131/api/SecurityProfileDetail',
+        type: 'DELETE',
         async: false,
         data: dataObject,
         datatype: 'json',
@@ -202,7 +222,7 @@ function Update(val) {
             $.ajax(
             {
                 url: 'http://localhost:13131/api/SecurityProfileDetail',
-                type: 'PUT',
+                type: 'POST',
                 async: false,
                 data: dataObject,
                 datatype: 'json',

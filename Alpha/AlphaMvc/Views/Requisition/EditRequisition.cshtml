@@ -13,7 +13,7 @@
 @* =============== Pager *@
 <script src="@Url.Content("~/Scripts/EditableGrid/Pager.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/CUDS/RequisitionAndReturn/IndexJobOrderBorrow.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/CUDS/RequisitionAndReturn/EditJobOrder.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CUDS/RequisitionAndReturn/EditRequisition.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 <!-- Modal -->
@@ -982,9 +982,9 @@
         @*Requisition start*@
         <div>
             <ul class="form-style">
+               <li><label class="label-small-7" style="margin-right: 25%;">ประเภทงาน</label>&nbsp;<label class="label-2">Job Order No.</label></li>
                 <li>
-                    <label>ประเภทงาน</label><label>Job Order No.</label>
-                    <input type="text" id="txtProject" class="field-divided" placeholder="" disabled /><input type="text" id="txtJobOrderNo" class="field-divided" placeholder="" disabled />
+                    <input type="text" id="txtProject" class="field-divided" placeholder="" disabled />&nbsp;<input type="text" id="txtJobOrderNo" class="field-divided" placeholder="" disabled />
                 </li>
             </ul>
             <ul class="form-style">
@@ -993,18 +993,27 @@
                     <input type="text" id="dtJobOrderDate" class="field-divided" required disabled /><input type="text" id="txtJobLocation" class="field-divided" placeholder="" disabled />
                 </li>
                 <li>
-                    <input id="chkApprove" type="checkbox" class="chkShowAllinput">
-                    <label for="chkApprove" class="chkShowAll" style="color:black;">Approve</label>
+                    <input id="chkApprove" type="checkbox" class="chkApprove" onchange="ApproveRequisition()">
+                    <label for="chkApprove" class="chkApprove" style="color:black;">Approve</label>
                 </li>
                 <li>
-                    <input id="chkReturn" type="checkbox" class="chkShowAllinput">
-                    <label for="chkReturn" class="chkShowAll" style="color:black;">Return</label>
+                    <input id="chkReturn" type="checkbox" class="chkReturn" onchange="ReturnStock()">
+                    <label for="chkReturn" class="chkReturn" style="color:black;">Return</label>
                     <input type="hidden" id="hidRequisitionID" class="hidRequisitionID" />
                     <input type="hidden" id="hidID" class="hidID" />
                     <input type="hidden" id="hidIsApprove" class="hidIsApprove" />
                     <input type="hidden" id="hidApprover" class="hidApprover" />
                     <input type="hidden" id="hidIsReturn" class="hidIsReturn" />
                     <input type="hidden" id="hidGiver" class="hidGiver" />
+                    <input type="hidden" id="hidTaker" class="hidTaker" />
+                </li>
+                <li>
+                    <label>ผู้เบิก</label><label>ผู้อนุมัติ</label>
+                    <input type="text" id="txtTaker" class="field-divided" required disabled /><input type="text" id="txtApprover" class="field-divided" placeholder="" disabled />
+                </li>
+                <li>
+                    <label>ผู้รับคืน</label>
+                    <input type="text" id="txtReturner" class="field-divided" required disabled />
                 </li>
             </ul>
                 @*<div class="barattach-2">
@@ -1024,16 +1033,16 @@
                                 <th rowspan="2">รุ่น</th>
                                 <th rowspan="2">ยี่ห้อ</th>
                                 <th rowspan="2">จำนวนที่เบิก</th>
-                                <th colspan="4">คืน</th>
-                                <th rowspan="2">จำนวนที่คืน</th>
+                                <th colspan="4" class="mnReturn">คืน</th>
+                                <th rowspan="2" class="mnReturn">จำนวนที่คืน</th>
                                 <th rowspan="2">หมายเหตุ</th>
                                 <th rowspan="2"></th>
                             </tr>
                             <tr>
-                                <th>ดี</th>
-                                <th>หาย</th>
-                                <th>ซ่อม</th>
-                                <th>ชำรุด</th>
+                                <th class="mnReturn">ดี</th>
+                                <th class="mnReturn">หาย</th>
+                                <th class="mnReturn">ซ่อม</th>
+                                <th class="mnReturn">ชำรุด</th>
                             </tr>
                         </thead>
                         <tbody id="tBodyRowRequisition">
@@ -1081,23 +1090,23 @@
                                     @*Qty1*@
                                     <input type="text" id="txtQty" class="txtQty select-size50-height23 " />
                                 </td>
-                                <td>
+                                <td class="mnReturn">
                                     @*Return Good1*@
                                     <input type="text" id="txtGood" class="txtGood select-size50-height23 " />
                                 </td>
-                                <td>
+                                <td class="mnReturn">
                                     @*Return Lost1*@
                                     <input type="text" id="txtLost" class="txtLost select-size50-height23 " />
                                 </td>
-                                <td>
+                                <td class="mnReturn">
                                     @*Return Repair1*@
                                     <input type="text" id="txtRepair" class="txtRepair select-size50-height23 " />
                                 </td>
-                                <td>
+                                <td class="mnReturn">
                                     @*Return Bad1*@
                                     <input type="text" id="txtBad" class="txtBad select-size50-height23 " />
                                 </td>
-                                <td>
+                                <td class="mnReturn">
                                     @*Return Qty1*@
                                     <input type="text" id="txtQty1" class="txtQty1 select-size50-height23 " />
                                 </td>
@@ -1156,23 +1165,23 @@
                                     @*Qty2*@
                                     <input type="text" id="txtQty" class="txtQty select-size50-height23 " />
                                 </td>
-                                <td>
+                                <td class="mnReturn">
                                     @*Return Good2*@
                                     <input type="text" id="txtGood" class="txtGood select-size50-height23 " />
                                 </td>
-                                <td>
+                                <td class="mnReturn">
                                     @*Return Lost2*@
                                     <input type="text" id="txtLost" class="txtLost select-size50-height23 " />
                                 </td>
-                                <td>
+                                <td class="mnReturn">
                                     @*Return Repair2*@
                                     <input type="text" id="txtRepair" class="txtRepair select-size50-height23 " />
                                 </td>
-                                <td>
+                                <td class="mnReturn">
                                     @*Return Bad2*@
                                     <input type="text" id="txtBad" class="txtBad select-size50-height23 " />
                                 </td>
-                                <td>
+                                <td class="mnReturn">
                                     @*Return Qty1*@
                                     <input type="text" id="txtQty1" class="txtQty1 select-size50-height23 " />
                                 </td>

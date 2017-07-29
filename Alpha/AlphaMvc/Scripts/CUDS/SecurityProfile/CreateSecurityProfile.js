@@ -85,7 +85,7 @@ $(document).ready(function () {
                         html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
                     }
                         //MN006 All Activity, MN007 Calendar Job, MN008 Calendar Man Power, MN017 (Payment)Alpha & Outsource
-                    else if (data.Table[i].MenuID == 'MN006' || data.Table[i].MenuID == 'MN007' || data.Table[i].MenuID == 'MN008' || data.Table[i].MenuID == 'MN017')
+                    else if (data.Table[i].MenuID == 'MN006' || data.Table[i].MenuID == 'MN007' || data.Table[i].MenuID == 'MN008' || data.Table[i].MenuID == 'MN017' || data.Table[i].MenuID == 'MN021' || data.Table[i].MenuID == 'MN022')
                     {
                         html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
                         html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()"></td>';
@@ -111,7 +111,7 @@ $(document).ready(function () {
                         html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none"></td>';
                     }
                         //MN006 All Activity, MN007 Calendar Job, MN008 Calendar Man Power, MN017 (Payment)Alpha & Outsource
-                    else if (data.Table[i].MenuID == 'MN006' || data.Table[i].MenuID == 'MN007' || data.Table[i].MenuID == 'MN008' || data.Table[i].MenuID == 'MN017')
+                    else if (data.Table[i].MenuID == 'MN006' || data.Table[i].MenuID == 'MN007' || data.Table[i].MenuID == 'MN008' || data.Table[i].MenuID == 'MN017' || data.Table[i].MenuID == 'MN021' || data.Table[i].MenuID == 'MN022')
                     {
                         html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
                         html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()"></td>';
@@ -163,16 +163,19 @@ function GetMenumasterDetail()
 function GetChecked() {
     //alert("test");
     $(".RowCal").each(function () {
-        var IsInsert = $(this).find('.IsInsert').is(":checked");
-        var IsUpdate = $(this).find('.IsUpdate').is(":checked");
-        //alert(IsInsert);
-        if (IsInsert || IsUpdate) {
-            $(this).find('.IsView').prop('checked', true);
-            $(this).find('.IsView').prop('disabled', true);
-        }
-        else if (IsInsert == false && IsUpdate == false) {
-            $(this).find('.IsView').prop('checked', false);
-            $(this).find('.IsView').prop('disabled', false);
+        if ($(this).find('.IsInsert').css('display') != 'none' || $(this).find('.IsUpdate').css('display') != 'none')
+        {
+            var IsInsert = $(this).find('.IsInsert').is(":checked");
+            var IsUpdate = $(this).find('.IsUpdate').is(":checked");
+            //alert(IsInsert);
+            if (IsInsert || IsUpdate) {
+                $(this).find('.IsView').prop('checked', true);
+                $(this).find('.IsView').prop('disabled', true);
+            }
+            else if (IsInsert == false && IsUpdate == false) {
+                $(this).find('.IsView').prop('checked', false);
+                $(this).find('.IsView').prop('disabled', false);
+            }
         }
     });
 }

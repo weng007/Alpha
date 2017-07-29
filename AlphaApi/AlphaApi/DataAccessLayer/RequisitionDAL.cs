@@ -49,8 +49,8 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_RequisitionProduct_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", requisition.ID);
-                    cmd.Parameters.AddWithValue("@JobID", requisition.JobID);
                     cmd.Parameters.AddWithValue("@Taker", requisition.Taker);
+                    cmd.Parameters.AddWithValue("@Approver", requisition.Approver);
                     cmd.Parameters.AddWithValue("@Giver", requisition.Giver);
                     cmd.Parameters.AddWithValue("@IsApprove", requisition.IsApprove);
                     cmd.Parameters.AddWithValue("@IsReturn", requisition.IsReturn);

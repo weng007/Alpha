@@ -57,18 +57,18 @@ function GetJobOrder() {
             var html = '<tbody>';
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
-                html += '<td>' + data.Table[i].RowNum + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                html += '<td>' + data.Table[i].JobNo + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].JobNo + '</td>';
                 var JobDate = new Date(data.Table[i].JobDate);
-                html += '<td>' + JobDate.getDate() + '/' + (JobDate.getMonth() + 1) + '/' + JobDate.getFullYear() + '</td>';
-                html += '<td>' + data.Table[i].Name + '</td>';
-                html += '<td>' + 'Status' + '</td>';
-                html += '<td class="hidecolumn">' + data.Table[i].Tel + '</td>';
-                html += '<td class="hidecolumn">' + data.Table[i].Contact + '</td>';
-                html += '<td class="hidecolumn">' + data.Table[i].CoWorker + '</td>';
-                html += '<td class="hidecolumn">' + data.Table[i].Remark + '</td>';
-                html += '<td class="nopointer">';
+                html += '<td class="nopointer">' + JobDate.getDate() + '/' + (JobDate.getMonth() + 1) + '/' + JobDate.getFullYear() + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Name + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Status + '</td>';
+                html += '<td class="nopointer hidecolumn">' + data.Table[i].Tel + '</td>';
+                html += '<td class="nopointer hidecolumn">' + data.Table[i].Contact + '</td>';
+                html += '<td class="nopointer hidecolumn">' + data.Table[i].CoWorker + '</td>';
+                html += '<td class="nopointer hidecolumn">' + data.Table[i].Remark + '</td>';
+                html += '<td class="nopointer nopointer">';
                 html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&' + false + '&' + data.Table[i].JobNo + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgActivityUpdate"/></a>';
                 html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&' + true + '&' + data.Table[i].JobNo + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgActivityView"/></a>';
                 html += '</td>';

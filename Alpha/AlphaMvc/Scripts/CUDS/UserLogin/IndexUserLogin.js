@@ -59,7 +59,6 @@ function UserLogin() {
     });
 }
 function CheckAuthorization() {
-    //alert("test");
     var dataObject = { ID: localStorage['UserID'] };
     console.log(dataObject);
     $.ajax(

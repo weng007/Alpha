@@ -665,17 +665,23 @@ function GetdataRequisition(val)
                var chkIsApprove = data.Table2[0].IsApprove;
                var chkIsReturn = data.Table2[0].IsReturn;
                if (chkIsApprove == '1') {
-                   $(this).find('#chkIsApprove').prop('checked', true);
+                   $('#chkApprove').prop('checked', true);
                }
                if (chkIsReturn == '1') {
-                   $(this).find('#chkIsReturn').prop('checked', true);
+                   $('#chkReturn').prop('checked', true);
                }
                $('#hidRequisitionID').val(data.Table2[0].ID);
+               $('#hidTaker').val(data.Table2[0].Taker);
+               $('#txtTaker').val(data.Table2[0].TakerName);
+               $('#txtApprover').val(data.Table2[0].ApproverName);
+               $('#txtReturner').val(data.Table2[0].GiverName);
+               //alert($('#hidTaker').val());
            }
        }
     });
-
-    localStorage['flagAddRow'] = 1;
+    //alert("GetAutherize");
+    CheckAuthorization();
+    localStorage['flagAddRow'] = 1; 
 }
 
 function SetIncomeMaster()
@@ -769,11 +775,12 @@ function SetUnitWeightExpense() {
 }
 function ApproveRequisition()
 {
-    var isApprove = $('#chkApprove').is(":checked");
+    var IsApprove = $('#chkApprove').is(":checked") == true ? '1' : '0';
+    alert(IsApprove);
     var Approver = localStorage['UserID'];
 
     var dataObject = {
-        IsApprove: $('#chkApprove').is(":checked"), Approver: localStorage['UserID'], EditBy: localStorage['UserID']
+        ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), IsApprove: IsApprove, Approver: localStorage['UserID'], IsReturn: '0', EditBy: localStorage['UserID']
     };
     $.ajax(
     {
@@ -783,6 +790,7 @@ function ApproveRequisition()
         data: dataObject,
         datatype: 'json',
         success: function (data) {
+            alert("testApprove");
             $('#hidRequisitionID').val(data);
         },
         error: function (msg) {
@@ -791,11 +799,12 @@ function ApproveRequisition()
     });
 }
 function ReturnStock() {
-    var IsReturn = $('#chkReturn').is(":checked");
+    var IsReturn = $('#chkReturn').is(":checked") == true ? '1' : '0';
+    alert(IsReturn);
     var Giver = localStorage['UserID'];
 
     var dataObject = {
-        IsReturn: $('#chkReturn').is(":checked"), Giver: localStorage['UserID'], EditBy: localStorage['UserID']
+        ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), IsReturn: IsReturn, IsApprove: '0', Giver: localStorage['UserID'], EditBy: localStorage['UserID']
     };
     $.ajax(
     {

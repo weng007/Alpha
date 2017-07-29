@@ -1,5 +1,22 @@
 function CheckAuthorization() {
     //alert('test');
+    var IsIncome = 0;
+    var IsExpense = 0;
+    var IsSecurity = 0;
+    var IsUser = 0;
+    var IsActivity = 0;
+    var IsJobCalendar = 0;
+    var IsManCalendar = 0;
+    var IsTechnician = 0;
+    var IsExpired = 0;
+    var IsStock = 0;
+    var IsStockAdjust = 0;
+    var IsRequisition = 0;
+    var IsEstimate = 0;
+    var IsJobOrder = 0;
+    var IsPaymentAlpha = 0;
+    var IsRptJobOrder = 0;
+    var IsRptRequisition = 0;
     var dataObject = { ID: localStorage['UserID'] };
     console.log(dataObject);
     $.ajax(
@@ -56,6 +73,7 @@ function CheckAuthorization() {
                     }
                     if (data.Table[i].Role == 0) {
                         $('#subIncome').attr("style", "display:none");
+                        IsIncome = 1;
                     }
                 }
                 //(Administrator)Expense
@@ -93,6 +111,7 @@ function CheckAuthorization() {
                     }
                     if (data.Table[i].Role == 0) {
                         $('#subExpense').attr("style", "display:none");
+                        IsExpense = 1;
                     }
                 }
                 //(Administrator)Security Profile, User
@@ -130,6 +149,7 @@ function CheckAuthorization() {
                     }
                     if (data.Table[i].Role == 0) {
                         $('#subSecurity').attr("style", "display:none");
+                        IsSecurity = 1;
                     }
                 }
                 //(Administrator)User
@@ -166,6 +186,7 @@ function CheckAuthorization() {
                     }
                     if (data.Table[i].Role == 0) {
                         $('#subUser').attr("style", "display:none");
+                        IsUser = 1;
                     }
                 }
                 //(Activity)All Activity
@@ -197,6 +218,7 @@ function CheckAuthorization() {
                     }
                     if (data.Table[i].Role == 0) {
                         $('#subActivity').attr("style", "display:none");
+                        IsActivity = 1;
                     }
                 }
                 //(Activity)JobCalendar
@@ -231,6 +253,7 @@ function CheckAuthorization() {
                     }
                     if (data.Table[i].Role == 0) {
                         $('#subJobCalendar').attr("style", "display:none");
+                        IsJobCalendar = 1;
                     }
                 }
                 //(Activity)ManCalendar
@@ -265,6 +288,7 @@ function CheckAuthorization() {
                     }
                     if (data.Table[i].Role == 0) {
                         $('#subManCalendar').attr("style", "display:none");
+                        IsManCalendar = 1;
                     }
                 }
                 //(Technician & Card)Technician
@@ -297,6 +321,7 @@ function CheckAuthorization() {
                     }
                     if (data.Table[i].Role == 0) {
                         $('#subTechnician').attr("style", "display:none");
+                        IsTechnician = 1;
                     }
                 }
                 //(Technician & Card)Expired Technician
@@ -329,6 +354,7 @@ function CheckAuthorization() {
                     }
                     if (data.Table[i].Role == 0) {
                         $('#subExpired').attr("style", "display:none");
+                        IsExpired = 1;
                     }
                 }
                 //(Tools & Machine)Stock
@@ -368,6 +394,7 @@ function CheckAuthorization() {
                     //Role0 ‡¢È“‡¡πŸ‰¡Ë‰¥È
                     if (data.Table[i].Role == 0) {
                         $('#subProducts').attr("style", "display:none");
+                        IsStock = 1;
                     }
                 }
                 //(Tools & Machine)StockAdjust
@@ -404,7 +431,8 @@ function CheckAuthorization() {
                     }
                     //Role0 ‡¢È“‡¡πŸ‰¡Ë‰¥È
                     if (data.Table[i].Role == 0) {
-                        $('#subStock').attr("style", "display:none");
+                        $('#subStockAdjust').attr("style", "display:none");
+                        IsStockAdjust = 1;
                     }
                 }
                 //(Tools & Machine)Requisition & Return
@@ -442,6 +470,7 @@ function CheckAuthorization() {
                     //Role0 ‡¢È“‡¡πŸ‰¡Ë‰¥È
                     if (data.Table[i].Role == 0) {
                         $('#subReqisition').attr("style", "display:none");
+                        IsRequisition = 1;
                     }
                 }
                 //(Estimate & Job Order)Estimate Price
@@ -474,6 +503,7 @@ function CheckAuthorization() {
                     }
                     if (data.Table[i].Role == 0) {
                         $('#subBDC').attr("style", "display:none");
+                        IsEstimate = 1;
                     }
                 }
                 //(Estimate & Job Order)Job Order
@@ -505,6 +535,7 @@ function CheckAuthorization() {
                     }
                     if (data.Table[i].Role == 0) {
                         $('#subJobOrder').attr("style", "display:none");
+                        IsJobOrder = 1;
                     }
                 }
                 //Cost & Price
@@ -590,6 +621,7 @@ function CheckAuthorization() {
                     if (data.Table[i].Role == 0) {
                         //alert("Role 0");
                         $('#subPayment').attr("style", "display:none");
+                        IsPaymentAlpha = 1;
                     }
                 }
                 //(Report)Job Order, Requisition
@@ -597,6 +629,8 @@ function CheckAuthorization() {
                     if (data.Table[i].Role == 0) {
                         //alert("Role 0");
                         $('#subRptJob').attr("style", "display:none");
+                        IsRptJobOrder = 1;
+                        alert("subRptJob");
                     }
                 }
                 //(Report)Requisition
@@ -604,6 +638,8 @@ function CheckAuthorization() {
                     if (data.Table[i].Role == 0) {
                         //alert("Role 0");
                         $('#subRptRequisition').attr("style", "display:none");
+                        IsRptRequisition = 1;
+                        alert("subRptRequisition");
                     }
                 }
                 
@@ -613,63 +649,50 @@ function CheckAuthorization() {
                         $('#Manpowertab').attr("style", "display:none");
                     }
                 }
+                //Approve
+                if (data.Table[i].MenuName == "MN021") {
+                    if (data.Table[i].Role == 0) {
+                        $('.chkApprove').attr("style", "display:none");
+                    }
+                }
+                //Return
+                if (data.Table[i].MenuName == "MN022") {
+                    if (data.Table[i].Role == 0) {
+                        $('.chkReturn').attr("style", "display:none");
+                        $('.mnReturn').attr("style", "display:none");
+                    }
+                }
 
-                //if(data.table[i].MenuID == 'MN001')
-                //{
-                //    if( data.table[i].Role == 0)
-                //    {
-                //        $('#mnDashboard').attr("style", "display:none");
-                //    }
-                //}
-                //else if ((data.table[i].MenuID == 'MN002')&& data.table[i].MenuID == 'MN003' && data.table[i].MenuID == 'MN004' && data.table[i].MenuID == 'MN005')
-                //{
-                //    if( data.table[i].Role == 0)
-                //    {
-                //        $('#mnAdministrator').attr("style", "display:none");
-                //    }
-                //}
-                //else if (data.table[i].MenuID == 'MN006' && data.table[i].MenuID == ë'MN007' && data.table[i].MenuID == ë'MN008')
-                //{
-                //    if( data.table[i].Role == 0)
-                //    {
-                //        $('#mnActivity').attr("style", "display:none");
-                //    }
-                //}
-                //else if (data.table[i].MenuID == 'MN009' &p& data.table[i].MenuID == 'MN010')
-                //{
-                //    if( data.table[i].Role == 0)
-                //    {
-                //        $('#mnTechnician').attr("style", "display:none");''
-                //    }
-                //}
-                //else if (data.table[i].MenuID == 'MN011' && data.table[i].MenuID == 'MN012' && data.table[i].MenuID == 'MN013')
-                //{
-                //    if( data.table[i].Role == 0)
-                //    {
-                //        $('#mnTools').attr("style", "display:none");
-                //    }
-                //}
-                //else if (data.table[i].MenuID == 'MN014' && data.table[i].MenuID == 'MN015')
-                //{
-                //    if( data.table[i].Role == 0)
-                //    {
-                //        $('#mnEstimate').attr("style", "display:none");
-                //    }
-                //}
-                //else if (data.table[i].MenuID == 'MN017')
-                //{
-                //    if( data.table[i].Role == 0)
-                //    {
-                //        $('#mnPaymentí').attr("style", "display:none");
-                //    }
-                //}
-                //else if (data.table[i].MenuID == 'MN018' && data.table[i].MenuID == 'MN019')
-                //{
-                //    if( data.table[i].Role == 0)
-                //    {
-                //        $('#mnReport').attr("style", "display:none");
-                //    }
-                //}
+
+                if (IsIncome == 1 && IsExpense == 1 && IsSecurity == 1 && IsUser == 1)
+                {
+                     $('#mnAdministrator').attr("style", "display:none");
+                }
+                if (IsActivity == 1 && IsJobCalendar == 1 && IsManCalendar == 1)
+                {
+                     $('#mnActivity').attr("style", "display:none");
+                }
+                if (IsTechnician == 1 && IsExpired == 1)
+                {
+                     $('#mnTechnician').attr("style", "display:none");
+                }
+                if ( IsStock == 1 && IsStockAdjust == 1 && IsRequisition == 1)
+                {
+                     $('#mnTools').attr("style", "display:none");
+                }
+                if ( IsEstimate == 1 && IsJobOrder == 1)
+                {
+                     $('#mnEstimate').attr("style", "display:none");
+                }
+                if (IsPaymentAlpha == 1)
+                {
+                     $('#mnPayment').attr("style", "display:none");
+                }
+                if (IsRptJobOrder == 1 && IsRptRequisition == 1)
+                {
+                    alert("mnReport");
+                    $('#mnReport').attr("style", "display:none");
+                }
 
 
             }
