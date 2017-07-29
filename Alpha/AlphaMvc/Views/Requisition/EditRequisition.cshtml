@@ -984,19 +984,27 @@
             <ul class="form-style">
                 <li>
                     <label>ประเภทงาน</label><label>Job Order No.</label>
-                    <input type="text" id="txtProject" class="field-divided" placeholder="" disabled /><input type="text" id="txtJobNo1" class="field-divided" placeholder="" disabled />
-                </li>
-            </ul>
-            <ul class="form-style">
-                <li>
-                    <label>Project No.</label>
-                    <input type="text" id="txtProjecNo" class="field-divided" placeholder="" disabled />
+                    <input type="text" id="txtProject" class="field-divided" placeholder="" disabled /><input type="text" id="txtJobOrderNo" class="field-divided" placeholder="" disabled />
                 </li>
             </ul>
             <ul class="form-style">
                 <li>
                     <label>Date</label><label>Location</label>
-                    <input type="text" id="dtDate" class="field-divided" required disabled /><input type="text" id="txtLocation" class="field-divided" placeholder="" disabled />
+                    <input type="text" id="dtJobOrderDate" class="field-divided" required disabled /><input type="text" id="txtJobLocation" class="field-divided" placeholder="" disabled />
+                </li>
+                <li>
+                    <input id="chkApprove" type="checkbox" class="chkShowAllinput">
+                    <label for="chkApprove" class="chkShowAll" style="color:black;">Approve</label>
+                </li>
+                <li>
+                    <input id="chkReturn" type="checkbox" class="chkShowAllinput">
+                    <label for="chkReturn" class="chkShowAll" style="color:black;">Return</label>
+                    <input type="hidden" id="hidRequisitionID" class="hidRequisitionID" />
+                    <input type="hidden" id="hidID" class="hidID" />
+                    <input type="hidden" id="hidIsApprove" class="hidIsApprove" />
+                    <input type="hidden" id="hidApprover" class="hidApprover" />
+                    <input type="hidden" id="hidIsReturn" class="hidIsReturn" />
+                    <input type="hidden" id="hidGiver" class="hidGiver" />
                 </li>
             </ul>
                 @*<div class="barattach-2">
@@ -1197,7 +1205,7 @@
 
         <ul class="form-style-1">
             <li>
-                <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrderBorrow', @Request.Params["id"])">Approve</button>
+                <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrderBorrow', @Request.Params["id"])">Save</button>
                 @*<a onclick="OpenRptJobOrder(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>*@
                 @*<button type="button" id="btnSave" class="btnCreate" onclick="OpenRptJobOrder(@Request.Params["id"])" formtarget="_blank"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-2" id="BDCCreate" /></button>*@
             </li>
@@ -1212,8 +1220,8 @@
         var val = after.split('&');
         var Isview = val[1];
         var JobNo = val[2];
-        ////alert(Isview);
-        ////GetJobNo(JobNo);
+        //alert(JobNo);
+        //GetJobNo(JobNo);
         ////ControlEnable(Isview);
         GetdataRequisition(@Request.Params["id"]);
         ////SetRowCal5();

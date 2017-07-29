@@ -18,9 +18,10 @@ namespace AlphaApi.DataAccessLayer
             {
                 try
                 {
+
                     SqlCommand cmd = new SqlCommand("SP_Borrow_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@JobID", jobOrderBorrow.JobID);
+                    cmd.Parameters.AddWithValue("@RequisitionID", jobOrderBorrow.RequisitionID);
                     cmd.Parameters.AddWithValue("@ProductID", jobOrderBorrow.ProductID);
                     cmd.Parameters.AddWithValue("@Amount", jobOrderBorrow.Amount);
                     cmd.Parameters.AddWithValue("@ReturnGood", jobOrderBorrow.ReturnGood);
@@ -45,7 +46,6 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-
         public int UpdateData(JobOrderBorrowModels jobOrderBorrow)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
