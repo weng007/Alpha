@@ -223,8 +223,8 @@ function readURL(input) {
         reader.onload = function (e) {
             $('#imgPreview')
                 .attr('src', e.target.result)
-                .width(245)
-                .height(168);
+                //.width(245)
+                //.height(168);
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -232,8 +232,10 @@ function readURL(input) {
 }
 function getBase64Image(imgElem) {
     var canvas = document.createElement("canvas");
-    canvas.width = imgElem.clientWidth;
-    canvas.height = imgElem.clientHeight;
+    //canvas.width = imgElem.clientWidth;
+    //canvas.height = imgElem.clientHeight;
+    canvas.width = 750;
+    canvas.height = 750;
     var ctx = canvas.getContext("2d");
     ctx.drawImage(imgElem, 0, 0);
     var dataURL = canvas.toDataURL("image/png");
