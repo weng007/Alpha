@@ -62,109 +62,111 @@
                 <img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" /><label id="lblUserName" class="logonname"></label>
                 <img src="@Url.Content("~/Images/log-in.png")" alt="IMAGES" class="imgicon" />
                 <div class="loginname">@Html.ActionLink("Log Out", "IndexLogin", "Login")</div>
-                <div class="menulocation">
-                    <table border="0" align="center" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td>
-                                <nav class="navbar navbar-default">
-                                    @*<div class="container-fluid">*@
-                                    <ul class="nav navbar-nav">
-                                        <li>
-                                            <div id="mnDashboard" class="menugray dropdown-toggle disabled" data-toggle="dropdown">@Html.ActionLink("Dashboard", "DashBoard", "Home")</div>
-                                        </li>
-                                        <li class="dropdown">
-                                            <div id="mnAdministrator" class="menublue dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></div>
-                                            <ul class="dropdown-menulightblue">
-                                                <li id="subIncome">
-                                                    @Html.ActionLink("Income", "IndexIncomeMaster", "IncomeMaster")
-                                                </li>
-                                                <li id="subExpense">
-                                                    @Html.ActionLink("Expense", "IndexExpenseMaster", "ExpenseMaster")
-                                                </li>
-                                                <li id="subSecurity">
-                                                    @Html.ActionLink("SecurityProfile", "IndexSecurityProfile", "SecurityProfile")
-                                                </li>
-                                                <li id="subUser">
-                                                    @Html.ActionLink("User", "IndexUser", "User")
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <div id="mnActivity" class="menugray dropdown-toggle" data-toggle="dropdown">Activity<span class="caret"></span></div>
-                                            <ul class="dropdown-menu">
-                                                <li id="subActivity">
-                                                    @Html.ActionLink("All Activity", "AllActivity", "AllActivity")
-                                                </li>
-                                                <li id="subJobCalendar">
-                                                    @Html.ActionLink("Calendar Job", "IndexCalendarJob", "CalendarJob")
-                                                </li>
-                                                <li id="subManCalendar">
-                                                    @Html.ActionLink("Calendar ManPower", "IndexCMP", "CalendarManPower")
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <div id="mnTechnician" class="menunevyblue dropdown-toggle" data-toggle="dropdown">Technician & Card<span class="caret"></span></div>
-                                            <ul class="dropdown-menu">
-                                                <li id="subTechnician">
-                                                    @Html.ActionLink("Technician", "IndexTechnician", "Technician")
-                                                </li>
-                                                <li id="subExpired">
-                                                    @Html.ActionLink("Expired Card", "ExpiredTechnician1", "ExpiredTechnician1")
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <div id="mnTools" class="menugray dropdown-toggle" data-toggle="dropdown">Tools & Machines<span class="caret"></span></div>
-                                            <ul class="dropdown-menu">
-                                                <li id="subProducts">
-                                                    @Html.ActionLink("Stock", "IndexProducts", "Products")
-                                                </li>
-                                                <li id="subStockAdjust">
-                                                    @Html.ActionLink("Stock Adjustment", "IndexProductAdjust", "ProductAdjust")
-                                                </li>
-                                                <li id="subReqisition">
-                                                    @Html.ActionLink("Requisition & Return", "IndexRequisition", "Requisition")
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <div id="mnEstimate" class="menupuple dropdown-toggle" data-toggle="dropdown">Estimate & Job Order<span class="caret"></span></div>
-                                            <ul class="dropdown-menu">
-                                                <li id="subBDC">
-                                                    @Html.ActionLink("Estimate Price", "IndexBDC", "BDC")
-                                                </li>
-                                                <li id="subJobOrder">
-                                                    @Html.ActionLink("Job Order", "IndexJobOrder", "JobOrder")
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <div id="mnPayment" class="menugray dropdown-toggle" data-toggle="dropdown">Payment<span class="caret"></span></div>
-                                            <ul class="dropdown-menu">
-                                                <li id="subPayment">
-                                                    @Html.ActionLink("Alpha & Outsource", "IndexWageTeachnician", "WageTeachnician")
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown">
-                                            <div id="mnReport" class="menupink dropdown-toggle" data-toggle="dropdown">Report<span class="caret"></span></div>
-                                            <ul class="dropdown-menu">
-                                                <li id="subRptJob">
-                                                    @Html.ActionLink("JobOrder", "IndexReportJobOrder", "ReportJobOrder")
-                                                </li>
-                                                <li id="subRptRequisition">
-                                                    @Html.ActionLink("Requisition", "IndexRptBorrow", "ReportBorrow")
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    @*</div>*@
-                                </nav>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                @*<div class="table-responsive">*@
+                    <div class="menulocation">
+                        <table border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <nav class="navbar navbar-default">
+                                        @*<div class="container-fluid">*@
+                                        <ul class="nav navbar-nav">
+                                            <li>
+                                                <div id="mnDashboard" class="menugray dropdown-toggle disabled" data-toggle="dropdown">@Html.ActionLink("Dashboard", "DashBoard", "Home")</div>
+                                            </li>
+                                            <li class="dropdown">
+                                                <div id="mnAdministrator" class="menublue dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></div>
+                                                <ul class="dropdown-menulightblue">
+                                                    <li id="subIncome">
+                                                        @Html.ActionLink("Income", "IndexIncomeMaster", "IncomeMaster")
+                                                    </li>
+                                                    <li id="subExpense">
+                                                        @Html.ActionLink("Expense", "IndexExpenseMaster", "ExpenseMaster")
+                                                    </li>
+                                                    <li id="subSecurity">
+                                                        @Html.ActionLink("SecurityProfile", "IndexSecurityProfile", "SecurityProfile")
+                                                    </li>
+                                                    <li id="subUser">
+                                                        @Html.ActionLink("User", "IndexUser", "User")
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <div id="mnActivity" class="menugray dropdown-toggle" data-toggle="dropdown">Activity<span class="caret"></span></div>
+                                                <ul class="dropdown-menu">
+                                                    <li id="subActivity">
+                                                        @Html.ActionLink("All Activity", "AllActivity", "AllActivity")
+                                                    </li>
+                                                    <li id="subJobCalendar">
+                                                        @Html.ActionLink("Calendar Job", "IndexCalendarJob", "CalendarJob")
+                                                    </li>
+                                                    <li id="subManCalendar">
+                                                        @Html.ActionLink("Calendar ManPower", "IndexCMP", "CalendarManPower")
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <div id="mnTechnician" class="menunevyblue dropdown-toggle" data-toggle="dropdown">Technician & Card<span class="caret"></span></div>
+                                                <ul class="dropdown-menulightnavyblue">
+                                                    <li id="subTechnician">
+                                                        @Html.ActionLink("Technician", "IndexTechnician", "Technician")
+                                                    </li>
+                                                    <li id="subExpired">
+                                                        @Html.ActionLink("Expired Card", "ExpiredTechnician1", "ExpiredTechnician1")
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <div id="mnTools" class="menugray dropdown-toggle" data-toggle="dropdown">Tools & Machines<span class="caret"></span></div>
+                                                <ul class="dropdown-menu">
+                                                    <li id="subProducts">
+                                                        @Html.ActionLink("Stock", "IndexProducts", "Products")
+                                                    </li>
+                                                    <li id="subStockAdjust">
+                                                        @Html.ActionLink("Stock Adjustment", "IndexProductAdjust", "ProductAdjust")
+                                                    </li>
+                                                    <li id="subReqisition">
+                                                        @Html.ActionLink("Requisition & Return", "IndexRequisition", "Requisition")
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <div id="mnEstimate" class="menupuple dropdown-toggle" data-toggle="dropdown">Estimate & Job Order<span class="caret"></span></div>
+                                                <ul class="dropdown-menulightpuple">
+                                                    <li id="subBDC">
+                                                        @Html.ActionLink("Estimate Price", "IndexBDC", "BDC")
+                                                    </li>
+                                                    <li id="subJobOrder">
+                                                        @Html.ActionLink("Job Order", "IndexJobOrder", "JobOrder")
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <div id="mnPayment" class="menugray dropdown-toggle" data-toggle="dropdown">Payment<span class="caret"></span></div>
+                                                <ul class="dropdown-menu">
+                                                    <li id="subPayment">
+                                                        @Html.ActionLink("Alpha & Outsource", "IndexWageTeachnician", "WageTeachnician")
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown">
+                                                <div id="mnReport" class="menupink dropdown-toggle" data-toggle="dropdown">Report<span class="caret"></span></div>
+                                                <ul class="dropdown-menulightpink">
+                                                    <li id="subRptJob">
+                                                        @Html.ActionLink("JobOrder", "IndexReportJobOrder", "ReportJobOrder")
+                                                    </li>
+                                                    <li id="subRptRequisition">
+                                                        @Html.ActionLink("Requisition", "IndexRptBorrow", "ReportBorrow")
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        @*</div>*@
+                                    </nav>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                @*</div>*@
             </div>
         </header>
         <div id="body">

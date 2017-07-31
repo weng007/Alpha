@@ -232,6 +232,12 @@
         width: 50px;
         padding: 2px !important;
     }
+    table td .select-size70-height23 {
+        background: #fff;
+        height: 23px;
+        width: 70px;
+        padding: 2px !important;
+    }
     .txtdisablerow {
         margin: 0;
         background: #fafafa;

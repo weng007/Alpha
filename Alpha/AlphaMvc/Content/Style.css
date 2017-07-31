@@ -2,6 +2,9 @@
     -webkit-appearance: none;
     display: none;
 }
+.margintop20{
+    margin-top:20px !important;
+}
 .btnprint{
     float: left;
     position: absolute;
@@ -1287,9 +1290,44 @@ select{
     .barattach-2{
         margin-top: 0px;
         width: 100%;
-        background-color: #db6144;
-        /*background-color: #5baa8c;*/
+        /*background-color: #db6144;*/
+        background-color: #9fa694;
     }
+    .barattach-blue {
+    margin-top: 0px;
+    width: 100%;
+    height: 40px;
+    /*background-color: #5baa8c;*/
+    background-color: #4b7490;
+}
+.barattach-gray {
+    margin-top: 0px;
+    width: 100%;
+    height: 40px;
+    /*background-color: #5baa8c;*/
+    background-color: #9fa694;
+}
+.barattach-navyblue {
+    margin-top: 0px;
+    width: 100%;
+    height: 40px;
+    /*background-color: #5baa8c;*/
+    background-color: #345080;
+}
+.barattach-puple {
+    margin-top: 0px;
+    width: 100%;
+    height: 40px;
+    /*background-color: #5baa8c;*/
+    background-color: #5b1675;
+}
+.barattach-pink {
+    margin-top: 0px;
+    width: 100%;
+    height: 40px;
+    /*background-color: #5baa8c;*/
+    background-color: #ab376a;
+}
 }
 .topicdetail{
     color: #FFFFFF;
@@ -1734,6 +1772,12 @@ ul.topnav, li.dropdown {
     margin-left: 10px;
     color: white;
     margin-right: 47%;
+}
+.topicmargin-size5 {
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    margin-right: 5%;
 }
 .topicmargin-size70{
     margin-top: 10px;

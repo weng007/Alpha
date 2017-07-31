@@ -980,47 +980,71 @@
             </tr>
         </table>
         @*Requisition start*@
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4 col-sm-3 col-lg-2">
+                    <div class="form-group">
+                        <label for="txtProject">ประเภทงาน:</label>
+                        <input type="text" class="form-control" id="txtProject" disabled>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-3 col-lg-2">
+                    <div class="form-group">
+                        <label for="txtJobOrderNo">Job Order No.:</label>
+                        <input type="text" class="form-control" id="txtJobOrderNo" disabled>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-3 col-lg-2">
+                    <div class="form-group">
+                        <label for="txtTaker">ผู้เบิก:</label>
+                        <input type="text" class="form-control" id="txtTaker" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 col-sm-3 col-lg-2">
+                    <div class="form-group">
+                        <label for="dtJobOrderDate">Date:</label>
+                        <input type="text" class="form-control" id="dtJobOrderDate" disabled>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-3 col-lg-2">
+                    <div class="form-group">
+                        <label for="txtJobLocation">Location:</label>
+                        <input type="text" class="form-control" id="txtJobLocation" disabled>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-3 col-lg-2">
+                    <div class="form-group">
+                        <label for="txtApprover">ผู้อนุมัติ:</label>
+                        <input type="text" class="form-control" id="txtApprover" disabled>
+                        <label><input type="checkbox" id="chkApprove" class="chkApprove" onchange="ApproveRequisition()" value="">Approve</label>
+                    </div>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-xs-4 col-sm-3 col-lg-2"></div>
+                <div class="col-xs-4 col-sm-3 col-lg-2"></div>
+                <div class="col-xs-4 col-sm-3 col-lg-2">
+                    <div class="form-group">
+                        <label for="txtReturner">ผู้รับคืน:</label>
+                        <input type="text" class="form-control" id="txtReturner" disabled>
+                        <label><input type="checkbox" id="chkReturn" class="chkReturn" onchange="ReturnStock()" value="">Return</label>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div>
-            <ul class="form-style">
-               <li><label class="label-small-7" style="margin-right: 25%;">ประเภทงาน</label>&nbsp;<label class="label-2">Job Order No.</label></li>
-                <li>
-                    <input type="text" id="txtProject" class="field-divided" placeholder="" disabled />&nbsp;<input type="text" id="txtJobOrderNo" class="field-divided" placeholder="" disabled />
-                </li>
-            </ul>
-            <ul class="form-style">
-                <li>
-                    <label>Date</label><label>Location</label>
-                    <input type="text" id="dtJobOrderDate" class="field-divided" required disabled /><input type="text" id="txtJobLocation" class="field-divided" placeholder="" disabled />
-                </li>
-                <li>
-                    <input id="chkApprove" type="checkbox" class="chkApprove" onchange="ApproveRequisition()">
-                    <label for="chkApprove" class="chkApprove" style="color:black;">Approve</label>
-                </li>
-                <li>
-                    <input id="chkReturn" type="checkbox" class="chkReturn" onchange="ReturnStock()">
-                    <label for="chkReturn" class="chkReturn" style="color:black;">Return</label>
-                    <input type="hidden" id="hidRequisitionID" class="hidRequisitionID" />
-                    <input type="hidden" id="hidID" class="hidID" />
-                    <input type="hidden" id="hidIsApprove" class="hidIsApprove" />
-                    <input type="hidden" id="hidApprover" class="hidApprover" />
-                    <input type="hidden" id="hidIsReturn" class="hidIsReturn" />
-                    <input type="hidden" id="hidGiver" class="hidGiver" />
-                    <input type="hidden" id="hidTaker" class="hidTaker" />
-                </li>
-                <li>
-                    <label>ผู้เบิก</label><label>ผู้อนุมัติ</label>
-                    <input type="text" id="txtTaker" class="field-divided" required disabled /><input type="text" id="txtApprover" class="field-divided" placeholder="" disabled />
-                </li>
-                <li>
-                    <label>ผู้รับคืน</label>
-                    <input type="text" id="txtReturner" class="field-divided" required disabled />
-                </li>
-            </ul>
-                @*<div class="barattach-2">
-                    <label class="topicmargin-size90">Tools List</label>
-                    <a href="@Url.Action("CreateBorrow", "Borrow")?@Request.Params["id"]" class="alink"><img src="@Url.Content("~/Images/btnadd.png")" class="btnimage-4" /></a>
-                </div>*@
-                <div class="wrapper">
+            <input type="hidden" id="hidRequisitionID" class="hidRequisitionID" />
+            <input type="hidden" id="hidJobID" class="hidJobID" />
+            <input type="hidden" id="hidGiver" class="hidGiver" />
+            <input type="hidden" id="hidTaker" class="hidTaker" />
+            <input type="hidden" id="hidApprover" class="hidApprover" />
+            <input type="hidden" id="hidIsApprove" class="hidIsApprove" />
+            <input type="hidden" id="hidIsReturn" class="hidIsReturn" />
+
+            <div class="wrapper">
+                <div class="table-responsive">
                     <table id="tabRequisition" class="example">
                         <thead class="theader">
                             <tr>
@@ -1034,9 +1058,9 @@
                                 <th rowspan="2">ยี่ห้อ</th>
                                 <th rowspan="2">จำนวนที่เบิก</th>
                                 <th colspan="4" class="mnReturn">คืน</th>
-                                <th rowspan="2" class="mnReturn">จำนวนที่คืน</th>
+                                <th rowspan="2" class="mnReturn hidecolumn">จำนวนที่คืน</th>
                                 <th rowspan="2">หมายเหตุ</th>
-                                <th rowspan="2"></th>
+                                <th rowspan="2" colspan="2"></th>
                             </tr>
                             <tr>
                                 <th class="mnReturn">ดี</th>
@@ -1088,7 +1112,7 @@
                                 </td>
                                 <td>
                                     @*Qty1*@
-                                    <input type="text" id="txtQty" class="txtQty select-size50-height23 " />
+                                    <input type="text" id="txtQty" class="txtQty select-size70-height23 " />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Good1*@
@@ -1106,9 +1130,9 @@
                                     @*Return Bad1*@
                                     <input type="text" id="txtBad" class="txtBad select-size50-height23 " />
                                 </td>
-                                <td class="mnReturn">
+                                <td class="mnReturn hidecolumn">
                                     @*Return Qty1*@
-                                    <input type="text" id="txtQty1" class="txtQty1 select-size50-height23 " />
+                                    <input type="text" id="txtQty1" class="txtQty1 select-size70-height23 " />
                                 </td>
                                 <td>
                                     @*Remark*@
@@ -1163,7 +1187,7 @@
                                 </td>
                                 <td>
                                     @*Qty2*@
-                                    <input type="text" id="txtQty" class="txtQty select-size50-height23 " />
+                                    <input type="text" id="txtQty" class="txtQty select-size70-height23 " />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Good2*@
@@ -1181,9 +1205,9 @@
                                     @*Return Bad2*@
                                     <input type="text" id="txtBad" class="txtBad select-size50-height23 " />
                                 </td>
-                                <td class="mnReturn">
+                                <td class="mnReturn hidecolumn">
                                     @*Return Qty1*@
-                                    <input type="text" id="txtQty1" class="txtQty1 select-size50-height23 " />
+                                    <input type="text" id="txtQty1" class="txtQty1 select-size70-height23 " />
                                 </td>
                                 <td>
                                     @*Remark2*@
@@ -1199,7 +1223,8 @@
                         </tbody>
                     </table>
                 </div>
-            @*<button id="add-row2" class="btn btn-primary" onclick="SetRowIndex()" onblur="SetRowIndex()" onmouseout="AddrowManpower()">Add Row</button>*@
+            </div>
+                @*<button id="add-row2" class="btn btn-primary" onclick="SetRowIndex()" onblur="SetRowIndex()" onmouseout="AddrowManpower()">Add Row</button>*@
                 <a id="add-row10" href="#" onclick="SetRowIndex()" onblur="SetRowIndex()" onmouseout="AddrowRequisition()">+ Add Row</a>
             </div>
         @*Requisition End*@

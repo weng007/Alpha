@@ -134,7 +134,7 @@ function CreateData() {
         var date2 = d + "_" + m + "_" + res + "_";
         FileName = date2 + file.name;
         var imgData = getBase64Image(imgElem);
-        alert(imgData);
+        //alert(imgData);
         var imgPath = ("../Attach/Product/" + FileName);
     }
     var RDate = ChangeformatDate($("#dtReceiveDate").val(), 1);
