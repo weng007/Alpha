@@ -25,8 +25,10 @@ function ControlEnable(Isview) {
     //var Isview = val;
     if (Isview) {
         document.getElementById("txtDetail").disabled = true;
-        document.getElementById("txtPrice").disabled = true;
+        document.getElementById("txtPricelist").disabled = true;
+        document.getElementById("txtSeq").disabled = true;
         document.getElementById("btnSave").disabled = true;
+        document.getElementById("cmbExpenseGroup").disabled = true;
     }
 }
 function GetData(val) { 
@@ -44,7 +46,7 @@ function GetData(val) {
            //alert(data.Table[0].ExpenseGroup);
            $("#txtDetail").val(data.Table[0].Detail);
            $("#cmbExpenseGroup").val(data.Table[0].ExpenseGroup);
-           $("#txtPrice").val(price);
+           $("#txtPricelist").val(price);
            $("#txtSeq").val(data.Table[0].Seq);
            CheckAuthorization();
        },
@@ -55,7 +57,7 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var Price = $("#txtPrice").val().replace(',', '');
+    var Price = $("#txtPricelist").val().replace(',', '');
     var dataObject = { ID: val, Detail: $("#txtDetail").val(), ExpenseGroup: $("#cmbExpenseGroup").find(":selected").val(), PriceList: Price, Seq: $("#txtSeq").val(), EditBy: localStorage['UserID'] };
         $.ajax(
         {

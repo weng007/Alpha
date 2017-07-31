@@ -2,7 +2,7 @@
     ViewBag.Title = "DashBoard";
 }
 
-<h2>DashBoard</h2>
+@*<h2>DashBoard</h2>*@
 <script src="@Url.Content("~/Scripts/CUDS/Technician/TechnicianExpiredCard.js")" type="text/javascript"></script>
 
 <link href="@Url.Content("~/Content/calendar/fullcalendarCustom.css")" rel="stylesheet" type="text/css" />
@@ -216,25 +216,37 @@ $(document).ready(function () {
         font-family: serif;
     }
 </style>
+<h2 class="bigtopic">Job Order</h2><h2>Man Power</h2>
 <div id="calendar"></div>
 <div id="calendarManPower"></div>
 <section class="features">
-    <table id="tblExpiredTechnician" class="table tbgray table-striped-gray scrolling">
-        <thead class="bgthead-gray">
+    <div class="table-responsive">
+        <table class="barattach-gray">
             <tr>
-                <th class="thgray">No.</th>
-                <th class="hidecolumn">TechnicianID</th>
-                <th class="thgray">ชื่อ-นามสกุล</th>
-                <th class="thgray hideANDseek">ตำแหน่ง</th>
-                <th class="thgray">ประเภทพนักงาน</th>
-                <th class="thgray hideANDseek">เลขที่บัตร</th>
-                <th class="thgray">วันหมดอายุ</th>
-                <th class="hidecolumn">ประเภทบัตร</th>
-                <th class="thgray">บริษัท</th>
-                @*<th></th>*@
+                <td>
+                    <label class="topicmargin-size67">Requisition & Return</label>
+                    <div class="topicText">Search : <input id="searchInput" placeholder="Type To Filter" class="textleft"><br /></div>
+                </td>
             </tr>
-        </thead>
-        <tbody id="ExpiredCard"></tbody>
-    </table>
+        </table>
+        <table id="tblExpiredTechnician" class="table tbgray table-striped-gray scrolling">
+            <thead class="bgthead-gray">
+                <tr>
+                    <th class="thgray">No.</th>
+                    <th class="hidecolumn">TechnicianID</th>
+                    <th class="thgray">ชื่อ-นามสกุล</th>
+                    <th class="thgray hideANDseek">ตำแหน่ง</th>
+                    <th class="thgray">ประเภทพนักงาน</th>
+                    <th class="thgray hideANDseek">เลขที่บัตร</th>
+                    <th class="thgray">วันหมดอายุ</th>
+                    <th class="hidecolumn">ประเภทบัตร</th>
+                    <th class="thgray">บริษัท</th>
+                    @*<th></th>*@
+                </tr>
+            </thead>
+            <tbody id="ExpiredCard"></tbody>
+        </table>
+    </div>
+        
 </section>
 

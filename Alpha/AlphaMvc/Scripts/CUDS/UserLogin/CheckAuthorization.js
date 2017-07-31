@@ -630,7 +630,7 @@ function CheckAuthorization() {
                         //alert("Role 0");
                         $('#subRptJob').attr("style", "display:none");
                         IsRptJobOrder = 1;
-                        alert("subRptJob");
+                        //alert("subRptJob");
                     }
                 }
                 //(Report)Requisition
@@ -639,7 +639,7 @@ function CheckAuthorization() {
                         //alert("Role 0");
                         $('#subRptRequisition').attr("style", "display:none");
                         IsRptRequisition = 1;
-                        alert("subRptRequisition");
+                        //alert("subRptRequisition");
                     }
                 }
                 
@@ -690,7 +690,7 @@ function CheckAuthorization() {
                 }
                 if (IsRptJobOrder == 1 && IsRptRequisition == 1)
                 {
-                    alert("mnReport");
+                    //alert("mnReport");
                     $('#mnReport').attr("style", "display:none");
                 }
 

@@ -57,6 +57,10 @@ function Update(val) {
     var dataObject = {
         ID: val,
         SecurityID: $("#cmbSecurityProfile").find(":selected").val(),
+        UserName: $("#txtUserName").val(),
+        FirstName: $("#txtFirstName").val(),
+        LastName: $("#txtLastName").val(),
+        Email: $("#txtEmail").val(),
         EditBy: localStorage['UserID']
     };
     console.log($("#cmbSecurityProfile").find(":selected").val());

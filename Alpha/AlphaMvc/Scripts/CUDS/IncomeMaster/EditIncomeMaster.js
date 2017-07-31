@@ -4,7 +4,8 @@ function ControlEnable(Isview)
     if(Isview)
     {
         document.getElementById("txtDetail").disabled = true;
-        document.getElementById("txtPrice").disabled = true;
+        document.getElementById("txtPricelist").disabled = true;
+        document.getElementById("txtSeq").disabled = true;
         document.getElementById("btnSave").disabled = true;
     }
 }
@@ -21,7 +22,7 @@ function GetData(val) {
            data = JSON.parse(data);
            var price = AddComma(parseFloat(data.Table[0].PriceList).toFixed(2))
            $("#txtDetail").val(data.Table[0].Detail);
-           $("#txtPrice").val(price);
+           $("#txtPricelist").val(price);
            $("#txtSeq").val(data.Table[0].Seq);
            CheckAuthorization();
        },
@@ -32,7 +33,7 @@ function GetData(val) {
    });
 }
 function Update(val) {
-    var Price = $("#txtPrice").val().replace(',', '');
+    var Price = $("#txtPricelist").val().replace(',', '');
     var dataObject = { ID: val, Detail: $("#txtDetail").val(), PriceList: Price, Seq: $("#txtSeq").val(), EditBy: localStorage['UserID'] };
        $.ajax(
         {

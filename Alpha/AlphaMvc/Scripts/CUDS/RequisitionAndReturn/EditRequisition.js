@@ -660,6 +660,7 @@ function GetdataRequisition(val)
            $('#txtJobOrderNo').val(data.Table1[0].JobNo);
            $('#dtJobOrderDate').val(JobOrderDate);
            $('#txtJobLocation').val(data.Table1[0].Location);
+           $('#txtCustomer').val(data.Table1[0].Name);
 
            if (data.Table2.length > 0)
            {

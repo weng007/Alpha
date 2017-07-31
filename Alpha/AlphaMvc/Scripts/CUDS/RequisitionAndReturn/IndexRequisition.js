@@ -56,6 +56,8 @@ function GetJobOrder() {
             data = JSON.parse(data);
             var html = '<tbody>';
             for (var i = 0; i < data.Table.length; i++) {
+                var Taker = data.Table[i].Taker != null ? data.Table[i].Taker : '-';
+                var Giver = data.Table[i].Giver != null ? data.Table[i].Giver : '-';
                 html += '<tr>';
                 html += '<td>' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
@@ -63,6 +65,8 @@ function GetJobOrder() {
                 var JobDate = new Date(data.Table[i].JobDate);
                 html += '<td class="nopointer">' + JobDate.getDate() + '/' + (JobDate.getMonth() + 1) + '/' + JobDate.getFullYear() + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Name + '</td>';
+                html += '<td class="nopointer nopointer">' + Taker + '</td>';
+                html += '<td class="nopointer nopointer">' + Giver + '</td>';
                 html += '<td class="nopointer nopointer">' + data.Table[i].Status + '</td>';
                 html += '<td class="nopointer hidecolumn">' + data.Table[i].Tel + '</td>';
                 html += '<td class="nopointer hidecolumn">' + data.Table[i].Contact + '</td>';

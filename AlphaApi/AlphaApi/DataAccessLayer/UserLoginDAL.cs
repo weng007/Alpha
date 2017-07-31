@@ -24,9 +24,9 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_User_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@UserName", userLoginModels.UserName);
-                    //cmd.Parameters.AddWithValue("@FirstName", userLoginModels.FirstName != null && userLoginModels.FirstName != "" ? userLoginModels.FirstName : "");
-                    //cmd.Parameters.AddWithValue("@LastName", userLoginModels.LastName != null && userLoginModels.LastName != "" ? userLoginModels.LastName : "");
-                    //cmd.Parameters.AddWithValue("@Email", userLoginModels.Email != null && userLoginModels.Email != "" ? userLoginModels.Email : "");
+                    cmd.Parameters.AddWithValue("@FirstName", userLoginModels.FirstName != null && userLoginModels.FirstName != "" ? userLoginModels.FirstName : "");
+                    cmd.Parameters.AddWithValue("@LastName", userLoginModels.LastName != null && userLoginModels.LastName != "" ? userLoginModels.LastName : "");
+                    cmd.Parameters.AddWithValue("@Email", userLoginModels.Email != null && userLoginModels.Email != "" ? userLoginModels.Email : "");
                     cmd.Parameters.AddWithValue("@SecurityID", userLoginModels.SecurityID);
                     cmd.Parameters.AddWithValue("@CreateBy", userLoginModels.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", userLoginModels.EditBy);
@@ -354,9 +354,10 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_User_Upd", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", userLoginModels.ID);
-                    //cmd.Parameters.AddWithValue("@FirstName", userLoginModels.FirstName != null && userLoginModels.FirstName != "" ? userLoginModels.FirstName : "");
-                    //cmd.Parameters.AddWithValue("@LastName", userLoginModels.LastName != null && userLoginModels.LastName != "" ? userLoginModels.LastName : "");
-                    //cmd.Parameters.AddWithValue("@Email", userLoginModels.Email != null && userLoginModels.Email != "" ? userLoginModels.Email : "");
+                    cmd.Parameters.AddWithValue("@UserName", userLoginModels.UserName);
+                    cmd.Parameters.AddWithValue("@FirstName", userLoginModels.FirstName != null && userLoginModels.FirstName != "" ? userLoginModels.FirstName : "");
+                    cmd.Parameters.AddWithValue("@LastName", userLoginModels.LastName != null && userLoginModels.LastName != "" ? userLoginModels.LastName : "");
+                    cmd.Parameters.AddWithValue("@Email", userLoginModels.Email != null && userLoginModels.Email != "" ? userLoginModels.Email : "");
                     cmd.Parameters.AddWithValue("@SecurityID", userLoginModels.SecurityID);
                     cmd.Parameters.AddWithValue("@EditBy", userLoginModels.EditBy);
                     conObj.Open();

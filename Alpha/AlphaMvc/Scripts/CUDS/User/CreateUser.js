@@ -73,6 +73,9 @@ function CreateData(val) {
         var dataObject = {
             UserName: $("#txtUserName").val(),
             SecurityID: $("#cmbSecurityProfile").find(":selected").val(),
+            FirstName: $("#txtFirstName").val(),
+            LastName: $("#txtLastName").val(),
+            Email: $("#txtEmail").val(),
             CreateBy: localStorage['UserID'],
             EditBy: localStorage['UserID']
         };

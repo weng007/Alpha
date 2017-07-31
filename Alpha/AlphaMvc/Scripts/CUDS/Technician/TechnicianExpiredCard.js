@@ -60,16 +60,16 @@ $(document).ready(function () {
         var html = '<tbody>';
         for (var i = 0; i < data.Table.length; i++) {
             html += '<tr>';
-            html += '<td>' + data.Table[i].RowNum + '</td>';
-            html += '<td  class="hidecolumn">' + data.Table[i].TechnicianID + '</td>';
-            html += '<td>' + data.Table[i].FullName + '</td>';
-            html += '<td class="hideANDseek">' + data.Table[i].PositionName + '</td>';
-            html += '<td>' + data.Table[i].EmpGroup + '</td>';
-            html += '<td class="hideANDseek">' + data.Table[i].CerNo + '</td>';
+            html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
+            html += '<td  class="hidecolumn nopointer">' + data.Table[i].TechnicianID + '</td>';
+            html += '<td class="nopointer">' + data.Table[i].FullName + '</td>';
+            html += '<td class="hideANDseek nopointer">' + data.Table[i].PositionName + '</td>';
+            html += '<td class="nopointer">' + data.Table[i].EmpGroup + '</td>';
+            html += '<td class="hideANDseek nopointer">' + data.Table[i].CerNo + '</td>';
             var ExpiryDate = new Date(data.Table[i].ExpiryDate);
-            html += '<td>' + ExpiryDate.getDate() + '/' + (ExpiryDate.getMonth() + 1) + '/' + ExpiryDate.getFullYear() + '</td>';
-            html += '<td class="hidecolumn">' + data.Table[i].CardType + '</td>';
-            html += '<td>' + data.Table[i].CompanyName + '</td>';
+            html += '<td class="nopointer">' + ExpiryDate.getDate() + '/' + (ExpiryDate.getMonth() + 1) + '/' + ExpiryDate.getFullYear() + '</td>';
+            html += '<td class="hidecolumn nopointer">' + data.Table[i].CardType + '</td>';
+            html += '<td class="nopointer">' + data.Table[i].CompanyName + '</td>';
             html += '</tr>';
         }
         html += '</tbody>';

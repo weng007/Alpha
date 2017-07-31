@@ -47,6 +47,8 @@ function ControlEnable(Isview) {
     if (Isview) {
         document.getElementById("txtProfile").disabled = true;
         document.getElementById("btnSave").disabled = true;
+        document.getElementById("cmbMenuMaster").disabled = true;
+        document.getElementById("cmbMenuMasterDetail").disabled = true;
         $('input:checkbox').attr("disabled", 'disabled');
     }
 }

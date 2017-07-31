@@ -18,7 +18,7 @@ $(document).ready(function () {
     });
 });
 function CreateData() {
-    var Price = $("#txtPrice").val().replace(',', '');
+    var Price = $("#txtPricelist").val().replace(',', '');
     var dataObject = { Detail: $("#txtDetail").val(), ExpenseGroup: $("#cmbTypeWorking").find(":selected").val(), PriceList: Price, Seq: $("#txtSeq").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
     $.ajax(
     {
