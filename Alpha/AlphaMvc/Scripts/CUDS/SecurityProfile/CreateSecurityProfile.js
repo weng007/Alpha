@@ -71,11 +71,11 @@ $(document).ready(function () {
                 if (TempMenu != data.Table[i].GroupID)
                 {
                     TempMenu = data.Table[i].GroupID;
-                    html += '<td colspan="5">' + data.Table[i].MasterID + '. ' + data.Table[i].GroupName + '</td>';
+                    html += '<td colspan="5" Style="font-weight: bold;">' + data.Table[i].MasterID + '. ' + data.Table[i].GroupName + '</td>';
                     html += '<tr class="RowCal">';
-                    html += '<td class="hidecolumn"><input type="hidden" class="hidTempGroupName" value="' + data.Table[i].GroupName + '"/></td>';
+                    //html += '<td class="hidecolumn"><input type="hidden" class="hidTempGroupName" value="' + data.Table[i].GroupName + '"/></td>';
                     html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table[i].ID + '"/></td>';
-                    html += '<td>' + '   - ' + data.Table[i].Detail + '</td>';
+                    html += '<td>' + '&nbsp;&nbsp;&nbsp;&nbsp;' + '- ' + data.Table[i].Detail + '</td>';
                     html += '<td><input id="chkIsView" type="checkbox" class="IsView"></td>';
                     //MN016 Cost & Price, MN001 Dashboard, MN009 Technician, MN010 Expired Technician, MN018 (Report)Job Order, MN019 Requisition
                     if (data.Table[i].MenuID == 'MN016' || data.Table[i].MenuID == 'MN001' || data.Table[i].MenuID == 'MN009' || data.Table[i].MenuID == 'MN010' || data.Table[i].MenuID == 'MN018' || data.Table[i].MenuID == 'MN019')
@@ -100,7 +100,7 @@ $(document).ready(function () {
                 }
                 else
                 {
-                    html += '<td>' + '   - ' + data.Table[i].Detail + '</td>';
+                    html += '<td>' + '&nbsp;&nbsp;&nbsp;&nbsp;' + '- ' + data.Table[i].Detail + '</td>';
                     html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table[i].ID + '"/></td>';
                     html += '<td><input id="chkIsView" type="checkbox" class="IsView"></td>';
                     //MN016 Cost & Price, MN001 Dashboard, MN009 Technician, MN010 Expired Technician, MN018 (Report)Job Order, MN019 Requisition
@@ -123,7 +123,7 @@ $(document).ready(function () {
                         html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()"></td>';
                         html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete"></td>';
                     }
-                    html += '<td class="hidecolumn"><input type="hidden" class="hidTempGroupName" value="' + data.Table[i].Detail + '"/></td>';
+                    //html += '<td class="hidecolumn"><input type="hidden" class="hidTempGroupName" value="' + data.Table[i].Detail + '"/></td>';
                     TempMenu = data.Table[i].GroupID;
                 }
                 html += '</tr>';
@@ -202,11 +202,12 @@ function CreateData() {
     
         var dataObject = {};
         $(".RowCal").each(function () {
-            var TempGroupName = $(this).find(".hidTempGroupName").val();
-            if (TempGroupName != 'DashBoard' || TempGroupName != 'Administrator' || TempGroupName != 'Activity' || TempGroupName != 'Technician & Card' || TempGroupName != 'Tools & Machine' || TempGroupName != 'Estimate & Job Order' || TempGroupName != 'Payment' || TempGroupName != 'Report')
+            if ($(this).find('td:eq(1)').text() != '1. DashBoard' && $(this).find('td:eq(1)').text() != '2. Administrator' && $(this).find('td:eq(1)').text() != '3. Activity'
+            && $(this).find('td:eq(1)').text() != '4. Technician & Card' && $(this).find('td:eq(1)').text() != '5. Tools & Machine' && $(this).find('td:eq(1)').text() != '6. Estimate & Job Order' && $(this).find('td:eq(1)').text() != '7. Payment' && $(this).find('td:eq(1)').text() != '8. Report')
             {
                 dataObject.SecurityID = SecurityID;
-                dataObject.MenuID = TempGroupName != 'DashBoard' || TempGroupName != 'Administrator' || TempGroupName != 'Activity' || TempGroupName != 'Technician & Card' || TempGroupName != 'Tools & Machine' || TempGroupName != 'Estimate & Job Order' || TempGroupName != 'Payment' || TempGroupName != 'Report'? $(this).find(".hidMenuTypeID").val() : 0;
+                dataObject.MenuID = $(this).find('td:eq(1)').text() != '1. DashBoard' && $(this).find('td:eq(1)').text() != '2. Administrator' && $(this).find('td:eq(1)').text() != '3. Activity'
+            && $(this).find('td:eq(1)').text() != '4. Technician & Card' && $(this).find('td:eq(1)').text() != '5. Tools & Machine' && $(this).find('td:eq(1)').text() != '6. Estimate & Job Order' && $(this).find('td:eq(1)').text() != '7. Payment' && $(this).find('td:eq(1)').text() != '8. Report' ? $(this).find(".hidMenuTypeID").val() : 0;
                 dataObject.IsView = $(this).find('.IsView').is(":checked") == true ? 1 : 0;
                 dataObject.IsInsert = $(this).find('.IsInsert').is(":checked") == true ? 1 : 0;
                 dataObject.IsUpdate = $(this).find(".IsUpdate").is(":checked") == true ? 1 : 0;

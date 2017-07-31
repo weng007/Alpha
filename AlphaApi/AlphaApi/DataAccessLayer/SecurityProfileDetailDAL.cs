@@ -134,10 +134,9 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string DeleteDetail(SecurityProfileDetailModels securityProfileDetailModel)
+        public void DeleteDetail(SecurityProfileDetailModels securityProfileDetailModel)
         {
             SqlConnection con = null;
-            string result = "";
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -146,12 +145,11 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", securityProfileDetailModel.ID);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
-                    return result;
+                    cmd.ExecuteNonQuery();
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
                 finally
                 {

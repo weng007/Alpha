@@ -109,8 +109,8 @@ function GetData(val)
                 html += '<td class="ManPremium">' + data.Table1[i].ManPremium + '</td>';
                 html += '<td class="ManPremium2">' + data.Table1[i].ManPremium2 + '</td>';
                 html += '<td class="ManSpecial">' + data.Table1[i].ManSpecial + '</td>';
-                html += '<td><input type="text" id="txtAdditionnal" name="field1" class="Additionnal Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
-                html += '<td><input type="text" id="txtDeduction" name="field1" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
+                html += '<td><input type="text" id="txtAdditional" name="field1"  onchange="SumAdditional();" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
+                html += '<td><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional();" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
                 html += '<td>' + '' + '</td>';
                 html += '<td>' + '' + '</td>';
                 html += '</tr>';
@@ -136,6 +136,8 @@ function GetData(val)
             document.getElementById("result").innerHTML = html;
             CheckAuthorization();
             GetTotal();
+            alert("Test");
+            SumAdditional();
         },
         error: function (msg) {
             alert(msg)
@@ -237,6 +239,28 @@ function GetTotal() {
 
         var html = '<td>' + AddComma(parseFloat(totalWH).toFixed(2)) + '</td>';
         document.getElementById("totalWH").innerHTML = html;
+}
+function SumAdditional()
+{
+    alert("SumAdditional");
+    var totalAdditionnal = 0;
+    var totalDeduction = 0;
+
+    for (var i = 0; i < $(".RowCal").length; i++) {
+        alert(i);
+        var Additional = $('.Additional').eq(i).val().replace(',', '') != '' && $('.Additional').eq(i).val() != null ? $('.Additional').eq(i).val().replace(',', '') : 0;
+        alert(parseFloat(totalAdditionnal));
+        totalAdditionnal = parseFloat(totalAdditionnal) + parseFloat(Additional);
+        
+
+        //totalDeduction = totalDeduction + parseFloat(parseFloat($('.Deduction.eq(' + i + ')').html() != '' && $('.Deduction.eq(' + i + ')').html() != null ? $('.Deduction.eq(' + i + ')').html() : 0));
+    }
+    alert(totalAdditionnal);
+    var html = '<td>' + AddComma(parseFloat(totalAdditionnal).toFixed(2)) + '</td>';
+    document.getElementById("totalAdditionnal").innerHTML = html;
+
+    var html = '<td>' + AddComma(parseFloat(totalDeduction).toFixed(2)) + '</td>';
+    document.getElementById("totalDeduction").innerHTML = html;
 }
 function GetManDay(val) {
     var ManDate = val;

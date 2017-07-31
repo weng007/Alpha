@@ -59,12 +59,10 @@ namespace AlphaApi.Controllers
         }
 
         [HttpDelete]
-        public string Delete(SecurityProfileDetailModels securityProfileDetailModel)
+        public void Delete(SecurityProfileDetailModels securityProfileDetailModel)
         {
             //calling DBData Class Method and storing Repsonse   
-            var response = securityProfileDetail.DeleteDetail(securityProfileDetailModel);
-            return response;
-
+            securityProfileDetail.DeleteDetail(securityProfileDetailModel);
         }
     }
 }

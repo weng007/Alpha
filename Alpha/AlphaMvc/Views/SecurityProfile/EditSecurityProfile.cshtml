@@ -49,6 +49,7 @@
         var val = after.split('=');
         var ID = val[1];
         var Isview = val[2];
+        GetMenumaster();
         GetMenumasterDetail();
         GetData(@Request.Params["id"]);
         ControlEnable(Isview);
