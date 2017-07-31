@@ -46,7 +46,7 @@ $(document).ready(function () {
             var html = '';
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
-                html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
+                html += '<td class="nopointer txtcenter">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Profile + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].FirstPage + '</td>';

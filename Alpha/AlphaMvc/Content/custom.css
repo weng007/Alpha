@@ -20,6 +20,9 @@
  */
 
 /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
+.txtcenter{
+    text-align:center;
+}
 .cmbsize106
 {
    width: 106% !important;

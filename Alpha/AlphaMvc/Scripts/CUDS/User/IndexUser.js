@@ -41,12 +41,14 @@ $(document).ready(function () {
             data = JSON.parse(data);
             var html = '';
             for (var i = 0; i < data.Table.length; i++) {
+                var FullName = data.Table[i].FullName != null ? data.Table[i].FullName : '-';
+                var Email = data.Table[i].Email != null ? data.Table[i].Email : '-';
                 html += '<tr>';
-                html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
+                html += '<td class="nopointer txtcenter">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].UserName + '</td>';
-                //html += '<td class="nopointer">' + data.Table[i].FirstName + '  ' + data.Table[i].LastName + '</td>';
-                //html += '<td class="nopointer">' + data.Table[i].Email + '</td>';
+                html += '<td class="nopointer">' + FullName + '</td>';
+                html += '<td class="nopointer">' + Email + '</td>';
                 //html += '<td class="nopointer">' + data.Table[i].UserStatus + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].SecurityProfile + '</td>';
                 html += '<td>';

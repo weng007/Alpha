@@ -2,7 +2,7 @@
     ViewBag.Title = "EditUser";
 }
 
-<h2>EditUser</h2>
+@*<h2>EditUser</h2>*@
 <script src="@Url.Content("~/Scripts/CUDS/User/EditUser.js")" type="text/javascript"></script>
 <div class="modal fade" id="ShowDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <style>
@@ -16,13 +16,13 @@
         width: 20px;
     }
 </style>
-<table>
+@*<table>
     <tr>
         <td>
             <div class="linkstyle">@Html.ActionLink("User List", "IndexUser")</div>
         </td>
     </tr>
-</table>
+</table>*@
 <div id="myModal">
     @using (Html.BeginForm())
     {

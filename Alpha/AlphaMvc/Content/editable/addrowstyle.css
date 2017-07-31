@@ -350,6 +350,9 @@
     .text-size140 {
             width: 140px !important;
         }
+    .text-size150 {
+            width: 150px !important;
+        }
     .text-size160 {
             width: 160px !important;
         }
@@ -542,14 +545,15 @@
     float: left;
     margin-right: 10%;
 }
-.form-style .label-small-7 {
+.form-style .label-small-22 {
     margin: 0 0 3px 0;
     padding: 0px;
     display: block;
     font-weight: bold;
     float: left;
-    margin-right: 7%;
+    margin-right: 22%;
 }
+
 .form-style .label-small-4 {
     margin: 0 0 3px 0;
     padding: 0px;

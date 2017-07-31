@@ -247,13 +247,12 @@ function SumAdditional()
     var totalDeduction = 0;
 
     for (var i = 0; i < $(".RowCal").length; i++) {
-        alert(i);
         var Additional = $('.Additional').eq(i).val().replace(',', '') != '' && $('.Additional').eq(i).val() != null ? $('.Additional').eq(i).val().replace(',', '') : 0;
         alert(parseFloat(totalAdditionnal));
         totalAdditionnal = parseFloat(totalAdditionnal) + parseFloat(Additional);
         
-
-        //totalDeduction = totalDeduction + parseFloat(parseFloat($('.Deduction.eq(' + i + ')').html() != '' && $('.Deduction.eq(' + i + ')').html() != null ? $('.Deduction.eq(' + i + ')').html() : 0));
+        var Deduction = $('.Deduction').eq(i).val().replace(',', '') != '' && $('.Deduction').eq(i).val() != null ? $('.Deduction').eq(i).val().replace(',', '') : 0;
+        totalDeduction = parseFloat(totalDeduction) + parseFloat(Deduction);
     }
     alert(totalAdditionnal);
     var html = '<td>' + AddComma(parseFloat(totalAdditionnal).toFixed(2)) + '</td>';

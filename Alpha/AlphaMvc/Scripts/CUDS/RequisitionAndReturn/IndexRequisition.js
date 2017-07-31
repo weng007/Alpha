@@ -59,7 +59,7 @@ function GetJobOrder() {
                 var Taker = data.Table[i].Taker != null ? data.Table[i].Taker : '-';
                 var Giver = data.Table[i].Giver != null ? data.Table[i].Giver : '-';
                 html += '<tr>';
-                html += '<td>' + data.Table[i].RowNum + '</td>';
+                html += '<td class=txtcenter">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].JobNo + '</td>';
                 var JobDate = new Date(data.Table[i].JobDate);
