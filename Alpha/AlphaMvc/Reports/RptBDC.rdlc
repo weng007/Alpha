@@ -950,6 +950,7 @@
                               <Value>=Sum(Fields!Amount.Value, "dsBDCIncome")</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1405,7 +1406,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!RowNum.Value</Value>
+                              <Value>=iif(Fields!RowNum.Value.ToString = "0","" ,Fields!RowNum.Value)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1972,7 +1973,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>ผลกำไร %</Value>
+                  <Value>ผลกำไร</Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
                   </Style>
@@ -2084,7 +2085,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=((Sum(Fields!Amount.Value, "dsBDCIncome")-Sum(Fields!Amount.Value, "dsBDCExpense"))*10)/100</Value>
+                  <Value>=((Sum(Fields!Amount.Value, "dsBDCIncome")-Sum(Fields!Amount.Value, "dsBDCExpense")))</Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
                     <Format>n2</Format>

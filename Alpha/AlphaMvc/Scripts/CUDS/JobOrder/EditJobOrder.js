@@ -403,7 +403,7 @@ function BrowseCustomer(val) {
                 $('#txtContact').val(data.Table[0].Contact)
                 $('#txtCoWorker').val(data.Table[0].CoWorker)
                 $('#txtAddress').val(data.Table[0].Address)
-
+                $('#txtIssuedBy').val(data.Table[0].IssuedBy)
                 //CalSumExpense();
             }
         },
@@ -1353,26 +1353,8 @@ function GetManpowerHour(isCheckBreak) {
     var ToTime = $('.WorkingTo').eq(row_index).val();
     var workingFrom = $('.WorkingFrom').eq(row_index).val();
     var workingTo = $('.WorkingTo').eq(row_index).val();
-    var isBreak1 = $(this).find('.chkBreak1').eq(row_index).is(":checked");
-    var isBreak2 = $(this).find('.chkBreak2').eq(row_index).is(":checked");
-
-    if (isCheckBreak == '1') {
-        if (isBreak1 = 'false') {
-            isBreak1 = true;
-        }
-        else {
-            isBreak1 = false;
-        }
-    }
-    else {
-        if (isBreak2 = 'false') {
-            isBreak2 = true;
-        }
-        else {
-            isBreak2 = false;
-        }
-    }
-    
+    var isBreak1 = $('.chkBreak1').eq(row_index).is(":checked");
+    var isBreak2 = $('.chkBreak2').eq(row_index).is(":checked");
 
     if (ManDate != '') {
         var days = [
@@ -1401,6 +1383,7 @@ function GetManpowerHour(isCheckBreak) {
     if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '') {
         var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime + '&' + isBreak1 + '&' + isBreak2 }
         console.log(dataObject);
+        alert('Test1');
         $.ajax(
         {
             url: 'http://localhost:13131/api/OT',
