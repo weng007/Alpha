@@ -327,6 +327,8 @@ namespace MymobilewalaMvc.Reports.DS {
             
             private global::System.Data.DataColumn columnPositionNameTH;
             
+            private global::System.Data.DataColumn columnSalary;
+            
             private global::System.Data.DataColumn columnDepartmentName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -556,6 +558,14 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SalaryColumn {
+                get {
+                    return this.columnSalary;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn DepartmentNameColumn {
                 get {
                     return this.columnDepartmentName;
@@ -623,6 +633,7 @@ namespace MymobilewalaMvc.Reports.DS {
                         string EmpGroup, 
                         int WeekDay, 
                         string PositionNameTH, 
+                        double Salary, 
                         string DepartmentName) {
                 SP_RptWageTechnicianRow rowSP_RptWageTechnicianRow = ((SP_RptWageTechnicianRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -650,6 +661,7 @@ namespace MymobilewalaMvc.Reports.DS {
                         EmpGroup,
                         WeekDay,
                         PositionNameTH,
+                        Salary,
                         DepartmentName};
                 rowSP_RptWageTechnicianRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_RptWageTechnicianRow);
@@ -704,6 +716,7 @@ namespace MymobilewalaMvc.Reports.DS {
                 this.columnEmpGroup = base.Columns["EmpGroup"];
                 this.columnWeekDay = base.Columns["WeekDay"];
                 this.columnPositionNameTH = base.Columns["PositionNameTH"];
+                this.columnSalary = base.Columns["Salary"];
                 this.columnDepartmentName = base.Columns["DepartmentName"];
             }
             
@@ -758,6 +771,8 @@ namespace MymobilewalaMvc.Reports.DS {
                 base.Columns.Add(this.columnWeekDay);
                 this.columnPositionNameTH = new global::System.Data.DataColumn("PositionNameTH", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPositionNameTH);
+                this.columnSalary = new global::System.Data.DataColumn("Salary", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSalary);
                 this.columnDepartmentName = new global::System.Data.DataColumn("DepartmentName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDepartmentName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -1300,6 +1315,22 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Salary {
+                get {
+                    try {
+                        return ((double)(this[this.tableSP_RptWageTechnician.SalaryColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Salary\' in table \'SP_RptWageTechnician\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_RptWageTechnician.SalaryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string DepartmentName {
                 get {
                     try {
@@ -1588,6 +1619,18 @@ namespace MymobilewalaMvc.Reports.DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPositionNameTHNull() {
                 this[this.tableSP_RptWageTechnician.PositionNameTHColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSalaryNull() {
+                return this.IsNull(this.tableSP_RptWageTechnician.SalaryColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSalaryNull() {
+                this[this.tableSP_RptWageTechnician.SalaryColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

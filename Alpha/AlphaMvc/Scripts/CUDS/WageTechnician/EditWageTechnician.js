@@ -13,9 +13,11 @@ var AmountNormal1 = 0;
 var AmountPremium1_5 = 0;
 var AmountPremium2_0 = 0;
 var AmountPremium3_0 = 0;
+var row_index = 0;//RowCal4 Receipt
 $(document).ready(function () {
 
     //$("#txtDetail").focus();
+
     
     $("#dtDateFrom").datepicker({
         inline: true,
@@ -181,7 +183,6 @@ function GetTotal() {
 }
 function SumAdditional()
 {
-    alert("SumAdditional");
     var totalAdditional = 0;
     var totalDeduction = 0;
     var totalAmount = 0;
@@ -213,9 +214,15 @@ function SumAdditional()
     }
 
     totalWH = parseFloat(totalAmount) - parseFloat(totalVat)
+    //alert(row_index);
+    //$('.Additional').eq(row_index).val($('.Additional').eq(row_index).val()).formatNumber({ format: "#,###.00", locale: "us" });
     document.getElementById("totalAmount").innerHTML = AddComma(parseFloat(totalAmount).toFixed(2));
     document.getElementById("totalVat").innerHTML = AddComma(parseFloat(totalVat).toFixed(2));
     document.getElementById("totalWH").innerHTML = AddComma(parseFloat(totalWH).toFixed(2));
+}
+function convertFloat(str) {
+    alert("Test");
+    $(str).val($(str).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
 }
 function GetManDay(val) {
     var ManDate = val;

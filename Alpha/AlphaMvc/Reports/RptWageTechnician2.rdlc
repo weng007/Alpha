@@ -2122,7 +2122,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=SUM(Fields!NormalDay.Value, "dsWageTechnicianDetail")</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2474,7 +2474,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value))</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2509,7 +2509,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(20000/30/8)</Value>
+                              <Value>=Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*1.5)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2545,7 +2545,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*(20000/30/8)*1.5</Value>
+                              <Value>=Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*2)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2581,7 +2581,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((20000/30/8)*3)</Value>
+                              <Value>=Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*3)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2826,7 +2826,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value))</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2861,7 +2861,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(20000/30/8))</Value>
+                              <Value>=Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*1.5)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2897,7 +2897,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*((20000/30/8)*1.5))</Value>
+                              <Value>=Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*2))</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2933,7 +2933,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((20000/30/8)*3))</Value>
+                              <Value>=Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*3))</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2969,7 +2969,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(20000/30/8)))+(Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*((20000/30/8)*1.5)))+(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((20000/30/8)*2)))+(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((20000/30/8)*3)))</Value>
+                              <Value>=(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value))+(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value)*1.5))+(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*2)))+(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*3)))+Sum(Fields!Additionnal.Value))-Sum(Fields!Deduction.Value)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -3005,7 +3005,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=(((Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value))+(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value)*1.5))+(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*2)))+(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*3)))+Sum(Fields!Additionnal.Value))-Sum(Fields!Deduction.Value)*3)/100)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -3490,7 +3490,7 @@
         <Top>2.34103cm</Top>
         <Left>0.24342cm</Left>
         <Height>5.30271cm</Height>
-        <Width>19.93385cm</Width>
+        <Width>19.93386cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -3553,7 +3553,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>PositionNameTH</rd:DefaultName>
-        <Top>1.10127cm</Top>
+        <Top>1.08391cm</Top>
         <Left>10.17917cm</Left>
         <Height>0.6cm</Height>
         <Width>6.367cm</Width>
@@ -4162,7 +4162,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsWageTechnician</rd:DataSetName>
-        <rd:SchemaPath>D:\leadssoft\Project\Alpha\Alpha\AlphaMvc\dsWageTechnician.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\leadssoft\Project\Alpha\Alpha\AlphaMvc\Reports\DS\dsWageTechnician.xsd</rd:SchemaPath>
         <rd:TableName>SP_RptWageTechnician</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -4270,6 +4270,10 @@
         <Field Name="PositionNameTH">
           <DataField>PositionNameTH</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Salary">
+          <DataField>Salary</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="DepartmentName">
           <DataField>DepartmentName</DataField>
