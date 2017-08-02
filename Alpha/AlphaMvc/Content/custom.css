@@ -3550,7 +3550,8 @@ input[type="button"].btn-block {
 .dropdown-menu > li > a:focus {
   color: #ffffff;
   text-decoration: none;
-  background-color: #428bca;
+  /*background-color: #428bca;*/
+  background-color: rgba(92, 92, 92, 0.4);
 }
 
 .dropdown-menu > .active > a,
@@ -3558,7 +3559,8 @@ input[type="button"].btn-block {
 .dropdown-menu > .active > a:focus {
   color: #ffffff;
   text-decoration: none;
-  background-color: #428bca;
+  /*background-color: #428bca;*/
+  background-color: rgba(92, 92, 92, 0.4);
   outline: 0;
 }
 
