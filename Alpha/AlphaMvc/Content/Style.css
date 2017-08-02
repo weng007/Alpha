@@ -140,6 +140,12 @@
     color: white;
     margin-right: 67%;
 }
+.topicmargin-size5{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    margin-right: 5%;
+}
 .topicmargin-size70{
     margin-top: 10px;
     margin-left: 10px;
@@ -1776,7 +1782,7 @@ ul.topnav, li.dropdown {
 .topicmargin-size5 {
     margin-top: 10px;
     margin-left: 10px;
-    color: white;
+    color: white !important;
     margin-right: 5%;
 }
 .topicmargin-size70{
