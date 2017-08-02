@@ -19,6 +19,6 @@ function CreateData() {
     });
 }
 function convertFloat(str) {
-    //alert("Test");
+    alert("Test");
     $(str).val($(str).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
 }
