@@ -103,7 +103,7 @@ function GetData(val) {
                                html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none" ' + IsDelete + '></td>';
                            }
                                //MN006 All Activity, MN007 Calendar Job, MN008 Calendar Man Power, MN017 (Payment)Alpha & Outsource
-                           else if (data.Table1[i].MenuID == 'MN006' || data.Table1[i].MenuID == 'MN007' || data.Table1[i].MenuID == 'MN008' || data.Table1[i].MenuID == 'MN017' )
+                           else if (data.Table1[i].MenuID == 'MN006' || data.Table1[i].MenuID == 'MN007' || data.Table1[i].MenuID == 'MN008' || data.Table1[i].MenuID == 'MN017' || data.Table1[i].MenuID == 'MN021' || data.Table1[i].MenuID == 'MN022')
                            {
                                html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none" ' + IsInsert + '></td>';
                                html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" ' + IsUpdate + '></td>';
@@ -128,7 +128,7 @@ function GetData(val) {
                                html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none" ' + IsDelete + '></td>';
                            }
                                //MN006 All Activity, MN007 Calendar Job, MN008 Calendar Man Power, MN017 (Payment)Alpha & Outsource
-                           else if (data.Table1[i].MenuID == 'MN006' || data.Table1[i].MenuID == 'MN007' || data.Table1[i].MenuID == 'MN008' || data.Table1[i].MenuID == 'MN017') {
+                           else if (data.Table1[i].MenuID == 'MN006' || data.Table1[i].MenuID == 'MN007' || data.Table1[i].MenuID == 'MN008' || data.Table1[i].MenuID == 'MN017' || data.Table1[i].MenuID == 'MN021' || data.Table1[i].MenuID == 'MN022') {
                                html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none" ' + IsInsert + '></td>';
                                html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" ' + IsUpdate + '></td>';
                                html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none" ' + IsDelete + '></td>';
