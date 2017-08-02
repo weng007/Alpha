@@ -66,7 +66,7 @@ function CheckAD()
 
 function CreateData(val) {
     var IsADUser = $("#hidIsADUser").val();
-    alert(IsADUser);
+    //alert(IsADUser);
     if (IsADUser == 1)
     {
         //alert("Profile " + $("#cmbSecurityProfile").find(":selected").val());
