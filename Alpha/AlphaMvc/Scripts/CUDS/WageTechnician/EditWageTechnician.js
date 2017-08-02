@@ -5,6 +5,8 @@
 //    GetData(ShowAll);
 //}
 $(document).ready(function () {
+
+    //$("#txtDetail").focus();
     
     $("#dtDateFrom").datepicker({
         inline: true,
@@ -17,6 +19,7 @@ $(document).ready(function () {
         dateFormat: "dd/mm/yy"
     })
      .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+    
 });
 function GetData(val)
 {

@@ -11,13 +11,13 @@
         width: 335px;
     }
 </style>
-<table>
+@*<table>
     <tr>
         <td>
             <div class="linkstyle">@Html.ActionLink("Products List", "IndexProducts")</div>
         </td>
     </tr>
-</table>
+</table>*@
 <div id="myModal">
     @using (Html.BeginForm())
     {
@@ -31,13 +31,13 @@
                     <div class="col-xs-4 col-sm-3 col-lg-2">
                         <div class="form-group">
                             <label for="txtSerialNo">Serial Number:<span class="required">*</span></label>
-                            <input type="text" id="txtSerialNo" class="form-control" placeholder="" autofocus required />
+                            <input type="text" id="txtSerialNo" class="form-control" placeholder="" required autofocus/>
                         </div>
                     </div>
                     <div class="col-xs-4 col-sm-3 col-lg-2">
                         <div class="form-group">
                             <label for="txtMachineNo">หมายเลขเครื่อง:</label>
-                            <input type="text" id="txtMachineNo" class="form-control" placeholder="" autofocus required />
+                            <input type="text" id="txtMachineNo" class="form-control" placeholder="" required />
                             <input type="hidden" id="hidProductID" />
                         </div>
                     </div>

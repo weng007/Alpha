@@ -59,13 +59,13 @@
         </div>
     </div>
 </div>
-<table>
+@*<table>
     <tr>
         <td>
             <div class="linkstyle">@Html.ActionLink("ProductsAdjustment List", "IndexProductAdjust")</div>
         </td>
     </tr>
-</table>
+</table>*@
 <div id="myModal">
     @using (Html.BeginForm())
     {
@@ -76,7 +76,7 @@
                     <label class="label-2">Serial Number <span class="required">*</span></label>
                 </li>
                 <li>
-                    <input type="text" id="txtSerialNo" name="field_1" class="field-divided" placeholder="Serial" autofocus required disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#productsDialog" onclick="BrowseProducts()">
+                    <input type="text" id="txtSerialNo" name="field_1" class="field-divided" placeholder="Serial" required disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#productsDialog" onclick="BrowseProducts()">
                         <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
                     </a>
                     <input type="hidden" id="hidProductID" />
@@ -93,7 +93,7 @@
                     <label class="label-2" style="margin-right: 45%;">รุ่น</label>&nbsp;<label class="label-2">Doc Ref.</label>
                 </li>
                 <li>
-                    <input type="text" id="txtModel" name="field2" class="field-divided" placeholder="" disabled/>&nbsp;<input type="text" id="txtDocRef" name="field2" class="field-select-small" placeholder="" />
+                    <input type="text" id="txtModel" name="field2" class="field-divided" placeholder="" disabled/>&nbsp;<input type="text" id="txtDocRef" name="field2" class="field-select-small" placeholder="" autofocus/>
                 </li>
                 
                 <li>
