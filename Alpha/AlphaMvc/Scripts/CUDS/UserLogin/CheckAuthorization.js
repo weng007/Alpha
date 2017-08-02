@@ -654,13 +654,13 @@ function CheckAuthorization() {
                 //Approve
                 if (data.Table[i].MenuName == "MN021") {
                     if (data.Table[i].Role == 0) {
-                        $('.chkApprove').attr("style", "display:none");
+                        document.getElementById("chkApprove").disabled = true;
                     }
                 }
                 //Return
                 if (data.Table[i].MenuName == "MN022") {
                     if (data.Table[i].Role == 0) {
-                        $('.chkReturn').attr("style", "display:none");
+                        document.getElementById("chkReturn").disabled = true;
                         $('.mnReturn').attr("style", "display:none");
                     }
                 }

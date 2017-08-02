@@ -326,46 +326,12 @@ function BrowseCustomer(val) {
 
 function ControlEnable(Isview) {
     //var Isview = val;
-    if (Isview === true) {
-        document.getElementById("imgCustomer").disabled = true;
-        document.getElementById("txtJobNo").disabled = true;
-        document.getElementById("dtJobDate").disabled = true;
-        document.getElementById("txtCar").disabled = true;
-        document.getElementById("dtSWorking").disabled = true;
-        document.getElementById("dtEWorking").disabled = true;
-        document.getElementById("txtJobBy").disabled = true;
-        document.getElementById("txtIssuedBy").disabled = true;
-        document.getElementById("cmbTypeWorking").disabled = true;
-        document.getElementById("cmbJobStatus").disabled = true;
-        document.getElementById("txtDetail").disabled = true;
-        document.getElementById("txtCustomerName").disabled = true;
-        document.getElementById("txtTel").disabled = true;
-        document.getElementById("txtFax").disabled = true;
-        document.getElementById("txtContact").disabled = true;
-        document.getElementById("txtCoWorker").disabled = true;
-        document.getElementById("txtAddress").disabled = true;
-        document.getElementById("txtJobReference").disabled = true;
-        document.getElementById("txtDiscount").disabled = true;
-        document.getElementById("txtRemark").disabled = true;
+    if (Isview) {
+        document.getElementById("chkApprove").disabled = true;
+        document.getElementById("chkReturn").disabled = true;
         document.getElementById("btnSave").disabled = true;
-        document.getElementById("add-row6").style.visibility = "hidden";
-        document.getElementById("add-row7").style.visibility = "hidden";
-        document.getElementById("add-row3").style.visibility = "hidden";
-        document.getElementById("add-row4").style.visibility = "hidden";
-        document.getElementById("add-row5").style.visibility = "hidden";
-        document.getElementById("add-row2").style.visibility = "hidden";
         document.getElementById("add-row10").style.visibility = "hidden";
     }
-    else {
-        document.getElementById("add-row6").style.visibility = "show";
-        document.getElementById("add-row7").style.visibility = "show";
-        document.getElementById("add-row3").style.visibility = "show";
-        document.getElementById("add-row4").style.visibility = "show";
-        document.getElementById("add-row5").style.visibility = "show";
-        document.getElementById("add-row2").style.visibility = "show";
-        document.getElementById("add-row10").style.visibility = "show";
-    }
-    
 }
 function GetJobNo(val) {
     $('#txtJobNo1').val(val);
