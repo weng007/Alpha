@@ -109,8 +109,8 @@ function GetData(val)
                 html += '<td class="ManPremium">' + data.Table1[i].ManPremium + '</td>';
                 html += '<td class="ManPremium2">' + data.Table1[i].ManPremium2 + '</td>';
                 html += '<td class="ManSpecial">' + data.Table1[i].ManSpecial + '</td>';
-                html += '<td><input type="text" id="txtAdditional" name="field1"  onchange="SumAdditional();" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
-                html += '<td><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional();" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
+                html += '<td><input type="text" id="txtAdditional" name="field1"  onblur="SumAdditional();" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
+                html += '<td><input type="text" id="txtDeduction" name="field1" onblur="SumAdditional();" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
                 html += '<td>' + '' + '</td>';
                 html += '<td>' + '' + '</td>';
                 html += '</tr>';
@@ -245,6 +245,8 @@ function SumAdditional()
     alert("SumAdditional");
     var totalAdditionnal = 0;
     var totalDeduction = 0;
+    var totalAmount = 0;
+    totalAmount = $('#totalAmount').val();
 
     for (var i = 0; i < $(".RowCal").length; i++) {
         var Additional = $('.Additional').eq(i).val().replace(',', '') != '' && $('.Additional').eq(i).val() != null ? $('.Additional').eq(i).val().replace(',', '') : 0;
@@ -255,11 +257,16 @@ function SumAdditional()
         totalDeduction = parseFloat(totalDeduction) + parseFloat(Deduction);
     }
     alert(totalAdditionnal);
+
     var html = '<td>' + AddComma(parseFloat(totalAdditionnal).toFixed(2)) + '</td>';
     document.getElementById("totalAdditionnal").innerHTML = html;
 
     var html = '<td>' + AddComma(parseFloat(totalDeduction).toFixed(2)) + '</td>';
     document.getElementById("totalDeduction").innerHTML = html;
+
+    totalAmount = (totalAmount + totalAdditionnal) - totalDeduction
+    var html = '<td>' + AddComma(parseFloat(totalAmount).toFixed(2)) + '</td>';
+    document.getElementById("totalAmount").innerHTML = html;
 }
 function GetManDay(val) {
     var ManDate = val;
