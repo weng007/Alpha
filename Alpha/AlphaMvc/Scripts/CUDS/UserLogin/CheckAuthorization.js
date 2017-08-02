@@ -654,13 +654,22 @@ function CheckAuthorization() {
                 //Approve
                 if (data.Table[i].MenuName == "MN021") {
                     if (data.Table[i].Role == 0) {
-                        document.getElementById("chkApprove").disabled = true;
+                        var temp = document.getElementById("chkApprove");
+                        if(temp != null)
+                        {
+                            document.getElementById("chkApprove").disabled = true;
+                        }
+                        
                     }
                 }
                 //Return
                 if (data.Table[i].MenuName == "MN022") {
                     if (data.Table[i].Role == 0) {
-                        document.getElementById("chkReturn").disabled = true;
+                        var temp = document.getElementById("chkReturn");
+                        if (temp != null)
+                        {
+                            document.getElementById("chkReturn").disabled = true;
+                        }
                         $('.mnReturn').attr("style", "display:none");
                     }
                 }
