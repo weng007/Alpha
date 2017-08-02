@@ -243,28 +243,28 @@ function GetTotal() {
 function SumAdditional()
 {
     alert("SumAdditional");
-    var totalAdditionnal = 0;
+    var totalAdditional = 0;
     var totalDeduction = 0;
     var totalAmount = 0;
     totalAmount = $('#totalAmount').val();
 
     for (var i = 0; i < $(".RowCal").length; i++) {
         var Additional = $('.Additional').eq(i).val().replace(',', '') != '' && $('.Additional').eq(i).val() != null ? $('.Additional').eq(i).val().replace(',', '') : 0;
-        alert(parseFloat(totalAdditionnal));
-        totalAdditionnal = parseFloat(totalAdditionnal) + parseFloat(Additional);
+        alert(parseFloat(totalAdditional));
+        totalAdditional = parseFloat(totalAdditional) + parseFloat(Additional);
         
         var Deduction = $('.Deduction').eq(i).val().replace(',', '') != '' && $('.Deduction').eq(i).val() != null ? $('.Deduction').eq(i).val().replace(',', '') : 0;
         totalDeduction = parseFloat(totalDeduction) + parseFloat(Deduction);
     }
-    alert(totalAdditionnal);
+    alert(totalAdditional);
 
-    var html = '<td>' + AddComma(parseFloat(totalAdditionnal).toFixed(2)) + '</td>';
-    document.getElementById("totalAdditionnal").innerHTML = html;
+    var html = '<td>' + AddComma(parseFloat(totalAdditional).toFixed(2)) + '</td>';
+    document.getElementById("totalAdditional").innerHTML = html;
 
     var html = '<td>' + AddComma(parseFloat(totalDeduction).toFixed(2)) + '</td>';
     document.getElementById("totalDeduction").innerHTML = html;
 
-    totalAmount = (totalAmount + totalAdditionnal) - totalDeduction
+    totalAmount = (totalAmount + totalAdditional) - totalDeduction
     var html = '<td>' + AddComma(parseFloat(totalAmount).toFixed(2)) + '</td>';
     document.getElementById("totalAmount").innerHTML = html;
 }
