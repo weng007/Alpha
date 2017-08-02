@@ -74,6 +74,7 @@ $(document).ready(function () {
         }
         html += '</tbody>';
         document.getElementById("ExpiredCard").innerHTML = html;
+        CheckAuthorization();
         $('#tblExpiredTechnician').paging({
             limit: 16,
             rowDisplayStyle: 'block',
