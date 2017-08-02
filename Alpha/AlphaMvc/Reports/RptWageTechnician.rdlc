@@ -2332,7 +2332,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(20000/30/8))</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2361,19 +2361,18 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox127">
+                    <Textbox Name="Textbox2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*((20000/30/8)*1.5))</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
-                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2382,7 +2381,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox127</rd:DefaultName>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -2397,19 +2396,18 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox129">
+                    <Textbox Name="Textbox15">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((20000/30/8)*3))</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
-                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2418,7 +2416,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox129</rd:DefaultName>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -2433,19 +2431,18 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox130">
+                    <Textbox Name="Textbox17">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(20000/30/8)))+(Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium.Value, "dsWageTechnicianDetail")*((20000/30/8)*1.5)))+(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((20000/30/8)*2)))+(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((20000/30/8)*3)))</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
-                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -2454,7 +2451,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox130</rd:DefaultName>
+                      <rd:DefaultName>Textbox17</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -2465,6 +2462,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -2615,7 +2613,7 @@
         <Top>2.34103cm</Top>
         <Left>0.11642cm</Left>
         <Height>4.10271cm</Height>
-        <Width>19.55947cm</Width>
+        <Width>19.55946cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>

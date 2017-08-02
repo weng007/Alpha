@@ -221,7 +221,6 @@ function SumAdditional()
     document.getElementById("totalWH").innerHTML = AddComma(parseFloat(totalWH).toFixed(2));
 }
 function convertFloat(str) {
-    alert("Test");
     $(str).val($(str).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
 }
 function GetManDay(val) {

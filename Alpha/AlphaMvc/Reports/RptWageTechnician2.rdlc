@@ -1907,7 +1907,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>TOTAL</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -1942,7 +1942,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>(WH3%)</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2333,7 +2333,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>TOTAL</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2366,7 +2366,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>(WH3%)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -2969,7 +2969,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value))+(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value)*1.5))+(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*2)))+(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*3)))+Sum(Fields!Additionnal.Value))-Sum(Fields!Deduction.Value)</Value>
+                              <Value>=Sum(Fields!Additionnal.Value)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -3005,11 +3005,12 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=(((Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value))+(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value)*1.5))+(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*2)))+(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*3)))+Sum(Fields!Additionnal.Value))-Sum(Fields!Deduction.Value)*3)/100)</Value>
+                              <Value>=Sum(Fields!Deduction.Value)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3038,11 +3039,12 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value))+(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value)*1.5))+(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*2)))+(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*3)))+Sum(Fields!Additionnal.Value))-Sum(Fields!Deduction.Value)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3071,11 +3073,12 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=((Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value))+(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value)*1.5))+(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*2)))+(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*3)))+Sum(Fields!Additionnal.Value))-Sum(Fields!Deduction.Value))*0.03</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3410,11 +3413,12 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=((Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value))+(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value)*1.5))+(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*2)))+(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*3)))+Sum(Fields!Additionnal.Value))-Sum(Fields!Deduction.Value))-(((Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Sum(Fields!NormalDay.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value))+(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManNormal.Value, "dsWageTechnicianDetail")*(Fields!Salary.Value)*1.5))+(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManPremium2.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*2)))+(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*(Sum(Fields!ManSpecial.Value, "dsWageTechnicianDetail")*((Fields!Salary.Value)*3)))+Sum(Fields!Additionnal.Value))-Sum(Fields!Deduction.Value))*0.03)</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3800,7 +3804,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>ลงชื่อ _____________________ ผู้จัดทำ</Value>
+                  <Value>ลงชื่อ __________________ ผู้จัดทำ</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -3831,7 +3835,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>วันที่ __________________________</Value>
+                  <Value>วันที่ ________________________</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -3863,7 +3867,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>(_____________________________)</Value>
+                  <Value>(___________________________)</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -3895,7 +3899,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>ลงชื่อ ____________________ ผู้รับเหมารายวัน</Value>
+                  <Value>ลงชื่อ ________________ ผู้รับเหมารายวัน</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -3927,7 +3931,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>วันที่ _______________________________</Value>
+                  <Value>วันที่ _____________________________</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -3959,7 +3963,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>(__________________________________)</Value>
+                  <Value>(________________________________)</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -3991,7 +3995,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>ลงชื่อ _____________________ พยาน</Value>
+                  <Value>ลงชื่อ _________________ พยาน</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -4023,7 +4027,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>วันที่ __________________________</Value>
+                  <Value>วันที่ ________________________</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -4055,7 +4059,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>(_____________________________)</Value>
+                  <Value>(___________________________)</Value>
                   <Style />
                 </TextRun>
               </TextRuns>

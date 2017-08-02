@@ -211,7 +211,6 @@ $(document).ready(function () {
             $('.txtModel').val(ui.item.Model);
             $('.txtBrand').val(ui.item.Brand);
             $('.txtUnitWeight').val(ui.item.UnitWeight);
-            alert($('.hidProductID').val());
             return false;
         }
     });
