@@ -83,9 +83,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>1.85104in</Top>
-        <Left>0.22917in</Left>
+        <Left>0.20833in</Left>
         <Height>0.22917in</Height>
-        <Width>0.73958in</Width>
+        <Width>0.81195in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -114,10 +114,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.85104in</Top>
-        <Left>4.24229in</Left>
+        <Top>2.18854in</Top>
+        <Left>5.04437in</Left>
         <Height>0.22917in</Height>
-        <Width>0.44792in</Width>
+        <Width>0.46528in</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -211,9 +211,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>4.30055in</Top>
-        <Left>0.22915in</Left>
+        <Left>0.20833in</Left>
         <Height>0.22917in</Height>
-        <Width>0.7396in</Width>
+        <Width>0.76042in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -243,9 +243,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>5.04007in</Top>
-        <Left>0.22915in</Left>
+        <Left>0.20833in</Left>
         <Height>0.22917in</Height>
-        <Width>0.7396in</Width>
+        <Width>0.90223in</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -274,10 +274,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.18715in</Top>
-        <Left>3.73187in</Left>
+        <Top>2.52465in</Top>
+        <Left>4.09229in</Left>
         <Height>0.22917in</Height>
-        <Width>0.95833in</Width>
+        <Width>0.92431in</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -2505,7 +2505,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>รถปิคอัพ</Value>
+                <Value>ยานพาหนะ</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -2518,7 +2518,7 @@
         <Top>7.84062in</Top>
         <Left>4.09229in</Left>
         <Height>0.22917in</Height>
-        <Width>0.66602in</Width>
+        <Width>0.78285in</Width>
         <ZIndex>13</ZIndex>
         <Style>
           <Border>
@@ -2562,38 +2562,6 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox17">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>( ____________________ )</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>9.02674in</Top>
-        <Left>1.02167in</Left>
-        <Height>0.22917in</Height>
-        <Width>1.68543in</Width>
-        <ZIndex>15</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox18">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -2615,7 +2583,7 @@
         <Left>4.09229in</Left>
         <Height>0.22917in</Height>
         <Width>0.57105in</Width>
-        <ZIndex>16</ZIndex>
+        <ZIndex>15</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2633,7 +2601,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>( ___________________ )</Value>
+                <Value>( _____________________________ )</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -2643,11 +2611,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>9.02674in</Top>
-        <Left>4.79125in</Left>
+        <Top>9.0559in</Top>
+        <Left>4.09229in</Left>
         <Height>0.22917in</Height>
-        <Width>1.688in</Width>
-        <ZIndex>17</ZIndex>
+        <Width>2.48696in</Width>
+        <ZIndex>16</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2663,7 +2631,7 @@
         <Left>0.68792cm</Left>
         <Height>0cm</Height>
         <Width>16.23912cm</Width>
-        <ZIndex>18</ZIndex>
+        <ZIndex>17</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -2679,7 +2647,7 @@
         <Left>1.38091cm</Left>
         <Height>1.92333cm</Height>
         <Width>2.05562cm</Width>
-        <ZIndex>19</ZIndex>
+        <ZIndex>18</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2709,7 +2677,7 @@
         <Left>1.72321in</Left>
         <Height>0.32292in</Height>
         <Width>3.05121in</Width>
-        <ZIndex>20</ZIndex>
+        <ZIndex>19</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2743,7 +2711,7 @@
         <Left>1.72321in</Left>
         <Height>0.32292in</Height>
         <Width>3.05121in</Width>
-        <ZIndex>21</ZIndex>
+        <ZIndex>20</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2773,7 +2741,7 @@
         <Top>10.14583in</Top>
         <Height>0.125in</Height>
         <Width>6.98085in</Width>
-        <ZIndex>22</ZIndex>
+        <ZIndex>21</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2803,11 +2771,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>JobDate</rd:DefaultName>
-        <Top>4.6832cm</Top>
-        <Left>12.08952cm</Left>
+        <Top>5.54045cm</Top>
+        <Left>14.10035cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.62178cm</Width>
-        <ZIndex>23</ZIndex>
+        <Width>2.86156cm</Width>
+        <ZIndex>22</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2835,11 +2803,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Name</rd:DefaultName>
-        <Top>4.58795cm</Top>
+        <Top>4.70164cm</Top>
         <Left>2.62679cm</Left>
-        <Height>0.94404cm</Height>
-        <Width>6.55642cm</Width>
-        <ZIndex>24</ZIndex>
+        <Height>0.58209cm</Height>
+        <Width>8.04503cm</Width>
+        <ZIndex>23</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2871,7 +2839,7 @@
         <Left>2.62679cm</Left>
         <Height>0.58209cm</Height>
         <Width>6.55642cm</Width>
-        <ZIndex>25</ZIndex>
+        <ZIndex>24</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2903,7 +2871,7 @@
         <Left>0.20833in</Left>
         <Height>0.22917in</Height>
         <Width>0.76042in</Width>
-        <ZIndex>26</ZIndex>
+        <ZIndex>25</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2935,7 +2903,7 @@
         <Left>2.62679cm</Left>
         <Height>0.5821cm</Height>
         <Width>6.55642cm</Width>
-        <ZIndex>27</ZIndex>
+        <ZIndex>26</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2967,7 +2935,7 @@
         <Left>2.62679cm</Left>
         <Height>0.58209cm</Height>
         <Width>6.55642cm</Width>
-        <ZIndex>28</ZIndex>
+        <ZIndex>27</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2996,10 +2964,10 @@
         </Paragraphs>
         <rd:DefaultName>CoWorker</rd:DefaultName>
         <Top>12.80178cm</Top>
-        <Left>2.62679cm</Left>
+        <Left>2.99721cm</Left>
         <Height>0.58209cm</Height>
-        <Width>6.55642cm</Width>
-        <ZIndex>29</ZIndex>
+        <Width>6.186cm</Width>
+        <ZIndex>28</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3028,10 +2996,10 @@
         </Paragraphs>
         <rd:DefaultName>Car</rd:DefaultName>
         <Top>19.91517cm</Top>
-        <Left>12.18882cm</Left>
+        <Left>12.38285cm</Left>
         <Height>0.58209cm</Height>
-        <Width>4.48734cm</Width>
-        <ZIndex>30</ZIndex>
+        <Width>4.29331cm</Width>
+        <ZIndex>29</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3065,7 +3033,7 @@
         <Left>2.63701cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.23903cm</Width>
-        <ZIndex>31</ZIndex>
+        <ZIndex>30</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3099,7 +3067,7 @@
         <Left>2.63701cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.23903cm</Width>
-        <ZIndex>32</ZIndex>
+        <ZIndex>31</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3122,16 +3090,16 @@
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Left</TextAlign>
+              <TextAlign>Center</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>9.30035in</Top>
-        <Left>1.5003in</Left>
+        <Left>0.27083in</Left>
         <Height>0.22917in</Height>
-        <Width>0.73959in</Width>
-        <ZIndex>33</ZIndex>
+        <Width>2.43627in</Width>
+        <ZIndex>32</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3142,18 +3110,6 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Line Name="Line25">
-        <Top>25.14547cm</Top>
-        <Left>2.62675cm</Left>
-        <Height>0cm</Height>
-        <Width>4.24929cm</Width>
-        <ZIndex>34</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Line>
       <Textbox Name="Textbox26">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -3166,92 +3122,16 @@
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Left</TextAlign>
+              <TextAlign>Center</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>9.30035in</Top>
-        <Left>5.28522in</Left>
+        <Left>4.09229in</Left>
         <Height>0.22917in</Height>
-        <Width>0.47842in</Width>
-        <ZIndex>35</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox27">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>วันที่</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>9.67062in</Top>
-        <Left>0.27083in</Left>
-        <Height>0.22917in</Height>
-        <Width>0.69792in</Width>
-        <ZIndex>36</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Line Name="Line26">
-        <Top>25.14548cm</Top>
-        <Left>12.18882cm</Left>
-        <Height>0cm</Height>
-        <Width>4.48734cm</Width>
-        <ZIndex>37</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Line>
-      <Textbox Name="Textbox28">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>วันที่</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>9.67062in</Top>
-        <Left>4.45275in</Left>
-        <Height>0.22917in</Height>
-        <Width>0.30556in</Width>
-        <ZIndex>38</ZIndex>
+        <Width>2.48696in</Width>
+        <ZIndex>33</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3283,7 +3163,7 @@
         <Left>12.18882cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.48734cm</Width>
-        <ZIndex>39</ZIndex>
+        <ZIndex>34</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3315,7 +3195,7 @@
         <Left>2.63701cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.23903cm</Width>
-        <ZIndex>40</ZIndex>
+        <ZIndex>35</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3343,11 +3223,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>JobNo</rd:DefaultName>
-        <Top>5.55536cm</Top>
-        <Left>12.08952cm</Left>
+        <Top>6.41261cm</Top>
+        <Left>12.81271cm</Left>
         <Height>0.58209cm</Height>
-        <Width>4.62177cm</Width>
-        <ZIndex>41</ZIndex>
+        <Width>4.1492cm</Width>
+        <ZIndex>36</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3379,7 +3259,103 @@
         <Left>2.62679cm</Left>
         <Height>0.58209cm</Height>
         <Width>6.55642cm</Width>
-        <ZIndex>42</ZIndex>
+        <ZIndex>37</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox29">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>( ____________________________ )</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>9.05868in</Top>
+        <Left>0.27083in</Left>
+        <Height>0.22917in</Height>
+        <Width>2.43627in</Width>
+        <ZIndex>38</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox31">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>วันที่ __________________________ </Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>9.67062in</Top>
+        <Left>0.27083in</Left>
+        <Height>0.22917in</Height>
+        <Width>2.43627in</Width>
+        <ZIndex>39</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox32">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>วันที่ ___________________________ </Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>9.67062in</Top>
+        <Left>4.09229in</Left>
+        <Height>0.22917in</Height>
+        <Width>2.48696in</Width>
+        <ZIndex>40</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>

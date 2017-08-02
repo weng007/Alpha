@@ -73,7 +73,7 @@ function GetJobOrder() {
                 html += '<td class="hideANDseek">' + data.Table[i].CoWorker + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].Remark + '</td>';
                 html += '<td>';
-                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '&IsView=' + false + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" id="imgJobOrderUpdate" class="imgJobOrderUpdate"/></a>';
+                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID +'" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" id="imgJobOrderUpdate" class="imgJobOrderUpdate"/></a>';
                 //html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " ConfirmDialog(' + " 'Delete'" + ',' + "'JobOrder'" + ',' + data.Table[i].ID + ')"" style="margin-right: 5px;">' + '<img src="/Images/delete.png" class="imgBDCDelete"/></a>';
                 html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="BDCviewDisable"/></a>';
                 html += '</td>';

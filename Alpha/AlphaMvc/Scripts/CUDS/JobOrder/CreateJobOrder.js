@@ -595,10 +595,9 @@ function CreateData() {
     var SWorkingDate = ChangeformatDate($("#dtSWorking").val(),1);
     var EWorkingDate = ChangeformatDate($("#dtEWorking").val(), 1);
     //parsefloat($("#txtDiscount").val() != '' ? $("#txtDiscount").val() : 0);
-    var discount = $("#txtDiscount").val();
-    var price = $("#txtSubTotal").val();
-    var cost = $('#txtExpense').val();
-
+    var discount = ConvertAmount($("#txtDiscount").val());
+    var price = ConvertAmount($("#txtSubTotal").val());
+    var cost = ConvertAmount($('#txtExpense').val());
     var dataObject = {
         JobRef: $('#hidBDCID').val(), JobNo: $('#txtJobNo').val(), JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate, JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(),
         ContactID: $("#cmbContact").find(":selected").val(), CoWorkerID: $("#cmbCoWorker").find(":selected").val(),
