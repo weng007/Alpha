@@ -65,6 +65,7 @@ function GetJobOrderBorrow(val)
                 html += '</tr>';
             }
             document.getElementById("result").innerHTML = html;
+            CheckAuthorization();
             $('#tblJobborrow').paging({
                 limit: 30,
                 rowDisplayStyle: 'block',
