@@ -158,6 +158,7 @@ function GetChecked() {
         {
             var IsInsert = $(this).find('.IsInsert').is(":checked");
             var IsUpdate = $(this).find('.IsUpdate').is(":checked");
+            //var IsDelete = $(this).find('.IsDelete').is(":checked");
 
             if (IsInsert || IsUpdate) {
                 $(this).find('.IsView').prop('checked', true);
