@@ -751,11 +751,19 @@ function ApproveRequisition()
     var IsApprove = $('#chkApprove').is(":checked") == true ? '1' : '0';
     //alert(IsApprove);
     var Approver = localStorage['UserID'];
-
-    var dataObject = {
-        ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), IsApprove: IsApprove, Approver: localStorage['UserID'], Giver: $('#hidGiver').val(), IsReturn: '0', EditBy: localStorage['UserID']
-
-    };
+    if (IsApprove == '1') {
+        alert("Approve")
+        var dataObject = {
+            ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), IsApprove: IsApprove, Approver: localStorage['UserID'], Giver: $('#hidGiver').val(), IsReturn: '0', EditBy: localStorage['UserID']
+        };
+    }
+    else
+    {
+        alert("UnApprove")
+        var dataObject = {
+            ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), IsApprove: '0', Approver: 0, Giver: $('#hidGiver').val(), IsReturn: '0', EditBy: localStorage['UserID']
+        };
+    }
     //alert("UpdateRequisitionApprove");
     $.ajax(
     {
@@ -778,10 +786,20 @@ function ReturnStock() {
     var IsReturn = $('#chkReturn').is(":checked") == true ? '1' : '0';
     //alert(IsReturn);
     var Giver = localStorage['UserID'];
-
-    var dataObject = {
-        ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), Approver: $('#hidApprover').val(), Giver: Giver, IsApprove: $('#hidIsApprove').val(), IsReturn: IsReturn, EditBy: localStorage['UserID']
-    };
+    if (IsReturn == '1')
+    {
+        alert("Return")
+        var dataObject = {
+            ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), Approver: $('#hidApprover').val(), Giver: Giver, IsApprove: $('#hidIsApprove').val(), IsReturn: IsReturn, EditBy: localStorage['UserID']
+        };
+    }
+    else {
+        alert("UnReturn")
+        var dataObject = {
+            ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), Approver: $('#hidApprover').val(), Giver: '0', IsApprove: $('#hidIsApprove').val(), IsReturn: 0, EditBy: localStorage['UserID']
+        };
+    }
+    
     //alert("UpdateRequisitionReturn");
     $.ajax(
     {
