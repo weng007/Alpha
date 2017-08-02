@@ -1,5 +1,6 @@
 function CheckAuthorization() {
     //alert('test');
+    var IsDashboard = 0;
     var IsIncome = 0;
     var IsExpense = 0;
     var IsSecurity = 0;
@@ -36,6 +37,7 @@ function CheckAuthorization() {
                 if (data.Table[i].MenuName == "MN001") {
                     if (data.Table[i].Role == 0) {
                         $('#mnDashboard').attr("style", "display:none");
+                        IsDashboard = 1;
                     }
                 }
                 //(Administrator)Income
@@ -663,7 +665,10 @@ function CheckAuthorization() {
                     }
                 }
 
-
+                if (IsDashboard == 1)
+                {
+                    $('#mnDashboard').attr("style", "display:none");
+                }
                 if (IsIncome == 1 && IsExpense == 1 && IsSecurity == 1 && IsUser == 1)
                 {
                      $('#mnAdministrator').attr("style", "display:none");

@@ -297,7 +297,7 @@ namespace AlphaApi.DataAccessLayer
                     {
                         Errmsg = ex.Message;
                         isAuthen = false;
-                        throw (ex);                   
+                        //throw (ex);                   
                     }
 
                     //ถ้า มี User ใน AD ให้ Check ต่อว่ามี User ใน Table User หรือไม่ (ถ้ามีก็จะ login ผ่าน และเก็บ UserID, UserName ไว้ใน Session)
@@ -336,13 +336,13 @@ namespace AlphaApi.DataAccessLayer
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
             }
             finally
             {
                 //conObj.Close();
             }
-
+            return userDS;
         }
         public int UpdateData(UserLoginModels userLoginModels)
         {

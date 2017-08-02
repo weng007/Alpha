@@ -23,5 +23,11 @@ namespace AlphaApi.Controllers
             var response = CheckAuthor.SelectCheckRole(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+
+        public string Get(string UserID)
+        {
+            var response = CheckAuthor.SelectFirstPage(Convert.ToInt32(UserID));
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
     }
 }
