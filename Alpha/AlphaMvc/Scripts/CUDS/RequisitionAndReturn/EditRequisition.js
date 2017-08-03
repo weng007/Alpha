@@ -752,14 +752,14 @@ function ApproveRequisition()
     //alert(IsApprove);
     var Approver = localStorage['UserID'];
     if (IsApprove == '1') {
-        alert("Approve")
+        //alert("Approve")
         var dataObject = {
             ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), IsApprove: IsApprove, Approver: localStorage['UserID'], Giver: $('#hidGiver').val(), IsReturn: '0', EditBy: localStorage['UserID']
         };
     }
     else
     {
-        alert("UnApprove")
+        //alert("UnApprove")
         var dataObject = {
             ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), IsApprove: '0', Approver: 0, Giver: $('#hidGiver').val(), IsReturn: '0', EditBy: localStorage['UserID']
         };
@@ -788,13 +788,13 @@ function ReturnStock() {
     var Giver = localStorage['UserID'];
     if (IsReturn == '1')
     {
-        alert("Return")
+        //alert("Return")
         var dataObject = {
             ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), Approver: $('#hidApprover').val(), Giver: Giver, IsApprove: $('#hidIsApprove').val(), IsReturn: IsReturn, EditBy: localStorage['UserID']
         };
     }
     else {
-        alert("UnReturn")
+        //alert("UnReturn")
         var dataObject = {
             ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), Approver: $('#hidApprover').val(), Giver: '0', IsApprove: $('#hidIsApprove').val(), IsReturn: 0, EditBy: localStorage['UserID']
         };
