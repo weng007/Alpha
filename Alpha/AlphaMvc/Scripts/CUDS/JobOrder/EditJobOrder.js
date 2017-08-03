@@ -198,7 +198,7 @@ $(document).ready(function () {
         }
         
     });
-    GetExpenseGroup();
+    //GetExpenseGroup();
     $('.ManDate').eq(row_index).datepicker({
         dateFormat: 'dd/mm/yy'
     });
@@ -259,7 +259,34 @@ $(document).ready(function () {
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
 });
-function GetExpenseGroup() {
+//function GetExpenseGroup() {
+//    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+//    $('#hidTypeWorking').val(WorkingType);
+
+//    var dataObject = { TypeWorking: WorkingType };
+//    $.ajax({
+//        url: 'http://localhost:13131/api/JobOrderExpense',
+//        type: 'GET',
+//        dataType: 'json',
+//        async: false,
+//        data: dataObject,
+//        success: function (data) {
+//            data = JSON.parse(data);
+//            $('.ExpenseSelect:last').find("option").remove();
+//            $.each(data.Table, function (i) {
+//                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+//            });
+//            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+
+//        },
+//        failure: function () {
+//            alert('Error');
+//        }
+//    });
+//}
+function ChangeExpenseGroup() {
+    //alert('Test ' + $("#cmbTypeWorking").find(":selected").val());
+    alert("test");
     var WorkingType = $("#cmbTypeWorking").find(":selected").val();
     $('#hidTypeWorking').val(WorkingType);
 
@@ -272,38 +299,11 @@ function GetExpenseGroup() {
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
-            //$('.ExpenseSelect:last').find("option").remove();
+            $('.ExpenseSelect').find("option").remove();
             $.each(data.Table, function (i) {
                 $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('.ExpenseSelect').find('option:first-child').attr('selected', true);
-
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-}
-function ChangeExpenseGroup() {
-    //alert('Test ' + $("#cmbTypeWorking").find(":selected").val());
-
-    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
-    $('#hidTypeWorking').val(WorkingType);
-
-    var dataObject = { TypeWorking: WorkingType };
-    $.ajax({
-        url: 'http://localhost:13131/api/JobOrderExpense',
-        type: 'GET',
-        dataType: 'json',
-        async: false,
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            //$('.ExpenseSelect:last').find("option").remove();
-            $.each(data.Table, function (i) {
-                $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.ExpenseSelect:last').find('option:first-child').attr('selected', true);
 
         },
         failure: function () {
@@ -584,7 +584,8 @@ function GetData(val) {
            BrowseCustomer($("#hidBDCID").val());
            
            SetIncomeMaster();
-           SetExpenseType();
+           //SetExpenseType();
+           ChangeExpenseGroup();
            SetUnitWeight();
            SetUnitWeightExpense();
 
@@ -623,11 +624,13 @@ function GetData(val) {
                    $("#add-row7").trigger("click");
                    SetRowIndex();
                }
-               $('.RowCal1:eq(' + data.Table2.length + ')').remove();
-               SetExpenseType();
+               //$('.RowCal1:eq(' + data.Table2.length + ')').remove();
+               
                SetUnitWeight();
+               ChangeExpenseGroup();
 
                $(".RowCal1").each(function (i) {
+                   //alert(data.Table2[i].ExpenseType);
                    $(this).find('.tdno').val(data.Table2[i].RowNum);
                    $(this).find('.ExpenseID').val(data.Table2[i].ID);
                    $(this).find('.JobID').val(data.Table2[i].JobID);

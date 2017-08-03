@@ -250,7 +250,6 @@ $(document).ready(function () {
             $info.show();
         }
     });
-    GetExpenseGroup();
 });
 
 //function countPosition()
@@ -516,7 +515,34 @@ function CalTotalHour() {
     var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
     $('.TotalHours').eq(row_index).val(total);
 }
-function GetExpenseGroup() {
+//function GetExpenseGroup() {
+//    //alert("Test");
+//    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+//    $('#hidTypeWorking').val(WorkingType);
+
+//    var dataObject = { TypeWorking: WorkingType };
+//    $.ajax({
+//        url: 'http://localhost:13131/api/JobOrderExpense',
+//        type: 'GET',
+//        dataType: 'json',
+//        async: false,
+//        data: dataObject,
+//        success: function (data) {
+//            data = JSON.parse(data);
+//            //$('.ExpenseSelect').find("option").remove();
+//            $.each(data.Table, function (i) {
+//                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+//            });
+//            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+
+//        },
+//        failure: function () {
+//            alert('Error');
+//        }
+//    });
+//}
+function ChangeExpenseGroup()
+{
     var WorkingType = $("#cmbTypeWorking").find(":selected").val();
     $('#hidTypeWorking').val(WorkingType);
 
@@ -529,39 +555,11 @@ function GetExpenseGroup() {
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
-            //$('.ExpenseSelect:last').find("option").remove();
+            $('.ExpenseSelect').find("option").remove();
             $.each(data.Table, function (i) {
                 $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('.ExpenseSelect').find('option:first-child').attr('selected', true);
-
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-}
-function ChangeExpenseGroup()
-{
-    //alert('Test ' + $("#cmbTypeWorking").find(":selected").val());
-
-    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
-    $('#hidTypeWorking').val(WorkingType);
-
-    var dataObject = { TypeWorking: WorkingType };
-    $.ajax({
-        url: 'http://localhost:13131/api/JobOrderExpense',
-        type: 'GET',
-        dataType: 'json',
-        async: false,
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            //$('.ExpenseSelect:last').find("option").remove();
-            $.each(data.Table, function (i) {
-                $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.ExpenseSelect:last').find('option:first-child').attr('selected', true);
 
         },
         failure: function () {
