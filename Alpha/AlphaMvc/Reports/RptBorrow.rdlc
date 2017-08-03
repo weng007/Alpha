@@ -827,7 +827,7 @@ Remark</Value>
       </Border>
     </Style>
   </Body>
-  <Width>20.37337cm</Width>
+  <Width>20.4815cm</Width>
   <Page>
     <PageHeader>
       <Height>3.70259cm</Height>
@@ -1953,7 +1953,7 @@ Remark</Value>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="ReturnAmount">
-          <DataField>ReturnGood</DataField>
+          <DataField>ReturnAmount</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="UnitWeight">
@@ -1995,11 +1995,11 @@ Remark</Value>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsRptJobBorrow2</rd:DataSetName>
-        <rd:SchemaPath>D:\leadssoft\Project\Alpha\Alpha\AlphaMvc\Reports\DS\dsRptJobBorrow2.xsd</rd:SchemaPath>
+        <rd:SchemaPath>F:\Project\Alpha\Alpha\AlphaMvc\Reports\DS\dsRptJobBorrow2.xsd</rd:SchemaPath>
         <rd:TableName>SP_RptBorrow</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>SP_RptBorrowTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
