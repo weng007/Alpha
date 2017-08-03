@@ -80,7 +80,7 @@
                 <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
             </li>
             <li>
-                <select id="cmbTypeWorking" class="field-divided-2" required></select><select id="cmbJobStatus" class="field-divided" required></select>
+                <select id="cmbTypeWorking" class="field-divided-2" onchange="ChangeExpenseGroup()" required></select><select id="cmbJobStatus" class="field-divided" required></select>
             </li>
 
             <li>
@@ -439,7 +439,7 @@
                                                             <label class="lblExpense label-small-3">ต้นทุน(Manpower and Tool Cost)</label>
                                                         </li>
                                                         <li>
-                                                            <input type="text" id="txtExpense" name="field6" class="text-size130 txtdisablerow" value="0" disabled />
+                                                            <input type="text" id="txtExpense" name="field6" class="text-size130 txtdisablerow" value="" disabled />
                                                         </li>
                                                         <li>
                                                             <label class="lblProfit label-small-6">กำไร</label>
@@ -979,6 +979,7 @@
         ControlEnable(Isview);
         //SetRowCal5();
         GetContact(@Request.Params["id"]);
+        //GetTypeWorking();
         GetData(@Request.Params["id"]);
         @*GetJobOrderBorrow(@Request.Params["id"]);*@ 
         

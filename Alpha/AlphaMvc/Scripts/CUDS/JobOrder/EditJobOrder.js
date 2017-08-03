@@ -146,23 +146,23 @@ $(document).ready(function () {
     //    }
     //});
 
-    var dataObject = { typeID: '001' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $.each(data.Table, function (i) {
-                $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('#cmbTypeWorking').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
+    //var dataObject = { typeID: '001' };
+    //$.ajax({
+    //    url: 'http://localhost:13131/api/MasterService/',
+    //    type: 'GET',
+    //    dataType: 'json',
+    //    data: dataObject,
+    //    success: function (data) {
+    //        data = JSON.parse(data);
+    //        $.each(data.Table, function (i) {
+    //            $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+    //        });
+    //        $('#cmbTypeWorking').find('option:first-child').attr('selected', true);
+    //    },
+    //    failure: function () {
+    //        alert('Error');
+    //    }
+    //});
 
     var dataObject = { typeID: '002' };
     $.ajax({
@@ -196,8 +196,9 @@ $(document).ready(function () {
             $name.text($tab.text());
             $info.show();
         }
+        
     });
-
+    GetExpenseGroup();
     $('.ManDate').eq(row_index).datepicker({
         dateFormat: 'dd/mm/yy'
     });
@@ -258,6 +259,78 @@ $(document).ready(function () {
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
 });
+function GetExpenseGroup() {
+    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+    $('#hidTypeWorking').val(WorkingType);
+
+    var dataObject = { TypeWorking: WorkingType };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderExpense',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            //$('.ExpenseSelect:last').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
+function ChangeExpenseGroup() {
+    //alert('Test ' + $("#cmbTypeWorking").find(":selected").val());
+
+    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+    $('#hidTypeWorking').val(WorkingType);
+
+    var dataObject = { TypeWorking: WorkingType };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderExpense',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            //$('.ExpenseSelect:last').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect:last').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
+function GetTypeWorking() {
+    var dataObject = { typeID: '001' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('#cmbTypeWorking').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 function GetContact(val) {
     var dataObject = { JobID: val };
     $.ajax({
@@ -498,8 +571,10 @@ function GetData(val) {
            var JobDate = ChangeformatDate(data.Table[0].JobDate, 0);
            var SWorking = ChangeformatDate(data.Table[0].SWorking, 0);
            var EWorking = ChangeformatDate(data.Table[0].EWorking, 0);
-
-           $("#hidCustID").val(data.Table[0].CustID), $("#txtJobNo").val(data.Table[0].CustID), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
+           GetTypeWorking();
+           $("#hidCustID").val(data.Table[0].CustID), $("#txtJobNo").val(data.Table[0].CustID), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car),
+           $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy),
+           $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
              $("#cmbContact").val(data.Table[0].ContactID), $("#cmbCoWorker").val(data.Table[0].CoWorkerID),
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
              $("#txtAddress").val(data.Table[0].Address), $("#txtJobReference").val(data.Table[0].BDCNo),
@@ -1383,7 +1458,7 @@ function GetManpowerHour(isCheckBreak) {
     if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '') {
         var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime + '&' + isBreak1 + '&' + isBreak2 }
         console.log(dataObject);
-        alert('Test1');
+        //alert('Test1');
         $.ajax(
         {
             url: 'http://localhost:13131/api/OT',
@@ -1393,7 +1468,7 @@ function GetManpowerHour(isCheckBreak) {
             datatype: 'json',
             success: function (data) {
                 data = JSON.parse(data);
-                alert(data.Table.length);
+                //alert(data.Table.length);
                 if (data.Table.length > 0) {
                     $('.NormalDay').eq(row_index).val(data.Table[0].NormalHour);
                     $('.ManNormal').eq(row_index).val(data.Table[0].Normal1);
