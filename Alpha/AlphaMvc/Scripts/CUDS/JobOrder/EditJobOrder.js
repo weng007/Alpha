@@ -258,6 +258,31 @@ $(document).ready(function () {
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
 });
+function ChangeExpenseGroup() {
+    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+    $('#hidTypeWorking').val(WorkingType);
+
+    var dataObject = { TypeWorking: WorkingType };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderExpense',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $('.ExpenseSelect').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 function GetContact(val) {
     var dataObject = { JobID: val };
     $.ajax({
@@ -509,7 +534,8 @@ function GetData(val) {
            BrowseCustomer($("#hidBDCID").val());
            
            SetIncomeMaster();
-           SetExpenseType();
+           ChangeExpenseGroup();
+           //SetExpenseType();
            SetUnitWeight();
            SetUnitWeightExpense();
 
@@ -548,11 +574,13 @@ function GetData(val) {
                    $("#add-row7").trigger("click");
                    SetRowIndex();
                }
-               $('.RowCal1:eq(' + data.Table2.length + ')').remove();
-               SetExpenseType();
+               //$('.RowCal1:eq(' + data.Table2.length + ')').remove();
+               //SetExpenseType();
+               ChangeExpenseGroup();
                SetUnitWeight();
 
                $(".RowCal1").each(function (i) {
+                   alert(data.Table2[i].ExpenseType);
                    $(this).find('.tdno').val(data.Table2[i].RowNum);
                    $(this).find('.ExpenseID').val(data.Table2[i].ID);
                    $(this).find('.JobID').val(data.Table2[i].JobID);
