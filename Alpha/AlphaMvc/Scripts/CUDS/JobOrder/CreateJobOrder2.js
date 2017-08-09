@@ -382,7 +382,7 @@ function pad(str, max) {
 function GetPriceList()
 {
     var IncomeID = $('.Select1').eq(row_index2).val();
-    var dataObject = { IsIncome: '0' + '&' + IncomeID + '&' + '0' }
+    var dataObject = { IsIncome: IncomeID + '&' + '0' }
     console.log(dataObject);
     $.ajax(
     {
@@ -408,7 +408,7 @@ function GetPriceList()
 }
 function GetExpensePriceList() {
     var ExpenseID = $('.ExpenseSelect').eq(row_index3).val();
-    var dataObject = { IsIncome: '0' + '&' + ExpenseID + '&' + '1' }
+    var dataObject = { IsIncome: ExpenseID + '&' + '1' }
     console.log(dataObject);
     $.ajax(
     {
@@ -431,48 +431,6 @@ function GetExpensePriceList() {
     });
     CalSumExpense();
 }
-function GetManJob(isManType) {
-    var manType;
-
-    if (isManType == 0) {
-        $('.chkTech').eq(row_index).prop('checked', false);
-        $('.chkSafety').eq(row_index).prop('checked', false);
-        manType = '0';
-    }
-    if (isManType == 1) {
-        $('.chkLead').eq(row_index).prop('checked', false);
-        $('.chkSafety').eq(row_index).prop('checked', false);
-        manType = '1';
-    }
-    if (isManType == 2) {
-        $('.chkLead').eq(row_index).prop('checked', false);
-        $('.chkTech').eq(row_index).prop('checked', false);
-        manType = '2';
-    }
-
-    var dataObject = { IsIncome: '1' + '&' + manType }
-    console.log(dataObject);
-    $.ajax(
-    {
-        url: 'http://localhost:13131/api/ExpenseMaster',
-        type: 'GET',
-        async: false,
-        data: dataObject,
-        datatype: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-            if (data.Table.length > 0) {
-
-                $('.ManPrice').eq(row_index).val(data.Table[0].PriceList);
-            }
-        },
-        error: function (msg) {
-            alert(msg);
-        }
-
-    });
-
-}
 function GetManpowerHour(isCheckBreak) {
     var TechnicianID = $('.TechnicianID').eq(row_index).val();
     var ManDate = $('.ManDate').eq(row_index).val();
@@ -481,10 +439,7 @@ function GetManpowerHour(isCheckBreak) {
     var workingFrom = $('.WorkingFrom').eq(row_index).val();
     var workingTo = $('.WorkingTo').eq(row_index).val();
     var isBreak1 = $('.chkBreak1').eq(row_index).is(":checked");
-    var isBreak2 = $('.chkBreak2').eq(row_index).is(":checked");
-    var isBreak3 = $('.chkBreak3').eq(row_index).is(":checked");
-    
-    //alert(isBreak3);
+    var isBreak2 = $('.chkBreak2').eq(row_index).is(":checked"); 
 
     if (ManDate != '')
     {
@@ -513,7 +468,7 @@ function GetManpowerHour(isCheckBreak) {
 
     if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '')
     {
-        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime + '&' + isBreak1 + '&' + isBreak2 + '&' + isBreak3 }
+        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime + '&' + isBreak1 + '&' + isBreak2 }
         console.log(dataObject);
         $.ajax(
         {
@@ -720,21 +675,7 @@ function CreateData() {
             {
                 var workingFrom = $(this).find('.WorkingFrom').val();
                 var workingTo = $(this).find('.WorkingTo').val();
-                var mDate = ChangeformatDate($(this).find(".ManDate").val(), 1);
-                var manJobType = '0';
-
-                if ($(this).find('.chkLead').is(":checked") == true)
-                {
-                    manJobType = '0';
-                }
-                else if ($(this).find('.chkTech').is(":checked") == true)
-                {
-                    manJobType = '1';
-                }
-                else if ($(this).find('.chkSafety').is(":checked") == true)
-                {
-                    manJobType = '2';
-                }
+                var mDate = ChangeformatDate($(this).find(".ManDate").val(),1);
 
                 dataObject.JobID = ID;
                 dataObject.TechnicianID = $(this).find('.TechnicianID').val();
@@ -745,15 +686,12 @@ function CreateData() {
                 dataObject.ToHour = workingTo;
                 dataObject.Break1 = $(this).find('.chkBreak1').is(":checked") == true ? 1 : 0;
                 dataObject.Break2 = $(this).find('.chkBreak2').is(":checked") == true ? 1 : 0;
-                dataObject.Break3 = $(this).find('.chkBreak3').is(":checked") == true ? 1 : 0;
                 dataObject.TotalHours = $(this).find(".TotalHours").val();
                 dataObject.NormalDay = $(this).find(".NormalDay").val();
                 dataObject.ManNormal = $(this).find(".ManNormal").val();
                 dataObject.ManPremium = $(this).find(".ManPremium").val();
                 dataObject.ManPremium2 = $(this).find(".ManPremium2").val();
                 dataObject.ManSpecial = $(this).find(".ManSpecial").val();
-                dataObject.ManJobType = manJobType;
-                dataObject.ManJobPrice = $(this).find(".ManPrice").val();
                 dataObject.CreateBy = localStorage['UserID'];
                 dataObject.EditBy = localStorage['UserID'];
                 if ($(this).find(".TechnicianID").val() != '') {

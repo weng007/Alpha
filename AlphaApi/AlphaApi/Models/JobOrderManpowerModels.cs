@@ -37,6 +37,8 @@ namespace AlphaApi.Models
 
         public string Break2 { get; set; }
 
+        public string Break3 { get; set; }
+
         public string TotalHours { get; set; }
 
         public double NormalDay { get; set; }
@@ -48,6 +50,10 @@ namespace AlphaApi.Models
         public double ManPremium2 { get; set; }
 
         public double ManSpecial { get; set; }
+
+        public string ManJobType { get; set; }
+
+        public decimal ManJobPrice { get; set; }
 
         public int CreateBy { get; set; }
 

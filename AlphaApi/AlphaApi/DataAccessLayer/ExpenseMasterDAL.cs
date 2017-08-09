@@ -150,15 +150,16 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-        public DataSet GetExpense()
+        public DataSet GetManJobPrice(string ManJobType)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_GetExpenseMaster", conObj);
+                    SqlCommand cmd = new SqlCommand("SP_GetManJobPrice", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ManJobType", ManJobType);
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

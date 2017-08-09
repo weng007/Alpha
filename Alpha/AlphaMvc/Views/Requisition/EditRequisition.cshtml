@@ -1116,23 +1116,23 @@
                                 </td>
                                 <td>
                                     @*Qty1*@
-                                    <input type="text" id="txtQty" class="txtQty select-size70-height23 " />
+                                    <input type="text" id="txtQty" class="txtQty select-size70-height23 " onchange="CheckBorrow()" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Good1*@
-                                    <input type="text" id="txtGood" class="txtGood select-size50-height23 " />
+                                    <input type="text" id="txtGood" class="txtGood select-size50-height23 " value="0" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Lost1*@
-                                    <input type="text" id="txtLost" class="txtLost select-size50-height23 " />
+                                    <input type="text" id="txtLost" class="txtLost select-size50-height23 " value="0" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Repair1*@
-                                    <input type="text" id="txtRepair" class="txtRepair select-size50-height23 " />
+                                    <input type="text" id="txtRepair" class="txtRepair select-size50-height23 " value="0" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Bad1*@
-                                    <input type="text" id="txtBad" class="txtBad select-size50-height23 " />
+                                    <input type="text" id="txtBad" class="txtBad select-size50-height23 " value="0" />
                                 </td>
                                 <td class="mnReturn hidecolumn">
                                     @*Return Qty1*@
@@ -1191,23 +1191,23 @@
                                 </td>
                                 <td>
                                     @*Qty2*@
-                                    <input type="text" id="txtQty" class="txtQty select-size70-height23 " />
+                                    <input type="text" id="txtQty" class="txtQty select-size70-height23 " onchange="CheckBorrow()" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Good2*@
-                                    <input type="text" id="txtGood" class="txtGood select-size50-height23 " />
+                                    <input type="text" id="txtGood" class="txtGood select-size50-height23 " value="0" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Lost2*@
-                                    <input type="text" id="txtLost" class="txtLost select-size50-height23 " />
+                                    <input type="text" id="txtLost" class="txtLost select-size50-height23 " value="0" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Repair2*@
-                                    <input type="text" id="txtRepair" class="txtRepair select-size50-height23 " />
+                                    <input type="text" id="txtRepair" class="txtRepair select-size50-height23 " value="0" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Bad2*@
-                                    <input type="text" id="txtBad" class="txtBad select-size50-height23 " />
+                                    <input type="text" id="txtBad" class="txtBad select-size50-height23 " value="0" />
                                 </td>
                                 <td class="mnReturn hidecolumn">
                                     @*Return Qty1*@
@@ -1243,7 +1243,7 @@
 
         <ul class="form-style-1">
             <li>
-                <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrderBorrow', @Request.Params["id"])">Save</button>
+                <button type="button" id="btnSave" class="btn btn-primary" onclick="CheckReturn()">Save</button>
                 @*<a onclick="OpenRptJobOrder(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>*@
                 @*<button type="button" id="btnSave" class="btnCreate" onclick="OpenRptJobOrder(@Request.Params["id"])" formtarget="_blank"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-2" id="BDCCreate" /></button>*@
             </li>
@@ -1273,5 +1273,20 @@
         var ManDay = GetManDay(ManDate);
         //alert(row_index);
         $('.ManDay').eq(row_index).val(ManDay);
+    }
+    function CheckReturn() {
+        var borrowAmount = parseFloat($('.txtQty').eq(row_index).val());
+        var returnAmount = (parseFloat($('.txtGood').eq(row_index).val()) + parseFloat($('.txtLost').eq(row_index).val()) + parseFloat($('.txtRepair').eq(row_index).val()) + parseFloat($('.txtBad').eq(row_index).val()))
+        if (borrowAmount < returnAmount) {
+            alert('จำนวนที่คืนจะต้องเท่ากับจำนวนที่เบิก กรุณาใส่ข้อมูลให้ถูกต้อง');
+            $('.txtGood').eq(row_index).val(0);
+            $('.txtLost').eq(row_index).val(0);
+            $('.txtRepair').eq(row_index).val(0);
+            $('.txtBad').eq(row_index).val(0);
+        }
+        else
+        {
+            Isvalidate('Update', 'JobOrderBorrow', @Request.Params["id"]);
+        }
     }
 </script>

@@ -27,6 +27,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@TechnicianID", wageTechnician.TechnicianID);
                     cmd.Parameters.AddWithValue("@Additionnal", wageTechnician.Additionnal != null ? wageTechnician.Additionnal : 0);
                     cmd.Parameters.AddWithValue("@Deduction", wageTechnician.Deduction != null ? wageTechnician.Deduction : 0);
+                    cmd.Parameters.AddWithValue("@Remark", wageTechnician.Remark != null ? wageTechnician.Remark : "");
                     cmd.Parameters.AddWithValue("@CreateBy", wageTechnician.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", wageTechnician.EditBy);
                     conObj.Open();
@@ -56,8 +57,9 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@ID", wageTechnician.ID);
                     cmd.Parameters.AddWithValue("@ManpowerID", wageTechnician.ManpowerID);
                     cmd.Parameters.AddWithValue("@TechnicianID", wageTechnician.TechnicianID);
-                    cmd.Parameters.AddWithValue("@Additionnal", wageTechnician.Additionnal);
-                    cmd.Parameters.AddWithValue("@Deduction", wageTechnician.Deduction);
+                    cmd.Parameters.AddWithValue("@Additionnal", wageTechnician.Additionnal != null ? wageTechnician.Additionnal : 0);
+                    cmd.Parameters.AddWithValue("@Deduction", wageTechnician.Deduction != null ? wageTechnician.Deduction : 0);
+                    cmd.Parameters.AddWithValue("@Remark", wageTechnician.Remark != null ? wageTechnician.Remark : "");
                     cmd.Parameters.AddWithValue("@CreateBy", wageTechnician.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", wageTechnician.EditBy);
                     conObj.Open();

@@ -258,6 +258,31 @@ $(document).ready(function () {
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
 });
+function ChangeExpenseGroup() {
+    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+    $('#hidTypeWorking').val(WorkingType);
+
+    var dataObject = { TypeWorking: WorkingType };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderExpense',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $('.ExpenseSelect').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 function GetContact(val) {
     var dataObject = { JobID: val };
     $.ajax({
@@ -300,7 +325,7 @@ function GetContact(val) {
 function GetPriceList() {
     var IsIncome;
     var IncomeID = $('.Select1').eq(row_index2).val();
-    var dataObject = { IsIncome: '0' + '&' + IncomeID + '&' + '0' }
+    var dataObject = { IsIncome: IncomeID + '&' + '0' }
     console.log(dataObject);
     $.ajax(
     {
@@ -327,7 +352,7 @@ function GetPriceList() {
 }
 function GetExpensePriceList() {
     var ExpenseID = $('.ExpenseSelect').eq(row_index3).val();
-    var dataObject = { IsIncome: '0' + '&' + ExpenseID + '&' + '1' }
+    var dataObject = { IsIncome: ExpenseID + '&' + '1' }
     console.log(dataObject);
     $.ajax(
     {
@@ -509,7 +534,8 @@ function GetData(val) {
            BrowseCustomer($("#hidBDCID").val());
            
            SetIncomeMaster();
-           SetExpenseType();
+           ChangeExpenseGroup();
+           //SetExpenseType();
            SetUnitWeight();
            SetUnitWeightExpense();
 
@@ -548,11 +574,13 @@ function GetData(val) {
                    $("#add-row7").trigger("click");
                    SetRowIndex();
                }
-               $('.RowCal1:eq(' + data.Table2.length + ')').remove();
-               SetExpenseType();
+               //$('.RowCal1:eq(' + data.Table2.length + ')').remove();
+               //SetExpenseType();
+               ChangeExpenseGroup();
                SetUnitWeight();
 
                $(".RowCal1").each(function (i) {
+                   alert(data.Table2[i].ExpenseType);
                    $(this).find('.tdno').val(data.Table2[i].RowNum);
                    $(this).find('.ExpenseID').val(data.Table2[i].ID);
                    $(this).find('.JobID').val(data.Table2[i].JobID);
@@ -619,9 +647,6 @@ function GetData(val) {
                    setDate2.setHours(tHour, tMinute, 0);
                    var Break1 = data.Table9[i].Break1 == '1' ? true : false;
                    var Break2 = data.Table9[i].Break2 == '1' ? true : false;
-                   var Break3 = data.Table9[i].Break3 == '1' ? true : false;
-
-                   var manJobType = data.Table9[i].ManJobType;
 
                    var ManDate = ChangeformatDate(data.Table9[i].ManDate, 0)
                    //var manDay = GetManDay(ChangeformatDate(data.Table9[i].ManDate, 1));
@@ -641,7 +666,6 @@ function GetData(val) {
                    $(this).find('.WorkingTo').timepicker('setTime', setDate2);
                    $(this).find('.chkBreak1').prop('checked', Break1);
                    $(this).find('.chkBreak2').prop('checked', Break2);
-                   $(this).find('.chkBreak3').prop('checked', Break3);
 
                    //$(this).find('.WorkingTo').timepicker('setTime', TTime, { 'timeFormat': 'H:i' });
                    $(this).find('.TotalHours').val(data.Table9[i].TotalHours);
@@ -651,16 +675,6 @@ function GetData(val) {
                    $(this).find('.ManPremium2').val(data.Table9[i].ManPremium2);
                    $(this).find('.ManSpecial').val(data.Table9[i].ManSpecial);
 
-                   if (manJobType == '0') {
-                       $(this).find('.chkLead').prop('checked', true);
-                   }
-                   if (manJobType == '1') {
-                       $(this).find('.chkTech').prop('checked', true);
-                   }
-                   if (manJobType == '2') {
-                       $(this).find('.chkSafety').prop('checked', true);
-                   }
-                   $(this).find('.ManPrice').val(data.Table9[i].ManJobPrice);
                    
                });
                
@@ -948,16 +962,6 @@ function Update(val) {
 
             var mDate = ChangeformatDate($(this).find(".ManDate").val(), 1);
 
-            if ($(this).find('.chkLead').is(":checked") == true) {
-                manJobType = '0';
-            }
-            else if ($(this).find('.chkTech').is(":checked") == true) {
-                manJobType = '1';
-            }
-            else if ($(this).find('.chkSafety').is(":checked") == true) {
-                manJobType = '2';
-            }
-
             dataObject.JobID = JobID;
             dataObject.TechnicianID = $(this).find('.TechnicianID').val();
             dataObject.ManDate = mDate;
@@ -967,15 +971,12 @@ function Update(val) {
             dataObject.ToHour = workingTo;
             dataObject.Break1 = $(this).find('.chkBreak1').is(":checked") == true ? 1 : 0;
             dataObject.Break2 = $(this).find('.chkBreak2').is(":checked") == true ? 1 : 0;
-            dataObject.Break3 = $(this).find('.chkBreak3').is(":checked") == true ? 1 : 0;
             dataObject.TotalHours = $(this).find(".TotalHours").val();
             dataObject.NormalDay = $(this).find(".NormalDay").val();
             dataObject.ManNormal = $(this).find(".ManNormal").val();
             dataObject.ManPremium = $(this).find(".ManPremium").val();
             dataObject.ManPremium2 = $(this).find(".ManPremium2").val();
             dataObject.ManSpecial = $(this).find(".ManSpecial").val();
-            dataObject.ManJobType = manJobType;
-            dataObject.ManJobPrice = $(this).find(".ManPrice").val();
             dataObject.EditBy = localStorage['UserID'];
 
             
@@ -1373,51 +1374,6 @@ function CalTotalHour() {
     var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
     $('.TotalHours').eq(row_index).val(total);
 }
-function GetManJob(isManType) {
-    var manType;
-
-    if (isManType == 0) {
-        $('.chkLead').eq(row_index).prop('checked', true);
-        $('.chkTech').eq(row_index).prop('checked', false);
-        $('.chkSafety').eq(row_index).prop('checked', false);
-        manType = '0';
-    }
-    if (isManType == 1) {
-        $('.chkTech').eq(row_index).prop('checked', true);
-        $('.chkLead').eq(row_index).prop('checked', false);
-        $('.chkSafety').eq(row_index).prop('checked', false);
-        manType = '1';
-    }
-    if (isManType == 2) {
-        $('.chkLead').eq(row_index).prop('checked', false);
-        $('.chkTech').eq(row_index).prop('checked', false);
-        manType = '2';
-    }
-
-    //alert(manType);
-    var dataObject = { IsIncome: '1' + '&' + manType }
-    console.log(dataObject);
-    $.ajax(
-    {
-        url: 'http://localhost:13131/api/ExpenseMaster',
-        type: 'GET',
-        async: false,
-        data: dataObject,
-        datatype: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-            if (data.Table.length > 0) {
-
-                $('.ManPrice').eq(row_index).val(data.Table[0].PriceList);
-            }
-        },
-        error: function (msg) {
-            alert(msg);
-        }
-
-    });
-
-}
 function GetManpowerHour(isCheckBreak) {
     var TechnicianID = $('.TechnicianID').eq(row_index).val();
     var ManDate = $('.ManDate').eq(row_index).val();
@@ -1427,7 +1383,6 @@ function GetManpowerHour(isCheckBreak) {
     var workingTo = $('.WorkingTo').eq(row_index).val();
     var isBreak1 = $('.chkBreak1').eq(row_index).is(":checked");
     var isBreak2 = $('.chkBreak2').eq(row_index).is(":checked");
-    var isBreak3 = $('.chkBreak3').eq(row_index).is(":checked");
 
     if (ManDate != '') {
         var days = [
@@ -1454,9 +1409,9 @@ function GetManpowerHour(isCheckBreak) {
     }
 
     if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '') {
-        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime + '&' + isBreak1 + '&' + isBreak2 + '&' + isBreak3 }
+        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime + '&' + isBreak1 + '&' + isBreak2 }
         console.log(dataObject);
-        //alert('Test1');
+        alert('Test1');
         $.ajax(
         {
             url: 'http://localhost:13131/api/OT',
@@ -1466,7 +1421,7 @@ function GetManpowerHour(isCheckBreak) {
             datatype: 'json',
             success: function (data) {
                 data = JSON.parse(data);
-                //alert(data.Table.length);
+                alert(data.Table.length);
                 if (data.Table.length > 0) {
                     $('.NormalDay').eq(row_index).val(data.Table[0].NormalHour);
                     $('.ManNormal').eq(row_index).val(data.Table[0].Normal1);

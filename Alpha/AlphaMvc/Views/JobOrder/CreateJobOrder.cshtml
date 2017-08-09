@@ -489,6 +489,10 @@
                                                                 <th rowspan="3" class="hidecolumn">ID</th>
                                                                 <th rowspan="3" class="hidecolumn">Position</th>
                                                                 <th rowspan="3">ชื่อ</th>
+                                                                <th rowspan="3">Lead</th>
+                                                                <th rowspan="3">Tech</th>
+                                                                <th rowspan="3">Safety</th>
+                                                                <th rowspan="3">Unit Price</th>
                                                                 <th rowspan="3">เลขบัตรประชาชน</th>
                                                                 <th rowspan="3">ประเภทพนักงาน</th>
                                                                 <th rowspan="3">Date</th>
@@ -497,6 +501,7 @@
                                                                 <th colspan="2">WORKING TIME</th>
                                                                 <th rowspan="3">BREAK1</th>
                                                                 <th rowspan="3">BREAK2</th>
+                                                                <th rowspan="3">BREAK3</th>
                                                                 <th colspan="6">NUMBER OF HOURS</th>
                                                                 <th rowspan="3" colspan="2"></th>
                                                             </tr>
@@ -530,6 +535,18 @@
                                                                 </td>
                                                                 <td><input type="text" id="txtFName" name="txtFName" class="FName text-size140" />
                                                                 </td>
+                                                                <td class="text-size100">
+                                                                    <input id="chkLead" class="chkLead" type="checkbox" onchange="GetManJob('0')" style="margin-left: 20px; margin-right: 20px;" />
+                                                                </td>
+                                                                <td class="text-size100">
+                                                                    <input id="chkTech" class="chkTech" type="checkbox" onchange="GetManJob('1')" style="margin-left: 20px; margin-right: 20px;" />
+                                                                </td>
+                                                                <td class="text-size100">
+                                                                    <input id="chkSafety" class="chkSafety" type="checkbox" onchange="GetManJob('2')" style="margin-left: 20px; margin-right: 20px;" />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="txtManPrice" class="ManPrice select-size50-height23 txtdisablerow" disabled />
+                                                                </td>
                                                                 <td>
                                                                     <input id="txtCardID" type="text" value="" class="CardID text-size120 txtdisablerow" disabled />
                                                                 </td>
@@ -556,6 +573,9 @@
                                                                 </td>
                                                                 <td class="text-size100">
                                                                     <input id="chkBreak2" class="chkBreak2" onchange="GetManpowerHour('2')" type="checkbox" style="margin-left: 20px;     margin-right: 20px;"/>
+                                                                </td>
+                                                                <td class="text-size100">
+                                                                    <input id="chkBreak3" class="chkBreak3" onchange="GetManpowerHour('3')" type="checkbox" style="margin-left: 20px;     margin-right: 20px;" />
                                                                 </td>
                                                                 <td>
                                                                     <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled />
@@ -598,6 +618,18 @@
                                                                 <td>
                                                                     <input type="text" id="txtFName" name="txtFName" class="FName text-size140"/>
                                                                 </td>
+                                                                <td class="text-size100">
+                                                                    <input id="chkLead" class="chkLead" type="checkbox" onchange="GetManJob('0')" style="margin-left: 20px; margin-right: 20px;" />
+                                                                </td>
+                                                                <td class="text-size100">
+                                                                    <input id="chkTech" class="chkTech" type="checkbox" onchange="GetManJob('1')" style="margin-left: 20px; margin-right: 20px;" />
+                                                                </td>
+                                                                <td class="text-size100">
+                                                                    <input id="chkSafety" class="chkSafety" type="checkbox" onchange="GetManJob('2')" style="margin-left: 20px; margin-right: 20px;" />
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="txtManPrice" class="ManPrice select-size50-height23 txtdisablerow" disabled />
+                                                                </td>
                                                                 <td>
                                                                     <input id="txtCardID" type="text" value="" class="CardID text-size120 txtdisablerow" disabled />
                                                                 </td>
@@ -633,6 +665,9 @@
                                                                 </td>
                                                                 <td class="text-size100">
                                                                     <input id="chkBreak2" class="chkBreak2" onchange="GetManpowerHour('2')" type="checkbox" style="margin-left: 20px;     margin-right: 20px;"/>
+                                                                </td>
+                                                                <td class="text-size100">
+                                                                    <input id="chkBreak3" class="chkBreak3" onchange="GetManpowerHour('3')" type="checkbox" style="margin-left: 20px;     margin-right: 20px;" />
                                                                 </td>
                                                                 <td>
                                                                     <input id="txtTotalHours" type="text" value="" class="TotalHours text-size50 textcenter txtdisablerow" disabled/>

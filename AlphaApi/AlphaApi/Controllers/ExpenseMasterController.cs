@@ -25,6 +25,7 @@ namespace AlphaApi.Controllers
         }
 
         [HttpGet]
+        //GetAll เพื่อแสดงlist ใช้หน้า IndexExpense Master
         public string Get()
         {
             var response = expenseMasterdb.SelectData();
@@ -33,6 +34,7 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpGet]
+        //GetจากID เพื่อ Edit ใช้หน้า Expense Master
         public string Get(int id)
         {
             var response = expenseMasterdb.SelectByID(id);
@@ -43,15 +45,18 @@ namespace AlphaApi.Controllers
         public string Get(string IsIncome)
         {
             string[] str = IsIncome.Split('&');
-            var response = expenseMasterdb.GetPriceList(Convert.ToInt32(str[0]), str[1]);
-            return JsonConvert.SerializeObject(response, Formatting.Indented);
-        }
-
-        [HttpGet]
-        public string Get(bool IsJobOrder)
-        {
-            var response = expenseMasterdb.GetExpense();
-            return JsonConvert.SerializeObject(response, Formatting.Indented);
+            if (str[0] == "0")
+            {
+                //GetPricelist ถ้า เป็น IsIncome = True จะไป Getจาก IncomeMaster ใช้หน้า JobOrder Income,Expense
+                var response = expenseMasterdb.GetPriceList(Convert.ToInt32(str[1]), str[2]);
+                return JsonConvert.SerializeObject(response, Formatting.Indented);
+            }
+            else
+            {
+                //GetPricelist จาก Lead,Tech,Safety 
+                var response = expenseMasterdb.GetManJobPrice(str[1]);
+                return JsonConvert.SerializeObject(response, Formatting.Indented);
+            }
         }
 
         [EnableCorsAttribute("*", "*", "*")]

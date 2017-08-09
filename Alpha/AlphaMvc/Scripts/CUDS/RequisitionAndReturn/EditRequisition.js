@@ -884,42 +884,43 @@ function Update(val)
                 }
             });
     }
-    
-    $(".RowCal6").each(function () {
-        //alert("RequistionID "+$('#hidRequisitionID').val());
-        dataObject.RequisitionID = $('#hidRequisitionID').val();
-        dataObject.ProductID = $(this).find('.hidProductID').val();
-        dataObject.Amount = $(this).find('.txtQty').val();
-        dataObject.ReturnGood = $(this).find(".txtGood").val();
-        dataObject.ReturnLost = $(this).find(".txtLost").val();
-        dataObject.ReturnRepair = $(this).find(".txtRepair").val();
-        dataObject.ReturnBad = $(this).find(".txtBad").val();
-        dataObject.Remark = $(this).find(".txtRemark1").val();
-        dataObject.CreateBy = localStorage['UserID'];
-        dataObject.EditBy = localStorage['UserID'];
 
-        if ($(this).find(".hidProductID").val() != '') {
-            $.ajax(
-            {
-                url: 'http://localhost:13131/api/JobOrderBorrow',
-                type: 'POST',
-                async: false,
-                data: dataObject,
-                datatype: 'json',
-                success: function (data) {
-                },
-                error: function (msg) {
-                    alert(msg)
-                }
-            });
-        }
-    });
+        $(".RowCal6").each(function () {
+            //alert("RequistionID "+$('#hidRequisitionID').val());
+            dataObject.RequisitionID = $('#hidRequisitionID').val();
+            dataObject.ProductID = $(this).find('.hidProductID').val();
+            dataObject.Amount = $(this).find('.txtQty').val();
+            dataObject.ReturnGood = $(this).find(".txtGood").val();
+            dataObject.ReturnLost = $(this).find(".txtLost").val();
+            dataObject.ReturnRepair = $(this).find(".txtRepair").val();
+            dataObject.ReturnBad = $(this).find(".txtBad").val();
+            dataObject.Remark = $(this).find(".txtRemark1").val();
+            dataObject.CreateBy = localStorage['UserID'];
+            dataObject.EditBy = localStorage['UserID'];
+
+            if ($(this).find(".hidProductID").val() != '') {
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/JobOrderBorrow',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
+        });
+    
     $('#hidJobID').val(val);
     //alert("JobID "+$('#hidJobID').val());
     window.location.href = "../Requisition/EditRequisition?id=" + val;
 }
 function CheckBorrow() {
-    var BorrowAmount = $("#txtAmount").val();
+    var BorrowAmount = $('.txtQty').eq(row_index).val();
     var dataObject = { ProductID: $("#hidProductID").val() };
     $.ajax(
            {
@@ -929,9 +930,10 @@ function CheckBorrow() {
                data: dataObject,
                success: function (data) {
                    data = JSON.parse(data);
+                   alert(data.Table[0].Amount);
                    if (data.Table[0].Amount < BorrowAmount) {
                        alert('จำนวนที่ยืมต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ');
-                       $("#txtAmount").val(0);
+                       $('.txtQty').eq(row_index).val(0);
                    }
 
                },
@@ -940,13 +942,7 @@ function CheckBorrow() {
                }
            });
 }
-function CheckReturn() {
-    var borrowAmount = $('#txtAmount').val();
-    var returnAmount = ($('#txtReturnGood').val() + $('#txtReturnLost').val() + $('#txtReturnRepair').val() + $('#txtReturnBad').val())
-    if (borrowAmount != returnAmount) {
-        alert('จำนวนที่คืนจะต้องเท่ากับจำนวนที่ยืม กรุณาใส่ข้อมูลให้ถูกต้อง');
-    }
-}
+
 //function Update1(val) {
 //    //alert("test");
 //    var JDate = ChangeformatDate($("#dtJobDate").val(),1);

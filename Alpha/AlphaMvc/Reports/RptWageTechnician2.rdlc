@@ -1634,7 +1634,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Remark.Value</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -1642,7 +1642,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox66</rd:DefaultName>
@@ -3683,7 +3685,7 @@
       </Border>
     </Style>
   </Body>
-  <Width>20.48123cm</Width>
+  <Width>20.37541cm</Width>
   <Page>
     <PageHeader>
       <Height>2.54cm</Height>

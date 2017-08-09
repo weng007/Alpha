@@ -242,7 +242,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>5.04007in</Top>
+        <Top>4.62416in</Top>
         <Left>0.20833in</Left>
         <Height>0.22917in</Height>
         <Width>0.90223in</Width>
@@ -289,84 +289,6 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Rectangle Name="Rectangle1">
-        <ReportItems>
-          <Textbox Name="Textbox10">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>หมายเหตุ</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.1in</Top>
-            <Left>0.1in</Left>
-            <Height>0.22917in</Height>
-            <Width>0.63542in</Width>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Remark">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!Remark.Value, "dsJobOrder")</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Remark</rd:DefaultName>
-            <Top>0.254cm</Top>
-            <Left>2.04436cm</Left>
-            <Height>0.58209cm</Height>
-            <Width>5.18797cm</Width>
-            <ZIndex>1</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-        </ReportItems>
-        <KeepTogether>true</KeepTogether>
-        <Top>7.48983cm</Top>
-        <Left>9.47896cm</Left>
-        <Height>4.30601cm</Height>
-        <Width>7.48295cm</Width>
-        <ZIndex>9</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Rectangle>
       <Tablix Name="Tablix1">
         <TablixBody>
           <TablixColumns>
@@ -2423,11 +2345,12 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>dsJobOrder</DataSetName>
         <Top>14.08324cm</Top>
         <Left>0.68792cm</Left>
         <Height>4.89646cm</Height>
         <Width>16.23912cm</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -2455,7 +2378,7 @@
         <Left>0.27083in</Left>
         <Height>0.22917in</Height>
         <Width>0.69792in</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2487,7 +2410,7 @@
         <Left>0.27083in</Left>
         <Height>0.22917in</Height>
         <Width>0.69792in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2519,7 +2442,7 @@
         <Left>4.09229in</Left>
         <Height>0.22917in</Height>
         <Width>0.78285in</Width>
-        <ZIndex>13</ZIndex>
+        <ZIndex>12</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2551,7 +2474,7 @@
         <Left>0.27083in</Left>
         <Height>0.22917in</Height>
         <Width>0.69792in</Width>
-        <ZIndex>14</ZIndex>
+        <ZIndex>13</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2583,7 +2506,7 @@
         <Left>4.09229in</Left>
         <Height>0.22917in</Height>
         <Width>0.57105in</Width>
-        <ZIndex>15</ZIndex>
+        <ZIndex>14</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2615,7 +2538,7 @@
         <Left>4.09229in</Left>
         <Height>0.22917in</Height>
         <Width>2.48696in</Width>
-        <ZIndex>16</ZIndex>
+        <ZIndex>15</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2631,7 +2554,7 @@
         <Left>0.68792cm</Left>
         <Height>0cm</Height>
         <Width>16.23912cm</Width>
-        <ZIndex>17</ZIndex>
+        <ZIndex>16</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -2647,7 +2570,7 @@
         <Left>1.38091cm</Left>
         <Height>1.92333cm</Height>
         <Width>2.05562cm</Width>
-        <ZIndex>18</ZIndex>
+        <ZIndex>17</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2677,7 +2600,7 @@
         <Left>1.72321in</Left>
         <Height>0.32292in</Height>
         <Width>3.05121in</Width>
-        <ZIndex>19</ZIndex>
+        <ZIndex>18</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2711,7 +2634,7 @@
         <Left>1.72321in</Left>
         <Height>0.32292in</Height>
         <Width>3.05121in</Width>
-        <ZIndex>20</ZIndex>
+        <ZIndex>19</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2741,7 +2664,7 @@
         <Top>10.39583in</Top>
         <Height>0.125in</Height>
         <Width>6.98085in</Width>
-        <ZIndex>21</ZIndex>
+        <ZIndex>20</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2775,7 +2698,7 @@
         <Left>14.10035cm</Left>
         <Height>0.6cm</Height>
         <Width>2.86156cm</Width>
-        <ZIndex>22</ZIndex>
+        <ZIndex>21</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2807,7 +2730,7 @@
         <Left>2.62679cm</Left>
         <Height>0.58209cm</Height>
         <Width>8.04503cm</Width>
-        <ZIndex>23</ZIndex>
+        <ZIndex>22</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2839,7 +2762,7 @@
         <Left>2.62679cm</Left>
         <Height>0.58209cm</Height>
         <Width>6.55642cm</Width>
-        <ZIndex>24</ZIndex>
+        <ZIndex>23</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2871,7 +2794,7 @@
         <Left>0.20833in</Left>
         <Height>0.22917in</Height>
         <Width>0.76042in</Width>
-        <ZIndex>25</ZIndex>
+        <ZIndex>24</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2903,7 +2826,7 @@
         <Left>2.62679cm</Left>
         <Height>0.5821cm</Height>
         <Width>6.55642cm</Width>
-        <ZIndex>26</ZIndex>
+        <ZIndex>25</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2935,7 +2858,7 @@
         <Left>2.62679cm</Left>
         <Height>0.58209cm</Height>
         <Width>6.55642cm</Width>
-        <ZIndex>27</ZIndex>
+        <ZIndex>26</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2963,11 +2886,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>CoWorker</rd:DefaultName>
-        <Top>12.80178cm</Top>
+        <Top>11.74538cm</Top>
         <Left>2.99721cm</Left>
         <Height>0.58209cm</Height>
         <Width>6.186cm</Width>
-        <ZIndex>28</ZIndex>
+        <ZIndex>27</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2999,7 +2922,7 @@
         <Left>12.38285cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.29331cm</Width>
-        <ZIndex>29</ZIndex>
+        <ZIndex>28</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3033,7 +2956,7 @@
         <Left>2.63701cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.23903cm</Width>
-        <ZIndex>30</ZIndex>
+        <ZIndex>29</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3067,7 +2990,7 @@
         <Left>2.63701cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.23903cm</Width>
-        <ZIndex>31</ZIndex>
+        <ZIndex>30</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3099,7 +3022,7 @@
         <Left>0.27083in</Left>
         <Height>0.22917in</Height>
         <Width>2.43627in</Width>
-        <ZIndex>32</ZIndex>
+        <ZIndex>31</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3131,7 +3054,7 @@
         <Left>4.09229in</Left>
         <Height>0.22917in</Height>
         <Width>2.48696in</Width>
-        <ZIndex>33</ZIndex>
+        <ZIndex>32</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3163,7 +3086,7 @@
         <Left>12.18882cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.48734cm</Width>
-        <ZIndex>34</ZIndex>
+        <ZIndex>33</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3195,7 +3118,7 @@
         <Left>2.63701cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.23903cm</Width>
-        <ZIndex>35</ZIndex>
+        <ZIndex>34</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3227,7 +3150,7 @@
         <Left>12.81271cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.1492cm</Width>
-        <ZIndex>36</ZIndex>
+        <ZIndex>35</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3259,7 +3182,7 @@
         <Left>2.62679cm</Left>
         <Height>0.58209cm</Height>
         <Width>6.55642cm</Width>
-        <ZIndex>37</ZIndex>
+        <ZIndex>36</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3291,7 +3214,7 @@
         <Left>0.27083in</Left>
         <Height>0.22917in</Height>
         <Width>2.43627in</Width>
-        <ZIndex>38</ZIndex>
+        <ZIndex>37</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3323,7 +3246,7 @@
         <Left>0.27083in</Left>
         <Height>0.22917in</Height>
         <Width>2.43627in</Width>
-        <ZIndex>39</ZIndex>
+        <ZIndex>38</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3355,7 +3278,7 @@
         <Left>4.09229in</Left>
         <Height>0.22917in</Height>
         <Width>2.48696in</Width>
-        <ZIndex>40</ZIndex>
+        <ZIndex>39</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3388,7 +3311,7 @@
         <Left>12.12704cm</Left>
         <Height>0.6cm</Height>
         <Width>4.8cm</Width>
-        <ZIndex>41</ZIndex>
+        <ZIndex>40</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3399,6 +3322,184 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Tablix Name="Tablix2">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>6.56749cm</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox28">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>หมายเหตุ</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox28</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </TopBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="FullName">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!FullName.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>FullName</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>None</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox38">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox38</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                        </RightBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Details" />
+            </TablixMember>
+            <TablixMember>
+              <KeepWithGroup>Before</KeepWithGroup>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>dsJobOrder2</DataSetName>
+        <Top>7.74383cm</Top>
+        <Left>10.39442cm</Left>
+        <Height>1.8cm</Height>
+        <Width>6.56749cm</Width>
+        <ZIndex>41</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
     </ReportItems>
     <Height>26.72291cm</Height>
     <Style>
@@ -3426,6 +3527,13 @@
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
       <rd:DataSourceID>c00a7389-7897-4087-a2f9-24f6cc7b35aa</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="dsJobOrder2">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>5b3601cb-6b27-4054-a2d2-99ad036f4179</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -3514,11 +3622,31 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsJobOrder</rd:DataSetName>
-        <rd:SchemaPath>F:\Project\Alpha\Alpha\AlphaMvc\Reports\DS\dsJobOrder.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\leadssoft\Project\Alpha\Alpha\AlphaMvc\Reports\DS\dsJobOrder.xsd</rd:SchemaPath>
         <rd:TableName>SP_RptJobOrder</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="dsJobOrder2">
+      <Query>
+        <DataSourceName>dsJobOrder2</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="FullName">
+          <DataField>FullName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>dsJobOrder2</rd:DataSetName>
+        <rd:SchemaPath>D:\leadssoft\Project\Alpha\Alpha\AlphaMvc\dsJobOrder2.xsd</rd:SchemaPath>
+        <rd:TableName>SP_RptJobOrder</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>SP_RptJobOrderTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

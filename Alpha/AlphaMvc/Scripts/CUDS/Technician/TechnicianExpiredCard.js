@@ -59,9 +59,17 @@ $(document).ready(function () {
         console.log(data);
         var html = '<tbody>';
         for (var i = 0; i < data.Table.length; i++) {
-            html += '<tr>';
+            if (data.Table[i].Color == 'red')
+            {
+                html += '<tr style="background-color:#ffbaba;">';
+            }
+            else
+            {
+                html += '<tr>';
+            }
+            
             html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
-            html += '<td  class="hidecolumn nopointer">' + data.Table[i].TechnicianID + '</td>';
+            html += '<td class="hidecolumn nopointer">' + data.Table[i].TechnicianID + '</td>';
             html += '<td class="nopointer">' + data.Table[i].FullName + '</td>';
             html += '<td class="hideANDseek nopointer">' + data.Table[i].PositionName + '</td>';
             html += '<td class="nopointer">' + data.Table[i].EmpGroup + '</td>';

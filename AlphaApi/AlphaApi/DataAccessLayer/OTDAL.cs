@@ -12,7 +12,7 @@ namespace AlphaApi.DataAccessLayer
     {
         string conStr = ConfigurationManager.ConnectionStrings["mycon"].ConnectionString;
         int result = 0;
-        public DataSet SelectByID(int technicianID, DateTime manDate, string fromTime, string toTime, bool isBreak1, bool isBreak2)
+        public DataSet SelectByID(int technicianID, DateTime manDate, string fromTime, string toTime, bool isBreak1, bool isBreak2, bool isBreak3)
         {
             DataSet ds = null;
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -27,6 +27,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@toTime", toTime);
                     cmd.Parameters.AddWithValue("@isBreak1", isBreak1);
                     cmd.Parameters.AddWithValue("@isBreak2", isBreak2);
+                    cmd.Parameters.AddWithValue("@isBreak3", isBreak3);
                     conObj.Open();
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = cmd;

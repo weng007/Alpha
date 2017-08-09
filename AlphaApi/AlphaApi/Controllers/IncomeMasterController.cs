@@ -25,6 +25,7 @@ namespace AlphaApi.Controllers
         }
 
         [HttpGet]
+        //GetAll เพื่อแสดงlist ใช้หน้า IndexIncomeMaster
         public string Get()
         {
             var response = incomeMaster.SelectData();
@@ -32,6 +33,7 @@ namespace AlphaApi.Controllers
         }
 
         [HttpGet]
+        //GetจากID เพื่อ Edit ใช้หน้า Income Master
         public string Get(int id)
         {
             var response = incomeMaster.SelectByID(id);
@@ -39,6 +41,7 @@ namespace AlphaApi.Controllers
         }
 
         [HttpGet]
+        //GetAll ใส่combobox Income มี Choose 
         public string Get(string IsJobOrder)
         {
             var response = incomeMaster.GetIncome();

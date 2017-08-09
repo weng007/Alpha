@@ -25,6 +25,8 @@ namespace AlphaApi.Models
 
         public double Deduction { get; set; }
 
+        public string Remark { get; set; }
+
         public int CreateBy { get; set; }
 
         public int EditBy { get; set; }

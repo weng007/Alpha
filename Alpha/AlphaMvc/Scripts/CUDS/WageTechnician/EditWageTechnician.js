@@ -100,6 +100,8 @@ function GetData(val)
                 var ManDate = ChangeformatDate(data.Table1[i].ManDate, 1);
                 var isBreak1 = data.Table1[i].Break1 == '1' ? 'Checked' : '';
                 var isBreak2 = data.Table1[i].Break2 == '1' ? 'Checked' : '';
+                var isBreak3 = data.Table1[i].Break3 == '1' ? 'Checked' : '';
+                var Remark = data.Table1[i].Remark != null ? data.Table1[i].Remark : '';
                 MDate = GetManDay(MDate);
                 html += '<tr class="RowCal">';
                 html += '<td class="hidecolumn"><input type="hidden" class="hidID" value="' + data.Table1[i].ID + '" /></td>';
@@ -117,6 +119,7 @@ function GetData(val)
                 html += '<td>' + data.Table1[i].WorkingTo + '</td>';
                 html += '<td><input id="isBreak1" type="checkbox" class="isBreak1" ' + isBreak1 + ' disabled></td>';
                 html += '<td><input id="isBreak2" type="checkbox" class="isBreak2" ' + isBreak2 + ' disabled></td>';
+                html += '<td><input id="isBreak3" type="checkbox" class="isBreak3" ' + isBreak3 + ' disabled></td>';
                 html += '<td>' + data.Table1[i].TotalHours + '</td>';
                 html += '<td>' + data.Table1[i].NormalDay + '</td>';
                 html += '<td class="ManNormal">' + data.Table1[i].ManNormal + '</td>';
@@ -125,6 +128,7 @@ function GetData(val)
                 html += '<td class="ManSpecial">' + data.Table1[i].ManSpecial + '</td>';
                 html += '<td><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
                 html += '<td><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
+                html += '<td><input type="text" id="txtRemark" name="field1" onchange="SumAdditional()" class="Remark field-divided text-size80" value="' + Remark + '"/></td>';
                 html += '<td>' + '' + '</td>';
                 html += '<td>' + '' + '</td>';
                 html += '</tr>';
@@ -259,6 +263,7 @@ function Update(val) {
         dataObject.TechnicianID = $(this).find(".hidTechnicianID").val();
         dataObject.Additionnal = $(this).find('.Additional').val().replace(',', '');
         dataObject.Deduction = $(this).find('.Deduction').val().replace(',', '');
+        dataObject.Remark = $(this).find('.Remark').val().replace(',', '');
         dataObject.EditBy = localStorage['UserID'];
         //alert('test2');
         $.ajax(
