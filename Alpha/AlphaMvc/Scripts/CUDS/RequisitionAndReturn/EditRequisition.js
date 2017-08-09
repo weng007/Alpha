@@ -918,6 +918,35 @@ function Update(val)
     //alert("JobID "+$('#hidJobID').val());
     window.location.href = "../Requisition/EditRequisition?id=" + val;
 }
+function CheckBorrow() {
+    var BorrowAmount = $("#txtAmount").val();
+    var dataObject = { ProductID: $("#hidProductID").val() };
+    $.ajax(
+           {
+               url: 'http://localhost:13131/api/JobOrderBorrow',
+               type: 'GET',
+               datatype: 'json',
+               data: dataObject,
+               success: function (data) {
+                   data = JSON.parse(data);
+                   if (data.Table[0].Amount < BorrowAmount) {
+                       alert('จำนวนที่ยืมต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ');
+                       $("#txtAmount").val(0);
+                   }
+
+               },
+               error: function (msg) {
+                   alert(msg)
+               }
+           });
+}
+function CheckReturn() {
+    var borrowAmount = $('#txtAmount').val();
+    var returnAmount = ($('#txtReturnGood').val() + $('#txtReturnLost').val() + $('#txtReturnRepair').val() + $('#txtReturnBad').val())
+    if (borrowAmount != returnAmount) {
+        alert('จำนวนที่คืนจะต้องเท่ากับจำนวนที่ยืม กรุณาใส่ข้อมูลให้ถูกต้อง');
+    }
+}
 //function Update1(val) {
 //    //alert("test");
 //    var JDate = ChangeformatDate($("#dtJobDate").val(),1);
