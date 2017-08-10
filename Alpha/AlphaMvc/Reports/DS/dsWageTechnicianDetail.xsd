@@ -14,7 +14,7 @@
   <xs:element name="dsWageTechnicianDetail" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dsWageTechnicianDetail" msprop:Generator_UserDSName="dsWageTechnicianDetail">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SP_RptWageTechnician" msprop:Generator_TableClassName="SP_RptWageTechnicianDataTable" msprop:Generator_TableVarName="tableSP_RptWageTechnician" msprop:Generator_RowChangedName="SP_RptWageTechnicianRowChanged" msprop:Generator_TablePropName="SP_RptWageTechnician" msprop:Generator_RowDeletingName="SP_RptWageTechnicianRowDeleting" msprop:Generator_RowChangingName="SP_RptWageTechnicianRowChanging" msprop:Generator_RowEvHandlerName="SP_RptWageTechnicianRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_RptWageTechnicianRowDeleted" msprop:Generator_RowClassName="SP_RptWageTechnicianRow" msprop:Generator_UserTableName="SP_RptWageTechnician" msprop:Generator_RowEvArgName="SP_RptWageTechnicianRowChangeEvent">
+        <xs:element name="SP_RptWageTechnician" msprop:Generator_TableClassName="SP_RptWageTechnicianDataTable" msprop:Generator_TableVarName="tableSP_RptWageTechnician" msprop:Generator_TablePropName="SP_RptWageTechnician" msprop:Generator_RowDeletingName="SP_RptWageTechnicianRowDeleting" msprop:Generator_RowChangingName="SP_RptWageTechnicianRowChanging" msprop:Generator_RowEvHandlerName="SP_RptWageTechnicianRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_RptWageTechnicianRowDeleted" msprop:Generator_UserTableName="SP_RptWageTechnician" msprop:Generator_RowChangedName="SP_RptWageTechnicianRowChanged" msprop:Generator_RowEvArgName="SP_RptWageTechnicianRowChangeEvent" msprop:Generator_RowClassName="SP_RptWageTechnicianRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="RowNum" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnRowNum" msprop:Generator_ColumnPropNameInRow="RowNum" msprop:Generator_ColumnPropNameInTable="RowNumColumn" msprop:Generator_UserColumnName="RowNum" type="xs:long" minOccurs="0" />
@@ -85,6 +85,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Detail" msprop:Generator_ColumnVarNameInTable="columnDetail" msprop:Generator_ColumnPropNameInRow="Detail" msprop:Generator_ColumnPropNameInTable="DetailColumn" msprop:Generator_UserColumnName="Detail" type="xs:string" minOccurs="0" />
               <xs:element name="Location" msprop:Generator_ColumnVarNameInTable="columnLocation" msprop:Generator_ColumnPropNameInRow="Location" msprop:Generator_ColumnPropNameInTable="LocationColumn" msprop:Generator_UserColumnName="Location" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

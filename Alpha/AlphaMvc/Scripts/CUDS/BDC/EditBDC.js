@@ -134,5 +134,5 @@ function OpenJobOrder(val) {
 }
 function OpenRptBDC(val) {
     //alert("test");
-    window.location.href = "../Reports/FormReport/RptBDCViewer.aspx?id=" + val;
+    window.open("../Reports/FormReport/RptBDCViewer.aspx?id=" + val, '_blank');
 }

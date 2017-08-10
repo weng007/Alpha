@@ -1644,7 +1644,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Detail.Value</Value>
                               <Style>
                                 <FontFamily>Cordia New</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -3250,6 +3250,10 @@
           <DataField>TotalHours</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="NormalDay">
+          <DataField>NormalDay</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ManNormal">
           <DataField>ManNormal</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
@@ -3270,6 +3274,10 @@
           <DataField>Remark</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Detail">
+          <DataField>Detail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Location">
           <DataField>Location</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -3285,6 +3293,10 @@
         <Field Name="PositionNameTH">
           <DataField>PositionNameTH</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Salary">
+          <DataField>Salary</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="DepartmentName">
           <DataField>DepartmentName</DataField>

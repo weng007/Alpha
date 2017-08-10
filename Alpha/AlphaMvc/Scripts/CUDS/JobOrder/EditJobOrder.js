@@ -1598,5 +1598,5 @@ function DateWorking() {
     }
 }
 function OpenRptJobOrder(val) {
-    window.location.href = "../Reports/FormReport/RptReportViewer.aspx?id=" + val;
+    window.open("../Reports/FormReport/RptReportViewer.aspx?id=" + val, '_blank');
 }

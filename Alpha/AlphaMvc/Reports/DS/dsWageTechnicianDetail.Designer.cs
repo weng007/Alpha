@@ -319,6 +319,8 @@ namespace MymobilewalaMvc.Reports.DS {
             
             private global::System.Data.DataColumn columnRemark;
             
+            private global::System.Data.DataColumn columnDetail;
+            
             private global::System.Data.DataColumn columnLocation;
             
             private global::System.Data.DataColumn columnEmpGroup;
@@ -526,6 +528,14 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DetailColumn {
+                get {
+                    return this.columnDetail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn LocationColumn {
                 get {
                     return this.columnLocation;
@@ -629,6 +639,7 @@ namespace MymobilewalaMvc.Reports.DS {
                         double ManPremium2, 
                         double ManSpecial, 
                         string Remark, 
+                        string Detail, 
                         string Location, 
                         string EmpGroup, 
                         int WeekDay, 
@@ -657,6 +668,7 @@ namespace MymobilewalaMvc.Reports.DS {
                         ManPremium2,
                         ManSpecial,
                         Remark,
+                        Detail,
                         Location,
                         EmpGroup,
                         WeekDay,
@@ -712,6 +724,7 @@ namespace MymobilewalaMvc.Reports.DS {
                 this.columnManPremium2 = base.Columns["ManPremium2"];
                 this.columnManSpecial = base.Columns["ManSpecial"];
                 this.columnRemark = base.Columns["Remark"];
+                this.columnDetail = base.Columns["Detail"];
                 this.columnLocation = base.Columns["Location"];
                 this.columnEmpGroup = base.Columns["EmpGroup"];
                 this.columnWeekDay = base.Columns["WeekDay"];
@@ -763,6 +776,8 @@ namespace MymobilewalaMvc.Reports.DS {
                 base.Columns.Add(this.columnManSpecial);
                 this.columnRemark = new global::System.Data.DataColumn("Remark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRemark);
+                this.columnDetail = new global::System.Data.DataColumn("Detail", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDetail);
                 this.columnLocation = new global::System.Data.DataColumn("Location", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLocation);
                 this.columnEmpGroup = new global::System.Data.DataColumn("EmpGroup", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1251,6 +1266,22 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Detail {
+                get {
+                    try {
+                        return ((string)(this[this.tableSP_RptWageTechnician.DetailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Detail\' in table \'SP_RptWageTechnician\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_RptWageTechnician.DetailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Location {
                 get {
                     try {
@@ -1571,6 +1602,18 @@ namespace MymobilewalaMvc.Reports.DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRemarkNull() {
                 this[this.tableSP_RptWageTechnician.RemarkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDetailNull() {
+                return this.IsNull(this.tableSP_RptWageTechnician.DetailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDetailNull() {
+                this[this.tableSP_RptWageTechnician.DetailColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -238,6 +238,12 @@
         width: 70px;
         padding: 2px !important;
     }
+    table td .select-size110-height23 {
+        background: #fff;
+        height: 23px;
+        width: 110px;
+        padding: 2px !important;
+    }
     .txtdisablerow {
         margin: 0;
         background: #fafafa;
@@ -370,6 +376,12 @@
         }
     .text-size200 {
             width: 200px !important;
+        }
+    .text-size220 {
+            width: 220px !important;
+        }
+    .text-size250 {
+            width: 250px !important;
         }
     .text-size270 {
             width: 270px !important;

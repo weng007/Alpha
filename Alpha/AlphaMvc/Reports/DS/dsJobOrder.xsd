@@ -14,7 +14,7 @@
   <xs:element name="dsJobOrder" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dsJobOrder" msprop:Generator_UserDSName="dsJobOrder">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SP_RptJobOrder" msprop:Generator_TableClassName="SP_RptJobOrderDataTable" msprop:Generator_TableVarName="tableSP_RptJobOrder" msprop:Generator_TablePropName="SP_RptJobOrder" msprop:Generator_RowDeletingName="SP_RptJobOrderRowDeleting" msprop:Generator_RowChangingName="SP_RptJobOrderRowChanging" msprop:Generator_RowEvHandlerName="SP_RptJobOrderRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_RptJobOrderRowDeleted" msprop:Generator_UserTableName="SP_RptJobOrder" msprop:Generator_RowChangedName="SP_RptJobOrderRowChanged" msprop:Generator_RowEvArgName="SP_RptJobOrderRowChangeEvent" msprop:Generator_RowClassName="SP_RptJobOrderRow">
+        <xs:element name="SP_RptJobOrder" msprop:Generator_TableClassName="SP_RptJobOrderDataTable" msprop:Generator_TableVarName="tableSP_RptJobOrder" msprop:Generator_RowChangedName="SP_RptJobOrderRowChanged" msprop:Generator_TablePropName="SP_RptJobOrder" msprop:Generator_RowDeletingName="SP_RptJobOrderRowDeleting" msprop:Generator_RowChangingName="SP_RptJobOrderRowChanging" msprop:Generator_RowEvHandlerName="SP_RptJobOrderRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_RptJobOrderRowDeleted" msprop:Generator_RowClassName="SP_RptJobOrderRow" msprop:Generator_UserTableName="SP_RptJobOrder" msprop:Generator_RowEvArgName="SP_RptJobOrderRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="RowNum" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnRowNum" msprop:Generator_ColumnPropNameInRow="RowNum" msprop:Generator_ColumnPropNameInTable="RowNumColumn" msprop:Generator_UserColumnName="RowNum" type="xs:long" minOccurs="0" />
@@ -108,6 +108,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="ExpenseDetail" msprop:Generator_ColumnVarNameInTable="columnExpenseDetail" msprop:Generator_ColumnPropNameInRow="ExpenseDetail" msprop:Generator_ColumnPropNameInTable="ExpenseDetailColumn" msprop:Generator_UserColumnName="ExpenseDetail" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

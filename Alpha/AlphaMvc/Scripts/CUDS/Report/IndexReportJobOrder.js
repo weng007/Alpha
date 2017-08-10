@@ -68,7 +68,7 @@ function GetJobOrder() {
                 html += '<td class="hideANDseek">' + data.Table[i].CoWorker + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].Remark + '</td>';
                 html += '<td class="nopointer">';
-                html += '<a href="/Reports/FormReport/RptReportViewer.aspx?id=' + data.Table[i].ID + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/report.png" style="cursor:hand" id="imgRptJobOrder" class="Reportview"/></a>';
+                html += '<a href="/Reports/FormReport/RptReportViewer.aspx?id=' + data.Table[i].ID + '" id="read' + data.Table[i].ID + '" target="_blank">' + '<img src="/Images/report.png" style="cursor:hand" id="imgRptJobOrder" class="Reportview"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }

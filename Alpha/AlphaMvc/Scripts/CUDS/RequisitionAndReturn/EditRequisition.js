@@ -123,6 +123,7 @@ $(document).ready(function () {
     var Model;
     var UnitWeight;
     var Brand;
+    var Remain;
     var dataitem;
     $('.txtSerial').autocomplete({
         source: function (request, response) {
@@ -141,6 +142,7 @@ $(document).ready(function () {
                             Model: item.Model,
                             UnitWeight: item.UnitWeightName,
                             Brand: item.Brand,
+                            Remain: item.Remain,
                             label: item.SerialNo,
                             value: item.ID
                         }
@@ -161,6 +163,7 @@ $(document).ready(function () {
             $('.txtSize').val(ui.item.Size);
             $('.txtModel').val(ui.item.Model);
             $('.txtBrand').val(ui.item.Brand);
+            $('.txtRemain').val(ui.item.Remain);
             $('.txtUnitWeight').val(ui.item.UnitWeight);
             return false;
         }
@@ -172,6 +175,7 @@ $(document).ready(function () {
     var Model;
     var UnitWeight;
     var Brand;
+    var Remain;
     var dataitem;
     $('.txtDescription').autocomplete({
         source: function (request, response) {
@@ -190,6 +194,7 @@ $(document).ready(function () {
                             Model: item.Model,
                             UnitWeight: item.UnitWeightName,
                             Brand: item.Brand,
+                            Remain: item.Remain,
                             label: item.Description,
                             value: item.ID
                         }
@@ -210,6 +215,7 @@ $(document).ready(function () {
             $('.txtSize').val(ui.item.Size);
             $('.txtModel').val(ui.item.Model);
             $('.txtBrand').val(ui.item.Brand);
+            $('.txtRemain').val(ui.item.Remain);
             $('.txtUnitWeight').val(ui.item.UnitWeight);
             return false;
         }
@@ -610,7 +616,7 @@ function GetdataRequisition(val)
                    $(this).find('.txtUnitWeight').val(data.Table[i].UnitWeightName);
                    $(this).find('.txtModel').val(data.Table[i].Model);
                    $(this).find('.txtBrand').val(data.Table[i].Brand);
-
+                   $(this).find('.txtRemain').val(data.Table[i].Remain);
                    //$(this).find('.WorkingFrom').timepicker('setTime', FTime, { 'timeFormat': 'H:i' });
                    $(this).find('.txtQty').val(data.Table[i].Amount);
                    $(this).find('.txtGood').val(data.Table[i].ReturnGood);
@@ -920,27 +926,12 @@ function Update(val)
     window.location.href = "../Requisition/EditRequisition?id=" + val;
 }
 function CheckBorrow() {
-    var BorrowAmount = $('.txtQty').eq(row_index).val();
-    var dataObject = { ProductID: $("#hidProductID").val() };
-    $.ajax(
-           {
-               url: 'http://localhost:13131/api/JobOrderBorrow',
-               type: 'GET',
-               datatype: 'json',
-               data: dataObject,
-               success: function (data) {
-                   data = JSON.parse(data);
-                   alert(data.Table[0].Amount);
-                   if (data.Table[0].Amount < BorrowAmount) {
-                       alert('จำนวนที่ยืมต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ');
-                       $('.txtQty').eq(row_index).val(0);
-                   }
-
-               },
-               error: function (msg) {
-                   alert(msg)
-               }
-           });
+    var BorrowAmount = $('.txtQty').eq(row_index7).val();
+    var Remain = $('.txtRemain').eq(row_index7).val();
+    if (Remain < BorrowAmount) {
+        alert('จำนวนที่ยืมต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ');
+        $('.txtQty').eq(row_index7).val(0);
+    }
 }
 
 //function Update1(val) {
@@ -1383,6 +1374,7 @@ function AddrowRequisition() {
     var Model;
     var UnitWeight;
     var Brand;
+    var Remain;
     var dataitem;
     $('.txtSerial').each(function () {
         $(this).autocomplete({
@@ -1402,6 +1394,7 @@ function AddrowRequisition() {
                                 Model: item.Model,
                                 UnitWeight: item.UnitWeightName,
                                 Brand: item.Brand,
+                                Remain: item.Remain,
                                 label: item.SerialNo,
                                 value: item.ID
                             }
@@ -1422,6 +1415,7 @@ function AddrowRequisition() {
                 $('.txtSize').eq(row_index7).val(ui.item.Size);
                 $('.txtModel').eq(row_index7).val(ui.item.Model);
                 $('.txtBrand').eq(row_index7).val(ui.item.Brand);
+                $('.txtRemain').eq(row_index7).val(ui.item.Remain);
                 $('.txtUnitWeight').eq(row_index7).val(ui.item.UnitWeight);
                 return false;
             }
@@ -1434,6 +1428,7 @@ function AddrowRequisition() {
     var Model;
     var UnitWeight;
     var Brand;
+    var Remain;
     var dataitem;
     $('.txtDescription').each(function () {
         $(this).autocomplete({
@@ -1453,6 +1448,7 @@ function AddrowRequisition() {
                                 Model: item.Model,
                                 UnitWeight: item.UnitWeightName,
                                 Brand: item.Brand,
+                                Remain: item.Remain,
                                 label: item.Description,
                                 value: item.ID
                             }
@@ -1473,6 +1469,7 @@ function AddrowRequisition() {
                 $('.txtSize').eq(row_index7).val(ui.item.Size);
                 $('.txtModel').eq(row_index7).val(ui.item.Model);
                 $('.txtBrand').eq(row_index7).val(ui.item.Brand);
+                $('.txtRemain').eq(row_index7).val(ui.item.Remain);
                 $('.txtUnitWeight').eq(row_index7).val(ui.item.UnitWeight);
                 return false;
             }

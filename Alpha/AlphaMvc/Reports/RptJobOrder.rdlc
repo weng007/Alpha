@@ -461,7 +461,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox47">
+                    <Textbox Name="Textbox43">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -475,7 +475,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox47</rd:DefaultName>
+                      <rd:DefaultName>Textbox43</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -727,21 +727,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox65">
+                    <Textbox Name="RowNum">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Sum(Fields!RowNum.Value)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox65</rd:DefaultName>
+                      <rd:DefaultName>RowNum</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -763,7 +763,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!TypeWorking.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -792,7 +792,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!ExpenseDetail.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -3617,6 +3617,10 @@
         </Field>
         <Field Name="Remark">
           <DataField>Remark</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ExpenseDetail">
+          <DataField>ExpenseDetail</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

@@ -1060,7 +1060,8 @@
                                 <th rowspan="2">หน่วยนับ</th>
                                 <th rowspan="2">รุ่น</th>
                                 <th rowspan="2">ยี่ห้อ</th>
-                                <th rowspan="2">จำนวนที่เบิก</th>
+                                <th rowspan="2">Remain</th>
+                                <th rowspan="2" class="text-size50">จำนวนที่เบิก</th>
                                 <th colspan="4" class="mnReturn">คืน</th>
                                 <th rowspan="2" class="mnReturn hidecolumn">จำนวนที่คืน</th>
                                 <th rowspan="2">หมายเหตุ</th>
@@ -1091,32 +1092,36 @@
                                 </td>
                                 <td>
                                     @*Serial1*@
-                                    <input type="text" id="txtSerial" name="txtName" class="txtSerial text-size140" />
+                                    <input type="text" id="txtSerial" name="txtName" class="txtSerial text-size120 text-left" />
                                     <input type="hidden" id="hidProductID" class="hidProductID" />
                                 </td>
                                 <td>
                                     @*Description1*@
-                                    <input id="txtDescription" type="text" value="" class="txtDescription text-size140" />
+                                    <input id="txtDescription" type="text" value="" class="txtDescription text-size220 text-left" />
                                 </td>
                                 <td>
                                     @*Size1*@
-                                    <input type="text" id="txtSize" class="txtSize select-size50-height23 txtdisablerow" disabled />
+                                    <input type="text" id="txtSize" class="txtSize select-size70-height23 txtdisablerow text-left" disabled />
                                 </td>
                                 <td>
                                     @*Unit Weight1*@
-                                    <input type="text" id="txtUnitWeight" class="txtUnitWeight select-size50-height23 txtdisablerow" disabled />
+                                    <input type="text" id="txtUnitWeight" class="txtUnitWeight select-size50-height23 txtdisablerow textleft" disabled />
                                 </td>
                                 <td>
                                     @*Model1*@
-                                    <input type="text" id="txtModel" class="txtModel select-size50-height23 txtdisablerow" disabled />
+                                    <input type="text" id="txtModel" class="txtModel select-size110-height23 txtdisablerow textleft" disabled />
                                 </td>
                                 <td>
                                     @*Brand1*@
-                                    <input type="text" id="txtBrand" class="txtBrand select-size50-height23 txtdisablerow" disabled />
+                                    <input type="text" id="txtBrand" class="txtBrand select-size110-height23 txtdisablerow textleft" disabled />
+                                </td>
+                                <td>
+                                    @*Remain*@
+                                    <input type="text" id="txtRemain" class="txtRemain select-size50-height23 txtdisablerow" disabled />
                                 </td>
                                 <td>
                                     @*Qty1*@
-                                    <input type="text" id="txtQty" class="txtQty select-size70-height23 " onchange="CheckBorrow()" />
+                                    <input type="text" id="txtQty" class="txtQty select-size50-height23 " onchange="CheckBorrow()" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Good1*@
@@ -1166,32 +1171,36 @@
                                 </td>
                                 <td>
                                     @*Serial2*@
-                                    <input type="text" id="txtSerial" name="txtName" class="txtSerial text-size140" />
+                                    <input type="text" id="txtSerial" name="txtName" class="txtSerial text-size120 text-left" />
                                     <input type="hidden" id="hidProductID" class="hidProductID" />
                                 </td>
                                 <td>
                                     @*Description2*@
-                                    <input id="txtDescription" type="text" value="" class="txtDescription text-size140" />
+                                    <input id="txtDescription" type="text" value="" class="txtDescription text-size220 text-left" />
                                 </td>
                                 <td>
                                     @*Size2*@
-                                    <input type="text" id="txtSize" class="txtSize select-size50-height23 txtdisablerow" disabled />
+                                    <input type="text" id="txtSize" class="txtSize select-size70-height23 txtdisablerow text-left" disabled />
                                 </td>
                                 <td>
                                     @*Unit Weight2*@
-                                    <input type="text" id="txtUnitWeight" class="txtUnitWeight select-size50-height23 txtdisablerow" disabled />
+                                    <input type="text" id="txtUnitWeight" class="txtUnitWeight select-size50-height23 txtdisablerow textleft" disabled />
                                 </td>
                                 <td>
                                     @*Model2*@
-                                    <input type="text" id="txtModel" class="txtModel select-size50-height23 txtdisablerow" disabled />
+                                    <input type="text" id="txtModel" class="txtModel select-size110-height23 txtdisablerow textleft" disabled />
                                 </td>
                                 <td>
                                     @*Brand2*@
-                                    <input type="text" id="txtBrand" class="txtBrand select-size50-height23 txtdisablerow" disabled />
+                                    <input type="text" id="txtBrand" class="txtBrand select-size110-height23 txtdisablerow textleft" disabled />
+                                </td>
+                                <td>
+                                    @*Remain2*@
+                                    <input type="text" id="txtRemain" class="txtRemain select-size50-height23 txtdisablerow" disabled />
                                 </td>
                                 <td>
                                     @*Qty2*@
-                                    <input type="text" id="txtQty" class="txtQty select-size70-height23 " onchange="CheckBorrow()" />
+                                    <input type="text" id="txtQty" class="txtQty select-size50-height23 " onchange="CheckBorrow()" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Good2*@
@@ -1211,7 +1220,7 @@
                                 </td>
                                 <td class="mnReturn hidecolumn">
                                     @*Return Qty1*@
-                                    <input type="text" id="txtQty1" class="txtQty1 select-size70-height23 " />
+                                    <input type="text" id="txtQty1" class="txtQty1 select-size50-height23 " />
                                 </td>
                                 <td>
                                     @*Remark2*@
@@ -1275,18 +1284,25 @@
         $('.ManDay').eq(row_index).val(ManDay);
     }
     function CheckReturn() {
-        var borrowAmount = parseFloat($('.txtQty').eq(row_index).val());
-        var returnAmount = (parseFloat($('.txtGood').eq(row_index).val()) + parseFloat($('.txtLost').eq(row_index).val()) + parseFloat($('.txtRepair').eq(row_index).val()) + parseFloat($('.txtBad').eq(row_index).val()))
-        if (borrowAmount < returnAmount) {
-            alert('จำนวนที่คืนจะต้องเท่ากับจำนวนที่เบิก กรุณาใส่ข้อมูลให้ถูกต้อง');
-            $('.txtGood').eq(row_index).val(0);
-            $('.txtLost').eq(row_index).val(0);
-            $('.txtRepair').eq(row_index).val(0);
-            $('.txtBad').eq(row_index).val(0);
+        var result = true;
+        $(".RowCal6").each(function () {
+            var borrowAmount = parseFloat($(this).find('.txtQty').val());
+            var returnAmount = (parseFloat($(this).find('.txtGood').val()) + parseFloat($(this).find('.txtLost').val()) + parseFloat($(this).find('.txtRepair').val()) + parseFloat($(this).find('.txtBad').val()))
+            if (borrowAmount < returnAmount) {
+                $(this).find('.txtGood').val(0);
+                $(this).find('.txtLost').val(0);
+                $(this).find('.txtRepair').val(0);
+                $(this).find('.txtBad').val(0);
+                result = false;
+            }
+        });
+        if(result)
+        {
+            Isvalidate('Update', 'JobOrderBorrow', @Request.Params["id"]);
         }
         else
         {
-            Isvalidate('Update', 'JobOrderBorrow', @Request.Params["id"]);
+            alert('จำนวนที่คืนจะต้องเท่ากับจำนวนที่เบิก กรุณาใส่ข้อมูลให้ถูกต้อง');
         }
     }
 </script>

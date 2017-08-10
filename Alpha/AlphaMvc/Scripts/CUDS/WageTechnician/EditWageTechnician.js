@@ -96,6 +96,7 @@ function GetData(val)
             $('#txtFullName').val(data.Table[0].FullName);
             var html = '<tbody>';
             for (var i = 0; i < data.Table1.length; i++) {
+                $('#hidEmpGroup').val(data.Table1[i].EmpGroup);
                 var MDate = ChangeformatDate(data.Table1[i].ManDate, 0);
                 var ManDate = ChangeformatDate(data.Table1[i].ManDate, 1);
                 var isBreak1 = data.Table1[i].Break1 == '1' ? 'Checked' : '';
@@ -126,11 +127,20 @@ function GetData(val)
                 html += '<td class="ManPremium">' + data.Table1[i].ManPremium + '</td>';
                 html += '<td class="ManPremium2">' + data.Table1[i].ManPremium2 + '</td>';
                 html += '<td class="ManSpecial">' + data.Table1[i].ManSpecial + '</td>';
-                html += '<td><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
-                html += '<td><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
-                html += '<td><input type="text" id="txtRemark" name="field1" onchange="SumAdditional()" class="Remark field-divided text-size80" value="' + Remark + '"/></td>';
-                html += '<td>' + '' + '</td>';
-                html += '<td>' + '' + '</td>';
+                if (data.Table1[i].EmpGroup == 'Alpha')
+                {
+                    html += '<td class="hidecolumn"><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
+                    html += '<td class="hidecolumn"><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
+                }
+                else
+                {
+                    html += '<td><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
+                    html += '<td><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
+                }
+                
+                html += '<td><input type="text" id="txtRemark" name="field1" onchange="SumAdditional()" class="Remark field-divided text-size250" value="' + Remark + '"/></td>';
+                html += '<td>' + data.Table1[i].Location + '</td>';
+                //html += '<td>' + '' + '</td>';
                 html += '</tr>';
             }
             for (var i = 0; i < data.Table2.length; i++) {
@@ -155,6 +165,17 @@ function GetData(val)
             CheckAuthorization();
             GetTotal();
             SumAdditional();
+            if($('#hidEmpGroup').val() == 'Alpha')
+            {
+                $('#thAdditionnal').css('display', 'none');
+                $('#thDeduction').css('display', 'none');
+                $('#tr1').css('display', 'none');
+                $('.td2').css('display', 'none');
+                $('#tr3').css('display', 'none');
+                $('#tr4').css('display', 'none');
+                $('.td4').css('display', 'none');
+                $('#tr5').css('display', 'none');
+            }
         },
         error: function (msg) {
             alert(msg)
@@ -296,10 +317,10 @@ function OpenRptWageTechnician(val) {
     //alert(ToDate);
     if (EmpGroup == 'Alpha')
     {
-        window.location.href = "../Reports/FormReport/RptWageTechnicianViewer.aspx?id=" + val + '|' + FromDate + '|' + ToDate;
+        window.open("../Reports/FormReport/RptWageTechnicianViewer.aspx?id=" + val + '|' + FromDate + '|' + ToDate,'_blank');
     }
     else
     {
-        window.location.href = "../Reports/FormReport/RptWageTechnicianViewer2.aspx?id=" + val + '|' + FromDate + '|' + ToDate;
+        window.open("../Reports/FormReport/RptWageTechnicianViewer2.aspx?id=" + val + '|' + FromDate + '|' + ToDate, '_blank');
     }
 }
