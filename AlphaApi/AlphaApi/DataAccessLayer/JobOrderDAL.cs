@@ -126,9 +126,9 @@ namespace AlphaApi.DataAccessLayer
                     result = cmd.ExecuteScalar().ToString();
                     return result;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return result = "";
+                    throw ex;
                 }
                 finally
                 {

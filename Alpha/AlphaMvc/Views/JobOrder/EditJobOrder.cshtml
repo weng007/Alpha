@@ -118,7 +118,7 @@
                 @*<input type="text" id="txtContact" name="field1" class="field-divided" placeholder="" disabled />&nbsp;<input type="text" name="field2" id="txtCoWorker" class="field-divided" placeholder="" disabled />*@
             </li>
             <li>
-                <label class="label-2">ที่อยู่</label>
+                <label class="label-9">ที่อยู่</label>
             </li>
             <li>
                 <textarea name="field5" id="txtAddress" class="field-long field-textarea" placeholder="ที่อยู่" disabled></textarea>
@@ -456,7 +456,7 @@
                                 </div>
                                 <div>
                                     <div class="wrapper">
-                                        <div class="myDIV">
+                                        <div class="tbresponsive">
                                             <table id="tabManpower" class="example">
                                                 <thead class="theader">
                                                     <tr>
@@ -1005,6 +1005,7 @@
         ControlEnable(Isview);
         //SetRowCal5();
         GetContact(@Request.Params["id"]);
+        GetTypeworking();
         //GetTypeWorking();
         GetData(@Request.Params["id"]);
         @*GetJobOrderBorrow(@Request.Params["id"]);*@ 

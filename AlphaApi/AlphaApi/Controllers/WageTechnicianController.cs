@@ -35,6 +35,7 @@ namespace AlphaApi.Controllers
 
         [EnableCorsAttribute("*", "*", "*")]
         [HttpGet]
+        //GetData
         public string Get(string Datesearh)
         {
             string[] str = Datesearh.Split('|');

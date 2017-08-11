@@ -40,28 +40,24 @@ $(document).ready(function () {
         $('.cloneRowManpower').click(function () {
             $('.RowCal5:last').find('td input[type=text]').eq(0).val('');
             $('.RowCal5:last').find('td input[type=text]').eq(1).val('');
-            CalSumExpense();
         });
 
         //SaleOrder
         $('.cloneRowSaleOrder').click(function () {
             $('.RowCal2:last').find('td input[type=text]').eq(0).val('');
             $('.RowCal2:last').find('td input[type=text]').eq(1).val('');
-            CalSumExpense();
         });
         
         //Invoice
         $('.cloneRowInvoice').click(function () {
             $('.RowCal3:last').find('td input[type=text]').eq(0).val('');
             $('.RowCal3:last').find('td input[type=text]').eq(1).val('');
-            CalSumExpense();
         });
 
         //Receipt
         $('.cloneRowReceipt').click(function () {
             $('.RowCal4:last').find('td input[type=text]').eq(0).val('');
             $('.RowCal4:last').find('td input[type=text]').eq(1).val('');
-            CalSumExpense();
         });
     });
 
@@ -145,24 +141,6 @@ $(document).ready(function () {
     //        alert('Error');
     //    }
     //});
-
-    var dataObject = { typeID: '001' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $.each(data.Table, function (i) {
-                $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('#cmbTypeWorking').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
 
     var dataObject = { typeID: '002' };
     $.ajax({
@@ -258,7 +236,55 @@ $(document).ready(function () {
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
 });
+function GetTypeworking()
+{
+    //alert("GetTypeworking");
+    var dataObject = { typeID: '001' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        dataType: 'json',
+        async:false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('#cmbTypeWorking').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
+
+function ChangeExpenseGroup() {
+    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+    $('#hidTypeWorking').val(WorkingType);
+    var dataObject = { TypeWorking: WorkingType };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderExpense',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $('.ExpenseSelect').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
 function GetContact(val) {
+    //alert("GetContact");
     var dataObject = { JobID: val };
     $.ajax({
         url: 'http://localhost:13131/api/JobOrder',
@@ -471,15 +497,6 @@ function ControlEnable(Isview) {
         document.getElementById("add-row4").style.visibility = "hidden";
         document.getElementById("add-row5").style.visibility = "hidden";
     }
-    //else {
-    //    document.getElementById("add-row2").style.visibility = "show";
-    //    document.getElementById("add-row6").style.visibility = "show";
-    //    document.getElementById("add-row7").style.visibility = "show";
-    //    document.getElementById("add-row3").style.visibility = "show";
-    //    document.getElementById("add-row4").style.visibility = "show";
-    //    document.getElementById("add-row5").style.visibility = "show";
-    //}
-    
 }
 
 function GetData(val) {
@@ -498,7 +515,8 @@ function GetData(val) {
            var JobDate = ChangeformatDate(data.Table[0].JobDate, 0);
            var SWorking = ChangeformatDate(data.Table[0].SWorking, 0);
            var EWorking = ChangeformatDate(data.Table[0].EWorking, 0);
-
+           //GetTypeworking();
+           //alert("TypeWorking " + data.Table[0].TypeWorking);
            $("#hidCustID").val(data.Table[0].CustID), $("#txtJobNo").val(data.Table[0].CustID), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
              $("#cmbContact").val(data.Table[0].ContactID), $("#cmbCoWorker").val(data.Table[0].CoWorkerID),
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
@@ -507,9 +525,11 @@ function GetData(val) {
              $("#txtDiscount").val(data.Table[0].Discount), $("#txtJobSite").val(data.Table[0].JobSite), $("#txtLocation").val(data.Table[0].Location);
 
            BrowseCustomer($("#hidBDCID").val());
-           
+           //alert("cmbTypeWorking "+$("#cmbTypeWorking").val());
+           //alert("test");
            SetIncomeMaster();
-           SetExpenseType();
+           //ChangeExpenseGroup();
+           //SetExpenseType();
            SetUnitWeight();
            SetUnitWeightExpense();
 
@@ -549,10 +569,13 @@ function GetData(val) {
                    SetRowIndex();
                }
                $('.RowCal1:eq(' + data.Table2.length + ')').remove();
-               SetExpenseType();
+               //SetExpenseType();
+               //GetTypeworking();
+               ChangeExpenseGroup();
                SetUnitWeight();
 
                $(".RowCal1").each(function (i) {
+                   //alert("ExpenseType "+data.Table2[i].ExpenseType);
                    $(this).find('.tdno').val(data.Table2[i].RowNum);
                    $(this).find('.ExpenseID').val(data.Table2[i].ID);
                    $(this).find('.JobID').val(data.Table2[i].JobID);
@@ -835,6 +858,7 @@ function Update(val) {
     var discount = ConvertAmount($("#txtDiscount").val());
     var price = ConvertAmount($("#txtSubTotal").val());
     var cost = ConvertAmount($('#txtExpense').val());
+    alert(EWorkingDate);
     var dataObject = {
         ID: val, JobRef: $('#hidBDCID').val(),JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate,
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
@@ -876,7 +900,6 @@ function Update(val) {
                     alert(msg)
                 }
             });
-    
     var dataObject = {};
     $(".RowCal").each(function () {
         dataObject.JobID = JobID;
@@ -947,7 +970,6 @@ function Update(val) {
             var workingTo = $(this).find('.WorkingTo').val();
 
             var mDate = ChangeformatDate($(this).find(".ManDate").val(), 1);
-
             if ($(this).find('.chkLead').is(":checked") == true) {
                 manJobType = '0';
             }
@@ -957,7 +979,10 @@ function Update(val) {
             else if ($(this).find('.chkSafety').is(":checked") == true) {
                 manJobType = '2';
             }
-
+            else
+            {
+                manJobType = '5';
+            }
             dataObject.JobID = JobID;
             dataObject.TechnicianID = $(this).find('.TechnicianID').val();
             dataObject.ManDate = mDate;
@@ -1091,12 +1116,11 @@ function CalSum() {
     var total = 0;
     var SubTotal = 0;
     var Discount = 0;
-
+    //alert("calsum");
     $(".RowCal").each(function () {
         var qty = $(this).find(".Quantity").val().replace(',', '');
         var price = $(this).find(".UnitPrice").val().replace(',', '');
         var amount = qty * price;
-
         $(this).find('.Amount').val(amount);
         total = total + parseFloat($(this).find('.Amount').val());
 

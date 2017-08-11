@@ -929,7 +929,7 @@ function CheckBorrow() {
     var BorrowAmount = $('.txtQty').eq(row_index7).val();
     var Remain = $('.txtRemain').eq(row_index7).val();
     if (Remain < BorrowAmount) {
-        alert('จำนวนที่ยืมต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ');
+        alert('จำนวนที่เบิกต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ');
         $('.txtQty').eq(row_index7).val(0);
     }
 }

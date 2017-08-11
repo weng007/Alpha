@@ -735,6 +735,9 @@ function CreateData() {
                 {
                     manJobType = '2';
                 }
+                else {
+                    manJobType = '5';
+                }
 
                 dataObject.JobID = ID;
                 dataObject.TechnicianID = $(this).find('.TechnicianID').val();

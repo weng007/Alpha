@@ -27,6 +27,7 @@ namespace AlphaApi.Controllers
         }
 
         [HttpGet]
+        //Get Autocomplete หน้า Edit Requisition ส่ง Serial, Description ไป WHERE
         public string Get(string Criteria)
         {
             var response = jobOrderBorrow.SelectByCriteria(Criteria);

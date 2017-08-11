@@ -738,6 +738,13 @@ select{
     float: left;
     margin-right: 10%;
 }
+.form-style-1 .label-9 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: bold;
+    margin-right: 30%;
+}
 .form-style-1 .label-small {
     margin: 0 0 3px 0;
     padding: 0px;

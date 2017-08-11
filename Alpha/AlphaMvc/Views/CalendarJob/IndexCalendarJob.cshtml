@@ -41,7 +41,7 @@ function GetDetail(currentMonth) {
                    var EWorking = data.Table[i].EWorking.replace('T00:00:00', 'T23:59:00');
                    var TypeWorking = data.Table[i].TypeWorkingName.substr(0, 3);
                    event.push({
-                       title: data.Table[i].JobNo + '(' + TypeWorking + ')' + '(' + data.Table[i].Technician + ')',
+                       title: data.Table[i].Technician + '  ' + '(' + TypeWorking + ')' + data.Table[i].JobNo,
                        url: '/JobOrder/EditJobOrder?id=' + data.Table[i].ID,
                        start: data.Table[i].SWorking,
                        end: EWorking

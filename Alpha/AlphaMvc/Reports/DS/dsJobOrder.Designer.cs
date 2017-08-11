@@ -319,6 +319,12 @@ namespace MymobilewalaMvc.Reports.DS {
             
             private global::System.Data.DataColumn columnExpenseDetail;
             
+            private global::System.Data.DataColumn columnLead;
+            
+            private global::System.Data.DataColumn columnTech;
+            
+            private global::System.Data.DataColumn columnSafety;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SP_RptJobOrderDataTable() {
@@ -514,6 +520,30 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LeadColumn {
+                get {
+                    return this.columnLead;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TechColumn {
+                get {
+                    return this.columnTech;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SafetyColumn {
+                get {
+                    return this.columnSafety;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -568,7 +598,10 @@ namespace MymobilewalaMvc.Reports.DS {
                         string CoWorker, 
                         string Address, 
                         string Remark, 
-                        string ExpenseDetail) {
+                        string ExpenseDetail, 
+                        int Lead, 
+                        int Tech, 
+                        int Safety) {
                 SP_RptJobOrderRow rowSP_RptJobOrderRow = ((SP_RptJobOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         RowNum,
@@ -590,7 +623,10 @@ namespace MymobilewalaMvc.Reports.DS {
                         CoWorker,
                         Address,
                         Remark,
-                        ExpenseDetail};
+                        ExpenseDetail,
+                        Lead,
+                        Tech,
+                        Safety};
                 rowSP_RptJobOrderRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_RptJobOrderRow);
                 return rowSP_RptJobOrderRow;
@@ -640,6 +676,9 @@ namespace MymobilewalaMvc.Reports.DS {
                 this.columnAddress = base.Columns["Address"];
                 this.columnRemark = base.Columns["Remark"];
                 this.columnExpenseDetail = base.Columns["ExpenseDetail"];
+                this.columnLead = base.Columns["Lead"];
+                this.columnTech = base.Columns["Tech"];
+                this.columnSafety = base.Columns["Safety"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -685,6 +724,12 @@ namespace MymobilewalaMvc.Reports.DS {
                 base.Columns.Add(this.columnRemark);
                 this.columnExpenseDetail = new global::System.Data.DataColumn("ExpenseDetail", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExpenseDetail);
+                this.columnLead = new global::System.Data.DataColumn("Lead", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLead);
+                this.columnTech = new global::System.Data.DataColumn("Tech", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTech);
+                this.columnSafety = new global::System.Data.DataColumn("Safety", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSafety);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnRowNum.ReadOnly = true;
@@ -1163,6 +1208,54 @@ namespace MymobilewalaMvc.Reports.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Lead {
+                get {
+                    try {
+                        return ((int)(this[this.tableSP_RptJobOrder.LeadColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Lead\' in table \'SP_RptJobOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_RptJobOrder.LeadColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Tech {
+                get {
+                    try {
+                        return ((int)(this[this.tableSP_RptJobOrder.TechColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Tech\' in table \'SP_RptJobOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_RptJobOrder.TechColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Safety {
+                get {
+                    try {
+                        return ((int)(this[this.tableSP_RptJobOrder.SafetyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Safety\' in table \'SP_RptJobOrder\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_RptJobOrder.SafetyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsRowNumNull() {
                 return this.IsNull(this.tableSP_RptJobOrder.RowNumColumn);
             }
@@ -1387,6 +1480,42 @@ namespace MymobilewalaMvc.Reports.DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetExpenseDetailNull() {
                 this[this.tableSP_RptJobOrder.ExpenseDetailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLeadNull() {
+                return this.IsNull(this.tableSP_RptJobOrder.LeadColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLeadNull() {
+                this[this.tableSP_RptJobOrder.LeadColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTechNull() {
+                return this.IsNull(this.tableSP_RptJobOrder.TechColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTechNull() {
+                this[this.tableSP_RptJobOrder.TechColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSafetyNull() {
+                return this.IsNull(this.tableSP_RptJobOrder.SafetyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSafetyNull() {
+                this[this.tableSP_RptJobOrder.SafetyColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -61,24 +61,34 @@ $(document).ready(function () {
         for (var i = 0; i < data.Table.length; i++) {
             if (data.Table[i].Color == 'red')
             {
-                html += '<tr style="background-color:#ffbaba;">';
+                html += '<tr>';
+                html += '<td class="nopointer tdredColor">' + data.Table[i].RowNum + '</td>';
+                html += '<td class="hidecolumn nopointer tdredColor">' + data.Table[i].TechnicianID + '</td>';
+                html += '<td class="nopointer tdredColor">' + data.Table[i].FullName + '</td>';
+                html += '<td class="hideANDseek nopointer tdredColor">' + data.Table[i].PositionName + '</td>';
+                html += '<td class="nopointer tdredColor">' + data.Table[i].EmpGroup + '</td>';
+                html += '<td class="hideANDseek nopointer tdredColor">' + data.Table[i].CerNo + '</td>';
+                var ExpiryDate = new Date(data.Table[i].ExpiryDate);
+                html += '<td class="nopointer tdredColor">' + ExpiryDate.getDate() + '/' + (ExpiryDate.getMonth() + 1) + '/' + ExpiryDate.getFullYear() + '</td>';
+                html += '<td class="hidecolumn nopointer tdredColor">' + data.Table[i].CardType + '</td>';
+                html += '<td class="nopointer tdredColor">' + data.Table[i].CompanyName + '</td>';
+                html += '</tr>';
             }
             else
             {
                 html += '<tr>';
+                html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
+                html += '<td class="hidecolumn nopointer">' + data.Table[i].TechnicianID + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].FullName + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].PositionName + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].EmpGroup + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].CerNo + '</td>';
+                var ExpiryDate = new Date(data.Table[i].ExpiryDate);
+                html += '<td class="nopointer">' + ExpiryDate.getDate() + '/' + (ExpiryDate.getMonth() + 1) + '/' + ExpiryDate.getFullYear() + '</td>';
+                html += '<td class="hidecolumn nopointer">' + data.Table[i].CardType + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].CompanyName + '</td>';
+                html += '</tr>';
             }
-            
-            html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
-            html += '<td class="hidecolumn nopointer">' + data.Table[i].TechnicianID + '</td>';
-            html += '<td class="nopointer">' + data.Table[i].FullName + '</td>';
-            html += '<td class="hideANDseek nopointer">' + data.Table[i].PositionName + '</td>';
-            html += '<td class="nopointer">' + data.Table[i].EmpGroup + '</td>';
-            html += '<td class="hideANDseek nopointer">' + data.Table[i].CerNo + '</td>';
-            var ExpiryDate = new Date(data.Table[i].ExpiryDate);
-            html += '<td class="nopointer">' + ExpiryDate.getDate() + '/' + (ExpiryDate.getMonth() + 1) + '/' + ExpiryDate.getFullYear() + '</td>';
-            html += '<td class="hidecolumn nopointer">' + data.Table[i].CardType + '</td>';
-            html += '<td class="nopointer">' + data.Table[i].CompanyName + '</td>';
-            html += '</tr>';
         }
         html += '</tbody>';
         document.getElementById("ExpiredCard").innerHTML = html;

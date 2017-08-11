@@ -92,8 +92,8 @@
             var bindActions = function(obj) {              
                 obj.find(options.removeClass).each(function() {
                     bindRemoveLink($(this));
+                    
                 });
-
                 obj.find(options.cloneClass).each(function() {
                     bindCloneLink($(this));
                 });
@@ -346,7 +346,7 @@
                             options.onTableEmpty();
                         }
                     });
-                }
+                }            
             }
 
             var bindClick = function (elem, fn) {
@@ -609,7 +609,7 @@
                 bindActions(clonedRow);
                 $(tbod).children("tr:last").hide().fadeIn(options.insertFadeSpeed);
             }
-
+            
             var removeRow = function (btn) {
                 var tbod = $(btn).parents("tbody:first");
                 var numRows = $(tbod).children("tr").length;
@@ -717,7 +717,7 @@
                 insertFadeSpeed: "slow",
                 removeFadeSpeed: "fast",
                 hideTableOnEmpty: true,
-                onRowRemove: function () { },
+                onRowRemove: function () { CalSum(); },
                 onRowClone: function () { },
                 onRowAdd: function () { },
                 onTableEmpty: function () { },
@@ -857,7 +857,7 @@
                 insertFadeSpeed: "slow",
                 removeFadeSpeed: "fast",
                 hideTableOnEmpty: true,
-                onRowRemove: function () { },
+                onRowRemove: function () { CalSumExpense(); },
                 onRowClone: function () { },
                 onRowAdd: function () { },
                 onTableEmpty: function () { },

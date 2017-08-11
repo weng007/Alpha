@@ -102,7 +102,6 @@ function RowDelete(id) {
     var after = input.split('?')[1]
     var ID = after.split('=');
     var BDCID = ID[1];
-    //alert(id);
     var dataObject = { ID: id };
     $.ajax(
         {

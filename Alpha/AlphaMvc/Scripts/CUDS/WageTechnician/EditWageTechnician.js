@@ -110,36 +110,36 @@ function GetData(val)
                 html += '<td class="hidecolumn"><input type="hidden" Class="hidTechnicianID" value="' + val + '" /></td>';
                 html += '<td class="hidecolumn"><input type="hidden" class="hidEmpGroup" value="' + data.Table1[i].EmpGroup + '" /></td>';
                 html += '<td class="hidecolumn EmpGroup">' + data.Table1[i].EmpGroup + '</td>';
-                html += '<td>' + data.Table1[i].RowNum + '</td>';
-                html += '<td>' + data.Table1[i].JobNo + '</td>';
-                html += '<td>' + data.Table1[i].CustomerName + '</td>';
-                html += '<td>' + data.Table1[i].JobSite + '</td>';
-                html += '<td>' + data.Table1[i].JMManDate + '</td>';
-                html += '<td>' + MDate + '</td>';
-                html += '<td>' + data.Table1[i].WorkingFrom + '</td>';
-                html += '<td>' + data.Table1[i].WorkingTo + '</td>';
-                html += '<td><input id="isBreak1" type="checkbox" class="isBreak1" ' + isBreak1 + ' disabled></td>';
-                html += '<td><input id="isBreak2" type="checkbox" class="isBreak2" ' + isBreak2 + ' disabled></td>';
-                html += '<td><input id="isBreak3" type="checkbox" class="isBreak3" ' + isBreak3 + ' disabled></td>';
-                html += '<td>' + data.Table1[i].TotalHours + '</td>';
-                html += '<td>' + data.Table1[i].NormalDay + '</td>';
-                html += '<td class="ManNormal">' + data.Table1[i].ManNormal + '</td>';
-                html += '<td class="ManPremium">' + data.Table1[i].ManPremium + '</td>';
-                html += '<td class="ManPremium2">' + data.Table1[i].ManPremium2 + '</td>';
-                html += '<td class="ManSpecial">' + data.Table1[i].ManSpecial + '</td>';
+                html += '<td Class="nopointer">' + data.Table1[i].RowNum + '</td>';
+                html += '<td Class="nopointer"><input type="text" id="txtJobNo" name="field1" class="field-divided text-size120 textleft txttransparent" value="' + data.Table1[i].JobNo + '"/></td>';
+                html += '<td Class="nopointer"><input type="text" id="txtCustomerName" name="field1" class="field-divided text-size200 textleft txttransparent" value="' + data.Table1[i].CustomerName + '"/></td>';
+                html += '<td Class="nopointer"><input type="text" id="txtJobSite" name="field1" class="field-divided text-size120 textleft txttransparent" value="' + data.Table1[i].JobSite + '"/></td>';
+                html += '<td Class="nopointer">' + data.Table1[i].JMManDate + '</td>';
+                html += '<td Class="nopointer">' + MDate + '</td>';
+                html += '<td Class="nopointer">' + data.Table1[i].WorkingFrom + '</td>';
+                html += '<td Class="nopointer">' + data.Table1[i].WorkingTo + '</td>';
+                html += '<td Class="nopointer"><input id="isBreak1" type="checkbox" class="isBreak1" ' + isBreak1 + ' disabled></td>';
+                html += '<td Class="nopointer"><input id="isBreak2" type="checkbox" class="isBreak2" ' + isBreak2 + ' disabled></td>';
+                html += '<td Class="nopointer"><input id="isBreak3" type="checkbox" class="isBreak3" ' + isBreak3 + ' disabled></td>';
+                html += '<td Class="nopointer">' + data.Table1[i].TotalHours + '</td>';
+                html += '<td Class="nopointer">' + data.Table1[i].NormalDay + '</td>';
+                html += '<td class="ManNormal nopointer">' + data.Table1[i].ManNormal + '</td>';
+                html += '<td class="ManPremium nopointer">' + data.Table1[i].ManPremium + '</td>';
+                html += '<td class="ManPremium2 nopointer">' + data.Table1[i].ManPremium2 + '</td>';
+                html += '<td class="ManSpecial nopointer">' + data.Table1[i].ManSpecial + '</td>';
                 if (data.Table1[i].EmpGroup == 'Alpha')
                 {
-                    html += '<td class="hidecolumn"><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
-                    html += '<td class="hidecolumn"><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
+                    html += '<td class="hidecolumn nopointer"><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
+                    html += '<td class="hidecolumn nopointer"><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
                 }
                 else
                 {
-                    html += '<td><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
-                    html += '<td><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
+                    html += '<td Class="nopointer"><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
+                    html += '<td Class="nopointer"><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
                 }
                 
-                html += '<td><input type="text" id="txtRemark" name="field1" onchange="SumAdditional()" class="Remark field-divided text-size250" value="' + Remark + '"/></td>';
-                html += '<td>' + data.Table1[i].Location + '</td>';
+                html += '<td Class="nopointer"><input type="text" id="txtRemark" name="field1" onchange="SumAdditional()" class="Remark field-divided text-size250" value="' + Remark + '"/></td>';
+                html += '<td Class="nopointer">' + data.Table1[i].Location + '</td>';
                 //html += '<td>' + '' + '</td>';
                 html += '</tr>';
             }
