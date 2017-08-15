@@ -183,13 +183,15 @@ $(document).ready(function () {
 
     $("#dtJobDate").datepicker({
         inline: true,
-        showOtherMonths: true
+        showOtherMonths: true,
+        dateFormat: "dd/mm/yy"
     })
-    .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
+     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
 
     $("#dtSWorking").datepicker({
         inline: true,
-        showOtherMonths: true
+        showOtherMonths: true,
+        dateFormat: "dd/mm/yy"
     })
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
 
@@ -200,9 +202,9 @@ $(document).ready(function () {
     })
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
 
-    $("#dtJobDate").datepicker();
-    $("#dtSWorking").datepicker();
-    $("#dtEWorking").datepicker();
+    //$("#dtJobDate").datepicker();
+    //$("#dtSWorking").datepicker();
+    //$("#dtEWorking").datepicker();
     $('#tabManpower').dynoTable2();
     $('#tabSaleOrder').dynoTable3();
     $('#tabInvoice').dynoTable4();
