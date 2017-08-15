@@ -24,7 +24,7 @@
                     <input type="text" id="txtSeq" class="field-divided text-size40 text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" value="1" />
                 </li>
                 <li>
-                    <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'IncomeMaster', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnSave" class="btn btn-primary mgr10" onclick="Isvalidate('Update', 'IncomeMaster', @Request.Params["id"])">Save</button><button type="button" id="btnCancel" class="btn btn-danger" onclick="Redirect()">Cancel</button>
                 </li>
             </ul>
 

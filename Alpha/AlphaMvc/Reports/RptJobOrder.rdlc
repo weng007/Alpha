@@ -3144,7 +3144,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>ISO (F-ARS-03-Rev.00 (28 July 2015))</Value>
+                <Value>F-ARS-03-Rev.00 (28 July 2015)</Value>
                 <Style>
                   <FontFamily>cordia New</FontFamily>
                   <FontSize>11pt</FontSize>
@@ -3156,9 +3156,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
         <Top>25.77013cm</Top>
-        <Left>12.12704cm</Left>
+        <Left>13.07954cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.58426cm</Width>
+        <Width>3.63176cm</Width>
         <ZIndex>40</ZIndex>
         <Style>
           <Border>

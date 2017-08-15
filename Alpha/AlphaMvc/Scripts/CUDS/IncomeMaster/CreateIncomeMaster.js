@@ -22,3 +22,7 @@ function convertFloat(str) {
     //alert("Test");
     $(str).val($(str).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
 }
+function Redirect()
+{
+    window.location.href = "../IncomeMaster/IndexIncomeMaster";
+}

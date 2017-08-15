@@ -49,7 +49,8 @@ function GetJobOrder(val)
     //var BDCID = after.split('=');
     //var ID = BDCID[1];
     //alert('JobBDC '+ID);
-    var dataObject = { ID: val }
+    $('#hidBDCID').val(val);
+    var dataObject = { ID: val };
     $.ajax(
     {
         url: 'http://localhost:13131/api/BDCJob',
@@ -76,9 +77,9 @@ function GetJobOrder(val)
                 html += '<td class="hideANDseek">' + data.Table[i].CoWorker + '</td>';
                 html += '<td class="hideANDseek">' + data.Table[i].Remark + '</td>';
                 html += '<td>';
-                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgBDCUpdate"/></a>';
+                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '&' + "BDCJob" + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgBDCUpdate"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " ConfirmDialog(' + " 'Delete'" + ',' + "'JobOrder'" + ',' + data.Table[i].ID + ')"" style="margin-right: 5px;">' + '<img src="/Images/delete.png" class="imgBDCDelete"/></a>';
-                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="BDCviewDisable"/></a>';
+                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '&' + "BDCJob" + '&' + "true" + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="BDCviewDisable"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
@@ -98,10 +99,6 @@ function GetJobOrder(val)
     });
 }
 function RowDelete(id) {
-    var input = window.location.href;
-    var after = input.split('?')[1]
-    var ID = after.split('=');
-    var BDCID = ID[1];
     var dataObject = { ID: id };
     $.ajax(
         {
@@ -112,7 +109,8 @@ function RowDelete(id) {
 
             success: function (result) {
                 //alert('Delete is completed')
-                window.location.href = "../BDC/EditBDC?id=" + BDCID;
+                var hidBDCID = $('#hidBDCID').val();
+                window.location.href = "../BDC/EditBDC?id=" + hidBDCID;
             }
             ,
             error: function (msg) {

@@ -232,7 +232,7 @@
                                                             <select class="UnitWeight text-size80"></select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtQty" value ="0" class="Quantity text-size50 textright" onchange="CalSum()" />
+                                                            <input type="text" id="txtQty" value ="1" class="Quantity text-size50 textright" onchange="CalSum()" />
                                                         </td>
                                                         <td class="hidecolumn">
                                                             <input type="text" id="txtPriceList" value="0" class="PriceList text-size80 textright" />
@@ -275,7 +275,7 @@
                                                             <select class="UnitWeight text-size80"></select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtQty" value="0" class="Quantity text-size50 textright" onchange="CalSum()" />
+                                                            <input type="text" id="txtQty" value="1" class="Quantity text-size50 textright" onchange="CalSum()" />
                                                         </td>
                                                         <td class="hidecolumn">
                                                             <input type="text" id="txtPriceList" value="0" class="PriceList text-size80 textright" />
@@ -360,7 +360,7 @@
                                                             <select class="unitSelect"></select>
                                                         </td>
                                                         <td> 
-                                                            <input type="text" id="txtQty" value="0" name="Qty" class="Quantity text-size50" onchange="CalSumExpense()">
+                                                            <input type="text" id="txtQty" value="1" name="Qty" class="Quantity text-size50" onchange="CalSumExpense()">
                                                         </td>
                                                         <td class="hidecolumn">
                                                             <input type="text" id="txtPriceList1" value="0" class="PriceList1 text-size80 textright" />
@@ -401,7 +401,7 @@
                                                             <select class="unitSelect"></select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtQty" name="Qty" value="0" class="Quantity text-size50" onchange="CalSumExpense()">
+                                                            <input type="text" id="txtQty" name="Qty" value="1" class="Quantity text-size50" onchange="CalSumExpense()">
                                                         </td>
                                                         <td class="hidecolumn">
                                                             <input type="text" id="txtPriceList1" value="0" class="PriceList1 text-size80 textright" />
@@ -439,7 +439,13 @@
                                                             <label class="lblExpense label-small-3">ต้นทุน(Manpower and Tool Cost)</label>
                                                         </li>
                                                         <li>
-                                                            <input type="text" id="txtExpense" name="field6" class="text-size130 txtdisablerow" value="" disabled />
+                                                            <input type="text" id="txtExpense" name="field6" class="text-size130 txtdisablerow" value="0" disabled />
+                                                        </li>
+                                                        <li>
+                                                            <label class="lblExpense label-small-16">ค่า Man Job (Tab Manpower)</label>
+                                                        </li>
+                                                        <li>
+                                                            <input type="text" id="txtManJob" name="field6" class="text-size130 txtdisablerow" value="0" disabled />
                                                         </li>
                                                         <li>
                                                             <label class="lblProfit label-small-6">กำไร</label>
@@ -987,7 +993,8 @@
 
         <ul class="form-style-1">
             <li>
-                <button type="button" id="btnSave"  class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button>
+                <button type="button" id="btnSave"  class="btn btn-primary mgr10" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button>
+                <button type="button" id="btnCancel" class="btn btn-danger mgr10" onclick="Redirect()">Cancel</button>
                 <a onclick="OpenRptJobOrder(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>
                 @*<button type="button" id="btnSave" class="btnCreate" onclick="OpenRptJobOrder(@Request.Params["id"])" formtarget="_blank"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-2" id="BDCCreate" /></button>*@
             </li>
@@ -999,16 +1006,14 @@
     $(document).ready(function () {
         var input = window.location.href;
         var after = input.split('?')[1]
-        var val = after.split('=');
-        var Isview = val[2];
-        //alert(Isview);
-        ControlEnable(Isview);
-        //SetRowCal5();
+        var val = after.split('&');
+        //alert("val " + val);
+        //alert(val[2]);
+        ControlEnable(val[2]);
         GetContact(@Request.Params["id"]);
         GetTypeworking();
-        //GetTypeWorking();
+        GetStatus();
         GetData(@Request.Params["id"]);
-        @*GetJobOrderBorrow(@Request.Params["id"]);*@ 
         
     });
     function GetDay() {

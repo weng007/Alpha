@@ -141,25 +141,6 @@ $(document).ready(function () {
     //        alert('Error');
     //    }
     //});
-
-    var dataObject = { typeID: '002' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService/',
-        type: 'GET',
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $.each(data.Table, function (i) {
-                $('#cmbJobStatus').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('#cmbJobStatus').find('option:first-child').attr('selected', true);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-
     //GetContact();
 
     $('#parentHorizontalTab').easyResponsiveTabs({
@@ -214,7 +195,8 @@ $(document).ready(function () {
 
     $("#dtEWorking").datepicker({
         inline: true,
-        showOtherMonths: true
+        showOtherMonths: true,
+        dateFormat: "dd/mm/yy"
     })
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
 
@@ -252,6 +234,27 @@ function GetTypeworking()
                 $('#cmbTypeWorking').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('#cmbTypeWorking').find('option:first-child').attr('selected', true);
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+
+}
+function GetStatus() {
+    var dataObject = { typeID: '002' };
+    $.ajax({
+        url: 'http://localhost:13131/api/MasterService/',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $.each(data.Table, function (i) {
+                $('#cmbJobStatus').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('#cmbJobStatus').find('option:first-child').attr('selected', true);
         },
         failure: function () {
             alert('Error');
@@ -467,7 +470,7 @@ function GetManDay(val) {
 
 function ControlEnable(Isview) {
     //var Isview = val;
-    if (Isview) {
+    if (Isview == 'true') {
         document.getElementById("txtJobNo").disabled = true;
         document.getElementById("dtJobDate").disabled = true;
         document.getElementById("txtCar").disabled = true;
@@ -515,8 +518,7 @@ function GetData(val) {
            var JobDate = ChangeformatDate(data.Table[0].JobDate, 0);
            var SWorking = ChangeformatDate(data.Table[0].SWorking, 0);
            var EWorking = ChangeformatDate(data.Table[0].EWorking, 0);
-           //GetTypeworking();
-           //alert("TypeWorking " + data.Table[0].TypeWorking);
+           //alert("bindStatus " + data.Table[0].JobStatus);
            $("#hidCustID").val(data.Table[0].CustID), $("#txtJobNo").val(data.Table[0].CustID), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
              $("#cmbContact").val(data.Table[0].ContactID), $("#cmbCoWorker").val(data.Table[0].CoWorkerID),
              $("#txtCustomerName").val(data.Table[0].Name), $("#txtTel").val(data.Table[0].Tel), $("#txtFax").val(data.Table[0].Fax),
@@ -525,11 +527,9 @@ function GetData(val) {
              $("#txtDiscount").val(data.Table[0].Discount), $("#txtJobSite").val(data.Table[0].JobSite), $("#txtLocation").val(data.Table[0].Location);
 
            BrowseCustomer($("#hidBDCID").val());
-           //alert("cmbTypeWorking "+$("#cmbTypeWorking").val());
-           //alert("test");
+           //alert("cmbJobStatus " + $("#cmbJobStatus").val());
            SetIncomeMaster();
-           //ChangeExpenseGroup();
-           //SetExpenseType();
+           ChangeExpenseGroup();
            SetUnitWeight();
            SetUnitWeightExpense();
 
@@ -569,13 +569,10 @@ function GetData(val) {
                    SetRowIndex();
                }
                $('.RowCal1:eq(' + data.Table2.length + ')').remove();
-               //SetExpenseType();
-               //GetTypeworking();
                ChangeExpenseGroup();
                SetUnitWeight();
 
                $(".RowCal1").each(function (i) {
-                   //alert("ExpenseType "+data.Table2[i].ExpenseType);
                    $(this).find('.tdno').val(data.Table2[i].RowNum);
                    $(this).find('.ExpenseID').val(data.Table2[i].ID);
                    $(this).find('.JobID').val(data.Table2[i].JobID);
@@ -595,19 +592,21 @@ function GetData(val) {
            {
                var SubTotal = data.Table7[0].SubTotalIncome;
                var TotalExpense = data.Table8[0].TotalExpense;
-               var Profit = SubTotal - TotalExpense;
+               var TotalManJobPrice = data.Table11[0].TotalManJobPrice;
+               var Profit = SubTotal - (TotalExpense+TotalManJobPrice);
 
-               $("#txtTotal").val(data.Table6[0].TotalIncome).formatNumber({ format: "#,###.00", locale: "us" });;
-               $("#txtSubTotal").val(data.Table7[0].SubTotalIncome).formatNumber({ format: "#,###.00", locale: "us" });;
-               $("#txtNoCompound").val(data.Table7[0].SubTotalIncome).formatNumber({ format: "#,###.00", locale: "us" });;
-               $("#txtExpense").val(data.Table8[0].TotalExpense).formatNumber({ format: "#,###.00", locale: "us" });;
-               $("#txtTotalExpense").val(data.Table8[0].TotalExpense).formatNumber({ format: "#,###.00", locale: "us" });;
+               $("#txtTotal").val(data.Table6[0].TotalIncome).formatNumber({ format: "#,###.00", locale: "us" });
+               $("#txtSubTotal").val(data.Table7[0].SubTotalIncome).formatNumber({ format: "#,###.00", locale: "us" });
+               $("#txtNoCompound").val(data.Table7[0].SubTotalIncome).formatNumber({ format: "#,###.00", locale: "us" });
+               $("#txtExpense").val(data.Table8[0].TotalExpense).formatNumber({ format: "#,###.00", locale: "us" });
+               $("#txtTotalExpense").val(data.Table8[0].TotalExpense).formatNumber({ format: "#,###.00", locale: "us" });
                if (Profit < 0) {
-                   $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });;
+                   $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
                }
                else {
-                   $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });;
+                   $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
                }
+               $("#txtManJob").val(data.Table11[0].TotalManJobPrice).formatNumber({ format: "#,###.00", locale: "us" });
            }
            
            //Binding Data Manpower
@@ -857,8 +856,7 @@ function Update(val) {
     var EWorkingDate = ChangeformatDate($("#dtEWorking").val(), 1);
     var discount = ConvertAmount($("#txtDiscount").val());
     var price = ConvertAmount($("#txtSubTotal").val());
-    var cost = ConvertAmount($('#txtExpense').val());
-    alert(EWorkingDate);
+    var cost = ConvertAmount($('#txtExpense').val()) + ConvertAmount($('#txtManJob').val());
     var dataObject = {
         ID: val, JobRef: $('#hidBDCID').val(),JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate,
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
@@ -1135,7 +1133,9 @@ function CalSum() {
     $('#txtSubTotal').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
     $('#txtNoCompound').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
 
-    Profit =  SubTotal - parseFloat($('#txtTotalExpense').val());
+    var manJob = ConvertAmount($('#txtManJob').val());
+ 
+    Profit = SubTotal - (ConvertAmount($('#txtTotalExpense').val()) + manJob);
     if (Profit < 0) {
         $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
@@ -1158,8 +1158,9 @@ function CalSumExpense() {
     });
 
     $('.Amount1').formatNumber({ format: "#,###.00", locale: "us" });
-    SubTotal = ConvertAmount($('#txtSubTotal').val());   
-    Profit = SubTotal - totalExpense;
+    SubTotal = ConvertAmount($('#txtSubTotal').val());
+    var ManJob = ConvertAmount($('#txtManJob').val());
+    Profit = SubTotal - (totalExpense+ManJob);
     $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" })
     $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });  
 
@@ -1214,9 +1215,11 @@ function AddRowIncome() {
 }
 function AddRowExpense() {
     if (localStorage['flagAddRow'] == 1) {
-        var dataObject = { IsJobOrder: true };
+        var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+        $('#hidTypeWorking').val(WorkingType);
+        var dataObject = { TypeWorking: WorkingType };
         $.ajax({
-            url: 'http://localhost:13131/api/ExpenseMaster',
+            url: 'http://localhost:13131/api/JobOrderExpense',
             type: 'GET',
             dataType: 'json',
             data: dataObject,
@@ -1592,7 +1595,27 @@ function GetManpowerHour(isCheckBreak) {
 //}
 
 function Redirect() {
-    window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();
+    var input = window.location.href;
+    var after = input.split('?')[1]
+    var str = after.split('&');
+    var mode = str[1];
+    //alert('mode ' + mode);
+    if (mode == 'BDCJob') {
+        window.location.href = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
+    }
+    else if (mode == 'CarlendarJob') {
+        window.location.href = "../CalendarJob/IndexCalendarJob";
+    }
+    else if (mode == 'CarlendarMan') {
+        window.location.href = "../CalendarManPower/IndexCMP";
+    }
+    else if (mode == 'Dashboad') {
+        window.location.href = "../Home/DashBoard";
+    }
+    else {
+        window.location.href = "../JobOrder/IndexJobOrder";
+    }
+    
 }
 function convertFloat(str, num)
 {
@@ -1616,7 +1639,7 @@ function convertFloat(str, num)
     }
 }
 function DateWorking() {
-    if ($("#dtSWorking").datepicker({ dateFormat: "mm/dd/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "mm/dd/yy" }).val()) {
+    if ($("#dtSWorking").datepicker({ dateFormat: "dd/mm/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "dd/mm/yy" }).val()) {
         $("#dtEWorking").val("")
         alert("Please Input Endworking more than Startworking");
     }

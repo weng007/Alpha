@@ -54,7 +54,8 @@
                     <input type="text" id="txtEmail" name="field1" class="field-divided width-190" disabled />&nbsp;<select id="cmbSecurityProfile" name="cmbSecurityProfile" class="field-divided width-45per"></select>
                 </li>
                 <li>
-                    <button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'User', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnSave" class="btn btn-primary mgr10" onclick="Isvalidate('Update', 'User', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnCancel" class="btn btn-danger" onclick="Redirect()">Cancel</button>
                 </li>
             </ul>
         </form>

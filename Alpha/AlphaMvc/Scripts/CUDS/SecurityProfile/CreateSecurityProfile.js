@@ -240,3 +240,6 @@ function CreateData() {
     //window.location.href = "../SecurityProfile/EditSecurityProfile?id="+SecurityID;
     window.location.href = "../SecurityProfile/IndexSecurityProfile";
 }
+function Redirect() {
+    window.location.href = "../SecurityProfile/IndexSecurityProfile";
+}

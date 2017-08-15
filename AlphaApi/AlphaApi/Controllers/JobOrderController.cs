@@ -77,7 +77,7 @@ namespace AlphaApi.Controllers
 
         }
         [HttpDelete]
-        public string Delete(JobOrderModels jobOrderModel)
+        public int Delete(JobOrderModels jobOrderModel)
         {
             //calling DBData Class Method and storing Repsonse   
             var response = jobOrder.DeleteData(jobOrderModel);

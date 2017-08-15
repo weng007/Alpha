@@ -137,4 +137,7 @@ function CreateData() {
             }
         });
 }
+function Redirect() {
+    window.location.href = "../ProductAdjust/IndexProductAdjust";
+}
 

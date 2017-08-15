@@ -19,7 +19,8 @@
                     <select id="cmbMenuMaster" class="field-divided" onchange="GetMenumasterDetail()" required></select>&nbsp;<select id="cmbMenuMasterDetail" class="field-divided" required></select>
                 </li>
                 <li>
-                    <button type="button" id="btnSave" class="btn btn-primary marginbuttom-10" onclick="Isvalidate('Update', 'SecurityProfile', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnSave" class="btn btn-primary marginbuttom-10 mgr10" onclick="Isvalidate('Update', 'SecurityProfile', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnCancel" class="btn btn-danger marginbuttom-10" onclick="Redirect()">Cancel</button>
                 </li>
             </ul>
             <br />

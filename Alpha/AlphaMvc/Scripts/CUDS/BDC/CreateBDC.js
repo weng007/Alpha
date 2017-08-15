@@ -96,4 +96,7 @@ function CreateData() {
         }
     });
 }
+function Redirect() {
+    window.location.href = "../BDC/IndexBDC";
+}
 

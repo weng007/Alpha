@@ -112,9 +112,9 @@ namespace AlphaApi.DataAccessLayer
             }
         }
 
-        public string DeleteData(JobOrderModels jobOrder)
+        public int DeleteData(JobOrderModels jobOrder)
         {
-            string result = "";
+            int result = 0;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -123,7 +123,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", jobOrder.ID);
                     conObj.Open();
-                    result = cmd.ExecuteScalar().ToString();
+                    result = cmd.ExecuteNonQuery();
                     return result;
                 }
                 catch (Exception ex)

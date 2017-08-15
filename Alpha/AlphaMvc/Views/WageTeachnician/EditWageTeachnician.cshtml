@@ -167,7 +167,8 @@
             </div>
             <ul class="form-style-1">
                 <li>
-                    <button type="button" id="btnSave" class="btn btn-primary" onclick="ConfirmDialog('Update', 'WageTechnician', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnSave" class="btn btn-primary mgr10" onclick="ConfirmDialog('Update', 'WageTechnician', @Request.Params["id"])">Save</button>
+                    <button type="button" id="btnCancel" class="btn btn-danger mgr10" onclick="Redirect()">Cancel</button>
                     <a onclick="OpenRptWageTechnician(@Request.Params["id"])" class="alink"><img style="cursor:hand" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>
                 </li>
             </ul>

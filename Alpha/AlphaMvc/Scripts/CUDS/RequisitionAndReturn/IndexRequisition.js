@@ -73,8 +73,8 @@ function GetJobOrder() {
                 html += '<td class="nopointer hidecolumn">' + data.Table[i].CoWorker + '</td>';
                 html += '<td class="nopointer hidecolumn">' + data.Table[i].Remark + '</td>';
                 html += '<td class="nopointer nopointer">';
-                html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgRequisitionUpdate"/></a>';
-                html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgRequisitionView"/></a>';
+                html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&' + "Requisition" + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgRequisitionUpdate"/></a>';
+                html += '<a href="/Requisition/EditRequisition?id=' + data.Table[i].ID + '&' + "Requisition" + '&' + "true" + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgRequisitionView"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }

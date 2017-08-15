@@ -241,6 +241,9 @@ function getBase64Image(imgElem) {
     var dataURL = canvas.toDataURL("image/png");
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
+function Redirect() {
+    window.location.href = "../Products/IndexProducts";
+}
 
 
 

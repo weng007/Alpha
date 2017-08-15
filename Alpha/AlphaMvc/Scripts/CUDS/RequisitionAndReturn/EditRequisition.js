@@ -331,7 +331,7 @@ function BrowseCustomer(val) {
 
 function ControlEnable(Isview) {
     //var Isview = val;
-    if (Isview) {
+    if (Isview == 'true') {
         document.getElementById("chkApprove").disabled = true;
         document.getElementById("chkReturn").disabled = true;
         document.getElementById("btnSave").disabled = true;
@@ -1641,7 +1641,18 @@ function GetManpowerHour() {
 }
 
 function Redirect() {
-    window.location.href = "../JobOrder/EditJobOrder?id=" + $("#hidJobID").val();
+    var input = window.location.href;
+    var after = input.split('?')[1]
+    var str = after.split('&');
+    var mode = str[1];
+    //alert('JobBDC ' + mode);
+    if (mode == 'Activity')
+    {
+        window.location.href = "../AllActivity/AllActivity";
+    }
+    else {
+        window.location.href = "../Requisition/IndexRequisition";
+    }
 }
 function convertFloat(str, num)
 {

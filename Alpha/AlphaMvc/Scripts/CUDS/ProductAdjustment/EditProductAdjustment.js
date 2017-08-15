@@ -196,9 +196,6 @@ function Update(val) {
          })
 };
 function Redirect() {
-
-    //var hidAdjustID = $('#hidID').val();
-    //window.location.href = "../ProductAdjust/EditProductAdjust?id=" + hidAdjustID;
     window.location.href = "../ProductAdjust/IndexProductAdjust";
 }
 

@@ -324,3 +324,6 @@ function OpenRptWageTechnician(val) {
         window.open("../Reports/FormReport/RptWageTechnicianViewer2.aspx?id=" + val + '|' + FromDate + '|' + ToDate, '_blank');
     }
 }
+function Redirect() {
+    window.location.href = "../WageTeachnician/IndexWageTeachnician";
+}

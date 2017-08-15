@@ -557,6 +557,14 @@
     float: left;
     margin-right: 10%;
 }
+.form-style .label-small-16 {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: bold;
+    float: left;
+    margin-right: 16.5%;
+}
 .form-style .label-small-22 {
     margin: 0 0 3px 0;
     padding: 0px;

@@ -21,7 +21,7 @@ $(document).ready(function () {
     var BDCID = res4[1];
     var BDCNo = res5[0];
     $('#txtJobReference').val(BDCNo);
-    $('#hidBDCID').val(BDCID);;
+    $('#hidBDCID').val(BDCID);
     BrowseCustomer(BDCID);
     
     $("#dtJobDate").datepicker({
@@ -250,6 +250,7 @@ $(document).ready(function () {
             $info.show();
         }
     });
+    ChangeExpenseGroup();
 });
 
 //function countPosition()
@@ -1184,6 +1185,9 @@ function ValidateJobOrder()
         CreateData();
     }
 }
-
+function Redirect()
+{
+    window.location.href = "../BDC/EditBDC?id=" + $("#hidBDCID").val();
+}
 
 

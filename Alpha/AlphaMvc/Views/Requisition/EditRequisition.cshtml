@@ -1252,7 +1252,8 @@
 
         <ul class="form-style-1">
             <li>
-                <button type="button" id="btnSave" class="btn btn-primary" onclick="CheckReturn()">Save</button>
+                <button type="button" id="btnSave" class="btn btn-primary mgr10" onclick="CheckReturn()">Save</button>
+                <button type="button" id="btnCancel" class="btn btn-danger" onclick="Redirect()">Cancel</button>
                 @*<a onclick="OpenRptJobOrder(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>*@
                 @*<button type="button" id="btnSave" class="btnCreate" onclick="OpenRptJobOrder(@Request.Params["id"])" formtarget="_blank"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-2" id="BDCCreate" /></button>*@
             </li>
@@ -1265,17 +1266,10 @@
         var input = window.location.href;
         var after = input.split('?')[1]
         var val = after.split('&');
-        var Isview = val[1];
-        var JobNo = val[2];
-        //alert(JobNo);
-        //GetJobNo(JobNo);
+        var Isview = val[2];
+        var JobNo = val[3];
         ControlEnable(Isview);
         GetdataRequisition(@Request.Params["id"]);
-        ////SetRowCal5();
-        @*GetContact(@Request.Params["id"]);*@
-        @*GetData(@Request.Params["id"]);*@
-        @*GetJobOrderBorrow(@Request.Params["id"]);*@
-
     });
     function GetDay() {
         var ManDate = $('.ManDate').eq(row_index).val();

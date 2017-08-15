@@ -265,7 +265,7 @@
                                                                     <select class="UnitWeight text-size80"></select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtQty" class="Quantity text-size50 textright" onchange="CalSum()" />
+                                                                    <input type="text" id="txtQty" class="Quantity text-size50 textright" value="1" onchange="CalSum()" />
                                                                 </td>
                                                                 <td class="hidecolumn">
                                                                     <input type="text" id="txtPriceList" value="0" class="PriceList text-size50 textright" />
@@ -305,7 +305,7 @@
                                                                     <select class="UnitWeight text-size80"></select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtQty" class="Quantity text-size50 textright" onchange="CalSum()" />
+                                                                    <input type="text" id="txtQty" class="Quantity text-size50 textright" value="1"  onchange="CalSum()" />
                                                                 </td>
                                                                 <td class="hidecolumn">
                                                                     <input type="text" id="txtPriceList" value="0" class="PriceList text-size80 textright" />
@@ -385,7 +385,7 @@
                                                                     <select class="unitSelect" ></select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtQty" name="Qty" class="Quantity text-size50" onchange="CalSumExpense()">
+                                                                    <input type="text" id="txtQty" name="Qty" class="Quantity text-size50" value="1"  onchange="CalSumExpense()">
                                                                 </td>
                                                                 <td  class="hidecolumn">
                                                                     <input type="text" id="txtPriceList1" value="0" class="PriceList1 text-size80 textright" />
@@ -424,7 +424,7 @@
                                                                     <select class="unitSelect"></select>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="txtQty" name="Qty" class="Quantity text-size50" onchange="CalSumExpense()">
+                                                                    <input type="text" id="txtQty" name="Qty" class="Quantity text-size50" value="1" onchange="CalSumExpense()">
                                                                 </td>
                                                                 <td  class="hidecolumn">
                                                                     <input type="text" id="txtPriceList1" value="0" class="PriceList1 text-size80 textright" />
@@ -979,7 +979,8 @@
                 </table>
                 <ul class="form-style-1">
                     <li>
-                        <button type="button" class="btn btn-primary" onclick="Isvalidate('Create', 'JobOrder', 0)">Save</button>
+                        <button type="button" class="btn btn-primary mgr10" onclick="Isvalidate('Create', 'JobOrder', 0)">Save</button>
+                        <button type="button" id="btnCancel" class="btn btn-danger" onclick="Redirect()">Cancel</button>
                     </li>
                 </ul>
 </form>

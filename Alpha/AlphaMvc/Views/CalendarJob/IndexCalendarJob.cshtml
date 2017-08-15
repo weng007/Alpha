@@ -39,10 +39,44 @@ function GetDetail(currentMonth) {
                var event = [];
                for (var i = 0; i < data.Table.length; i++) {
                    var EWorking = data.Table[i].EWorking.replace('T00:00:00', 'T23:59:00');
-                   var TypeWorking = data.Table[i].TypeWorkingName.substr(0, 3);
+                   //var TypeWorking = data.Table[i].TypeWorkingName.substr(0, 3);
+                   var TypeWorking;
+                   if (data.Table[i].TypeWorking == 1)
+                   {
+                       //Torque Bolt
+                       TypeWorking = 'TB';
+                   }
+                   else if (data.Table[i].TypeWorking == 2)
+                   {
+                       //Bolt Tension
+                       TypeWorking = 'BT';
+                   }
+                   else if (data.Table[i].TypeWorking == 3) {
+                       //Stop Leak
+                       TypeWorking = 'SL';
+                   }
+                   else if (data.Table[i].TypeWorking == 4) {
+                       //Onsite  Machine
+                       TypeWorking = 'OM';
+                   }
+                   else if (data.Table[i].TypeWorking == 60) {
+                       //Onsite  Machine
+                       TypeWorking = 'SE';
+                   }
+                   else if (data.Table[i].TypeWorking == 62) {
+                       //Onsite  Machine
+                       TypeWorking = 'OH';
+                   }
+                   else
+                   {
+                       //Others, ManJob
+                       TypeWorking = '-';
+                   }
+
                    event.push({
-                       title: data.Table[i].Technician + '  ' + '(' + TypeWorking + ')' + data.Table[i].JobNo,
-                       url: '/JobOrder/EditJobOrder?id=' + data.Table[i].ID,
+                       //(N/SL)-QT-92473-6J7M
+                       title: '(' + data.Table[i].Technician + '/' + TypeWorking + ')'+'-' + data.Table[i].JobNo,
+                       url: '/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '&' + "CarlendarJob",
                        start: data.Table[i].SWorking,
                        end: EWorking
                    });

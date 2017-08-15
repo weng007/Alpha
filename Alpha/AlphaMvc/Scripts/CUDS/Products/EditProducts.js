@@ -48,7 +48,7 @@ $(document).ready(function () {
 function ControlEnable(Isview) {
     //var Isview = val;
     if (Isview) {
-        document.getElementById("txtSerialNo").disabled = true;
+        //document.getElementById("txtSerialNo").disabled = true;
         document.getElementById("txtMachineNo").disabled = true;
         document.getElementById("cmbProductType").disabled = true;
         document.getElementById("txtBrand").disabled = true;
@@ -65,6 +65,8 @@ function ControlEnable(Isview) {
         document.getElementById("txtRemark").disabled = true;
         document.getElementById("btnSave").disabled = true;
         document.getElementById("photo").disabled = true;
+
+        $('#txtSerialNo').attr('disabled', true);
     }
 }
 function GetData(val) {

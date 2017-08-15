@@ -138,6 +138,7 @@
                     <td>
                         <label class="topicmargin-size70">Job Order</label>
                         <button type="button" id="btnSave" class="btnCreate" onclick="OpenJobOrder(@Request.Params["id"])"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" id="imgJobOrderCreate" /></button>
+                        <input type="hidden" id="hidBDCID" />
                     </td>
                 </tr>
             </table>
@@ -162,7 +163,8 @@
                 
                 <ul class="form-style-1">
                     <li>
-                        <button type="button" id="btnSave1" class="btn btn-primary" onclick="Isvalidate('Update', 'BDC', @Request.Params["id"])">Save</button>
+                        <button type="button" id="btnSave1" class="btn btn-primary mgr10" onclick="Isvalidate('Update', 'BDC', @Request.Params["id"])">Save</button>
+                        <button type="button" id="btnCancel" class="btn btn-danger mgr10" onclick="Redirect()">Cancel</button>
                         <a onclick="OpenRptBDC(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand;" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>
                     </li>
                 </ul>

@@ -7,6 +7,7 @@ function ControlEnable(Isview)
         document.getElementById("txtPricelist").disabled = true;
         document.getElementById("txtSeq").disabled = true;
         document.getElementById("btnSave").disabled = true;
+        //document.getElementById("btnCancel").disabled = true;
     }
 }
 function GetData(val) {
@@ -55,7 +56,7 @@ function convertFloat(str) {
 
     $(str).val($(str).val().replace(',', '')).formatNumber({ format: "#,###.00", locale: "us" });
 }
-//function Redirect() {
-   
-//}
+function Redirect() {
+    window.location.href = "../IncomeMaster/IndexIncomeMaster";
+}
 
