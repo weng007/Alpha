@@ -48,7 +48,7 @@ $(document).ready(function () {
 function ControlEnable(Isview) {
     //var Isview = val;
     if (Isview) {
-        //document.getElementById("txtSerialNo").disabled = true;
+        document.getElementById("txtSerialNo").disabled = true;
         document.getElementById("txtMachineNo").disabled = true;
         document.getElementById("cmbProductType").disabled = true;
         document.getElementById("txtBrand").disabled = true;
@@ -65,8 +65,12 @@ function ControlEnable(Isview) {
         document.getElementById("txtRemark").disabled = true;
         document.getElementById("btnSave").disabled = true;
         document.getElementById("photo").disabled = true;
-
-        $('#txtSerialNo').attr('disabled', true);
+        document.getElementById("txtDiscription").disabled = true;
+        document.getElementById("FileUpload1").disabled = true;
+        $('.imgAdminDelete').attr("style", "display:none");
+        $('.imgbin').css("visibility", "hidden");
+        
+        //$('.imgAdminDelete').attr('disabled', true);
     }
 }
 function GetData(val) {
@@ -131,7 +135,7 @@ function GetData(val) {
                 html += '<td class="hidecolumn">' + data.Table[i].RefID + '</td>';
                 html += '<td class="nopointer"><a href="http://localhost:13131/Attach/Product/' + data.Table[i].AttachName + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + str + '</a></td>';
                 html += '<td class="hidecolumn">' + data.Table[i].AttachPath + '</td>';
-                html += '<td class="nopointer">';
+                html += '<td class="nopointer imgbin">';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'ProductFile'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgAdminDelete"/></a>';
                 html += '</td>';
                 html += '</tr>';

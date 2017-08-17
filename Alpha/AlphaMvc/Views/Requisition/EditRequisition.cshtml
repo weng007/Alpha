@@ -1038,6 +1038,7 @@
                 </div>
             </div>
         </div>
+        @*Requisition Start*@
         <div>
             <input type="hidden" id="hidRequisitionID" class="hidRequisitionID" />
             <input type="hidden" id="hidJobID" class="hidJobID" />
@@ -1121,7 +1122,7 @@
                                 </td>
                                 <td>
                                     @*Qty1*@
-                                    <input type="text" id="txtQty" class="txtQty select-size50-height23 " onchange="CheckBorrow()" />
+                                    <input type="text" id="txtQty" class="txtQty select-size50-height23 " value="0" onchange="CheckBorrow()" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Good1*@
@@ -1200,7 +1201,7 @@
                                 </td>
                                 <td>
                                     @*Qty2*@
-                                    <input type="text" id="txtQty" class="txtQty select-size50-height23 " onchange="CheckBorrow()" />
+                                    <input type="text" id="txtQty" class="txtQty select-size50-height23" value="0" onchange="CheckBorrow()" />
                                 </td>
                                 <td class="mnReturn">
                                     @*Return Good2*@
@@ -1241,15 +1242,158 @@
                 <a id="add-row10" href="#" onclick="SetRowIndex()" onblur="SetRowIndex()" onmouseout="AddrowRequisition()">+ Add Row</a>
             </div>
         @*Requisition End*@
-        
-        <ul class="form-style-1 hidecolumn">
-            <li>
-                @*<button type="button" id="btnSave" class="btn btn-primary" onclick="Isvalidate('Update', 'JobOrder', @Request.Params["id"])">Save</button>
-                <a onclick="OpenRptJobOrder(@Request.Params["id"])" class="alink" target="_blank"><img style="cursor:hand" src="@Url.Content("~/Images/printer.png")" class="btnprint" /></a>*@
-                @*<button type="button" id="btnSave" class="btnCreate" onclick="OpenRptJobOrder(@Request.Params["id"])" formtarget="_blank"><img src="@Url.Content("~/Images/addpicture.png")" class="btnimage-2" id="BDCCreate" /></button>*@
-            </li>
-        </ul>
 
+        @*Requisition2 Start*@
+        <br />
+        <div>
+            <input type="hidden" id="hidRequisitionID2" class="hidRequisitionID2" />
+            <div class="wrapper">
+                <div>
+                    <table id="tabRequisitionOther" class="example">
+                        <thead class="theader">
+                            <tr>
+                                <th rowspan="2"></th>
+                                <th rowspan="2">No.</th>
+                                <th rowspan="2">รายละเอียด</th>
+                                <th rowspan="2">หน่วยนับ</th>
+                                <th rowspan="2" class="text-size50">จำนวนที่เบิก</th>
+                                <th colspan="4" class="mnReturn">คืน</th>
+                                <th rowspan="2" class="mnReturn hidecolumn">จำนวนที่คืน</th>
+                                <th rowspan="2">หมายเหตุ</th>
+                                <th rowspan="2" colspan="2"></th>
+                            </tr>
+                            <tr>
+                                <th class="mnReturn">ดี</th>
+                                <th class="mnReturn">หาย</th>
+                                <th class="mnReturn">ซ่อม</th>
+                                <th class="mnReturn">ชำรุด</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tBodyRowRequisitionOther">
+                            @*Requisition first Row*@
+                            <tr class="RowCal7">
+                                <td>
+                                    <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                </td>
+                                <td>
+                                    @*ลำดับ*@
+                                    <input id="No" type="text" value="" class="tdno" disabled />
+                                </td>
+                                <td class="hidecolumn">
+                                    <input id="RequisitionID2" type="text" value="" class="RequisitionID2" disabled />
+                                </td>
+                                <td class="hidecolumn">
+                                    <input id="JobID2" type="text" value="" class="JobID2" disabled />
+                                </td>
+                                <td>
+                                    @*Description1*@
+                                    <input id="txtDescription2" type="text" value="" class="txtDescription2 text-size220 text-left" />
+                                </td>
+                                <td>
+                                    @*Unit Weight1*@
+                                    <input type="text" id="txtUnitWeight2" class="txtUnitWeight2 select-size50-height23 txtdisablerow textleft" />
+                                </td>
+                                <td>
+                                    @*Qty1*@
+                                    <input type="text" id="txtQty2" class="txtQty2 select-size50-height23" value="0" onchange="CheckBorrow()" />
+                                </td>
+                                <td class="mnReturn">
+                                    @*Return Good1*@
+                                    <input type="text" id="txtGood2" class="txtGood2 select-size50-height23 " value="0" />
+                                </td>
+                                <td class="mnReturn">
+                                    @*Return Lost1*@
+                                    <input type="text" id="txtLost2" class="txtLost2 select-size50-height23 " value="0" />
+                                </td>
+                                <td class="mnReturn">
+                                    @*Return Repair1*@
+                                    <input type="text" id="txtRepair2" class="txtRepair2 select-size50-height23 " value="0" />
+                                </td>
+                                <td class="mnReturn">
+                                    @*Return Bad1*@
+                                    <input type="text" id="txtBad2" class="txtBad2 select-size50-height23 " value="0" />
+                                </td>
+                                <td class="mnReturn hidecolumn">
+                                    @*Return Qty1*@
+                                    <input type="text" id="txtQty3" class="txtQty3 select-size70-height23 " />
+                                </td>
+                                <td>
+                                    @*Remark*@
+                                    <input type="text" id="txtRemark2" class="txtRemark2 text-size110" />
+                                </td>
+                                <td>
+                                    <div class="clone-1"><img class="cloneRowRequisitionOther row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                </td>
+                                <td style="padding-right: 5px;">
+                                    <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                </td>
+                            </tr>
+                            @*Requisition secound Row*@
+                            <tr class="RowCal7" id="add-template11">
+                                <td>
+                                    <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                </td>
+                                <td>
+                                    @*ลำดับ2*@
+                                    <input id="No" type="text" value="" class="tdno" disabled />
+                                </td>
+                                <td class="hidecolumn">
+                                    <input id="RequisitionID2" type="text" value="" class="RequisitionID2" disabled />
+                                </td>
+                                <td class="hidecolumn">
+                                    <input id="JobID2" type="text" value="" class="JobID2" disabled />
+                                </td>
+                                <td>
+                                    @*Description2*@
+                                    <input id="txtDescription2" type="text" value="" class="txtDescription2 text-size220 text-left" />
+                                </td>
+                                <td>
+                                    @*Unit Weight2*@
+                                    <input type="text" id="txtUnitWeight2" class="txtUnitWeight2 select-size50-height23 txtdisablerow textleft" />
+                                </td>
+                                <td>
+                                    @*Qty2*@
+                                    <input type="text" id="txtQty2" class="txtQty2 select-size50-height23 " value="0" onchange="CheckBorrow()" />
+                                </td>
+                                <td class="mnReturn">
+                                    @*Return Good2*@
+                                    <input type="text" id="txtGood2" class="txtGood2 select-size50-height23 " value="0" />
+                                </td>
+                                <td class="mnReturn">
+                                    @*Return Lost2*@
+                                    <input type="text" id="txtLost2" class="txtLost2 select-size50-height23 " value="0" />
+                                </td>
+                                <td class="mnReturn">
+                                    @*Return Repair2*@
+                                    <input type="text" id="txtRepair2" class="txtRepair2 select-size50-height23 " value="0" />
+                                </td>
+                                <td class="mnReturn">
+                                    @*Return Bad2*@
+                                    <input type="text" id="txtBad2" class="txtBad2 select-size50-height23 " value="0" />
+                                </td>
+                                <td class="mnReturn hidecolumn">
+                                    @*Return Qty1*@
+                                    <input type="text" id="txtQty3" class="txtQty3 select-size50-height23 " />
+                                </td>
+                                <td>
+                                    @*Remark2*@
+                                    <input type="text" id="txtRemark2" class="txtRemark2 text-size110" />
+                                </td>
+                                <td>
+                                    <div class="clone-1"><img class="cloneRowRequisitionOther row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                </td>
+                                <td style="padding-right: 5px;">
+                                    <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @*<button id="add-row2" class="btn btn-primary" onclick="SetRowIndex()" onblur="SetRowIndex()" onmouseout="AddrowManpower()">Add Row</button>*@
+            <a id="add-row11" href="#" onclick="SetRowIndex()" onblur="SetRowIndex()" onmouseout="AddrowRequisition()">+ Add Row</a>
+        </div>
+        @*RequisitionOther End*@
         <ul class="form-style-1">
             <li>
                 <button type="button" id="btnSave" class="btn btn-primary mgr10" onclick="CheckReturn()">Save</button>
@@ -1279,6 +1423,7 @@
     }
     function CheckReturn() {
         var result = true;
+        var result1 = true;
         $(".RowCal6").each(function () {
             var borrowAmount = parseFloat($(this).find('.txtQty').val());
             var returnAmount = (parseFloat($(this).find('.txtGood').val()) + parseFloat($(this).find('.txtLost').val()) + parseFloat($(this).find('.txtRepair').val()) + parseFloat($(this).find('.txtBad').val()))
@@ -1290,7 +1435,18 @@
                 result = false;
             }
         });
-        if(result)
+        $(".RowCal7").each(function () {
+            var borrowAmount1 = parseFloat($(this).find('.txtQty2').val());
+            var returnAmount1 = (parseFloat($(this).find('.txtGood2').val()) + parseFloat($(this).find('.txtLost2').val()) + parseFloat($(this).find('.txtRepair2').val()) + parseFloat($(this).find('.txtBad2').val()))
+            if (borrowAmount1 < returnAmount1) {
+                $(this).find('.txtGood2').val(0);
+                $(this).find('.txtLost2').val(0);
+                $(this).find('.txtRepair2').val(0);
+                $(this).find('.txtBad2').val(0);
+                result1 = false;
+            }
+        });
+        if(result && result1)
         {
             Isvalidate('Update', 'JobOrderBorrow', @Request.Params["id"]);
         }

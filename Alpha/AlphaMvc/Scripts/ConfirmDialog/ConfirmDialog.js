@@ -176,5 +176,20 @@ function ConfirmDialog(val, topic, id) {
             html += '</div></div></div>';
             document.getElementById("ShowDialog").innerHTML = html;
     }
+    else if (val == "DeleteBDC") {
+        $('#ShowDialog').modal('show');
+        var html = '<div class="modal-dialog modal-dialog-info">';
+        html += '<div class="modal-content">';
+        html += '<div class="modal-header modal-header-info">';
+        html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+        html += '<h4 class="modal-title">' + topic + '</h4>';
+        html += '</div>';
+        html += '<div class="modal-body modal-body-info">หากท่านลบ Estimate Price ระบบจะทำการลบ Job order ที่เกี่ยวข้องด้วย</div>';
+        html += '<div class="modal-footer">';
+        html += '<button type="button" class="btn btn-info" onclick="RowDelete(' + id + ')">Yes</button>';
+        html += '<button type="button" class="btn btn-info" data-dismiss="modal">No</button>';
+        html += '</div></div></div>';
+        document.getElementById("ShowDialog").innerHTML = html;
+    }
 
 }

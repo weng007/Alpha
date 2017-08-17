@@ -38,7 +38,10 @@ function GetData(val)
 
         //Recusively filter the jquery object to get results.
         $.each(data, function (i, v) {
-            jo = jo.filter("*:contains('" + v + "')");
+            //jo = jo.filter("*:contains('" + v + "')");
+            jo = jo.filter(function () {
+                return $(this).text().toLowerCase().indexOf(v.toLowerCase()) > -1;
+            });
         });
         //show the rows that match.
         jo.show();

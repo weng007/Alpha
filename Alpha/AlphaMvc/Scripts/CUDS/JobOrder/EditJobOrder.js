@@ -595,7 +595,8 @@ function GetData(val) {
                var SubTotal = data.Table7[0].SubTotalIncome;
                var TotalExpense = data.Table8[0].TotalExpense;
                var TotalManJobPrice = data.Table11[0].TotalManJobPrice;
-               var Profit = SubTotal - (TotalExpense+TotalManJobPrice);
+               var Profit = SubTotal - (TotalExpense + TotalManJobPrice);
+               var ProfitPersent = ((SubTotal - (TotalExpense + TotalManJobPrice)) / (TotalExpense + TotalManJobPrice))*100
 
                $("#txtTotal").val(data.Table6[0].TotalIncome).formatNumber({ format: "#,###.00", locale: "us" });
                $("#txtSubTotal").val(data.Table7[0].SubTotalIncome).formatNumber({ format: "#,###.00", locale: "us" });
@@ -604,9 +605,11 @@ function GetData(val) {
                $("#txtTotalExpense").val(data.Table8[0].TotalExpense).formatNumber({ format: "#,###.00", locale: "us" });
                if (Profit < 0) {
                    $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
+                   $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
                }
                else {
                    $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
+                   $("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
                }
                $("#txtManJob").val(data.Table11[0].TotalManJobPrice).formatNumber({ format: "#,###.00", locale: "us" });
            }
@@ -859,6 +862,7 @@ function Update(val) {
     var discount = ConvertAmount($("#txtDiscount").val());
     var price = ConvertAmount($("#txtSubTotal").val());
     var cost = ConvertAmount($('#txtExpense').val()) + ConvertAmount($('#txtManJob').val());
+    //alert("Cost "+ConvertAmount($('#txtExpense').val()) + ConvertAmount($('#txtManJob').val()));
     var dataObject = {
         ID: val, JobRef: $('#hidBDCID').val(),JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate,
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
@@ -1136,13 +1140,17 @@ function CalSum() {
     $('#txtNoCompound').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
 
     var manJob = ConvertAmount($('#txtManJob').val());
- 
-    Profit = SubTotal - (ConvertAmount($('#txtTotalExpense').val()) + manJob);
+    var totalExpense = ConvertAmount($('#txtTotalExpense').val());
+        Profit = SubTotal - (totalExpense + manJob);
+    var ProfitPersent = isNaN((Profit / (totalExpense + manJob)) * 100) ? 0 : (Profit / (totalExpense + manJob)) * 100;
+        
     if (Profit < 0) {
         $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
+        $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
-        $("#txtProfit").val(Profit).css('color', 'black').formatNumber({format:"#,###.00", locale:"us"});
+        $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
+        $("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
 }
 function CalSumExpense() {
@@ -1162,15 +1170,20 @@ function CalSumExpense() {
     $('.Amount1').formatNumber({ format: "#,###.00", locale: "us" });
     SubTotal = ConvertAmount($('#txtSubTotal').val());
     var ManJob = ConvertAmount($('#txtManJob').val());
-    Profit = SubTotal - (totalExpense+ManJob);
+        Profit = SubTotal - (totalExpense + ManJob);
     $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" })
-    $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });  
+    $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
 
+    var ProfitPersent = isNaN((Profit / (totalExpense + ManJob)) * 100) ? 0 : (Profit / (totalExpense + ManJob)) * 100;
+    
+    //alert("ProfitPersent " + ProfitPersent);
     if (Profit < 0) {
         $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
+        $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
         $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
+        $("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
 }
 function AddRowIncome() {
@@ -1448,6 +1461,8 @@ function GetManJob(isManType) {
 
 }
 function GetManpowerHour(isCheckBreak) {
+    var StartDate = $('#dtSWorking').val();
+    var EndDate = $('#dtEWorking').val();
     var TechnicianID = $('.TechnicianID').eq(row_index).val();
     var ManDate = $('.ManDate').eq(row_index).val();
     var FromTime = $('.WorkingFrom').eq(row_index).val();
@@ -1458,58 +1473,81 @@ function GetManpowerHour(isCheckBreak) {
     var isBreak2 = $('.chkBreak2').eq(row_index).is(":checked");
     var isBreak3 = $('.chkBreak3').eq(row_index).is(":checked");
 
-    if (ManDate != '') {
-        var days = [
-        'SUN',
-        'MON',
-        'TUE',
-        'WED',
-        'THU',
-        'FRI',
-        'SAT'
-        ];
+    if (ManDate != '')
+    {
+        if (!(ManDate >= StartDate && ManDate <= EndDate)) {
+            $('.ManDate').eq(row_index).val("");
+            $('.ManDay').eq(row_index).val("");
+            $('.ManTime').eq(row_index).val("");
+            $('.WorkingFrom').eq(row_index).val("");
+            $('.WorkingTo').eq(row_index).val("");
+            $('.TotalHours').eq(row_index).val("");
+            $('.NormalDay').eq(row_index).val("");
+            $('.ManNormal').eq(row_index).val("");
+            $('.ManPremium').eq(row_index).val("");
+            $('.ManPremium2').eq(row_index).val("");
+            $('.ManSpecial').eq(row_index).val("");
+            $('.chkBreak1').eq(row_index).prop('checked', false);
+            $('.chkBreak2').eq(row_index).prop('checked', false);
+            $('.chkBreak3').eq(row_index).prop('checked', false);
+            alert("Please Input Date Between Startworking and EndWorking");
+        }
+        else {
+            //GetDay จ-อา
+            if (ManDate != '') {
+                var days = [
+                'SUN',
+                'MON',
+                'TUE',
+                'WED',
+                'THU',
+                'FRI',
+                'SAT'
+                ];
 
-        var dateParts = ManDate.split("/");
-        if (dateParts.length != 3)
-            return null;
-        var year = dateParts[2];
-        var month = dateParts[1];
-        var day = dateParts[0];
+                var dateParts = ManDate.split("/");
+                if (dateParts.length != 3)
+                    return null;
+                var year = dateParts[2];
+                var month = dateParts[1];
+                var day = dateParts[0];
 
-        var d = new Date(year, month - 1, day);
+                var d = new Date(year, month - 1, day);
 
-        x = d.getDay();
-        $('.ManDay').eq(row_index).val(days[x]);
-    }
-
-    if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '') {
-        var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime + '&' + isBreak1 + '&' + isBreak2 + '&' + isBreak3 }
-        console.log(dataObject);
-        //alert('Test1');
-        $.ajax(
-        {
-            url: 'http://localhost:13131/api/OT',
-            type: 'GET',
-            async: false,
-            data: dataObject,
-            datatype: 'json',
-            success: function (data) {
-                data = JSON.parse(data);
-                //alert(data.Table.length);
-                if (data.Table.length > 0) {
-                    $('.NormalDay').eq(row_index).val(data.Table[0].NormalHour);
-                    $('.ManNormal').eq(row_index).val(data.Table[0].Normal1);
-                    $('.ManPremium').eq(row_index).val(data.Table[0].Premium1_5);
-                    $('.ManPremium2').eq(row_index).val(data.Table[0].Premium2_0);
-                    $('.ManSpecial').eq(row_index).val(data.Table[0].Premium3_0);
-                    $('.TotalHours').eq(row_index).val(data.Table[0].TotalHours);
-                }
-            },
-            error: function (msg) {
-                alert(msg);
+                x = d.getDay();
+                $('.ManDay').eq(row_index).val(days[x]);
             }
+            // Get OT
+            if (TechnicianID != '' && ManDate != '' && FromTime != '' && ToTime != '') {
+                var dataObject = { technician: TechnicianID + '&' + ManDate + '&' + FromTime + '&' + ToTime + '&' + isBreak1 + '&' + isBreak2 + '&' + isBreak3 }
+                console.log(dataObject);
+                //alert('Test1');
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/OT',
+                    type: 'GET',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        //alert(data.Table.length);
+                        if (data.Table.length > 0) {
+                            $('.NormalDay').eq(row_index).val(data.Table[0].NormalHour);
+                            $('.ManNormal').eq(row_index).val(data.Table[0].Normal1);
+                            $('.ManPremium').eq(row_index).val(data.Table[0].Premium1_5);
+                            $('.ManPremium2').eq(row_index).val(data.Table[0].Premium2_0);
+                            $('.ManSpecial').eq(row_index).val(data.Table[0].Premium3_0);
+                            $('.TotalHours').eq(row_index).val(data.Table[0].TotalHours);
+                        }
+                    },
+                    error: function (msg) {
+                        alert(msg);
+                    }
 
-        });
+                });
+            }
+        }
     }
 }
 //function GetManpowerHour() {

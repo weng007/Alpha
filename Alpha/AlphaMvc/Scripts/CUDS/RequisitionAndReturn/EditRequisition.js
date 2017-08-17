@@ -5,6 +5,7 @@ var row_index4 = 0;//RowCal2 SaleOrder
 var row_index5 = 0;//RowCal3 Invoice
 var row_index6 = 0;//RowCal4 Receipt
 var row_index7 = 0;//RowCal6 Requisition
+var row_index8 = 0;//RowCal6 Requisition1
 var col_index = 0;//RowCal5 Manpower
 
 $(document).ready(function () {
@@ -69,6 +70,12 @@ $(document).ready(function () {
         $('.cloneRowRequisition').click(function () {
             $('.RowCal6:last').find('td input[type=text]').eq(0).val('');
             $('.RowCal6:last').find('td input[type=text]').eq(1).val('');
+        });
+
+        //RequisitionOther
+        $('.cloneRowRequisitionOther').click(function () {
+            $('.RowCal7:last').find('td input[type=text]').eq(0).val('');
+            $('.RowCal7:last').find('td input[type=text]').eq(1).val('');
         });
     });
 
@@ -285,6 +292,7 @@ $(document).ready(function () {
     $('#tabIncome').dynoTable6();
     $('#tabCost').dynoTable7();
     $('#tabRequisition').dynoTable10();
+    $('#tabRequisitionOther').dynoTable11();
 
     //$('.ManDate').datepicker();
     //$('.WorkingFrom').timepicker();
@@ -336,6 +344,7 @@ function ControlEnable(Isview) {
         document.getElementById("chkReturn").disabled = true;
         document.getElementById("btnSave").disabled = true;
         document.getElementById("add-row10").style.visibility = "hidden";
+        document.getElementById("add-row11").style.visibility = "hidden";
     }
 }
 function GetJobNo(val) {
@@ -644,6 +653,7 @@ function GetdataRequisition(val)
                    $('#chkReturn').prop('checked', true);
                }
                $('#hidRequisitionID').val(data.Table2[0].ID);
+               $('#hidRequisitionID2').val(data.Table2[0].ID);
                $('#hidTaker').val(data.Table2[0].Taker);
                $('#hidApprover').val(data.Table2[0].Approver);
                $('#hidGiver').val(data.Table2[0].Giver);
@@ -656,11 +666,51 @@ function GetdataRequisition(val)
                
                //alert($('#hidTaker').val());
            }
+
        }
     });
+    GetdataRequisition1(val);
     //alert("GetAutherize");
     CheckAuthorization();
     localStorage['flagAddRow'] = 1; 
+}
+
+function GetdataRequisition1(val) {
+    var dataObject = { id: val }
+    console.log(dataObject);
+    $.ajax({
+        url: 'http://localhost:13131/api/Requisition1',
+        type: 'GET',
+        async: false,
+        data: dataObject,
+        datatype: 'json',
+        success: function (data) {
+            localStorage['flagAddRow'] = 0;
+            data = JSON.parse(data);
+            if (data.Table.length > 0) {
+                $('.RowCal7').remove();
+
+                for (var j = 0; j < data.Table.length; j++) {
+                    $("#add-row11").trigger("click");
+                }
+
+                $('.RowCal7:eq(' + data.Table.length + ')').remove();
+
+                $(".RowCal7").each(function (i) {
+                    $(this).find('.tdno').val(data.Table[i].RowNum);
+                    $(this).find('.RequisitionID2').val(data.Table[i].ID);
+                    $(this).find('.txtDescription2').val(data.Table[i].Description);
+                    $(this).find('.txtUnitWeight2').val(data.Table[i].UnitWeight);
+                    $(this).find('.txtQty2').val(data.Table[i].Amount);
+                    $(this).find('.txtGood2').val(data.Table[i].ReturnGood);
+                    $(this).find('.txtLost2').val(data.Table[i].ReturnLost);
+                    $(this).find('.txtRepair2').val(data.Table[i].ReturnRepair);
+                    $(this).find('.txtBad2').val(data.Table[i].ReturnBad);
+                    $(this).find('.txtRemark2').val(data.Table[i].Remark);
+                });
+            }
+        }
+    });
 }
 
 function SetIncomeMaster()
@@ -843,12 +893,12 @@ function Update(val)
     });
 
     var dataObject = {};
-    //alert("hidRequisitionID " + $('#hidRequisitionID').val());
+    alert("hidRequisitionID " + $('#hidRequisitionID').val());
     if ($('#hidRequisitionID').val() == '')
     {
         
-        if ($(".RowCal6").eq(0).find('.hidProductID').val() != '') {
-            //alert("InsertRequisition");
+        //if ($(".RowCal6").eq(0).find('.hidProductID').val() != '') {
+            alert("InsertRequisition");
             var Requisitiondata = {
                 JobID: val, Taker: localStorage['UserID'], CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
             };
@@ -861,16 +911,17 @@ function Update(val)
                 datatype: 'json',
                 success: function (data) {
                     $('#hidRequisitionID').val(data);
+                    $('#hidRequisitionID2').val(data);
                     //alert($('#hidRequisitionID').val());
                 },
                 error: function (msg) {
                     alert(msg)
                 }
             });
-        }
+        //}
     }
     else {
-            //alert("UpdateRequisition");
+            alert("UpdateRequisition");
             var Requisitiondata = {
                 ID: $('#hidRequisitionID').val(), Taker: localStorage['UserID'], Approver: $('#hidApprover').val(), Giver: $('#hidGiver').val(), IsApprove: $('#hidIsApprove').val(), IsReturn: $('#hidIsReturn').val(), EditBy: localStorage['UserID']
             };
@@ -904,10 +955,41 @@ function Update(val)
             dataObject.CreateBy = localStorage['UserID'];
             dataObject.EditBy = localStorage['UserID'];
 
-            if ($(this).find(".hidProductID").val() != '') {
+            if ($('#hidRequisitionID').val() != '' && $(this).find(".hidProductID").val() != '') {
                 $.ajax(
                 {
                     url: 'http://localhost:13131/api/JobOrderBorrow',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
+        });
+
+        $(".RowCal7").each(function () {
+            alert("RequistionID " + $('#hidRequisitionID').val());
+            dataObject.RequisitionID = $('#hidRequisitionID').val();
+            dataObject.Description = $(this).find('.txtDescription2').val();
+            dataObject.UnitWeight = $(this).find('.txtUnitWeight2').val();
+            dataObject.Amount = $(this).find('.txtQty2').val();
+            dataObject.ReturnGood = $(this).find(".txtGood2").val();
+            dataObject.ReturnLost = $(this).find(".txtLost2").val();
+            dataObject.ReturnRepair = $(this).find(".txtRepair2").val();
+            dataObject.ReturnBad = $(this).find(".txtBad2").val();
+            dataObject.Remark = $(this).find(".txtRemark2").val();
+            dataObject.CreateBy = localStorage['UserID'];
+            dataObject.EditBy = localStorage['UserID'];
+
+            if ($('#hidRequisitionID').val() != '' && $(this).find(".txtDescription2").val() != '' && $(this).find(".txtQty2").val() != '') {
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/Requisition1',
                     type: 'POST',
                     async: false,
                     data: dataObject,
@@ -1499,6 +1581,10 @@ function SetRowIndex() {
     //Requisition
     $('.RowCal6 td').click(function () {
         row_index7 = $(this).parent().index();
+    });
+    //Requisition1
+    $('.RowCal7 td').click(function () {
+        row_index8 = $(this).parent().index();
     });
 }
 

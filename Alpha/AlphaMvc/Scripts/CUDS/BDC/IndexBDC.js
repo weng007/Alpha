@@ -38,7 +38,10 @@ function GetData(val)
 
         //Recusively filter the jquery object to get results.
         $.each(data, function (i, v) {
-            jo = jo.filter("*:contains('" + v + "')");
+            //jo = jo.filter("*:contains('" + v + "')");
+                jo = jo.filter(function () {
+                    return $(this).text().toLowerCase().indexOf(v.toLowerCase()) > -1;
+            });
         });
         //show the rows that match.
         jo.show();
@@ -93,7 +96,7 @@ function GetData(val)
                 
                 html += '<td class="nopointer">';
                 html += '<a href="/BDC/EditBDC?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgBDCUpdate"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'BDC'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgBDCDelete"/></a>';
+                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'DeleteBDC'" + ',' + "'BDC'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgBDCDelete"/></a>';
                 html += '<a href="/BDC/EditBDC?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgBDCView"/></a>';
                 html += '</td>';
                 html += '</tr>';
@@ -115,50 +118,61 @@ function GetData(val)
 }
 function RowDelete(id) {
     var CountDel;
-    var dataObject = { BDCID: id };
-    $.ajax({
-        url: 'http://localhost:13131/api/BDC',
-        type: 'GET',
-        async: false,
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            //alert("Test "+id);
-            CountDel = data.Table[0].CountDelete;
-            //alert("CountDelete "+data.Table[0].CountDelete);
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
-    if (CountDel <= 0)
-    {
-        //alert("testCountDel");
-        var dataObject = { ID: id };
-        $.ajax(
-            {
-                url: 'http://localhost:13131/api/BDC/Delete',
-                type: 'DELETE',
-                async: false,
-                data: dataObject,
-                datatype: 'json',
+    var dataObject = { ID: id };
+    $.ajax(
+        {
+            url: 'http://localhost:13131/api/BDC/Delete',
+            type: 'DELETE',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
 
-                success: function (result) {
-                    //alert('Delete is completed')
-                    window.location.href = "../BDC/IndexBDC";
-                }
-                ,
-                error: function (msg) {
-                    alert(msg)
-                }
+            success: function (result) {
+                window.location.href = "../BDC/IndexBDC";
+            }
+            ,
+            error: function (msg) {
+                alert(msg)
+            }
 
-            });
-    }
-    else {
-        //alert("Test Else");
-        alert("Please Delete JobOrder.");
-        window.location.href = "../BDC/IndexBDC";
-    }
+        });
+    //var dataObject = { BDCID: id };
+    //$.ajax({
+    //    url: 'http://localhost:13131/api/BDC',
+    //    type: 'GET',
+    //    async: false,
+    //    dataType: 'json',
+    //    data: dataObject,
+    //    success: function (data) {
+    //        data = JSON.parse(data);
+    //        CountDel = data.Table[0].CountDelete;
+    //    },
+    //    failure: function () {
+    //        alert('Error');
+    //    }
+    //});
+    //if (CountDel <= 0)
+    //{
+    //    var dataObject = { ID: id };
+    //    $.ajax(
+    //        {
+    //            url: 'http://localhost:13131/api/BDC/Delete',
+    //            type: 'DELETE',
+    //            async: false,
+    //            data: dataObject,
+    //            datatype: 'json',
+    //            success: function (result) {
+    //                window.location.href = "../BDC/IndexBDC";
+    //            }
+    //            ,
+    //            error: function (msg) {
+    //                alert(msg)
+    //            }
+    //        });
+    //}
+    //else {
+    //    alert("Please Delete JobOrder.");
+    //    window.location.href = "../BDC/IndexBDC";
+    //}
     
 }

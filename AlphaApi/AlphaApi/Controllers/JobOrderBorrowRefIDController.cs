@@ -25,7 +25,6 @@ namespace AlphaApi.Controllers
             var response = jobOrderBorrow.SelectByRefID(id);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
-
         [HttpGet]
         //Get Autocomplete หน้า Edit Requisition ส่ง Serial, Description ไป WHERE
         public string Get(string Criteria)

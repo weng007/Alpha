@@ -22,7 +22,10 @@ function GetJobOrderBorrow(val)
         var data = this.value.split(" ");
         var jo = $("#result").find("tr");
         $.each(data, function (i, v) {
-            jo = jo.filter("*:contains('" + v + "')");
+            //jo = jo.filter("*:contains('" + v + "')");
+            jo = jo.filter(function () {
+                return $(this).text().toLowerCase().indexOf(v.toLowerCase()) > -1;
+            });
         });
         jo.show();
 

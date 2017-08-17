@@ -154,8 +154,10 @@
                                             <th>No.</th>
                                             <th>File Name</th>
                                             <th class="hidecolumn">Path Name</th>
+                                            <th class="imgbin"></th>
                                         </tr>
                                     </thead>
+                                    <tbody id="result"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -258,7 +260,7 @@
         var after = input.split('?')[1]
         var val = after.split('=');
         var Isview = val[2];
-
+        //alert(Isview);
         GetData(@Request.Params["id"]);
         GetRemain(@Request.Params["id"]);
         ControlEnable(Isview);

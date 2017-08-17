@@ -20,9 +20,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>1.09444in</Top>
-        <Left>2.94666in</Left>
+        <Left>0.20833in</Left>
         <Height>0.19792in</Height>
-        <Width>1in</Width>
+        <Width>7.70709in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -40,7 +40,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>(JOB ORDER)</Value>
+                <Value>( JOB ORDER )</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -51,9 +51,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>1.34791in</Top>
-        <Left>2.94666in</Left>
+        <Left>0.20833in</Left>
         <Height>0.22917in</Height>
-        <Width>1in</Width>
+        <Width>7.68209in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -115,7 +115,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>2.18854in</Top>
-        <Left>5.04437in</Left>
+        <Left>6.29437in</Left>
         <Height>0.22917in</Height>
         <Width>0.46528in</Width>
         <ZIndex>3</ZIndex>
@@ -275,7 +275,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>2.52465in</Top>
-        <Left>4.09229in</Left>
+        <Left>5.34229in</Left>
         <Height>0.22917in</Height>
         <Width>0.92431in</Width>
         <ZIndex>8</ZIndex>
@@ -296,10 +296,10 @@
               <Width>0.99652cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.07659cm</Width>
+              <Width>4.56476cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.96601cm</Width>
+              <Width>7.85596cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.2cm</Width>
@@ -2197,7 +2197,7 @@
         <Top>14.08324cm</Top>
         <Left>0.68792cm</Left>
         <Height>4.89646cm</Height>
-        <Width>15.03912cm</Width>
+        <Width>19.41724cm</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <Border>
@@ -2287,7 +2287,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>7.84062in</Top>
-        <Left>4.09229in</Left>
+        <Left>5.41729in</Left>
         <Height>0.22917in</Height>
         <Width>0.78285in</Width>
         <ZIndex>12</ZIndex>
@@ -2351,7 +2351,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>8.74756in</Top>
-        <Left>4.09229in</Left>
+        <Left>5.41729in</Left>
         <Height>0.22917in</Height>
         <Width>0.78285in</Width>
         <ZIndex>14</ZIndex>
@@ -2383,7 +2383,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>9.0559in</Top>
-        <Left>4.09229in</Left>
+        <Left>5.41729in</Left>
         <Height>0.22917in</Height>
         <Width>2.48696in</Width>
         <ZIndex>15</ZIndex>
@@ -2399,9 +2399,9 @@
       </Textbox>
       <Line Name="Line20">
         <Top>2.38866cm</Top>
-        <Left>0.68792cm</Left>
+        <Left>0.52916cm</Left>
         <Height>0cm</Height>
-        <Width>16.23912cm</Width>
+        <Width>19.576cm</Width>
         <ZIndex>16</ZIndex>
         <Style>
           <Border>
@@ -2511,7 +2511,7 @@
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>10.39583in</Top>
         <Height>0.125in</Height>
-        <Width>6.98085in</Width>
+        <Width>8.0746in</Width>
         <ZIndex>20</ZIndex>
         <Style>
           <Border>
@@ -2543,7 +2543,7 @@
         </Paragraphs>
         <rd:DefaultName>JobDate</rd:DefaultName>
         <Top>5.54045cm</Top>
-        <Left>14.10035cm</Left>
+        <Left>17.2436cm</Left>
         <Height>0.6cm</Height>
         <Width>2.86156cm</Width>
         <ZIndex>21</ZIndex>
@@ -2767,7 +2767,7 @@
         </Paragraphs>
         <rd:DefaultName>Car</rd:DefaultName>
         <Top>19.91517cm</Top>
-        <Left>12.38285cm</Left>
+        <Left>15.74835cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.29331cm</Width>
         <ZIndex>28</ZIndex>
@@ -2899,7 +2899,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>9.30035in</Top>
-        <Left>4.09229in</Left>
+        <Left>5.41729in</Left>
         <Height>0.22917in</Height>
         <Width>2.48696in</Width>
         <ZIndex>32</ZIndex>
@@ -2931,7 +2931,7 @@
         </Paragraphs>
         <rd:DefaultName>IssuedBy</rd:DefaultName>
         <Top>22.21881cm</Top>
-        <Left>12.38285cm</Left>
+        <Left>15.74835cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.32845cm</Width>
         <ZIndex>33</ZIndex>
@@ -2995,7 +2995,7 @@
         </Paragraphs>
         <rd:DefaultName>JobNo</rd:DefaultName>
         <Top>6.41261cm</Top>
-        <Left>12.81271cm</Left>
+        <Left>15.95596cm</Left>
         <Height>0.58209cm</Height>
         <Width>4.1492cm</Width>
         <ZIndex>35</ZIndex>
@@ -3123,7 +3123,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>9.67062in</Top>
-        <Left>4.09229in</Left>
+        <Left>5.41729in</Left>
         <Height>0.22917in</Height>
         <Width>2.48696in</Width>
         <ZIndex>39</ZIndex>
@@ -3147,18 +3147,19 @@
                 <Value>F-ARS-03-Rev.00 (28 July 2015)</Value>
                 <Style>
                   <FontFamily>cordia New</FontFamily>
-                  <FontSize>11pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
         <Top>25.77013cm</Top>
-        <Left>13.07954cm</Left>
+        <Left>13.32704cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.63176cm</Width>
+        <Width>6.77812cm</Width>
         <ZIndex>40</ZIndex>
         <Style>
           <Border>
@@ -3338,7 +3339,7 @@
         </TablixRowHierarchy>
         <DataSetName>dsJobOrder2</DataSetName>
         <Top>7.74383cm</Top>
-        <Left>10.39442cm</Left>
+        <Left>13.53767cm</Left>
         <Height>1.8cm</Height>
         <Width>6.56749cm</Width>
         <ZIndex>41</ZIndex>
@@ -3356,7 +3357,7 @@
       </Border>
     </Style>
   </Body>
-  <Width>17.73137cm</Width>
+  <Width>20.50949cm</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
