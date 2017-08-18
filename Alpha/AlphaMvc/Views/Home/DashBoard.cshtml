@@ -71,6 +71,14 @@ function GetDetail(currentMonth) {
                            //Onsite  Machine
                            TypeWorking = 'OH';
                        }
+                       else if (data.Table[i].TypeWorking == 63) {
+                           //Onsite  Machine
+                           TypeWorking = 'MP';
+                       }
+                       else if (data.Table[i].TypeWorking == 65) {
+                           //Onsite  Machine
+                           TypeWorking = 'MC';
+                       }
                        else {
                            //Others, ManJob
                            TypeWorking = '-';

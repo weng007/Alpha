@@ -263,7 +263,52 @@ function GetStatus() {
         }
     });
 }
+function ChangeTypeWorking() {
+    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+    $('#hidTypeWorking').val(WorkingType);
+    var dataObject = { TypeWorking: WorkingType };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderExpense',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $('.ExpenseSelect').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.ExpenseSelect').find('option:first-child').attr('selected', true);
 
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+
+    var dataObject = { TypeWorking: WorkingType };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderManPower',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $('.cmbManJob').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.cmbManJob').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.cmbManJob').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+
+}
 function ChangeExpenseGroup() {
     var WorkingType = $("#cmbTypeWorking").find(":selected").val();
     $('#hidTypeWorking').val(WorkingType);
@@ -281,6 +326,30 @@ function ChangeExpenseGroup() {
                 $('.ExpenseSelect').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
             });
             $('.ExpenseSelect').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+}
+function ChangeManJob()
+{
+    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+    var dataObject = { TypeWorking: WorkingType };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderManPower',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $('.cmbManJob').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.cmbManJob').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.cmbManJob').find('option:first-child').attr('selected', true);
 
         },
         failure: function () {
@@ -520,6 +589,14 @@ function GetData(val) {
            var JobDate = ChangeformatDate(data.Table[0].JobDate, 0);
            var SWorking = ChangeformatDate(data.Table[0].SWorking, 0);
            var EWorking = ChangeformatDate(data.Table[0].EWorking, 0);
+           var chkAdd1 = data.Table[0].Add1;
+           var chkAdd2 = data.Table[0].Add2;
+           if (chkAdd1 == '1') {
+               $('#chkAdd1').prop('checked', true);
+           }
+           if (chkAdd2 == '1') {
+               $('#chkAdd2').prop('checked', true);
+           }
            //alert("bindStatus " + data.Table[0].JobStatus);
            $("#hidCustID").val(data.Table[0].CustID), $("#txtJobNo").val(data.Table[0].CustID), $("#dtJobDate").val(JobDate), $("#txtCar").val(data.Table[0].Car), $("#dtSWorking").val(SWorking), $("#dtEWorking").val(EWorking), $("#txtJobBy").val(data.Table[0].JobBy), $("#txtIssuedBy").val(data.Table[0].IssuedBy), $("#cmbTypeWorking").val(data.Table[0].TypeWorking), $("#cmbJobStatus").val(data.Table[0].JobStatus), $("#txtDetail").val(data.Table[0].Detail),
              $("#cmbContact").val(data.Table[0].ContactID), $("#cmbCoWorker").val(data.Table[0].CoWorkerID),
@@ -532,6 +609,7 @@ function GetData(val) {
            //alert("cmbJobStatus " + $("#cmbJobStatus").val());
            SetIncomeMaster();
            ChangeExpenseGroup();
+           ChangeManJob();
            SetUnitWeight();
            SetUnitWeightExpense();
 
@@ -627,6 +705,7 @@ function GetData(val) {
                    //GetManpowerHour();
                }
                $('.RowCal5:eq(' + data.Table9.length + ')').remove();
+               ChangeManJob();
 
                $(".RowCal5").each(function (i) {
                    var setFTime = data.Table9[i].FromHour;
@@ -648,7 +727,7 @@ function GetData(val) {
                    var Break2 = data.Table9[i].Break2 == '1' ? true : false;
                    var Break3 = data.Table9[i].Break3 == '1' ? true : false;
 
-                   var manJobType = data.Table9[i].ManJobType;
+                   //var manJobType = data.Table9[i].ManJobType;
 
                    var ManDate = ChangeformatDate(data.Table9[i].ManDate, 0)
                    //var manDay = GetManDay(ChangeformatDate(data.Table9[i].ManDate, 1));
@@ -678,15 +757,16 @@ function GetData(val) {
                    $(this).find('.ManPremium2').val(data.Table9[i].ManPremium2);
                    $(this).find('.ManSpecial').val(data.Table9[i].ManSpecial);
 
-                   if (manJobType == '0') {
-                       $(this).find('.chkLead').prop('checked', true);
-                   }
-                   if (manJobType == '1') {
-                       $(this).find('.chkTech').prop('checked', true);
-                   }
-                   if (manJobType == '2') {
-                       $(this).find('.chkSafety').prop('checked', true);
-                   }
+                   //if (manJobType == '0') {
+                   //    $(this).find('.chkLead').prop('checked', true);
+                   //}
+                   //if (manJobType == '1') {
+                   //    $(this).find('.chkTech').prop('checked', true);
+                   //}
+                   //if (manJobType == '2') {
+                   //    $(this).find('.chkSafety').prop('checked', true);
+                   //}
+                   $(this).find('.cmbManJob').val(data.Table9[i].ManJobType).change();
                    $(this).find('.ManPrice').val(data.Table9[i].ManJobPrice);
                    
                });
@@ -695,12 +775,12 @@ function GetData(val) {
                //CalSumExpense();
            }
 
-           if (data.Table10[0].Sup > 0 || data.Table10[0].FM > 0 || data.Table10[0].Tech > 0 || data.Table10[0].TSafety > 0) {
-               $("#txtManSup").val(data.Table10[0].Sup),
-               $("#txtManFM").val(data.Table10[0].FM),
-               $("#txtManTech").val(data.Table10[0].Tech),
-               $("#txtManSafety").val(data.Table10[0].tSafety);
-           }
+           //if (data.Table10[0].Sup > 0 || data.Table10[0].FM > 0 || data.Table10[0].Tech > 0 || data.Table10[0].TSafety > 0) {
+           //    $("#txtManSup").val(data.Table10[0].Sup),
+           //    $("#txtManFM").val(data.Table10[0].FM),
+           //    $("#txtManTech").val(data.Table10[0].Tech),
+           //    $("#txtManSafety").val(data.Table10[0].tSafety);
+           //}
 
            ////Binding Data SaleOrder
            if (data.Table3.length > 0) {
@@ -862,13 +942,15 @@ function Update(val) {
     var discount = ConvertAmount($("#txtDiscount").val());
     var price = ConvertAmount($("#txtSubTotal").val());
     var cost = ConvertAmount($('#txtExpense').val()) + ConvertAmount($('#txtManJob').val());
+    var chkAdd1 = $('#chkAdd1').is(":checked") == true ? '1' : '0';
+    var chkAdd2 = $('#chkAdd2').is(":checked") == true ? '1' : '0';
     //alert("Cost "+ConvertAmount($('#txtExpense').val()) + ConvertAmount($('#txtManJob').val()));
     var dataObject = {
         ID: val, JobRef: $('#hidBDCID').val(),JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate,
         JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(),
         JobStatus: $("#cmbJobStatus").find(":selected").val(), Detail: $("#txtDetail").val(), CustID: $("#hidCustID").val(),
         ContactID: $("#cmbContact").find(":selected").val(), CoWorkerID: $("#cmbCoWorker").find(":selected").val(),
-        Remark: $("#txtRemark").val(), Discount: discount, Price: price, Cost: cost, JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(), EditBy: localStorage['UserID']
+        Remark: $("#txtRemark").val(), Discount: discount, Price: price, Cost: cost, JobSite: $("#txtJobSite").val(), Location: $("#txtLocation").val(),Add1: chkAdd1,Add2: chkAdd2 , EditBy: localStorage['UserID']
     };
     console.log(dataObject);
     var JobID;
@@ -936,6 +1018,7 @@ function Update(val) {
 
     var dataObject = {};
     $(".RowCal1").each(function () {
+        //alert("ExpenseSelect "+$(this).find('.ExpenseSelect').find(":selected").val());
         dataObject.ID = $(this).find(".ExpenseID").val();
         dataObject.JobID = JobID;
         dataObject.ExpenseType = $(this).find('.ExpenseSelect').find(":selected").val();
@@ -974,19 +1057,19 @@ function Update(val) {
             var workingTo = $(this).find('.WorkingTo').val();
 
             var mDate = ChangeformatDate($(this).find(".ManDate").val(), 1);
-            if ($(this).find('.chkLead').is(":checked") == true) {
-                manJobType = '0';
-            }
-            else if ($(this).find('.chkTech').is(":checked") == true) {
-                manJobType = '1';
-            }
-            else if ($(this).find('.chkSafety').is(":checked") == true) {
-                manJobType = '2';
-            }
-            else
-            {
-                manJobType = '5';
-            }
+            //if ($(this).find('.chkLead').is(":checked") == true) {
+            //    manJobType = '0';
+            //}
+            //else if ($(this).find('.chkTech').is(":checked") == true) {
+            //    manJobType = '1';
+            //}
+            //else if ($(this).find('.chkSafety').is(":checked") == true) {
+            //    manJobType = '2';
+            //}
+            //else
+            //{
+            //    manJobType = '5';
+            //}
             dataObject.JobID = JobID;
             dataObject.TechnicianID = $(this).find('.TechnicianID').val();
             dataObject.ManDate = mDate;
@@ -1003,7 +1086,7 @@ function Update(val) {
             dataObject.ManPremium = $(this).find(".ManPremium").val();
             dataObject.ManPremium2 = $(this).find(".ManPremium2").val();
             dataObject.ManSpecial = $(this).find(".ManSpecial").val();
-            dataObject.ManJobType = manJobType;
+            dataObject.ManJobType = $(this).find('.cmbManJob').find(":selected").val();
             dataObject.ManJobPrice = $(this).find(".ManPrice").val();
             dataObject.EditBy = localStorage['UserID'];
 
@@ -1186,6 +1269,30 @@ function CalSumExpense() {
         $("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
 }
+function CalAddWage(val)
+{
+    var Add1 = $('#chkAdd1').is(":checked") == true ? '1' : '0';
+    var Add2 = $('#chkAdd2').is(":checked") == true ? '1' : '0';
+    alert(val);
+    alert(Add1);
+    alert(Add2);
+    var dataObject = { AddWage: val + '&' + Add1 +'&' + Add2 };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrder',
+        type: 'GET',
+        dataType: 'json',
+        async:false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $('#txtManJob').val(data.Table[0].TotalManJobPrice).formatNumber({ format: "#,###.00", locale: "us" });
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+    CalSumExpense;
+}
 function AddRowIncome() {
     if (localStorage['flagAddRow'] == 1) {
         var dataObject = { IsJobOrder: 'true' };
@@ -1309,6 +1416,28 @@ function AddrowManpower() {
         i++;
     });
 
+    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+    var dataObject = { TypeWorking: WorkingType };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrderManPower',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            $('.cmbManJob:last').find("option").remove();
+            $.each(data.Table, function (i) {
+                $('.cmbManJob:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+            });
+            $('.cmbManJob:last').find('option:first-child').attr('selected', true);
+
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+
     //$('.RowCal5 td').click(function () {
     //    row_index = $(this).parent().index();
     //    col_index = $(this).index();
@@ -1415,26 +1544,25 @@ function CalTotalHour() {
     var total = parseInt(totalHours) + ':' + pad(totalMinutes, 2);
     $('.TotalHours').eq(row_index).val(total);
 }
-function GetManJob(isManType) {
-    var manType;
-
-    if (isManType == 0) {
-        $('.chkLead').eq(row_index).prop('checked', true);
-        $('.chkTech').eq(row_index).prop('checked', false);
-        $('.chkSafety').eq(row_index).prop('checked', false);
-        manType = '0';
-    }
-    if (isManType == 1) {
-        $('.chkTech').eq(row_index).prop('checked', true);
-        $('.chkLead').eq(row_index).prop('checked', false);
-        $('.chkSafety').eq(row_index).prop('checked', false);
-        manType = '1';
-    }
-    if (isManType == 2) {
-        $('.chkLead').eq(row_index).prop('checked', false);
-        $('.chkTech').eq(row_index).prop('checked', false);
-        manType = '2';
-    }
+function GetManJob() {
+    var manType = $('.cmbManJob').eq(row_index).val();
+    //if (isManType == 0) {
+    //    $('.chkLead').eq(row_index).prop('checked', true);
+    //    $('.chkTech').eq(row_index).prop('checked', false);
+    //    $('.chkSafety').eq(row_index).prop('checked', false);
+    //    manType = '0';
+    //}
+    //if (isManType == 1) {
+    //    $('.chkTech').eq(row_index).prop('checked', true);
+    //    $('.chkLead').eq(row_index).prop('checked', false);
+    //    $('.chkSafety').eq(row_index).prop('checked', false);
+    //    manType = '1';
+    //}
+    //if (isManType == 2) {
+    //    $('.chkLead').eq(row_index).prop('checked', false);
+    //    $('.chkTech').eq(row_index).prop('checked', false);
+    //    manType = '2';
+    //}
 
     //alert(manType);
     var dataObject = { IsIncome: '1' + '&' + manType }
@@ -1449,16 +1577,13 @@ function GetManJob(isManType) {
         success: function (data) {
             data = JSON.parse(data);
             if (data.Table.length > 0) {
-
                 $('.ManPrice').eq(row_index).val(data.Table[0].PriceList);
             }
         },
         error: function (msg) {
             alert(msg);
         }
-
     });
-
 }
 function GetManpowerHour(isCheckBreak) {
     var StartDate = $('#dtSWorking').val();

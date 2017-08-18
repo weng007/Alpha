@@ -5,6 +5,11 @@
 .margintop20{
     margin-top:20px !important;
 }
+.Checkbox1
+{
+    float: left;
+    margin-right: 10px !important;
+}
 .btnprint{
     float: left;
     position: absolute;

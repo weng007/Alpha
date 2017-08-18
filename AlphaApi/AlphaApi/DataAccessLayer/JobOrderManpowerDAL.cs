@@ -57,7 +57,6 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-
         public int UpdateData(JobOrderManpowerModels jobOrderManpower)
         {
             using (SqlConnection conObj = new SqlConnection(conStr))
@@ -102,7 +101,6 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-
         public string DeleteData(JobOrderManpowerModels jobOrderManpower)
         {
             string result = "";
@@ -127,7 +125,6 @@ namespace AlphaApi.DataAccessLayer
                 }
             }
         }
-
         public DataSet SelectByID(int id)
         {
             DataSet ds = null;
@@ -176,6 +173,35 @@ namespace AlphaApi.DataAccessLayer
                 catch (Exception ex)
                 {
                     throw ex;
+                }
+                finally
+                {
+                    conObj.Close();
+                }
+            }
+        }
+
+        public DataSet SelectByTypeWorking(string TypeWorking)
+        {
+            DataSet ds = null;
+            using (SqlConnection conObj = new SqlConnection(conStr))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_ManJob_SelByTypeWorking", conObj);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TypeWorking", TypeWorking); // i will pass zero to MobileID beacause its Primary .
+                    conObj.Open();
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = cmd;
+                    ds = new DataSet();
+                    da.Fill(ds);
+
+                    return ds;
+                }
+                catch
+                {
+                    return ds;
                 }
                 finally
                 {

@@ -53,6 +53,10 @@ namespace AlphaApi.Models
 
         public string Location { get; set; }
 
+        public string Add1 { get; set; }
+
+        public string Add2 { get; set; }
+
         public int CreateBy { get; set; }
 
         public int EditBy { get; set; }

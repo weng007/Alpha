@@ -51,7 +51,7 @@ namespace AlphaApi.Models
 
         public double ManSpecial { get; set; }
 
-        public string ManJobType { get; set; }
+        public int ManJobType { get; set; }
 
         public decimal ManJobPrice { get; set; }
 

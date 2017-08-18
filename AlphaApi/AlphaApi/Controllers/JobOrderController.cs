@@ -68,6 +68,13 @@ namespace AlphaApi.Controllers
             var response = jobOrder.SelectContactByJobID(JobID);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
+        [HttpGet]
+        public string GetAddWage(string AddWage)
+        {
+            string[] str = AddWage.Split('&');
+            var response = jobOrder.SelectAddWage(Convert.ToInt32(str[0]), str[1], str[2]);
+            return JsonConvert.SerializeObject(response, Formatting.Indented);
+        }
         [HttpPut]
         public int Put(JobOrderModels jobOrderModel)
         {

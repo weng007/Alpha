@@ -80,7 +80,7 @@
                 <label class="label-5">ชนิดงาน</label>&nbsp;<label class="label-2">Status</label>
             </li>
             <li>
-                <select id="cmbTypeWorking" class="field-divided-2" onchange="ChangeExpenseGroup()" required></select><select id="cmbJobStatus" class="field-divided" required></select>
+                <select id="cmbTypeWorking" class="field-divided-2" onchange="ChangeTypeWorking()" required></select><select id="cmbJobStatus" class="field-divided" required></select>
             </li>
 
             <li>
@@ -138,6 +138,12 @@
             </li>
             <li style="margin-top: 2px;">
                 <input type="text" id="txtJobSite" name="field1" class="field-divided" placeholder="" />&nbsp;<input type="text" id="txtLocation" name="field1" class="field-divided" placeholder="" />
+            </li>
+            <li style="margin-top: 2px;">
+                <div class="form-group">
+                    <label class="Checkbox1"><input type="checkbox" id="chkAdd1" class="chkAdd1" onchange="CalAddWage(@Request.Params["id"])" value=""> ค่ากะ</label>
+                    <label class="mgr-top10"><input type="checkbox" id="chkAdd2" class="chkAdd2" onchange="CalAddWage(@Request.Params["id"])" value=""> ค่าเบี้ยเลี้ยง</label>
+                </div>
             </li>
             <li>
                 <label>หมายเหตุ</label>
@@ -480,8 +486,8 @@
                                                         <th rowspan="3" class="hidecolumn">Position</th>
                                                         <th rowspan="3">ชื่อ</th>
                                                         <th rowspan="3">Lead</th>
-                                                        <th rowspan="3">Tech</th>
-                                                        <th rowspan="3">Safety</th>
+                                                        @*<th rowspan="3">Tech</th>
+                                                        <th rowspan="3">Safety</th>*@
                                                         <th rowspan="3">Unit Price</th>
                                                         <th rowspan="3">เลขบัตรประชาชน</th>
                                                         <th rowspan="3">ประเภทพนักงาน</th>
@@ -518,9 +524,12 @@
                                                             <input id="No" type="text" value="" class="tdno" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtName" name="txtName" onblur="GetManpowerHour('1')" class="FName text-size140"  />
+                                                            <input type="text" id="txtName" name="txtName" onblur="GetManpowerHour('1')" class="text-left FName text-size140"  />
                                                         </td>
-                                                        <td class="text-size100">
+                                                        <td>
+                                                            <select id="cmbManJob" class="cmbManJob" onchange="GetManJob()"></select>
+                                                        </td>
+                                                        @*<td class="text-size100">
                                                             <input id="chkLead" class="chkLead" type="checkbox"  onchange="GetManJob('0')" style="margin-left: 20px; margin-right: 20px;" />
                                                         </td>
                                                         <td class="text-size100">
@@ -528,7 +537,7 @@
                                                         </td>
                                                         <td class="text-size100">
                                                             <input id="chkSafety" class="chkSafety"  onchange="GetManJob('2')" type="checkbox" style="margin-left: 20px; margin-right: 20px;" />
-                                                        </td>
+                                                        </td>*@
                                                         <td>
                                                             <input type="text" id="txtManPrice" class="ManPrice select-size50-height23 txtdisablerow" disabled />
                                                         </td>
@@ -545,10 +554,10 @@
                                                             <input id="txtPositionID" type="text" value="" class="PositionID" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtCardID" type="text" value="" class="CardID text-size130 txtdisablerow" disabled />
+                                                            <input id="txtCardID" type="text" value="" class="text-left CardID text-size130 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtTechnicianType" type="text" value="" class="TechnicianType text-size140 txtdisablerow" disabled />
+                                                            <input id="txtTechnicianType" type="text" value="" class="text-left TechnicianType text-size140 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtManDate" class="ManDate text-size110" onchange="GetManpowerHour('1')" onblur="GetDay()"/>
@@ -619,9 +628,12 @@
                                                             <input id="txtPositionID" type="text" value="" class="PositionID" disabled />
                                                         </td>
                                                         <td>
-                                                            <input type="text" id="txtName" name="txtName" onblur="GetManpowerHour('1')" class="FName text-size140"/>
+                                                            <input type="text" id="txtName" name="txtName" onblur="GetManpowerHour('1')" class="text-left FName text-size140"/>
                                                         </td>
-                                                        <td class="text-size100">
+                                                        <td>
+                                                            <select id="cmbManJob" class="cmbManJob" onchange="GetManJob()"></select>
+                                                        </td>
+                                                        @*<td class="text-size100">
                                                             <input id="chkLead" class="chkLead" type="checkbox"  onchange="GetManJob('0')" style="margin-left: 20px; margin-right: 20px;" />
                                                         </td>
                                                         <td class="text-size100">
@@ -629,15 +641,15 @@
                                                         </td>
                                                         <td class="text-size100">
                                                             <input id="chkSafety" class="chkSafety" type="checkbox"  onchange="GetManJob('2')" style="margin-left: 20px; margin-right: 20px;" />
-                                                        </td>
+                                                        </td>*@
                                                         <td>
                                                             <input type="text" id="txtManPrice" class="ManPrice select-size50-height23 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtCardID" type="text" value="" class="CardID text-size120 txtdisablerow" disabled />
+                                                            <input id="txtCardID" type="text" value="" class="text-left CardID text-size120 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
-                                                            <input id="txtTechnicianType" type="text" value="" class="TechnicianType text-size120 txtdisablerow" disabled />
+                                                            <input id="txtTechnicianType" type="text" value="" class="text-left TechnicianType text-size120 txtdisablerow" disabled />
                                                         </td>
                                                         <td>
                                                             <input type="text" id="txtManDate"  class="ManDate text-size110" onchange="GetManpowerHour('1')" onblur="GetDay()"/>
