@@ -81,8 +81,8 @@
      width:120px;
 }
     .menulocation {
-        padding-top: 8%;
-        padding-left: 0%;
+        padding-top: 17% !important;
+        padding-left: 0% !important;
     }
 
     .navbar-nav {
@@ -91,12 +91,14 @@
     }
 
     .headerimg {
-        background: url(../Images/bg.png) no-repeat top center !important;
+        background: url(../Images/ars34x3.jpg) no-repeat top center !important;
+        background-size: 680px 75px !important;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 14px;
         line-height: 1.428571429;
         color: #333333;
-        background-color: #ece9cd !important;
+        /*background-color: #ece9cd !important;*/
+        background-color: #5c5c5c !important;
     }
     .menublue {
         background: #5c5c5c !important;
@@ -104,8 +106,48 @@
         padding: 15px;
     }
 }
+
+@media (max-width: 367px) {
+    .txtpadding
+{
+     padding: 5px;
+     margin-bottom: 10px;
+     width:120px;
+}
+    .menulocation {
+        padding-top: 40% !important;
+        padding-left: 0% !important;
+    }
+
+    .navbar-nav {
+        /*margin: 7.5px -15px;*/
+        margin: 0px 0px !important;
+    }
+
+    .headerimg {
+        background: url(../Images/ars11x3.jpg) no-repeat top center !important;
+        background-size: 367px !important;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.428571429;
+        color: #333333;
+        /*background-color: #ece9cd !important;*/
+        background-color: #5c5c5c !important;
+    }
+    .menublue {
+        background: #5c5c5c !important;
+        color: white !important;
+        padding: 15px;
+    }
+}
+/*@media (min-width: 740px) {
+    .navbar-nav {
+      margin: 7.5px -15px;
+      width:515%
+    }
+}*/
 .headerimg{
-    background: url(../Images/mechine.png) no-repeat top center;
+    background: url(../Images/ars48x3.jpg) no-repeat top center;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.428571429;

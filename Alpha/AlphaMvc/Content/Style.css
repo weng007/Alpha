@@ -1051,10 +1051,14 @@ select{
     left: 87.6%;
 }
 .logonname{
-    /*color:white;*/
-    color: #5c5c5c;
-    top: 6%;
-    left: 91%;
+    background-color: #f44336;
+    color: white;
+    padding: 5px 23px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 80%;
+    margin-top: 1.5%;
     position: absolute;
 }
 .imgicon{
@@ -1065,14 +1069,25 @@ select{
     left: 89%;
 }
 .loginname a{
-    /*color:white;
-    top: 2%;
-    left: 91%;
-    position: absolute;*/
-    color: #5c5c5c;
-    font-weight: 700;
-    top: 2%;
-    left: 91%;
+    background-color: #c93237;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 90%;
+    margin-top: 1.5%;
+    position: absolute;
+}
+.loginname a:hover{
+    background-color: #e3343a;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 90%;
+    margin-top: 1.5%;
     position: absolute;
 }
 .bgthead{
@@ -1129,23 +1144,95 @@ select{
         /*top: 2%;*/
         left: 65% !important;
     }
-    .logonname{
-        color:#5c5c5c;
-        /*top: 8%;*/
-        left: 77.5%;
-        position: absolute;
-    }
+     .logonname{
+    background-color: #f44336;
+    color: white;
+    padding: 5px 23px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 62%;
+    margin-top: 12%;
+    position: absolute;
+}
+    .loginname a{
+    background-color: #c93237;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 82%;
+    margin-top: 12%;
+    position: absolute;
+}
+.loginname a:hover{
+    background-color: #e3343a;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 90%;
+    margin-top: 1.5%;
+    position: absolute;
+}
     .imgicon{
         float: left;
         position: absolute;
         top: 2%;
         left: 69.5% !important;
     }
-    .loginname a{
-        color:#5c5c5c;
-        /*top: 2%;*/
-        left: 78%;
+}
+
+  @media screen and (max-width:367px) {
+
+     .imglogon {
+        float: left;
         position: absolute;
+        /*top: 2%;*/
+        left: 65% !important;
+    }
+     .logonname{
+    background-color: #f44336;
+    color: white;
+    padding: 5px 23px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 40%;
+    margin-top: 32%;
+    position: absolute;
+    font-size: 12px;
+}
+    .loginname a{
+    background-color: #c93237;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 74%;
+    margin-top: 32%;
+    position: absolute;
+    font-size: 12px;
+}
+.loginname a:hover{
+    background-color: #e3343a;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 90%;
+    margin-top: 1.5%;
+    position: absolute;
+}
+    .imgicon{
+        float: left;
+        position: absolute;
+        top: 2%;
+        left: 69.5% !important;
     }
 }
 /*------------------------------------- tableAdd -------------------------------------*/

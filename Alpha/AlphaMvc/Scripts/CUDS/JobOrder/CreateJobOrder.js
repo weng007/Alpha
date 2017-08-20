@@ -655,7 +655,31 @@ function ChangeExpenseGroup()
         }
     });
 }
-
+function CalAddWage(val) {
+    var Add1 = $('#chkAdd1').is(":checked") == true ? '1' : '0';
+    var Add2 = $('#chkAdd2').is(":checked") == true ? '1' : '0';
+    alert("val" + val);
+    alert("Add1" + Add1);
+    alert("Add2" + Add2);
+    var dataObject = { AddWage: val + '&' + Add1 + '&' + Add2 };
+    $.ajax({
+        url: 'http://localhost:13131/api/JobOrder',
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        data: dataObject,
+        success: function (data) {
+            data = JSON.parse(data);
+            alert(data.Table[0].TotalManJobPrice);
+            $('#hidAddwage').val(data.Table[0].TotalManJobPrice);
+            alert($('#hidAddwage').val());
+        },
+        failure: function () {
+            alert('Error');
+        }
+    });
+    //CalSumExpense;
+}
 function CreateData() {
     //, CustID: $("#hidCustID").val()
     var JDate = ChangeformatDate($("#dtJobDate").val(),1);
@@ -664,11 +688,10 @@ function CreateData() {
     //parsefloat($("#txtDiscount").val() != '' ? $("#txtDiscount").val() : 0);
     var discount = ConvertAmount($("#txtDiscount").val());
     var price = ConvertAmount($("#txtSubTotal").val());
+    //alert("cost " + ConvertAmount($('#txtExpense').val()));
     var cost = ConvertAmount($('#txtExpense').val());
     var chkAdd1 = $('#chkAdd1').is(":checked") == true ? '1' : '0';
     var chkAdd2 = $('#chkAdd2').is(":checked") == true ? '1' : '0';
-    alert("chkAdd1 "+chkAdd1);
-    alert("chkAdd2 " + chkAdd2);
     var dataObject = {
         JobRef: $('#hidBDCID').val(), JobNo: $('#txtJobNo').val(), JobDate: JDate, Car: $("#txtCar").val(), SWorking: SWorkingDate, EWorking: EWorkingDate, JobBy: $("#txtJobBy").val(), IssuedBy: $("#txtIssuedBy").val(), TypeWorking: $("#cmbTypeWorking").find(":selected").val(), JobStatus: $("#cmbJobStatus").find(":selected").val(),
         ContactID: $("#cmbContact").find(":selected").val(), CoWorkerID: $("#cmbCoWorker").find(":selected").val(),

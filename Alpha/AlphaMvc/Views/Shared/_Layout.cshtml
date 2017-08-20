@@ -58,9 +58,10 @@
         <header>
             @*<div class="float-left"></div>*@
             <div>
-                <a href="@Url.Action("Index", "Home")" class="imagelogo"></a>
-                <img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" /><label id="lblUserName" class="logonname"></label>
-                <img src="@Url.Content("~/Images/log-in.png")" alt="IMAGES" class="imgicon" />
+                @*<a href="@Url.Action("Index", "Home")" class="imagelogo"></a>*@
+                @*<img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" />*@
+                <label id="lblUserName" class="logonname"></label>
+                @*<img src="@Url.Content("~/Images/log-in.png")" alt="IMAGES" class="imgicon" />*@
                 <div class="loginname">@Html.ActionLink("Log Out", "IndexLogin", "Login")</div>
                 @*<div class="table-responsive">*@
                     <div class="menulocation">

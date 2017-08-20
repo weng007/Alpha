@@ -56,7 +56,8 @@ $(document).ready(function () {
                 html += '<td class="nopointer text-right">' + AddComma(parseFloat(data.Table[i].PriceList).toFixed(2)) + '</td>';
                 html += '<td class="nopointer txtcenter">' + data.Table[i].Seq + '</td>';
                 html += '<td class="nopointer">';
-                if (data.Table[i].ExpenseGroupID == 63)
+                //ManJob
+                if (data.Table[i].ID == 1080 || data.Table[i].ID == 1081 || data.Table[i].ID == 1082 || data.Table[i].ID == 1083 || data.Table[i].ID == 1084 || data.Table[i].ID == 1091 || data.Table[i].ID == 1092 || data.Table[i].ID == 1093 || data.Table[i].ID == 1094 || data.Table[i].ID == 1095 || data.Table[i].ID == 1096 || data.Table[i].ID == 1097 || data.Table[i].ID == 1098 || data.Table[i].ID == 1099 || data.Table[i].ID == 1100)
                 {
                     html += '<a href="/ExpenseMaster/EditExpenseMaster?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgExpenseUpdate" /></a>';
                     //html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'ExpenseMaster'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgExpenseDelete" /></a>';

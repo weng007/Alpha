@@ -941,7 +941,9 @@ function Update(val) {
     var EWorkingDate = ChangeformatDate($("#dtEWorking").val(), 1);
     var discount = ConvertAmount($("#txtDiscount").val());
     var price = ConvertAmount($("#txtSubTotal").val());
+    alert("txtManJob " + ConvertAmount($('#txtManJob').val()));
     var cost = ConvertAmount($('#txtExpense').val()) + ConvertAmount($('#txtManJob').val());
+    alert(cost);
     var chkAdd1 = $('#chkAdd1').is(":checked") == true ? '1' : '0';
     var chkAdd2 = $('#chkAdd2').is(":checked") == true ? '1' : '0';
     //alert("Cost "+ConvertAmount($('#txtExpense').val()) + ConvertAmount($('#txtManJob').val()));
@@ -1273,9 +1275,6 @@ function CalAddWage(val)
 {
     var Add1 = $('#chkAdd1').is(":checked") == true ? '1' : '0';
     var Add2 = $('#chkAdd2').is(":checked") == true ? '1' : '0';
-    alert(val);
-    alert(Add1);
-    alert(Add2);
     var dataObject = { AddWage: val + '&' + Add1 +'&' + Add2 };
     $.ajax({
         url: 'http://localhost:13131/api/JobOrder',
@@ -1291,7 +1290,7 @@ function CalAddWage(val)
             alert('Error');
         }
     });
-    CalSumExpense;
+    CalSumExpense();
 }
 function AddRowIncome() {
     if (localStorage['flagAddRow'] == 1) {
