@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsJobPaymentDetail" targetNamespace="http://tempuri.org/dsJobPaymentDetail.xsd" xmlns:mstns="http://tempuri.org/dsJobPaymentDetail.xsd" xmlns="http://tempuri.org/dsJobPaymentDetail.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="AlphaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AlphaConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.AlphaConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsJobPaymentDetail" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dsJobPaymentDetail" msprop:Generator_UserDSName="dsJobPaymentDetail">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SP_RptJobPayment" msprop:Generator_TableClassName="SP_RptJobPaymentDataTable" msprop:Generator_TableVarName="tableSP_RptJobPayment" msprop:Generator_RowChangedName="SP_RptJobPaymentRowChanged" msprop:Generator_TablePropName="SP_RptJobPayment" msprop:Generator_RowDeletingName="SP_RptJobPaymentRowDeleting" msprop:Generator_RowChangingName="SP_RptJobPaymentRowChanging" msprop:Generator_RowEvHandlerName="SP_RptJobPaymentRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_RptJobPaymentRowDeleted" msprop:Generator_RowClassName="SP_RptJobPaymentRow" msprop:Generator_UserTableName="SP_RptJobPayment" msprop:Generator_RowEvArgName="SP_RptJobPaymentRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RowNum" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnRowNum" msprop:Generator_ColumnPropNameInRow="RowNum" msprop:Generator_ColumnPropNameInTable="RowNumColumn" msprop:Generator_UserColumnName="RowNum" type="xs:long" minOccurs="0" />
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="TechnicianID" msprop:Generator_ColumnVarNameInTable="columnTechnicianID" msprop:Generator_ColumnPropNameInRow="TechnicianID" msprop:Generator_ColumnPropNameInTable="TechnicianIDColumn" msprop:Generator_UserColumnName="TechnicianID" type="xs:int" minOccurs="0" />
+              <xs:element name="ManDate" msprop:Generator_ColumnVarNameInTable="columnManDate" msprop:Generator_ColumnPropNameInRow="ManDate" msprop:Generator_ColumnPropNameInTable="ManDateColumn" msprop:Generator_UserColumnName="ManDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="WeekDay" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnWeekDay" msprop:Generator_ColumnPropNameInRow="WeekDay" msprop:Generator_ColumnPropNameInTable="WeekDayColumn" msprop:Generator_UserColumnName="WeekDay" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="WorkingFrom" msprop:Generator_ColumnVarNameInTable="columnWorkingFrom" msprop:Generator_ColumnPropNameInRow="WorkingFrom" msprop:Generator_ColumnPropNameInTable="WorkingFromColumn" msprop:Generator_UserColumnName="WorkingFrom" type="xs:string" minOccurs="0" />
+              <xs:element name="WorkingTo" msprop:Generator_ColumnVarNameInTable="columnWorkingTo" msprop:Generator_ColumnPropNameInRow="WorkingTo" msprop:Generator_ColumnPropNameInTable="WorkingToColumn" msprop:Generator_UserColumnName="WorkingTo" type="xs:string" minOccurs="0" />
+              <xs:element name="CustomerName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCustomerName" msprop:Generator_ColumnPropNameInRow="CustomerName" msprop:Generator_ColumnPropNameInTable="CustomerNameColumn" msprop:Generator_UserColumnName="CustomerName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JobNo" msprop:Generator_ColumnVarNameInTable="columnJobNo" msprop:Generator_ColumnPropNameInRow="JobNo" msprop:Generator_ColumnPropNameInTable="JobNoColumn" msprop:Generator_UserColumnName="JobNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Detail" msprop:Generator_ColumnVarNameInTable="columnDetail" msprop:Generator_ColumnPropNameInRow="Detail" msprop:Generator_ColumnPropNameInTable="DetailColumn" msprop:Generator_UserColumnName="Detail" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LeadBT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLeadBT" msprop:Generator_ColumnPropNameInRow="LeadBT" msprop:Generator_ColumnPropNameInTable="LeadBTColumn" msprop:Generator_UserColumnName="LeadBT" type="xs:int" minOccurs="0" />
+              <xs:element name="TechBT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTechBT" msprop:Generator_ColumnPropNameInRow="TechBT" msprop:Generator_ColumnPropNameInTable="TechBTColumn" msprop:Generator_UserColumnName="TechBT" type="xs:int" minOccurs="0" />
+              <xs:element name="LeadSL" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLeadSL" msprop:Generator_ColumnPropNameInRow="LeadSL" msprop:Generator_ColumnPropNameInTable="LeadSLColumn" msprop:Generator_UserColumnName="LeadSL" type="xs:int" minOccurs="0" />
+              <xs:element name="TechSL" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTechSL" msprop:Generator_ColumnPropNameInRow="TechSL" msprop:Generator_ColumnPropNameInTable="TechSLColumn" msprop:Generator_UserColumnName="TechSL" type="xs:int" minOccurs="0" />
+              <xs:element name="LeadOM" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLeadOM" msprop:Generator_ColumnPropNameInRow="LeadOM" msprop:Generator_ColumnPropNameInTable="LeadOMColumn" msprop:Generator_UserColumnName="LeadOM" type="xs:int" minOccurs="0" />
+              <xs:element name="TechOM" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTechOM" msprop:Generator_ColumnPropNameInRow="TechOM" msprop:Generator_ColumnPropNameInTable="TechOMColumn" msprop:Generator_UserColumnName="TechOM" type="xs:int" minOccurs="0" />
+              <xs:element name="LeadME" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLeadME" msprop:Generator_ColumnPropNameInRow="LeadME" msprop:Generator_ColumnPropNameInTable="LeadMEColumn" msprop:Generator_UserColumnName="LeadME" type="xs:int" minOccurs="0" />
+              <xs:element name="TechME" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTechME" msprop:Generator_ColumnPropNameInRow="TechME" msprop:Generator_ColumnPropNameInTable="TechMEColumn" msprop:Generator_UserColumnName="TechME" type="xs:int" minOccurs="0" />
+              <xs:element name="Manpower" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnManpower" msprop:Generator_ColumnPropNameInRow="Manpower" msprop:Generator_ColumnPropNameInTable="ManpowerColumn" msprop:Generator_UserColumnName="Manpower" type="xs:int" minOccurs="0" />
+              <xs:element name="Allowance" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAllowance" msprop:Generator_ColumnPropNameInRow="Allowance" msprop:Generator_ColumnPropNameInTable="AllowanceColumn" msprop:Generator_UserColumnName="Allowance" type="xs:int" minOccurs="0" />
+              <xs:element name="Safety" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSafety" msprop:Generator_ColumnPropNameInRow="Safety" msprop:Generator_ColumnPropNameInTable="SafetyColumn" msprop:Generator_UserColumnName="Safety" type="xs:int" minOccurs="0" />
+              <xs:element name="Add1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAdd1" msprop:Generator_ColumnPropNameInRow="Add1" msprop:Generator_ColumnPropNameInTable="Add1Column" msprop:Generator_UserColumnName="Add1" type="xs:int" minOccurs="0" />
+              <xs:element name="Remark" msprop:Generator_ColumnVarNameInTable="columnRemark" msprop:Generator_ColumnPropNameInRow="Remark" msprop:Generator_ColumnPropNameInTable="RemarkColumn" msprop:Generator_UserColumnName="Remark" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SP_RptJobPayment" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

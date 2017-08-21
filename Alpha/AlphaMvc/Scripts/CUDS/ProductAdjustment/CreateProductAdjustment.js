@@ -59,6 +59,7 @@ function BrowseProducts() {
           url: 'http://localhost:13131/api/Product',
           type: 'GET',
           datatype: 'json',
+          async:false,
           success: function (data) {
               data = JSON.parse(data);
               var html = '';
@@ -101,17 +102,7 @@ function GetRemain(val) {
 
        });
 }
-function GetDeduct() {
-    var result;
-    var remain = $("#txtRemain").val()
-    if (remain <= 0)
-    {
-        alert("จำนวนสินค้าต้องไม่น้อยกว่า 0");
-        $("#txtDeduction").val(0);
-        result = 0;
-    }
-    return result;
-}
+
 function CreateData() {
     //var x = new Userlogin()
     //alert(x.UserID);
@@ -130,9 +121,8 @@ function CreateData() {
             datatype: 'json',
 
             success: function (data) {
-                //alert('Create is completed');
-                //alert(data);
-                window.location.href = "../ProductAdjust/EditProductAdjust?id=" + data;
+                //window.location.href = "../ProductAdjust/EditProductAdjust?id=" + data;
+                Redirect();
             }
             ,
             error: function (msg) {

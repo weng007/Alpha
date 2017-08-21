@@ -505,7 +505,16 @@ function GetManpowerHour(isCheckBreak) {
             $('.chkBreak1').eq(row_index).prop('checked', false);
             $('.chkBreak2').eq(row_index).prop('checked', false);
             $('.chkBreak3').eq(row_index).prop('checked', false);
-            alert("Please Input Date Between Startworking and EndWorking");
+            $('#ShowDialog').modal('show');
+            var html = '<div class="modal-dialog modal-dialog-danger">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header modal-header-danger">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">JobOrder</h4>';
+            html += '</div>';
+            html += '<div class="modal-body modal-body-danger">Please Input Date Between Startworking and EndWorking.</br></br></div>';
+            html += '</div></div>';
+            document.getElementById("ShowDialog").innerHTML = html;
         }
         else {
             if (ManDate != '') {
@@ -658,9 +667,9 @@ function ChangeExpenseGroup()
 function CalAddWage(val) {
     var Add1 = $('#chkAdd1').is(":checked") == true ? '1' : '0';
     var Add2 = $('#chkAdd2').is(":checked") == true ? '1' : '0';
-    alert("val" + val);
-    alert("Add1" + Add1);
-    alert("Add2" + Add2);
+    //alert("val" + val);
+    //alert("Add1" + Add1);
+    //alert("Add2" + Add2);
     var dataObject = { AddWage: val + '&' + Add1 + '&' + Add2 };
     $.ajax({
         url: 'http://localhost:13131/api/JobOrder',
@@ -670,9 +679,9 @@ function CalAddWage(val) {
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
-            alert(data.Table[0].TotalManJobPrice);
+            //alert(data.Table[0].TotalManJobPrice);
             $('#hidAddwage').val(data.Table[0].TotalManJobPrice);
-            alert($('#hidAddwage').val());
+            //alert($('#hidAddwage').val());
         },
         failure: function () {
             alert('Error');
@@ -1195,7 +1204,16 @@ function DateWorking()
 {
     if ($("#dtSWorking").datepicker({ dateFormat: "dd/mm/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "dd/mm/yy" }).val()) {
         $("#dtEWorking").val("")
-        alert("Please Input Endworking more than Startworking");
+        $('#ShowDialog').modal('show');
+        var html = '<div class="modal-dialog modal-dialog-danger">';
+        html += '<div class="modal-content">';
+        html += '<div class="modal-header modal-header-danger">';
+        html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+        html += '<h4 class="modal-title">Product Adjust</h4>';
+        html += '</div>';
+        html += '<div class="modal-body modal-body-danger">Please Input Endworking more than Startworking</br></br></div>';
+        html += '</div></div>';
+        document.getElementById("ShowDialog").innerHTML = html;
     }
 }
 function RedirectJobOrderBorrow(val)

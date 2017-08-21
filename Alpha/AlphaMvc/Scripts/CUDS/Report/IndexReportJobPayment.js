@@ -1,7 +1,11 @@
 $(document).ready(function () {
-    GetJobOrder();
-});
-function GetJobOrder() {
+
+
+    //$('#tableData').paging({ limit: 5 });
+
+
+    //------------------------- Paging -------------------------
+
     //------------------------- Sorting ------------------------
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)
@@ -45,47 +49,36 @@ function GetJobOrder() {
         $(this).unbind('focus');
     }).css({ "color": "#C0C0C0" });
     //-------------------------filter------------------------
-    //var input = window.location.href;
-    //var after = input.split('?')[1]
-    //var BDCID = after.split('=');
-    //var ID = BDCID[1];
-    //alert('JobBDC '+ID);
-    //var dataObject = { ID: val }
+
     $.ajax(
     {
-        url: 'http://localhost:13131/api/JobOrder',
+        url: 'http://localhost:13131/api/Technician',
         type: 'GET',
-        //data: dataObject,
         datatype: 'json',
         success: function (data) {
+
             data = JSON.parse(data);
+            console.log(data);
             var html = '<tbody>';
-            if (data.Table.length > 0) {
-                $('#BDCCreate').attr("style", "display:none");
-            }
             for (var i = 0; i < data.Table.length; i++) {
                 html += '<tr>';
-                html += '<td>' + data.Table[i].RowNum + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].RowNum + '</td>';
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
-                html += '<td>' + data.Table[i].JobNo + '</td>';
-                var JobDate = new Date(data.Table[i].JobDate);
-                html += '<td>' + JobDate.getDate() + '/' + (JobDate.getMonth() + 1) + '/' + JobDate.getFullYear() + '</td>';
-                html += '<td>' + data.Table[i].Name + '</td>';
-                html += '<td>' + data.Table[i].Tel + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].Contact + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].CoWorker + '</td>';
-                html += '<td class="hideANDseek">' + data.Table[i].Remark + '</td>';
-                html += '<td class="wd70">';
-                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '&' + "IndexJob" + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" id="imgJobOrderUpdate" class="imgJobOrderUpdate"/></a>';
-                html += '<a href="#" id="del' + data.Table[i].ID + '" onclick = " ConfirmDialog(' + " 'Delete'" + ',' + "'JobOrder'" + ',' + data.Table[i].ID + ')"" style="margin-right: 5px;">' + '<img src="/Images/delete.png" class="imgJobOrderDelete"/></a>';
-                html += '<a href="/JobOrder/EditJobOrder?id=' + data.Table[i].ID + '&' + "IndexJob" + '&' + "true" + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="JobOrderview"/></a>';
+                html += '<td class="nopointer hidecolumn">' + data.Table[i].TechnicianNo + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].HRCode + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].FirstName + '</td>';
+                html += '<td class="nopointer">' + data.Table[i].Position + '</td>';
+                html += '<td class="hideANDseek nopointer">' + data.Table[i].TechnicianTypeName + '</td>';
+                //html += '<td class="nopointer">' + data.Table[i].GradeName + '</td>';
+                html += '<td class="nopointer">';
+                html += '<a href="/Reports/FormReport/RptJobPaymentViewer.aspx?id=' + data.Table[i].TechnicianNo + '" id="read' + data.Table[i].TechnicianNo + '" target="_blank">' + '<img src="/Images/report.png" style="cursor:hand" id="imgRptJobOrder" class="Reportview"/></a>';
                 html += '</td>';
                 html += '</tr>';
             }
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
             CheckAuthorization();
-            $('#tblJobOrder').paging({
+            $('#tblWageTechnician').paging({
                 limit: 30,
                 rowDisplayStyle: 'block',
                 activePage: 0,
@@ -93,27 +86,7 @@ function GetJobOrder() {
             });
         },
         error: function (result) {
-            alert(result)
+            //alert(result)
         }
     });
-}
-function RowDelete(id) {
-    var dataObject = { ID: id };
-    $.ajax(
-        {
-            url: 'http://localhost:13131/api/JobOrder',
-            type: 'DELETE',
-            data: dataObject,
-            datatype: 'json',
-
-            success: function (result) {
-                //alert('Delete is completed')
-                var hidBDCID = $('#hidBDCID').val();
-                window.location.href = "../JobOrder/IndexJobOrder";
-            }
-            ,
-            error: function (msg) {
-                alert(msg)
-            }
-        });
-}
+});

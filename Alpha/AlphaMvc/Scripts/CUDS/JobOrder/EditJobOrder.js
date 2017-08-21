@@ -941,9 +941,9 @@ function Update(val) {
     var EWorkingDate = ChangeformatDate($("#dtEWorking").val(), 1);
     var discount = ConvertAmount($("#txtDiscount").val());
     var price = ConvertAmount($("#txtSubTotal").val());
-    alert("txtManJob " + ConvertAmount($('#txtManJob').val()));
+    //alert("txtManJob " + ConvertAmount($('#txtManJob').val()));
     var cost = ConvertAmount($('#txtExpense').val()) + ConvertAmount($('#txtManJob').val());
-    alert(cost);
+    //alert(cost);
     var chkAdd1 = $('#chkAdd1').is(":checked") == true ? '1' : '0';
     var chkAdd2 = $('#chkAdd2').is(":checked") == true ? '1' : '0';
     //alert("Cost "+ConvertAmount($('#txtExpense').val()) + ConvertAmount($('#txtManJob').val()));
@@ -1614,7 +1614,16 @@ function GetManpowerHour(isCheckBreak) {
             $('.chkBreak1').eq(row_index).prop('checked', false);
             $('.chkBreak2').eq(row_index).prop('checked', false);
             $('.chkBreak3').eq(row_index).prop('checked', false);
-            alert("Please Input Date Between Startworking and EndWorking");
+            $('#ShowDialog').modal('show');
+            var html = '<div class="modal-dialog modal-dialog-danger">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header modal-header-danger">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">JobOrder</h4>';
+            html += '</div>';
+            html += '<div class="modal-body modal-body-danger">Please Input Date Between Startworking and EndWorking.</br></br></div>';
+            html += '</div></div>';
+            document.getElementById("ShowDialog").innerHTML = html;
         }
         else {
             //GetDay จ-อา
@@ -1805,7 +1814,16 @@ function convertFloat(str, num)
 function DateWorking() {
     if ($("#dtSWorking").datepicker({ dateFormat: "dd/mm/yy" }).val() > $("#dtEWorking").datepicker({ dateFormat: "dd/mm/yy" }).val()) {
         $("#dtEWorking").val("")
-        alert("Please Input Endworking more than Startworking");
+        $('#ShowDialog').modal('show');
+        var html = '<div class="modal-dialog modal-dialog-danger">';
+        html += '<div class="modal-content">';
+        html += '<div class="modal-header modal-header-danger">';
+        html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+        html += '<h4 class="modal-title">JobOrder</h4>';
+        html += '</div>';
+        html += '<div class="modal-body modal-body-danger">Please Input Endworking more than Startworking.</br></br></div>';
+        html += '</div></div>';
+        document.getElementById("ShowDialog").innerHTML = html;
     }
 }
 function OpenRptJobOrder(val) {

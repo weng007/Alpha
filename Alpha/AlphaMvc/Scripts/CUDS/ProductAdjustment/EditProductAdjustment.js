@@ -21,7 +21,16 @@ function CheckBorrow() {
                success: function (data) {
                    data = JSON.parse(data);
                    if (data.Table[0].Amount < BorrowAmount) {
-                       alert('จำนวนที่ยืมต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ');
+                       $('#ShowDialog').modal('show');
+                       var html = '<div class="modal-dialog modal-dialog-danger">';
+                       html += '<div class="modal-content">';
+                       html += '<div class="modal-header modal-header-danger">';
+                       html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+                       html += '<h4 class="modal-title">Product Adjust</h4>';
+                       html += '</div>';
+                       html += '<div class="modal-body modal-body-danger">จำนวนที่ยืมต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ</br></br></div>';
+                       html += '</div></div>';
+                       document.getElementById("ShowDialog").innerHTML = html;
                    }
 
                },
@@ -34,7 +43,16 @@ function CheckReturn() {
     var borrowAmount = $('#txtAmount').val();
     var returnAmount = ($('#txtReturnGood').val() + $('#txtReturnLost').val() + $('#txtReturnRepair').val() + $('#txtReturnBad').val())
     if (borrowAmount != returnAmount) {
-        alert('จำนวนที่คืนจะต้องเท่ากับจำนวนที่ยืม กรุณาใส่ข้อมูลให้ถูกต้อง');
+        $('#ShowDialog').modal('show');
+        var html = '<div class="modal-dialog modal-dialog-danger">';
+        html += '<div class="modal-content">';
+        html += '<div class="modal-header modal-header-danger">';
+        html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+        html += '<h4 class="modal-title">Product Adjust</h4>';
+        html += '</div>';
+        html += '<div class="modal-body modal-body-danger">จำนวนที่คืนจะต้องเท่ากับจำนวนที่ยืม กรุณาใส่ข้อมูลให้ถูกต้อง</br></br></div>';
+        html += '</div></div>';
+        document.getElementById("ShowDialog").innerHTML = html;
     }
     //else if(borrowAmount == returnAmount)
     //{
@@ -163,16 +181,6 @@ function GetData(val) {
        }
 
    });
-}
-function GetDeduct() {
-    var result;
-    var remain = $("#txtRemain").val()
-    if (remain <= 0) {
-        alert("จำนวนสินค้าต้องไม่น้อยกว่า 0");
-        $("#txtDeduction").val(0);
-        result = 0;
-    }
-    return result;
 }
 function Update(val) {
     $("#hidID").val(val);

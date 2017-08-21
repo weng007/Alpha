@@ -893,12 +893,12 @@ function Update(val)
     });
 
     var dataObject = {};
-    alert("hidRequisitionID " + $('#hidRequisitionID').val());
+    //alert("hidRequisitionID " + $('#hidRequisitionID').val());
     if ($('#hidRequisitionID').val() == '')
     {
         
         //if ($(".RowCal6").eq(0).find('.hidProductID').val() != '') {
-            alert("InsertRequisition");
+            //alert("InsertRequisition");
             var Requisitiondata = {
                 JobID: val, Taker: localStorage['UserID'], CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
             };
@@ -921,7 +921,7 @@ function Update(val)
         //}
     }
     else {
-            alert("UpdateRequisition");
+            //alert("UpdateRequisition");
             var Requisitiondata = {
                 ID: $('#hidRequisitionID').val(), Taker: localStorage['UserID'], Approver: $('#hidApprover').val(), Giver: $('#hidGiver').val(), IsApprove: $('#hidIsApprove').val(), IsReturn: $('#hidIsReturn').val(), EditBy: localStorage['UserID']
             };
@@ -973,7 +973,7 @@ function Update(val)
         });
 
         $(".RowCal7").each(function () {
-            alert("RequistionID " + $('#hidRequisitionID').val());
+            //alert("RequistionID " + $('#hidRequisitionID').val());
             dataObject.RequisitionID = $('#hidRequisitionID').val();
             dataObject.Description = $(this).find('.txtDescription2').val();
             dataObject.UnitWeight = $(this).find('.txtUnitWeight2').val();
@@ -1011,7 +1011,16 @@ function CheckBorrow() {
     var BorrowAmount = $('.txtQty').eq(row_index7).val();
     var Remain = $('.txtRemain').eq(row_index7).val();
     if (Remain < BorrowAmount) {
-        alert('จำนวนที่เบิกต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ');
+        $('#ShowDialog').modal('show');
+        var html = '<div class="modal-dialog modal-dialog-danger">';
+        html += '<div class="modal-content">';
+        html += '<div class="modal-header modal-header-danger">';
+        html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+        html += '<h4 class="modal-title">Requisition & Return</h4>';
+        html += '</div>';
+        html += '<div class="modal-body modal-body-danger">จำนวนที่เบิกต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ</br></br></div>';
+        html += '</div></div>';
+        document.getElementById("ShowDialog").innerHTML = html;
         $('.txtQty').eq(row_index7).val(0);
     }
 }

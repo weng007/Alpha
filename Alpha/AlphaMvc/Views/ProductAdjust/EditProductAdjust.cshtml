@@ -109,10 +109,10 @@
                 </li>
                 <li>
                     <input type="text" id="txtAdded"  style="text-align:right;" name="field6" class="Number field-select-small" placeholder="" value="0"/>&nbsp;
-                    <input type="text" id="txtDeduction"  style="text-align:right;" name="field6" class="Number field-select-small" placeholder="" value="0" onblur="GetDeduct()"/>&nbsp;
+                    <input type="text" id="txtDeduction"  style="text-align:right;" name="field6" class="Number field-select-small" placeholder="" value="0"/>&nbsp;
                 </li>
                 <li>
-                    <button type="button" class="btn btn-primary mgr10" onclick="Isvalidate('Update', 'ProductAdjust', @Request.Params["id"])">Save</button>
+                    <button type="button" class="btn btn-primary mgr10" onclick="GetDeduct()">Save</button>
                     <button type="button" id="btnCancel" class="btn btn-danger" onclick="Redirect()">Cancel</button>
                 </li>
             </ul>
@@ -129,4 +129,24 @@
         GetData(@Request.Params["id"]);
         CheckAuthorization();
     });
+    function GetDeduct() {
+        var deduction = parseFloat($("#txtDeduction").val());
+        var remain =  parseFloat($("#txtRemain").val());
+        if (deduction > remain) {
+            $('#ShowDialog').modal('show');
+            var html = '<div class="modal-dialog modal-dialog-danger">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header modal-header-danger">';
+            html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            html += '<h4 class="modal-title">Product Adjust</h4>';
+            html += '</div>';
+            html += '<div class="modal-body modal-body-danger">จำนวนที่ลดต้องน้อยกว่าหรือเท่ากับจำนวนที่คงเหลือ</br></br></div>';
+            html += '</div></div>';
+            document.getElementById("ShowDialog").innerHTML = html;
+            $("#txtDeduction").val(0);
+        }
+        else {
+            Isvalidate('Update', 'ProductAdjust', @Request.Params["id"]);
+        }
+    }
 </script>
