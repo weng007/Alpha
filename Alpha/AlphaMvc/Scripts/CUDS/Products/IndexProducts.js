@@ -1,4 +1,4 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
     $('.imgadd').attr("style", "margin-left: 72%; margin-top: -2px;");
     //------------------------- Sorting ------------------------
     $('th').click(function () {
@@ -68,7 +68,7 @@ $(document).ready(function () {
                 '<td class="hideANDseek nopointer">' + data.Table[i].UnitWeightName + '</td>' +
                 '<td class="nopointer">' +
                 '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgProductsUpdate"/></a>' +
-                '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'Product'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgProductsDelete"/></a>' +
+                '<a href="#" id="del' + data.Table[i].ID + '" onclick="RowDelete(' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgProductsDelete"/></a>' +
                 '<a href="/Products/EditProducts?id=' + data.Table[i].ID + '&IsView=' + true + '" id="edit' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgProductsView"/></a>' +
                 '</td>' +
                 '</tr>';
@@ -112,6 +112,25 @@ function GetRemain(val) {
     return remain
 }
 function RowDelete(id) {
+
+    $('#ShowDialog').modal('show');
+    var html = '<div class="modal-dialog modal-dialog-danger">';
+    html += '<div class="modal-content">';
+    html += '<div class="modal-header modal-header-danger">';
+    html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+    html += '<h4 class="modal-title">Stock</h4>';
+    html += '</div>';
+    html += '<div class="modal-body modal-body-info">หากท่านลบรายการนี้ ระบบจะทำการลบ Stock Adjust ที่เกี่ยวข้องด้วย</div>';
+    html += '<div class="modal-footer">';
+    html += '<button type="button" class="btn btn-danger" onclick="DeleteProductAndProductAdjust(' + id + ')">Yes</button>';
+    html += '<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>';
+    html += '</div></div></div>';
+    document.getElementById("ShowDialog").innerHTML = html;
+    
+}
+
+function DeleteProductAndProductAdjust(id)
+{
     var dataObject = { ID: id, EditBy: localStorage['UserID'] };
     $.ajax(
         {
@@ -131,4 +150,3 @@ function RowDelete(id) {
 
         });
 }
-

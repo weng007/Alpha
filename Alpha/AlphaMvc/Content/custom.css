@@ -73,8 +73,9 @@
 }
 .menulocation
 {
-    padding-top: 8%;
-    padding-left: 13%;
+    padding-top: 8.1%;
+    padding-left: 5.3%;
+    /*padding-left: 13%;*/
 }
 @media (max-width: 680px) {
     .txtpadding
@@ -6515,11 +6516,20 @@ body.modal-open,
   border-bottom: 1px solid #e5e5e5;
   color:white;
   /*background-color: #76c0a4;*/
+  /*background-color: #f28369;*/
+  /*background-color: #ec8f7a;*/
+  background-color: #ffd95c;
+}
+.modal-header-danger {
+  min-height: 16.428571429px;
+  padding: 10px;
+  border-bottom: 1px solid #e5e5e5;
+  color:white;
+  /*background-color: #76c0a4;*/
   background-color: #f28369;
   /*background-color: #ec8f7a;*/
   /*background-color: #ffd95c;*/
 }
-
 .modal-header .close {
   margin-top: -2px;
   width: inherit;

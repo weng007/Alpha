@@ -214,7 +214,7 @@ function CreateData() {
 
         }
     
-    window.location.href = "../Products/IndexProducts";
+        window.location.href = "../Products/EditProducts?id=" + ProductID;
 }
 function readURL(input) {
     if (input.files && input.files[0]) {

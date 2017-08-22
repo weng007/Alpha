@@ -24,9 +24,9 @@
     }
     if (topic == "Products") {
         //alert("Test ValidateProduct");
-        if ($("#txtSerialNo").val() == '') {
-            validatehtml += '<div class="modal-body modal-body-Warning">Please input SerialNo.</div>';
-        }
+        //if ($("#txtSerialNo").val() == '') {
+        //    validatehtml += '<div class="modal-body modal-body-Warning">Please input SerialNo.</div>';
+        //}
         //if ($("#txtMachineNo").val() == '') {
         //    validatehtml += '<div class="modal-body modal-body-Warning">Please input MachineNo.</div>';
         //}
@@ -98,11 +98,11 @@
     }
     if (topic == "ProductAdjust") {
 
-        if ($("#txtAdded").val() == '') {
-            validatehtml += '<div class="modal-body modal-body-Warning">Please input Added.</div>';
+        if (parseFloat($("#txtAdded").val()) == 0 && parseFloat($("#txtDeduction").val()) == 0) {
+            validatehtml += '<div class="modal-body modal-body-Warning">กรุณากรอกข้อมูลเพิ่มหรือลด.</div>';
         }
-        if ($("#txtSerialNo").val() == '') {
-            validatehtml += '<div class="modal-body modal-body-Warning">Please input SerialNo.</div>';
+        if ($("#hidProductID").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please Select Stock.</div>';
         }
     }
     if (topic == "User") {

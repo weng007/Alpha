@@ -301,7 +301,59 @@ $(document).ready(function () {
     $('.WorkingFrom').timepicker({ 'timeFormat': 'H:i' });
     $('.WorkingTo').timepicker({ 'timeFormat': 'H:i' });
 
+    DisableReturn();
+    DisableReturn2();
+
 });
+function DisableReturn()
+{
+    var IsReturn = $('#chkReturn').is(":checked");
+    if(!IsReturn)
+    {
+        $(".RowCal6").each(function () {
+            $('.controldisable').attr("style", "Background-color:#ededed; border-width:1px; border-color:#979998; border-style: solid;");
+            $(this).find('.txtGood').prop('readonly', true);
+            $(this).find('.txtLost').prop('readonly', true);
+            $(this).find('.txtRepair').prop('readonly', true);
+            $(this).find('.txtBad').prop('readonly', true);
+            
+        });
+    }
+    else
+    {
+        $(".RowCal6").each(function () {
+            $('.controldisable').attr("style", "Background-color:white; border-width:1px; border-color:#979998; border-style: solid;");
+            $(this).find('.txtGood').prop('readonly', false);
+            $(this).find('.txtLost').prop('readonly', false);
+            $(this).find('.txtRepair').prop('readonly', false);
+            $(this).find('.txtBad').prop('readonly', false);
+
+        });
+    }
+}
+function DisableReturn2() {
+    var IsReturn = $('#chkReturn').is(":checked");
+    if (!IsReturn) {
+        $(".RowCal7").each(function () {
+            $('.controldisable2').attr("style", "Background-color:#ededed; border-width:1px; border-color:#979998; border-style: solid;");
+            $(this).find('.txtGood2').prop('readonly', true);
+            $(this).find('.txtLost2').prop('readonly', true);
+            $(this).find('.txtRepair2').prop('readonly', true);
+            $(this).find('.txtBad2').prop('readonly', true);
+
+        });
+    }
+    else {
+        $(".RowCal7").each(function () {
+            $('.controldisable2').attr("style", "Background-color:white; border-width:1px; border-color:#979998; border-style: solid;");
+            $(this).find('.txtGood2').prop('readonly', false);
+            $(this).find('.txtLost2').prop('readonly', false);
+            $(this).find('.txtRepair2').prop('readonly', false);
+            $(this).find('.txtBad2').prop('readonly', false);
+
+        });
+    }
+}
 
 function BrowseCustomer(val) {
 
@@ -670,6 +722,7 @@ function GetdataRequisition(val)
        }
     });
     GetdataRequisition1(val);
+    DisableReturn();
     //alert("GetAutherize");
     CheckAuthorization();
     localStorage['flagAddRow'] = 1; 
@@ -692,6 +745,7 @@ function GetdataRequisition1(val) {
 
                 for (var j = 0; j < data.Table.length; j++) {
                     $("#add-row11").trigger("click");
+                    AddrowRequisition2();
                 }
 
                 $('.RowCal7:eq(' + data.Table.length + ')').remove();
@@ -809,6 +863,7 @@ function ApproveRequisition()
     var Approver = localStorage['UserID'];
     if (IsApprove == '1') {
         //alert("Approve")
+        $('#txtApprover').val(localStorage['FullName']);
         var dataObject = {
             ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), IsApprove: IsApprove, Approver: localStorage['UserID'], Giver: $('#hidGiver').val(), IsReturn: '0', EditBy: localStorage['UserID']
         };
@@ -816,6 +871,7 @@ function ApproveRequisition()
     else
     {
         //alert("UnApprove")
+        $('#txtApprover').val(localStorage['FullName']);
         var dataObject = {
             ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), IsApprove: '0', Approver: 0, Giver: $('#hidGiver').val(), IsReturn: '0', EditBy: localStorage['UserID']
         };
@@ -845,37 +901,55 @@ function ReturnStock() {
     if (IsReturn == '1')
     {
         //alert("Return")
+        $('#txtReturner').val(localStorage['FullName']);
         var dataObject = {
             ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), Approver: $('#hidApprover').val(), Giver: Giver, IsApprove: $('#hidIsApprove').val(), IsReturn: IsReturn, EditBy: localStorage['UserID']
         };
     }
     else {
         //alert("UnReturn")
+        $('#txtReturner').val('');
         var dataObject = {
             ID: $('#hidRequisitionID').val(), Taker: $('#hidTaker').val(), Approver: $('#hidApprover').val(), Giver: '0', IsApprove: $('#hidIsApprove').val(), IsReturn: 0, EditBy: localStorage['UserID']
         };
     }
     
-    //alert("UpdateRequisitionReturn");
-    $.ajax(
+    if ($('#hidRequisitionID').val() != '')
     {
-        url: 'http://localhost:13131/api/Requisition',
-        type: 'POST',
-        async: false,
-        data: dataObject,
-        datatype: 'json',
-        success: function (data) {
-            //$('#hidRequisitionID').val(data);
-        },
-        error: function (msg) {
-            alert(msg)
-        }
-    });
-    //alert($('#hidJobID').val());
-    window.location.href = "../Requisition/EditRequisition?id=" + $('#hidJobID').val();
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/Requisition',
+            type: 'POST',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+                //$('#hidRequisitionID').val(data);
+            },
+            error: function (msg) {
+                alert(msg)
+            }
+        });
+        //alert($('#hidJobID').val());
+        window.location.href = "../Requisition/EditRequisition?id=" + $('#hidJobID').val();
+    }
+    
+    DisableReturn();
+    DisableReturn2();
 }
 function Update(val)
 {
+    var IsReturn = $('#chkReturn').is(":checked") == true ? '1' : '0';
+    //alert(IsReturn);
+    var Giver;
+    if (IsReturn == '1') {
+        Giver = localStorage['UserID'];
+        IsReturn: IsReturn;
+    }
+    else {
+        Giver = '0';
+        IsReturn: IsReturn;
+    }
     //===================UpdateJobOrderBorrow
     //alert(val);
     var dataObject = { ID: val };
@@ -900,7 +974,7 @@ function Update(val)
         //if ($(".RowCal6").eq(0).find('.hidProductID').val() != '') {
             //alert("InsertRequisition");
             var Requisitiondata = {
-                JobID: val, Taker: localStorage['UserID'], CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
+                JobID: val, Taker: localStorage['UserID'], Giver: Giver, IsReturn: IsReturn, CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
             };
             $.ajax(
             {
@@ -1008,8 +1082,8 @@ function Update(val)
     window.location.href = "../Requisition/EditRequisition?id=" + val;
 }
 function CheckBorrow() {
-    var BorrowAmount = $('.txtQty').eq(row_index7).val();
-    var Remain = $('.txtRemain').eq(row_index7).val();
+    var BorrowAmount = parseFloat($('.txtQty').eq(row_index7).val());
+    var Remain = parseFloat($('.txtRemain').eq(row_index7).val());
     if (Remain < BorrowAmount) {
         $('#ShowDialog').modal('show');
         var html = '<div class="modal-dialog modal-dialog-danger">';
@@ -1019,7 +1093,9 @@ function CheckBorrow() {
         html += '<h4 class="modal-title">Requisition & Return</h4>';
         html += '</div>';
         html += '<div class="modal-body modal-body-danger">จำนวนที่เบิกต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ</br></br></div>';
-        html += '</div></div>';
+        html += '<div class="modal-footer">';
+        html += '<button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>';
+        html += '</div></div></div>';
         document.getElementById("ShowDialog").innerHTML = html;
         $('.txtQty').eq(row_index7).val(0);
     }
@@ -1566,6 +1642,10 @@ function AddrowRequisition() {
             }
         });
     });
+    DisableReturn();
+}
+function AddrowRequisition2() {
+    DisableReturn2();
 }
 function SetRowIndex() {
     $('.RowCal5 td').click(function () {

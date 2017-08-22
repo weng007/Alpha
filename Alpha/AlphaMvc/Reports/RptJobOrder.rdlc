@@ -245,7 +245,7 @@
         <Top>4.62416in</Top>
         <Left>0.20833in</Left>
         <Height>0.22917in</Height>
-        <Width>0.90223in</Width>
+        <Width>0.76042in</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -2537,7 +2537,7 @@
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Left</TextAlign>
+              <TextAlign>Right</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
@@ -2735,9 +2735,9 @@
         </Paragraphs>
         <rd:DefaultName>CoWorker</rd:DefaultName>
         <Top>11.74538cm</Top>
-        <Left>2.99721cm</Left>
+        <Left>2.63701cm</Left>
         <Height>0.58209cm</Height>
-        <Width>6.186cm</Width>
+        <Width>6.5462cm</Width>
         <ZIndex>27</ZIndex>
         <Style>
           <Border>
@@ -2989,7 +2989,7 @@
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Left</TextAlign>
+              <TextAlign>Right</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>

@@ -43,8 +43,7 @@ function UserLogin() {
                     localStorage['IsTechnician'] = data.ADUser[1].Technician;
                     localStorage['FirstName'] = data.ADUser[1].FirstName;
                     localStorage['LastName'] = data.ADUser[1].LastName;
-                
-                    
+                    localStorage['FullName'] = data.ADUser[1].FullName;
                  //location = "../Home/DashBoard";
                     CheckAuthorization();
             }

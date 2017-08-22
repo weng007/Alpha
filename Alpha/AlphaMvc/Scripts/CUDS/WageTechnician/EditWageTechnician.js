@@ -129,13 +129,13 @@ function GetData(val)
                 html += '<td class="ManSpecial nopointer">' + data.Table1[i].ManSpecial + '</td>';
                 if (data.Table1[i].EmpGroup == 'Alpha')
                 {
-                    html += '<td class="hidecolumn nopointer"><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
-                    html += '<td class="hidecolumn nopointer"><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
+                    html += '<td class="hidecolumn nopointer"><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
+                    html += '<td class="hidecolumn nopointer"><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
                 }
                 else
                 {
-                    html += '<td Class="nopointer"><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
-                    html += '<td Class="nopointer"><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
+                    html += '<td Class="nopointer"><input type="text" id="txtAdditional" name="field1" onchange="SumAdditional()" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" class="Additional Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Additionnal).toFixed(2)) + '"/></td>';
+                    html += '<td Class="nopointer"><input type="text" id="txtDeduction" name="field1" onchange="SumAdditional()" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" class="Deduction Number field-divided text-size80" value="' + AddComma(parseFloat(data.Table1[i].Deduction).toFixed(2)) + '"/></td>';
                 }
                 
                 html += '<td Class="nopointer"><input type="text" id="txtRemark" name="field1" onchange="SumAdditional()" class="Remark field-divided text-size250" value="' + Remark + '"/></td>';

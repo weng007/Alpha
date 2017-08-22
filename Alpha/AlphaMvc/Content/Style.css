@@ -1051,14 +1051,27 @@ select{
     left: 87.6%;
 }
 .logonname{
-    background-color: #f44336;
-    color: white;
+    /*background-color: #f44336;*/
+    color: #59a8de;
     padding: 5px 23px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin-left: 80%;
-    margin-top: 1.5%;
+    margin-top: 8.8%;
+    /*margin-top: 1.5%;*/
+    position: absolute;
+}
+.logonUser{
+    /*background-color: #f44336;*/
+    color: #4b7490;
+    padding: 5px 23px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 77%;
+    margin-top: 8.8%;
+    /*margin-top: 1.5%;*/
     position: absolute;
 }
 .imgicon{
@@ -1071,23 +1084,27 @@ select{
 .loginname a{
     background-color: #c93237;
     color: white;
-    padding: 5px 25px;
+    /*padding: 5px 25px;*/
+    padding: 5px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin-left: 90%;
-    margin-top: 1.5%;
+     margin-top: 8.8%;
+    /*margin-top: 1.5%;*/
     position: absolute;
 }
 .loginname a:hover{
     background-color: #e3343a;
     color: white;
-    padding: 5px 25px;
+    /*padding: 5px 25px;*/
+    padding: 5px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin-left: 90%;
-    margin-top: 1.5%;
+    margin-top: 8.8%;
+    /*margin-top: 1.5%;*/
     position: absolute;
 }
 .bgthead{

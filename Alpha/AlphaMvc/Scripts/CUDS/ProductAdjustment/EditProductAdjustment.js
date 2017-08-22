@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     CheckAuthorization();
     $("#quotationBody").on("click", "tr", function (e) {
-        $("#hidSerialID").val($(this).find("td:eq(1)").text());
+        $("#hidProductID").val($(this).find("td:eq(1)").text());
         $("#txtSerialNo").val($(this).find("td:eq(2)").text());
         $("#txtBrand").val($(this).find("td:eq(3)").text());
         $("#txtSize").val($(this).find("td:eq(5)").text());
@@ -29,7 +29,9 @@ function CheckBorrow() {
                        html += '<h4 class="modal-title">Product Adjust</h4>';
                        html += '</div>';
                        html += '<div class="modal-body modal-body-danger">จำนวนที่ยืมต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ</br></br></div>';
-                       html += '</div></div>';
+                       html += '<div class="modal-footer">';
+                       html += '<button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>';
+                       html += '</div></div></div>';
                        document.getElementById("ShowDialog").innerHTML = html;
                    }
 
@@ -51,7 +53,9 @@ function CheckReturn() {
         html += '<h4 class="modal-title">Product Adjust</h4>';
         html += '</div>';
         html += '<div class="modal-body modal-body-danger">จำนวนที่คืนจะต้องเท่ากับจำนวนที่ยืม กรุณาใส่ข้อมูลให้ถูกต้อง</br></br></div>';
-        html += '</div></div>';
+        html += '<div class="modal-footer">';
+        html += '<button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>';
+        html += '</div></div></div>';
         document.getElementById("ShowDialog").innerHTML = html;
     }
     //else if(borrowAmount == returnAmount)
@@ -172,9 +176,16 @@ function GetData(val) {
            data = JSON.parse(data);
            //totalremain = remain+
            
-           $("#txtSerialNo").val(data.Table[0].SerialNo), $("#txtBrand").val(data.Table[0].Brand), $("#txtModel").val(data.Table[0].Model), $("#txtSize").val(data.Table[0].Size),
-           $("#hidProductID").val(data.Table[0].ProductID), $("#txtDocRef").val(data.Table[0].DocRef), $("#txtAdded").val(data.Table[0].Added), $("#txtDeduction").val(data.Table[0].Deduction)
-           GetDetail();
+           $("#txtSerialNo").val(data.Table[0].SerialNo),
+           $("#txtBrand").val(data.Table[0].Brand), 
+           $("#txtModel").val(data.Table[0].Model), 
+           $("#txtSize").val(data.Table[0].Size),
+           $("#hidProductID").val(data.Table[0].ProductID), 
+           $("#txtDocRef").val(data.Table[0].DocRef), 
+           $("#txtAdded").val(data.Table[0].Added), 
+           $("#txtDeduction").val(data.Table[0].Deduction),
+           $('#txtRemain').val(data.Table[0].remain)
+           //GetDetail();
        },
        error: function (msg) {
            alert(msg);

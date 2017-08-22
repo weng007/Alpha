@@ -513,7 +513,9 @@ function GetManpowerHour(isCheckBreak) {
             html += '<h4 class="modal-title">JobOrder</h4>';
             html += '</div>';
             html += '<div class="modal-body modal-body-danger">Please Input Date Between Startworking and EndWorking.</br></br></div>';
-            html += '</div></div>';
+            html += '<div class="modal-footer">';
+            html += '<button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>';
+            html += '</div></div></div>';
             document.getElementById("ShowDialog").innerHTML = html;
         }
         else {
@@ -1212,7 +1214,9 @@ function DateWorking()
         html += '<h4 class="modal-title">Product Adjust</h4>';
         html += '</div>';
         html += '<div class="modal-body modal-body-danger">Please Input Endworking more than Startworking</br></br></div>';
-        html += '</div></div>';
+        html += '<div class="modal-footer">';
+        html += '<button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>';
+        html += '</div></div></div>';
         document.getElementById("ShowDialog").innerHTML = html;
     }
 }

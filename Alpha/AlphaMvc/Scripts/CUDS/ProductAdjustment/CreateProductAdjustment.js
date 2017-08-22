@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     CheckAuthorization();
     $("#quotationBody").on("click", "tr", function (e) {
-        $("#hidSerialID").val($(this).find("td:eq(1)").text());
+        $("#hidProductID").val($(this).find("td:eq(1)").text());
         $("#txtSerialNo").val($(this).find("td:eq(2)").text());
         $("#txtBrand").val($(this).find("td:eq(3)").text());
         $("#txtSize").val($(this).find("td:eq(5)").text());
@@ -107,7 +107,7 @@ function CreateData() {
     //var x = new Userlogin()
     //alert(x.UserID);
     var dataObject = {
-        ProductID: $("#hidSerialID").val(), DocRef: $("#txtDocRef").val(), Added: $("#txtAdded").val(),
+        ProductID: $("#hidProductID").val(), DocRef: $("#txtDocRef").val(), Added: $("#txtAdded").val(),
         Deduction: $("#txtDeduction").val(),
         CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
     };
