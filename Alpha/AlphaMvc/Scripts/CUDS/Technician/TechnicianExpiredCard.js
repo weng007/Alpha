@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-
+    CheckAuthorization();
     //$('#tableData').paging({ limit: 5 });
 
 
@@ -96,7 +96,7 @@ $(document).ready(function () {
         }
         html += '</tbody>';
         document.getElementById("ExpiredCard").innerHTML = html;
-        CheckAuthorization();
+        //CheckAuthorization();
         $('#tblExpiredTechnician').paging({
             limit: 16,
             rowDisplayStyle: 'block',

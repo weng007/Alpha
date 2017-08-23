@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    CheckAuthorization();
     //$('.imgadd').attr("style", "margin-left: 69%; margin-top: -2px;");
     
     //$('.topicattach-2').attr("style", "color: #FFFFFF; font-size: 14px; font-weight: bold; float: right; padding-top: 5px; padding-bottom: 5px; padding-right: 5px; margin-left: 0%;  margin-right: 0%;");
@@ -78,7 +79,7 @@ function GetCalendarlist(val) {
                 //});
             }
             document.getElementById("result").innerHTML = html;
-            CheckAuthorization();
+            
             $('#tblcalenJob').paging({
                 limit: 16,
                 rowDisplayStyle: 'block',

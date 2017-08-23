@@ -8,6 +8,9 @@
         $("#txtModel").val($(this).find("td:eq(4)").text());
         $("#txtRemain").val($(this).find("td:eq(6)").text());
     })
+    //$('#txtDeduction').val(0);
+    //$('#chkAdd').prop('checked', true);
+    //document.getElementById("txtDeduction").disabled = true;
 });
 function CheckBorrow() {
     var BorrowAmount = $("#txtAmount").val();
@@ -85,6 +88,27 @@ function GetRemain(val) {
        });
 
     return remain
+}
+function CheckAdd() {
+    var IsAdd = $('#chkAdd').is(":checked");
+    if (IsAdd) {
+        $('#txtDeduction').val(0);
+        $('#chkDeduct').prop('checked', false);
+        $('#txtAdded').focus();
+        document.getElementById("txtDeduction").disabled = true;
+        document.getElementById("txtAdded").disabled = false;
+    }
+}
+function CheckDeduct() {
+    var IsDeduct = $('#chkDeduct').is(":checked");
+
+    if (IsDeduct) {
+        $('#txtAdded').val(0);
+        $('#chkAdd').prop('checked', false);
+        $('#txtDeduction').focus();
+        document.getElementById("txtAdded").disabled = true;
+        document.getElementById("txtDeduction").disabled = false;
+    }
 }
 function BrowseProducts() {
     //-------------------------filter------------------------
@@ -192,6 +216,17 @@ function GetData(val) {
        }
 
    });
+    var Add1 = $('#txtAdded').val();
+    if (Add1 > 0) {
+        $('#chkAdd').prop('checked', true);
+        $('#chkDeduct').prop('checked', false);
+        $('#txtAdded').focus();
+        document.getElementById("txtDeduction").disabled = true;
+        document.getElementById("txtAdded").disabled = false;
+    }
+    else {
+        $('#chkAdd').prop('checked', false);
+    }
 }
 function Update(val) {
     $("#hidID").val(val);

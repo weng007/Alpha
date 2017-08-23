@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    CheckAuthorization();
     GetExpenseGroup();
 });
 function GetExpenseGroup() {
@@ -48,7 +49,7 @@ function GetData(val) {
            $("#cmbExpenseGroup").val(data.Table[0].ExpenseGroup);
            $("#txtPricelist").val(price);
            $("#txtSeq").val(data.Table[0].Seq);
-           CheckAuthorization();
+           
        },
        error: function (msg) {
            alert(msg);

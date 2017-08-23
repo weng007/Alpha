@@ -1,9 +1,10 @@
 $(document).ready(function () {
 
-  
+    CheckAuthorization();
 });
 function GetJobOrder(val)
 {
+
     //------------------------- Sorting ------------------------
     $('th').click(function () {
         var table = $(this).parents('table').eq(0)
@@ -88,7 +89,7 @@ function GetJobOrder(val)
             }
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
-            CheckAuthorization();
+            
             $('#tblBDCJOb').paging({
                 limit: 30,
                 rowDisplayStyle: 'block',

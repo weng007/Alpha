@@ -21,7 +21,7 @@
 
 /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
 .wd70{
-        width: 70px;
+    width: 70px;
 }
 .mgr-top10
 {
@@ -6529,6 +6529,8 @@ body.modal-open,
   background-color: #f28369;
   /*background-color: #ec8f7a;*/
   /*background-color: #ffd95c;*/
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .modal-header .close {
   margin-top: -2px;
@@ -6915,6 +6917,46 @@ body.modal-open,
   padding-bottom: 5px;
   padding-top: 5px;
 }
+.modal-footer-danger {
+  /*padding: 19px 20px 20px;*/
+  padding: 10px;
+  padding-left: 41%;
+  margin-top: 5px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+.modal-footer-danger:before,
+.modal-footer-danger:after {
+  display: table;
+  content: " ";
+}
+
+.modal-footer-danger:after {
+  clear: both;
+}
+
+.modal-footer-danger:before,
+.modal-footer-danger:after {
+  display: table;
+  content: " ";
+}
+
+.modal-footer-danger:after {
+  clear: both;
+}
+
+.modal-footer-danger .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+
+.modal-footer-danger .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+
+.modal-footer-danger .btn-block + .btn-block {
+  margin-left: 0;
+}
 
 .modal-footer {
   /*padding: 19px 20px 20px;*/
@@ -6923,6 +6965,7 @@ body.modal-open,
   text-align: right;
   border-top: 1px solid #e5e5e5;
 }
+
 
 .modal-footer:before,
 .modal-footer:after {

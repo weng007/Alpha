@@ -10,6 +10,10 @@
         $("#txtRemain").val($(this).find("td:eq(6)").text());
     })
 
+    $('#txtDeduction').val(0);
+    $('#chkAdd').prop('checked', true);
+    document.getElementById("txtDeduction").disabled = true;
+
     //$('#parentHorizontalTab').easyResponsiveTabs({
     //    type: 'default', //Types: default, vertical, accordion
     //    width: 'auto', //auto or any width like 600px
@@ -81,6 +85,29 @@ function BrowseProducts() {
               alert(msg)
           }
       });
+}
+function CheckAdd()
+{
+    var IsAdd = $('#chkAdd').is(":checked");
+
+    if (IsAdd) {
+        $('#txtDeduction').val(0);
+        $('#chkDeduct').prop('checked', false);
+        $('#txtAdded').focus();
+        document.getElementById("txtDeduction").disabled = true;
+        document.getElementById("txtAdded").disabled = false;
+    }
+}
+function CheckDeduct() {
+    var IsDeduct = $('#chkDeduct').is(":checked");
+
+    if (IsDeduct) {
+        $('#txtAdded').val(0);
+        $('#chkAdd').prop('checked', false);
+        $('#txtDeduction').focus();
+        document.getElementById("txtAdded").disabled = true;
+        document.getElementById("txtDeduction").disabled = false;
+    }
 }
 function GetRemain(val) {
     var dataObject = { ProductID: val };

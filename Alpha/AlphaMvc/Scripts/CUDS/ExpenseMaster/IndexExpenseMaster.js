@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    CheckAuthorization();
     $('.imgadd').attr("style", "margin-left: 68%; margin-top: -2px;");
     //------------------------------------ Standard ------------------------------------
     //Sorting
@@ -73,7 +74,7 @@ $(document).ready(function () {
             }
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
-            CheckAuthorization();
+            
             $('#tblExpenseMaster').paging({
                 limit: 30,
                 rowDisplayStyle: 'block',

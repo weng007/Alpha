@@ -60,7 +60,9 @@ function UserLogin() {
 function CheckAuthorization() {
     var dataObject = { UserID: String(localStorage['UserID']) };
     console.log(dataObject);
-    $.ajax(
+    if (localStorage['UserID'] != undefined)
+    {
+        $.ajax(
     {
         url: 'http://localhost:13131/api/CheckAuthorization',
         type: 'GET',
@@ -73,136 +75,147 @@ function CheckAuthorization() {
             //alert(data.Table.length);
             for (var i = 0; i < data.Table.length; i++) {
 
-                if (data.Table[i].MenuDetailID == "MN001") {
-                    //if (data.Table[i].Role > 0) {
+                    if (data.Table[i].MenuDetailID == "MN001") {
+                        //if (data.Table[i].Role > 0) {
                         //ถ้าไม่มีสิทธ์ Dashboard ให้ Redirect ไปหน้า IncomeMaster
                         location = "../Home/DashBoard";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN002") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN002") {
+                        //if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู IncomeMaster ให้ Redirect ไปหน้า IndexIncomeMaster (Admin)
                         location = "../IncomeMaster/IndexIncomeMaster";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN003") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN003") {
+                        //if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู ExpenseMaster ให้ Redirect ไปหน้า IndexExpenseMaster (Admin)
                         location = "../ExpenseMaster/IndexExpenseMaster";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN004") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN004") {
+                        //if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู SecurityProfile ให้ Redirect ไปหน้า IndexSecurityProfile (Admin)
                         location = "../SecurityProfile/IndexSecurityProfile";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN005") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN005") {
+                        //if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู User ให้ Redirect ไปหน้า IndexUser (Admin)
                         location = "../User/IndexUser";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN006") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN006") {
+                        //if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู User ให้ Redirect ไปหน้า IndexUser (Admin)
                         location = "../AllActivity/AllActivity";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN007") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN007") {
+                        //if (data.Table[i].Role > 0) {
                         location = "../CalendarJob/IndexCalendarJob";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN008") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN008") {
+                        //if (data.Table[i].Role > 0) {
                         location = "../CalendarManPower/IndexCMP";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN009") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN009") {
+                        //if (data.Table[i].Role > 0) {
                         location = "../Technician/IndexTechnician";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN010") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN010") {
+                        //if (data.Table[i].Role > 0) {
                         location = "../ExpiredTechnician1/ExpiredTechnician1";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN011") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN011") {
+                        //if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู Technician ให้ Redirect ไปหน้า IndexProducts(Products)
                         location = "../Products/IndexProducts";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN012") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN012") {
+                        //if (data.Table[i].Role > 0) {
                         location = "../ProductAdjust/IndexProductAdjust";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN013") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN013") {
+                        //if (data.Table[i].Role > 0) {
                         location = "../Requisition/IndexRequisition";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN014") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN014") {
+                        //if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ดู Technician ให้ Redirect ไปหน้า IndexBDC (BDC)
                         location = "../BDC/IndexBDC";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN015") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN015") {
+                        //if (data.Table[i].Role > 0) {
                         location = "../JobOrder/IndexJobOrder";
                         break;
-                    //}
-                }
-                else if (data.Table[i].MenuDetailID == "MN017") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN017") {
+                        //if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ Technician ให้ Redirect ไปหน้า IndexWageTeachnician (WageTeachnician)
                         location = "../WageTeachnician/IndexWageTeachnician";
                         break;
-                    //}
-                }
-                    //ReportJobOrder
-                else if (data.Table[i].MenuDetailID == "MN018") {
+                        //}
+                    }
+                        //ReportJobOrder
+                    else if (data.Table[i].MenuDetailID == "MN018") {
 
-                    //if (data.Table[i].Role > 0) {
+                        //if (data.Table[i].Role > 0) {
                         //ถ้ามีสิทธ์ ReportJobOrder ให้ Redirect ไปหน้า IndexReportJobOrder (ReportJobOrder)
                         location = "../ReportJobOrder/IndexReportJobOrder";
                         break;
-                    //}
-                }
-                    //ReportJobOrder
-                else if (data.Table[i].MenuDetailID == "MN019") {
-                    //if (data.Table[i].Role > 0) {
+                        //}
+                    }
+                        //ReportJobOrder
+                    else if (data.Table[i].MenuDetailID == "MN019") {
+                        //if (data.Table[i].Role > 0) {
                         location = "../ReportBorrow/IndexRptBorrow";
                         break;
-                    //}
-                }
-                else {
-                    location = "../Login/IndexLogin";
-                }
+                        //}
+                    }
+                    else if (data.Table[i].MenuDetailID == "MN023") {
+                        //if (data.Table[i].Role > 0) {
+                        location = "../ReportJobPayment/IndexRptJobPayment";
+                        break;
+                        //}
+                    }
+                    else {
+                        location = "../Login/IndexLogin";
+                    }
             }
         },
         error: function (msg) {
             alert(msg)
         }
     });
+    }
+    else {
+        location = "../Login/IndexLogin";
+    }
+    
 }
 //function GetUserName() {
 //    document.getElementById("lblUserName").innerHTML = localStorage['UserName'];

@@ -98,7 +98,7 @@
         <form>
             <ul class="form-style-1">
                 <li>
-                    <label class="btnnew">Revise</label>&nbsp;<img src="@Url.Content("~/images/btnNewVersion.png")" alt="IMAGES" id="btnversionUpdate" class="btnnewversionUpdate" onclick="GetDocversion()" />
+                    <label class="btnnew">Revise</label>&nbsp;<img src="@Url.Content("~/images/btnNewVersion.png")" alt="IMAGES" id="btnversionUpdate" class="btnnewversionUpdate" onclick="ConfirmRevise()" />
                 </li>
                 <li>
                     <input type="text" id="txtDocver" name="field1" class="field-select-small-2" placeholder="V1" disabled />
@@ -183,5 +183,20 @@
         GetJobOrder(@Request.Params["id"]);
         ControlEnable(Isview);
     });
-
+    function ConfirmRevise()
+    {
+        $('#ShowDialog').modal('show');
+        var html = '<div class="modal-dialog modal-dialog-info">';
+        html += '<div class="modal-content">';
+        html += '<div class="modal-header modal-header-info">';
+        html += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+        html += '<h4 class="modal-title">BDC</h4>';
+        html += '</div>';
+        html += '<div class="modal-body modal-body-info">ยืนยันการสร้าง Revision </div>';
+        html += '<div class="modal-footer">';
+        html += '<button type="button" class="btn btn-info" onclick="GetDocversion()" data-dismiss="modal">Yes</button>';
+        html += '<button type="button" class="btn btn-info" data-dismiss="modal">No</button>';
+        html += '</div></div></div>';
+        document.getElementById("ShowDialog").innerHTML = html;
+    }
 </script>

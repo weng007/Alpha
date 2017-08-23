@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    CheckAuthorization();
     //------------------------------------ Standard ------------------------------------
     //Sorting
     $('th').click(function () {
@@ -63,5 +64,5 @@ $(document).ready(function () {
             //alert('test Error');
         }
     });
-    CheckAuthorization();
+    
 });

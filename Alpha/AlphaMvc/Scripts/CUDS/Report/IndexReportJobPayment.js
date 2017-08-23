@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-
+    CheckAuthorization();
     //$('#tableData').paging({ limit: 5 });
 
 
@@ -77,7 +77,7 @@ $(document).ready(function () {
             }
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
-            CheckAuthorization();
+            
             $('#tblWageTechnician').paging({
                 limit: 30,
                 rowDisplayStyle: 'block',

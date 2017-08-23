@@ -104,7 +104,7 @@ $(document).ready(function () {
                     html += '<td class="hidecolumn"><input type="hidden" class="hidMenuTypeID" value="' + data.Table[i].ID + '"/></td>';
                     html += '<td><input id="chkIsView" type="checkbox" class="IsView"></td>';
                     //MN016 Cost & Price, MN001 Dashboard, MN009 Technician, MN010 Expired Technician, MN018 (Report)Job Order, MN019 Requisition
-                    if (data.Table[i].MenuID == 'MN016' || data.Table[i].MenuID == 'MN001' || data.Table[i].MenuID == 'MN009' || data.Table[i].MenuID == 'MN010' || data.Table[i].MenuID == 'MN018' || data.Table[i].MenuID == 'MN019')
+                    if (data.Table[i].MenuID == 'MN016' || data.Table[i].MenuID == 'MN001' || data.Table[i].MenuID == 'MN009' || data.Table[i].MenuID == 'MN010' || data.Table[i].MenuID == 'MN018' || data.Table[i].MenuID == 'MN019' || data.Table[i].MenuID == 'MN023')
                     {
                         html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none"></td>';
                         html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" style="display:none"></td>';

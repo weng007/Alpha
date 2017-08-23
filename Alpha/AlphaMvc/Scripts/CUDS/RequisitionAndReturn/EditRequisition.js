@@ -1093,7 +1093,7 @@ function CheckBorrow() {
         html += '<h4 class="modal-title">Requisition & Return</h4>';
         html += '</div>';
         html += '<div class="modal-body modal-body-danger">จำนวนที่เบิกต้องน้อยกว่าหรือเท่ากับจำนวนคงเหลือ</br></br></div>';
-        html += '<div class="modal-footer">';
+        html += '<div class="modal-footer-danger">';
         html += '<button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>';
         html += '</div></div></div>';
         document.getElementById("ShowDialog").innerHTML = html;

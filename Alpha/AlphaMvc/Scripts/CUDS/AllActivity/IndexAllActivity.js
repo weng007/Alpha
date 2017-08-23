@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    CheckAuthorization();
     GetJobOrder();
 });
 function GetJobOrder() {
@@ -83,7 +83,7 @@ function GetJobOrder() {
             }
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
-            CheckAuthorization();
+           
             $('#tblRequisition').paging({
                 limit: 30,
                 rowDisplayStyle: 'block',

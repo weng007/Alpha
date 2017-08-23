@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    CheckAuthorization();
     $('.imgadd').attr("style", "margin-left: 60%; margin-top: -2px;");
     var ShowAll = false;
     GetData(ShowAll);
@@ -103,7 +104,7 @@ function GetData(val)
             }
             html += '</tbody>';
             document.getElementById("result").innerHTML = html;
-            CheckAuthorization();
+           
             $('#tblBDC').paging({
                 limit: 30,
                 rowDisplayStyle: 'block',

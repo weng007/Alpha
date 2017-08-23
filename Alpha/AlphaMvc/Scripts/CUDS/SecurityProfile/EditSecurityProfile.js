@@ -122,7 +122,7 @@ function GetData(val) {
                            html += '<td class="hidecolumn"><input type="hidden" class="hidID" value="' + data.Table1[i].ID + '"/></td>';
                            html += '<td><input id="chkIsView" type="checkbox" class="IsView" ' + IsView + ' ></td>';
                            //MN016 Cost & Price, MN001 Dashboard, MN009 Technician, MN010 Expired Technician, MN018 (Report)Job Order, MN019 Requisition
-                           if (data.Table1[i].MenuID == 'MN016' || data.Table1[i].MenuID == 'MN001' || data.Table1[i].MenuID == 'MN009' || data.Table1[i].MenuID == 'MN010' || data.Table1[i].MenuID == 'MN018' || data.Table1[i].MenuID == 'MN019') {
+                           if (data.Table1[i].MenuID == 'MN016' || data.Table1[i].MenuID == 'MN001' || data.Table1[i].MenuID == 'MN009' || data.Table1[i].MenuID == 'MN010' || data.Table1[i].MenuID == 'MN018' || data.Table1[i].MenuID == 'MN019' || data.Table1[i].MenuID == 'MN023') {
                                html += '<td><input id="chkIsInsert" type="checkbox" class="IsInsert" onchange="GetChecked()" style="display:none" ' + IsInsert + '></td>';
                                html += '<td><input id="chkIsUpdate" type="checkbox" class="IsUpdate" onchange="GetChecked()" style="display:none" ' + IsUpdate + '></td>';
                                html += '<td><input id="chkIsDelete" type="checkbox" class="IsDelete" style="display:none" ' + IsDelete + '></td>';

@@ -181,7 +181,7 @@
         <Top>3.59812in</Top>
         <Left>0.20833in</Left>
         <Height>0.22917in</Height>
-        <Width>0.76042in</Width>
+        <Width>0.90972in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -213,7 +213,7 @@
         <Top>4.30055in</Top>
         <Left>0.20833in</Left>
         <Height>0.22917in</Height>
-        <Width>0.76042in</Width>
+        <Width>0.90972in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -245,7 +245,7 @@
         <Top>4.62416in</Top>
         <Left>0.20833in</Left>
         <Height>0.22917in</Height>
-        <Width>0.76042in</Width>
+        <Width>0.90972in</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -2607,9 +2607,9 @@
         </Paragraphs>
         <rd:DefaultName>Tel</rd:DefaultName>
         <Top>9.13922cm</Top>
-        <Left>2.62679cm</Left>
+        <Left>2.97075cm</Left>
         <Height>0.58209cm</Height>
-        <Width>6.55642cm</Width>
+        <Width>6.21246cm</Width>
         <ZIndex>23</ZIndex>
         <Style>
           <Border>
@@ -2641,7 +2641,7 @@
         <Top>3.97132in</Top>
         <Left>0.20833in</Left>
         <Height>0.22917in</Height>
-        <Width>0.76042in</Width>
+        <Width>0.90972in</Width>
         <ZIndex>24</ZIndex>
         <Style>
           <Border>
@@ -2671,9 +2671,9 @@
         </Paragraphs>
         <rd:DefaultName>Fax</rd:DefaultName>
         <Top>10.08715cm</Top>
-        <Left>2.62679cm</Left>
+        <Left>2.97075cm</Left>
         <Height>0.5821cm</Height>
-        <Width>6.55642cm</Width>
+        <Width>6.21246cm</Width>
         <ZIndex>25</ZIndex>
         <Style>
           <Border>
@@ -2703,9 +2703,9 @@
         </Paragraphs>
         <rd:DefaultName>Contact</rd:DefaultName>
         <Top>10.9234cm</Top>
-        <Left>2.62679cm</Left>
+        <Left>2.97075cm</Left>
         <Height>0.58209cm</Height>
-        <Width>6.55642cm</Width>
+        <Width>6.21246cm</Width>
         <ZIndex>26</ZIndex>
         <Style>
           <Border>
@@ -2735,9 +2735,9 @@
         </Paragraphs>
         <rd:DefaultName>CoWorker</rd:DefaultName>
         <Top>11.74538cm</Top>
-        <Left>2.63701cm</Left>
+        <Left>2.98097cm</Left>
         <Height>0.58209cm</Height>
-        <Width>6.5462cm</Width>
+        <Width>6.20224cm</Width>
         <ZIndex>27</ZIndex>
         <Style>
           <Border>

@@ -105,7 +105,7 @@
                     <input type="number" id="txtRemain" name="field2" class="field-select-small" placeholder="" required disabled />
                 </li>
                 <li>
-                    <label class="label-small-2">เพิ่ม</label>&nbsp;<label class="label-small-2">ลด</label>
+                    <label class="label-small-2"><input type="checkbox" id="chkAdd" class="chkAdd" onchange="CheckAdd()" value="">เพิ่ม</label>&nbsp;<label class="label-small-2"><input type="checkbox" id="chkDeduct" class="chkDeduct" onchange="CheckDeduct()" value="">ลด</label>
                 </li>
                 <li>
                     <input type="text" id="txtAdded"  style="text-align:right;" name="field6" class="Number field-select-small" placeholder="" value="0"/>&nbsp;
@@ -141,7 +141,7 @@
             html += '<h4 class="modal-title">Product Adjust</h4>';
             html += '</div>';
             html += '<div class="modal-body modal-body-danger">จำนวนที่ลดต้องน้อยกว่าหรือเท่ากับจำนวนที่คงเหลือ</br></br></div>';
-            html += '<div class="modal-footer">';
+            html += '<div class="modal-footer-danger">';
             html += '<button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>';
             html += '</div></div></div>';
             document.getElementById("ShowDialog").innerHTML = html;
