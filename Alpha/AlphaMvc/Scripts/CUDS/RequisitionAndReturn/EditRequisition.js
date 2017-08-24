@@ -877,22 +877,24 @@ function ApproveRequisition()
         };
     }
     //alert("UpdateRequisitionApprove");
-    $.ajax(
-    {
-        url: 'http://localhost:13131/api/Requisition',
-        type: 'POST',
-        async: false,
-        data: dataObject,
-        datatype: 'json',
-        success: function (data) {
-            //alert("Approve success");
-        },
-        error: function (msg) {
-            alert(msg)
-        }
-    });
-    //alert($('#hidJobID').val());
-    window.location.href = "../Requisition/EditRequisition?id=" + $('#hidJobID').val();
+    if ($('#hidRequisitionID').val() != '') {
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/Requisition',
+            type: 'POST',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+                //alert("Approve success");
+            },
+            error: function (msg) {
+                alert(msg)
+            }
+        });
+        //alert($('#hidJobID').val());
+        window.location.href = "../Requisition/EditRequisition?id=" + $('#hidJobID').val();
+    }
 }
 function ReturnStock() {
     var IsReturn = $('#chkReturn').is(":checked") == true ? '1' : '0';
@@ -940,8 +942,10 @@ function ReturnStock() {
 function Update(val)
 {
     var IsReturn = $('#chkReturn').is(":checked") == true ? '1' : '0';
+    var IsApprove = $('#chkApprove').is(":checked") == true ? '1' : '0';
     //alert(IsReturn);
     var Giver;
+    var Approver;
     if (IsReturn == '1') {
         Giver = localStorage['UserID'];
         IsReturn: IsReturn;
@@ -949,6 +953,15 @@ function Update(val)
     else {
         Giver = '0';
         IsReturn: IsReturn;
+    }
+    //alert(IsApprove);
+    if (IsApprove == '1') {
+        Approver = localStorage['UserID'];
+        IsApprove: IsApprove;
+    }
+    else {
+        Approver = '0';
+        IsApprove: IsApprove;
     }
     //===================UpdateJobOrderBorrow
     //alert(val);
@@ -974,7 +987,7 @@ function Update(val)
         //if ($(".RowCal6").eq(0).find('.hidProductID').val() != '') {
             //alert("InsertRequisition");
             var Requisitiondata = {
-                JobID: val, Taker: localStorage['UserID'], Giver: Giver, IsReturn: IsReturn, CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
+                JobID: val, Taker: localStorage['UserID'], Giver: Giver, Approver:Approver, IsReturn: IsReturn, IsApprove: IsApprove, CreateBy: localStorage['UserID'], EditBy: localStorage['UserID']
             };
             $.ajax(
             {

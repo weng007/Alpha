@@ -7,13 +7,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script type="text/javascript">
+    //    $(document).ready(function () {
+    //        alert("test");
+    //    //CheckAuthorization();
+    //});
+</script>
 </head>
 <body>
     <form id="form1" runat="server">
     <%--<div style="width: 709px; height: 606px">--%>
     <div style="width: 100%; height: 580px;">
         <rsweb:ReportViewer ID="RptViewer1" runat="server" Width="100%" Height="100%"></rsweb:ReportViewer>
-        <asp:Button ID="btnPrint" runat="server" OnClick="btnPrint_Click" Text="Print" />
+        <%--<asp:Button ID="btnPrint" runat="server" Text="Print" />--%>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
 </asp:ScriptManager>
     </div>

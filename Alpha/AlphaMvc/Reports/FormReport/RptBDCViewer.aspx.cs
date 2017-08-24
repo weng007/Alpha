@@ -40,9 +40,5 @@ namespace AlphaMvc.Reports.FormReport
             this.RptViewer1.LocalReport.DataSources.Add(datasource2);
         }
 
-        protected void btnPrint_Click(object sender, EventArgs e)
-        {
-            RptViewer1.ShowPrintButton = true;
-        }
     }
 }

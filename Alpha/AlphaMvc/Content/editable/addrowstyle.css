@@ -70,6 +70,7 @@
     }
     .example-2{
         border: 1px solid #c1c1c1;
+        width: 300px;
     }
     .example-2 tbody td{
         text-align:center;
@@ -155,9 +156,19 @@
         height: 25px;
         word-wrap: break-word;
     }
-
+    .thno {
+        /*width: 51px;*/
+        width: 30%;
+        margin: 0;
+        /*background: #eaebff;*/
+        /*background: #ffe2dc;*/
+        background: rgb(226, 215, 222);
+        text-align: center;
+        border: none;
+    }
     .tdno {
         width: 51px;
+        /*width: 30%;*/
         margin: 0;
         /*background: #eaebff;*/
         /*background: #ffe2dc;*/

@@ -24,7 +24,9 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@JobID", requisition.JobID);
                     cmd.Parameters.AddWithValue("@Taker", requisition.Taker);
                     cmd.Parameters.AddWithValue("@Giver", requisition.Giver);
+                    cmd.Parameters.AddWithValue("@Approver", requisition.Approver);
                     cmd.Parameters.AddWithValue("@IsReturn", requisition.IsReturn);
+                    cmd.Parameters.AddWithValue("@IsApprove", requisition.IsApprove);
                     cmd.Parameters.AddWithValue("@CreateBy", requisition.CreateBy);
                     cmd.Parameters.AddWithValue("@EditBy", requisition.EditBy);
                     conObj.Open();

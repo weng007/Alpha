@@ -173,41 +173,47 @@ function GetDetailManPower(currentMonth) {
 }
 
 $(document).ready(function () {
-    var currentDate = new Date();
-    var currentMonth = currentDate.getMonth() + 1;
-    $('#calendar').addClass('table-responsive');
-    //$('#calendar').attr("style", "width: 40%;  margin-bottom: 20px; float: left;");
+    //alert("test1");
+    if (localStorage['UserID'] != undefined) {
+        CheckAuthorization();
+        var currentDate = new Date();
+        var currentMonth = currentDate.getMonth() + 1;
+        $('#calendar').addClass('table-responsive');
+        //$('#calendar').attr("style", "width: 40%;  margin-bottom: 20px; float: left;");
 
-    GetDetail(currentMonth);
-    $('#calendar').on('click', '.fc-next-button', function () {
-        var currentMonth = $('#calendar').fullCalendar('getDate');
-        currentMonth = parseInt(currentMonth.format('M'));
         GetDetail(currentMonth);
-    });
-    $('#calendar').on('click', '.fc-prev-button', function () {
-        var currentMonth = $('#calendar').fullCalendar('getDate');
-        currentMonth = parseInt(currentMonth.format('M'));
-        GetDetail(currentMonth);
-    });
+        $('#calendar').on('click', '.fc-next-button', function () {
+            var currentMonth = $('#calendar').fullCalendar('getDate');
+            currentMonth = parseInt(currentMonth.format('M'));
+            GetDetail(currentMonth);
+        });
+        $('#calendar').on('click', '.fc-prev-button', function () {
+            var currentMonth = $('#calendar').fullCalendar('getDate');
+            currentMonth = parseInt(currentMonth.format('M'));
+            GetDetail(currentMonth);
+        });
 
-    //==================================================================ManPower
-    var currentDate = new Date();
-    var currentMonth = currentDate.getMonth() + 1;
-    $('#calendarManPower').addClass('table-responsive');
-    //$('#calendarManPower').attr("style", "width: 40%;  margin-bottom: 20px; float: right;");
+        //==================================================================ManPower
+        var currentDate = new Date();
+        var currentMonth = currentDate.getMonth() + 1;
+        $('#calendarManPower').addClass('table-responsive');
+        //$('#calendarManPower').attr("style", "width: 40%;  margin-bottom: 20px; float: right;");
 
-    GetDetailManPower(currentMonth);
-    $('#calendarManPower').on('click', '.fc-next-button', function () {
-        var currentMonth = $('#calendarMonthManPower').fullCalendar('getDate');
-        currentMonth = parseInt(currentMonth.format('M'));
         GetDetailManPower(currentMonth);
-    });
-    $('#calendarManPower').on('click', '.fc-prev-button', function () {
-        var currentMonth = $('#calendarManPower').fullCalendar('getDate');
-        currentMonth = parseInt(currentMonth.format('M'));
-        GetDetailManPower(currentMonth);
-    });
-    CheckAuthorization();
+        $('#calendarManPower').on('click', '.fc-next-button', function () {
+            var currentMonth = $('#calendarMonthManPower').fullCalendar('getDate');
+            currentMonth = parseInt(currentMonth.format('M'));
+            GetDetailManPower(currentMonth);
+        });
+        $('#calendarManPower').on('click', '.fc-prev-button', function () {
+            var currentMonth = $('#calendarManPower').fullCalendar('getDate');
+            currentMonth = parseInt(currentMonth.format('M'));
+            GetDetailManPower(currentMonth);
+        });
+    }
+    else {
+        location = "../Login/IndexLogin";
+    }
 });
 </script>
 <style>

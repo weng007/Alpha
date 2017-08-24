@@ -1,6 +1,9 @@
 $(document).ready(function () {
-    CheckAuthorization();
-    GetJobOrder();
+    //alert("test");
+    if (localStorage['UserID'] != undefined) {
+        CheckAuthorization();
+        GetJobOrder();
+    }
 });
 function GetJobOrder() {
     //------------------------- Sorting ------------------------

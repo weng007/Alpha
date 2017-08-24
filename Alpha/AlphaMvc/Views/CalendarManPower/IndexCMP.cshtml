@@ -79,93 +79,30 @@
            });
     }
     $(document).ready(function () {
-        var currentDate = new Date();
-        var currentMonth = currentDate.getMonth() + 1;
-        $('#body').attr("style", "background-color: #fbfbf1; clear: both; padding-bottom: 3%;");
-        GetDetail(currentMonth);
-        GetCalendarlist(currentMonth);
-        $('#calendar').on('click', '.fc-next-button', function () {
-            var currentMonth = $('#calendar').fullCalendar('getDate');
-            currentMonth = parseInt(currentMonth.format('M'));
+        if (localStorage['UserID'] != undefined) {
+            var currentDate = new Date();
+            var currentMonth = currentDate.getMonth() + 1;
+            $('#body').attr("style", "background-color: #fbfbf1; clear: both; padding-bottom: 3%;");
             GetDetail(currentMonth);
             GetCalendarlist(currentMonth);
-        });
-        $('#calendar').on('click', '.fc-prev-button', function () {
-            var currentMonth = $('#calendar').fullCalendar('getDate');
-            currentMonth = parseInt(currentMonth.format('M'));
-            GetDetail(currentMonth);
-            GetCalendarlist(currentMonth);
-        });
+            $('#calendar').on('click', '.fc-next-button', function () {
+                var currentMonth = $('#calendar').fullCalendar('getDate');
+                currentMonth = parseInt(currentMonth.format('M'));
+                GetDetail(currentMonth);
+                GetCalendarlist(currentMonth);
+            });
+            $('#calendar').on('click', '.fc-prev-button', function () {
+                var currentMonth = $('#calendar').fullCalendar('getDate');
+                currentMonth = parseInt(currentMonth.format('M'));
+                GetDetail(currentMonth);
+                GetCalendarlist(currentMonth);
+            });
+        }
+        else {
+            location = "../Login/IndexLogin";
+        }
+        
     });
-		//$('#calendar').fullCalendar({
-		//	header: {
-		//		left: 'prev,next',
-		//		center: 'title',
-		//		right: ''
-		//	},
-		//	defaultDate: '2017-02-18',
-		//	navLinks: true, // can click day/week names to navigate views
-		//	editable: true,
-		//	eventLimit: true, // allow "more" link when too many events
-		//	events: [
-		//		{
-		//			title: 'All Day Event',
-		//			start: '2016-12-01'
-		//		},
-		//		{
-		//			title: 'Long Event',
-		//			start: '2017-02-07',
-		//			end: '2017-02-08'
-		//		},
-		//		{
-		//			id: 999,
-		//			title: 'Repeating Event',
-		//			start: '2017-02-07',
-		//			end: '2017-02-08'
-		//		},
-		//		{
-		//			id: 999,
-		//			title: 'Repeating Event',
-		//			start: '2017-02-07',
-		//			end: '2017-02-07'
-		//		},
-		//		{
-		//		    title: 'Leader1 (Job201702-0003)',
-		//		    start: '2017-02-07T00:00:00',
-		//		    end: '2017-02-08T23:59:00'
-		//		},
-		//		{
-		//		    title: 'Leader2 (J00005)',
-		//		    start: '2017-02-07',
-		//		    end: '2017-02-08'
-		//		},
-		//		{
-		//		    title: 'Leader4 (J00006)',
-		//		    start: '2017-01-19'
-		//		},
-		//		{
-		//		    title: 'Leader5 (J00005)',
-		//		    start: '2017-01-19'
-		//		},
-		//		{
-		//		    title: 'Leader7 (J00001)',
-		//		    start: '2017-01-19'
-		//		},
-		//		{
-		//			title: 'Dinner',
-		//			start: '2016-12-12T20:00:00'
-		//		},
-		//		{
-		//			title: 'Birthday Party',
-		//			start: '2016-12-13T07:00:00'
-		//		},
-		//		{
-		//			title: 'Click for Google',
-		//			url: 'http://google.com/',
-		//			start: '2016-12-28'
-		//		}
-		//	]
-		//});
 
 </script>
 <style>

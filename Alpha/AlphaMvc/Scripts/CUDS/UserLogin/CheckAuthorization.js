@@ -669,6 +669,7 @@ function CheckAuthorization() {
                                 document.getElementById("chkReturn").disabled = true;
                             }
                             $('.mnReturn').attr("style", "display:none");
+                            //$('.mnReturn').css("visibility", "hidden");
                         }
                     }
                     if (data.Table[i].MenuName == "MN023") {

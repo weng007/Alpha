@@ -18,7 +18,7 @@
     <form id="form1" runat="server">
     <div style="width: 100%; height: 580px;">
         <rsweb:ReportViewer ID="RptViewer1" runat="server" Width="100%" Height="100%"></rsweb:ReportViewer>
-        <asp:Button ID="btnPrint" runat="server" OnClick="btnPrint_Click" Text="Print" />
+        <%--<asp:Button ID="btnPrint" runat="server" Text="Print" />--%>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
 </asp:ScriptManager>
     </div>

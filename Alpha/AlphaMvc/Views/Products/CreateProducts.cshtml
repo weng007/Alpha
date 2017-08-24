@@ -17,6 +17,12 @@
         padding: 1px 1px;
         width: 20px;
     }
+    .spndiv {
+        height:50px;
+    }
+    .short-div {
+        height:20%;
+    }
 </style>
 @*<table>
     <tr>
@@ -31,137 +37,155 @@
         //===================================================================CSS w3school
         
             <form id="myform">
+
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="txtSerialNo">Serial Number:</label>
-                                <input type="text" id="txtSerialNo" class="form-control" placeholder="" autofocus required />
-                            </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="txtMachineNo">หมายเลขเครื่อง:</label>
-                                <input type="text" id="txtMachineNo" class="form-control" placeholder="" autofocus required />
-                                <input type="hidden" id="hidProductID" />
-                            </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="dtReceiveDate">รับเข้า:</label>
-                                <input type="text" id="dtReceiveDate" class="form-control" placeholder="" required />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="cmbProductType">ประเภทสินค้า:</label>
-                                <select id="cmbProductType" name="cmbProductType" class="form-control cmbsize106"></select>
-                            </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="txtBrand">ยี่ห้อ:</label>
-                                <input type="text" id="txtBrand" class="form-control" placeholder="" />
-                            </div>
-                        </div>
-                            <div class="col-xs-4 col-sm-3 col-lg-1">
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                            <div class="short-div" @*style="background-color:lightblue"*@>
+                                @*Span 2*@
                                 <div class="form-group">
-                                    <label for="txtBalance">ยกมา:<span class="required">*</span></label>
-                                    <input type="number" id="txtBalance" class="form-control txtsize80" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46" placeholder="" onblur="GetRemain()" required />
+                                    <label for="txtSerialNo">Serial Number:</label>
+                                    <input type="text" id="txtSerialNo" class="form-control" placeholder="" autofocus required />
                                 </div>
                             </div>
-                            <div class="col-xs-4 col-sm-3 col-lg-1">
+                            <div class="short-div">
+                                @*Span 2*@
                                 <div class="form-group">
-                                    <label for="txtRemain">คงเหลือ:<span class="required">*</span></label>
-                                    <input type="number" id="txtRemain" class="form-control txtsize80" placeholder="" required disabled />
+                                    <label for="cmbProductType">ประเภทสินค้า:</label>
+                                    <select id="cmbProductType" name="cmbProductType" class="form-control cmbsize106"></select>
+                                </div>
+                            </div>
+                            <div class="short-div">
+                                @*Span 2*@
+                                <div class="form-group">
+                                    <label for="txtSize">ขนาด:</label>
+                                    <input type="text" id="txtSize" name="field2" class="form-control " placeholder="" />
+                                </div>
+                            </div>
+                            <div class="short-div">
+                                @*Span 2*@
+                                <div class="form-group">
+                                    <label for="txtModel">รุ่น:</label>
+                                    <input type="text" id="txtModel" class="form-control" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="short-div">
+                                @*Span 2*@
+                                <div class="form-group">
+                                    <label for="txtDiscription">รายละเอียด:</label>
+                                    <textarea id="txtDiscription" class="form-control txtareasize106 txtarea"></textarea>
                                 </div>
                             </div>
                         </div>
-                    <div class="row">
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="txtSize">ขนาด:</label>
-                                <input type="text" id="txtSize" name="field2" class="form-control " placeholder="" />
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                            <div class="short-div">
+                                @*Span 3*@
+                                <div class="form-group">
+                                    <label for="txtMachineNo">หมายเลขเครื่อง:</label>
+                                    <input type="text" id="txtMachineNo" class="form-control" placeholder="" autofocus required />
+                                    <input type="hidden" id="hidProductID" />
+                                </div>
+                            </div>
+                            <div class="short-div">
+                                @*Span 3*@
+                                <div class="form-group">
+                                    <label for="txtBrand">ยี่ห้อ:</label>
+                                    <input type="text" id="txtBrand" class="form-control" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="short-div">
+                                @*Span 3*@
+                                <div class="form-group">
+                                    <label for="cmbUnitWeight">หน่วยนับ:</label>
+                                    <select id="cmbUnitWeight" class="form-control cmbsize106"></select>
+                                </div>
+                            </div>
+                            <div class="short-div">
+                                @*Span 3*@
+                                <div class="form-group">
+                                    <label for="txtLifetime">อายุใช้งาน (ปี):</label>
+                                    <input type="text" id="txtLifetime" class="form-control txtsize80" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="short-div">
+                                @*Span 3*@
+                                <div class="form-group">
+                                    <label for="txtRemark">หมายเหตุ:</label>
+                                    <input type="text" id="txtRemark" class="form-control" placeholder="" />
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="cmbUnitWeight">หน่วยนับ:</label>
-                                <select id="cmbUnitWeight" class="form-control cmbsize106"></select>
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                            <div class="short-div">
+                                @*Span 4*@
+                                <div class="form-group">
+                                    <label for="dtReceiveDate">รับเข้า:</label>
+                                    <input type="text" id="dtReceiveDate" class="form-control" placeholder="" required />
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-2 col-sm-3 col-xs-12 pad0">
+                                <div class="col-xs-4 col-sm-3 col-lg-6 pad0">
+                                    <div class="form-group">
+                                        <label for="txtBalance">ยกมา:<span class="required">*</span></label>
+                                        <input type="number" id="txtBalance" class="form-control txtsize80" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46" placeholder="" onblur="GetRemain()" required />
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 col-sm-3 col-lg-6 pad0">
+                                    <div class="form-group">
+                                        <label for="txtRemain">คงเหลือ:<span class="required">*</span></label>
+                                        <input type="number" id="txtRemain" class="form-control txtsize80" placeholder="" required disabled />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-2 col-sm-3 col-xs-12 pad0">
+                                <div class="col-xs-4 col-sm-3 col-lg-6 pad0">
+                                    <div class="form-group">
+                                        <label for="txtLost">หาย:</label>
+                                        <input type="text" id="txtLost" class="form-control txtsize80" placeholder="" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 col-sm-3 col-lg-6 pad0">
+                                    <div class="form-group">
+                                        <label for="txtRepair">ซ่อม:</label>
+                                        <input type="text" id="txtRepair" class="form-control txtsize80" placeholder="" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="short-div">
+                                @*Span 4*@
+                                <div class="form-group">
+                                    <label for="txtBreak">ชำรุด:</label>
+                                    <input type="text" id="txtBreak" class="form-control txtsize80" placeholder="" disabled />
+                                </div>
+                            </div>
+                            <div class="short-div" >
+                                @*Span 4*@
+                                
                             </div>
                         </div>
-                        <div class="col-xs-4 col-sm-3 col-lg-1">
-                            <div class="form-group">
-                                <label for="txtLost">หาย:</label>
-                                <input type="text" id="txtLost" class="form-control txtsize80" placeholder="" disabled />
-                            </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-3 col-lg-1">
-                            <div class="form-group">
-                                <label for="txtRepair">ซ่อม:</label>
-                                <input type="text" id="txtRepair" class="form-control txtsize80" placeholder="" disabled />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="txtModel">รุ่น:</label>
-                                <input type="text" id="txtModel" class="form-control" placeholder="" />
-                            </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="txtLifetime">อายุใช้งาน (ปี):</label>
-                                <input type="text" id="txtLifetime" class="form-control txtsize80" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" placeholder="" />
-                            </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="txtBreak">ชำรุด:</label>
-                                <input type="text" id="txtBreak" class="form-control txtsize80" placeholder="" disabled />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="txtDiscription">รายละเอียด:</label>
-                                <textarea id="txtDiscription" class="form-control txtareasize106"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
-                            <div class="form-group">
-                                <label for="txtRemark">หมายเหตุ:</label>
-                                <input type="text" id="txtRemark" class="form-control" placeholder="" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 col-sm-3 col-lg-2">
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 spndiv">
+                            @*Span 5*@
                             <div class="form-group">
                                 <input type="file" name="photo" id="photo" onchange="readURL(this);" style="color:transparent;">
                                 <div class="imgpreview"><img id="imgPreview" alt="your image" class="img-responsive" /></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="table-responsive">
-                            <div class="col-xs-4 col-sm-3 col-lg-2">
-                                <div class="form-group">
-                                    <input type="file" id="FileUpload1" multiple />
-                                    <table class="example-2" cellspacing="0">
-                                        <thead class="theader">
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>File Name</th>
-                                                <th class="hidecolumn">Path Name</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                            @*Span 6*@
+                            <div class="table-responsive">
+                                <div class="col-xs-4 col-sm-3 col-lg-2 padleft10p">
+                                    <div class="form-group">
+                                        <input type="file" id="FileUpload1" multiple />
+                                        <table class="example-2" cellspacing="0">
+                                            <thead class="theader">
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>File Name</th>
+                                                    <th class="hidecolumn">Path Name</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

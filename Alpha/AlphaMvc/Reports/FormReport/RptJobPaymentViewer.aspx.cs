@@ -31,7 +31,7 @@ namespace AlphaMvc.Reports.FormReport
         {
             DataSet ds = new DataSet();
             DBdata dal = new DBdata();
-            DateTime tmpFromDate = DateTime.MinValue.AddYears(1900);
+            DateTime tmpFromDate = DateTime.MaxValue;
             DateTime tmpToDate = DateTime.MaxValue;
 
             string result = Request.QueryString["id"].ToString();
@@ -60,14 +60,14 @@ namespace AlphaMvc.Reports.FormReport
             ReportDataSource datasource = new ReportDataSource("dsJobPayment", ds.Tables[0]);
             ReportDataSource datasource1 = new ReportDataSource("dsJobPaymentDetail", ds.Tables[1]);
             this.RptViewer1.LocalReport.ReportPath = Server.MapPath("~/Reports/RptJobPayment.rdlc");
+            if (this.RptViewer1.LocalReport.DataSources.Count > 0)
+            {
+                this.RptViewer1.LocalReport.DataSources.Clear();
+                this.RptViewer1.LocalReport.Refresh();
+            }
             this.RptViewer1.LocalReport.DataSources.Add(datasource);
             this.RptViewer1.LocalReport.DataSources.Add(datasource1);
             this.RptViewer1.LocalReport.Refresh();
-        }
-
-        protected void btnPrint_Click(object sender, EventArgs e)
-        {
-            RptViewer1.ShowPrintButton = true;
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)

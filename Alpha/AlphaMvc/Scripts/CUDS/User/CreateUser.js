@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-
     $.ajax({
         url: 'http://localhost:13131/api/SecurityProfile/',
         type: 'GET',
