@@ -71,6 +71,7 @@ function CreateData(val) {
         //alert("Profile " + $("#cmbSecurityProfile").find(":selected").val());
         var dataObject = {
             UserName: $("#txtUserName").val(),
+            Password: $("#txtPassword").val(),
             SecurityID: $("#cmbSecurityProfile").find(":selected").val(),
             FirstName: $("#txtFirstName").val(),
             LastName: $("#txtLastName").val(),

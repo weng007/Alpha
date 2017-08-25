@@ -20,9 +20,23 @@
  */
 
 /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
+.floatnone{
+    float: none !important;
+}
+.padedit{
+    padding-left: 5px !important;
+    padding-right: 3px !important;
+}
 .padleft15p
 {
     padding-left: 15% !important;
+}
+.pad7{
+    padding: 7px;
+} 
+.pwd
+{
+    font-size: 20px;
 }
 .padleft10p
 {
@@ -131,7 +145,7 @@
     }
 }
 
-@media (max-width: 367px) {
+@media (max-width: 370px) {
     .txtpadding
 {
      padding: 5px;

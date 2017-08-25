@@ -36,6 +36,7 @@ function GetData(val) {
        success: function (data) {
            data = JSON.parse(data);
            $("#txtUserName").val(data.ADUser[0].UserName),
+           $("#txtPassword").val(data.ADUser[0].Password),
            $("#txtFirstName").val(data.ADUser[0].FirstName),
            $("#txtLastName").val(data.ADUser[0].LastName),
            $("#txtEmail").val(data.ADUser[0].Email),
@@ -58,6 +59,7 @@ function Update(val) {
         ID: val,
         SecurityID: $("#cmbSecurityProfile").find(":selected").val(),
         UserName: $("#txtUserName").val(),
+        Password: $("#txtPassword").val(),
         FirstName: $("#txtFirstName").val(),
         LastName: $("#txtLastName").val(),
         Email: $("#txtEmail").val(),

@@ -118,7 +118,7 @@ span.psw {
 /* Change styles for span and cancel button on extra small screens */
  @media screen and (max-width:680px){
     form {
-        border: 2px solid #298db2;
+        /*border: 2px solid #298db2;*/
         background-color: #fafae5;
         margin-top: 5%;
         margin-left: 15%;
@@ -138,11 +138,12 @@ span.psw {
     }
     .imgcontainer {
         text-align: center;
-        margin: 10px 10px 0px 0;
+        /*margin: 10px 10px 0px 0;*/
+        margin-left: 10%;
     }
     input[type=text], input[type=password] {
         /*width: 100%;*/
-        width: 60%;
+        width: 80%;
         padding: 12px 10px;
         margin: 8px 0;
         display: inline-block;
@@ -152,14 +153,14 @@ span.psw {
     }
     button {
         border: 1px solid #fdc9c9;
-        background-color: #de4848;
+        background-color: #c20a0a;
         color: #fff;
         margin: 8px 0;
         cursor: pointer;
-        width: 40%;
+        width: 50%;
         height: 30px;
         font-weight: 700;
         padding: 6px 17px !important;
-        margin-left: 56%;
+        margin-left: 15%;
     }
 }

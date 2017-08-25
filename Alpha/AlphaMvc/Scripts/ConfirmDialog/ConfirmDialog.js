@@ -4,7 +4,7 @@
         if ($("#txtDetail").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input Detail.</div>';
         }
-        if ($("#txtPrice").val() == '') {
+        if ($("#txtPricelist").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input Price list.</div>';
         }
         if ($("#txtSeq").val() == '') {
@@ -15,7 +15,7 @@
         if ($("#txtDetail").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input Detail.</div>';
         }
-        if ($("#txtPrice").val() == '') {
+        if ($("#txtPricelist").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input Price list.</div>';
         }
         if ($("#txtSeq").val() == '') {
@@ -108,6 +108,9 @@
     if (topic == "User") {
         if ($("#txtUserName").val() == '') {
             validatehtml += '<div class="modal-body modal-body-Warning">Please input UserName.</div>';
+        }
+        if ($("#txtPassword").val() == '') {
+            validatehtml += '<div class="modal-body modal-body-Warning">Please input Password.</div>';
         }
     }
     if (validatehtml != '')

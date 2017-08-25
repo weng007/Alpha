@@ -55,8 +55,8 @@ $(document).ready(function () {
                 html += '<td class="nopointer">' + data.Table[i].ExpenseGroup + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Detail + '</td>';
                 html += '<td class="nopointer text-right">' + AddComma(parseFloat(data.Table[i].PriceList).toFixed(2)) + '</td>';
-                html += '<td class="nopointer txtcenter">' + data.Table[i].Seq + '</td>';
-                html += '<td class="nopointer">';
+                html += '<td class="nopointer txtcenter hideANDseek">' + data.Table[i].Seq + '</td>';
+                html += '<td class="nopointer padedit">';
                 //ManJob
                 if (data.Table[i].ID == 1080 || data.Table[i].ID == 1081 || data.Table[i].ID == 1082 || data.Table[i].ID == 1083 || data.Table[i].ID == 1084 || data.Table[i].ID == 1091 || data.Table[i].ID == 1092 || data.Table[i].ID == 1093 || data.Table[i].ID == 1094 || data.Table[i].ID == 1095 || data.Table[i].ID == 1096 || data.Table[i].ID == 1097 || data.Table[i].ID == 1098 || data.Table[i].ID == 1099 || data.Table[i].ID == 1100)
                 {

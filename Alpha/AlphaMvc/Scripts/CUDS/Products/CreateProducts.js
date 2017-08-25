@@ -41,27 +41,27 @@ $(document).ready(function () {
 
 
 
-    var dataObject = { typeID: '003' };
-    $.ajax({
-        url: 'http://localhost:13131/api/MasterService',
-        type: 'GET',
-        async: false,
-        dataType: 'json',
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $.each(data.Table, function (i) {
-                $('#cmbProductType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('#cmbProductType').find('option:first-child').attr('selected', true);
+    //var dataObject = { typeID: '003' };
+    //$.ajax({
+    //    url: 'http://localhost:13131/api/MasterService',
+    //    type: 'GET',
+    //    async: false,
+    //    dataType: 'json',
+    //    data: dataObject,
+    //    success: function (data) {
+    //        data = JSON.parse(data);
+    //        $.each(data.Table, function (i) {
+    //            $('#cmbProductType').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+    //        });
+    //        $('#cmbProductType').find('option:first-child').attr('selected', true);
 
-            //ProductTypeVal = $("#cmbProductType").find(":selected").val();
+    //        //ProductTypeVal = $("#cmbProductType").find(":selected").val();
 
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
+    //    },
+    //    failure: function () {
+    //        alert('Error');
+    //    }
+    //});
 
     var dataObject = { typeID: '004' };
     $.ajax({
@@ -139,7 +139,7 @@ function CreateData() {
     }
     var RDate = ChangeformatDate($("#dtReceiveDate").val(), 1);
     var dataObject = {
-        SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#cmbProductType").find(":selected").val(),
+        SerialNo: $("#txtSerialNo").val(), MachineNo: $("#txtMachineNo").val(), ProductType: $("#txtProductType").val(), SNGauge: $("#txtSNGauge").val(),
         Description: $("#txtDiscription").val(), Brand: $("#txtBrand").val(),
         Size: $("#txtSize").val(), Model: $("#txtModel").val(), Lifetime: $("#txtLifetime").val(), ReceiveDate: RDate,
         UnitWeight: $("#cmbUnitWeight").find(":selected").val(), Balance: $("#txtBalance").val(), Remain: $("#txtRemain").val(),Remark: $("#txtRemark").val(), CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'],

@@ -37,14 +37,15 @@ function UserLogin() {
             //alert(data.ADUser.length);
             if (data != null && data.ADUser.length > 0)
             {
-                localStorage['UserID'] = data.ADUser[1].ID;
-                localStorage['UserName'] = data.ADUser[1].UserName;
-                    localStorage['Password'] = $("#txtPassword").val();
-                    localStorage['IsTechnician'] = data.ADUser[1].Technician;
-                    localStorage['FirstName'] = data.ADUser[1].FirstName;
-                    localStorage['LastName'] = data.ADUser[1].LastName;
-                    localStorage['FullName'] = data.ADUser[1].FullName;
-                 //location = "../Home/DashBoard";
+                    localStorage['UserID'] = data.ADUser[0].ID;
+                    localStorage['UserName'] = data.ADUser[0].UserName;
+                    //localStorage['Password'] = $("#txtPassword").val();
+                    localStorage['Password'] = data.ADUser[0].Password;
+                    localStorage['IsTechnician'] = data.ADUser[0].Technician;
+                    localStorage['FirstName'] = data.ADUser[0].FirstName;
+                    localStorage['LastName'] = data.ADUser[0].LastName;
+                    localStorage['FullName'] = data.ADUser[0].FullName;
+                    //location = "../Home/DashBoard";
                     CheckAuthorization();
             }
             else

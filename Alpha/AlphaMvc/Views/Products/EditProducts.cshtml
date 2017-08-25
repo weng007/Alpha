@@ -42,11 +42,20 @@
                         <div class="short-div">
                             @*Span 2*@
                             <div class="form-group">
-                                <label for="cmbProductType">ประเภทสินค้า:</label>
-                                <select id="cmbProductType" name="cmbProductType" class="form-control cmbsize106"></select>
+                                <label for="txtProductType">ประเภทสินค้า:</label>
+                                <textarea id="txtProductType" class="form-control txtareasize106 txtarea"></textarea>
+                                @*<select id="cmbProductType" name="cmbProductType" class="form-control cmbsize106"></select>*@
                             </div>
                         </div>
                         <div class="short-div" >
+                            @*Span 2*@
+                            <div class="form-group">
+                                
+                                <label for="txtBrand">ยี่ห้อ:</label>
+                                <input type="text" id="txtBrand" class="form-control" placeholder="" />
+                            </div>
+                        </div>
+                        <div class="short-div">
                             @*Span 2*@
                             <div class="form-group">
                                 <label for="txtSize">ขนาด:</label>
@@ -56,15 +65,10 @@
                         <div class="short-div">
                             @*Span 2*@
                             <div class="form-group">
+                                @*<label for="txtDiscription">รายการสินค้า:</label>
+                                <textarea id="txtDiscription" class="form-control txtareasize106 txtarea"></textarea>*@
                                 <label for="txtModel">รุ่น:</label>
                                 <input type="text" id="txtModel" class="form-control" placeholder="" />
-                            </div>
-                        </div>
-                        <div class="short-div">
-                            @*Span 2*@
-                            <div class="form-group">
-                                <label for="txtDiscription">รายละเอียด:</label>
-                                <textarea id="txtDiscription" class="form-control txtareasize106 txtarea"></textarea>
                             </div>
                         </div>
                     </div>
@@ -80,8 +84,8 @@
                         <div class="short-div">
                             @*Span 3*@
                             <div class="form-group">
-                                <label for="txtBrand">ยี่ห้อ:</label>
-                                <input type="text" id="txtBrand" class="form-control" placeholder="" />
+                                <label for="txtDiscription">รายการเครื่องมือ:</label>
+                                <textarea id="txtDiscription" class="form-control txtareasize106 txtarea"></textarea>
                             </div>
                         </div>
                         <div class="short-div">
@@ -101,8 +105,8 @@
                         <div class="short-div">
                             @*Span 3*@
                             <div class="form-group">
-                                <label for="txtRemark">หมายเหตุ:</label>
-                                <input type="text" id="txtRemark" class="form-control" placeholder="" />
+                                <label for="txtSNGauge">SNGauge:</label>
+                                <input type="text" id="txtSNGauge" class="form-control" placeholder="" />
                             </div>
                         </div>
                     </div>
@@ -158,6 +162,10 @@
                         <div class="form-group">
                             <input type="file" name="photo" id="photo" onchange="readURL(this);" style="color:transparent;">
                             <div class="imgpreview"><img id="imgPreview" alt="your image" class="img-responsive" /></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtRemark">หมายเหตุ:</label>
+                            <textarea id="txtRemark" class="form-control txtareasize106 txtarea"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 spndiv" >

@@ -53,7 +53,7 @@ $(document).ready(function () {
                 html += '<td class="hidecolumn">' + data.Table[i].ID + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].Profile + '</td>';
                 html += '<td class="nopointer">' + data.Table[i].FirstPage + '</td>';
-                html += '<td class="nopointer">';
+                html += '<td class="nopointer padedit">';
                 html += '<a href="/SecurityProfile/EditSecurityProfile?id=' + data.Table[i].ID + '" id="edit' + data.Table[i].ID + '" style="margin-right: 3px;">' + '<img src="/Images/edit.png" class="imgSecurityUpdate"/></a>';
                 html += '<a href="#" id="del' + data.Table[i].ID + '" onclick="ConfirmDialog(' + " 'Delete'" + ',' + "'SecurityProfile'" + ',' + data.Table[i].ID + ')" style="margin-right: 5px;" >' + '<img src="/Images/delete.png" class="imgSecurityDelete"/></a>';
                 html += '<a href="/SecurityProfile/EditSecurityProfile?id=' + data.Table[i].ID + '&IsView=' + true + '" id="read' + data.Table[i].ID + '">' + '<img src="/Images/view.png" class="imgSecurityView" /></a>';

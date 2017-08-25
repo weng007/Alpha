@@ -11,30 +11,47 @@
 @using (Html.BeginForm())
 {
     //===================================================================CSS w3school
-    <form>
-        <ul class="form-style">
-            <li>
-                <label class="label-small-22">Expense Group</label>&nbsp;<label class="label-2">Detail<span class="required">*</span></label>
-                <select id="cmbTypeWorking" class="field-divided text-floatleft text-size180" required autofocus></select>&nbsp;<input type="text" id="txtDetail" class="field-divided text-size180" placeholder="" />
-            </li>
-            <li>
-                <label>Price List<span class="required">*</span></label>
-                <input type="text" id="txtPricelist" class="field-divided text-floatleft text-size120 text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" value="0" onblur="convertFloat('#txtPricelist')" />&nbsp;<label>Bath</label>
-            </li>
-            <li>
-                <label>Sequence<span class="required">*</span></label>
-                <input type="text" id="txtSeq" class="field-divided text-size40 text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" value="1" />
-            </li>
-            <li>
-                <button type="button" class="btn btn-primary mgr10" onclick="Isvalidate('Create', 'ExpenseMaster', 0)">Save</button><button type="button" id="btnCancel" class="btn btn-danger" onclick="Redirect()">Cancel</button>
-            </li>
-        </ul>
-        <br />
-    </form>
+    
+        <form>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label for="txtSerialNo">Expense Group:</label>
+                            <select id="cmbTypeWorking" class="field-divided text-floatleft text-size180" required autofocus></select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label for="txtSerialNo">Detail:</label>
+                            <input type="text" id="txtDetail" class="field-divided text-size180" placeholder="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="form-style">
+                @*<li>
+                    <label class="label-small-22">Expense Group</label>&nbsp;<label class="label-2">Detail<span class="required">*</span></label>
+                    <select id="cmbTypeWorking" class="field-divided text-floatleft text-size180" required autofocus></select>&nbsp;<input type="text" id="txtDetail" class="field-divided text-size180" placeholder="" />
+                </li>*@
+                <li>
+                    <label>Price List (Bath)<span class="required">*</span></label>
+                    <input type="text" id="txtPricelist" class="field-divided text-floatleft text-size120 text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" value="0" onblur="convertFloat('#txtPricelist')" />
+                </li>
+                <li>
+                    <label>Sequence<span class="required">*</span></label>
+                    <input type="text" id="txtSeq" class="field-divided text-size40 text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" value="1" />
+                </li>
+                <li>
+                    <button type="button" class="btn btn-primary mgr10" onclick="Isvalidate('Create', 'ExpenseMaster', 0)">Save</button><button type="button" id="btnCancel" class="btn btn-danger" onclick="Redirect()">Cancel</button>
+                </li>
+            </ul>
+            <br />
+        </form>
 
-}
-<script type="text/javascript">
-    $(document).ready(function () {
-        CheckAuthorization();
-    });
-</script>
+        }
+        <script type="text/javascript">
+            $(document).ready(function () {
+                CheckAuthorization();
+            });
+        </script>
