@@ -711,6 +711,7 @@ function GetdataRequisition(val)
                $('#hidGiver').val(data.Table2[0].Giver);
                $('#hidIsApprove').val(data.Table2[0].IsApprove);
                $('#hidIsReturn').val(data.Table2[0].IsReturn);
+               //alert("JobID "+data.Table2[0].JobID);
                $('#hidJobID').val(data.Table2[0].JobID);
                $('#txtTaker').val(data.Table2[0].TakerName);
                $('#txtApprover').val(data.Table2[0].ApproverName);
@@ -892,6 +893,83 @@ function ApproveRequisition()
                 alert(msg)
             }
         });
+        //alert("update");
+        //alert($('#hidJobID').val());
+        var dataObject = { ID: $('#hidJobID').val() };
+        $.ajax({
+            url: 'http://localhost:13131/api/JobOrderBorrow',
+            type: 'DELETE',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+            },
+            error: function (msg) {
+                alert(msg)
+            }
+        });
+        $(".RowCal6").each(function () {
+            //alert("RequistionID "+$('#hidRequisitionID').val());
+            dataObject.ID = 0;
+            dataObject.RequisitionID = $('#hidRequisitionID').val();
+            dataObject.ProductID = $(this).find('.hidProductID').val();
+            dataObject.Amount = $(this).find('.txtQty').val();
+            dataObject.ReturnGood = $(this).find(".txtGood").val();
+            dataObject.ReturnLost = $(this).find(".txtLost").val();
+            dataObject.ReturnRepair = $(this).find(".txtRepair").val();
+            dataObject.ReturnBad = $(this).find(".txtBad").val();
+            dataObject.Remark = $(this).find(".txtRemark1").val();
+            dataObject.CreateBy = localStorage['UserID'];
+            dataObject.EditBy = localStorage['UserID'];
+
+            if ($('#hidRequisitionID').val() != '' && $(this).find(".hidProductID").val() != '') {
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/JobOrderBorrow',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
+        });
+
+        $(".RowCal7").each(function () {
+            //alert("RequistionID " + $('#hidRequisitionID').val());
+            dataObject.ID = 0;
+            dataObject.RequisitionID = $('#hidRequisitionID').val();
+            dataObject.Description = $(this).find('.txtDescription2').val();
+            dataObject.UnitWeight = $(this).find('.txtUnitWeight2').val();
+            dataObject.Amount = $(this).find('.txtQty2').val();
+            dataObject.ReturnGood = $(this).find(".txtGood2").val();
+            dataObject.ReturnLost = $(this).find(".txtLost2").val();
+            dataObject.ReturnRepair = $(this).find(".txtRepair2").val();
+            dataObject.ReturnBad = $(this).find(".txtBad2").val();
+            dataObject.Remark = $(this).find(".txtRemark2").val();
+            dataObject.CreateBy = localStorage['UserID'];
+            dataObject.EditBy = localStorage['UserID'];
+
+            if ($('#hidRequisitionID').val() != '' && $(this).find(".txtDescription2").val() != '' && $(this).find(".txtQty2").val() != '') {
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/Requisition1',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
+        });
         //alert($('#hidJobID').val());
         window.location.href = "../Requisition/EditRequisition?id=" + $('#hidJobID').val();
     }
@@ -930,6 +1008,84 @@ function ReturnStock() {
             },
             error: function (msg) {
                 alert(msg)
+            }
+        });
+        //alert("update");
+        //alert($('#hidJobID').val());
+        var dataObject = { ID: $('#hidJobID').val() };
+        $.ajax({
+            url: 'http://localhost:13131/api/JobOrderBorrow',
+            type: 'DELETE',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+            },
+            error: function (msg) {
+                alert(msg)
+            }
+        });
+        $(".RowCal6").each(function () {
+            alert("testRowCal6");
+            //alert("RequistionID "+$('#hidRequisitionID').val());
+            dataObject.ID = 0;
+            dataObject.RequisitionID = $('#hidRequisitionID').val();
+            dataObject.ProductID = $(this).find('.hidProductID').val();
+            dataObject.Amount = $(this).find('.txtQty').val();
+            dataObject.ReturnGood = $(this).find(".txtGood").val();
+            dataObject.ReturnLost = $(this).find(".txtLost").val();
+            dataObject.ReturnRepair = $(this).find(".txtRepair").val();
+            dataObject.ReturnBad = $(this).find(".txtBad").val();
+            dataObject.Remark = $(this).find(".txtRemark1").val();
+            dataObject.CreateBy = localStorage['UserID'];
+            dataObject.EditBy = localStorage['UserID'];
+
+            if ($('#hidRequisitionID').val() != '' && $(this).find(".hidProductID").val() != '') {
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/JobOrderBorrow',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
+            }
+        });
+
+        $(".RowCal7").each(function () {
+            //alert("RequistionID " + $('#hidRequisitionID').val());
+            dataObject.ID = 0;
+            dataObject.RequisitionID = $('#hidRequisitionID').val();
+            dataObject.Description = $(this).find('.txtDescription2').val();
+            dataObject.UnitWeight = $(this).find('.txtUnitWeight2').val();
+            dataObject.Amount = $(this).find('.txtQty2').val();
+            dataObject.ReturnGood = $(this).find(".txtGood2").val();
+            dataObject.ReturnLost = $(this).find(".txtLost2").val();
+            dataObject.ReturnRepair = $(this).find(".txtRepair2").val();
+            dataObject.ReturnBad = $(this).find(".txtBad2").val();
+            dataObject.Remark = $(this).find(".txtRemark2").val();
+            dataObject.CreateBy = localStorage['UserID'];
+            dataObject.EditBy = localStorage['UserID'];
+
+            if ($('#hidRequisitionID').val() != '' && $(this).find(".txtDescription2").val() != '' && $(this).find(".txtQty2").val() != '') {
+                $.ajax(
+                {
+                    url: 'http://localhost:13131/api/Requisition1',
+                    type: 'POST',
+                    async: false,
+                    data: dataObject,
+                    datatype: 'json',
+                    success: function (data) {
+                    },
+                    error: function (msg) {
+                        alert(msg)
+                    }
+                });
             }
         });
         //alert($('#hidJobID').val());

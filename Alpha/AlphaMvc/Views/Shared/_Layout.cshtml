@@ -2,7 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        @*<title>@ViewBag.Title - My ASP.NET MVC Application</title>*@
+        <title>@ViewBag.Title</title>
         @*---------------------------- Default --------------------------*@
         <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
         <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />
@@ -54,16 +55,25 @@
         <meta name="viewport" content="width=device-width">
 
     </head>
-    <body class="headerimg">
+    @*<body class="headerimg img-responsive">*@
+
+<body class="headerimg">
+    <div class="table-responsive">
         <header>
             @*<div class="float-left"></div>*@
-            <div>
-                @*<a href="@Url.Action("Index", "Home")" class="imagelogo"></a>*@
-                @*<img src="@Url.Content("~/Images/user.png")" alt="IMAGES" class="imglogon" />*@
-                <label class="logonUser">User:</label> <label id="lblUserName" class="logonname"></label>
-                    @*<img src="@Url.Content("~/Images/log-in.png")" alt="IMAGES" class="imgicon" />*@
+            @*<div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-md-2 col-sm-3 col-lg-12 pad0">
+                        
+                        <label class="logonUser">User:</label>
+                    </div>
+                </div>
+            </div>*@
+                <div>
+                    <label class="logonUser">User:</label>
+                    <label id="lblUserName" class="logonname"></label>
                     <div class="loginname">@Html.ActionLink("Log Out", "IndexLogin", "Login")</div>
-                    @*<div class="table-responsive">*@
+
                     <div class="menulocation">
                         <table border="0" align="center" cellpadding="0" cellspacing="0">
                             <tr>
@@ -171,10 +181,10 @@
                         </table>
                     </div>
                     @*</div>*@
-</div>
-        </header>
+                </div>
+</header>
         <div id="body">
-            <section class="content-wrapper main-content clear-fix">     
+            <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
                 @RenderSection("ShowRptViewer", required: false)
             </section>
@@ -185,10 +195,11 @@
                     <p class="footertext">&copy; @DateTime.Now.Year Alpha Group Co., Ltd. All Rights Reserved.</p>
                 </div>
                 <div class="float-right">
-                    <ul id="social">
-                    </ul>
+                    <ul id="social"></ul>
                 </div>
             </div>
         </footer>
-    </body>
+    </div>
+    
+</body>
 </html>

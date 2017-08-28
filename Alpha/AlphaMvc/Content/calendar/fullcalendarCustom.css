@@ -22,16 +22,16 @@
 #calendar
 {
     margin: 0 auto;
-    width: 45%;  
+    /*width: 45%;*/  
     margin-bottom: 20px; 
-    float: left;
+    /*float: left;*/
 }
 #calendarManPower
 {
     margin: 0 auto;
-    width: 45%;  
+    /*width: 45%;*/  
     margin-bottom: 20px; 
-    float: right;
+    /*float: right;*/
 }
 .topicCarlendar{
     float:left;

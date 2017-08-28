@@ -1,6 +1,6 @@
 ﻿@model AlphaMvc.Models.ExpenseMaster
 @{
-    ViewBag.Title = "CreateExpenseMaster";
+    ViewBag.Title = "ExpenseMaster";
 }
 
 @*<h2>Master Expense Create</h2>*@
@@ -15,37 +15,50 @@
         <form>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                    <div class="col-xs-6 col-sm-2 col-lg-2">
                         <div class="form-group">
-                            <label for="txtSerialNo">Expense Group:</label>
-                            <select id="cmbTypeWorking" class="field-divided text-floatleft text-size180" required autofocus></select>
+                            <label for="cmbTypeWorking">Expense Group:</label>
+                            <select id="cmbTypeWorking" class="form-control text-size140" required autofocus></select>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                    <div class="col-xs-6 col-sm-5 col-lg-5">
                         <div class="form-group">
-                            <label for="txtSerialNo">Detail:</label>
-                            <input type="text" id="txtDetail" class="field-divided text-size180" placeholder="" />
+                            <label for="txtDetail">Detail:</label>
+                            <input type="text" id="txtDetail" class="form-control text-size180" placeholder="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 col-sm-5 col-lg-7 padleft0">
+                        <div class="col-xs-6 col-md-6 col-sm-4 col-lg-2">
+                            <div class="form-group">
+                                <label for="txtPricelist">Price List:<span class="required">*</span></label>
+                                <input type="text" id="txtPricelist" class="form-control text-size100 text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" value="0" onblur="convertFloat('#txtPricelist')" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-6 col-sm-1 col-lg-5">
+                            <div class="form-group">
+                                <label for="txtSerialNo">Sequence:<span class="required">*</span></label>
+                                <input type="text" id="txtSeq" class="form-control text-size40 text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" value="1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-5 col-lg-4 padleft0">
+                        <div class="col-xs-3 col-sm-2 col-lg-2">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary mgr10" onclick="Isvalidate('Create', 'ExpenseMaster', 0)">Save</button>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-3 col-lg-3">
+                            <div class="form-group">
+                                <button type="button" id="btnCancel" class="btn btn-danger" onclick="Redirect()">Cancel</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <ul class="form-style">
-                @*<li>
-                    <label class="label-small-22">Expense Group</label>&nbsp;<label class="label-2">Detail<span class="required">*</span></label>
-                    <select id="cmbTypeWorking" class="field-divided text-floatleft text-size180" required autofocus></select>&nbsp;<input type="text" id="txtDetail" class="field-divided text-size180" placeholder="" />
-                </li>*@
-                <li>
-                    <label>Price List (Bath)<span class="required">*</span></label>
-                    <input type="text" id="txtPricelist" class="field-divided text-floatleft text-size120 text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" value="0" onblur="convertFloat('#txtPricelist')" />
-                </li>
-                <li>
-                    <label>Sequence<span class="required">*</span></label>
-                    <input type="text" id="txtSeq" class="field-divided text-size40 text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 110" value="1" />
-                </li>
-                <li>
-                    <button type="button" class="btn btn-primary mgr10" onclick="Isvalidate('Create', 'ExpenseMaster', 0)">Save</button><button type="button" id="btnCancel" class="btn btn-danger" onclick="Redirect()">Cancel</button>
-                </li>
-            </ul>
             <br />
         </form>
 

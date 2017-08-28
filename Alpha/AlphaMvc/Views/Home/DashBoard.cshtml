@@ -263,12 +263,28 @@ $(document).ready(function () {
 </style>
 @*<h2 class="bigtopic">Job Order</h2>
 <h2 class="bigtopic">Man Power</h2>*@
-<h2 class="topic1">Job Order</h2>
-<h2 class="topic2">Man Power</h2>
-<div id="calendar"></div>
-<div id="calendarManPower"></div>
-<section class="features">
-    <div class="table-responsive">
+
+
+<div class="container-fluid">
+    @*<div class="row">*@
+        <div class="col-xs-12 col-sm-5 col-lg-5 calendarpad">
+            <div class="form-group">
+                <h2 class="topic1">Job Order</h2>
+                <div id="calendar"></div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-lg-5 calendarManpad">
+            <div class="form-group">
+                <h2 class="topic2">Man Power</h2>
+                <div id="calendarManPower"></div>
+            </div>
+        </div>
+    @*</div>*@
+</div>
+    
+    
+    <section class="features">
+
         <table class="barattach-gray">
             <tr>
                 <td>
@@ -277,24 +293,27 @@ $(document).ready(function () {
                 </td>
             </tr>
         </table>
-        <table id="tblExpiredTechnician" class="table tbgray table-striped-gray scrolling">
-            <thead class="bgthead-gray">
-                <tr>
-                    <th class="thgray txtcenter">No.</th>
-                    <th class="hidecolumn">TechnicianID</th>
-                    <th class="thgray">ชื่อ-นามสกุล</th>
-                    <th class="thgray hideANDseek">ตำแหน่ง</th>
-                    <th class="thgray">ประเภทพนักงาน</th>
-                    <th class="thgray hideANDseek">เลขที่บัตร</th>
-                    <th class="thgray">วันหมดอายุ</th>
-                    <th class="hidecolumn">ประเภทบัตร</th>
-                    <th class="thgray">บริษัท</th>
-                    @*<th></th>*@
-                </tr>
-            </thead>
-            <tbody id="ExpiredCard"></tbody>
-        </table>
-    </div>
-        
-</section>
+        <div class="table-responsive">
+            <table id="tblExpiredTechnician" class="table tbgray table-striped-gray scrolling">
+                <thead class="bgthead-gray">
+                    <tr>
+                        <th class="thgray txtcenter">No.</th>
+                        <th class="hidecolumn">TechnicianID</th>
+                        <th class="thgray">ชื่อ-นามสกุล</th>
+                        @*<th class="thgray hideANDseek">ตำแหน่ง</th>*@
+                        <th class="thgray">ตำแหน่ง</th>
+                        <th class="thgray">ประเภทพนักงาน</th>
+                        @*<th class="thgray hideANDseek">เลขที่บัตร</th>*@
+                        <th class="thgray">เลขที่บัตร</th>
+                        <th class="thgray">วันหมดอายุ</th>
+                        <th class="hidecolumn">ประเภทบัตร</th>
+                        <th class="thgray">บริษัท</th>
+                        @*<th></th>*@
+                    </tr>
+                </thead>
+                <tbody id="ExpiredCard"></tbody>
+            </table>
+        </div>
+
+    </section>
 

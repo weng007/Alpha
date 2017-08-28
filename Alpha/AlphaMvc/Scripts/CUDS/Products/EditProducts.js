@@ -40,10 +40,11 @@ $(document).ready(function () {
     });
     $("#dtReceiveDate").datepicker({
         inline: true,
-        showOtherMonths: true
+        showOtherMonths: true,
+        dateFormat: "dd/mm/yy"
     })
     .datepicker('widget').wrap('<div class="ll-skin-santiago"/>');
-    $("#dtReceiveDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
+    //$("#dtReceiveDate").datepicker({ dateFormat: "mm/dd/yy" }).val()
 });
 function ControlEnable(Isview) {
     //var Isview = val;
@@ -86,9 +87,23 @@ function GetData(val) {
        datatype: 'json',
        success: function (data) {
            data = JSON.parse(data);
-           var ReceiveDate = ChangeformatDate(data.Table[0].ReceiveDate, 0);
+           
+           //var ReceiveDate = ChangeformatDate(data.Table[0].ReceiveDate, 0);
+           //alert(ReceiveDate.Year);
+           //if (ReceiveDate.Year == 1970) {
+           //    ReceiveDate = "";
+           //}
+           var ReceiveDate = new Date(data.Table[0].ReceiveDate);
+           //alert(ReceiveDate.getFullYear());
+           if (ReceiveDate.getFullYear() == 1970) {
+               ReceiveDate = "";
+           }
+           else {
+               var ReceiveDate = ChangeformatDate(data.Table[0].ReceiveDate, 0);
+           }
            //var ReceiveDate = new Date(data.Table[0].ReceiveDate);
            //ReceiveDate = (ReceiveDate.getDate() + '/' + (ReceiveDate.getMonth() + 1) + '/' + ReceiveDate.getFullYear());
+
            var baseStr64 = data.Table[0].ImgBase;
            if (baseStr64 != '')
            {

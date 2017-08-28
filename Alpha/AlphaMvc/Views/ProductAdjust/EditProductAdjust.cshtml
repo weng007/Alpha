@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "EditProductAdjust";
+    ViewBag.Title = "StockAdjust";
 }
 
 <script src="@Url.Content("~/Scripts/CUDS/ProductAdjustment/EditProductAdjustment.js")" type="text/javascript"></script>
@@ -76,7 +76,7 @@
                     <label class="label-2">Serial Number <span class="required">*</span></label>
                 </li>
                 <li>
-                    <input type="text" id="txtSerialNo" name="field_1" class="field-divided" placeholder="Serial" required disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#productsDialog" onclick="BrowseProducts()">
+                    <input type="text" id="txtSerialNo" name="field_1" class="field-divided" placeholder="" required disabled />&nbsp;<a href="#" data-toggle="modal" data-target="#productsDialog" onclick="BrowseProducts()">
                         <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
                     </a>
                     <input type="hidden" id="hidProductID" />

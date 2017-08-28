@@ -1,6 +1,6 @@
 ﻿@model AlphaMvc.Models.BDCModels
 @{
-    ViewBag.Title = "EditBDC";
+    ViewBag.Title = "BDC";
 }
 <style>
     body {
@@ -96,71 +96,80 @@
     @using (Html.BeginForm())
     {
         <form>
-            <ul class="form-style-1">
-                <li>
-                    <label class="btnnew">Revise</label>&nbsp;<img src="@Url.Content("~/images/btnNewVersion.png")" alt="IMAGES" id="btnversionUpdate" class="btnnewversionUpdate" onclick="ConfirmRevise()" />
-                </li>
-                <li>
-                    <input type="text" id="txtDocver" name="field1" class="field-select-small-2" placeholder="V1" disabled />
-                </li>
-                <li>
-                    <input type="text" id="txtBDCNo" name="field1" class="text-size160" disabled />
-                    <input type="hidden" id="hidBDCNo" />
-                </li>
-                <li>
-                    <label>ใบเสนอราคา<span class="required">*</span></label>
-                    <input type="text" id="txtQuoNo" name="txtQuoNo" class="field-select-big" placeholder="ใบเสนอราคา" />&nbsp;<a href="#" id="imgQuotation" data-toggle="modal" data-target="#quotationDialog" onclick="BrowseQuotation()">
-                        <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
-                    </a>
-                    <input type="hidden" id="hidQuoID" />
-                </li>
-            </ul>
-            <ul class="form-style-1">
-                <li>
-                    <label class="label-small-20" id="lblPrice">ราคาขาย<span class="required">*</span></label>&nbsp;<label class="label-small-20" id="lblCost">ราคาทุน<span class="required">*</span></label>
-                    <input type="text" id="txtPrice" name="field1" class="text-size130 text-right" placeholder="ราคาขาย" disabled />&nbsp;<input type="text" id="txtCost" name="field2" class="text-size130 text-right" placeholder="ราคาทุน" disabled/>
-                </li>
-                <li>
-                    <label id="lblProfit">กำไร<span class="required">*</span></label>
-                    <input type="text" id="txtProfit" name="field1" class="text-size130 text-right" placeholder="กำไร"disabled />
-                </li>
-            </ul>
-            <ul class="form-style-1">
-                <li>
-                    <label>หมายเหตุ<span class="required">*</span></label>
-                    <textarea name="field5" id="txtRemark" class="field-long field-textarea"></textarea>
-                </li>
-                <br />
-            </ul>
-            @*//===================================================================CSS w3school*@
-            <table class="barattach-2">
-                <tr>
-                    <td>
-                        <label class="topicmargin-size70">Job Order</label>
-                        <button type="button" id="btnSave" class="btnCreate" onclick="OpenJobOrder(@Request.Params["id"])"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" id="imgJobOrderCreate" /></button>
-                        <input type="hidden" id="hidBDCID" />
-                    </td>
-                </tr>
-            </table>
-            <div class="table-responsive">
-                <table id="tblBDCJOb" class="table tbpuple table-striped-puple scrolling" onended="SetPaging()">
-                    <thead class="bgthead-puple">
-                        <tr>
-                            <th class="thgray">No.</th>
-                            <th class="thgray">Job No.</th>
-                            <th class="thgray">วันที่</th>
-                            <th class="thgray">ลูกค้า</th>
-                            <th class="thgray">เบอร์โทร</th>
-                            <th class="thgray hideANDseek">บุคคลติดต่อ</th>
-                            <th class="thgray hideANDseek">ผู้ประสานงาน</th>
-                            <th class="thgray hideANDseek">หมายเหตุ</th>
-                            <th class="thgray"></th>
-                        </tr>
-                    </thead>
-                    <tbody id="result"></tbody>
+            @*<div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-3 col-lg-2">
+                        <div class="form-group">
+                            <label class="btnnew">Revise</label>&nbsp;<img src="@Url.Content("~/images/btnNewVersion.png")" alt="IMAGES" id="btnversionUpdate" class="btnnewversionUpdate" onclick="ConfirmRevise()" />
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+                <ul class="form-style-1">
+                    <li>
+                        <label class="btnnew">Revise</label>&nbsp;<img src="@Url.Content("~/images/btnNewVersion.png")" alt="IMAGES" id="btnversionUpdate" class="btnnewversionUpdate" onclick="ConfirmRevise()" />
+                    </li>
+                    <li>
+                        <input type="text" id="txtDocver" name="field1" class="field-select-small-2" placeholder="V1" disabled />
+                    </li>
+                    <li>
+                        <input type="text" id="txtBDCNo" name="field1" class="text-size160" disabled />
+                        <input type="hidden" id="hidBDCNo" />
+                    </li>
+                    <li>
+                        <label>ใบเสนอราคา<span class="required">*</span></label>
+                        <input type="text" id="txtQuoNo" name="txtQuoNo" class="field-select-big" placeholder="ใบเสนอราคา" />&nbsp;<a href="#" id="imgQuotation" data-toggle="modal" data-target="#quotationDialog" onclick="BrowseQuotation()">
+                            <img src="@Url.Content("~/Images/search-engine.png")" class="btnimage" />
+                        </a>
+                        <input type="hidden" id="hidQuoID" />
+                    </li>
+                </ul>
+                <ul class="form-style-1">
+                    <li>
+                        <label class="label-small-20" id="lblPrice">ราคาขาย<span class="required">*</span></label>&nbsp;<label class="label-small-20" id="lblCost">ราคาทุน<span class="required">*</span></label>
+                        <input type="text" id="txtPrice" name="field1" class="text-size130 text-right" placeholder="ราคาขาย" disabled />&nbsp;<input type="text" id="txtCost" name="field2" class="text-size130 text-right" placeholder="ราคาทุน" disabled />
+                    </li>
+                    <li>
+                        <label id="lblProfit">กำไร<span class="required">*</span></label>
+                        <input type="text" id="txtProfit" name="field1" class="text-size130 text-right" placeholder="กำไร" disabled />
+                    </li>
+                </ul>
+                <ul class="form-style-1">
+                    <li>
+                        <label>หมายเหตุ<span class="required">*</span></label>
+                        <textarea name="field5" id="txtRemark" class="field-long field-textarea"></textarea>
+                    </li>
+                    <br />
+                </ul>
+                @*//===================================================================CSS w3school*@
+                <table class="barattach-2">
+                    <tr>
+                        <td>
+                            <label class="topicmargin-size70">Job Order</label>
+                            <button type="button" id="btnSave" class="btnCreate" onclick="OpenJobOrder(@Request.Params["id"])"><img src="@Url.Content("~/Images/btnAdd.png")" class="btnimage-2" id="imgJobOrderCreate" /></button>
+                            <input type="hidden" id="hidBDCID" />
+                        </td>
+                    </tr>
                 </table>
-            </div>
-                
+                <div class="table-responsive">
+                    <table id="tblBDCJOb" class="table tbpuple table-striped-puple scrolling" onended="SetPaging()">
+                        <thead class="bgthead-puple">
+                            <tr>
+                                <th class="thgray">No.</th>
+                                <th class="thgray">Job No.</th>
+                                <th class="thgray">วันที่</th>
+                                <th class="thgray">ลูกค้า</th>
+                                <th class="thgray">เบอร์โทร</th>
+                                <th class="thgray hideANDseek">บุคคลติดต่อ</th>
+                                <th class="thgray hideANDseek">ผู้ประสานงาน</th>
+                                <th class="thgray hideANDseek">หมายเหตุ</th>
+                                <th class="thgray"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="result"></tbody>
+                    </table>
+                </div>
+
                 <ul class="form-style-1">
                     <li>
                         <button type="button" id="btnSave1" class="btn btn-primary mgr10" onclick="Isvalidate('Update', 'BDC', @Request.Params["id"])">Save</button>

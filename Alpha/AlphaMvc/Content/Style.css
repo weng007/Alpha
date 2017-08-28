@@ -29,7 +29,8 @@
 {
     /*width: 200px;*/
     float: left;
-    margin-right: 20%;
+    margin-right: 44%;
+    /*margin-right: 20%;*/
 }
 .width-190{
     margin-right: 5px !important;
@@ -217,6 +218,12 @@
     display: none;
 }
  @media screen and (max-width:680px) {
+     .topicmargin-size67 {
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+    margin-right: 10%;
+}
      .form-style-1 {
         /*margin:10px auto;
         max-width: 400px;
@@ -323,7 +330,8 @@
     /* padding-top: 5px; */
     /* margin-left: 5px; */
     margin-top: 10px;
-    margin-left: 1185px;
+    margin-left: 88%;
+    /*margin-left: 1185px;*/
     z-index: 1;
 }
 .btnimage-3{
@@ -383,8 +391,8 @@
         position: absolute;
         /* padding-top: 5px; */
         /* margin-left: 5px; */
-        margin-top: 3%;
-        margin-left: 10px;
+        margin-top: 2%;
+        margin-left: 83%;
         z-index: 1;
     }
             .btnimage-3{
@@ -877,6 +885,12 @@ select{
     outline: none;  
 }
  @media screen and (max-width:680px) {
+         .topic1 {
+            display: none;
+        }
+         .topic2 {
+            display: none;
+        }
         td  select{
         box-sizing: border-box;
         -webkit-box-sizing: border-box;
@@ -1070,19 +1084,18 @@ select{
     display: inline-block;
     margin-left: 80%;
     margin-top: 8.8%;
-    /*margin-top: 1.5%;*/
-    position: absolute;
+    position: absolute;;
 }
 .logonUser{
     /*background-color: #f44336;*/
-    color: #4b7490;
+        color: #4b7490;
     padding: 5px 23px;
+    /* padding-left: 15px; */
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin-left: 77%;
     margin-top: 8.8%;
-    /*margin-top: 1.5%;*/
     position: absolute;
 }
 .imgicon{
@@ -1095,27 +1108,29 @@ select{
 .loginname a{
     background-color: #c93237;
     color: white;
-    /*padding: 5px 25px;*/
-    padding: 5px 20px;
+    /* height: 25px; */
+    padding: 5px 25px;
+    /* padding: 5px 20px; */
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin-left: 90%;
-     margin-top: 8.8%;
-    /*margin-top: 1.5%;*/
+    /* margin-top: 10px; */
+    margin-top: 8.8%;
     position: absolute;
 }
 .loginname a:hover{
     background-color: #e3343a;
     color: white;
-    /*padding: 5px 25px;*/
-    padding: 5px 20px;
+    /* height: 25px; */
+    padding: 5px 25px;
+    /* padding: 5px 20px; */
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin-left: 90%;
+    /* margin-top: 10px; */
     margin-top: 8.8%;
-    /*margin-top: 1.5%;*/
     position: absolute;
 }
 .bgthead{

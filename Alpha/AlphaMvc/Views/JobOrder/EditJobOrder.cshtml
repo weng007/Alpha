@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "EditJobOrder";
+    ViewBag.Title = "JobOrder";
 }
 
 @*<h2>
@@ -124,7 +124,7 @@
                 <textarea name="field5" id="txtAddress" class="field-long field-textarea" placeholder="ที่อยู่" disabled></textarea>
             </li>
             <li>
-                <label class="label-2">EST Reference</label>
+                <label class="label-2 float-none">EST Reference</label>
             </li>
             <li>
                 <input type="text" id="txtJobReference" name="field1" class="field-divided" placeholder="Job Reference" disabled />
@@ -474,7 +474,7 @@
                                 </div>
                                 <div>
                                     <div class="wrapper">
-                                        <div class="tbresponsive">
+                                        <div class="myDIV">
                                             <table id="tabManpower" class="example">
                                                 <thead class="theader">
                                                     <tr>
@@ -761,239 +761,245 @@
                                 </div>*@
                                 <div>
                                     <div class="wrapper">
-                                        <table id="tabSaleOrder" class="example">
-                                            <thead class="theader">
-                                                <tr>
-                                                    <th></th>
-                                                    <th>No.</th>
-                                                    <th class="hidecolumn">ID</th>
-                                                    <th class="hidecolumn">JobID</th>
-                                                    <th>SO No.</th>
-                                                    <th class="gvAmount">จำนวนเงิน</th>
-                                                    <th colspan="5"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tBodyRowSaleOrder">
-                                                <tr class="RowCal2">
-                                                    <td>
-                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                    </td>
-                                                    <td>
-                                                        <input id="No" type="text" value="" class="tdno" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="SaleOrderID" type="text" value="" class="SaleOrderID" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="JobID" type="text" value="" class="JobID" disabled />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2',4)">
-                                                    </td>
-                                                    <td>
-                                                        <div class="clone-1"><img class="cloneRowSaleOrder row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
-                                                    </td>
-                                                    <td style="padding-right: 5px;">
-                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                    </td>
-                                                </tr>
-                                                <tr class="RowCal2" id="add-template3">
-                                                    <td>
-                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                    </td>
-                                                    <td>
-                                                        <input id="No" type="text" value="" class="tdno" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="SaleOrderID" type="text" value="" class="SaleOrderID" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="JobID" type="text" value="" class="JobID" disabled />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2',4)">
-                                                    </td>
-                                                    <td>
-                                                        <div class="clone-1"><img class="cloneRowSaleOrder row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
-                                                    </td>
-                                                    <td style="padding-right: 5px;">
-                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div class="myDIV">
+                                            <table id="tabSaleOrder" class="example">
+                                                <thead class="theader">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>No.</th>
+                                                        <th class="hidecolumn">ID</th>
+                                                        <th class="hidecolumn">JobID</th>
+                                                        <th>SO No.</th>
+                                                        <th class="gvAmount">จำนวนเงิน</th>
+                                                        <th colspan="5"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tBodyRowSaleOrder">
+                                                    <tr class="RowCal2">
+                                                        <td>
+                                                            <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="No" type="text" value="" class="tdno" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="SaleOrderID" type="text" value="" class="SaleOrderID" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="JobID" type="text" value="" class="JobID" disabled />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2',4)">
+                                                        </td>
+                                                        <td>
+                                                            <div class="clone-1"><img class="cloneRowSaleOrder row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                                        </td>
+                                                        <td style="padding-right: 5px;">
+                                                            <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="RowCal2" id="add-template3">
+                                                        <td>
+                                                            <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="No" type="text" value="" class="tdno" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="SaleOrderID" type="text" value="" class="SaleOrderID" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="JobID" type="text" value="" class="JobID" disabled />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size180 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtAmount" class="Amount2 text-size120 textright" onblur="convertFloat('.Amount2',4)">
+                                                        </td>
+                                                        <td>
+                                                            <div class="clone-1"><img class="cloneRowSaleOrder row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                                        </td>
+                                                        <td style="padding-right: 5px;">
+                                                            <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>                
                                         <a id="add-row3" href="#" onblur="SetRowIndex()">+ Add Row</a>
-                                        @*<button id="add-row3" class="btn btn-primary">Add Row</button>*@
-                                    </div>
+                                            @*<button id="add-row3" class="btn btn-primary">Add Row</button>*@
+                                        </div>
                                     <p></p>
 
                                     <div class="clr"></div>
                                 </div>
                                 <div>
                                     <div class="wrapper">
-                                        <table id="tabInvoice" class="example">
-                                            <thead class="theader">
-                                                <tr>
-                                                    <th></th>
-                                                    <th>No.</th>
-                                                    <th class="hidecolumn">ID</th>
-                                                    <th class="hidecolumn">JobID</th>
-                                                    <th>Inv No</th>
-                                                    <th>So No.</th>
-                                                    <th class="gvAmount">จำนวนเงิน</th>
-                                                    <th colspan="5"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tBodyRowInvoice">
-                                                <tr class="RowCal3">
-                                                    <td>
-                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                    </td>
-                                                    <td>
-                                                        <input id="No" type="text" value="" class="tdno" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="InvoiceID" type="text" value="" class="InvoiceID" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="JobID" type="text" value="" class="JobID" disabled />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3',5)">
-                                                    </td>
-                                                    <td>
-                                                        <div class="clone-1"><img class="cloneRowInvoice row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
-                                                    </td>
-                                                    <td style="padding-right: 5px;">
-                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                    </td>
-                                                </tr>
-                                                <tr class="RowCal3" id="add-template4">
-                                                    <td>
-                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                    </td>
-                                                    <td>
-                                                        <input id="No" type="text" value="" class="tdno" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="InvoiceID" type="text" value="" class="InvoiceID" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="JobID" type="text" value="" class="JobID" disabled />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3',5)">
-                                                    </td>
-                                                    <td>
-                                                        <div class="clone-1"><img class="cloneRowInvoice row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
-                                                    </td>
-                                                    <td style="padding-right: 5px;">
-                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <a id="add-row4" href="#" onblur="SetRowIndex()">+ Add Row</a>
-                                        @*<button id="add-row4" class="btn btn-primary">Add Row</button>*@
-                                    </div>
+                                        <div class="myDIV">
+                                            <table id="tabInvoice" class="example">
+                                                <thead class="theader">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>No.</th>
+                                                        <th class="hidecolumn">ID</th>
+                                                        <th class="hidecolumn">JobID</th>
+                                                        <th>Inv No</th>
+                                                        <th>So No.</th>
+                                                        <th class="gvAmount">จำนวนเงิน</th>
+                                                        <th colspan="5"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tBodyRowInvoice">
+                                                    <tr class="RowCal3">
+                                                        <td>
+                                                            <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="No" type="text" value="" class="tdno" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="InvoiceID" type="text" value="" class="InvoiceID" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="JobID" type="text" value="" class="JobID" disabled />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3',5)">
+                                                        </td>
+                                                        <td>
+                                                            <div class="clone-1"><img class="cloneRowInvoice row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                                        </td>
+                                                        <td style="padding-right: 5px;">
+                                                            <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="RowCal3" id="add-template4">
+                                                        <td>
+                                                            <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="No" type="text" value="" class="tdno" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="InvoiceID" type="text" value="" class="InvoiceID" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="JobID" type="text" value="" class="JobID" disabled />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtSaleOrderNo" class="SaleOrderNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtAmount" class="Amount3 text-size120 textright" onblur="convertFloat('.Amount3',5)">
+                                                        </td>
+                                                        <td>
+                                                            <div class="clone-1"><img class="cloneRowInvoice row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                                        </td>
+                                                        <td style="padding-right: 5px;">
+                                                            <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                            <a id="add-row4" href="#" onblur="SetRowIndex()">+ Add Row</a>
+                                            @*<button id="add-row4" class="btn btn-primary">Add Row</button>*@
+                                        </div>
                                     <p></p>
 
                                     <div class="clr"></div>
                                 </div>
                                 <div>
                                     <div class="wrapper">
-                                        <table id="tabReceipt" class="example">
-                                            <thead class="theader">
-                                                <tr>
-                                                    <th></th>
-                                                    <th>No.</th>
-                                                    <th class="hidecolumn">ID</th>
-                                                    <th class="hidecolumn">JobID</th>
-                                                    <th>Rep No.</th>
-                                                    <th>Inv No.</th>
-                                                    <th class="gvAmount">จำนวนเงิน</th>
-                                                    <th colspan="5"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tBodyRowReceipt">
-                                                <tr class="RowCal4">
-                                                    <td>
-                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                    </td>
-                                                    <td>
-                                                        <input id="No" type="text" value="" class="tdno" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="ReceiptID" type="text" value="" class="ReceiptID" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="JobID" type="text" value="" class="JobID" disabled />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4',6)">
-                                                    </td>
-                                                    <td>
-                                                        <div class="clone-1"><img class="cloneRowReceipt row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
-                                                    </td>
-                                                    <td style="padding-right: 5px;">
-                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                    </td>
-                                                </tr>
-                                                <tr class="RowCal4" id="add-template5">
-                                                    <td>
-                                                        <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
-                                                    </td>
-                                                    <td>
-                                                        <input id="No" type="text" value="" class="tdno" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="ReceiptID" type="text" value="" class="ReceiptID" disabled />
-                                                    </td>
-                                                    <td class="hidecolumn">
-                                                        <input id="JobID" type="text" value="" class="JobID" disabled />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4',6)">
-                                                    </td>
-                                                    <td>
-                                                        <div class="clone-1"><img class="cloneRowReceipt row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
-                                                    </td>
-                                                    <td style="padding-right: 5px;">
-                                                        <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div class="myDIV">
+                                            <table id="tabReceipt" class="example">
+                                                <thead class="theader">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>No.</th>
+                                                        <th class="hidecolumn">ID</th>
+                                                        <th class="hidecolumn">JobID</th>
+                                                        <th>Rep No.</th>
+                                                        <th>Inv No.</th>
+                                                        <th class="gvAmount">จำนวนเงิน</th>
+                                                        <th colspan="5"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tBodyRowReceipt">
+                                                    <tr class="RowCal4">
+                                                        <td>
+                                                            <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="No" type="text" value="" class="tdno" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="ReceiptID" type="text" value="" class="ReceiptID" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="JobID" type="text" value="" class="JobID" disabled />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4',6)">
+                                                        </td>
+                                                        <td>
+                                                            <div class="clone-1"><img class="cloneRowReceipt row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                                        </td>
+                                                        <td style="padding-right: 5px;">
+                                                            <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="RowCal4" id="add-template5">
+                                                        <td>
+                                                            <img class="drag-handle" src="@Url.Content("~/images/drag.png")" alt="click and drag to rearrange" />
+                                                        </td>
+                                                        <td>
+                                                            <input id="No" type="text" value="" class="tdno" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="ReceiptID" type="text" value="" class="ReceiptID" disabled />
+                                                        </td>
+                                                        <td class="hidecolumn">
+                                                            <input id="JobID" type="text" value="" class="JobID" disabled />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtReceiptNo" class="ReceiptNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtInvoiceNo" class="InvoiceNo text-size165 textleft">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" id="txtAmount" class="Amount4 text-size120 textright" onblur="convertFloat('.Amount4',6)">
+                                                        </td>
+                                                        <td>
+                                                            <div class="clone-1"><img class="cloneRowReceipt row-cloner" src="@Url.Content("~/images/clone.png")" alt="Clone Row" /></div>
+                                                        </td>
+                                                        <td style="padding-right: 5px;">
+                                                            <img class="row-remover" src="@Url.Content("~/images/remove.png")" alt="Remove Row" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                         <a id="add-row5" href="#" onblur="SetRowIndex()">+ Add Row</a>
                                         @*<button id="add-row5" class="btn btn-primary">Add Row</button>*@
                                     </div>
