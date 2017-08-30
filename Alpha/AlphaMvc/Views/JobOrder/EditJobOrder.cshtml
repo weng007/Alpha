@@ -431,50 +431,72 @@
                                         <a id="add-row7" href="#" onblur="SetRowIndex()" onclick="AddRowExpense()">+ Add Row</a>
                                         @*<button id="add-row7" onclick="AddRowExpense()" class="btn btn-primary">Add Row</button>*@
                                         @*<div class="myDIV">*@
-                                        <table class="tableexpense">
-                                            <tr>
-                                                <td>
-                                                    <ul class="form-style">
-                                                        <li>
-                                                            <label class="lblNoCompound label-small-5">ราคาขายไม่รวม compound</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="text" id="txtNoCompound" name="field6" class="text-size130 txtdisablerow" disabled />
-                                                        </li>
-                                                        <li>
-                                                            <label class="lblExpense label-small-3">ต้นทุน(Manpower and Tool Cost)</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="text" id="txtExpense" name="field6" class="text-size130 txtdisablerow" value="0" disabled />
-                                                        </li>
-                                                        <li>
-                                                            <label class="lblExpense label-small-16">ค่า Man Job (Tab Manpower)</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="text" id="txtManJob" name="field6" class="text-size130 txtdisablerow" value="0" disabled />
-                                                        </li>
-                                                        <li>
-                                                            <label class="lblProfit label-small-6">กำไร</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="text" id="txtProfit" name="field6" class="text-size130 txtdisablerow" disabled />
-                                                        </li>
-                                                        <li>
-                                                            <label class="lblProfit label-small-51">กำไร %</label>
-                                                        </li>
-                                                        <li>
-                                                            <input type="text" id="txtProfitPersent" name="field6" class="text-size130 txtdisablerow" disabled />
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-2 col-sm-8 col-xs-12">
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                        <label class="lblNoCompound">ราคาขายไม่รวม compound</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                    <div class="form-group">
+                                                        <input type="text" id="txtNoCompound" name="field6" class="text-size130 txtdisablerow" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-2 col-sm-8 col-xs-12">
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                        <label class="lblExpense">ต้นทุน(Manpower and Tool Cost)</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                    <div class="form-group">
+                                                        <input type="text" id="txtExpense" name="field6" class="text-size130 txtdisablerow" value="0" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-2 col-sm-8 col-xs-12">
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                        <label class="lblExpense">ค่า Man Job (Tab Manpower)</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                    <div class="form-group">
+                                                        <input type="text" id="txtManJob" name="field6" class="text-size130 txtdisablerow" value="0" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-2 col-sm-8 col-xs-12">
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                        <label class="lblProfit">กำไร</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                    <div class="form-group">
+                                                        <input type="text" id="txtProfit" name="field6" class="text-size130 txtdisablerow" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-2 col-sm-8 col-xs-12">
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                        <label class="lblProfit">กำไร %</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                    <div class="form-group">
+                                                        <input type="text" id="txtProfitPersent" name="field6" class="text-size130 txtdisablerow" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         @*</div>*@
                                     </div>
                                 </div>
                                 <div>
                                     <div class="wrapper">
-                                        <div class="myDIV">
+                                        <div class="manDIV">
                                             <table id="tabManpower" class="example">
                                                 <thead class="theader">
                                                     <tr>

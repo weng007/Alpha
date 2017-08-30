@@ -1026,7 +1026,7 @@ function ReturnStock() {
             }
         });
         $(".RowCal6").each(function () {
-            alert("testRowCal6");
+            //alert("testRowCal6");
             //alert("RequistionID "+$('#hidRequisitionID').val());
             dataObject.ID = 0;
             dataObject.RequisitionID = $('#hidRequisitionID').val();

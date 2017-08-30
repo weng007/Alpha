@@ -1114,9 +1114,8 @@ select{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin-left: 90%;
-    /* margin-top: 10px; */
-    margin-top: 8.8%;
+    /*margin-left: 90%;*/
+    /*margin-top: 8.8%;*/
     position: absolute;
 }
 .loginname a:hover{
@@ -1128,9 +1127,8 @@ select{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin-left: 90%;
-    /* margin-top: 10px; */
-    margin-top: 8.8%;
+    /*margin-left: 90%;
+    margin-top: 8.8%;*/
     position: absolute;
 }
 .bgthead{
