@@ -166,34 +166,40 @@ function CreateData() {
             if (window.FormData !== undefined) {
                 var fileUpload = document.getElementById('FileUpload1').files;
                 for (var i = 0; i < fileUpload.length; i++) {
+                    //alert(fileUpload[i].name);
                     var date = new Date();
                     var d = date.getDate();
                     var m = date.getMonth();
                     var y = date.getYear();
-                    var str = y.toString();
-                    var res = str.substring(1, 3);
-                    var date2 = d + "_" + m + "_" + res + "_";
-                    var AttachFileName = date2 + fileUpload[i].name;
+                    var tmp1 = y.toString();
+                    var  tmp2 = tmp1.substring(1, 3);
+                    var tmpDate = d + "_" + m + "_" + tmp2 + "_";
+                    var AttachFileName = tmpDate + fileUpload[i].name;
+                    //alert(fileUpload[i].name);
                     var AttachPath = ("../Attach/Product/" + AttachFileName);
-                    var readresult;
-                    var str;
+                    var readResult;
+                    var img;
 
                     var reader = new FileReader();
                     reader.readAsDataURL(fileUpload[i]);
+                    //alert('after ' + fileUpload[i].name);
                     reader.onload = function () {
-                    readresult = reader.result;
-                    var res = readresult.split(",");
-                    str = res[1];
-                    str = str.toString();
-                    var dataObject = { RefID: ProductID, AttachName: AttachFileName, AttachPath: AttachPath, AttachData: str, CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
-                    
+                        readResult = reader.result;
+                        var imgSource = readResult.split(",");
+                        //alert("res0 " + imgSource[0]);
+                        //alert("res01 " + imgSource[1]);
+                        img = imgSource[1];
+                        img = img.toString();
+                        //alert("str "+str);
+                        var dataObject = { RefID: ProductID, AttachName: AttachFileName, AttachPath: AttachPath, AttachData: img, CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
+
                         $.ajax(
                         {
                             url: 'http://localhost:13131/api/ProductFiles',
                             type: 'POST',
                             data: dataObject,
                             datatype: 'json',
-                            async:false,
+                            async: false,
                             success: function (data) {
                                 //alert('Update is completed');
                             }
@@ -203,7 +209,7 @@ function CreateData() {
                             }
                         });
 
-                    };
+                    }
                     reader.onerror = function (error) {
                         console.log('Error: ', error);
                     };
