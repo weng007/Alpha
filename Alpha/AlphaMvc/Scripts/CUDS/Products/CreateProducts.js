@@ -180,17 +180,14 @@ function CreateData() {
                     var readResult;
                     var img;
 
+
                     var reader = new FileReader();
                     reader.readAsDataURL(fileUpload[i]);
-                    //alert('after ' + fileUpload[i].name);
-                    reader.onload = function () {
+                    reader.onloadend = function () {
                         readResult = reader.result;
                         var imgSource = readResult.split(",");
-                        //alert("res0 " + imgSource[0]);
-                        //alert("res01 " + imgSource[1]);
                         img = imgSource[1];
                         img = img.toString();
-                        //alert("str "+str);
                         var dataObject = { RefID: ProductID, AttachName: AttachFileName, AttachPath: AttachPath, AttachData: img, CreateBy: localStorage['UserID'], EditBy: localStorage['UserID'] };
 
                         $.ajax(
@@ -208,7 +205,6 @@ function CreateData() {
                                 //alert(msg);
                             }
                         });
-
                     }
                     reader.onerror = function (error) {
                         console.log('Error: ', error);
@@ -218,7 +214,7 @@ function CreateData() {
                 alert("FormData is not supported.");
             }
 
-        }
+        } // ifProductID
     
         window.location.href = "../Products/EditProducts?id=" + ProductID;
 }

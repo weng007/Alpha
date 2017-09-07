@@ -24,6 +24,7 @@ namespace AlphaApi.DataAccessLayer
                     SqlCommand cmd = new SqlCommand("SP_User_Ins", conObj);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@UserName", userLoginModels.UserName);
+                    cmd.Parameters.AddWithValue("@Password", userLoginModels.Password);
                     cmd.Parameters.AddWithValue("@FirstName", userLoginModels.FirstName != null && userLoginModels.FirstName != "" ? userLoginModels.FirstName : "");
                     cmd.Parameters.AddWithValue("@LastName", userLoginModels.LastName != null && userLoginModels.LastName != "" ? userLoginModels.LastName : "");
                     cmd.Parameters.AddWithValue("@Email", userLoginModels.Email != null && userLoginModels.Email != "" ? userLoginModels.Email : "");
@@ -123,6 +124,7 @@ namespace AlphaApi.DataAccessLayer
             string domainAndUser;
             string Errmsg = "";
             string userName;
+            string Password;
             using (SqlConnection conObj = new SqlConnection(conStr))
             {
                 try
@@ -136,6 +138,7 @@ namespace AlphaApi.DataAccessLayer
                     da.SelectCommand = cmd;
                     da.Fill(userDS.ADUser);
                     userName = userDS.ADUser.Rows[0]["UserName"].ToString();
+                    Password = userDS.ADUser.Rows[0]["Password"].ToString();
                     //seurityID = Convert.ToInt32(ds.Tables[0].Rows[0]["SecurityID"]) 
 
 
@@ -257,66 +260,75 @@ namespace AlphaApi.DataAccessLayer
             bool isAuthen = false;
             try
             {
-                if (userName == "Administrator")
-                {
-                    ADPath = ConfigurationManager.AppSettings["DirectoryPath"];
-                }
-                else
-                {
-                    ADPath = "LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local";
-                }
-                domainName = ConfigurationManager.AppSettings["DirectoryDomain"];
-                if(!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(domainName))
-                {
-                    domainAndUser = domainName + @"\" + userName;
-                    DirectoryEntry entry = new DirectoryEntry(ADPath, domainAndUser, password);
-                    try
-                    {
-                        //Check ว่า User ที่จะ login เข้ามามีอยู่ใน AD หรือไม่ 
-                        object obj = entry.NativeObject;
-                        DirectorySearcher search = new DirectorySearcher(entry);
-                        search.Filter = "(SAMAccountName=" + userName + ")";
-                        search.PropertiesToLoad.Add("givenname");
-                        search.PropertiesToLoad.Add("sn");
-                        SearchResult result = search.FindOne();
-                        if (result != null)
-                        {
-                            dsUser.ADUserRow dr = userDS.ADUser.NewADUserRow();
-                            dr["FirstName"] = result.Properties["givenname"].Count > 0 ? (String)result.Properties["givenname"][0] : "";
-                            dr["LastName"] = result.Properties["sn"].Count > 0 ? (String)result.Properties["sn"][0] : "";
-                            userDS.ADUser.AddADUserRow(dr);
-                            isAuthen = true;
-                        }
-                        else
-                        {
-                            //ถ้าไม่มี
-                            isAuthen = false;
-                        }
-                        //LdapPath = result.Path;
+                //if (userName == "Administrator")
+                //{
+                //    ADPath = ConfigurationManager.AppSettings["DirectoryPath"];
+                //}
+                //else
+                //{
+                //    ADPath = "LDAP://alphagroup.local/OU=DEPARTMENT,OU=Users,OU=AGC,DC=alphagroup,DC=local";
+                //}
+                //domainName = ConfigurationManager.AppSettings["DirectoryDomain"];
+                //if(!String.IsNullOrEmpty(ADPath) && !String.IsNullOrEmpty(domainName))
+                //{
+                    //domainAndUser = domainName + @"\" + userName;
+                    //DirectoryEntry entry = new DirectoryEntry(ADPath, domainAndUser, password);
+                    //try
+                    //{
+                    //    //Check ว่า User ที่จะ login เข้ามามีอยู่ใน AD หรือไม่ 
+                    //    object obj = entry.NativeObject;
+                    //    DirectorySearcher search = new DirectorySearcher(entry);
+                    //    search.Filter = "(SAMAccountName=" + userName + ")";
+                    //    search.PropertiesToLoad.Add("givenname");
+                    //    search.PropertiesToLoad.Add("sn");
+                    //    SearchResult result = search.FindOne();
+                    //    if (result != null)
+                    //    {
+                    //        dsUser.ADUserRow dr = userDS.ADUser.NewADUserRow();
+                    //        dr["FirstName"] = result.Properties["givenname"].Count > 0 ? (String)result.Properties["givenname"][0] : "";
+                    //        dr["LastName"] = result.Properties["sn"].Count > 0 ? (String)result.Properties["sn"][0] : "";
+                    //        userDS.ADUser.AddADUserRow(dr);
+                    //        isAuthen = true;
+                    //    }
+                    //    else
+                    //    {
+                    //        isAuthen = false;
+                    //    }
                         
-                    }
-                    catch(Exception ex)
-                    {
-                        Errmsg = ex.Message;
-                        isAuthen = false;
-                        //throw (ex);                   
-                    }
+                    //}
+                    //catch(Exception ex)
+                    //{
+                    //    Errmsg = ex.Message;
+                    //    isAuthen = false;                  
+                    //}
 
                     //ถ้า มี User ใน AD ให้ Check ต่อว่ามี User ใน Table User หรือไม่ (ถ้ามีก็จะ login ผ่าน และเก็บ UserID, UserName ไว้ใน Session)
-                    if(isAuthen)
+                    //if(isAuthen)
+                    if (true)
                     {
                         using (SqlConnection conObj = new SqlConnection(conStr))
                         {
                             try
                             {
+                                //SqlCommand cmd = new SqlCommand("SP_UserLogin", conObj);
+                                //cmd.CommandType = CommandType.StoredProcedure;
+                                //cmd.Parameters.AddWithValue("@UserName", userName);
+                                //conObj.Open();
+                                //SqlDataAdapter da = new SqlDataAdapter();
+                                //da.SelectCommand = cmd;
+                                //da.Fill(userDS.ADUser);
+                                //userName = userDS.ADUser.Rows[0]["UserName"].ToString();
+
                                 SqlCommand cmd = new SqlCommand("SP_UserLogin", conObj);
                                 cmd.CommandType = CommandType.StoredProcedure;
                                 cmd.Parameters.AddWithValue("@UserName", userName);
+                                cmd.Parameters.AddWithValue("@Password", password);
                                 conObj.Open();
                                 SqlDataAdapter da = new SqlDataAdapter();
                                 da.SelectCommand = cmd;
                                 da.Fill(userDS.ADUser);
                                 userName = userDS.ADUser.Rows[0]["UserName"].ToString();
+                                password = userDS.ADUser.Rows[0]["Password"].ToString();
                             }
                             catch (Exception ex)
                             {
@@ -329,9 +341,9 @@ namespace AlphaApi.DataAccessLayer
                         }
                     }
 
-                }
-                domainName = string.Empty;
-                ADPath = string.Empty;
+                //}
+                //domainName = string.Empty;
+                //ADPath = string.Empty;
 
                 return userDS;
 
@@ -357,6 +369,7 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", userLoginModels.ID);
                     cmd.Parameters.AddWithValue("@UserName", userLoginModels.UserName);
+                    cmd.Parameters.AddWithValue("@Password", userLoginModels.Password);
                     cmd.Parameters.AddWithValue("@FirstName", userLoginModels.FirstName != null && userLoginModels.FirstName != "" ? userLoginModels.FirstName : "");
                     cmd.Parameters.AddWithValue("@LastName", userLoginModels.LastName != null && userLoginModels.LastName != "" ? userLoginModels.LastName : "");
                     cmd.Parameters.AddWithValue("@Email", userLoginModels.Email != null && userLoginModels.Email != "" ? userLoginModels.Email : "");

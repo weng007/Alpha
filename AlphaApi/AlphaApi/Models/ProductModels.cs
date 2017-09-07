@@ -15,7 +15,11 @@ namespace AlphaApi.Models
 
         public string MachineNo { get; set; }
 
-        public int ProductType { get; set; }
+        //public int ProductType { get; set; }
+
+        public string ProductType { get; set; }
+
+        public string SNGauge { get; set; }
 
         public string Description { get; set; }
 

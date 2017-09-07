@@ -26,7 +26,9 @@ namespace AlphaApi.DataAccessLayer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@SerialNo", Product.SerialNo != null && Product.SerialNo != "" ? Product.SerialNo : "");
                     cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo != null && Product.MachineNo != "" ? Product.MachineNo : "");
-                    cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
+                    //cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
+                    cmd.Parameters.AddWithValue("@ProductType", Product.ProductType != null && Product.ProductType != "" ? Product.ProductType : "");
+                    cmd.Parameters.AddWithValue("@SNGauge", Product.SNGauge != null && Product.SNGauge != "" ? Product.SNGauge : "");
                     cmd.Parameters.AddWithValue("@Description", Product.Description != null && Product.Description != "" ? Product.Description : "");
                     cmd.Parameters.AddWithValue("@Brand", Product.Brand != null ? Product.Brand : "");
                     cmd.Parameters.AddWithValue("@Size", Product.Size != null ? Product.Size : "");
@@ -69,7 +71,8 @@ namespace AlphaApi.DataAccessLayer
                     cmd.Parameters.AddWithValue("@ID", Product.ID);
                     cmd.Parameters.AddWithValue("@SerialNo", Product.SerialNo != null && Product.SerialNo != "" ? Product.SerialNo : "");
                     cmd.Parameters.AddWithValue("@MachineNo", Product.MachineNo != null && Product.MachineNo != "" ? Product.MachineNo : "");
-                    cmd.Parameters.AddWithValue("@ProductType", Product.ProductType);
+                    cmd.Parameters.AddWithValue("@ProductType", Product.ProductType != null && Product.ProductType != "" ? Product.ProductType : "");
+                    cmd.Parameters.AddWithValue("@SNGauge", Product.SNGauge != null && Product.SNGauge != "" ? Product.SNGauge : "");
                     cmd.Parameters.AddWithValue("@Description", Product.Description != null && Product.Description != "" ? Product.Description : "");
                     cmd.Parameters.AddWithValue("@Brand", Product.Brand != null ? Product.Brand : "");
                     cmd.Parameters.AddWithValue("@Size", Product.Size != null ? Product.Size : "");
