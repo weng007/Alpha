@@ -20,12 +20,15 @@ $(document).ready(function () {
 function UserLogin() {
     
     var dataObject = { userName: $("#txtUserName").val() + '&' + $("#txtPassword").val() };
+    //var userName = $("#txtUserName").val();
+    //var Password = $("#txtPassword").val();
     //alert($("#txtUserName").val());
     //alert($("#txtPassword").val());
-    console.log(dataObject);
+    //console.log(dataObject);
     $.ajax(
     {
-        url: 'http://localhost:13131/api/UserLogin',
+        //url: 'http://localhost:13131/api/UserLogin/GetByID/' + userName + '/' + Password + '',
+        url: 'http://localhost:13131/api/UserLogin/',
         type: 'GET',
         async: false,
         data: dataObject,

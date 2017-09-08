@@ -65,6 +65,7 @@ function Update(val) {
         Email: $("#txtEmail").val(),
         EditBy: localStorage['UserID']
     };
+    //alert($("#txtPassword").val());
     console.log($("#cmbSecurityProfile").find(":selected").val());
        $.ajax(
         {

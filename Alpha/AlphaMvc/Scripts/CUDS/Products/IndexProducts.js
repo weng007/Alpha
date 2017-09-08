@@ -54,6 +54,12 @@
             var html = '<tbody>';
             for (var i = 0; i < data.Table.length; i++) {
                 var date = new Date(data.Table[i].ReceiveDate);
+                //var SerialNo = data.Table[0].SerialNo != 'NULL' ? data.Table[0].SerialNo : '';
+                //var MachineNo = data.Table[0].MachineNo != 'NULL' ? data.Table[0].MachineNo : '';
+                //var Description = data.Table[0].Description != 'NULL' ? data.Table[0].Description : '';
+                //var Brand = data.Table[0].Brand != 'NULL' ? data.Table[0].Brand : '';
+                //var Model = data.Table[0].Model != 'NULL' ? data.Table[0].Model : '';
+                //var Size = data.Table[0].Size != 'NULL' ? data.Table[0].Size : '';
                 html += '<tr>' +
                 '<td class="nopointer">' + data.Table[i].RowNum + '</td>' +
                 '<td class="hidecolumn">' + data.Table[i].ID + '</td>' +

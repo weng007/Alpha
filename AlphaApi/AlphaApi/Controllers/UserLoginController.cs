@@ -25,11 +25,21 @@ namespace AlphaApi.Controllers
             return response;
         }
 
+        //[HttpGet]
+        //[Route("api/UserLogin/GetByID/{userName}/{Password}")]
+        //public string GetByID(string userName, string Password)
+        //{
+        //    //string[] str = userName.Split('&');
+        //    //var response = Userdb.Authenticate(str[0],str[1]);
+        //    var response = Userdb.Authenticate(userName, Password);
+        //    return JsonConvert.SerializeObject(response, Formatting.Indented);
+        //}
         [HttpGet]
+        //[Route("api/UserLogin/{userName}/{Password}")]
         public string Get(string userName)
         {
             string[] str = userName.Split('&');
-            var response = Userdb.Authenticate(str[0],str[1]);
+            var response = Userdb.Authenticate(str[0], str[1]);
             return JsonConvert.SerializeObject(response, Formatting.Indented);
         }
 
