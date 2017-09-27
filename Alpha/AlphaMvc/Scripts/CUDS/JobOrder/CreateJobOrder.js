@@ -1124,27 +1124,33 @@ function SetRowIndex()
 }
 
 function AddrowManpower() {
-    var WorkingType = $('#hidTypeWorking').val();
-    var dataObject = { TypeWorking: WorkingType };
-    $.ajax({
-        url: 'http://localhost:13131/api/JobOrderManPower',
-        type: 'GET',
-        dataType: 'json',
-        async: false,
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $('.cmbManJob:last').find("option").remove();
-            $.each(data.Table, function (i) {
-                $('.cmbManJob:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.cmbManJob:last').find('option:first-child').attr('selected', true);
 
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
+    var resultManJob = $('.cmbManJob').eq($('.RowCal5').length-1).val();
+    //1093 = Choose
+    if (resultManJob == null)
+    {
+        var WorkingType = $('#hidTypeWorking').val();
+        var dataObject = { TypeWorking: WorkingType };
+        $.ajax({
+            url: 'http://localhost:13131/api/JobOrderManPower',
+            type: 'GET',
+            dataType: 'json',
+            async: false,
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $('.cmbManJob:last').find("option").remove();
+                $.each(data.Table, function (i) {
+                    $('.cmbManJob:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+                $('.cmbManJob:last').find('option:first-child').attr('selected', true);
+
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+    }
     
     var i = 0;
     $('.ManDate').each(function () {

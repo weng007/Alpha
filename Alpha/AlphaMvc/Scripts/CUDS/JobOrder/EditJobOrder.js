@@ -398,58 +398,64 @@ function GetContact(val) {
     });
 }
 function GetPriceList() {
-    var IsIncome;
-    var IncomeID = $('.Select1').eq(row_index2).val();
-    var dataObject = { IsIncome: '0' + '&' + IncomeID + '&' + '0' }
-    console.log(dataObject);
-    $.ajax(
-    {
-        url: 'http://localhost:13131/api/ExpenseMaster',
-        type: 'GET',
-        async: false,
-        data: dataObject,
-        datatype: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-            if (data.Table.length > 0) {
+    //alert("Test");
+    if (localStorage['flagAddRow'] == 1) {
+        var IsIncome;
+        var IncomeID = $('.Select1').eq(row_index2).val();
+        var dataObject = { IsIncome: '0' + '&' + IncomeID + '&' + '0' }
+        console.log(dataObject);
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/ExpenseMaster',
+            type: 'GET',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
+                if (data.Table.length > 0) {
 
-                $('.PriceList').eq(row_index2).val(data.Table[0].PriceList);
-                
-                $('.UnitPrice').eq(row_index2).val(data.Table[0].PriceList).formatNumber({ format: "#,###.00", locale: "us" });
+                    $('.PriceList').eq(row_index2).val(data.Table[0].PriceList);
+
+                    $('.UnitPrice').eq(row_index2).val(data.Table[0].PriceList).formatNumber({ format: "#,###.00", locale: "us" });
+                }
+            },
+            error: function (msg) {
+                alert(msg);
             }
-        },
-        error: function (msg) {
-            alert(msg);
-        }
 
-    });
-    CalSum();
+        });
+        CalSum();
+    }
+    
 }
 function GetExpensePriceList() {
-    var ExpenseID = $('.ExpenseSelect').eq(row_index3).val();
-    var dataObject = { IsIncome: '0' + '&' + ExpenseID + '&' + '1' }
-    console.log(dataObject);
-    $.ajax(
-    {
-        url: 'http://localhost:13131/api/ExpenseMaster',
-        type: 'GET',
-        async: false,
-        data: dataObject,
-        datatype: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-            if (data.Table.length > 0) {
+    if (localStorage['flagAddRow'] == 1) {
+        var ExpenseID = $('.ExpenseSelect').eq(row_index3).val();
+        var dataObject = { IsIncome: '0' + '&' + ExpenseID + '&' + '1' }
+        console.log(dataObject);
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/ExpenseMaster',
+            type: 'GET',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
+                if (data.Table.length > 0) {
 
-                $('.PriceList1').eq(row_index3).val(data.Table[0].PriceList);
-                $('.UnitPrice1').eq(row_index3).val(data.Table[0].PriceList).formatNumber({ format: "#,###.00", locale: "us" });
+                    $('.PriceList1').eq(row_index3).val(data.Table[0].PriceList);
+                    $('.UnitPrice1').eq(row_index3).val(data.Table[0].PriceList).formatNumber({ format: "#,###.00", locale: "us" });
+                }
+            },
+            error: function (msg) {
+                alert(msg);
             }
-        },
-        error: function (msg) {
-            alert(msg);
-        }
 
-    });
-    CalSumExpense();
+        });
+        CalSumExpense();
+    }
 }
 function BrowseCustomer(val) {
     //$.ajax(
@@ -1406,6 +1412,7 @@ function SetRowIndex() {
         row_index6 = $(this).parent().index();
     });
 }
+
 function AddrowManpower() {
     var i = 0;
     $('.ManDate').each(function () {
@@ -1414,28 +1421,34 @@ function AddrowManpower() {
         });
         i++;
     });
+    
+    var resultManJob = $('.cmbManJob').eq($('.RowCal5').length-1).val();
+    //1093 = Choose
+    if (resultManJob == null)
+    {
+        var WorkingType = $("#cmbTypeWorking").find(":selected").val();
+        var dataObject = { TypeWorking: WorkingType };
+        $.ajax({
+            url: 'http://localhost:13131/api/JobOrderManPower',
+            type: 'GET',
+            dataType: 'json',
+            async: false,
+            data: dataObject,
+            success: function (data) {
+                data = JSON.parse(data);
+                $('.cmbManJob:last').find("option").remove();
+                $.each(data.Table, function (i) {
+                    $('.cmbManJob:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
+                });
+                $('.cmbManJob:last').find('option:first-child').attr('selected', true);
 
-    var WorkingType = $("#cmbTypeWorking").find(":selected").val();
-    var dataObject = { TypeWorking: WorkingType };
-    $.ajax({
-        url: 'http://localhost:13131/api/JobOrderManPower',
-        type: 'GET',
-        dataType: 'json',
-        async: false,
-        data: dataObject,
-        success: function (data) {
-            data = JSON.parse(data);
-            $('.cmbManJob:last').find("option").remove();
-            $.each(data.Table, function (i) {
-                $('.cmbManJob:last').append($('<option></option>').val(data.Table[i].ID).html(data.Table[i].Detail));
-            });
-            $('.cmbManJob:last').find('option:first-child').attr('selected', true);
-
-        },
-        failure: function () {
-            alert('Error');
-        }
-    });
+            },
+            failure: function () {
+                alert('Error');
+            }
+        });
+    }
+    
 
     //$('.RowCal5 td').click(function () {
     //    row_index = $(this).parent().index();
