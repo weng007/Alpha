@@ -695,7 +695,10 @@ function GetData(val) {
                    $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
                    $("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
                }
+               $("#txtManpowerPrice").val(data.Table12[0].Amount).formatNumber({ format: "#,###.00", locale: "us" });
                $("#txtManJob").val(data.Table11[0].TotalManJobPrice).formatNumber({ format: "#,###.00", locale: "us" });
+               $("#txtAllowances").val(data.Table11[0].Allowances).formatNumber({ format: "#,###.00", locale: "us" });
+               CalSum();
            }
            
            //Binding Data Manpower
@@ -948,7 +951,8 @@ function Update(val) {
     var discount = ConvertAmount($("#txtDiscount").val());
     var price = ConvertAmount($("#txtSubTotal").val());
     //alert("txtManJob " + ConvertAmount($('#txtManJob').val()));
-    var cost = ConvertAmount($('#txtExpense').val()) + ConvertAmount($('#txtManJob').val());
+    var cost = ConvertAmount($('#txtExpense').val()) + parseFloat($('#txtManJob').val()) + parseFloat($('#txtManpowerPrice').val()) + ConvertAmount($('#txtAllowances').val());
+    //alert("cost "+cost);
     //alert(cost);
     var chkAdd1 = $('#chkAdd1').is(":checked") == true ? '1' : '0';
     var chkAdd2 = $('#chkAdd2').is(":checked") == true ? '1' : '0';
@@ -1230,18 +1234,20 @@ function CalSum() {
     $('#txtSubTotal').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
     $('#txtNoCompound').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
 
-    var manJob = ConvertAmount($('#txtManJob').val());
+    var manJob = ConvertAmount($('#txtManJob').val()) + parseFloat($('#txtManpowerPrice').val()) + ConvertAmount($('#txtAllowances').val());
+    //alert("ManpowerPrice " + parseFloat($('#txtManpowerPrice').val()));
+    //alert("CalSum nanJob " + manJob);
     var totalExpense = ConvertAmount($('#txtTotalExpense').val());
         Profit = SubTotal - (totalExpense + manJob);
     var ProfitPersent = isNaN((Profit / (totalExpense + manJob)) * 100) ? 0 : (Profit / (totalExpense + manJob)) * 100;
         
     if (Profit < 0) {
         $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
-        $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
+        ProfitPersent == 'Infinity' ? $("#txtProfitPersent").val(0).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" }) : $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
         $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
-        $("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
+        ProfitPersent == 'Infinity' ? $("#txtProfitPersent").val(0).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" }) : $("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
 }
 function CalSumExpense() {
@@ -1260,7 +1266,9 @@ function CalSumExpense() {
 
     $('.Amount1').formatNumber({ format: "#,###.00", locale: "us" });
     SubTotal = ConvertAmount($('#txtSubTotal').val());
-    var ManJob = ConvertAmount($('#txtManJob').val());
+    //alert("txtManpowerPrice " + $('#txtManpowerPrice').val());
+    var ManJob = ConvertAmount($('#txtManJob').val()) + parseFloat($('#txtManpowerPrice').val()) + ConvertAmount($('#txtAllowances').val());
+    //alert(ManJob);
         Profit = SubTotal - (totalExpense + ManJob);
     $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" })
     $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
@@ -1270,11 +1278,11 @@ function CalSumExpense() {
     //alert("ProfitPersent " + ProfitPersent);
     if (Profit < 0) {
         $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
-        $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
+        ProfitPersent == 'Infinity' ? $("#txtProfitPersent").val(0).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" }) : $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
         $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
-        $("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
+        ProfitPersent == 'Infinity' ? $("#txtProfitPersent").val(0).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" }) : $("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
 }
 function CalAddWage(val)
@@ -1290,7 +1298,7 @@ function CalAddWage(val)
         data: dataObject,
         success: function (data) {
             data = JSON.parse(data);
-            $('#txtManJob').val(data.Table[0].TotalManJobPrice).formatNumber({ format: "#,###.00", locale: "us" });
+            $('#txtAllowances').val(data.Table[0].TotalManJobPrice).formatNumber({ format: "#,###.00", locale: "us" });
         },
         failure: function () {
             alert('Error');

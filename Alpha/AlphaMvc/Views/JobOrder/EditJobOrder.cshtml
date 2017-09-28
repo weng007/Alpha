@@ -64,7 +64,7 @@
                 <input type="text" id="dtJobDate" class="field-divided" placeholder="วันที่" required/>&nbsp;<input type="text" id="txtCar" name="field1" class="field-divided" placeholder="รถปิกอัพ" />
             </li>
             <li>
-                <label class="label-2">วันเริ่มทำงาน</label>&nbsp;<label class="label-2">วันจบงาน<span class="required">*</span></label>
+                <label class="label-2 mgn-right20">วันเริ่มทำงาน</label>&nbsp;<label class="label-2">วันจบงาน<span class="required">*</span></label>
             </li>
             <li>
                 <input type="text" id="dtSWorking" class="field-divided" placeholder="วันเริ่มทำงาน" required/>&nbsp;<input type="text" id="dtEWorking" class="field-divided" placeholder="วันจบงาน" onchange="DateWorking()" required/>
@@ -312,7 +312,7 @@
                                                     <ul class="form-style-1">
                                                         <li>
                                                             @*class="label-small-2"*@
-                                                            <label>Manpower and Tool Cost</label>
+                                                            <label>Tool Cost</label>
                                                         </li>
                                                     </ul>
                                                 </td>
@@ -431,8 +431,8 @@
                                         <a id="add-row7" href="#" onblur="SetRowIndex()" onclick="AddRowExpense()">+ Add Row</a>
                                         @*<button id="add-row7" onclick="AddRowExpense()" class="btn btn-primary">Add Row</button>*@
                                         @*<div class="myDIV">*@
-                                        <div class="row">
-                                            <div class="col-lg-12 col-md-2 col-sm-8 col-xs-12">
+                                        <div class="row mgn-top10">
+                                            <div class="col-lg-12 col-md-2 col-sm-8 col-xs-12 padtop20">
                                                 <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
                                                         <label class="lblNoCompound">ราคาขายไม่รวม compound</label>
                                                 </div>
@@ -446,11 +446,23 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-md-2 col-sm-8 col-xs-12">
                                                 <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
-                                                        <label class="lblExpense">ต้นทุน(Manpower and Tool Cost)</label>
+                                                        <label class="lblExpense">ต้นทุน (Tool Cost)</label>
                                                 </div>
                                                 <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
                                                     <div class="form-group">
                                                         <input type="text" id="txtExpense" name="field6" class="text-size130 txtdisablerow" value="0" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-2 col-sm-8 col-xs-12">
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                    <label class="lblExpense">ค่า Man Power</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                    <div class="form-group">
+                                                        <input type="text" id="txtManpowerPrice" name="field6" class="text-size130 txtdisablerow" value="0" disabled />
                                                     </div>
                                                 </div>
                                             </div>
@@ -463,6 +475,18 @@
                                                 <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
                                                     <div class="form-group">
                                                         <input type="text" id="txtManJob" name="field6" class="text-size130 txtdisablerow" value="0" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-2 col-sm-8 col-xs-12">
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                    <label class="lblExpense">ค่ากะ, ค่าเบี้ยเลี้ยง</label>
+                                                </div>
+                                                <div class="col-lg-4 col-md-2 col-sm-8 col-xs-12">
+                                                    <div class="form-group">
+                                                        <input type="text" id="txtAllowances" name="field6" class="text-size130 txtdisablerow" value="0" disabled />
                                                     </div>
                                                 </div>
                                             </div>

@@ -962,16 +962,19 @@ function CalSum() {
 
     Profit = SubTotal - parseFloat($('#txtTotalExpense').val());
     var TotalExpense = parseFloat($('#txtTotalExpense').val());
-    var ProfitPersent = isNaN((Profit / TotalExpense) * 100) ? 0 : (Profit / TotalExpense) * 100;
-    
+    //alert("TotalExpense " + TotalExpense);
+    //alert("Profit " + Profit);
+    //alert("TotalExpense " + TotalExpense);
+    var ProfitPersent = TotalExpense = 0 ? 0 : (Profit / TotalExpense) * 100;
+    //alert("Test2 " + ProfitPersent);
 
     if (Profit < 0) {
         $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
-        $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
+        ProfitPersent == 'Infinity' ? $("#txtProfitPersent").val(0).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" }) : $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
         $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
-        $("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
+        ProfitPersent == 'Infinity' ? $("#txtProfitPersent").val(0).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" }) :$("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
 }
 function ConvertAmount(val) {
@@ -1007,16 +1010,19 @@ function CalSumExpense() {
     $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" })
     $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
 
-    var TotalExpense = parseFloat($('#txtTotalExpense').val());
-    var ProfitPersent = (Profit / TotalExpense) * 100
-
+    var TotalExpense = ConvertAmount($('#txtTotalExpense').val());
+    //alert("TotalExpense " + TotalExpense);
+    var ProfitPersent = TotalExpense = 0 ? 0 : (Profit / TotalExpense) * 100;
+    //alert("Test1 "+ProfitPersent);
+    //alert('Profit Expense ' + Profit);
+    //alert('TotalExpense ' + TotalExpense);
     if (Profit < 0) {
         $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
-        $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
+        ProfitPersent == 'Infinity' ? $("#txtProfitPersent").val(0).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" }) : $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
     }
     else {
         $("#txtProfit").val(Profit).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
-        $("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
+        ProfitPersent == 'Infinity' ? $("#txtProfitPersent").val(0).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" }) :$("#txtProfitPersent").val(ProfitPersent).css('color', 'black').formatNumber({ format: "#,###.00", locale: "us" });
     }
 }
 
