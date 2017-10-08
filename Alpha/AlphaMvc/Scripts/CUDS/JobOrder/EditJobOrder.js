@@ -950,10 +950,16 @@ function Update(val) {
     var EWorkingDate = ChangeformatDate($("#dtEWorking").val(), 1);
     var discount = ConvertAmount($("#txtDiscount").val());
     var price = ConvertAmount($("#txtSubTotal").val());
-    //alert("txtManJob " + ConvertAmount($('#txtManJob').val()));
-    var cost = ConvertAmount($('#txtExpense').val()) + parseFloat($('#txtManJob').val()) + parseFloat($('#txtManpowerPrice').val()) + ConvertAmount($('#txtAllowances').val());
-    //alert("cost "+cost);
-    //alert(cost);
+
+    var totalManJob = ConvertAmount($('#txtManJob').val());
+    var totalManpowerPrice = ConvertAmount($('#txtManpowerPrice').val());
+    var totalAllowances = ConvertAmount($('#txtAllowances').val());
+    var manJob = parseFloat(totalManJob) + parseFloat(totalManpowerPrice) + parseFloat(totalAllowances);
+    var totalExpense = ConvertAmount($('#txtTotalExpense').val());
+    var expense = totalExpense + parseFloat(manJob);
+
+    var cost = expense;
+
     var chkAdd1 = $('#chkAdd1').is(":checked") == true ? '1' : '0';
     var chkAdd2 = $('#chkAdd2').is(":checked") == true ? '1' : '0';
     //alert("Cost "+ConvertAmount($('#txtExpense').val()) + ConvertAmount($('#txtManJob').val()));
@@ -1234,12 +1240,17 @@ function CalSum() {
     $('#txtSubTotal').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
     $('#txtNoCompound').val(SubTotal).formatNumber({ format: "#,###.00", locale: "us" });
 
-    var manJob = ConvertAmount($('#txtManJob').val()) + parseFloat($('#txtManpowerPrice').val()) + ConvertAmount($('#txtAllowances').val());
-    //alert("ManpowerPrice " + parseFloat($('#txtManpowerPrice').val()));
-    //alert("CalSum nanJob " + manJob);
+    //alert("txtManJob " + ConvertAmount($('#txtManJob').val()));
+    //alert("txtManpowerPrice " + ConvertAmount($('#txtManpowerPrice').val()));
+    //alert("txtAllowances " + parseFloat($('#txtAllowances').val()));
+    var totalManJob = ConvertAmount($('#txtManJob').val());
+    var totalManpowerPrice = ConvertAmount($('#txtManpowerPrice').val());
+    var totalAllowances = ConvertAmount($('#txtAllowances').val());
+    var manJob = parseFloat(totalManJob) + parseFloat(totalManpowerPrice) + parseFloat(totalAllowances);
     var totalExpense = ConvertAmount($('#txtTotalExpense').val());
-        Profit = SubTotal - (totalExpense + manJob);
-    var ProfitPersent = isNaN((Profit / (totalExpense + manJob)) * 100) ? 0 : (Profit / (totalExpense + manJob)) * 100;
+    Profit = SubTotal - (totalExpense + parseFloat(manJob));
+    //var ProfitPersent = isNaN((Profit / (totalExpense + manJob)) * 100) ? 0 : (Profit / (totalExpense + manJob)) * 100;
+        var ProfitPersent = isNaN((Profit / SubTotal) * 100) ? 0 : (Profit / SubTotal) * 100;
         
     if (Profit < 0) {
         $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
@@ -1251,6 +1262,7 @@ function CalSum() {
     }
 }
 function CalSumExpense() {
+    //alert("CalSumExpense");
     var totalExpense = 0;
     var SubTotal = 0;
     var Profit = 0;
@@ -1266,14 +1278,18 @@ function CalSumExpense() {
 
     $('.Amount1').formatNumber({ format: "#,###.00", locale: "us" });
     SubTotal = ConvertAmount($('#txtSubTotal').val());
-    //alert("txtManpowerPrice " + $('#txtManpowerPrice').val());
-    var ManJob = ConvertAmount($('#txtManJob').val()) + parseFloat($('#txtManpowerPrice').val()) + ConvertAmount($('#txtAllowances').val());
-    //alert(ManJob);
-        Profit = SubTotal - (totalExpense + ManJob);
+
+    var totalManJob = ConvertAmount($('#txtManJob').val());
+    var totalManpowerPrice = ConvertAmount($('#txtManpowerPrice').val());
+    var totalAllowances = ConvertAmount($('#txtAllowances').val());
+    var manJob = parseFloat(totalManJob) + parseFloat(totalManpowerPrice) + parseFloat(totalAllowances);
+    Profit = SubTotal - (totalExpense + parseFloat(manJob));
+
     $('#txtTotalExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" })
     $('#txtExpense').val(totalExpense).formatNumber({ format: "#,###.00", locale: "us" });
 
-    var ProfitPersent = isNaN((Profit / (totalExpense + ManJob)) * 100) ? 0 : (Profit / (totalExpense + ManJob)) * 100;
+    //var ProfitPersent = isNaN((Profit / (totalExpense + ManJob)) * 100) ? 0 : (Profit / (totalExpense + ManJob)) * 100;
+    var ProfitPersent = isNaN((Profit / SubTotal) * 100) ? 0 : (Profit / SubTotal) * 100;
     
     //alert("ProfitPersent " + ProfitPersent);
     if (Profit < 0) {
@@ -1565,45 +1581,47 @@ function CalTotalHour() {
     $('.TotalHours').eq(row_index).val(total);
 }
 function GetManJob() {
-    var manType = $('.cmbManJob').eq(row_index).val();
-    //if (isManType == 0) {
-    //    $('.chkLead').eq(row_index).prop('checked', true);
-    //    $('.chkTech').eq(row_index).prop('checked', false);
-    //    $('.chkSafety').eq(row_index).prop('checked', false);
-    //    manType = '0';
-    //}
-    //if (isManType == 1) {
-    //    $('.chkTech').eq(row_index).prop('checked', true);
-    //    $('.chkLead').eq(row_index).prop('checked', false);
-    //    $('.chkSafety').eq(row_index).prop('checked', false);
-    //    manType = '1';
-    //}
-    //if (isManType == 2) {
-    //    $('.chkLead').eq(row_index).prop('checked', false);
-    //    $('.chkTech').eq(row_index).prop('checked', false);
-    //    manType = '2';
-    //}
+    if (localStorage['flagAddRow'] == 1) {
+        var manType = $('.cmbManJob').eq(row_index).val();
+        //if (isManType == 0) {
+        //    $('.chkLead').eq(row_index).prop('checked', true);
+        //    $('.chkTech').eq(row_index).prop('checked', false);
+        //    $('.chkSafety').eq(row_index).prop('checked', false);
+        //    manType = '0';
+        //}
+        //if (isManType == 1) {
+        //    $('.chkTech').eq(row_index).prop('checked', true);
+        //    $('.chkLead').eq(row_index).prop('checked', false);
+        //    $('.chkSafety').eq(row_index).prop('checked', false);
+        //    manType = '1';
+        //}
+        //if (isManType == 2) {
+        //    $('.chkLead').eq(row_index).prop('checked', false);
+        //    $('.chkTech').eq(row_index).prop('checked', false);
+        //    manType = '2';
+        //}
 
-    //alert(manType);
-    var dataObject = { IsIncome: '1' + '&' + manType }
-    console.log(dataObject);
-    $.ajax(
-    {
-        url: 'http://localhost:13131/api/ExpenseMaster',
-        type: 'GET',
-        async: false,
-        data: dataObject,
-        datatype: 'json',
-        success: function (data) {
-            data = JSON.parse(data);
-            if (data.Table.length > 0) {
-                $('.ManPrice').eq(row_index).val(data.Table[0].PriceList);
+        //alert(manType);
+        var dataObject = { IsIncome: '1' + '&' + manType }
+        console.log(dataObject);
+        $.ajax(
+        {
+            url: 'http://localhost:13131/api/ExpenseMaster',
+            type: 'GET',
+            async: false,
+            data: dataObject,
+            datatype: 'json',
+            success: function (data) {
+                data = JSON.parse(data);
+                if (data.Table.length > 0) {
+                    $('.ManPrice').eq(row_index).val(data.Table[0].PriceList);
+                }
+            },
+            error: function (msg) {
+                alert(msg);
             }
-        },
-        error: function (msg) {
-            alert(msg);
-        }
-    });
+        });
+    }
 }
 function GetManpowerHour(isCheckBreak) {
     var StartDate = $('#dtSWorking').val();

@@ -1301,7 +1301,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -2243,7 +2242,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Sum(Fields!Amount.Value, "dsBDCIncome")</Value>
+                  <Value>=Sum(Fields!Amount.Value, "dsBDCIncome")-First(Fields!Discount.Value, "dsBDCIncome")</Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
                     <Format>n2</Format>
@@ -2431,7 +2430,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=(((Sum(Fields!Amount.Value, "dsBDCIncome")-First(Fields!Discount.Value, "dsBDCIncome")) - Sum(Fields!Amount.Value, "dsBDCExpense"))/Sum(Fields!Amount.Value, "dsBDCExpense"))*100</Value>
+                  <Value>=(((Sum(Fields!Amount.Value, "dsBDCIncome")-First(Fields!Discount.Value, "dsBDCIncome")) - Sum(Fields!Amount.Value, "dsBDCExpense"))/(Sum(Fields!Amount.Value, "dsBDCIncome")-First(Fields!Discount.Value, "dsBDCIncome")))*100</Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
                     <Format>n2</Format>

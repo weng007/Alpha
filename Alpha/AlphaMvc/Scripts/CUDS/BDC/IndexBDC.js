@@ -85,13 +85,13 @@ function GetData(val)
                 if (profit < 0)
                 {
                     html += '<td style="color:#FF0000" class="gvProfit text-right nopointer"> ' + AddComma(parseFloat(profit).toFixed(2)) + '</td>';
-                    var percentprofit = isNaN((profit / data.Table[i].Cost) * 100) ? 0 : (profit / data.Table[i].Cost) * 100;
+                    var percentprofit = isNaN((profit / price) * 100) ? 0 : (profit / price) * 100;
                     html += '<td style="color:#FF0000" class="gvProfit text-right nopointer"> ' + AddComma(parseFloat(percentprofit).toFixed(2)) + '</td>';
                 }
                 else
                 {
                     html += '<td style="Color: black" class="gvProfit text-right nopointer">' + AddComma(parseFloat(profit).toFixed(2)) + '</td>';
-                    var percentprofit = isNaN((profit / data.Table[i].Cost) * 100) ? 0 : (profit / data.Table[i].Cost) * 100;
+                    var percentprofit = isNaN((profit / price) * 100) ? 0 : (profit / price) * 100;
                     html += '<td style="color: black" class="gvProfit text-right nopointer"> ' + AddComma(parseFloat(percentprofit).toFixed(2)) + '</td>';
                 }
                 

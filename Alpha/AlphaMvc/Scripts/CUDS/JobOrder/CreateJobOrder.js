@@ -965,7 +965,8 @@ function CalSum() {
     //alert("TotalExpense " + TotalExpense);
     //alert("Profit " + Profit);
     //alert("TotalExpense " + TotalExpense);
-    var ProfitPersent = TotalExpense = 0 ? 0 : (Profit / TotalExpense) * 100;
+    //var ProfitPersent = TotalExpense = 0 ? 0 : (Profit / TotalExpense) * 100;
+    var ProfitPersent = TotalExpense = 0 ? 0 : (Profit / SubTotal) * 100;
     //alert("Test2 " + ProfitPersent);
 
     if (Profit < 0) {
@@ -1012,10 +1013,9 @@ function CalSumExpense() {
 
     var TotalExpense = ConvertAmount($('#txtTotalExpense').val());
     //alert("TotalExpense " + TotalExpense);
-    var ProfitPersent = TotalExpense = 0 ? 0 : (Profit / TotalExpense) * 100;
-    //alert("Test1 "+ProfitPersent);
-    //alert('Profit Expense ' + Profit);
-    //alert('TotalExpense ' + TotalExpense);
+    //var ProfitPersent = TotalExpense = 0 ? 0 : (Profit / TotalExpense) * 100;
+    var ProfitPersent = TotalExpense = 0 ? 0 : (Profit / SubTotal) * 100;
+
     if (Profit < 0) {
         $("#txtProfit").val(Profit).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
         ProfitPersent == 'Infinity' ? $("#txtProfitPersent").val(0).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" }) : $("#txtProfitPersent").val(ProfitPersent).css('color', 'red').formatNumber({ format: "#,###.00", locale: "us" });
